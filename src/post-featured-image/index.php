@@ -44,9 +44,6 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_post_feature
 /**
  * 設定項目の登録
  */
-/**
- * 設定項目の登録
- */
 function satori_register_block_type() {
 	$block_names = array(
 		'group',

@@ -1,0 +1,39 @@
+name: Pre-commit checks
+
+on: [pull_request]
+
+jobs:
+  format-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '22'
+
+    - name: Install Node.js dependencies
+      run: npm install
+
+    - name: Run format check
+      run: npm run format -- --check
+
+    - name: Run lint check
+      run: npm run lint:js
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '7.4'
+
+    - name: Install Composer dependencies
+      run: composer install
+
+    - name: Run Composer format check
+      run: composer format
+
+    - name: Run PHP CodeSniffer
+      run: composer phpcs
