@@ -1,0 +1,37 @@
+{
+	"apiVersion": 3,
+	"name": "mone/satori-post-author-name",
+	"category": "mone-block-cat",
+	"title": "Author Name",
+	"textdomain": "mone",
+	"ancestor": [ "mone/satori-wrapper" ],
+	"attributes": {},
+	"supports": {
+		"moneSatori": {
+			"color": {
+				"gradients": true,
+				"__experimentalDefaultControls": {
+					"background": true,
+					"text": true
+				}
+			},
+			"__experimentalBorder": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"__experimentalDefaultControls": {
+					"color": true,
+					"radius": true,
+					"width": true
+				}
+			}
+		},
+		"inserter": false,
+		"customClassName": false,
+		"className": false,
+		"multiple": false,
+		"renaming": false,
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}
