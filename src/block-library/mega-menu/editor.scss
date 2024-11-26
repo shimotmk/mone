@@ -1,0 +1,11 @@
+.wp-block-navigation__container {
+	position: relative;
+	.mone-mega-menu.has-child-selected {
+		position: absolute;
+		top: 30px;
+		z-index: 2;
+		// .mone-mega-menu__placement {
+		// 	display: none;
+		// }
+	}
+}

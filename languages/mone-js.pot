@@ -1,0 +1,480 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "mone"
+msgstr ""
+
+#: build/block-hook/image/index.php:39
+#: src/block-hook/image/index.php:39
+msgid "MB Option Overrides"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:87
+#: src/block-library/user-icon/index.php:87
+msgid "Mone 設定"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:90
+#: src/block-library/user-icon/index.php:90
+msgid "アイコン画像 URL"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:111
+#: src/block-library/user-icon/index.php:111
+msgid "画像を選択"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:116
+#: src/block-library/user-icon/index.php:116
+msgid "削除"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:149
+#: src/block-library/user-icon/index.php:149
+msgid "My Custom Source"
+msgstr ""
+
+#: includes/block-editor/index.php:20
+msgid "Pre scrollable"
+msgstr ""
+
+#: includes/block-editor/index.php:34
+msgid "Table Responsive"
+msgstr ""
+
+#: includes/block-editor/index.php:62
+#: includes/gutenberg/index.php:16
+msgid "Archives List Unstyled"
+msgstr ""
+
+#: includes/block-editor/index.php:111
+msgid "mone blocks"
+msgstr ""
+
+#: includes/block-patterns.php:18
+msgid "404"
+msgstr ""
+
+#: includes/set-up-theme/index.php:48
+msgid "ホーム"
+msgstr ""
+
+#: includes/set-up-theme/index.php:49
+msgid "Home"
+msgstr ""
+
+#: includes/set-up-theme/index.php:56
+msgid "カテゴリー"
+msgstr ""
+
+#: includes/set-up-theme/index.php:57
+msgid "Category"
+msgstr ""
+
+#: includes/set-up-theme/index.php:73
+#: includes/set-up-theme/index.php:81
+msgid "カスタムリンク"
+msgstr ""
+
+#: patterns/balloon.php
+msgctxt "Pattern title"
+msgid "吹き出し"
+msgstr ""
+
+#: patterns/balloon.php
+msgctxt "Pattern description"
+msgid "Header with site title and navigation"
+msgstr ""
+
+#: patterns/footer-default.php
+msgctxt "Pattern title"
+msgid "Default Footer"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "footer"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "Hidden 404"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern description"
+msgid "404ページテンプレート"
+msgstr ""
+
+#: patterns/hidden-404.php:19
+msgctxt "Error code for a webpage that is not found."
+msgid "404"
+msgstr ""
+
+#: patterns/hidden-404.php:25
+msgctxt "Message to convey that a webpage could not be found"
+msgid "This page could not be found."
+msgstr ""
+
+#: patterns/hidden-404.php:28
+#: patterns/hidden-no-results.php:17
+msgctxt "label"
+msgid "Search"
+msgstr ""
+
+#: patterns/hidden-404.php:28
+#: patterns/hidden-no-results.php:17
+msgctxt "placeholder for search field"
+msgid "Search..."
+msgstr ""
+
+#: patterns/hidden-404.php:28
+#: patterns/hidden-no-results.php:17
+msgid "Search"
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern title"
+msgid "Hidden Comments"
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern description"
+msgid "A block that displays comments."
+msgstr ""
+
+#: patterns/hidden-comments.php:17
+msgctxt "Title of comments section"
+msgid "Comments"
+msgstr ""
+
+#: patterns/hidden-no-results.php
+msgctxt "Pattern title"
+msgid "Hidden No Results Content"
+msgstr ""
+
+#: patterns/hidden-no-results.php:13
+msgctxt "Message explaining that there are no results returned from a search"
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: patterns/home.php
+msgctxt "Pattern title"
+msgid "home"
+msgstr ""
+
+#: patterns/post-meta.php
+msgctxt "Pattern title"
+msgid "Post Meta"
+msgstr ""
+
+#: patterns/post-meta.php:31
+msgctxt "Verb to explain the publication status of a post"
+msgid "Posted"
+msgstr ""
+
+#: patterns/post-meta.php:39
+msgctxt "Preposition to show the relationship between the post and its categories"
+msgid "in"
+msgstr ""
+
+#: patterns/post-meta.php:51
+msgctxt "Preposition to show the relationship between the post and its author"
+msgid "by"
+msgstr ""
+
+#: patterns/post-meta.php:67
+msgctxt "Label for a list of post tags"
+msgid "Tags:"
+msgstr ""
+
+#: patterns/posts-list-two-column.php
+msgctxt "Pattern title"
+msgid "List of posts without images, 2 column"
+msgstr ""
+
+#: patterns/posts-list.php
+msgctxt "Pattern title"
+msgid "List of posts without images, 1 column"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "sidebar"
+msgstr ""
+
+#: patterns/single.php
+msgctxt "Pattern title"
+msgid "single"
+msgstr ""
+
+#: patterns/sns-share.php
+msgctxt "Pattern title"
+msgid "SNSシェアボタン"
+msgstr ""
+
+#: patterns/sns-share.php
+msgctxt "Pattern description"
+msgid "Add SNS share buttons."
+msgstr ""
+
+#: build/block-library/embed-excerpt/block.json
+#: src/block-library/embed-excerpt/block.json
+msgctxt "block title"
+msgid "Embed Excerpt"
+msgstr ""
+
+#: build/block-library/embed-excerpt/block.json
+#: src/block-library/embed-excerpt/block.json
+msgctxt "block description"
+msgid "Shows an excerpt retrieved from a URL."
+msgstr ""
+
+#: build/block-library/embed-featured-image/block.json
+#: src/block-library/embed-featured-image/block.json
+msgctxt "block title"
+msgid "Embed Featured Image"
+msgstr ""
+
+#: build/block-library/embed-featured-image/block.json
+#: src/block-library/embed-featured-image/block.json
+msgctxt "block description"
+msgid "Displays the featured image obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-site-logo/block.json
+#: src/block-library/embed-site-logo/block.json
+msgctxt "block title"
+msgid "Embed Site Logo"
+msgstr ""
+
+#: build/block-library/embed-site-logo/block.json
+#: src/block-library/embed-site-logo/block.json
+msgctxt "block description"
+msgid "Displays the site logo image obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-site-title/block.json
+#: src/block-library/embed-site-title/block.json
+msgctxt "block title"
+msgid "Embed Site Title"
+msgstr ""
+
+#: build/block-library/embed-site-title/block.json
+#: src/block-library/embed-site-title/block.json
+msgctxt "block description"
+msgid "Displays the site title obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-title/block.json
+#: src/block-library/embed-title/block.json
+msgctxt "block title"
+msgid "Embed Title"
+msgstr ""
+
+#: build/block-library/embed-title/block.json
+#: src/block-library/embed-title/block.json
+msgctxt "block description"
+msgid "Displays the title obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed/block.json
+#: src/block-library/embed/block.json
+msgctxt "block title"
+msgid "Embed"
+msgstr ""
+
+#: build/block-library/embed/block.json
+#: src/block-library/embed/block.json
+msgctxt "block description"
+msgid "Add a block that fetches and displays content from a URL."
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "空白"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "404"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Black"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Silver"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Bronze"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Gold"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Key"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Key / Two"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Main Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Content Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Key Contrast"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Two"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Three"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Link Color"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Link Hover Color"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Hading Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "List Background"
+msgstr ""
+
+#: theme.json
+msgctxt "Aspect ratio name"
+msgid "Optimize OGP 1.91:1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Source Serif Pro"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Noto Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "A-OTF Shin Go Pro"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "icomoon"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "GLYPHICONS Halflings"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Code"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "ヘッダー"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "フッター"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "サイドバー"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "コメント"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "投稿メタ"
+msgstr ""

@@ -1,0 +1,9 @@
+._.DS_Store
+.DS_Store
+/.wp-env.override.json
+/build
+/node_modules
+vendor/
+*.zip
+/dist/
+/memo/

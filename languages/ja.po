@@ -1,0 +1,1562 @@
+# Copyright (C) 2024 Tomoki Shimomura
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mone 0.0.19\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
+"POT-Creation-Date: 2024-10-26T05:32:38+00:00\n"
+"PO-Revision-Date: 2024-11-09 10:28+0900\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: mone\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Mone"
+msgstr "Mone"
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://mone-wp.com"
+msgstr "https://mone-wp.com"
+
+#. Description of the theme
+#: style.css
+msgid "WordPress theme for mone."
+msgstr "WordPressテーマ Mone."
+
+#. Author of the theme
+#: style.css
+msgid "Tomoki Shimomura"
+msgstr "しもむら ともき"
+
+#: build/block-hook/button/index.php:84 build/block-hook/code/index.php:70
+msgid "URL copied!"
+msgstr "URLがコピーされました!"
+
+#: build/block-hook/code/index.php:65 build/block-hook/code/index.php:72
+msgid "Copy to clipboard"
+msgstr "クリップボードにコピー"
+
+#: build/block-hook/code/index.php:70
+msgid "Code copied!"
+msgstr "コードをコピーしました!"
+
+#: build/block-hook/code/index.php:73
+msgid "Copied"
+msgstr "コピーしました"
+
+#: build/block-hook/image/index.php:15 build/block-hook/image copy/index.php:15
+msgid "Mone Option Overrides"
+msgstr "Mone オプションのオーバーライド"
+
+#: build/block-hook/list/index.php:52
+msgid "Mone List"
+msgstr "Mone リスト"
+
+#: build/block-library/mega-menu/index.php:36
+msgid "Once you create a template part, you can select it in the mega menu.."
+msgstr "テンプレートパーツを作成するとメガメニューで選択できます。"
+
+#: build/block-library/mega-menu/index.php:38
+msgid "Menu"
+msgstr "メニュー"
+
+#: build/block-library/user-icon/index.php:93
+msgid "Mone Settings"
+msgstr "Mone設定"
+
+#: build/block-library/user-icon/index.php:96
+msgid "Icon URL"
+msgstr "アイコンURL"
+
+#: build/block-library/user-icon/index.php:117
+msgid "Select an image"
+msgstr "画像を選択する"
+
+#: build/block-library/user-icon/index.php:122
+msgid "delete"
+msgstr "削除"
+
+#: includes/admin/index.php:18 includes/admin/index.php:19
+msgid "Activate"
+msgstr "アクティベーション"
+
+#: build/admin/index.php:102
+msgid "User email is required."
+msgstr "メールアドレスは必須です。"
+
+#: build/admin/index.php:109
+msgid "User email saved successfully."
+msgstr "メールアドレスを保存しました。"
+
+#: includes/admin/index.php:36
+msgid "Saved"
+msgstr "保存されました"
+
+#: includes/admin/index.php:40
+msgid "An error has occurred"
+msgstr "エラーが発生しました"
+
+#: includes/admin/index.php:44
+msgid "Activate Mone"
+msgstr "Mone アクティベート"
+
+#: includes/admin/index.php:49
+msgid "Email Address"
+msgstr "メールアドレス"
+
+#: includes/admin/index.php:53
+msgid "Activate Code"
+msgstr "コードを有効化する"
+
+#: includes/admin/index.php:84
+msgid "Please enter a valid email address"
+msgstr "有効なメールアドレスを入力してください"
+
+#: includes/block-editor/index.php:45
+msgid "Mone blocks"
+msgstr "Mone blocks"
+
+#: includes/block-patterns.php:20 patterns/hidden-404.php:16
+msgid "404"
+msgstr "404"
+
+#: includes/block-patterns.php:24
+msgid "Mega menu"
+msgstr "Mega menu"
+
+#: includes/gutenberg/copyright-binding.php:21
+msgctxt "Label for the copyright placeholder in the editor"
+msgid "&copy; YEAR"
+msgstr "© YEAR"
+
+#. translators: 1: Copyright symbol or word, 2: Year
+#: includes/gutenberg/copyright-binding.php:36
+msgid "%1$s %2$s"
+msgstr "%1$s, %2$s"
+
+#: includes/set-up-theme/index.php:50 includes/set-up-theme/index.php:51
+msgid "Home"
+msgstr "ホーム"
+
+#: includes/set-up-theme/index.php:58 includes/set-up-theme/index.php:59
+msgid "Category"
+msgstr "カテゴリー"
+
+#: includes/set-up-theme/index.php:75 includes/set-up-theme/index.php:83
+msgid "Custom Link"
+msgstr "カスタムリンク"
+
+#. translators: %s: Mone user authentication URL
+#: includes/update/index.php:79
+msgid "<a href=\"%s\">Mone User Authentication</a>has not been completed. Version update functionality is limited."
+msgstr "<a href=\"%s\">Moneユーザー認証</a>が完了していません。バージョンアップデート機能が制限されてます。"
+
+#. translators: %1$s: Mone user authentication URL, %2$s: My Page URL
+#: includes/update/index.php:85
+msgid "<a href=\"%1$s\">Mone user authentication</a>has not been completed. If your email address and the authentication URL on your<a href=\"https://mone-wp.com/mypage/\" target=\"_blank\">My Page</a>are correct, an<a href=\"%2$1s\">authentication check</a>please perform "
+msgstr "<a href=\"%1$s\">Moneユーザー認証</a>が完了していません。メールアドレスと<a href=\"https://mone-wp.com/mypage/\" target=\"_blank\">マイページ</a>の認証URLが正しい場合は<a href=\"%2$1s\">認証チェック</a>を行なってください"
+
+#: patterns/alert-red.php
+msgctxt "Pattern title"
+msgid "Alert Red"
+msgstr "アラート レッド"
+
+#: patterns/alert-red.php
+msgctxt "Pattern description"
+msgid "Add Alert Red."
+msgstr "アラートレッドを追加する."
+
+#: patterns/alert-red.php:20
+msgid "Write your text here!"
+msgstr "こんにちは、ここに文章を書きましょう！"
+
+#: patterns/comments.php
+msgctxt "Pattern title"
+msgid "comments"
+msgstr "コメント"
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "footer"
+msgstr "フッター"
+
+#: patterns/footer.php:16
+msgid "About me!"
+msgstr "About me!"
+
+#: patterns/footer.php:26 patterns/sidebar.php:28
+msgid "Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text"
+msgstr "プロフィール テキスト プロフィール テキスト プロフィール テキスト プロフィール テキスト"
+
+#: patterns/footer.php:34
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: patterns/footer.php:45
+msgid "List１"
+msgstr "リスト1"
+
+#: patterns/footer.php:49
+msgid "List２"
+msgstr "リスト2"
+
+#: patterns/footer.php:53
+msgid "List３"
+msgstr "リスト3"
+
+#: patterns/footer.php:57
+msgid "List４"
+msgstr "リスト4"
+
+#: patterns/footer.php:61
+msgid "List５"
+msgstr "リスト5"
+
+#: patterns/footer.php:70
+msgid "Created by"
+msgstr "Created by"
+
+#: patterns/footer.php:80
+msgid "WordPress theme Mone logo"
+msgstr "WordPressテーマMoneロゴ"
+
+#: patterns/footer.php:90
+msgid "Copyright"
+msgstr "Copyright"
+
+#: patterns/footer.php:98
+msgid "All Rights Reserved."
+msgstr "All Rights Reserved."
+
+#: patterns/header-row.php
+msgctxt "Pattern title"
+msgid "Header row"
+msgstr "ヘッダー 横並び"
+
+#: patterns/header.php:16
+msgid "Written by Mone Creators"
+msgstr "Written by Mone Creators"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "Hidden 404"
+msgstr "404"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern description"
+msgid "404 page template"
+msgstr "404ページテンプレート"
+
+#: patterns/mega-menu.php:19
+msgid "Service 1"
+msgstr "サービス 1"
+
+#: patterns/mega-menu.php:24 patterns/mega-menu.php:48
+#: patterns/mega-menu.php:72 patterns/mega-menu.php:96
+msgid "List 1"
+msgstr "リスト 1"
+
+#: patterns/mega-menu.php:28 patterns/mega-menu.php:52
+#: patterns/mega-menu.php:76 patterns/mega-menu.php:100
+msgid "List 2"
+msgstr "リスト 2"
+
+#: patterns/mega-menu.php:32 patterns/mega-menu.php:56
+#: patterns/mega-menu.php:80 patterns/mega-menu.php:104
+msgid "List 3"
+msgstr "リスト 3"
+
+#: patterns/mega-menu.php:36 patterns/mega-menu.php:60
+#: patterns/mega-menu.php:84 patterns/mega-menu.php:108
+msgid "List 4"
+msgstr "リスト 4"
+
+#: patterns/mega-menu.php:43
+msgid "Service 2"
+msgstr "サービス 2"
+
+#: patterns/mega-menu.php:67
+msgid "Service 3"
+msgstr "サービス 3"
+
+#: patterns/mega-menu.php:91
+msgid "Service 4"
+msgstr "サービス 4"
+
+#: patterns/hidden-404.php:21
+msgid "This page could not be found."
+msgstr "ページが見つかりませんでした。"
+
+#: patterns/hidden-no-results.php
+msgctxt "Pattern title"
+msgid "Hidden No Results Content"
+msgstr "非表示の結果なしコンテンツ"
+
+#: patterns/hidden-no-results.php:13
+msgctxt "Message explaining that there are no results returned from a search"
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "申し訳ありませんが、検索条件に一致するものはありません。 別のキーワードでもう一度お試しください。"
+
+#: patterns/hidden-no-results.php:17
+msgid "Search"
+msgstr "検索"
+
+#: patterns/hidden-no-results.php:17
+msgid "Search for..."
+msgstr "検索..."
+
+#: patterns/mega-menu.php
+msgctxt "Pattern title"
+msgid "Mega menu"
+msgstr "メガメニュー"
+
+#: patterns/mega-menu.php
+msgctxt "Pattern description"
+msgid "menu"
+msgstr "メニュー"
+
+#: patterns/new-posts-list.php
+msgctxt "Pattern title"
+msgid "Latest Articles"
+msgstr "最新記事"
+
+#: patterns/new-posts-list.php:14
+msgid "New Posts"
+msgstr "新着記事"
+
+#: patterns/post-foot-meta.php
+msgctxt "Pattern title"
+msgid "Post Foot Meta"
+msgstr "投稿フットメタ"
+
+#: patterns/post-head-meta.php
+msgctxt "Pattern title"
+msgid "Post Head Meta"
+msgstr "投稿ヘッドメタ"
+
+#: patterns/post-head-meta.php:15 patterns/template-query-loop.php:20
+msgid "Last Updated"
+msgstr "更新日"
+
+#: patterns/related-posts-list.php
+msgctxt "Pattern title"
+msgid "Related Posts"
+msgstr "関連記事"
+
+#: patterns/related-posts-list.php:14
+msgid "Related Posts"
+msgstr "関連記事"
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "sidebar"
+msgstr "サイドバー"
+
+#: patterns/sidebar.php:14 patterns/sidebar.php:18
+msgid "Mone Creators"
+msgstr "Mone Creators"
+
+#: patterns/sidebar.php:39 build/block-hook/query/index.js:1
+#: build/block-hook/query/index.js:71 build/block-hook/query/index.js:116
+msgid "Most Read Articles"
+msgstr "よく読まれている記事"
+
+#: patterns/sidebar.php:58
+msgid "Archive"
+msgstr "Archive"
+
+#: patterns/sns-share-simple.php
+msgctxt "Pattern title"
+msgid "SNS share buttons simple"
+msgstr "シンプルなSNSシェアボタン"
+
+#: patterns/sns-share-simple.php patterns/sns-share.php
+msgctxt "Pattern description"
+msgid "Add SNS share buttons."
+msgstr "SNSシェアボタンを追加します。"
+
+#: patterns/sns-share.php
+msgctxt "Pattern title"
+msgid "SNS share buttons"
+msgstr "SNSシェアボタン"
+
+#: patterns/template-query-loop.php
+msgctxt "Pattern title"
+msgid "List of posts, 1 column"
+msgstr "投稿のリスト、1コラム"
+
+#: patterns/template-query-loop.php
+msgctxt "Pattern description"
+msgid "A list of posts, 1 column, with featured image and post date."
+msgstr "投稿のリスト、1 列、アイキャッチ画像と投稿日。"
+
+#: patterns/template-query-loop.php:39
+msgid "Please add text or a block to display when the query returns no results."
+msgstr "クエリが結果を返さないときに表示するテキストまたはブロックを追加してください。"
+
+#: patterns/template-query-loop.php:40
+msgid "No results found"
+msgstr "記事が見つかりませんでした"
+
+#: patterns/pickup-article.php
+msgctxt "Pattern title"
+msgid "Pickup article"
+msgstr "ピックアップ記事"
+
+#: patterns/template-query-loop.php:46
+msgid "Previous Post"
+msgstr "前のページ"
+
+#: patterns/template-query-loop.php:48
+msgid "Next Post"
+msgstr "次のページ"
+
+#: build/admin/index.js:78
+#: build/admin/index.js:45
+msgid "user email saved successfully"
+msgstr "ユーザーメールアドレスを保存しました"
+
+#: build/admin/index.js:81
+#: build/admin/index.js:51
+msgid "An error occurred while saving the user email."
+msgstr "ユーザーのメールを保存中にエラーが発生しました。"
+
+#: build/admin/index.js:106
+#: build/admin/index.js:82
+msgid "Mone Activation Settings"
+msgstr "Mone アクティベート設定"
+
+#: build/admin/index.js:117
+#: build/admin/index.js:89
+msgid "Step 1"
+msgstr "ステップ１"
+
+#: build/admin/index.js:123
+#: build/admin/index.js:94
+msgid "Register the domain you want to authenticate on your Mone My Page"
+msgstr "Moneマイページで認証したいドメインを登録する"
+
+#: build/admin/index.js:131
+#: build/admin/index.js:106
+msgid "Mone Mypage"
+msgstr "Moneマイページ"
+
+#: build/admin/index.js:132
+#: build/admin/index.js:108
+msgid "Please register the following domains"
+msgstr "で以下のドメインを登録してください"
+
+#: build/admin/index.js:147
+#: build/admin/index.js:128
+msgid "Copied!"
+msgstr "コピー完了!"
+
+#: build/admin/index.js:148
+#: build/block-hook/button/index.js:341
+#: build/admin/index.js:131
+#: build/block-hook/button/index.js:311
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:311
+msgid "Copy"
+msgstr "コピー"
+
+#: build/admin/index.js:163
+#: build/admin/index.js:144
+msgid "Step 2"
+msgstr "ステップ２"
+
+#: build/admin/index.js:169
+#: build/admin/index.js:149
+msgid "Mone user Enter your email address"
+msgstr "Moneユーザー メールアドレスを入力"
+
+#: build/admin/index.js:173
+#: build/admin/index.js:156
+msgid "Enter your Mone user email address below and save"
+msgstr "以下にMoneユーザーのメールアドレスを入力して保存してください"
+
+#: build/admin/index.js:191
+#: build/admin/index.js:181
+msgid "Save"
+msgstr "保存"
+
+#: build/admin/index.js:207
+#: build/admin/index.js:194
+msgid "Step 3"
+msgstr "ステップ３"
+
+#: build/admin/index.js:213
+#: build/admin/index.js:199
+msgid "Authentication Check"
+msgstr "認証チェック"
+
+#: build/admin/index.js:217
+#: build/admin/index.js:203
+msgid "If you press the button below and no alert appears, authentication is complete."
+msgstr "以下のボタンを押してアラートが出なければ認証完了です。"
+
+#: build/admin/index.js:221
+#: build/admin/index.js:212
+msgid "Check authentication"
+msgstr "認証チェック"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:137
+msgid "Using the selector, it can be rewritten to a block-specific class."
+msgstr "selectorを使用して、ブロック固有のクラスに書き換えることができます。"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:143
+msgid "Additional CSS"
+msgstr "追加CSS"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:288
+msgid "Hide settings"
+msgstr "非表示設定"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:292
+msgid "Hide on PC"
+msgstr "PC 非表示"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:303
+msgid "Hide on mobile"
+msgstr "モバイル 非表示"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:385
+msgid "Unlock content only"
+msgstr "コンテンツ ロック 解除"
+
+#: build/block-editor/index.js:1 build/block-editor/index.js:386
+msgid "Lock content only"
+msgstr "コンテンツ ロック"
+
+#: build/block-hook/archives/index.js:1 build/block-hook/archives/index.js:7
+msgid "Archives List Unstyled"
+msgstr "アーカイブ リストスタイルなし"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:305
+msgid "None"
+msgstr "なし"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:306
+msgid "Facebook"
+msgstr "Facebook"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:307
+msgid "X"
+msgstr "X"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:308
+msgid "Hatena"
+msgstr "はてな"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:309
+msgid "Pocket"
+msgstr "Pocket"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:310
+msgid "LINE"
+msgstr "LINE"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:319
+msgid "Share Settings"
+msgstr "共有設定"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:326
+msgid "Share Button Provider"
+msgstr "シェアボタン種類"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:27
+msgid "Add image"
+msgstr "画像を新規追加"
+
+#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:153
+msgid "Click animation image"
+msgstr "アニメーション画像をクリック"
+
+#: build/block-hook/code/index.js:1 build/block-hook/code/index.js:84
+msgid "Code Settings"
+msgstr "コード設定"
+
+#: build/block-hook/code/index.js:1 build/block-hook/code/index.js:91
+msgid "Code Language"
+msgstr "コード言語"
+
+#: build/block-hook/code/index.js:1 build/block-hook/code/index.js:112
+msgid "Height"
+msgstr "高さ"
+
+
+#: patterns/amazon-rakuten.php
+msgctxt "Pattern title"
+msgid "Amazon Rakuten product card"
+msgstr "Amazon 楽天商品 カード"
+
+#: patterns/amazon-rakuten.php
+msgctxt "Pattern description"
+msgid "This block is ideal for showcasing products from Amazon and Rakuten."
+msgstr "Amazon,楽天の商品紹介用カードです。"
+
+#: patterns/amazon-rakuten.php:25
+msgid "Product name"
+msgstr "製品名"
+
+#: patterns/amazon-rakuten.php:30
+msgid "View on Amazon"
+msgstr "Amazonで見る"
+
+#: patterns/amazon-rakuten.php:34
+msgid "View on Kindle"
+msgstr "Kindleで見る"
+
+#: patterns/amazon-rakuten.php:38
+msgid "View on Rakuten"
+msgstr "楽天で見る"
+
+#: build/block-hook/columns/index.js:1 build/block-hook/columns/index.js:76
+msgid "Fold backwards on mobile"
+msgstr "モバイルで逆順に並べる"
+
+#: build/block-hook/group/index.js:1 build/block-hook/group/index.js:56
+msgid "Applause Button"
+msgstr "拍手ボタン"
+
+#: build/block-hook/group/index.js:1 build/block-hook/group/index.js:57
+msgid "Applause button and counter that can be pressed multiple times without logging in"
+msgstr "ログインせずに複数回押せる拍手ボタンとカウンター"
+
+#: build/block-hook/group/index.js:1 build/block-hook/group/index.js:120
+msgid "Hand"
+msgstr "ハンド"
+
+#: build/block-hook/group/index.js:177 build/block-hook/group/index.js:178
+#: build/block-hook/group/index.js:194 build/block-hook/group/index.js:174
+#: build/block-hook/group/index.js:175 build/block-hook/group/index.js:191
+msgid "Balloon"
+msgstr "吹き出し"
+
+#: build/block-hook/group/index.js:205 build/block-hook/group/index.js:206
+msgid "Balloon icon"
+msgstr "吹き出しアイコン"
+
+#: build/block-hook/group/index.js:232 build/block-hook/group/index.js:242
+msgid "Hello, write your sentence here!"
+msgstr "こんにちは、ここに文章を書きましょう！"
+
+#: build/block-hook/group/index.js:496
+#: build/block-hook/group/index.js:491
+msgid "Vertical layout on mobile"
+msgstr "モバイルでは縦に並べる"
+
+#: build/block-hook/list/index.js:1 build/block-hook/list/index.js:37
+msgid "List style none"
+msgstr "リストスタイルなし"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-hook/paragraph/index.js:16279
+msgid "スタイル"
+msgstr "スタイル"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-hook/paragraph/index.js:16291
+msgid "チェック"
+msgstr "チェック"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-hook/paragraph/index.js:16302
+msgid "info"
+msgstr "情報"
+
+#: build/block-hook/post-date/index.js:1 build/block-hook/post-date/index.js:93
+msgid "Mone prefix suffix"
+msgstr "Mone接頭辞"
+
+#: build/block-hook/post-terms/index.js:1
+#: build/block-hook/post-terms/index.js:64
+msgid "Tags"
+msgstr "タグ"
+
+#: build/block-hook/preformatted/index.js:1 build/block-hook/preformatted
+#: copy/index.js:22 build/block-hook/preformatted/index.js:7 copy/index.js:7
+msgid "Pre scrollable"
+msgstr "スクロール可能"
+
+#: build/block-hook/query-pagination-next/index.js:1
+#: build/block-hook/query-pagination-next/index.js:44
+msgid "Next Article"
+msgstr "次の記事"
+
+#: build/block-hook/query-pagination-previous/index.js:1
+#: build/block-hook/query-pagination-previous/index.js:44
+msgid "Previous article"
+msgstr "前の記事"
+
+#: build/block-hook/query/index.js:60
+#: build/block-hook/query/index.js:31
+msgid "Include Posts"
+msgstr "ピックアップ記事"
+
+#: build/block-hook/query/index.js:112
+#: build/block-hook/query/index.js:64
+msgid "Post Ids"
+msgstr "投稿IDs"
+
+#: build/block-hook/query/index.js:123
+#: build/block-hook/query/index.js:77
+msgid "Example: 1,4,7"
+msgstr "例: 1,4,7"
+
+#: build/block-hook/query/index.js:124
+#: build/block-hook/query/index.js:78
+msgid "*Please enter with commas."
+msgstr "*カンマ区切りで入力してください。"
+
+#: build/block-hook/query/index.js:1 build/block-hook/query/index.js:72
+msgid "Shows the most read articles"
+msgstr "最も読まれた記事を表示します"
+
+#: build/block-hook/query/index.js:1 build/block-hook/query/index.js:124
+#: build/block-hook/query/index.js:159
+msgid "Related articles"
+msgstr "関連記事"
+
+#: build/block-hook/query/index.js:1 build/block-hook/query/index.js:125
+msgid "Displays random articles from the same category as the post."
+msgstr "投稿と同じカテゴリの記事をランダムに表示します。"
+
+#: build/block-hook/query/index.js:325
+#: build/block-hook/query/index.js:287
+msgid "Pick Up Articles"
+msgstr "ピックアップ記事"
+
+#: build/block-hook/query/index.js:326
+#: build/block-hook/query/index.js:288
+msgid "Display the selected article."
+msgstr "選択した記事を表示します。"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:61
+msgid "You cannot select multiple cells from different sections."
+msgstr "異なるセクションから複数のセルを選択することはできません。"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1027
+msgid "Merging and splitting cells"
+msgstr "セルの結合と分割"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1062
+msgid "Merge Cells"
+msgstr "セルの結合"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1086
+msgid "Split Cell"
+msgstr "セルを分割"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1218
+msgid "The cell was repaired"
+msgstr "セルは修復されました"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1208
+msgid "No cells to repair"
+msgstr "修復するセルはありません"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1234
+msgid "Repairing broken cells"
+msgstr "壊れたセルの修復"
+
+#: build/block-hook/table/index.js:1 build/block-hook/table/index.js:1254
+msgid "Clear Selection"
+msgstr "選択を解除"
+
+#: build/block-library/embed-featured-image/index.js:1
+#: build/block-library/embed-title/index.js:1
+#: build/block-library/embed-featured-image/index.js:285
+#: build/block-library/embed-title/index.js:63
+msgid "Link to URL"
+msgstr "URLへのリンク"
+
+#: build/block-library/embed-site-logo/index.js:1
+#: build/block-library/embed-site-title/index.js:1
+#: build/block-library/embed-site-logo/index.js:50
+#: build/block-library/embed-site-title/index.js:65
+msgid "Link to home page"
+msgstr "トップページへのリンク"
+
+#: build/block-library/embed/index.js:1
+msgid "Choose a pattern. The original block settings will be cleared."
+msgstr "パターンを選択します。元のブロック設定がクリアされます。"
+
+#: build/block-library/embed/index.js:1
+msgid "Blog card"
+msgstr "ブログカード"
+
+#: build/block-library/embed/index.js:1
+msgid "Top image"
+msgstr "トップ画像"
+
+#: build/block-library/embed/index.js:1
+msgid "Link to page"
+msgstr "ページヘリンク"
+
+#: build/block-library/embed/index.js:1
+msgid "Clear cache"
+msgstr "キャッシュを消去"
+
+#: build/block-library/embed/index.js:1
+msgid "If the data is old, please clear the cache. It is usually updated every hour."
+msgstr "データが古い場合は、キャッシュをクリアしてください。通常、1時間ごとに更新されます。"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:79
+msgid "Menu Template"
+msgstr "メニューテンプレート"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:98
+msgid "Edit"
+msgstr "編集"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:106
+msgid "Create a template part"
+msgstr "テンプレート パーツの作成"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:110
+msgid "Click to open"
+msgstr "クリックで開く"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:179
+msgid "Mega menu link text"
+msgstr "メガメニューリンクのテキスト"
+
+#: build/block-library/mega-menu/index.js:1
+#: build/block-library/mega-menu/index.js:180
+msgid "Mega menu label"
+msgstr "メガメニューラベル"
+
+#: build/block-library/styles-switcher-item/index.js:1
+#: build/block-library/styles-switcher-item/index.js:20
+msgid "Variation Name"
+msgstr "バリエーション名"
+
+#. translators: %s: switcher item
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:258
+msgid "%s switcher item"
+msgstr "%sスイッチャーアイテム"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:40
+#: build/block-library/styles-switcher-item/index.js:129
+msgid "Current"
+msgstr "現在"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:41
+#: build/block-library/styles-switcher-item/index.js:130
+msgid "Mone Default"
+msgstr "Moneデフォルト"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:42
+#: build/block-library/styles-switcher-item/index.js:131
+msgid "Blue"
+msgstr "Blue"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:43
+#: build/block-library/styles-switcher-item/index.js:132
+msgid "Dark"
+msgstr "Dark"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:44
+#: build/block-library/styles-switcher-item/index.js:133
+msgid "Green"
+msgstr "Green"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:45
+#: build/block-library/styles-switcher-item/index.js:134
+msgid "White"
+msgstr "White"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/post-featured-image/blocks/post-author-name/index.js:1
+#: build/post-featured-image/blocks/post-title/index.js:1
+#: build/block-library/styles-switcher-item/index.js:142
+#: build/post-featured-image/blocks/post-author-name/index.js:56
+#: build/post-featured-image/blocks/post-title/index.js:52
+#: build/post-featured-image/index.js:12062
+#: build/post-featured-image/index.js:12107
+msgid "Settings"
+msgstr "設定"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:149
+msgid "Style variation settings"
+msgstr "スタイルバリエーションの設定"
+
+#: build/block-library/styles-switcher-item/index.js:2
+#: build/block-library/styles-switcher-item/index.js:56
+msgid "VariationOption"
+msgstr "バリエーションオプション"
+
+#: build/block-library/styles-switcher/index.js:1
+#: build/block-library/styles-switcher/index.js:106
+#: build/block-library/styles-switcher/index.js:177
+msgid "Defaults"
+msgstr "デフォルト"
+
+#: build/block-library/styles-switcher/index.js:1
+#: build/block-library/styles-switcher/index.js:202
+msgid "white"
+msgstr "白"
+
+#: build/block-library/styles-switcher/index.js:1
+#: build/block-library/styles-switcher/index.js:87
+msgid "isToggle"
+msgstr "トグル"
+
+#: build/edit-post/index.js:1 build/edit-post/index.js:79
+msgid "Mone post settings"
+msgstr "Mone投稿設定"
+
+#: build/edit-post/index.js:1 build/edit-post/index.js:83
+msgid "Display eye-catcher on the page"
+msgstr "アイキャッチ画像を表示する"
+
+#: build/edit-post/index.js:1 build/edit-post/index.js:111
+msgid "Display SNS Share Button on the page"
+msgstr "SNSシェアボタンを表示する"
+
+#: build/edit-post/index.js:201
+#: build/edit-post/index.js:129
+msgid "Display Date on the page"
+msgstr "日付を表示する"
+
+#: build/format-library/font-size/index.js:1
+#: build/format-library/font-size/index.js:77
+msgid "Inline font size"
+msgstr "インライン文字サイズ"
+
+#: build/format-library/font-size/index.js:1
+#: build/format-library/font-size/index.js:48
+msgid "Inline Font Size"
+msgstr "インライン文字サイズ"
+
+#: build/format-library/icon/index.js:1
+#: build/components/icon-search-popover/index.js:17369
+#: build/format-library/icon/index.js:1198
+msgid "Icon not found."
+msgstr "アイコンが見つかりません。"
+
+#: build/format-library/icon/index.js:1 build/format-library/icon/index.js:1431
+msgid "Inline Icon"
+msgstr "インラインアイコン"
+
+#: build/format-library/icon/index.js:1
+#: build/post-featured-image/blocks/post-author-icon/index.js:1
+#: build/format-library/icon/index.js:1409
+#: build/post-featured-image/blocks/post-author-icon/index.js:150
+#: build/post-featured-image/index.js:12018
+msgid "Icon"
+msgstr "アイコン"
+
+#: build/plugins/index.js:1 build/plugins/index.js:135
+msgid "Add NO IMAGE"
+msgstr "NO IMAGEを追加"
+
+#: build/plugins/index.js:1 build/plugins/index.js:206
+#: build/plugins/index.js:318
+msgid "Default NO IMAGE"
+msgstr "デフォルト NO IMAGE"
+
+#: build/plugins/index.js:1 build/plugins/index.js:212
+#: build/plugins/index.js:341
+msgid "NO IMAGE"
+msgstr "NO IMAGE 画像"
+
+#: build/plugins/index.js:1 build/plugins/index.js:405
+msgid "Show NO IMAGE in query"
+msgstr "クエリーでNO IMAGEを表示"
+
+#: build/plugins/index.js:1 build/plugins/index.js:423
+msgid "Show NO IMAGE on the page"
+msgstr "ページでNO IMAGEを表示"
+
+#: build/plugins/index.js:1 build/plugins/index.js:310
+msgid "Site settings"
+msgstr "サイト設定"
+
+#: build/plugins/index.js:1 build/plugins/index.js:582
+#: build/post-featured-image/index.js:11837
+msgid "Display eye-catching template"
+msgstr "アイキャッチテンプレートを表示"
+
+#: build/plugins/index.js:1 build/post-featured-image/index.js:3
+#: build/plugins/index.js:612 build/post-featured-image/index.js:12918
+msgid "User Settings"
+msgstr "ユーザー設定"
+
+#: build/plugins/index.js:1 build/plugins/index.js:615
+msgid "Eye-catching template"
+msgstr "アイキャッチテンプレート"
+
+#: build/plugins/index.js:1 build/plugins/index.js:709
+msgid "Mone settings"
+msgstr "Mone 設定"
+
+#: build/post-featured-image/blocks/post-author-name/index.js:1
+#: build/post-featured-image/blocks/post-author-name/index.js:59
+#: build/post-featured-image/index.js:12065
+msgid "Post author name"
+msgstr "投稿者名"
+
+#: build/post-featured-image/blocks/post-title/index.js:1
+#: build/post-featured-image/blocks/post-title/index.js:55
+#: build/post-featured-image/index.js:12110
+msgid "Post Title"
+msgstr "投稿タイトル"
+
+#: build/post-featured-image/blocks/site-logo/index.js:1
+#: build/post-featured-image/blocks/site-title/index.js:1
+#: build/post-featured-image/blocks/site-logo/index.js:58
+#: build/post-featured-image/blocks/site-title/index.js:53
+#: build/post-featured-image/index.js:12158
+#: build/post-featured-image/index.js:12204
+msgid "Setting"
+msgstr "設定"
+
+#: build/post-featured-image/blocks/site-title/index.js:1
+#: build/post-featured-image/blocks/site-title/index.js:56
+#: build/post-featured-image/index.js:12207
+msgid "Site title"
+msgstr "サイトのタイトル"
+
+#: build/post-featured-image/index.js:1
+#: build/post-featured-image/blocks/site-logo/index.js:44
+#: build/post-featured-image/index.js:12144
+msgid "Logo not found"
+msgstr "ロゴが見つかりません"
+
+#: build/post-featured-image/index.js:1
+#: build/post-featured-image/blocks/post-author-icon/index.js:73
+#: build/post-featured-image/index.js:11941
+msgid "Icon not found"
+msgstr "アイコンが見つかりません"
+
+#: build/post-featured-image/index.js:1
+#: build/post-featured-image/index.js:13326
+msgid "Upload & Eye-Catch Updated"
+msgstr "アップロード & アイキャッチが更新されました"
+
+#: build/post-featured-image/index.js:1
+#: build/post-featured-image/index.js:13370
+msgid "Upload & Update Eyecatcher"
+msgstr "アップロード & アイキャッチを更新"
+
+#. translators: %s
+#: build/post-featured-image/index.js:2 build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12302
+#: build/post-featured-image/index.js:12313
+msgid "Custom thumbnail %s"
+msgstr "カスタムアイキャッチ%s"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12692
+msgid "Article Title"
+msgstr "記事のタイトル"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12710
+msgid "Preview Article Title"
+msgstr "記事タイトルのプレビュー"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12718
+msgid "Debug Mode"
+msgstr "デバッグモード"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12811
+msgid "Changes saved"
+msgstr "変更を保存しました"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12838
+msgid "Featured Template:Save Changes"
+msgstr "アイキャッチ テンプレート:変更を保存"
+
+#: build/post-featured-image/index.js:13375
+#: build/post-featured-image/index.js:13738
+#: build/post-featured-image/index.js:12910
+#: build/post-featured-image/index.js:13168
+msgid "Featured image Templates"
+msgstr "アイキャッチテンプレート"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:12401
+msgid "Custom Thumbnail Templates"
+msgstr "カスタムアイキャッチテンプレート"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:14348
+msgid "Group"
+msgstr "グループ"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:13445
+msgid "Add a background image"
+msgstr "背景画像を追加する"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:13499
+#: build/post-featured-image/index.js:13505
+msgid "Background Image"
+msgstr "背景画像"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:13512
+msgid "Set background image"
+msgstr "背景画像の設定"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:13579
+msgid "* Recommended size: 1200px wide, 630px tall"
+msgstr "*推奨サイズ:幅1200px、高さ630px"
+
+#: build/post-featured-image/index.js:3
+#: build/post-featured-image/index.js:13189
+msgid "You can customize it from the eye-catching template."
+msgstr "アイキャッチテンプレートからカスタマイズできます。"
+
+#: build/block-library/mega-menu/index.js:180
+msgid "Mega menu label…"
+msgstr "メガメニューラベル…"
+
+#: build/components/icon-search-popover/index.js:17532
+#: build/format-library/icon/index.js:1361
+msgid "Select Icon"
+msgstr "アイコンを選択"
+
+#: build/block-library/embed-excerpt/block.json
+msgctxt "block title"
+msgid "Embed Excerpt"
+msgstr "抜粋を埋め込む"
+
+#: build/block-library/embed-excerpt/block.json
+msgctxt "block description"
+msgid "Shows an excerpt retrieved from a URL."
+msgstr "URL から取得した抜粋が表示されます。"
+
+#: build/block-library/embed-featured-image/block.json
+msgctxt "block title"
+msgid "Embed Featured Image"
+msgstr "アイキャッチ画像を埋め込む"
+
+#: build/block-library/embed-featured-image/block.json
+msgctxt "block description"
+msgid "Displays the featured image obtained from the URL."
+msgstr "URLから取得したアイキャッチ画像を表示します。"
+
+#: build/block-library/embed-site-logo/block.json
+msgctxt "block title"
+msgid "Embed Site Logo"
+msgstr "サイトロゴの埋め込み"
+
+#: build/block-library/embed-site-logo/block.json
+msgctxt "block description"
+msgid "Displays the site logo image obtained from the URL."
+msgstr "URLから取得したサイトのロゴ画像を表示します。"
+
+#: build/block-library/embed-site-title/block.json
+msgctxt "block title"
+msgid "Embed Site Title"
+msgstr "サイトタイトルを埋め込む"
+
+#: build/block-library/embed-site-title/block.json
+msgctxt "block description"
+msgid "Displays the site title obtained from the URL."
+msgstr "URL から取得したサイトのタイトルが表示されます。"
+
+#: build/block-library/embed-title/block.json
+msgctxt "block title"
+msgid "Embed Title"
+msgstr "タイトルを埋め込む"
+
+#: build/block-library/embed-title/block.json
+msgctxt "block description"
+msgid "Displays the title obtained from the URL."
+msgstr "URL から取得したタイトルが表示されます。"
+
+#: build/block-library/embed/block.json
+msgctxt "block title"
+msgid "Embed"
+msgstr "埋め込み"
+
+#: build/block-library/embed/block.json
+msgctxt "block description"
+msgid "Add a block that fetches and displays content from a URL."
+msgstr "URL からコンテンツを取得して表示するブロックを追加します。"
+
+#: build/block-library/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr "メガメニュー"
+
+#: build/block-library/mega-menu/block.json
+msgctxt "block description"
+msgid "Mega Menu"
+msgstr "メガメニュー"
+
+#: build/block-library/styles-switcher-item/block.json
+msgctxt "block title"
+msgid "Theme Styles switcher item"
+msgstr "テーマスタイルスイッチャーアイテム"
+
+#: build/block-library/styles-switcher-item/block.json
+msgctxt "block description"
+msgid "Theme Styles switcher item"
+msgstr "テーマスタイルスイッチャーアイテム"
+
+#: build/block-library/styles-switcher/block.json
+msgctxt "block title"
+msgid "Theme Styles switcher"
+msgstr "テーマスタイルスイッチャー"
+
+#: build/block-library/styles-switcher/block.json
+msgctxt "block description"
+msgid "Theme Styles switcher"
+msgstr "テーマスタイルスイッチャー"
+
+#: build/post-featured-image/blocks/group/block.json
+msgctxt "block title"
+msgid "Group"
+msgstr "グループ"
+
+#: build/post-featured-image/blocks/group copy/block.json
+msgctxt "block title"
+msgid "satori wrapper"
+msgstr "satori wrapper"
+
+#: build/post-featured-image/blocks/group copy/block.json
+msgctxt "block description"
+msgid "Group"
+msgstr "グループ"
+
+#: build/post-featured-image/blocks/post-author-icon/block.json
+msgctxt "block title"
+msgid "Post Author Icon"
+msgstr "投稿作成者アイコン"
+
+#: build/post-featured-image/blocks/post-author-name/block.json
+msgctxt "block title"
+msgid "Author Name"
+msgstr "投稿者名"
+
+#: build/post-featured-image/blocks/post-author-name copy/block.json
+msgctxt "block title"
+msgid "satori post-author-name"
+msgstr "satori post-author-name"
+
+#: build/post-featured-image/blocks/post-author-name copy/block.json
+msgctxt "block description"
+msgid "post-author-name"
+msgstr "投稿者名"
+
+#: build/post-featured-image/blocks/post-title/block.json
+msgctxt "block title"
+msgid "Title"
+msgstr "タイトル"
+
+#: build/post-featured-image/blocks/post-title/block.json
+msgctxt "block description"
+msgid "post-title"
+msgstr "投稿タイトル"
+
+#: build/post-featured-image/blocks/site-logo/block.json
+msgctxt "block title"
+msgid "Site Logo"
+msgstr "サイトロゴ"
+
+#: build/post-featured-image/blocks/site-title/block.json
+msgctxt "block title"
+msgid "Site Title"
+msgstr "サイトタイトル"
+
+#: build/post-featured-image/blocks/site-title copy/block.json
+msgctxt "block title"
+msgid "satori site-title"
+msgstr "satori site-title"
+
+#: build/post-featured-image/blocks/site-title copy/block.json
+msgctxt "block description"
+msgid "site-title"
+msgstr "サイトタイトル"
+
+#: build/post-featured-image/blocks/wrapper/block.json
+msgctxt "block title"
+msgid "Custom Thumbnail"
+msgstr "カスタムアイキャッチ"
+
+#: styles/blue.json
+msgctxt "Style variation name"
+msgid "Blue"
+msgstr "Blue"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key"
+msgstr "キー"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key / Two"
+msgstr "キー/ 2"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Main Background"
+msgstr "メイン背景"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Background"
+msgstr "コンテンツエリア 背景"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key Contrast"
+msgstr "キーコントラスト"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key / Two contrast"
+msgstr "キー/2コントラスト"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast"
+msgstr "コンテンツ コントラスト"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Two"
+msgstr "コンテンツコントラスト/ 2"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Three"
+msgstr "コンテンツコントラスト / 3"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Link Color"
+msgstr "リンク色"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Link Hover Color"
+msgstr "リンクホバー色"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Hading Background"
+msgstr "見出し背景"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "List Background"
+msgstr "リスト背景"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Quote Background"
+msgstr "引用 背景"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Border"
+msgstr "枠線"
+
+#: styles/blue.json styles/dark.json styles/green.json styles/white.json
+#: theme.json
+msgctxt "Duotone name"
+msgid "Key"
+msgstr "キー"
+
+#: styles/dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr "Dark"
+
+#: styles/green.json
+msgctxt "Style variation name"
+msgid "Green"
+msgstr "Green"
+
+#: styles/white.json
+msgctxt "Style variation name"
+msgid "White"
+msgstr "White"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "blank"
+msgstr "ブランク"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Thin one column"
+msgstr "ワンカラム スリム"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Wide one column"
+msgstr "ワンカラム ワイド"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Header & Footer"
+msgstr "ヘッダー&フッターのみ"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "404"
+msgstr "404"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Black"
+msgstr "黒"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Silver"
+msgstr "シルバー"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Bronze"
+msgstr "ブロンズ"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Gold"
+msgstr "ゴールド"
+
+#: theme.json
+msgctxt "Aspect ratio name"
+msgid "Optimize OGP 1.91:1"
+msgstr "OGP 1.91:1"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr "1"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr "2"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr "3"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "4"
+msgstr "4"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "5"
+msgstr "5"
+
+#: theme.json
+msgctxt "Space size name"
+msgid "6"
+msgstr "6"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr "System Font"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Noto Sans"
+msgstr "Noto Sans JP"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "A-OTF Shin Go Pro"
+msgstr "A-OTF Shin Go Pro"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "icomoon"
+msgstr "icomoon"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Code"
+msgstr "コード"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "ヘッダー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "フッター"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Comments"
+msgstr "コメント"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post meta"
+msgstr "投稿のメタ情報"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Query"
+msgstr "クエリ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Menu"
+msgstr "メニュー"

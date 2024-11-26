@@ -1,0 +1,61 @@
+.mone-applause-button {
+	position: relative;
+
+	.mone-appreciate-image-wrapper {
+		position: relative;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+
+		.mone-animation-image {
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition: .5s;
+			opacity: 0;
+			z-index: 1;
+			object-fit: cover;
+		}
+	
+		.mone-hand-image {
+			width: 100%;
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: .5s;
+		}
+	
+	}
+
+	&.is-clicked {
+		.mone-animation-image {
+			display: block;
+			opacity: 1;
+			transform: scale(1.2);
+		}
+
+		.mone-hand-image {
+			transform: translate(-50%, -50%) scale(1.1);
+		}
+	}
+
+}
+
+.mone_appreciate_count:not(.block-editor-block-list__block) {
+	display: none;
+	&.is-show-count {
+		display: block;
+	}
+}
+
+@media (max-width: 781px) {
+    .wp-block-group.mone_wrap-on-mobile.is-layout-grid {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+	}
+}

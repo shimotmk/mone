@@ -1,0 +1,5 @@
+// Zero out the margin on the excerpt paragraph, to match the body paragraphs.
+.wp-block-mone-embed-excerpt__excerpt {
+	margin-top: 0;
+	margin-bottom: 0;
+}

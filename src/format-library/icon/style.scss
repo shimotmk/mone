@@ -1,0 +1,25 @@
+.mone-inline-icon {
+    display: inline-block;
+    margin-left: .1em;
+    margin-right: .1em;
+    min-width: 1em;
+    position: relative;
+    // vertical-align: text-bottom;
+    pointer-events: none;
+}
+
+.mone-inline-icon:after {
+  background: currentcolor;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  mask-image: var(--the-icon-svg);
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  box-sizing: inherit;
+}

@@ -1,0 +1,38 @@
+{
+	"apiVersion": 3,
+	"name": "mone/styles-switcher-item",
+	"category": "mone-block-cat",
+	"title": "Theme Styles switcher item",
+	"description": "Theme Styles switcher item",
+	"textdomain": "mone",
+	"parent": [ "mone/styles-switcher" ],
+	"attributes": {
+		"styleVariations": {
+			"type": "string"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"supports": {
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		}
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style.css",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css"
+}

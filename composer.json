@@ -1,0 +1,32 @@
+{
+	"name": "tomoki.shimomura/mone",
+	"description": "",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Tomoki Shimomura"
+		}
+	],
+	"require-dev": {
+		"squizlabs/php_codesniffer": "*",
+		"sirbrillig/phpcs-variable-analysis": "^2.8",
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"wp-coding-standards/wpcs": "*",
+		"wp-phpunit/wp-phpunit": "^5.4",
+		"yoast/phpunit-polyfills": "^1.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+	},
+	"scripts": {
+		"format": "phpcbf --standard=./.phpcs.xml.dist --report-summary --report-source",
+		"lint": "phpcs --standard=./.phpcs.xml.dist",
+		"phpcs": "phpcs --standard=./.phpcs.xml.dist"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"require": {
+		"yahnis-elsts/plugin-update-checker": "^5.4"
+	}
+}

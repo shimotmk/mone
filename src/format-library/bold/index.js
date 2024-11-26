@@ -1,0 +1,2 @@
+// import './strong';
+import './bold';

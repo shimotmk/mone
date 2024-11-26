@@ -1,0 +1,73 @@
+{
+	"apiVersion": 3,
+	"name": "mone/mega-menu",
+	"category": "mone-block-cat",
+	"title": "Mega Menu",
+	"description": "Mega Menu",
+	"textdomain": "mone",
+	"parent": [ "core/navigation" ],
+	"attributes": {
+		"label": {
+			"type": "string"
+		},
+		"menuSlug": {
+			"type": "string"
+		},
+		"megaMenuType": {
+			"type": "string"
+		},
+		"type": {
+			"type": "string"
+		},
+		"rel": {
+			"type": "string"
+		},
+		"id": {
+			"type": "number"
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		"url": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"gradients": true,
+			"link": false,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"interactivity": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css"
+}

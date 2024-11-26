@@ -1,0 +1,93 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Dark",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"color": "#121212",
+					"name": "Key",
+					"slug": "key"
+				},
+				{
+					"color": "#aaaaaa",
+					"name": "Key / Two",
+					"slug": "key-2"
+				},
+				{
+					"color": "#252525",
+					"name": "Main Background",
+					"slug": "main-bg"
+				},
+				{
+					"color": "#121212",
+					"name": "Content Background",
+					"slug": "content-bg"
+				},
+				{
+					"color": "#ffffff",
+					"name": "Key Contrast",
+					"slug": "key-contrast"
+				},
+				{
+					"color": "#ffffff",
+					"name": "Key / Two contrast",
+					"slug": "key-2-contrast"
+				},
+				{
+					"color": "#9b9b9b",
+					"name": "Content Contrast",
+					"slug": "content-contrast"
+				},
+				{
+					"color": "#d8d8d8",
+					"name": "Content Contrast / Two",
+					"slug": "content-contrast-2"
+				},
+				{
+					"color": "#d33c00",
+					"name": "Content Contrast / Three",
+					"slug": "content-contrast-3"
+				},
+				{
+					"color": "#337ab7",
+					"name": "Link Color",
+					"slug": "mone-link"
+				},
+				{
+					"color": "#23527c",
+					"name": "Link Hover Color",
+					"slug": "mone-link-hover"
+				},
+				{
+					"color": "#1e2127",
+					"name": "Hading Background",
+					"slug": "heading-bg"
+				},
+				{
+					"color": "#1e2127",
+					"name": "List Background",
+					"slug": "list-bg"
+				},
+				{
+					"color": "#1e2127",
+					"name": "Quote Background",
+					"slug": "quote-bg"
+				},
+				{
+					"color": "#e8e7ff33",
+					"name": "Border",
+					"slug": "mone-border"
+				}
+			],
+			"duotone": [
+				{
+					"name": "Key",
+					"slug": "key",
+					"colors": [ "#ffffff", "#ffffff" ]
+				}
+			]
+		}
+	}
+}

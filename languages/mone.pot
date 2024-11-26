@@ -1,0 +1,1561 @@
+# Copyright (C) 2024 Tomoki Shimomura
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mone 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-11-25T22:09:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: mone\n"
+
+#. Theme Name of the theme
+#: style.css
+#: includes/block-editor/index.php:50
+msgid "Mone"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://mone-wp.com"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "WordPress theme for mone."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Tomoki Shimomura"
+msgstr ""
+
+#: build/admin/index.php:62
+#: build/admin/index.php:63
+msgid "Activate"
+msgstr ""
+
+#: build/admin/index.php:112
+msgid "User email saved successfully."
+msgstr ""
+
+#: build/block-hook/archives/index.php:22
+msgid "Archives List Unstyled"
+msgstr ""
+
+#: build/block-hook/button/index.php:84
+msgid "URL copied!"
+msgstr ""
+
+#: build/block-hook/code/index.php:65
+#: build/block-hook/code/index.php:72
+msgid "Copy to clipboard"
+msgstr ""
+
+#: build/block-hook/code/index.php:70
+msgid "Code copied!"
+msgstr ""
+
+#: build/block-hook/code/index.php:73
+msgid "Copied"
+msgstr ""
+
+#: build/block-hook/image/index.php:15
+#: build/block-hook/image copy/index.php:15
+msgid "Mone Option Overrides"
+msgstr ""
+
+#: build/block-hook/list/index.php:52
+msgid "Mone List"
+msgstr ""
+
+#: build/block-hook/list/index.php:79
+#: build/block-hook/list copy/index.php:52
+msgid "List style none"
+msgstr ""
+
+#: build/block-hook/preformatted/index.php:22
+#: build/block-hook/preformatted copy/index.js:22
+#: build/block-hook/preformatted copy/index.js:7
+msgid "Pre scrollable"
+msgstr ""
+
+#: build/block-library/mega-menu/index.php:36
+msgid "Once you create a template part, you can select it in the mega menu.."
+msgstr ""
+
+#: build/block-library/mega-menu/index.php:38
+msgid "Menu"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:97
+msgid "Mone Settings"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:100
+msgid "Icon URL"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:121
+msgid "Select an image"
+msgstr ""
+
+#: build/block-library/user-icon/index.php:126
+msgid "delete"
+msgstr ""
+
+#: includes/block-patterns.php:20
+#: patterns/hidden-404.php:17
+msgid "404"
+msgstr ""
+
+#: includes/block-patterns.php:24
+msgid "Mega menu"
+msgstr ""
+
+#: includes/gutenberg/copyright-binding.php:21
+msgctxt "Label for the copyright placeholder in the editor"
+msgid "&copy; YEAR"
+msgstr ""
+
+#: includes/set-up-theme/index.php:50
+msgid "Home"
+msgstr ""
+
+#: includes/set-up-theme/index.php:57
+msgid "Category"
+msgstr ""
+
+#: includes/set-up-theme/index.php:73
+#: includes/set-up-theme/index.php:81
+#: includes/set-up-theme/index.php:89
+msgid "Custom Link"
+msgstr ""
+
+#. translators: %s: Mone user authentication URL.
+#: includes/update/index.php:80
+msgid "<a href=\"%s\">Mone User Authentication</a>has not been completed. Version update functionality is limited."
+msgstr ""
+
+#. translators: %1$s: Mone user authentication URL, %2$s: My Page URL.
+#: includes/update/index.php:86
+msgid "<a href=\"%1$s\">Mone user authentication</a>has not been completed. If your email address and the authentication URL on your<a href=\"https://mone-wp.com/mypage/\" target=\"_blank\">My Page</a>are correct, an<a href=\"%2$1s\">authentication check</a>please perform "
+msgstr ""
+
+#: patterns/alert-red.php
+msgctxt "Pattern title"
+msgid "Alert Red"
+msgstr ""
+
+#: patterns/alert-red.php
+msgctxt "Pattern description"
+msgid "Add Alert Red."
+msgstr ""
+
+#: patterns/amazon-rakuten.php
+msgctxt "Pattern title"
+msgid "Amazon Rakuten product card"
+msgstr ""
+
+#: patterns/amazon-rakuten.php
+msgctxt "Pattern description"
+msgid "This block is ideal for showcasing products from Amazon and Rakuten."
+msgstr ""
+
+#: patterns/amazon-rakuten.php:25
+msgid "Product name"
+msgstr ""
+
+#: patterns/amazon-rakuten.php:30
+msgid "View on Amazon"
+msgstr ""
+
+#: patterns/amazon-rakuten.php:34
+msgid "View on Kindle"
+msgstr ""
+
+#: patterns/amazon-rakuten.php:38
+msgid "View on Rakuten"
+msgstr ""
+
+#: patterns/comments.php
+msgctxt "Pattern title"
+msgid "comments"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "footer"
+msgstr ""
+
+#: patterns/footer.php:16
+msgid "About me!"
+msgstr ""
+
+#: patterns/footer.php:26
+#: patterns/sidebar.php:28
+msgid "Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text Profile text"
+msgstr ""
+
+#: patterns/footer.php:34
+msgid "Portfolio"
+msgstr ""
+
+#: patterns/footer.php:45
+msgid "List１"
+msgstr ""
+
+#: patterns/footer.php:49
+msgid "List２"
+msgstr ""
+
+#: patterns/footer.php:53
+msgid "List３"
+msgstr ""
+
+#: patterns/footer.php:57
+msgid "List４"
+msgstr ""
+
+#: patterns/footer.php:61
+msgid "List５"
+msgstr ""
+
+#: patterns/footer.php:71
+msgid "Created by"
+msgstr ""
+
+#: patterns/footer.php:81
+msgid "WordPress theme Mone logo"
+msgstr ""
+
+#: patterns/footer.php:91
+msgid "Copyright"
+msgstr ""
+
+#: patterns/footer.php:99
+msgid "All Rights Reserved."
+msgstr ""
+
+#: patterns/header-centered.php
+msgctxt "Pattern title"
+msgid "Header Centered"
+msgstr ""
+
+#: patterns/header-row.php
+msgctxt "Pattern title"
+msgid "Header row"
+msgstr ""
+
+#: patterns/header-row.php:18
+#: patterns/header.php:19
+msgid "Written by Mone Creators"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "header"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "Hidden 404"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern description"
+msgid "404 page template"
+msgstr ""
+
+#: patterns/hidden-404.php:22
+msgid "This page could not be found."
+msgstr ""
+
+#: patterns/mega-menu.php
+msgctxt "Pattern title"
+msgid "Mega menu"
+msgstr ""
+
+#: patterns/mega-menu.php
+msgctxt "Pattern description"
+msgid "menu"
+msgstr ""
+
+#: patterns/mega-menu.php:19
+msgid "Service 1"
+msgstr ""
+
+#: patterns/mega-menu.php:24
+#: patterns/mega-menu.php:48
+#: patterns/mega-menu.php:72
+#: patterns/mega-menu.php:96
+msgid "List 1"
+msgstr ""
+
+#: patterns/mega-menu.php:28
+#: patterns/mega-menu.php:52
+#: patterns/mega-menu.php:76
+#: patterns/mega-menu.php:100
+msgid "List 2"
+msgstr ""
+
+#: patterns/mega-menu.php:32
+#: patterns/mega-menu.php:56
+#: patterns/mega-menu.php:80
+#: patterns/mega-menu.php:104
+msgid "List 3"
+msgstr ""
+
+#: patterns/mega-menu.php:36
+#: patterns/mega-menu.php:60
+#: patterns/mega-menu.php:84
+#: patterns/mega-menu.php:108
+msgid "List 4"
+msgstr ""
+
+#: patterns/mega-menu.php:43
+msgid "Service 2"
+msgstr ""
+
+#: patterns/mega-menu.php:67
+msgid "Service 3"
+msgstr ""
+
+#: patterns/mega-menu.php:91
+msgid "Service 4"
+msgstr ""
+
+#: patterns/new-posts-list.php
+msgctxt "Pattern title"
+msgid "Latest Articles"
+msgstr ""
+
+#: patterns/new-posts-list.php:14
+msgid "New Posts"
+msgstr ""
+
+#: patterns/new-posts-list.php:35
+#: patterns/related-posts-list.php:35
+#: patterns/sidebar.php:56
+#: patterns/template-query-loop.php:39
+#: build/block-hook/query/index.js:224
+#: build/block-hook/query/index.js:173
+msgid "Please add text or a block to display when the query returns no results."
+msgstr ""
+
+#: patterns/new-posts-list.php:36
+#: patterns/related-posts-list.php:36
+#: patterns/sidebar.php:57
+#: patterns/template-query-loop.php:40
+#: build/block-hook/query/index.js:222
+#: build/block-hook/query/index.js:171
+msgid "No results found"
+msgstr ""
+
+#: patterns/pickup-article.php
+msgctxt "Pattern title"
+msgid "Pickup article"
+msgstr ""
+
+#: patterns/post-foot-meta.php
+msgctxt "Pattern title"
+msgid "Post Foot Meta"
+msgstr ""
+
+#: patterns/post-head-meta.php
+msgctxt "Pattern title"
+msgid "Post Head Meta"
+msgstr ""
+
+#: patterns/post-head-meta.php:15
+#: patterns/template-query-loop.php:20
+msgid "Last Updated"
+msgstr ""
+
+#: patterns/related-posts-list.php
+msgctxt "Pattern title"
+msgid "Related Posts"
+msgstr ""
+
+#: patterns/related-posts-list.php:14
+msgid "Related Posts"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "sidebar"
+msgstr ""
+
+#: patterns/sidebar.php:14
+#: patterns/sidebar.php:18
+msgid "Mone Creators"
+msgstr ""
+
+#: patterns/sidebar.php:39
+#: build/block-hook/query/index.js:229
+#: build/block-hook/query/index.js:271
+#: build/block-hook/query/index.js:188
+#: build/block-hook/query/index.js:234
+msgid "Most Read Articles"
+msgstr ""
+
+#: patterns/sidebar.php:67
+msgid "Archive"
+msgstr ""
+
+#: patterns/sns-share-simple.php
+msgctxt "Pattern title"
+msgid "SNS share buttons simple"
+msgstr ""
+
+#: patterns/sns-share-simple.php
+#: patterns/sns-share.php
+msgctxt "Pattern description"
+msgid "Add SNS share buttons."
+msgstr ""
+
+#: patterns/sns-share-simple.php:15
+msgid "SNS share buttons simple"
+msgstr ""
+
+#: patterns/sns-share.php
+msgctxt "Pattern title"
+msgid "SNS share buttons"
+msgstr ""
+
+#: patterns/sns-share.php:15
+msgid "SNS share buttons"
+msgstr ""
+
+#: patterns/template-query-loop.php
+msgctxt "Pattern title"
+msgid "List of posts, 1 column"
+msgstr ""
+
+#: patterns/template-query-loop.php
+msgctxt "Pattern description"
+msgid "A list of posts, 1 column, with featured image and post date."
+msgstr ""
+
+#: patterns/template-query-loop.php:46
+msgid "Previous Post"
+msgstr ""
+
+#: patterns/template-query-loop.php:48
+msgid "Next Post"
+msgstr ""
+
+#: build/admin/index.js:78
+#: build/admin/index.js:45
+msgid "user email saved successfully"
+msgstr ""
+
+#: build/admin/index.js:81
+#: build/admin/index.js:51
+msgid "An error occurred while saving the user email."
+msgstr ""
+
+#: build/admin/index.js:106
+#: build/admin/index.js:82
+msgid "Mone Activation Settings"
+msgstr ""
+
+#: build/admin/index.js:117
+#: build/admin/index.js:89
+msgid "Step 1"
+msgstr ""
+
+#: build/admin/index.js:123
+#: build/admin/index.js:94
+msgid "Register the domain you want to authenticate on your Mone My Page"
+msgstr ""
+
+#: build/admin/index.js:131
+#: build/admin/index.js:106
+msgid "Mone Mypage"
+msgstr ""
+
+#: build/admin/index.js:132
+#: build/admin/index.js:108
+msgid "Please register the following domains"
+msgstr ""
+
+#: build/admin/index.js:147
+#: build/admin/index.js:128
+msgid "Copied!"
+msgstr ""
+
+#: build/admin/index.js:148
+#: build/block-hook/button/index.js:341
+#: build/admin/index.js:131
+#: build/block-hook/button/index.js:311
+msgid "Copy"
+msgstr ""
+
+#: build/admin/index.js:163
+#: build/admin/index.js:144
+msgid "Step 2"
+msgstr ""
+
+#: build/admin/index.js:169
+#: build/admin/index.js:149
+msgid "Mone user Enter your email address"
+msgstr ""
+
+#: build/admin/index.js:173
+#: build/admin/index.js:156
+msgid "Enter your Mone user email address below and save"
+msgstr ""
+
+#: build/admin/index.js:191
+#: build/admin/index.js:181
+msgid "Save"
+msgstr ""
+
+#: build/admin/index.js:207
+#: build/admin/index.js:194
+msgid "Step 3"
+msgstr ""
+
+#: build/admin/index.js:213
+#: build/admin/index.js:199
+msgid "Authentication Check"
+msgstr ""
+
+#: build/admin/index.js:217
+#: build/admin/index.js:203
+msgid "If you press the button below and no alert appears, authentication is complete."
+msgstr ""
+
+#: build/admin/index.js:221
+#: build/admin/index.js:212
+msgid "Check authentication"
+msgstr ""
+
+#: build/block-editor/index.js:230
+#: build/block-editor/index.js:137
+msgid "Using the selector, it can be rewritten to a block-specific class."
+msgstr ""
+
+#: build/block-editor/index.js:232
+#: build/block-editor/index.js:143
+msgid "Additional CSS"
+msgstr ""
+
+#: build/block-editor/index.js:384
+#: build/block-editor/index.js:288
+msgid "Hide settings"
+msgstr ""
+
+#: build/block-editor/index.js:387
+#: build/block-editor/index.js:292
+msgid "Hide on PC"
+msgstr ""
+
+#: build/block-editor/index.js:392
+#: build/block-editor/index.js:304
+msgid "Hide on mobile"
+msgstr ""
+
+#: build/block-editor/index.js:475
+#: build/block-editor/index.js:387
+msgid "Unlock content only"
+msgstr ""
+
+#: build/block-editor/index.js:475
+#: build/block-editor/index.js:388
+msgid "Lock content only"
+msgstr ""
+
+#: build/block-hook/button/index.js:50
+#: build/block-hook/button/index.js:27
+msgid "Add image"
+msgstr ""
+
+#: build/block-hook/button/index.js:167
+#: build/block-hook/button/index.js:153
+msgid "Click animation image"
+msgstr ""
+
+#: build/block-hook/button/index.js:323
+#: build/block-hook/button/index.js:305
+msgid "None"
+msgstr ""
+
+#: build/block-hook/button/index.js:326
+#: build/block-hook/button/index.js:306
+msgid "Facebook"
+msgstr ""
+
+#: build/block-hook/button/index.js:329
+#: build/block-hook/button/index.js:307
+msgid "X"
+msgstr ""
+
+#: build/block-hook/button/index.js:332
+#: build/block-hook/button/index.js:308
+msgid "Hatena"
+msgstr ""
+
+#: build/block-hook/button/index.js:335
+#: build/block-hook/button/index.js:309
+msgid "Pocket"
+msgstr ""
+
+#: build/block-hook/button/index.js:338
+#: build/block-hook/button/index.js:310
+msgid "LINE"
+msgstr ""
+
+#: build/block-hook/button/index.js:349
+#: build/block-hook/button/index.js:319
+msgid "Share Settings"
+msgstr ""
+
+#: build/block-hook/button/index.js:356
+#: build/block-hook/button/index.js:326
+msgid "Share Button Provider"
+msgstr ""
+
+#: build/block-hook/code/index.js:125
+#: build/block-hook/code/index.js:84
+msgid "Code Settings"
+msgstr ""
+
+#: build/block-hook/code/index.js:132
+#: build/block-hook/code/index.js:91
+msgid "Code Language"
+msgstr ""
+
+#: build/block-hook/code/index.js:151
+#: build/block-hook/code/index.js:112
+msgid "Height"
+msgstr ""
+
+#: build/block-hook/columns/index.js:72
+#: build/block-hook/columns/index.js:46
+msgid "Fold backwards on mobile"
+msgstr ""
+
+#: build/block-hook/group/index.js:137
+#: build/block-hook/group/index.js:203
+#: build/block-hook/group/index.js:127
+#: build/block-hook/group/index.js:212
+msgid "Hand"
+msgstr ""
+
+#: build/block-hook/group/index.js:151
+#: build/block-hook/group/index.js:148
+msgid "Applause Button"
+msgstr ""
+
+#: build/block-hook/group/index.js:152
+#: build/block-hook/group/index.js:149
+msgid "Applause button and counter that can be pressed multiple times without logging in"
+msgstr ""
+
+#: build/block-hook/group/index.js:262
+#: build/block-hook/group/index.js:313
+#: build/block-hook/group/index.js:314
+#: build/block-hook/group/index.js:330
+#: build/block-hook/group/index.js:267
+#: build/block-hook/group/index.js:327
+#: build/block-hook/group/index.js:328
+#: build/block-hook/group/index.js:344
+msgid "Balloon"
+msgstr ""
+
+#: build/block-hook/group/index.js:272
+#: build/block-hook/group/index.js:341
+#: build/block-hook/group/index.js:278
+#: build/block-hook/group/index.js:359
+msgid "Balloon icon"
+msgstr ""
+
+#: build/block-hook/group/index.js:306
+#: build/block-hook/group/index.js:368
+#: build/block-hook/group/index.js:314
+#: build/block-hook/group/index.js:395
+msgid "Hello, write your sentence here!"
+msgstr ""
+
+#: build/block-hook/group/index.js:458
+#: build/block-hook/group/index.js:449
+msgid "Vertical layout on mobile"
+msgstr ""
+
+#: build/block-hook/post-date/index.js:197
+#: build/block-hook/post-date/index.js:93
+msgid "Mone prefix suffix"
+msgstr ""
+
+#: build/block-hook/post-terms/index.js:116
+#: build/block-hook/post-terms/index.js:64
+msgid "Tags"
+msgstr ""
+
+#: build/block-hook/query-pagination-next/index.js:56
+#: build/block-hook/query-pagination-next/index.js:44
+msgid "Next Article"
+msgstr ""
+
+#: build/block-hook/query-pagination-previous/index.js:56
+#: build/block-hook/query-pagination-previous/index.js:44
+msgid "Previous article"
+msgstr ""
+
+#: build/block-hook/query/index.js:60
+#: build/block-hook/query/index.js:31
+msgid "Include Posts"
+msgstr ""
+
+#: build/block-hook/query/index.js:113
+#: build/block-hook/query/index.js:64
+msgid "Post Ids"
+msgstr ""
+
+#: build/block-hook/query/index.js:124
+#: build/block-hook/query/index.js:77
+msgid "Example: 1,4,7"
+msgstr ""
+
+#: build/block-hook/query/index.js:125
+#: build/block-hook/query/index.js:78
+msgid "*Please enter with commas."
+msgstr ""
+
+#: build/block-hook/query/index.js:230
+#: build/block-hook/query/index.js:189
+msgid "Shows the most read articles"
+msgstr ""
+
+#: build/block-hook/query/index.js:278
+#: build/block-hook/query/index.js:313
+#: build/block-hook/query/index.js:242
+msgid "Related articles"
+msgstr ""
+
+#: build/block-hook/query/index.js:279
+#: build/block-hook/query/index.js:243
+msgid "Displays random articles from the same category as the post."
+msgstr ""
+
+#: build/block-hook/query/index.js:326
+#: build/block-hook/query/index.js:355
+#: build/block-hook/query/index.js:287
+#: build/block-hook/query/index.js:314
+msgid "Pick Up Articles"
+msgstr ""
+
+#: build/block-hook/query/index.js:327
+#: build/block-hook/query/index.js:288
+msgid "Display the selected article."
+msgstr ""
+
+#: build/block-hook/table/index.js:95
+#: build/block-hook/table/index.js:61
+msgid "You cannot select multiple cells from different sections."
+msgstr ""
+
+#: build/block-hook/table/index.js:1036
+#: build/block-hook/table/index.js:1027
+msgid "Merging and splitting cells"
+msgstr ""
+
+#: build/block-hook/table/index.js:1066
+#: build/block-hook/table/index.js:1062
+msgid "Merge Cells"
+msgstr ""
+
+#: build/block-hook/table/index.js:1084
+#: build/block-hook/table/index.js:1086
+msgid "Split Cell"
+msgstr ""
+
+#: build/block-hook/table/index.js:1138
+#: build/block-hook/table/index.js:1208
+msgid "No cells to repair"
+msgstr ""
+
+#: build/block-hook/table/index.js:1142
+#: build/block-hook/table/index.js:1218
+msgid "The cell was repaired"
+msgstr ""
+
+#: build/block-hook/table/index.js:1152
+#: build/block-hook/table/index.js:1234
+msgid "Repairing broken cells"
+msgstr ""
+
+#: build/block-hook/table/index.js:1168
+#: build/block-hook/table/index.js:1254
+msgid "Clear Selection"
+msgstr ""
+
+#: build/block-library/embed-featured-image/index.js:310
+#: build/block-library/embed-title/index.js:104
+#: build/block-library/embed-featured-image/index.js:285
+#: build/block-library/embed-title/index.js:63
+msgid "Link to URL"
+msgstr ""
+
+#: build/block-library/embed-site-logo/index.js:94
+#: build/block-library/embed-site-title/index.js:103
+#: build/block-library/embed-site-logo/index.js:50
+#: build/block-library/embed-site-title/index.js:65
+msgid "Link to home page"
+msgstr ""
+
+#: build/block-library/embed/index.js:339
+msgid "Choose a pattern. The original block settings will be cleared."
+msgstr ""
+
+#: build/block-library/embed/index.js:482
+msgid "Link to page"
+msgstr ""
+
+#: build/block-library/embed/index.js:509
+msgid "Clear cache"
+msgstr ""
+
+#: build/block-library/embed/index.js:514
+msgid "If the data is old, please clear the cache. It is usually updated every hour."
+msgstr ""
+
+#: build/block-library/embed/index.js:1001
+msgid "Blog card"
+msgstr ""
+
+#: build/block-library/embed/index.js:1078
+msgid "Top image"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:97
+#: build/block-library/mega-menu/index.js:79
+msgid "Menu Template"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:106
+#: build/block-library/mega-menu/index.js:98
+msgid "Edit"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:113
+#: build/block-library/mega-menu/index.js:106
+msgid "Create a template part"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:116
+#: build/block-library/mega-menu/index.js:110
+msgid "Click to open"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:172
+#: build/block-library/mega-menu/index.js:179
+msgid "Mega menu link text"
+msgstr ""
+
+#: build/block-library/mega-menu/index.js:173
+#: build/block-library/mega-menu/index.js:180
+msgid "Mega menu label"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:31
+#: build/block-library/styles-switcher-item/index.js:20
+msgid "Variation Name"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:49
+#: build/block-library/styles-switcher-item/index.js:166
+#: build/block-library/styles-switcher-item/index.js:40
+#: build/block-library/styles-switcher-item/index.js:129
+msgid "Current"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:52
+#: build/block-library/styles-switcher-item/index.js:169
+#: build/block-library/styles-switcher-item/index.js:41
+#: build/block-library/styles-switcher-item/index.js:130
+msgid "Mone Default"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:55
+#: build/block-library/styles-switcher-item/index.js:172
+#: build/block-library/styles-switcher-item/index.js:42
+#: build/block-library/styles-switcher-item/index.js:131
+msgid "Blue"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:58
+#: build/block-library/styles-switcher-item/index.js:175
+#: build/block-library/styles-switcher-item/index.js:43
+#: build/block-library/styles-switcher-item/index.js:132
+msgid "Dark"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:61
+#: build/block-library/styles-switcher-item/index.js:178
+#: build/block-library/styles-switcher-item/index.js:44
+#: build/block-library/styles-switcher-item/index.js:133
+msgid "Green"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:64
+#: build/block-library/styles-switcher-item/index.js:181
+#: build/block-library/styles-switcher-item/index.js:45
+#: build/block-library/styles-switcher-item/index.js:134
+msgid "White"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:76
+#: build/block-library/styles-switcher-item/index.js:56
+msgid "VariationOption"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:189
+#: build/post-featured-image/blocks/post-author-name/index.js:93
+#: build/post-featured-image/blocks/post-title/index.js:89
+#: build/block-library/styles-switcher-item/index.js:142
+#: build/post-featured-image/blocks/post-author-name/index.js:56
+#: build/post-featured-image/blocks/post-title/index.js:52
+msgid "Settings"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/index.js:196
+#: build/block-library/styles-switcher-item/index.js:149
+msgid "Style variation settings"
+msgstr ""
+
+#. translators: %s: switcher item
+#: build/block-library/styles-switcher-item/index.js:342
+#: build/block-library/styles-switcher-item/index.js:258
+msgid "%s switcher item"
+msgstr ""
+
+#: build/block-library/styles-switcher/index.js:105
+#: build/block-library/styles-switcher/index.js:87
+msgid "isToggle"
+msgstr ""
+
+#: build/block-library/styles-switcher/index.js:123
+#: build/block-library/styles-switcher/index.js:234
+#: build/block-library/styles-switcher/index.js:106
+#: build/block-library/styles-switcher/index.js:178
+msgid "Defaults"
+msgstr ""
+
+#: build/block-library/styles-switcher/index.js:243
+#: build/block-library/styles-switcher/index.js:203
+msgid "white"
+msgstr ""
+
+#: build/components/icon-search-popover/index.js:22057
+#: build/format-library/icon/index.js:413
+#: build/components/icon-search-popover/index.js:17369
+#: build/format-library/icon/index.js:1198
+msgid "Icon not found."
+msgstr ""
+
+#: build/components/icon-search-popover/index.js:22180
+#: build/format-library/icon/index.js:536
+#: build/components/icon-search-popover/index.js:17532
+#: build/format-library/icon/index.js:1361
+msgid "Select Icon"
+msgstr ""
+
+#: build/edit-post/index.js:180
+#: build/edit-post/index.js:94
+msgid "Mone post settings"
+msgstr ""
+
+#: build/edit-post/index.js:186
+#: build/edit-post/index.js:99
+msgid "Display eye-catcher on the page"
+msgstr ""
+
+#: build/edit-post/index.js:196
+#: build/edit-post/index.js:119
+msgid "Display SNS Share Button on the page"
+msgstr ""
+
+#: build/edit-post/index.js:206
+#: build/edit-post/index.js:139
+msgid "Display Date on the page"
+msgstr ""
+
+#: build/format-library/font-size/index.js:61
+#: build/format-library/font-size/index.js:48
+msgid "Inline Font Size"
+msgstr ""
+
+#: build/format-library/font-size/index.js:81
+#: build/format-library/font-size/index.js:77
+msgid "Inline font size"
+msgstr ""
+
+#: build/format-library/icon/index.js:600
+#: build/post-featured-image/blocks/post-author-icon/index.js:176
+#: build/format-library/icon/index.js:1409
+#: build/post-featured-image/blocks/post-author-icon/index.js:150
+msgid "Icon"
+msgstr ""
+
+#: build/format-library/icon/index.js:617
+#: build/format-library/icon/index.js:1431
+msgid "Inline Icon"
+msgstr ""
+
+#: build/plugins/index.js:173
+#: build/plugins/index.js:135
+msgid "Add NO IMAGE"
+msgstr ""
+
+#: build/plugins/index.js:250
+#: build/plugins/index.js:369
+#: build/plugins/index.js:206
+#: build/plugins/index.js:318
+msgid "Default NO IMAGE"
+msgstr ""
+
+#: build/plugins/index.js:255
+#: build/plugins/index.js:383
+#: build/plugins/index.js:212
+#: build/plugins/index.js:341
+msgid "NO IMAGE"
+msgstr ""
+
+#: build/plugins/index.js:366
+#: build/plugins/index.js:310
+msgid "Site settings"
+msgstr ""
+
+#: build/plugins/index.js:469
+#: build/plugins/index.js:405
+msgid "Show NO IMAGE in query"
+msgstr ""
+
+#: build/plugins/index.js:482
+#: build/plugins/index.js:423
+msgid "Show NO IMAGE on the page"
+msgstr ""
+
+#: build/plugins/index.js:672
+#: build/post-featured-image/index.js:11826
+#: build/plugins/index.js:582
+#: build/post-featured-image/index.js:11739
+msgid "Display eye-catching template"
+msgstr ""
+
+#: build/plugins/index.js:710
+#: build/post-featured-image/index.js:11877
+#: build/plugins/index.js:612
+#: build/post-featured-image/index.js:11773
+msgid "User Settings"
+msgstr ""
+
+#: build/plugins/index.js:713
+#: build/plugins/index.js:615
+msgid "Eye-catching template"
+msgstr ""
+
+#: build/plugins/index.js:948
+#: build/plugins/index.js:709
+msgid "Mone settings"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-icon/index.js:104
+#: build/post-featured-image/blocks/post-author-icon/index.js:73
+msgid "Icon not found"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-name/index.js:97
+#: build/post-featured-image/blocks/post-author-name/index.js:59
+msgid "Post author name"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-title/index.js:93
+#: build/post-featured-image/blocks/post-title/index.js:55
+msgid "Post Title"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-logo/index.js:81
+#: build/post-featured-image/blocks/site-logo/index.js:44
+msgid "Logo not found"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-logo/index.js:91
+#: build/post-featured-image/blocks/site-title/index.js:90
+#: build/post-featured-image/blocks/site-logo/index.js:58
+#: build/post-featured-image/blocks/site-title/index.js:53
+msgid "Setting"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-title/index.js:94
+#: build/post-featured-image/blocks/site-title/index.js:56
+msgid "Site title"
+msgstr ""
+
+#: build/post-featured-image/index.js:12163
+#: build/post-featured-image/index.js:11960
+msgid "Featured image Templates"
+msgstr ""
+
+#: build/post-featured-image/index.js:12331
+#: build/post-featured-image/index.js:12100
+msgid "Upload & Eye-Catch Updated"
+msgstr ""
+
+#: build/post-featured-image/index.js:12367
+#: build/post-featured-image/index.js:12144
+msgid "Upload & Update Eyecatcher"
+msgstr ""
+
+#: build/block-library/embed-excerpt/block.json
+msgctxt "block title"
+msgid "Embed Excerpt"
+msgstr ""
+
+#: build/block-library/embed-excerpt/block.json
+msgctxt "block description"
+msgid "Shows an excerpt retrieved from a URL."
+msgstr ""
+
+#: build/block-library/embed-featured-image/block.json
+msgctxt "block title"
+msgid "Embed Featured Image"
+msgstr ""
+
+#: build/block-library/embed-featured-image/block.json
+msgctxt "block description"
+msgid "Displays the featured image obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-site-logo/block.json
+msgctxt "block title"
+msgid "Embed Site Logo"
+msgstr ""
+
+#: build/block-library/embed-site-logo/block.json
+msgctxt "block description"
+msgid "Displays the site logo image obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-site-title/block.json
+msgctxt "block title"
+msgid "Embed Site Title"
+msgstr ""
+
+#: build/block-library/embed-site-title/block.json
+msgctxt "block description"
+msgid "Displays the site title obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed-title/block.json
+msgctxt "block title"
+msgid "Embed Title"
+msgstr ""
+
+#: build/block-library/embed-title/block.json
+msgctxt "block description"
+msgid "Displays the title obtained from the URL."
+msgstr ""
+
+#: build/block-library/embed/block.json
+msgctxt "block title"
+msgid "Embed"
+msgstr ""
+
+#: build/block-library/embed/block.json
+msgctxt "block description"
+msgid "Add a block that fetches and displays content from a URL."
+msgstr ""
+
+#: build/block-library/mega-menu/block.json
+msgctxt "block title"
+msgid "Mega Menu"
+msgstr ""
+
+#: build/block-library/mega-menu/block.json
+msgctxt "block description"
+msgid "Mega Menu"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/block.json
+msgctxt "block title"
+msgid "Theme Styles switcher item"
+msgstr ""
+
+#: build/block-library/styles-switcher-item/block.json
+msgctxt "block description"
+msgid "Theme Styles switcher item"
+msgstr ""
+
+#: build/block-library/styles-switcher/block.json
+msgctxt "block title"
+msgid "Theme Styles switcher"
+msgstr ""
+
+#: build/block-library/styles-switcher/block.json
+msgctxt "block description"
+msgid "Theme Styles switcher"
+msgstr ""
+
+#: build/post-featured-image/blocks/group/block.json
+msgctxt "block title"
+msgid "Group"
+msgstr ""
+
+#: build/post-featured-image/blocks/group copy/block.json
+msgctxt "block title"
+msgid "satori wrapper"
+msgstr ""
+
+#: build/post-featured-image/blocks/group copy/block.json
+msgctxt "block description"
+msgid "Group"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-icon/block.json
+msgctxt "block title"
+msgid "Post Author Icon"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-name/block.json
+msgctxt "block title"
+msgid "Author Name"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-name copy/block.json
+msgctxt "block title"
+msgid "satori post-author-name"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-author-name copy/block.json
+msgctxt "block description"
+msgid "post-author-name"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-title/block.json
+msgctxt "block title"
+msgid "Title"
+msgstr ""
+
+#: build/post-featured-image/blocks/post-title/block.json
+msgctxt "block description"
+msgid "post-title"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-logo/block.json
+msgctxt "block title"
+msgid "Site Logo"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-title/block.json
+msgctxt "block title"
+msgid "Site Title"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-title copy/block.json
+msgctxt "block title"
+msgid "satori site-title"
+msgstr ""
+
+#: build/post-featured-image/blocks/site-title copy/block.json
+msgctxt "block description"
+msgid "site-title"
+msgstr ""
+
+#: build/post-featured-image/blocks/wrapper/block.json
+msgctxt "block title"
+msgid "Custom Thumbnail"
+msgstr ""
+
+#: styles/blue.json
+msgctxt "Style variation name"
+msgid "Blue"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key / Two"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Main Background"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Background"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key Contrast"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Key / Two contrast"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Two"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Content Contrast / Three"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Link Color"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Link Hover Color"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Hading Background"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "List Background"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Quote Background"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Color name"
+msgid "Border"
+msgstr ""
+
+#: styles/blue.json
+#: styles/dark.json
+#: styles/green.json
+#: styles/white.json
+#: theme.json
+msgctxt "Duotone name"
+msgid "Key"
+msgstr ""
+
+#: styles/dark.json
+msgctxt "Style variation name"
+msgid "Dark"
+msgstr ""
+
+#: styles/green.json
+msgctxt "Style variation name"
+msgid "Green"
+msgstr ""
+
+#: styles/white.json
+msgctxt "Style variation name"
+msgid "White"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "blank"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Thin one column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Wide one column"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Header & Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "404"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Black"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Silver"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Bronze"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Gold"
+msgstr ""
+
+#: theme.json
+msgctxt "Aspect ratio name"
+msgid "Optimize OGP 1.91:1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "1"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System Font"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Noto Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "A-OTF Shin Go Pro"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "icomoon"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Code"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post meta"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Query"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Mega Menu"
+msgstr ""

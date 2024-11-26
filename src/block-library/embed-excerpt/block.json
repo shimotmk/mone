@@ -1,0 +1,46 @@
+{
+	"apiVersion": 3,
+	"name": "mone/embed-excerpt",
+	"category": "mone-block-cat",
+	"title": "Embed Excerpt",
+	"description": "Shows an excerpt retrieved from a URL.",
+	"textdomain": "mone",
+	"ancestor": [ "mone/embed" ],
+	"attributes": {
+		"excerptLength": {
+			"type": "number"
+		}
+	},
+	"usesContext": [ "mone/embed-url" ],
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"color": {
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

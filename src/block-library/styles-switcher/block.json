@@ -1,0 +1,73 @@
+{
+	"apiVersion": 3,
+	"name": "mone/styles-switcher",
+	"category": "mone-block-cat",
+	"title": "Theme Styles switcher",
+	"description": "Theme Styles switcher",
+	"textdomain": "mone",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": ".mone-styles-switcher-title"
+		},
+		"isToggle": {
+			"type": "boolean",
+			"default": false
+		},
+		"openDropdownOnClick": {
+			"type": "boolean",
+			"default": false
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
+		}
+	},
+	"supports": {
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true,
+				"link": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"textAlign": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"shadow": true,
+		"inserter": false,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css"
+}

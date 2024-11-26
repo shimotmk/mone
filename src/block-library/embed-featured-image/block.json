@@ -1,0 +1,87 @@
+{
+	"apiVersion": 3,
+	"name": "mone/embed-featured-image",
+	"category": "mone-block-cat",
+	"title": "Embed Featured Image",
+	"description": "Displays the featured image obtained from the URL.",
+	"textdomain": "mone",
+	"ancestor": [ "mone/embed" ],
+	"attributes": {
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"aspectRatio": {
+			"type": "string"
+		},
+		"width": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"scale": {
+			"type": "string",
+			"default": "cover"
+		},
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		"overlayColor": {
+			"type": "string"
+		},
+		"customOverlayColor": {
+			"type": "string"
+		},
+		"dimRatio": {
+			"type": "number",
+			"default": 0
+		},
+		"gradient": {
+			"type": "string"
+		},
+		"customGradient": {
+			"type": "string"
+		}
+	},
+	"usesContext": [ "mone/embed-url" ],
+	"supports": {
+		"align": [ "left", "right", "center", "wide", "full" ],
+		"color": {
+			"__experimentalDuotone": "img",
+			"text": false,
+			"background": false
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"selectors": "img",
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"html": false,
+		"shadow": {
+			"__experimentalSkipSerialization": true
+		},
+		"reusable": false,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"selectors": {
+		"shadow": ".wp-block-mone-embed-featured-image img, .wp-block-mone-embed-featured-image .components-placeholder"
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

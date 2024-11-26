@@ -1,0 +1,69 @@
+{
+	"apiVersion": 3,
+	"name": "mone/embed",
+	"category": "mone-block-cat",
+	"title": "Embed",
+	"description": "Add a block that fetches and displays content from a URL.",
+	"attributes": {
+		"url": {
+			"type": "string",
+			"default": ""
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		}
+	},
+	"providesContext": {
+		"mone/embed-url": "url"
+	},
+	"textdomain": "mone",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"background": {
+			"backgroundImage": true,
+			"backgroundSize": true,
+			"__experimentalDefaultControls": {
+				"backgroundImage": true
+			}
+		},
+		"color": {
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"shadow": true,
+		"layout": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css"
+}

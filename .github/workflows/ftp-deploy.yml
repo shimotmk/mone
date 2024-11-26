@@ -1,0 +1,68 @@
+name: FTP Deploy
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    ftp-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '22'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Get Git commit hash
+              id: get_commit_hash
+              run: echo "COMMIT_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+            - name: Make Distribution
+              run: |
+                  npm run dist
+                  cd dist/
+                  zip -r mone.zip mone/
+                  zip -r mone-${GITHUB_REF#refs/tags/}-${{ env.COMMIT_HASH }}.zip mone/
+
+            - name: Check if mone-v${version}-${hash}.ZIP file exists
+              run: test -e dist/mone-${GITHUB_REF#refs/tags/}-${{ env.COMMIT_HASH }}.zip
+
+            - name: Check if mone.zip file exists
+              run: test -e dist/mone.zip
+
+            - name: Move mone.zip to updates directory
+              run: |
+                  mkdir -p updates
+                  mv dist/mone.zip updates/mone.zip
+
+            - name: Remove mone directory
+              run: rm -rf dist/mone
+
+            - name: Remove mone.zip
+              run: rm -rf dist/mone.zip
+
+            - name: Deploy upload folder to FTP
+              uses: SamKirkland/FTP-Deploy-Action@4.0.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.FTP_SERVER_DIR }}
+                  local-dir: dist/
+
+            - name: Deploy mone.zip upload folder to FTP
+              uses: SamKirkland/FTP-Deploy-Action@4.0.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.MONE_UPDATE_PRODUCT_DIR }}
+                  local-dir: updates/

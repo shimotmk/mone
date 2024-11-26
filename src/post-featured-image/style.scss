@@ -1,0 +1,281 @@
+.editor-post-featured-image .editor-post-featured-image__preview .editor-post-featured-image__preview-image {
+aspect-ratio: 1.91 / 1;
+}
+
+.svg-wrap svg {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.mone-thumbnail-template-styles {
+  .svg-wrap svg {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+
+  .block-editor-block-styles__variants button.components-button.block-editor-block-styles__item{
+    padding: 0;
+    height: 100%;
+  }
+}
+
+.mone-thumbnail-template-media-insert {
+  position: relative;
+  .mone-svg-media-insert-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.mone-thumbnail-template-media-insert-popover {
+  /*
+  デフォルトでは
+  popover z-index: 1000000;
+  modal   z-index: 100000;
+  なのでなので上書き
+  */
+  z-index: 99999;
+        // 100000
+}
+
+// カスタムアイキャッチ
+.mone-tools-panel-item > .components-tools-panel-item:first-child {
+margin-top: 0;
+}
+
+.mone-border-box-control {
+  .components-border-control{
+    margin: 0;
+  }
+  .components-border-box-control-linked-button {
+    display: none;
+  }
+}
+
+// メディアライブラリーモーダル
+.editor-post-featured-image__media-modal {
+  .media-button {
+    display: none;
+  }
+}
+
+.mone_custom_thumbnail_modal {
+  .components-modal__content {
+    overflow: hidden;
+  }
+  
+  .components-modal__header + div {
+    height: 100%;
+  }
+
+  .block-editor-block-patterns-explorer {
+    height: 100%;
+  }
+
+  .block-editor-block-patterns-explorer__list {
+    height: 100%;
+  }
+
+  .sidebar-overview-toggle {
+    padding: 0;
+    left: 0;
+    margin-right: 8px;
+  }
+
+  .mone-custom-ogp-image-container {
+      height: 100%;
+
+      .mone-editor-wrapper {
+        height: 100%;
+        border: 1px solid #e0e0e0;
+        flex-wrap: wrap;
+        @media screen and (max-width: 780px){
+          overflow: auto
+        }
+      }
+
+      .live-preview {
+        width: 60%;
+        overflow-x: hidden;
+        padding: 16px;
+        @media screen and (max-width: 780px){
+          width: 100%;
+        }
+        .preview-card-content {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .variables-container {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .variable-card {
+          background: #fff;
+          border: 1px solid #e1e4e8;
+          padding: 8px;
+          width: 50%;
+        }
+        .variable-label {
+          font-weight: bold;
+          margin-bottom: 8px;
+        }
+        .variable-content {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .editor-sidebar {
+        width: 40%;
+        height: 100%;
+        overflow: auto;
+        border-left: 1px solid #e0e0e0;
+        @media screen and (max-width: 780px){
+          width: 100%;
+        }
+        .mone-editor-sidebar-inspector__tabs {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          .components-tab-panel__tab-content {
+            flex: 1;
+          }
+        }
+      }
+      .mone-editor-wrapper {
+        height: 100%;
+        border: 1px solid #e0e0e0;
+      }
+
+      .mone-editor-sidebar-inspector__tab {
+        flex: 1 1 0px;
+      }
+      .mone-editor-sidebar-inspector__tab.active-tab:after {
+        border-bottom: var(--wp-admin-border-width-focus) solid var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
+      }
+
+      .mone-editor-sidebar-tool-panel {
+        grid-template-rows: auto 1fr;
+        height: 100%;
+      }
+
+      .mone-editor-sidebar-tool-panel-help {
+        margin: 0;
+        grid-column: 1 / -1;
+      }
+
+      .editor {
+          border: 1px solid #e1e4e8;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          background: white;
+          overflow: auto;
+      }
+      .editor .editor-controls {
+          padding: 4px 8px;
+          gap: 8px;
+          display: flex;
+          justify-content: flex-end;
+      }
+      .editor .editor-controls button {
+          font-size: 12px;
+          user-select: none;
+          padding: 0px 4px;
+          height: 20px;
+      }
+      .editor .monaco-container {
+          flex: 1;
+      }
+  
+      .container {
+          display: flex;
+          width: 100%;
+          height: calc(100% - 40px);
+          margin: 0;
+          padding: 10px;
+          overflow: auto;
+          gap: 10px;
+      }
+  
+      .content-wrapper svg {
+          width: 100%;
+          height: 100%;
+      }
+  
+      .preview {
+          flex: 1 1 50%;
+          max-width: calc(50% - 5px);
+          align-self: flex-start;
+      }
+  
+      .result-container {
+          position: relative;
+          display: flex;
+          height: 100%;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+      }
+  
+      .preview-card {
+          outline: 1px solid #e1e4e8;
+          width: 100%;
+          aspect-ratio: 1.91 / 1;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+      }
+  
+      .error {
+          position: absolute;
+          width: 100%;
+          height: calc(100% - 24px);
+          padding: 10px 20px;
+          overflow: auto;
+          color: #ff3737;
+          font-size: 13px;
+          z-index: 1;
+          background: white;
+      }
+      .error pre {
+          margin: 0;
+          white-space: pre-wrap;
+      }
+  
+      .preview {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+      }
+  
+  }
+}
+
+// .mone-custom-thumbnail-main-block-list {
+//   height: 50px;
+//   .wp-block-mone-satori-wrapper {
+//     .block-editor-block-list__block:not(.block-list-appender) {
+//       display: none!important;
+//     }
+//     .block-list-appender {
+//       top: 0!important;
+//     }
+//   }
+// }
+
+// .mone_custom_thumbnail_modal_overlay + .components-popover__fallback-container {
+//   position: fixed;
+//   z-index: 100001;
+//   .components-popover.block-editor-inserter__popover {
+// 	z-index: 100002;
+//   }
+// }
