@@ -3,7 +3,7 @@ import { addFilter } from '@wordpress/hooks';
 import './style.scss';
 import { appreciateGroup, balloon } from './variations';
 import './wrap-on-mobile';
-// import { transforms } from './transforms';
+import './link';
 
 export function registerBlockTypeGroup( settings, name ) {
 	if ( name !== 'core/group' ) {
@@ -40,8 +40,6 @@ export function registerBlockTypeGroup( settings, name ) {
 	if ( ! hasBalloon ) {
 		settings.variations = [ balloon, ...( settings.variations || [] ) ];
 	}
-
-	// settings.transforms = transforms;
 
 	return settings;
 }

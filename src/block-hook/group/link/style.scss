@@ -1,0 +1,30 @@
+.wp-block-group {
+    &.mone-is-linked {
+        position: relative;
+
+        &:not(.block-editor-block-list__block) > :nth-child(2) {
+            margin-block-start: 0;
+        }
+
+        a.wp-block-group__link {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            text-decoration: none !important;
+        }
+
+        .wp-block-button,
+        a {
+            position: relative;
+            z-index: 4;
+        }
+       
+        &:hover[style*="--mone--hover-background-color"] {
+            background: var(--mone--hover-background-color) !important;
+            transition: background-color 0.35s;
+        }
+    }
+}

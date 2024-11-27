@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/sns-share.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/link/index.php';
 
 /**
  * Group
