@@ -1,6 +1,6 @@
 .wp-block-code {
 	overflow-x: auto;
-	border: 1px solid silver;
+	border: 1px solid #c0c0c0;
 	position: relative;
 
 	&:hover {
@@ -54,7 +54,7 @@
 
 		.mone-copy-button,
 		.mone-wrap-button {
-			color: white;
+			color: #fff;
 			background: #272822;
 			border: none;
 			padding: 0;
@@ -146,7 +146,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: slategray;
+	color: #708090;
 }
 
 .token.punctuation {
