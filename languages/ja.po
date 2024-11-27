@@ -622,6 +622,21 @@ msgstr "楽天で見る"
 msgid "Fold backwards on mobile"
 msgstr "モバイルで逆順に並べる"
 
+#: build/block-hook/group/index.js:157
+#: build/block-hook/group/index.js:126
+msgid "Mark as nofollow"
+msgstr "nofollow をマーク"
+
+#: build/block-hook/group/index.js:219
+#: build/block-hook/group/index.js:194
+msgid "Hover Background"
+msgstr "ホバー背景"
+
+#: build/block-hook/group/index.js:250
+#: build/block-hook/group/index.js:237
+msgid "Link"
+msgstr "リンク"
+
 #: build/block-hook/group/index.js:1 build/block-hook/group/index.js:56
 msgid "Applause Button"
 msgstr "拍手ボタン"

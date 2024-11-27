@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mone 1.0.0\n"
+"Project-Id-Version: Mone 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-11-25T22:09:54+00:00\n"
+"POT-Creation-Date: 2024-11-27T11:43:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -66,23 +66,15 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: build/block-hook/image/index.php:15
-#: build/block-hook/image copy/index.php:15
-msgid "Mone Option Overrides"
-msgstr ""
-
 #: build/block-hook/list/index.php:52
 msgid "Mone List"
 msgstr ""
 
 #: build/block-hook/list/index.php:79
-#: build/block-hook/list copy/index.php:52
 msgid "List style none"
 msgstr ""
 
 #: build/block-hook/preformatted/index.php:22
-#: build/block-hook/preformatted copy/index.js:22
-#: build/block-hook/preformatted copy/index.js:7
 msgid "Pre scrollable"
 msgstr ""
 
@@ -451,90 +443,90 @@ msgstr ""
 msgid "Next Post"
 msgstr ""
 
-#: build/admin/index.js:78
-#: build/admin/index.js:45
+#: build/admin/index.js:49
+#: build/admin/index.js:32
 msgid "user email saved successfully"
 msgstr ""
 
-#: build/admin/index.js:81
-#: build/admin/index.js:51
+#: build/admin/index.js:52
+#: build/admin/index.js:38
 msgid "An error occurred while saving the user email."
 msgstr ""
 
-#: build/admin/index.js:106
-#: build/admin/index.js:82
+#: build/admin/index.js:77
+#: build/admin/index.js:69
 msgid "Mone Activation Settings"
 msgstr ""
 
-#: build/admin/index.js:117
-#: build/admin/index.js:89
+#: build/admin/index.js:88
+#: build/admin/index.js:76
 msgid "Step 1"
 msgstr ""
 
-#: build/admin/index.js:123
 #: build/admin/index.js:94
+#: build/admin/index.js:81
 msgid "Register the domain you want to authenticate on your Mone My Page"
 msgstr ""
 
-#: build/admin/index.js:131
-#: build/admin/index.js:106
+#: build/admin/index.js:102
+#: build/admin/index.js:93
 msgid "Mone Mypage"
 msgstr ""
 
-#: build/admin/index.js:132
-#: build/admin/index.js:108
+#: build/admin/index.js:103
+#: build/admin/index.js:95
 msgid "Please register the following domains"
 msgstr ""
 
-#: build/admin/index.js:147
-#: build/admin/index.js:128
+#: build/admin/index.js:118
+#: build/admin/index.js:115
 msgid "Copied!"
 msgstr ""
 
-#: build/admin/index.js:148
+#: build/admin/index.js:119
 #: build/block-hook/button/index.js:341
-#: build/admin/index.js:131
+#: build/admin/index.js:118
 #: build/block-hook/button/index.js:311
 msgid "Copy"
 msgstr ""
 
-#: build/admin/index.js:163
-#: build/admin/index.js:144
+#: build/admin/index.js:134
+#: build/admin/index.js:131
 msgid "Step 2"
 msgstr ""
 
-#: build/admin/index.js:169
-#: build/admin/index.js:149
+#: build/admin/index.js:140
+#: build/admin/index.js:136
 msgid "Mone user Enter your email address"
 msgstr ""
 
-#: build/admin/index.js:173
-#: build/admin/index.js:156
+#: build/admin/index.js:144
+#: build/admin/index.js:143
 msgid "Enter your Mone user email address below and save"
 msgstr ""
 
-#: build/admin/index.js:191
-#: build/admin/index.js:181
+#: build/admin/index.js:162
+#: build/admin/index.js:168
 msgid "Save"
 msgstr ""
 
-#: build/admin/index.js:207
-#: build/admin/index.js:194
+#: build/admin/index.js:178
+#: build/admin/index.js:181
 msgid "Step 3"
 msgstr ""
 
-#: build/admin/index.js:213
-#: build/admin/index.js:199
+#: build/admin/index.js:184
+#: build/admin/index.js:186
 msgid "Authentication Check"
 msgstr ""
 
-#: build/admin/index.js:217
-#: build/admin/index.js:203
+#: build/admin/index.js:188
+#: build/admin/index.js:190
 msgid "If you press the button below and no alert appears, authentication is complete."
 msgstr ""
 
-#: build/admin/index.js:221
-#: build/admin/index.js:212
+#: build/admin/index.js:192
+#: build/admin/index.js:199
 msgid "Check authentication"
 msgstr ""
 
@@ -643,50 +635,65 @@ msgstr ""
 msgid "Fold backwards on mobile"
 msgstr ""
 
-#: build/block-hook/group/index.js:137
-#: build/block-hook/group/index.js:203
-#: build/block-hook/group/index.js:127
-#: build/block-hook/group/index.js:212
+#: build/block-hook/group/index.js:157
+#: build/block-hook/group/index.js:126
+msgid "Mark as nofollow"
+msgstr ""
+
+#: build/block-hook/group/index.js:219
+#: build/block-hook/group/index.js:194
+msgid "Hover Background"
+msgstr ""
+
+#: build/block-hook/group/index.js:250
+#: build/block-hook/group/index.js:237
+msgid "Link"
+msgstr ""
+
+#: build/block-hook/group/index.js:421
+#: build/block-hook/group/index.js:487
+#: build/block-hook/group/index.js:422
+#: build/block-hook/group/index.js:507
 msgid "Hand"
 msgstr ""
 
-#: build/block-hook/group/index.js:151
-#: build/block-hook/group/index.js:148
+#: build/block-hook/group/index.js:435
+#: build/block-hook/group/index.js:443
 msgid "Applause Button"
 msgstr ""
 
-#: build/block-hook/group/index.js:152
-#: build/block-hook/group/index.js:149
+#: build/block-hook/group/index.js:436
+#: build/block-hook/group/index.js:444
 msgid "Applause button and counter that can be pressed multiple times without logging in"
 msgstr ""
 
-#: build/block-hook/group/index.js:262
-#: build/block-hook/group/index.js:313
-#: build/block-hook/group/index.js:314
-#: build/block-hook/group/index.js:330
-#: build/block-hook/group/index.js:267
-#: build/block-hook/group/index.js:327
-#: build/block-hook/group/index.js:328
-#: build/block-hook/group/index.js:344
+#: build/block-hook/group/index.js:546
+#: build/block-hook/group/index.js:597
+#: build/block-hook/group/index.js:598
+#: build/block-hook/group/index.js:614
+#: build/block-hook/group/index.js:562
+#: build/block-hook/group/index.js:622
+#: build/block-hook/group/index.js:623
+#: build/block-hook/group/index.js:639
 msgid "Balloon"
 msgstr ""
 
-#: build/block-hook/group/index.js:272
-#: build/block-hook/group/index.js:341
-#: build/block-hook/group/index.js:278
-#: build/block-hook/group/index.js:359
+#: build/block-hook/group/index.js:556
+#: build/block-hook/group/index.js:625
+#: build/block-hook/group/index.js:573
+#: build/block-hook/group/index.js:654
 msgid "Balloon icon"
 msgstr ""
 
-#: build/block-hook/group/index.js:306
-#: build/block-hook/group/index.js:368
-#: build/block-hook/group/index.js:314
-#: build/block-hook/group/index.js:395
+#: build/block-hook/group/index.js:590
+#: build/block-hook/group/index.js:652
+#: build/block-hook/group/index.js:609
+#: build/block-hook/group/index.js:690
 msgid "Hello, write your sentence here!"
 msgstr ""
 
-#: build/block-hook/group/index.js:458
-#: build/block-hook/group/index.js:449
+#: build/block-hook/group/index.js:742
+#: build/block-hook/group/index.js:744
 msgid "Vertical layout on mobile"
 msgstr ""
 
@@ -933,8 +940,8 @@ msgid "Style variation settings"
 msgstr ""
 
 #. translators: %s: switcher item
-#: build/block-library/styles-switcher-item/index.js:342
-#: build/block-library/styles-switcher-item/index.js:258
+#: build/block-library/styles-switcher-item/index.js:292
+#: build/block-library/styles-switcher-item/index.js:230
 msgid "%s switcher item"
 msgstr ""
 
@@ -1211,16 +1218,6 @@ msgctxt "block title"
 msgid "Group"
 msgstr ""
 
-#: build/post-featured-image/blocks/group copy/block.json
-msgctxt "block title"
-msgid "satori wrapper"
-msgstr ""
-
-#: build/post-featured-image/blocks/group copy/block.json
-msgctxt "block description"
-msgid "Group"
-msgstr ""
-
 #: build/post-featured-image/blocks/post-author-icon/block.json
 msgctxt "block title"
 msgid "Post Author Icon"
@@ -1229,16 +1226,6 @@ msgstr ""
 #: build/post-featured-image/blocks/post-author-name/block.json
 msgctxt "block title"
 msgid "Author Name"
-msgstr ""
-
-#: build/post-featured-image/blocks/post-author-name copy/block.json
-msgctxt "block title"
-msgid "satori post-author-name"
-msgstr ""
-
-#: build/post-featured-image/blocks/post-author-name copy/block.json
-msgctxt "block description"
-msgid "post-author-name"
 msgstr ""
 
 #: build/post-featured-image/blocks/post-title/block.json
@@ -1259,16 +1246,6 @@ msgstr ""
 #: build/post-featured-image/blocks/site-title/block.json
 msgctxt "block title"
 msgid "Site Title"
-msgstr ""
-
-#: build/post-featured-image/blocks/site-title copy/block.json
-msgctxt "block title"
-msgid "satori site-title"
-msgstr ""
-
-#: build/post-featured-image/blocks/site-title copy/block.json
-msgctxt "block description"
-msgid "site-title"
 msgstr ""
 
 #: build/post-featured-image/blocks/wrapper/block.json

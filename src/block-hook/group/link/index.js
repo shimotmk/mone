@@ -125,7 +125,7 @@ function addInspectorControls( BlockEdit ) {
 									colorValue: colorSlugToColorCode(
 										moneHoverBackgroundColor
 									),
-									label: __( 'ホバー背景', 'mone' ),
+									label: __( 'Hover Background', 'mone' ),
 									onColorChange: ( newValue ) => {
 										const colorSet =
 											select(
