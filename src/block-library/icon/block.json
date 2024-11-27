@@ -1,0 +1,48 @@
+{
+	"apiVersion": 3,
+	"name": "mone/icon",
+	"category": "mone-block-cat",
+	"title": "Icon child",
+	"description": "Icon",
+	"parent": [ "mone/icons" ],
+	"textdomain": "mone",
+	"attributes": {
+		"iconColor": {
+			"type": "string"
+		},
+		"width": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"text": false,
+			"gradients": true,
+			"__experimentalDefaultControls": {
+				"background": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"margin": false,
+				"padding": false
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"shadow": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
