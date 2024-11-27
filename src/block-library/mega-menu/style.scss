@@ -1,12 +1,12 @@
 // Reset button styles.
 .wp-block-mone-mega-menu {
 	position: relative;
-	
+
 	// Reset button styles.
 	button {
 		background-color: initial;
 		border: none;
-		color: currentColor;
+		color: currentcolor;
 		cursor: pointer;
 		font-family: inherit;
 		font-size: inherit;
@@ -24,11 +24,11 @@
 		opacity: 0;
 		overflow: hidden;
 		position: absolute;
-		transition: opacity .1s linear;
+		transition: opacity 0.1s linear;
 		visibility: hidden;
 		z-index: 2;
 		width: 0;
-		
+
 		&.is-menu-open {
 			left: var(--mone--window-offset-left);
 			width: var(--mone--window-client-width);
@@ -50,9 +50,9 @@
 			right: 12px;
 			text-align: center;
 			top: 12px;
-			transition: opacity .2s ease;
+			transition: opacity 0.2s ease;
 			z-index: 100;
-	
+
 			// Show the close button when focused (for keyboard navigation)
 			&:focus {
 				opacity: 1;
@@ -61,15 +61,17 @@
 
 		// Show the close button when the mega menu is hovered.
 		&:hover {
+
 			.menu-container__close-button {
 				opacity: 1;
 			}
 		}
 	}
 
-// Show the mega menu when aria-expanded is true.
-	button[aria-expanded=true] {
-		&~.wp-block-create-block-mega-menu-block__menu-container {
+	// Show the mega menu when aria-expanded is true.
+	button[aria-expanded="true"] {
+
+		& ~ .wp-block-create-block-mega-menu-block__menu-container {
 			opacity: 1;
 			overflow: visible;
 			visibility: visible;

@@ -1,73 +1,79 @@
 .mone-activate-admin-wrap {
-	--step-color: #1ABB9A;
-    .step {
-        .step_wrap {
-            margin: 2em 0;
-            position: relative;
+	--step-color: #1abb9a;
 
-            .step_title {
-                display: inline-flex;
-                align-items: center;
+	.step {
 
-                .step_circle {
-                    display: inline-block;
-                    width: 1em;
-                    height: 1em;
-                    content: "";
-                    border-radius: 50%;
-                    background-color: #fff;
-                    border: 1px solid var(--step-color);
-                }
+		.step_wrap {
+			margin: 2em 0;
+			position: relative;
 
-                .step_num {
-                    padding-left: 1em;
-                    font-size: 0.8em;
-                }
-            }
+			.step_title {
+				display: inline-flex;
+				align-items: center;
 
-            .step_text {
-                padding-left: 2em;
+				.step_circle {
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					content: "";
+					border-radius: 50%;
+					background-color: #fff;
+					border: 1px solid var(--step-color);
+				}
 
-                .step_text-title {
-                    margin: 0.5em 0;
-                    font-weight: bold;
-                    font-size: 1.2em;
-                }
+				.step_num {
+					padding-left: 1em;
+					font-size: 0.8em;
+				}
+			}
+
+			.step_text {
+				padding-left: 2em;
+
+				.step_text-title {
+					margin: 0.5em 0;
+					font-weight: 700;
+					font-size: 1.2em;
+				}
 
 				.domain_text {
+
 					.domain {
 						color: inherit;
 					}
+
 					span {
 						margin-right: 8px;
 					}
+
 					.copy-button {
 						padding: 6px;
-					    height: auto;
+						height: auto;
 					}
 				}
 
 				.mone_activate_email {
 					width: 250px;
+
 					@media screen and (max-width: 768px) {
 						width: 100%;
 					}
 				}
-            }
+			}
 
-            .step_line {
-                width: 1px;
-                height: calc(100% + 1em);
-                background-color: var(--step-color);
-                position: absolute;
-                top: 1em;
-                left: 0.5em;
-                z-index: -1;
-            }
+			.step_line {
+				width: 1px;
+				height: calc(100% + 1em);
+				background-color: var(--step-color);
+				position: absolute;
+				top: 1em;
+				left: 0.5em;
+				z-index: -1;
+			}
 
-            &:last-of-type .step_line:last-of-type {
-                display: none;
-            }
-        }
-    }
+			&:last-of-type .step_line:last-of-type {
+				display: none;
+			}
+		}
+	}
 }

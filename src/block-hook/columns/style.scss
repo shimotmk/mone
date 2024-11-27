@@ -1,7 +1,9 @@
 .wp-block-columns {
+
 	&:not(.is-not-stacked-on-mobile).mone_flex-wrap-reverse-on-mobile {
+
 		@media (max-width: 782px) {
-			flex-wrap: wrap-reverse!important;
+			flex-wrap: wrap-reverse !important;
 		}
 	}
 }

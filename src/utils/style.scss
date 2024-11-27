@@ -1,4 +1,4 @@
 // https://github.com/WordPress/gutenberg/issues/64662
-.wp-block-post-content *[style*=font-weight] a {
-    font-weight: inherit;
+.wp-block-post-content *[style*="font-weight"] a {
+	font-weight: inherit;
 }

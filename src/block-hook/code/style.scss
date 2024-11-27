@@ -1,204 +1,217 @@
 .wp-block-code {
-  overflow-x: auto;
-  border: 1px solid silver;
-  position: relative;
-  &:hover {
-    .mone-code-buttons {
-      opacity: 1;
-      // display: block;
-    }
-  }
+	overflow-x: auto;
+	border: 1px solid silver;
+	position: relative;
 
-  .mone-code-buttons {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    top: 0;
-    opacity: 0;
-	// --copy-message: 'URLをコピーしました！';
+	&:hover {
 
-    .copied {
-      .mone-code-copy-icon {
-        display: none;
-      }
-      img.mone-code-check-icon {
-        display: block;
-      }
-    }
+		.mone-code-buttons {
+			opacity: 1;
+			// display: block;
+		}
+	}
 
-    .copied::after {
-    //   content: 'コピーしました！';
-	  content: var(--copy-message);
-      display: inline-block;
-      width: max-content;
-      color: #fff;
-      background-color: #272822;
-      border-radius: 3px;
-      padding: 0 3px;
-      position: absolute;
-      bottom: -1.5rem;
-      right: 0;
-      animation: fade-tooltip .5s 1s 1 forwards;
-    }
-     
-    @keyframes fade-tooltip {
-      to { opacity: 0; }
-    }
+	.mone-code-buttons {
+		position: -webkit-sticky;
+		position: sticky;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		// --copy-message: 'URLをコピーしました！';
 
-    .mone-copy-button,
-    .mone-wrap-button {
-      color: white;
-      background: #272822;
-      border: none;
-      padding: 0;
-      height: 24px;
-      text-align: center;
-      width: 24px;
-      position: absolute;
-      top: 0;
-      &:focus {
-        outline: none;
-      }
-      img {
-        display: block;
-        position: absolute;
-        top: 0;
-      }
-      .mone-code-check-icon {
-        display: none;
-      }
-    }
-    
-    .mone-copy-button {
-      right: 0;
-    }
-    .mone-wrap-button {
-      right: 36px;
-    }
-  }
+		.copied {
+
+			.mone-code-copy-icon {
+				display: none;
+			}
+
+			img.mone-code-check-icon {
+				display: block;
+			}
+		}
+
+		.copied::after {
+			//   content: 'コピーしました！';
+			content: var(--copy-message);
+			display: inline-block;
+			width: max-content;
+			color: #fff;
+			background-color: #272822;
+			border-radius: 3px;
+			padding: 0 3px;
+			position: absolute;
+			bottom: -1.5rem;
+			right: 0;
+			animation: fade-tooltip 0.5s 1s 1 forwards;
+		}
+
+		@keyframes fade-tooltip {
+
+			to {
+				opacity: 0;
+			}
+		}
+
+		.mone-copy-button,
+		.mone-wrap-button {
+			color: white;
+			background: #272822;
+			border: none;
+			padding: 0;
+			height: 24px;
+			text-align: center;
+			width: 24px;
+			position: absolute;
+			top: 0;
+
+			&:focus {
+				outline: none;
+			}
+
+			img {
+				display: block;
+				position: absolute;
+				top: 0;
+			}
+
+			.mone-code-check-icon {
+				display: none;
+			}
+		}
+
+		.mone-copy-button {
+			right: 0;
+		}
+
+		.mone-wrap-button {
+			right: 36px;
+		}
+	}
 }
 
 /* http://prismjs.com/download.html?themes=prism-okaidia&languages=markup+css+clike+javascript+json+php+sql */
+
 /**
  * okaidia theme for JavaScript, CSS and HTML
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
 
- code[class*="language-"],
- pre[class*="language-"] {
-     color: #f8f8f2;
-     background: none;
-     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-     white-space: pre;
-     word-spacing: normal;
-     word-break: normal;
-     word-wrap: normal;
-     line-height: 1.5;
- 
-     -moz-tab-size: 4;
-     -o-tab-size: 4;
-     tab-size: 4;
- 
-     -webkit-hyphens: none;
-     -moz-hyphens: none;
-     -ms-hyphens: none;
-     hyphens: none;
- }
- 
- /* Code blocks */
- pre[class*="language-"] {
-     padding: 1em;
-     overflow-x: auto;
-     border-radius: 0.3em;
-     &:not([style*="height"]) {
-       overflow-y: hidden;
-     }
- }
- 
- :not(pre) > code[class*="language-"],
- pre[class*="language-"] {
-     background: #272822;
- }
- 
- /* Inline code */
- :not(pre) > code[class*="language-"] {
-     padding: .1em;
-     border-radius: .3em;
-     white-space: normal;
- }
- 
- .token.comment,
- .token.prolog,
- .token.doctype,
- .token.cdata {
-     color: slategray;
- }
- 
- .token.punctuation {
-     color: #f8f8f2;
- }
- 
- .namespace {
-     opacity: .7;
- }
- 
- .token.property,
- .token.tag,
- .token.constant,
- .token.symbol,
- .token.deleted {
-     color: #f92672;
- }
- 
- .token.boolean,
- .token.number {
-     color: #ae81ff;
- }
- 
- .token.selector,
- .token.attr-name,
- .token.string,
- .token.char,
- .token.builtin,
- .token.inserted {
-     color: #a6e22e;
- }
- 
- .token.operator,
- .token.entity,
- .token.url,
- .language-css .token.string,
- .style .token.string,
- .token.variable {
-     color: #f8f8f2;
- }
- 
- .token.atrule,
- .token.attr-value,
- .token.function {
-     color: #e6db74;
- }
- 
- .token.keyword {
-     color: #66d9ef;
- }
- 
- .token.regex,
- .token.important {
-     color: #fd971f;
- }
- 
- .token.important,
- .token.bold {
-     font-weight: bold;
- }
- .token.italic {
-     font-style: italic;
- }
- 
- .token.entity {
-     cursor: help;
- }
- 
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	overflow-x: auto;
+	border-radius: 0.3em;
+
+	&:not([style*="height"]) {
+		overflow-y: hidden;
+	}
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: 0.1em;
+	border-radius: 0.3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: 700;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}

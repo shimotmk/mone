@@ -1,10 +1,11 @@
 .is-style-mone-query-pagination {
 
-	.wp-block-query-pagination-numbers{
+	.wp-block-query-pagination-numbers {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin-right: 0;
+
 		.page-numbers {
 			font-size: var(--wp--preset--font-size--small);
 			padding: 10px 15px;
@@ -12,23 +13,26 @@
 			display: block;
 			line-height: 1;
 		}
+
 		span.current {
 			border: 1px solid var(--wp--preset--color--mone-border);
 			background: var(--wp--preset--color--content-contrast);
 			color: var(--wp--preset--color--key-2-contrast);
 		}
+
 		a:hover {
 			color: var(--wp--preset--color--content-contrast);
 			border: 1px solid var(--wp--preset--color--mone-border);
 			text-decoration: none;
 		}
 	}
-	
+
 	.wp-block-query-pagination-previous,
 	.wp-block-query-pagination-next {
 		font-size: var(--wp--preset--font-size--small);
 		padding: 2px 15px;
 		border: 1px solid var(--wp--preset--color--mone-border);
+
 		.wp-block-query-pagination-previous-arrow,
 		.wp-block-query-pagination-next-arrow {
 			margin: 0;

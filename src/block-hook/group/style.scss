@@ -1,4 +1,4 @@
-@import './link/style.scss';
+@import "./link/style";
 
 .mone-applause-button {
 	position: relative;
@@ -16,12 +16,12 @@
 			position: absolute;
 			left: 0;
 			top: 0;
-			transition: .5s;
+			transition: 0.5s;
 			opacity: 0;
 			z-index: 1;
 			object-fit: cover;
 		}
-	
+
 		.mone-hand-image {
 			width: 100%;
 			display: block;
@@ -29,12 +29,13 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			transition: .5s;
+			transition: 0.5s;
 		}
-	
+
 	}
 
 	&.is-clicked {
+
 		.mone-animation-image {
 			display: block;
 			opacity: 1;
@@ -50,13 +51,15 @@
 
 .mone_appreciate_count:not(.block-editor-block-list__block) {
 	display: none;
+
 	&.is-show-count {
 		display: block;
 	}
 }
 
 @media (max-width: 781px) {
-    .wp-block-group.mone_wrap-on-mobile.is-layout-grid {
+
+	.wp-block-group.mone_wrap-on-mobile.is-layout-grid {
 		grid-template-columns: 1fr;
 		column-gap: 0;
 	}

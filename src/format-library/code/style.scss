@@ -1,17 +1,17 @@
 :where(code:not(.prism-code,.block-editor-rich-text__editable)) {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
-  border-radius: 4px;
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #c7254e;
+	background-color: #f9f2f4;
+	border-radius: 4px;
 }
 
-:where(img[class*=wp-image-]) {
-  vertical-align: text-bottom;
+:where(img[class*="wp-image-"]) {
+	vertical-align: text-bottom;
 }
 
 // post typeでのみ適用
 body.editor-styles-wrapper.post-type-post,
 body.editor-styles-wrapper.post-type-page {
-  background-color: var(--wp--preset--color--content-bg);
+	background-color: var(--wp--preset--color--content-bg);
 }
