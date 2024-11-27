@@ -2,8 +2,6 @@ import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useState, useEffect, useMemo } from '@wordpress/element';
 
-import './style.scss';
-
 /**
  * Override the default block element to include elements styles.
  */

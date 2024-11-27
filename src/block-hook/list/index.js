@@ -1,5 +1,4 @@
 import { addFilter } from '@wordpress/hooks';
-import './style.scss';
 
 export function registerBlockTypeList( settings, name ) {
 	if ( name !== 'core/list' ) {

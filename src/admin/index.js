@@ -1,4 +1,3 @@
-import './style.scss';
 import './editor.scss';
 import { LicenseKeyForm } from './license';
 import { createRoot } from '@wordpress/element';
