@@ -1,6 +1,9 @@
+import { rawHandler } from '@wordpress/blocks';
+
 import satori from 'satori';
 import { Default } from './template/default';
 import { DefaultTwo } from './template/default-two';
+import { createComponentFromBlocks } from './createComponentFromBlocks';
 
 export const loadImage = ( img ) => {
 	return new Promise( ( resolve ) => ( img.onload = resolve ) );
@@ -108,9 +111,11 @@ export const generateImageList = async ( props ) => {
 		authorIconUrl,
 		currentTheme,
 		colorSet,
+		optionObj,
 	} = props;
 
 	const svgList = [];
+	let hasErrorOccurred = false;
 
 	try {
 		const fontData = await fetchFont( currentTheme );
@@ -149,6 +154,7 @@ export const generateImageList = async ( props ) => {
 			logErrorOnceSatori(
 				'Error generating Default SVG: ' + error.message
 			);
+			hasErrorOccurred = true;
 		}
 
 		const svgProps2 = {
@@ -174,6 +180,53 @@ export const generateImageList = async ( props ) => {
 			logErrorOnceSatori(
 				'Error generating DefaultTwo SVG: ' + error.message
 			);
+			hasErrorOccurred = true;
+		}
+
+		if (
+			optionObj?.thumbnail_template_variation_lists?.length > 0 &&
+			! hasErrorOccurred
+		) {
+			for (
+				let i = 0;
+				i < optionObj.thumbnail_template_variation_lists.length;
+				i++
+			) {
+				const blockHtml =
+					optionObj.thumbnail_template_variation_lists[ i ].blockHtml;
+				const blocks = rawHandler( { HTML: blockHtml } );
+				if ( blockHtml && blocks ) {
+					const svgProps4 = {
+						postTitle,
+						siteTitle,
+						siteLogoUrl,
+						authorName,
+						authorIconUrl,
+						backgroundColor: contentBgColor,
+						color: contentContrastColor,
+						blocks: blocks[ 0 ],
+					};
+					try {
+						const DefaultTwoSvg = await generateSvg(
+							createComponentFromBlocks,
+							svgProps4,
+							fontData
+						);
+						svgList.push( {
+							name: 'createComponentFromBlocks',
+							svg: DefaultTwoSvg,
+						} );
+					} catch ( error ) {
+						logErrorOnceSatori(
+							'Error generating createComponentFromBlocks SVG: ' +
+								error.message
+						);
+						hasErrorOccurred = true;
+						hasErrorOccurred = true;
+						break;
+					}
+				}
+			}
 		}
 	} catch ( error ) {
 		logErrorOnceSatori( 'Error generating image list: ' + error );
