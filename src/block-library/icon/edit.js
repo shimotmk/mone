@@ -8,6 +8,7 @@ import {
 	InnerBlocks,
 	InspectorControls,
 	useSettings,
+	store as blockEditorStore,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
@@ -18,6 +19,7 @@ import {
 	__experimentalUseCustomUnits as useCustomUnits,
 } from '@wordpress/components';
 import { Icon } from '@wordpress/icons';
+import { useSelect } from '@wordpress/data';
 
 import { blockCategoryIcon as icon } from './sample-icon';
 
@@ -25,7 +27,7 @@ const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { iconColor, width } = attributes;
+	const { iconColor, iconGradientColor, width } = attributes;
 
 	const onDimensionChange = ( dimension, nextValue ) => {
 		const parsedValue = parseFloat( nextValue );
@@ -86,20 +88,27 @@ export default function Edit( props ) {
 					__experimentalIsRenderedInSidebar
 					settings={ [
 						{
+							label: __( 'アイコンカラー', 'mone' ),
+							resetAllFilter: () => {
+								setAttributes( {
+									iconColor: undefined,
+									iconGradientColor: undefined,
+								} );
+							},
+							isShownByDefault: true,
+							enableAlpha: true,
 							colorValue: iconColor,
-							label: __( 'Hover Background', 'mone' ),
 							onColorChange: ( newValue ) => {
 								setAttributes( {
 									iconColor: newValue,
 								} );
 							},
-							resetAllFilter: () => {
+							gradientValue: iconGradientColor,
+							onGradientChange: ( newValue ) => {
 								setAttributes( {
-									iconColor: undefined,
+									iconGradientColor: newValue,
 								} );
 							},
-							isShownByDefault: false,
-							enableAlpha: true,
 						},
 					] }
 					panelId={ clientId }
