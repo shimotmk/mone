@@ -15,6 +15,21 @@
 		},
 		"width": {
 			"type": "string"
+		},
+		"url": {
+			"type": "string",
+			"role": "content"
+		},
+		"linkTarget": {
+			"type": "string",
+			"role": "content"
+		},
+		"rel": {
+			"type": "string",
+			"role": "content"
+		},
+		"hoverBackgroundColor": {
+			"type": "string"
 		}
 	},
 	"supports": {

@@ -12,8 +12,8 @@ import { PanelBody } from '@wordpress/components';
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
 export default function Edit( props ) {
-	const { attributes, setAttributes } = props;
-	const { layout, style } = attributes;
+	const { attributes } = props;
+	const { layout } = attributes;
 
 	const blockProps = useBlockProps();
 
