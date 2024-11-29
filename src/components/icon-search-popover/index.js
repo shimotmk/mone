@@ -204,6 +204,7 @@ export const IconPopoverContent = ( props ) => {
 			<SearchControl
 				className="mone-icon-popover__input"
 				label="SearchControl"
+				__nextHasNoMarginBottom
 				value={ searchValue }
 				onChange={ ( v ) => {
 					setSearchValue( v );
