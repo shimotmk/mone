@@ -3,7 +3,7 @@
 	"name": "mone/icon",
 	"category": "mone-block-cat",
 	"title": "Icon child",
-	"description": "Icon",
+	"description": "Icons with configurable colors and links.",
 	"parent": [ "mone/icons" ],
 	"textdomain": "mone",
 	"attributes": {

@@ -3,7 +3,7 @@
 	"name": "mone/icons",
 	"category": "mone-block-cat",
 	"title": "Icons",
-	"description": "Icon wrap",
+	"description": "Accentuate your website with icon groups with configurable colors and links.",
 	"textdomain": "mone",
 	"supports": {
 		"align": [ "wide", "full" ],

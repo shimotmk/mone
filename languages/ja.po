@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Mone 0.0.19\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
 "POT-Creation-Date: 2024-10-26T05:32:38+00:00\n"
-"PO-Revision-Date: 2024-11-09 10:28+0900\n"
+"PO-Revision-Date: 2024-11-30 18:18+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -373,6 +373,16 @@ msgstr "よく読まれている記事"
 msgid "Archive"
 msgstr "Archive"
 
+#: patterns/sns-box-menu.php
+msgctxt "Pattern title"
+msgid "SNS Menu"
+msgstr "SNSメニュー"
+
+#: patterns/sns-box-menu.php
+msgctxt "Pattern description"
+msgid "Add SNS Box Menu."
+msgstr "SNSボックスメニューを追加。"
+
 #: patterns/sns-share-simple.php
 msgctxt "Pattern title"
 msgid "SNS share buttons simple"
@@ -419,91 +429,73 @@ msgstr "前のページ"
 msgid "Next Post"
 msgstr "次のページ"
 
-#: build/admin/index.js:78
-#: build/admin/index.js:45
+#: build/admin/index.js:78 build/admin/index.js:45
 msgid "user email saved successfully"
 msgstr "ユーザーメールアドレスを保存しました"
 
-#: build/admin/index.js:81
-#: build/admin/index.js:51
+#: build/admin/index.js:81 build/admin/index.js:51
 msgid "An error occurred while saving the user email."
 msgstr "ユーザーのメールを保存中にエラーが発生しました。"
 
-#: build/admin/index.js:106
-#: build/admin/index.js:82
+#: build/admin/index.js:106 build/admin/index.js:82
 msgid "Mone Activation Settings"
 msgstr "Mone アクティベート設定"
 
-#: build/admin/index.js:117
-#: build/admin/index.js:89
+#: build/admin/index.js:117 build/admin/index.js:89
 msgid "Step 1"
 msgstr "ステップ１"
 
-#: build/admin/index.js:123
-#: build/admin/index.js:94
+#: build/admin/index.js:123 build/admin/index.js:94
 msgid "Register the domain you want to authenticate on your Mone My Page"
 msgstr "Moneマイページで認証したいドメインを登録する"
 
-#: build/admin/index.js:131
-#: build/admin/index.js:106
+#: build/admin/index.js:131 build/admin/index.js:106
 msgid "Mone Mypage"
 msgstr "Moneマイページ"
 
-#: build/admin/index.js:132
-#: build/admin/index.js:108
+#: build/admin/index.js:132 build/admin/index.js:108
 msgid "Please register the following domains"
 msgstr "で以下のドメインを登録してください"
 
-#: build/admin/index.js:147
-#: build/admin/index.js:128
+#: build/admin/index.js:147 build/admin/index.js:128
 msgid "Copied!"
 msgstr "コピー完了!"
 
-#: build/admin/index.js:148
-#: build/block-hook/button/index.js:341
-#: build/admin/index.js:131
-#: build/block-hook/button/index.js:311
-#: build/block-hook/button/index.js:1 build/block-hook/button/index.js:311
+#: build/admin/index.js:148 build/block-hook/button/index.js:341
+#: build/admin/index.js:131 build/block-hook/button/index.js:311
+#: build/block-hook/button/index.js:1
 msgid "Copy"
 msgstr "コピー"
 
-#: build/admin/index.js:163
-#: build/admin/index.js:144
+#: build/admin/index.js:163 build/admin/index.js:144
 msgid "Step 2"
 msgstr "ステップ２"
 
-#: build/admin/index.js:169
-#: build/admin/index.js:149
+#: build/admin/index.js:169 build/admin/index.js:149
 msgid "Mone user Enter your email address"
 msgstr "Moneユーザー メールアドレスを入力"
 
-#: build/admin/index.js:173
-#: build/admin/index.js:156
+#: build/admin/index.js:173 build/admin/index.js:156
 msgid "Enter your Mone user email address below and save"
 msgstr "以下にMoneユーザーのメールアドレスを入力して保存してください"
 
-#: build/admin/index.js:191
-#: build/admin/index.js:181
+#: build/admin/index.js:191 build/admin/index.js:181
 msgid "Save"
 msgstr "保存"
 
-#: build/admin/index.js:207
-#: build/admin/index.js:194
+#: build/admin/index.js:207 build/admin/index.js:194
 msgid "Step 3"
 msgstr "ステップ３"
 
-#: build/admin/index.js:213
-#: build/admin/index.js:199
+#: build/admin/index.js:213 build/admin/index.js:199
 msgid "Authentication Check"
 msgstr "認証チェック"
 
-#: build/admin/index.js:217
-#: build/admin/index.js:203
+#: build/admin/index.js:217 build/admin/index.js:203
 msgid "If you press the button below and no alert appears, authentication is complete."
 msgstr "以下のボタンを押してアラートが出なければ認証完了です。"
 
-#: build/admin/index.js:221
-#: build/admin/index.js:212
+#: build/admin/index.js:221 build/admin/index.js:212
 msgid "Check authentication"
 msgstr "認証チェック"
 
@@ -591,7 +583,6 @@ msgstr "コード言語"
 msgid "Height"
 msgstr "高さ"
 
-
 #: patterns/amazon-rakuten.php
 msgctxt "Pattern title"
 msgid "Amazon Rakuten product card"
@@ -622,18 +613,15 @@ msgstr "楽天で見る"
 msgid "Fold backwards on mobile"
 msgstr "モバイルで逆順に並べる"
 
-#: build/block-hook/group/index.js:157
-#: build/block-hook/group/index.js:126
+#: build/block-hook/group/index.js:157 build/block-hook/group/index.js:126
 msgid "Mark as nofollow"
 msgstr "nofollow をマーク"
 
-#: build/block-hook/group/index.js:219
-#: build/block-hook/group/index.js:194
+#: build/block-hook/group/index.js:219 build/block-hook/group/index.js:194
 msgid "Hover Background"
 msgstr "ホバー背景"
 
-#: build/block-hook/group/index.js:250
-#: build/block-hook/group/index.js:237
+#: build/block-hook/group/index.js:250 build/block-hook/group/index.js:237
 msgid "Link"
 msgstr "リンク"
 
@@ -663,8 +651,12 @@ msgstr "吹き出しアイコン"
 msgid "Hello, write your sentence here!"
 msgstr "こんにちは、ここに文章を書きましょう！"
 
-#: build/block-hook/group/index.js:496
-#: build/block-hook/group/index.js:491
+#: build/block-hook/group/index.js:908 build/block-hook/group/index.js:909
+#: build/block-hook/group/index.js:958 build/block-hook/group/index.js:959
+msgid "Box Menu"
+msgstr "ボックスメニュー"
+
+#: build/block-hook/group/index.js:496 build/block-hook/group/index.js:491
 msgid "Vertical layout on mobile"
 msgstr "モバイルでは縦に並べる"
 
@@ -711,23 +703,19 @@ msgstr "次の記事"
 msgid "Previous article"
 msgstr "前の記事"
 
-#: build/block-hook/query/index.js:60
-#: build/block-hook/query/index.js:31
+#: build/block-hook/query/index.js:60 build/block-hook/query/index.js:31
 msgid "Include Posts"
 msgstr "ピックアップ記事"
 
-#: build/block-hook/query/index.js:112
-#: build/block-hook/query/index.js:64
+#: build/block-hook/query/index.js:112 build/block-hook/query/index.js:64
 msgid "Post Ids"
 msgstr "投稿IDs"
 
-#: build/block-hook/query/index.js:123
-#: build/block-hook/query/index.js:77
+#: build/block-hook/query/index.js:123 build/block-hook/query/index.js:77
 msgid "Example: 1,4,7"
 msgstr "例: 1,4,7"
 
-#: build/block-hook/query/index.js:124
-#: build/block-hook/query/index.js:78
+#: build/block-hook/query/index.js:124 build/block-hook/query/index.js:78
 msgid "*Please enter with commas."
 msgstr "*カンマ区切りで入力してください。"
 
@@ -744,13 +732,11 @@ msgstr "関連記事"
 msgid "Displays random articles from the same category as the post."
 msgstr "投稿と同じカテゴリの記事をランダムに表示します。"
 
-#: build/block-hook/query/index.js:325
-#: build/block-hook/query/index.js:287
+#: build/block-hook/query/index.js:325 build/block-hook/query/index.js:287
 msgid "Pick Up Articles"
 msgstr "ピックアップ記事"
 
-#: build/block-hook/query/index.js:326
-#: build/block-hook/query/index.js:288
+#: build/block-hook/query/index.js:326 build/block-hook/query/index.js:288
 msgid "Display the selected article."
 msgstr "選択した記事を表示します。"
 
@@ -811,6 +797,19 @@ msgstr "ブログカード"
 #: build/block-library/embed/index.js:1
 msgid "Top image"
 msgstr "トップ画像"
+
+#: build/block-library/icon/index.js:258 build/block-library/icon/index.js:266
+#: build/block-library/icon/index.js:228 build/block-library/icon/index.js:239
+msgid "Size"
+msgstr "サイズ"
+
+#: build/block-library/icon/index.js:296 build/block-library/icon/index.js:272
+msgid "Icon Color"
+msgstr "アイコンカラー"
+
+#: build/block-library/icon/index.js:321 build/block-library/icon/index.js:304
+msgid "Hover background Color"
+msgstr "ホバー背景色"
 
 #: build/block-library/embed/index.js:1
 msgid "Link to page"
@@ -950,8 +949,7 @@ msgstr "アイキャッチ画像を表示する"
 msgid "Display SNS Share Button on the page"
 msgstr "SNSシェアボタンを表示する"
 
-#: build/edit-post/index.js:201
-#: build/edit-post/index.js:129
+#: build/edit-post/index.js:201 build/edit-post/index.js:129
 msgid "Display Date on the page"
 msgstr "日付を表示する"
 
@@ -965,7 +963,10 @@ msgstr "インライン文字サイズ"
 msgid "Inline Font Size"
 msgstr "インライン文字サイズ"
 
-#: build/format-library/icon/index.js:1
+#: build/block-library/icon/index.js:915
+#: build/components/icon-search-popover/index.js:22057
+#: build/format-library/icon/index.js:413
+#: build/block-library/icon/index.js:1730
 #: build/components/icon-search-popover/index.js:17369
 #: build/format-library/icon/index.js:1198
 msgid "Icon not found."
@@ -975,11 +976,11 @@ msgstr "アイコンが見つかりません。"
 msgid "Inline Icon"
 msgstr "インラインアイコン"
 
-#: build/format-library/icon/index.js:1
-#: build/post-featured-image/blocks/post-author-icon/index.js:1
-#: build/format-library/icon/index.js:1409
+#: build/block-library/icon/index.js:277 build/format-library/icon/index.js:596
+#: build/post-featured-image/blocks/post-author-icon/index.js:176
+#: build/block-library/icon/index.js:251
+#: build/format-library/icon/index.js:1408
 #: build/post-featured-image/blocks/post-author-icon/index.js:150
-#: build/post-featured-image/index.js:12018
 msgid "Icon"
 msgstr "アイコン"
 
@@ -1155,6 +1156,10 @@ msgstr "アイキャッチテンプレートからカスタマイズできます
 msgid "Mega menu label…"
 msgstr "メガメニューラベル…"
 
+#: build/block-library/icon/index.js:1035
+#: build/components/icon-search-popover/index.js:22177
+#: build/format-library/icon/index.js:533
+#: build/block-library/icon/index.js:1893
 #: build/components/icon-search-popover/index.js:17532
 #: build/format-library/icon/index.js:1361
 msgid "Select Icon"
@@ -1219,6 +1224,26 @@ msgstr "埋め込み"
 msgctxt "block description"
 msgid "Add a block that fetches and displays content from a URL."
 msgstr "URL からコンテンツを取得して表示するブロックを追加します。"
+
+#: build/block-library/icon/block.json
+msgctxt "block title"
+msgid "Icon child"
+msgstr "アイコン要素"
+
+#: build/block-library/icon/block.json
+msgctxt "block description"
+msgid "Icons with configurable colors and links."
+msgstr "カラーやリンクが設定できるアイコン。"
+
+#: build/block-library/icons/block.json
+msgctxt "block title"
+msgid "Icons"
+msgstr "アイコン"
+
+#: build/block-library/icons/block.json
+msgctxt "block description"
+msgid "Accentuate your website with icon groups with configurable colors and links."
+msgstr "カラーやリンクが設定できるアイコングループでWebサイトにアクセントをつけましょう。"
 
 #: build/block-library/mega-menu/block.json
 msgctxt "block title"
