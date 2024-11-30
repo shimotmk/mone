@@ -5,12 +5,6 @@
 	"title": "Icons",
 	"description": "Icon wrap",
 	"textdomain": "mone",
-	"attributes": {
-		"templateLock": {
-			"type": [ "string", "boolean" ],
-			"enum": [ "all", "insert", "contentOnly", false ]
-		}
-	},
 	"supports": {
 		"align": [ "wide", "full" ],
 		"color": {
