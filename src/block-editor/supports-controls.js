@@ -68,5 +68,6 @@ function supportsDefaultControls( settings ) {
 addFilter(
 	'blocks.registerBlockType',
 	'mone/blocks/register-block-type/supports-default-controls',
-	supportsDefaultControls
+	supportsDefaultControls,
+	11
 );
