@@ -15,7 +15,6 @@ import {
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	store as blockEditorStore,
-	getColorObjectByAttributeValues,
 	getColorObjectByColorValue,
 } from '@wordpress/block-editor';
 import { ToolbarButton, Popover } from '@wordpress/components';
@@ -23,6 +22,8 @@ import { link } from '@wordpress/icons';
 import { useState, useCallback, useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
+import { colorSlugToColorCode } from '../../../utils-func/color-slug-to-color-code';
+import { isHexColor } from '../../../utils-func/is-hex-color';
 import './style.scss';
 
 /**
@@ -60,20 +61,6 @@ const LINK_SETTINGS = [
 		title: __( 'Mark as nofollow', 'mone' ),
 	},
 ];
-
-export const colorSlugToColorCode = ( color ) => {
-	let colorCode;
-	if ( color ) {
-		const colorSet = select( blockEditorStore ).getSettings().colors;
-		const ColorValue = getColorObjectByAttributeValues( colorSet, color );
-		if ( ColorValue.color !== undefined ) {
-			colorCode = ColorValue.color;
-		} else {
-			colorCode = color;
-		}
-	}
-	return colorCode;
-};
 
 /**
  * Filter the BlockEdit object and add linked group inspector controls.
@@ -223,9 +210,6 @@ function addInspectorControls( BlockEdit ) {
 		);
 	};
 }
-
-const isHexColor = ( color ) =>
-	typeof color === 'string' && color.startsWith( '#' );
 
 /**
  * Add linked group classes in the Editor.

@@ -1,0 +1,41 @@
+.wp-block-mone-icon {
+	box-sizing: border-box;
+	line-height: 0;
+	width: 2rem;
+	height: 2rem;
+
+	&.has-icon-color {
+		svg {
+			fill: currentColor;
+		}
+	}
+
+	.wp-block-mone-icon__link {
+		display: block;
+		width: 100%;
+		height: 100%;
+		color: inherit;
+		box-sizing: border-box;
+	}
+
+	.wp-block-mone-icon-mask-image {
+		background: var(--the-icon-color, currentColor);
+		content: "";
+		display: block;
+		height: 100%;
+		mask-image: var(--the-icon-svg);
+		mask-position: center center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		width: 100%;
+		box-sizing: inherit;
+		svg {
+			display: none;
+		}
+	}
+
+	&:hover[style*="--hover-background-color"] {
+		background: var(--hover-background-color) !important;
+		transition: background-color 0.35s;
+	}
+}

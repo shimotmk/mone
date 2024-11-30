@@ -28,6 +28,8 @@ function get_blocks() {
 		'embed-site-logo',
 		'embed-site-title',
 		'embed-title',
+		'icon',
+		'icons',
 		'mega-menu',
 		'styles-switcher',
 		'styles-switcher-item',

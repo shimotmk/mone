@@ -204,6 +204,7 @@ export const IconPopoverContent = ( props ) => {
 			<SearchControl
 				className="mone-icon-popover__input"
 				label="SearchControl"
+				__nextHasNoMarginBottom
 				value={ searchValue }
 				onChange={ ( v ) => {
 					setSearchValue( v );
@@ -220,27 +221,25 @@ export const IconSearchModal = ( props ) => {
 
 	return (
 		<>
-			<div style={ { marginBottom: '12px' } }>
-				<Button
-					variant="secondary"
-					onClick={ () => setIsVisible( ! isVisible ) }
+			<Button
+				variant="secondary"
+				onClick={ () => setIsVisible( ! isVisible ) }
+			>
+				{ __( 'Select Icon', 'mone' ) }
+				<Icon icon={ symbol } />
+			</Button>
+			{ isVisible && (
+				<Modal
+					className="mone-icon-modal mone-icon-modal--search"
+					onRequestClose={ () => setIsVisible( false ) }
 				>
-					{ __( 'Select Icon', 'mone' ) }
-					<Icon icon={ symbol } />
-				</Button>
-				{ isVisible && (
-					<Modal
-						className="mone-icon-popover"
-						onRequestClose={ () => setIsVisible( false ) }
-					>
-						<IconPopoverContent
-							value={ value }
-							onChange={ onChange }
-							setIsVisible={ setIsVisible }
-						/>
-					</Modal>
-				) }
-			</div>
+					<IconPopoverContent
+						value={ value }
+						onChange={ onChange }
+						setIsVisible={ setIsVisible }
+					/>
+				</Modal>
+			) }
 		</>
 	);
 };
