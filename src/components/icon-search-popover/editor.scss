@@ -3,6 +3,10 @@
 	max-width: 92% !important;
 	width: 480px;
 
+	&.mone-icon-modal--search {
+		margin-right: 16px;
+	}
+
 	.mone-icon-tab-content {
 		height: 58vh;
 		overflow-y: scroll;

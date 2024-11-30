@@ -13,7 +13,6 @@ import {
 	useInnerBlocksProps,
 	InnerBlocks,
 	InspectorControls,
-	useSettings,
 	store as blockEditorStore,
 	getColorObjectByColorValue,
 	__experimentalLinkControl as LinkControl,
@@ -62,8 +61,8 @@ export default function Edit( props ) {
 	const {
 		iconName,
 		iconColor,
-		iconGradientColor,
 		width,
+		height,
 		url,
 		linkTarget,
 		rel,
@@ -84,10 +83,9 @@ export default function Edit( props ) {
 			[ dimension ]: parsedValue < 0 ? '0' : nextValue,
 		} );
 	};
-	const defaultUnits = [ 'px', '%', 'vw', 'em', 'rem' ];
-	const spacingUnits = [ ...useSettings( 'spacing.units' )[ 0 ] ];
+	const defaultUnits = [ 'px', 'vw', 'em', 'rem', 'vh' ];
 	const units = useCustomUnits( {
-		availableUnits: spacingUnits || defaultUnits,
+		availableUnits: defaultUnits,
 	} );
 
 	const { gradientValue, setGradient } = useGradient( {
@@ -104,7 +102,7 @@ export default function Edit( props ) {
 		} ),
 		style: {
 			width,
-			height: width,
+			height,
 			'--hover-background-color': hoverBackgroundColor
 				? ( isHexColor( hoverBackgroundColor )
 						? hoverBackgroundColor
@@ -123,7 +121,7 @@ export default function Edit( props ) {
 	} );
 
 	const linkAttributes = {
-		className: clsx( 'wp-block-mone-icon__link' ),
+		className: 'wp-block-mone-icon__link',
 		style: {
 			...spacingProps.style,
 		},
@@ -155,42 +153,57 @@ export default function Edit( props ) {
 	}, [ popoverClose ] );
 
 	const SVG = iconName
-		? renderToString( <ReactIcon icon={ iconName } size="100%" /> )
-		: '';
+		? renderToString( <ReactIcon icon={ iconName } /> )
+		: renderToString( <ReactIcon icon="FaWordpress" /> );
 
 	return (
 		<>
 			<InspectorControls group="settings">
 				<ToolsPanel
 					label={ __( 'Settings' ) }
-					resetAll={ () => setAttributes( { width: undefined } ) }
+					resetAll={ () =>
+						setAttributes( { width: undefined, height: undefined } )
+					}
 				>
 					<ToolsPanelItem
-						label={ __( 'Width', 'mone' ) }
+						label={ __( 'Size', 'mone' ) }
 						isShownByDefault
 						hasValue={ () => !! width }
 						onDeselect={ () =>
-							setAttributes( { width: undefined } )
+							setAttributes( {
+								width: undefined,
+								height: undefined,
+							} )
 						}
 					>
 						<UnitControl
-							label={ __( 'Width' ) }
+							label={ __( 'Size', 'mone' ) }
 							labelPosition="top"
 							value={ width || '' }
 							min={ 0 }
-							onChange={ ( nextWidth ) =>
-								onDimensionChange( 'width', nextWidth )
-							}
+							onChange={ ( nextWidth ) => {
+								onDimensionChange( 'width', nextWidth );
+								onDimensionChange( 'height', nextWidth );
+							} }
 							units={ units }
 						/>
 					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Icon', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! iconName }
+						onDeselect={ () =>
+							setAttributes( { iconName: undefined } )
+						}
+					>
+						<IconSearchModal
+							value={ iconName }
+							onChange={ ( value ) =>
+								setAttributes( { iconName: value } )
+							}
+						/>
+					</ToolsPanelItem>
 				</ToolsPanel>
-				<IconSearchModal
-					value={ iconName }
-					onChange={ ( value ) =>
-						setAttributes( { iconName: value } )
-					}
-				/>
 			</InspectorControls>
 			<InspectorControls group="color">
 				<ColorGradientSettingsDropdown
@@ -201,7 +214,6 @@ export default function Edit( props ) {
 							resetAllFilter: () => {
 								setAttributes( {
 									iconColor: undefined,
-									iconGradientColor: undefined,
 								} );
 							},
 							isShownByDefault: true,
@@ -331,7 +343,11 @@ export default function Edit( props ) {
 								) })`,
 							} }
 						>
-							{ iconName && <ReactIcon icon={ iconName } /> }
+							{ iconName ? (
+								<ReactIcon icon={ iconName } />
+							) : (
+								<ReactIcon icon="FaWordpress" />
+							) }
 						</span>
 					</a>
 				) : (
@@ -345,7 +361,11 @@ export default function Edit( props ) {
 								) })`,
 							} }
 						>
-							{ iconName && <ReactIcon icon={ iconName } /> }
+							{ iconName ? (
+								<ReactIcon icon={ iconName } />
+							) : (
+								<ReactIcon icon="FaWordpress" />
+							) }
 						</span>
 					</>
 				) }

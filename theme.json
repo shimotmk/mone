@@ -304,7 +304,7 @@
 				"typography": {
 					"fontStyle": "normal"
 				},
-				"css": "box-sizing: border-box;"
+				"css": "box-sizing: border-box; word-break: break-word;"
 			},
 			"core/image": {
 				"border": {
@@ -342,6 +342,9 @@
 			},
 			"core/navigation-link": {
 				"css": "& .wp-block-navigation-item__description{display: block!important;text-align: center;font-size: 90%;}"
+			},
+			"core/paragraph": {
+				"css": "word-break: break-word;"
 			},
 			"core/post-content": {
 				"spacing": {

@@ -22,6 +22,7 @@ export default function save( props ) {
 	const { attributes } = props;
 	const {
 		width,
+		height,
 		iconColor,
 		url,
 		linkTarget,
@@ -42,7 +43,7 @@ export default function save( props ) {
 		} ),
 		style: {
 			width,
-			height: width,
+			height,
 			'--hover-background-color': hoverBackgroundColor
 				? ( isHexColor( hoverBackgroundColor )
 						? hoverBackgroundColor
@@ -61,7 +62,7 @@ export default function save( props ) {
 	} );
 
 	const linkAttributes = {
-		className: clsx( 'wp-block-mone-icon__link' ),
+		className: 'wp-block-mone-icon__link',
 		style: {
 			...spacingProps.style,
 		},
@@ -69,7 +70,7 @@ export default function save( props ) {
 
 	const SVG = iconName
 		? renderToString( <ReactIcon icon={ iconName } /> )
-		: '';
+		: renderToString( <ReactIcon icon="FaWordpress" /> );
 
 	return (
 		<div { ...blockProps }>
@@ -87,7 +88,11 @@ export default function save( props ) {
 							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
 						} }
 					>
-						{ iconName && <ReactIcon icon={ iconName } /> }
+						{ iconName ? (
+							<ReactIcon icon={ iconName } />
+						) : (
+							<ReactIcon icon="FaWordpress" />
+						) }
 					</span>
 				</a>
 			) : (
@@ -99,7 +104,11 @@ export default function save( props ) {
 							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
 						} }
 					>
-						{ iconName && <ReactIcon icon={ iconName } /> }
+						{ iconName ? (
+							<ReactIcon icon={ iconName } />
+						) : (
+							<ReactIcon icon="FaWordpress" />
+						) }
 					</span>
 				</>
 			) }

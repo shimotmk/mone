@@ -1,6 +1,8 @@
 .wp-block-mone-icon {
 	box-sizing: border-box;
 	line-height: 0;
+	width: 2rem;
+	height: 2rem;
 
 	&.has-icon-color {
 		svg {
@@ -25,9 +27,6 @@
 		mask-position: center center;
 		mask-repeat: no-repeat;
 		mask-size: contain;
-		// left: 0;
-		// position: absolute;
-		// top: 0;
 		width: 100%;
 		box-sizing: inherit;
 		svg {

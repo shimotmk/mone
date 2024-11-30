@@ -19,10 +19,10 @@
 		"iconCustomGradient": {
 			"type": "string"
 		},
-		"iconGradientColor": {
+		"width": {
 			"type": "string"
 		},
-		"width": {
+		"height": {
 			"type": "string"
 		},
 		"url": {

@@ -18,6 +18,7 @@ export default function Edit( props ) {
 	const blockProps = useBlockProps();
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		template: [ ALLOWED_BLOCKS ],
 		allowedBlocks: ALLOWED_BLOCKS,
 		templateInsertUpdatesSelection: true,
 		orientation: layout?.orientation ?? 'horizontal',

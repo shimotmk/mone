@@ -1,7 +1,7 @@
 import { addFilter } from '@wordpress/hooks';
 
 import './style.scss';
-import { appreciateGroup, balloon } from './variations';
+import { appreciateGroup, balloon, boxMenu } from './variations';
 import './wrap-on-mobile';
 import './link';
 
@@ -22,24 +22,19 @@ export function registerBlockTypeGroup( settings, name ) {
 		},
 	};
 
-	const hasAppreciateGroup = settings.variations.some(
-		( variation ) => variation.name === appreciateGroup.name
-	);
+	const variationsToAdd = [ appreciateGroup, balloon, boxMenu ];
+	variationsToAdd.forEach( ( variation ) => {
+		const hasVariation = settings.variations.some(
+			( existingVariation ) => existingVariation.name === variation.name
+		);
 
-	if ( ! hasAppreciateGroup ) {
-		settings.variations = [
-			appreciateGroup,
-			...( settings.variations || [] ),
-		];
-	}
-
-	const hasBalloon = settings.variations.some(
-		( variation ) => variation.name === balloon.name
-	);
-
-	if ( ! hasBalloon ) {
-		settings.variations = [ balloon, ...( settings.variations || [] ) ];
-	}
+		if ( ! hasVariation ) {
+			settings.variations = [
+				variation,
+				...( settings.variations || [] ),
+			];
+		}
+	} );
 
 	return settings;
 }

@@ -6,19 +6,6 @@
 	"description": "Icon wrap",
 	"textdomain": "mone",
 	"attributes": {
-		"text": {
-			"type": "string",
-			"source": "html",
-			"selector": ".mone-styles-switcher-title"
-		},
-		"isToggle": {
-			"type": "boolean",
-			"default": false
-		},
-		"openDropdownOnClick": {
-			"type": "boolean",
-			"default": false
-		},
 		"templateLock": {
 			"type": [ "string", "boolean" ],
 			"enum": [ "all", "insert", "contentOnly", false ]
@@ -28,9 +15,9 @@
 		"align": [ "wide", "full" ],
 		"color": {
 			"gradients": true,
+			"text": false,
 			"__experimentalDefaultControls": {
-				"background": true,
-				"text": true
+				"background": true
 			}
 		},
 		"spacing": {
