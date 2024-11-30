@@ -6,47 +6,102 @@ import clsx from 'clsx';
 /**
  * WordPress dependencies
  */
-import { useBlockProps } from '@wordpress/block-editor';
-import { Icon } from '@wordpress/icons';
+import {
+	useBlockProps,
+	__experimentalGetSpacingClassesAndStyles as getSpacingClassesAndStyles,
+} from '@wordpress/block-editor';
+import { renderToString } from '@wordpress/element';
 
 import { isHexColor } from '../../utils-func/is-hex-color';
-import { blockCategoryIcon as icon } from './sample-icon';
+import {
+	ReactIcon,
+	createSvgUrl,
+} from '../../components/icon-search-popover/ReactIcon';
 
 export default function save( props ) {
 	const { attributes } = props;
-	const { width, iconColor, url, linkTarget, rel, hoverBackgroundColor } =
-		attributes;
+	const {
+		width,
+		iconColor,
+		url,
+		linkTarget,
+		rel,
+		hoverBackgroundColor,
+		iconGradient,
+		iconCustomGradient,
+		iconName,
+	} = attributes;
+	const spacingProps = getSpacingClassesAndStyles( attributes );
+
+	const gradientValue = iconGradient || iconCustomGradient;
 
 	const blockProps = useBlockProps.save( {
 		className: clsx( {
 			'has-icon-color': iconColor,
-			[ `has-${ iconColor }-color` ]:
-				! isHexColor( iconColor ) && iconColor,
+			'has-icon-gradient-color': gradientValue,
 		} ),
 		style: {
 			width,
-			color:
-				! isHexColor( iconColor ) && iconColor ? undefined : iconColor,
-			'--hover-background-color': isHexColor( hoverBackgroundColor )
-				? hoverBackgroundColor
-				: `var(--wp--preset--color--${ hoverBackgroundColor })` ||
-				  undefined,
+			height: width,
+			'--hover-background-color': hoverBackgroundColor
+				? ( isHexColor( hoverBackgroundColor )
+						? hoverBackgroundColor
+						: `var(--wp--preset--color--${ hoverBackgroundColor })` ) ||
+				  undefined
+				: undefined,
+			'--the-icon-color': iconGradient
+				? `var(--wp--preset--gradient--${ iconGradient })`
+				: iconCustomGradient ||
+				  ( iconColor &&
+						( isHexColor( iconColor )
+							? iconColor
+							: `var(--wp--preset--color--${ iconColor })` ) ),
+			...( !!! url ? spacingProps.style : {} ),
 		},
 	} );
+
+	const linkAttributes = {
+		className: clsx( 'wp-block-mone-icon__link' ),
+		style: {
+			...spacingProps.style,
+		},
+	};
+
+	const SVG = iconName
+		? renderToString( <ReactIcon icon={ iconName } /> )
+		: '';
 
 	return (
 		<div { ...blockProps }>
 			{ !! url ? (
 				<a
+					{ ...linkAttributes }
 					href={ url }
 					target={ linkTarget }
 					rel={ rel }
-					className="wp-block-mone-icon__link"
 				>
-					<Icon icon={ icon } />
+					<span
+						className="wp-block-mone-icon-mask-image"
+						aria-hidden="true"
+						style={ {
+							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
+						} }
+					>
+						{ iconName && <ReactIcon icon={ iconName } /> }
+					</span>
 				</a>
 			) : (
-				<Icon icon={ icon } />
+				<>
+					<span
+						className="wp-block-mone-icon-mask-image"
+						aria-hidden="true"
+						style={ {
+							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
+						} }
+					>
+						{ iconName && <ReactIcon icon={ iconName } /> }
+					</span>
+				</>
 			) }
 		</div>
 	);

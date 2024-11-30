@@ -17,8 +17,10 @@ import {
 	store as blockEditorStore,
 	getColorObjectByColorValue,
 	__experimentalLinkControl as LinkControl,
+	__experimentalUseGradient as useGradient,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	__experimentalGetSpacingClassesAndStyles as useSpacingProps,
 } from '@wordpress/block-editor';
 import {
 	__experimentalUnitControl as UnitControl,
@@ -28,16 +30,22 @@ import {
 	ToolbarButton,
 	Popover,
 } from '@wordpress/components';
-import { Icon, link } from '@wordpress/icons';
+import { link } from '@wordpress/icons';
 import { select } from '@wordpress/data';
-import { useInstanceId } from '@wordpress/compose';
-import { useState, useCallback, useEffect } from '@wordpress/element';
+import {
+	useState,
+	useCallback,
+	useEffect,
+	renderToString,
+} from '@wordpress/element';
 
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
-import { gradientSlugToGradientCode } from '../../utils-func/gradient-slug-to-gradient-code';
 import { isHexColor } from '../../utils-func/is-hex-color';
-import { blockCategoryIcon as icon } from './sample-icon';
-import { linearGradientColorToDefSvg } from './linear-gradient-color-to-def-svg';
+import { IconSearchModal } from '../../components/icon-search-popover';
+import {
+	ReactIcon,
+	createSvgUrl,
+} from '../../components/icon-search-popover/ReactIcon';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
@@ -52,6 +60,7 @@ const LINK_SETTINGS = [
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		iconName,
 		iconColor,
 		iconGradientColor,
 		width,
@@ -59,9 +68,12 @@ export default function Edit( props ) {
 		linkTarget,
 		rel,
 		hoverBackgroundColor,
+		iconGradient,
+		iconCustomGradient,
 	} = attributes;
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
+	const spacingProps = useSpacingProps( attributes );
 
 	const onDimensionChange = ( dimension, nextValue ) => {
 		const parsedValue = parseFloat( nextValue );
@@ -78,38 +90,50 @@ export default function Edit( props ) {
 		availableUnits: spacingUnits || defaultUnits,
 	} );
 
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const { gradientValue, setGradient } = useGradient( {
+		gradientAttribute: 'iconGradient',
+		customGradientAttribute: 'iconCustomGradient',
+	} );
 
-	const instanceId = useInstanceId( Edit );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	const blockProps = useBlockProps( {
 		className: clsx( {
 			'has-icon-color': iconColor,
-			[ `has-${ iconColor }-color` ]:
-				! isHexColor( iconColor ) && iconColor,
+			'has-icon-gradient-color': gradientValue,
 		} ),
 		style: {
 			width,
-			color:
-				! isHexColor( iconColor ) && iconColor ? undefined : iconColor,
-			'--hover-background-color': isHexColor( hoverBackgroundColor )
-				? hoverBackgroundColor
-				: `var(--wp--preset--color--${ hoverBackgroundColor })` ||
-				  undefined,
+			height: width,
+			'--hover-background-color': hoverBackgroundColor
+				? ( isHexColor( hoverBackgroundColor )
+						? hoverBackgroundColor
+						: `var(--wp--preset--color--${ hoverBackgroundColor })` ) ||
+				  undefined
+				: undefined,
+			'--the-icon-color': iconGradient
+				? `var(--wp--preset--gradient--${ iconGradient })`
+				: iconCustomGradient ||
+				  ( iconColor &&
+						( isHexColor( iconColor )
+							? iconColor
+							: `var(--wp--preset--color--${ iconColor })` ) ),
+			...( !!! url ? spacingProps.style : {} ),
 		},
 	} );
+
+	const linkAttributes = {
+		className: clsx( 'wp-block-mone-icon__link' ),
+		style: {
+			...spacingProps.style,
+		},
+	};
+
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		allowedBlocks: ALLOWED_BLOCKS,
 		templateInsertUpdatesSelection: true,
 		renderAppender: InnerBlocks.ButtonBlockAppender,
 	} );
-
-	const gradientSetColorCode =
-		gradientSlugToGradientCode( iconGradientColor );
-	const gradientSvg = linearGradientColorToDefSvg(
-		gradientSetColorCode,
-		`mone-icon-gradient-${ instanceId }`
-	);
 
 	const popoverClose = useCallback(
 		( event ) => {
@@ -129,6 +153,10 @@ export default function Edit( props ) {
 		document.body.addEventListener( 'click', popoverClose );
 		return () => document.body.removeEventListener( 'click', popoverClose );
 	}, [ popoverClose ] );
+
+	const SVG = iconName
+		? renderToString( <ReactIcon icon={ iconName } size="100%" /> )
+		: '';
 
 	return (
 		<>
@@ -157,6 +185,12 @@ export default function Edit( props ) {
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
+				<IconSearchModal
+					value={ iconName }
+					onChange={ ( value ) =>
+						setAttributes( { iconName: value } )
+					}
+				/>
 			</InspectorControls>
 			<InspectorControls group="color">
 				<ColorGradientSettingsDropdown
@@ -192,12 +226,8 @@ export default function Edit( props ) {
 									} );
 								}
 							},
-							gradientValue: iconGradientColor,
-							onGradientChange: ( newValue ) => {
-								setAttributes( {
-									iconGradientColor: newValue,
-								} );
-							},
+							gradientValue,
+							onGradientChange: setGradient,
 						},
 						{
 							label: __( 'ホバー背景色', 'mone' ),
@@ -288,31 +318,35 @@ export default function Edit( props ) {
 			<div { ...innerBlocksProps }>
 				{ !! url ? (
 					<a
+						{ ...linkAttributes }
 						href="#icon-pseudo-link"
 						onClick={ ( event ) => event.preventDefault() }
-						className="wp-block-mone-icon__link"
 					>
-						{ gradientSvg }
-						<Icon
-							fill={
-								gradientSvg
-									? `url(#mone-icon-gradient-${ instanceId })`
-									: 'currentColor'
-							}
-							icon={ icon }
-						/>
+						<span
+							className="wp-block-mone-icon-mask-image"
+							aria-hidden="true"
+							style={ {
+								'--the-icon-svg': `url(${ createSvgUrl(
+									SVG
+								) })`,
+							} }
+						>
+							{ iconName && <ReactIcon icon={ iconName } /> }
+						</span>
 					</a>
 				) : (
 					<>
-						{ gradientSvg }
-						<Icon
-							fill={
-								gradientSvg
-									? `url(#mone-icon-gradient-${ instanceId })`
-									: 'currentColor'
-							}
-							icon={ icon }
-						/>
+						<span
+							className="wp-block-mone-icon-mask-image"
+							aria-hidden="true"
+							style={ {
+								'--the-icon-svg': `url(${ createSvgUrl(
+									SVG
+								) })`,
+							} }
+						>
+							{ iconName && <ReactIcon icon={ iconName } /> }
+						</span>
 					</>
 				) }
 			</div>
