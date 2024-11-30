@@ -1,13 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
-import {
-	useBlockProps,
-	useInnerBlocksProps,
-	InspectorControls,
-} from '@wordpress/block-editor';
-import { PanelBody } from '@wordpress/components';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
@@ -26,9 +20,6 @@ export default function Edit( props ) {
 
 	return (
 		<>
-			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }></PanelBody>
-			</InspectorControls>
 			<div { ...innerBlocksProps }>{ innerBlocksProps.children }</div>
 		</>
 	);

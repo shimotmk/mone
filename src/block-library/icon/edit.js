@@ -210,7 +210,7 @@ export default function Edit( props ) {
 					__experimentalIsRenderedInSidebar
 					settings={ [
 						{
-							label: __( 'アイコンカラー', 'mone' ),
+							label: __( 'Icon Color', 'mone' ),
 							resetAllFilter: () => {
 								setAttributes( {
 									iconColor: undefined,
@@ -242,7 +242,7 @@ export default function Edit( props ) {
 							onGradientChange: setGradient,
 						},
 						{
-							label: __( 'ホバー背景色', 'mone' ),
+							label: __( 'Hover background Color', 'mone' ),
 							resetAllFilter: () => {
 								setAttributes( {
 									hoverBackgroundColor: undefined,
