@@ -412,7 +412,12 @@ msgstr "投稿のリスト、1 列、アイキャッチ画像と投稿日。"
 msgid "Please add text or a block to display when the query returns no results."
 msgstr "クエリが結果を返さないときに表示するテキストまたはブロックを追加してください。"
 
+#: patterns/new-posts-list.php:36
+#: patterns/related-posts-list.php:36
+#: patterns/sidebar.php:57
 #: patterns/template-query-loop.php:40
+#: build/block-hook/query/index.js:1
+#: build/block-hook/query/index.js:171
 msgid "No results found"
 msgstr "記事が見つかりませんでした"
 
