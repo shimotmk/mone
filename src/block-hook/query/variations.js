@@ -56,6 +56,7 @@ const getInnerBlocksTemplate = ( props ) => {
 					orientation: 'horizontal',
 					flexWrap: 'nowrap',
 				},
+				className: 'is-style-mone-query-pagination',
 			},
 			[
 				[ 'core/query-pagination-previous' ],
@@ -75,6 +76,7 @@ const getInnerBlocksTemplate = ( props ) => {
 						style: {
 							border: { width: '1px' },
 						},
+						borderColor: 'mone-border',
 					},
 					[
 						[
