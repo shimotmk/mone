@@ -23,7 +23,6 @@ function mone_register_block_hook() {
 		'group',
 		'list',
 		'navigation-link',
-		'paragraph',
 		'post-content',
 		'post-date',
 		'post-featured-image',
