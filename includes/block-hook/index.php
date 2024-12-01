@@ -22,7 +22,6 @@ function mone_register_block_hook() {
 		'core-embed',
 		'group',
 		'list',
-		'list-item',
 		'navigation-link',
 		'paragraph',
 		'post-content',

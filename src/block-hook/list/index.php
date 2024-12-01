@@ -12,36 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Add supports
- *
- * @param array  $args args.
- * @param string $name name.
- */
-function list_register_block_type_args( $args, $name ) {
-	// https://github.com/WordPress/gutenberg/pull/63540 .
-	if ( 'core/list' === $name ) {
-		$extra_supports = array(
-			'__experimentalBorder' => array(
-				'radius' => true,
-				'color'  => true,
-				'width'  => true,
-				'style'  => true,
-			),
-		);
-
-		$args['supports'] = array_merge( $args['supports'], $extra_supports );
-
-		$extra_selectors   = array(
-			'border' => '.wp-block-list:not(.wp-block-list .wp-block-list)',
-		);
-		$args['selectors'] = $extra_selectors;
-	}
-
-	return $args;
-}
-add_filter( 'register_block_type_args', __NAMESPACE__ . '\list_register_block_type_args', 10, 2 );
-
-/**
  * Register_block_style
  */
 function init() {
