@@ -21,6 +21,10 @@
 		"linkTarget": {
 			"type": "string",
 			"default": "_self"
+		},
+		"templateLock": {
+			"type": [ "string", "boolean" ],
+			"enum": [ "all", "insert", "contentOnly", false ]
 		}
 	},
 	"providesContext": {
