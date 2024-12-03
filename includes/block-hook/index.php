@@ -26,6 +26,7 @@ function mone_register_block_hook() {
 		'post-content',
 		'post-date',
 		'post-featured-image',
+		'post-template',
 		'post-terms',
 		'post-title',
 		'preformatted',

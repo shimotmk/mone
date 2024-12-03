@@ -1,0 +1,21 @@
+.mone-scroll.wp-block-post-template {
+    overflow-x: auto;
+    display: flex;
+
+    .wp-block-post {
+        min-width: var(--mone--the--min--width);
+
+        @media screen and (max-width: 600px) {
+            min-width: 80%;
+        }
+    }
+
+    &.mone-scroll-snap {
+        scroll-behavior: smooth;
+        scroll-snap-type: x proximity;
+
+        .wp-block-post {
+            scroll-snap-align: center; // 奇数の時は綺麗に中央になる 偶数の時は何かがずれる
+        }
+    }
+}
