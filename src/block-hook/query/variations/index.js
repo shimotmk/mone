@@ -8,7 +8,8 @@ import { getPath } from '@wordpress/url';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../icons';
+import { blockCategoryIcon } from '../../../icons';
+import './pick-up-articles';
 
 const isSiteEditor = getPath( window.location.href )?.includes(
 	'site-editor.php'
@@ -194,40 +195,4 @@ registerBlockVariation( 'core/query', {
 		templateAttribute: { layout: { type: 'grid', columnCount: '2' } },
 	} ),
 	scope: [ isSiteEditor && 'inserter', 'transform', 'block' ],
-} );
-
-registerBlockVariation( 'core/query', {
-	name: 'mone/mone-post-in-query',
-	title: __( 'Pick Up Articles', 'mone' ),
-	description: __( 'Display the selected article.', 'mone' ),
-	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
-	isActive: ( { namespace } ) => {
-		return namespace === 'mone-post-in-query';
-	},
-	attributes: {
-		// queryId: 0,
-		query: {
-			perPage: 4,
-			pages: 0,
-			offset: 0,
-			postType: 'post',
-			orderBy: 'post__in',
-			include_posts: [],
-			multiple_posts: [ 'post', 'page' ],
-			exclude: [],
-			sticky: 'exclude',
-			inherit: false,
-		},
-		namespace: 'mone-post-in-query',
-	},
-	allowedControls: [ 'postCount' ],
-	innerBlocks: getInnerBlocksTemplate( {
-		headingAttribute: {
-			level: 4,
-			content: __( 'Pick Up Articles', 'mone' ),
-		},
-		templateAttribute: { layout: { type: 'grid', columnCount: '2' } },
-	} ),
-	scope: [ 'inserter', 'transform', 'block' ],
 } );
