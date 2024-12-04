@@ -15,7 +15,12 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
-import { Icon, justifyLeft, justifyCenter, justifyRight } from '@wordpress/icons';
+import {
+	Icon,
+	justifyLeft,
+	justifyCenter,
+	justifyRight,
+} from '@wordpress/icons';
 
 import './style.scss';
 
@@ -64,7 +69,8 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 		if ( name !== 'core/post-template' ) {
 			return <BlockEdit { ...props } />;
 		}
-		const { layout, moneScroll, moneScrollSnap, moneScrollSnapAlign } = attributes;
+		const { layout, moneScroll, moneScrollSnap, moneScrollSnapAlign } =
+			attributes;
 
 		useEffect( () => {
 			if ( layout?.type !== 'grid' ) {
@@ -185,15 +191,18 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 									}
 								>
 									<ToggleGroupControlOption
-										label={<Icon icon={ justifyLeft } />}
+										label={ <Icon icon={ justifyLeft } /> }
 										value="start"
 									/>
 									<ToggleGroupControlOption
-									ddd	label={<Icon icon={ justifyCenter } />}
+										ddd
+										label={
+											<Icon icon={ justifyCenter } />
+										}
 										value="center"
 									/>
 									<ToggleGroupControlOption
-										label={<Icon icon={ justifyRight } />}
+										label={ <Icon icon={ justifyRight } /> }
 										value="end"
 									/>
 								</ToggleGroupControl>
