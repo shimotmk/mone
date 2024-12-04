@@ -47,12 +47,9 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\post_template_register
  * @param array  $block         The block attributes.
  * @return string The updated block content.
  */
-function groups_render_block( $block_content, $block ) {
-	if ( ! isset( $block['attrs']['moneScroll'] ) ) {
-		return $block_content;
-	}
-
-	if ( 'horizon' !== $block['attrs']['moneScroll'] ) {
+function post_template_render_block( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
+	if ( ! $class_name || ! str_contains( $class_name, 'mone-scroll' ) ) {
 		return $block_content;
 	}
 
@@ -60,9 +57,8 @@ function groups_render_block( $block_content, $block ) {
 	$scroll_snap_align = $block['attrs']['moneScrollSnapAlign'] ?? null;
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	if ( $p->next_tag( 'ul' ) ) {
 
-		$p->add_class( 'mone-scroll' );
+	if ( $p->next_tag( 'ul' ) ) {
 
 		if ( 'snap' === $scroll_snap ) {
 			$p->add_class( 'mone-scroll-snap' );
@@ -112,4 +108,4 @@ function groups_render_block( $block_content, $block ) {
 
 	return $block_content;
 }
-add_filter( 'render_block_core/post-template', __NAMESPACE__ . '\groups_render_block', 10, 2 );
+add_filter( 'render_block_core/post-template', __NAMESPACE__ . '\post_template_render_block', 10, 2 );

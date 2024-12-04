@@ -24,6 +24,11 @@ import {
 } from '@wordpress/icons';
 
 import './style.scss';
+import {
+	setClassName,
+	existsClass,
+	deleteClass,
+} from '../../utils-func/class-name/classAttribute.js';
 
 export function registerBlockTypePostTemplate( settings, name ) {
 	if ( name !== 'core/post-template' ) {
@@ -32,9 +37,6 @@ export function registerBlockTypePostTemplate( settings, name ) {
 
 	settings.attributes = {
 		...settings.attributes,
-		moneScroll: {
-			type: 'string',
-		},
 		moneScrollSnap: {
 			type: 'string',
 		},
@@ -70,9 +72,10 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 		if ( name !== 'core/post-template' ) {
 			return <BlockEdit { ...props } />;
 		}
-		const { layout, moneScroll, moneScrollSnap, moneScrollSnapAlign } =
+		const { layout, moneScrollSnap, moneScrollSnapAlign, className } =
 			attributes;
 		const columnCount = layout?.columnCount || null;
+		const scrollClassName = 'mone-scroll';
 
 		useEffect( () => {
 			if ( layout?.type !== 'grid' ) {
@@ -81,8 +84,12 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 					moneScrollSnap: undefined,
 					moneScrollSnapAlign: undefined,
 				} );
+				deleteClass( scrollClassName, className, setAttributes );
 			}
-		}, [ layout, setAttributes ] );
+		}, [ layout, setAttributes, className ] );
+
+		console.log( 'columnCount:', columnCount );
+		console.log( 'moneScrollSnapAlign:', moneScrollSnapAlign );
 
 		return (
 			<>
@@ -90,36 +97,44 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 				<InspectorControls group="settings">
 					<ToolsPanel
 						label={ __( 'Settings' ) }
-						resetAll={ () =>
+						resetAll={ () => {
 							setAttributes( {
-								moneScroll: undefined,
 								moneScrollSnap: undefined,
 								moneScrollSnapAlign: undefined,
-							} )
-						}
+							} );
+							deleteClass(
+								scrollClassName,
+								className,
+								setAttributes
+							);
+						} }
 					>
 						<ToolsPanelItem
 							label={ __( '横スクロール', 'mone' ) }
 							isShownByDefault
-							hasValue={ () => !! moneScroll }
+							hasValue={ () =>
+								existsClass( className, scrollClassName )
+							}
 							onDeselect={ () =>
-								setAttributes( {
-									moneScroll: undefined,
-								} )
+								deleteClass(
+									scrollClassName,
+									className,
+									setAttributes
+								)
 							}
 						>
 							<ToggleControl
 								label={ __( '横スクロール', 'mone' ) }
-								checked={
-									moneScroll === 'horizon' ? true : false
-								}
+								checked={ existsClass(
+									className,
+									scrollClassName
+								) }
 								onChange={ () => {
-									setAttributes( {
-										moneScroll:
-											moneScroll === 'horizon'
-												? undefined
-												: 'horizon',
-									} );
+									setClassName(
+										scrollClassName,
+										className,
+										setAttributes
+									);
 
 									if ( layout?.type !== 'grid' ) {
 										setAttributes( {
@@ -139,7 +154,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								__nextHasNoMarginBottom
 							/>
 						</ToolsPanelItem>
-						{ moneScroll === 'horizon' && (
+						{ existsClass( className, scrollClassName ) && (
 							<ToolsPanelItem
 								label={ __( 'スクロールスナップ', 'mone' ) }
 								isShownByDefault
@@ -167,55 +182,64 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								/>
 							</ToolsPanelItem>
 						) }
-						{ moneScrollSnap === 'snap' && (
-							<ToolsPanelItem
-								label={ __( 'スナップ配置', 'mone' ) }
-								isShownByDefault
-								hasValue={ () => !! moneScrollSnapAlign }
-								onDeselect={ () =>
-									setAttributes( {
-										moneScrollSnapAlign: undefined,
-									} )
-								}
-							>
-								<ToggleGroupControl
-									__next40pxDefaultSize
-									__nextHasNoMarginBottom
+						{ existsClass( className, scrollClassName ) &&
+							moneScrollSnap === 'snap' && (
+								<ToolsPanelItem
 									label={ __( 'スナップ配置', 'mone' ) }
-									value={ moneScrollSnapAlign || 'center' }
-									onChange={ ( value ) =>
+									isShownByDefault
+									hasValue={ () => !! moneScrollSnapAlign }
+									onDeselect={ () =>
 										setAttributes( {
-											moneScrollSnapAlign: value,
+											moneScrollSnapAlign: undefined,
 										} )
 									}
 								>
-									<ToggleGroupControlOption
-										label={ <Icon icon={ justifyLeft } /> }
-										value="start"
-									/>
-									<ToggleGroupControlOption
-										ddd
-										label={
-											<Icon icon={ justifyCenter } />
+									<ToggleGroupControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										label={ __( 'スナップ配置', 'mone' ) }
+										value={
+											moneScrollSnapAlign || 'center'
 										}
-										value="center"
-									/>
-									<ToggleGroupControlOption
-										label={ <Icon icon={ justifyRight } /> }
-										value="end"
-									/>
-								</ToggleGroupControl>
-								{ columnCount % 2 === 0 &&
-									'center' === moneScrollSnapAlign && (
-										<Warning>
-											{ __(
-												'スナップスクロールのカラム数は奇数がおすすめです。',
-												'mone'
-											) }
-										</Warning>
-									) }
-							</ToolsPanelItem>
-						) }
+										onChange={ ( value ) =>
+											setAttributes( {
+												moneScrollSnapAlign: value,
+											} )
+										}
+									>
+										<ToggleGroupControlOption
+											label={
+												<Icon icon={ justifyLeft } />
+											}
+											value="start"
+										/>
+										<ToggleGroupControlOption
+											ddd
+											label={
+												<Icon icon={ justifyCenter } />
+											}
+											value="center"
+										/>
+										<ToggleGroupControlOption
+											label={
+												<Icon icon={ justifyRight } />
+											}
+											value="end"
+										/>
+									</ToggleGroupControl>
+									{ columnCount % 2 === 0 &&
+										( 'center' === moneScrollSnapAlign ||
+											undefined ===
+												moneScrollSnapAlign ) && (
+											<Warning>
+												{ __(
+													'スナップスクロールのカラム数は奇数がおすすめです。',
+													'mone'
+												) }
+											</Warning>
+										) }
+								</ToolsPanelItem>
+							) }
 					</ToolsPanel>
 				</InspectorControls>
 			</>
@@ -232,13 +256,8 @@ const blockListBlockPostTemplate = createHigherOrderComponent(
 		if ( name !== 'core/post-template' ) {
 			return <BlockListBlock { ...props } />;
 		}
-		const {
-			style,
-			layout,
-			moneScroll,
-			moneScrollSnap,
-			moneScrollSnapAlign,
-		} = attributes;
+		const { style, layout, moneScrollSnap, moneScrollSnapAlign } =
+			attributes;
 		const gap =
 			( style?.spacing?.blockGap &&
 				getGapCSSValue( style?.spacing?.blockGap ) ) ||
@@ -258,7 +277,6 @@ const blockListBlockPostTemplate = createHigherOrderComponent(
 		const blockWrapperProps = {
 			...wrapperProps,
 			className: clsx( wrapperProps?.className, {
-				'mone-scroll': moneScroll === 'horizon',
 				'mone-scroll-snap': moneScrollSnap === 'snap',
 				[ `mone-scroll-snap-${ moneScrollSnapAlign }` ]:
 					!! moneScrollSnapAlign,
