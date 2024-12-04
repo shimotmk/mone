@@ -6,6 +6,7 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import {
 	InspectorControls,
 	__experimentalGetGapCSSValue as getGapCSSValue,
+	Warning,
 } from '@wordpress/block-editor';
 import {
 	__experimentalToolsPanel as ToolsPanel,
@@ -71,6 +72,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 		}
 		const { layout, moneScroll, moneScrollSnap, moneScrollSnapAlign } =
 			attributes;
+		const columnCount = layout?.columnCount || null;
 
 		useEffect( () => {
 			if ( layout?.type !== 'grid' ) {
@@ -178,11 +180,8 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 							>
 								<ToggleGroupControl
 									__next40pxDefaultSize
-									isBlock
-									label={ __( 'Layout type' ) }
 									__nextHasNoMarginBottom
-									hideLabelFromVision
-									isAdaptiveWidth
+									label={ __( 'スナップ配置', 'mone' ) }
 									value={ moneScrollSnapAlign || 'center' }
 									onChange={ ( value ) =>
 										setAttributes( {
@@ -206,6 +205,15 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 										value="end"
 									/>
 								</ToggleGroupControl>
+								{ columnCount % 2 === 0 &&
+									'center' === moneScrollSnapAlign && (
+										<Warning>
+											{ __(
+												'スナップスクロールのカラム数は奇数がおすすめです。',
+												'mone'
+											) }
+										</Warning>
+									) }
 							</ToolsPanelItem>
 						) }
 					</ToolsPanel>
@@ -224,7 +232,13 @@ const blockListBlockPostTemplate = createHigherOrderComponent(
 		if ( name !== 'core/post-template' ) {
 			return <BlockListBlock { ...props } />;
 		}
-		const { style, layout, moneScroll, moneScrollSnap } = attributes;
+		const {
+			style,
+			layout,
+			moneScroll,
+			moneScrollSnap,
+			moneScrollSnapAlign,
+		} = attributes;
 		const gap =
 			( style?.spacing?.blockGap &&
 				getGapCSSValue( style?.spacing?.blockGap ) ) ||
@@ -247,6 +261,8 @@ const blockListBlockPostTemplate = createHigherOrderComponent(
 				'mone-scroll': moneScroll === 'horizon',
 				'mone-scroll-snap': moneScrollSnap === 'snap',
 				'mone-scroll-no-snap': moneScrollSnap === 'noSnap',
+				[ `mone-scroll-snap-${ moneScrollSnapAlign }` ]:
+					!! moneScrollSnapAlign,
 			} ),
 			style: {
 				...( wrapperProps && { ...wrapperProps.style } ),

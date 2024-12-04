@@ -58,6 +58,7 @@ function groups_render_block( $block_content, $block ) {
 	}
 
 	$scroll_snap = $block['attrs']['moneScrollSnap'] ?? null;
+	$scroll_snap_align = $block['attrs']['moneScrollSnapAlign'] ?? null;
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( 'ul' ) ) {
@@ -66,9 +67,17 @@ function groups_render_block( $block_content, $block ) {
 
 		if ( 'snap' === $scroll_snap ) {
 			$p->add_class( 'mone-scroll-snap' );
+
+			$valid_alignments = ['start', 'center', 'end'];
+			if (in_array($scroll_snap_align, $valid_alignments)) {
+				$p->add_class('mone-scroll-snap-' . $scroll_snap_align);
+			} else {
+				$p->add_class('mone-scroll-snap-center');
+			}
 		} else if ( 'noSnap' === $scroll_snap ) {
 			$p->add_class( 'mone-scroll-no-snap' );
 		}
+
 
 		$gap                = isset( $block['attrs']['style']['spacing']['blockGap'] ) ? $block['attrs']['style']['spacing']['blockGap'] : '1.2rem';
 		$column_count = isset( $block['attrs']['layout']['columnCount'] ) ? $block['attrs']['layout']['columnCount'] : null;

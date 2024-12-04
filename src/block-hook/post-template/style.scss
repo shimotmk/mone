@@ -6,7 +6,7 @@
         min-width: var(--mone--the--min--width);
 
         @media screen and (max-width: 600px) {
-            min-width: 80%;
+            min-width: 100%;
         }
     }
 
@@ -14,8 +14,20 @@
         scroll-behavior: smooth;
         scroll-snap-type: x proximity;
 
-        .wp-block-post {
-            scroll-snap-align: center; // 奇数の時は綺麗に中央になる 偶数の時は何かがずれる
-        }
+		&.mone-scroll-snap-center {
+			.wp-block-post {
+				scroll-snap-align: center; 
+			}
+		}
+		&.mone-scroll-snap-start {
+			.wp-block-post {
+				scroll-snap-align: start; 
+			}
+		}
+		&.mone-scroll-snap-end {
+			.wp-block-post {
+				scroll-snap-align: end;
+			}
+		}
     }
 }
