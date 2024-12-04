@@ -5,7 +5,6 @@
  * @package mone
  */
 
-
 namespace Mone_Theme\Post_Template;
 
 
@@ -15,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Register block type args
- * 
+ *
  * @param array  $args The block type registration arguments.
  * @param string $name The block type name including namespace.
  * @return array The updated arguments.
@@ -43,7 +42,7 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\post_template_register
 
 /**
  * Add custom class to the block
- * 
+ *
  * @param string $block_content The block content about to be rendered.
  * @param array  $block         The block attributes.
  * @return string The updated block content.
@@ -57,7 +56,7 @@ function groups_render_block( $block_content, $block ) {
 		return $block_content;
 	}
 
-	$scroll_snap = $block['attrs']['moneScrollSnap'] ?? null;
+	$scroll_snap       = $block['attrs']['moneScrollSnap'] ?? null;
 	$scroll_snap_align = $block['attrs']['moneScrollSnapAlign'] ?? null;
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
@@ -68,19 +67,18 @@ function groups_render_block( $block_content, $block ) {
 		if ( 'snap' === $scroll_snap ) {
 			$p->add_class( 'mone-scroll-snap' );
 
-			$valid_alignments = ['start', 'center', 'end'];
-			if (in_array($scroll_snap_align, $valid_alignments)) {
-				$p->add_class('mone-scroll-snap-' . $scroll_snap_align);
+			$valid_alignments = array( 'start', 'center', 'end' );
+			if ( in_array( $scroll_snap_align, $valid_alignments, true ) ) {
+				$p->add_class( 'mone-scroll-snap-' . $scroll_snap_align );
 			} else {
-				$p->add_class('mone-scroll-snap-center');
+				$p->add_class( 'mone-scroll-snap-center' );
 			}
-		} else if ( 'noSnap' === $scroll_snap ) {
+		} elseif ( 'noSnap' === $scroll_snap ) {
 			$p->add_class( 'mone-scroll-no-snap' );
 		}
 
-
-		$gap                = isset( $block['attrs']['style']['spacing']['blockGap'] ) ? $block['attrs']['style']['spacing']['blockGap'] : '1.2rem';
-		$column_count = isset( $block['attrs']['layout']['columnCount'] ) ? $block['attrs']['layout']['columnCount'] : null;
+		$gap                  = isset( $block['attrs']['style']['spacing']['blockGap'] ) ? $block['attrs']['style']['spacing']['blockGap'] : '1.2rem';
+		$column_count         = isset( $block['attrs']['layout']['columnCount'] ) ? $block['attrs']['layout']['columnCount'] : null;
 		$minimum_column_width = isset( $block['attrs']['layout']['minimumColumnWidth'] ) ? $block['attrs']['layout']['minimumColumnWidth'] : null;
 
 		$existing_style = $p->get_attribute( 'style' );
@@ -102,7 +100,7 @@ function groups_render_block( $block_content, $block ) {
 
 		if ( null !== $column_count ) {
 			// ( カラム数 - 1  ) × blockGap
-			$updated_style .= '--mone--the--min--width:calc(( 100% - (' . $column_count - 1 . ' * ' . $gap . ') ) / ' . $column_count . ');';
+			$updated_style .= '--mone--the--min--width:calc(( 100% - ((' . $column_count . ' - 1) * ' . $gap . ') ) / ' . $column_count . ');';
 		}
 
 		if ( null !== $minimum_column_width ) {
