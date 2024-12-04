@@ -88,9 +88,6 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 			}
 		}, [ layout, setAttributes, className ] );
 
-		console.log( 'columnCount:', columnCount );
-		console.log( 'moneScrollSnapAlign:', moneScrollSnapAlign );
-
 		return (
 			<>
 				<BlockEdit { ...props } />
@@ -110,7 +107,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 						} }
 					>
 						<ToolsPanelItem
-							label={ __( '横スクロール', 'mone' ) }
+							label={ __( 'Horizontal scrolling', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
 								existsClass( className, scrollClassName )
@@ -124,7 +121,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 							}
 						>
 							<ToggleControl
-								label={ __( '横スクロール', 'mone' ) }
+								label={ __( 'Horizontal scrolling', 'mone' ) }
 								checked={ existsClass(
 									className,
 									scrollClassName
@@ -156,7 +153,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 						</ToolsPanelItem>
 						{ existsClass( className, scrollClassName ) && (
 							<ToolsPanelItem
-								label={ __( 'スクロールスナップ', 'mone' ) }
+								label={ __( 'Scroll Snap', 'mone' ) }
 								isShownByDefault
 								hasValue={ () => !! moneScrollSnap }
 								onDeselect={ () =>
@@ -166,7 +163,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								}
 							>
 								<ToggleControl
-									label={ __( 'スクロールスナップ', 'mone' ) }
+									label={ __( 'Scroll Snap', 'mone' ) }
 									checked={
 										moneScrollSnap === 'snap' ? true : false
 									}
@@ -185,7 +182,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 						{ existsClass( className, scrollClassName ) &&
 							moneScrollSnap === 'snap' && (
 								<ToolsPanelItem
-									label={ __( 'スナップ配置', 'mone' ) }
+									label={ __( 'Snap placement', 'mone' ) }
 									isShownByDefault
 									hasValue={ () => !! moneScrollSnapAlign }
 									onDeselect={ () =>
@@ -197,7 +194,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 									<ToggleGroupControl
 										__next40pxDefaultSize
 										__nextHasNoMarginBottom
-										label={ __( 'スナップ配置', 'mone' ) }
+										label={ __( 'Snap placement', 'mone' ) }
 										value={
 											moneScrollSnapAlign || 'center'
 										}
@@ -233,7 +230,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 												moneScrollSnapAlign ) && (
 											<Warning>
 												{ __(
-													'スナップスクロールのカラム数は奇数がおすすめです。',
+													'Recommend an odd number of columns for snap scrolling.',
 													'mone'
 												) }
 											</Warning>
