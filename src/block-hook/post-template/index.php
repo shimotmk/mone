@@ -73,8 +73,6 @@ function groups_render_block( $block_content, $block ) {
 			} else {
 				$p->add_class( 'mone-scroll-snap-center' );
 			}
-		} elseif ( 'noSnap' === $scroll_snap ) {
-			$p->add_class( 'mone-scroll-no-snap' );
 		}
 
 		$gap                  = isset( $block['attrs']['style']['spacing']['blockGap'] ) ? $block['attrs']['style']['spacing']['blockGap'] : '1.2rem';

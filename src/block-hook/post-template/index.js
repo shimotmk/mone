@@ -260,7 +260,6 @@ const blockListBlockPostTemplate = createHigherOrderComponent(
 			className: clsx( wrapperProps?.className, {
 				'mone-scroll': moneScroll === 'horizon',
 				'mone-scroll-snap': moneScrollSnap === 'snap',
-				'mone-scroll-no-snap': moneScrollSnap === 'noSnap',
 				[ `mone-scroll-snap-${ moneScrollSnapAlign }` ]:
 					!! moneScrollSnapAlign,
 			} ),
