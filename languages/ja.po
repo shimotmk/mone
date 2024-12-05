@@ -688,6 +688,32 @@ msgstr "情報"
 msgid "Mone prefix suffix"
 msgstr "Mone接頭辞"
 
+#: build/block-hook/post-template/index.js:263
+#: build/block-hook/post-template/index.js:268
+#: build/block-hook/post-template/index.js:183
+#: build/block-hook/post-template/index.js:197
+msgid "Horizontal scrolling"
+msgstr "横スクロール"
+
+#: build/block-hook/post-template/index.js:289
+#: build/block-hook/post-template/index.js:296
+#: build/block-hook/post-template/index.js:229
+#: build/block-hook/post-template/index.js:239
+msgid "Scroll Snap"
+msgstr "スクロールスナップ"
+
+#: build/block-hook/post-template/index.js:306
+#: build/block-hook/post-template/index.js:315
+#: build/block-hook/post-template/index.js:258
+#: build/block-hook/post-template/index.js:270
+msgid "Snap placement"
+msgstr "スナップ配置"
+
+#: build/block-hook/post-template/index.js:338
+#: build/block-hook/post-template/index.js:305
+msgid "Recommend an odd number of columns for snap scrolling."
+msgstr "スナップスクロールのカラム数は奇数がおすすめです。"
+
 #: build/block-hook/post-terms/index.js:1
 #: build/block-hook/post-terms/index.js:64
 msgid "Tags"

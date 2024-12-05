@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-01T23:02:24+00:00\n"
+"POT-Creation-Date: 2024-12-05T00:01:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -336,8 +336,8 @@ msgstr ""
 #: patterns/related-posts-list.php:35
 #: patterns/sidebar.php:56
 #: patterns/template-query-loop.php:39
-#: build/block-hook/query/index.js:225
-#: build/block-hook/query/index.js:174
+#: build/block-hook/query/index.js:228
+#: build/block-hook/query/index.js:176
 msgid "Please add text or a block to display when the query returns no results."
 msgstr ""
 
@@ -345,8 +345,8 @@ msgstr ""
 #: patterns/related-posts-list.php:36
 #: patterns/sidebar.php:57
 #: patterns/template-query-loop.php:40
-#: build/block-hook/query/index.js:223
-#: build/block-hook/query/index.js:172
+#: build/block-hook/query/index.js:226
+#: build/block-hook/query/index.js:174
 msgid "No results found"
 msgstr ""
 
@@ -390,10 +390,10 @@ msgid "Mone Creators"
 msgstr ""
 
 #: patterns/sidebar.php:39
-#: build/block-hook/query/index.js:230
-#: build/block-hook/query/index.js:272
-#: build/block-hook/query/index.js:189
-#: build/block-hook/query/index.js:235
+#: build/block-hook/query/index.js:233
+#: build/block-hook/query/index.js:275
+#: build/block-hook/query/index.js:191
+#: build/block-hook/query/index.js:237
 msgid "Most Read Articles"
 msgstr ""
 
@@ -723,6 +723,32 @@ msgstr ""
 msgid "Mone prefix suffix"
 msgstr ""
 
+#: build/block-hook/post-template/index.js:263
+#: build/block-hook/post-template/index.js:268
+#: build/block-hook/post-template/index.js:183
+#: build/block-hook/post-template/index.js:197
+msgid "Horizontal scrolling"
+msgstr ""
+
+#: build/block-hook/post-template/index.js:289
+#: build/block-hook/post-template/index.js:296
+#: build/block-hook/post-template/index.js:229
+#: build/block-hook/post-template/index.js:239
+msgid "Scroll Snap"
+msgstr ""
+
+#: build/block-hook/post-template/index.js:306
+#: build/block-hook/post-template/index.js:315
+#: build/block-hook/post-template/index.js:258
+#: build/block-hook/post-template/index.js:270
+msgid "Snap placement"
+msgstr ""
+
+#: build/block-hook/post-template/index.js:338
+#: build/block-hook/post-template/index.js:305
+msgid "Recommend an odd number of columns for snap scrolling."
+msgstr ""
+
 #: build/block-hook/post-terms/index.js:116
 #: build/block-hook/post-terms/index.js:64
 msgid "Tags"
@@ -758,31 +784,30 @@ msgstr ""
 msgid "*Please enter with commas."
 msgstr ""
 
-#: build/block-hook/query/index.js:231
-#: build/block-hook/query/index.js:190
+#: build/block-hook/query/index.js:234
+#: build/block-hook/query/index.js:192
 msgid "Shows the most read articles"
 msgstr ""
 
-#: build/block-hook/query/index.js:279
-#: build/block-hook/query/index.js:314
-#: build/block-hook/query/index.js:243
+#: build/block-hook/query/index.js:282
+#: build/block-hook/query/index.js:317
+#: build/block-hook/query/index.js:245
+#: build/block-hook/query/index.js:281
 msgid "Related articles"
 msgstr ""
 
-#: build/block-hook/query/index.js:280
-#: build/block-hook/query/index.js:244
+#: build/block-hook/query/index.js:283
+#: build/block-hook/query/index.js:246
 msgid "Displays random articles from the same category as the post."
 msgstr ""
 
-#: build/block-hook/query/index.js:327
-#: build/block-hook/query/index.js:356
-#: build/block-hook/query/index.js:288
-#: build/block-hook/query/index.js:315
+#: build/block-hook/query/index.js:355
+#: build/block-hook/query/index.js:301
 msgid "Pick Up Articles"
 msgstr ""
 
-#: build/block-hook/query/index.js:328
-#: build/block-hook/query/index.js:289
+#: build/block-hook/query/index.js:356
+#: build/block-hook/query/index.js:302
 msgid "Display the selected article."
 msgstr ""
 
@@ -844,23 +869,23 @@ msgstr ""
 msgid "Choose a pattern. The original block settings will be cleared."
 msgstr ""
 
-#: build/block-library/embed/index.js:482
+#: build/block-library/embed/index.js:484
 msgid "Link to page"
 msgstr ""
 
-#: build/block-library/embed/index.js:509
+#: build/block-library/embed/index.js:511
 msgid "Clear cache"
 msgstr ""
 
-#: build/block-library/embed/index.js:514
+#: build/block-library/embed/index.js:516
 msgid "If the data is old, please clear the cache. It is usually updated every hour."
 msgstr ""
 
-#: build/block-library/embed/index.js:1001
+#: build/block-library/embed/index.js:1003
 msgid "Blog card"
 msgstr ""
 
-#: build/block-library/embed/index.js:1078
+#: build/block-library/embed/index.js:1080
 msgid "Top image"
 msgstr ""
 

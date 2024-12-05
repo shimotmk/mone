@@ -27,19 +27,28 @@ export const setClassName = ( targetClassName, className, setAttributes ) => {
 	}
 };
 
-export const deleteClass = ( targetClassName, className, setAttributes ) => {
+export const deleteClass = ( targetClassNames, className, setAttributes ) => {
 	const classArray = classStringToClassArray( className );
-	if ( existsClass( className, targetClassName ) ) {
-		// クラスを削除
-		const deleteClassName = classArray.indexOf( targetClassName );
-		classArray.splice( deleteClassName, 1 );
-		setAttributes( {
-			className: emptyStringToUndefined( clsx( classArray ) ),
-		} );
-	}
+	const targetClassArray = Array.isArray( targetClassNames )
+		? targetClassNames
+		: [ targetClassNames ];
+
+	targetClassArray.forEach( ( targetClassName ) => {
+		if ( existsClass( className, targetClassName ) ) {
+			// クラスを削除
+			const deleteClassName = classArray.indexOf( targetClassName );
+			classArray.splice( deleteClassName, 1 );
+		}
+	} );
+
+	setAttributes( {
+		className: emptyStringToUndefined( clsx( classArray ) ),
+	} );
 };
 
-export const existsClass = ( className, targetClassName ) => {
-	const classArray = classStringToClassArray( className );
-	return classArray.indexOf( targetClassName ) !== -1 ? true : false;
+export const existsClass = ( classNames, targetClassName ) => {
+	const classArray = Array.isArray( classNames )
+		? classNames
+		: classStringToClassArray( classNames );
+	return classArray.indexOf( targetClassName ) !== -1;
 };
