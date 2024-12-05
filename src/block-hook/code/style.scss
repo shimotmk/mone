@@ -125,9 +125,6 @@ pre[class*="language-"] {
 	overflow-x: auto;
 	border-radius: 0.3em;
 
-	&:not([style*="height"]) {
-		overflow-y: hidden;
-	}
 }
 
 :not(pre) > code[class*="language-"],
