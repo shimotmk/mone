@@ -28,6 +28,7 @@ function get_blocks() {
 		'embed-site-logo',
 		'embed-site-title',
 		'embed-title',
+		'github-embed',
 		'icon',
 		'icons',
 		'mega-menu',

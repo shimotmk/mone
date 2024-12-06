@@ -1,0 +1,35 @@
+{
+	"apiVersion": 3,
+	"name": "mone/github-embed",
+	"category": "mone-block-cat",
+	"title": "GitHub Code Embed",
+	"description": "GitHub Code Embed",
+	"textdomain": "mone",
+	"attributes": {
+		"url": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"spacing": {
+			"margin": true,
+			"__experimentalDefaultControls": {
+				"margin": false
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true
+			}
+		},
+		"shadow": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
