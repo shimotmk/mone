@@ -14,6 +14,7 @@
 		}
 	},
 	"supports": {
+		"align": [ "wide", "full" ],
 		"spacing": {
 			"margin": true,
 			"__experimentalDefaultControls": {
@@ -24,16 +25,18 @@
 			"color": true,
 			"radius": true,
 			"width": true,
+			"style": true,
 			"__experimentalDefaultControls": {
 				"color": true,
 				"radius": true,
-				"width": true
+				"width": true,
+				"style": true
 			}
 		},
-		"shadow": true
+		"html": false
 	},
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"viewScriptModule": "file:./view.js",
+	"viewScript": "file:./view.js",
 	"style": "file:./style-index.css"
 }

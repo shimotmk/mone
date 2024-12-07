@@ -38,9 +38,7 @@ export const Global = () => {
 
 	return (
 		<>
-			<ToolsPanel
-				label={__( 'Site settings', 'mone' ) }
-			>
+			<ToolsPanel label={ __( 'Site settings', 'mone' ) }>
 				<ToolsPanelItem
 					hasValue={ () =>
 						optionObj.default_image_id !== null &&
