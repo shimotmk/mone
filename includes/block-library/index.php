@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-library/embed/class-mone-embed-url.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-library/embed/class-mone-embed-entry-point.php';
 new \Mone_Embed_Entry_Point();
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-library/github-embed/class-mone-github-embed.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-library/github-embed/class-mone-github-embed-entry-point.php';
+new \Mone_Github_Embed_Entry_Point();
 
 /**
  * Get blocks
