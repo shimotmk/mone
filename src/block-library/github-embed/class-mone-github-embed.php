@@ -71,13 +71,13 @@ class Mone_Github_Embed {
 	/**
 	 * Fetch GitHub file content
 	 *
-	 * @param string $api_url GitHub API URL
+	 * @param string $api_url GitHub API URL.
 	 * @return array
 	 */
 	public static function fetch_github_file_content( $api_url ) {
 		$options = get_option( 'mone_options' );
 		$token   = isset( $options['github_access_token'] ) ? $options['github_access_token'] : false;
-		if ( $token !== false ) {
+		if ( false !== $token ) {
 			$options = array(
 				'http' => array(
 					'header' => "User-Agent: PHP\r\n" .
@@ -99,7 +99,7 @@ class Mone_Github_Embed {
 	/**
 	 * Parse GitHub URL
 	 *
-	 * @param string $url GitHub URL
+	 * @param string $url GitHub URL.
 	 * @return object
 	 */
 	public static function parse_github_url( $url ) {
@@ -130,7 +130,7 @@ class Mone_Github_Embed {
 	/**
 	 * Get code from GitHub URL
 	 *
-	 * @param string $url GitHub URL
+	 * @param string $url GitHub URL.
 	 * @return array|string
 	 */
 	public static function get_github_code( $url ) {
