@@ -3,7 +3,7 @@
 	"name": "mone/github-embed",
 	"category": "mone-block-cat",
 	"title": "GitHub Code Embed",
-	"description": "GitHub Code Embed",
+	"description": "View the code via the Github code permalink.",
 	"textdomain": "mone",
 	"attributes": {
 		"url": {
