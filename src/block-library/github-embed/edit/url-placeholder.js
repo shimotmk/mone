@@ -4,7 +4,6 @@
 import { __, _x } from '@wordpress/i18n';
 import { Button, Placeholder } from '@wordpress/components';
 import { BlockIcon } from '@wordpress/block-editor';
-import { useCopyToClipboard } from '@wordpress/compose';
 
 const URLPlaceholder = ( {
 	icon,
@@ -57,7 +56,7 @@ const URLPlaceholder = ( {
 				} }
 			>
 				{ __( 'example :', 'mone' ) }
-				<a href={ exampleUrl } target="_blank">
+				<a href={ exampleUrl } target="_blank" rel="noreferrer">
 					{ exampleUrl }
 				</a>
 			</p>
