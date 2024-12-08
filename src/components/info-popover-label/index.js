@@ -12,7 +12,11 @@ export const InfoPopoverLabel = ( props ) => {
 	return (
 		<Flex justify="flex-start" gap="0">
 			<FlexItem>{ label }</FlexItem>
-			<FlexItem>
+			<FlexItem
+				style={ {
+					height: '20px',
+				} }
+			>
 				<InfoPopover { ...props } />
 			</FlexItem>
 		</Flex>

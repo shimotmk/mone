@@ -10,6 +10,7 @@ import {
 } from '@wordpress/components';
 
 export const Head = () => {
+	const onClick = () => {};
 	return (
 		<>
 			<VStack style={ { padding: '5px 16px' } }>
@@ -24,7 +25,11 @@ export const Head = () => {
 						</Button>
 					</FlexItem>
 					<FlexItem>
-						<Button variant="primary" size="compact">
+						<Button
+							variant="primary"
+							size="compact"
+							onClick={ onClick }
+						>
 							{ __( 'Save', 'mone' ) }
 						</Button>
 					</FlexItem>
