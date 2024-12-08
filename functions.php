@@ -29,7 +29,7 @@ require_once __DIR__ . '/includes/block-patterns.php';
 require_once __DIR__ . '/includes/json-ld.php';
 require_once __DIR__ . '/includes/set-up-theme/index.php';
 require_once __DIR__ . '/includes/update/index.php';
-require_once __DIR__ . '/build/components/icon-search-popover/index.php';
+require_once __DIR__ . '/build/components/index.php';
 require_once __DIR__ . '/build/edit-post/index.php';
 require_once __DIR__ . '/build/format-library/bold/index.php';
 require_once __DIR__ . '/build/format-library/code/index.php';

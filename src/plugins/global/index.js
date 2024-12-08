@@ -15,6 +15,7 @@ import { store as coreStore } from '@wordpress/core-data';
 import { STORE_NAME } from '../store/constants';
 import { DefaultImage } from './default-image';
 import { ShowNoImage } from './no-image';
+import { GithubToken } from './github-token';
 
 export const Global = () => {
 	const { canUserEdit, optionObj } = useSelect( ( select ) => {
@@ -80,6 +81,22 @@ export const Global = () => {
 					} }
 				>
 					<ShowNoImage />
+				</ToolsPanelItem>
+				<ToolsPanelItem
+					hasValue={ () =>
+						! optionObj.github_access_token ? false : true
+					}
+					label={ __( 'GitHub Token', 'mone' ) }
+					isShownByDefault={ true }
+					onDeselect={ () => {
+						const newOptionObj = {
+							...optionObj,
+							github_access_token: undefined,
+						};
+						setOptions( newOptionObj );
+					} }
+				>
+					<GithubToken />
 				</ToolsPanelItem>
 			</ToolsPanel>
 		</>

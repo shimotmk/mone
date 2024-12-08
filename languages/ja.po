@@ -829,6 +829,31 @@ msgstr "ブログカード"
 msgid "Top image"
 msgstr "トップ画像"
 
+#: build/block-library/github-embed/index.js:363
+#: build/block-library/github-embed/index.js:303
+msgid "Please set your Github token."
+msgstr "Githubトークンを設定してください。"
+
+#: build/block-library/github-embed/index.js:404
+#: build/block-library/github-embed/index.js:354
+msgid "If the data is old, please clear the cache. It is usually updated every day."
+msgstr "データが古い場合はキャッシュをクリアしてください。自動で毎日更新されます。"
+
+#: build/block-library/github-embed/index.js:461
+#: build/block-library/github-embed/index.js:435
+msgid "GitHub Code Embed"
+msgstr "GitHubコード埋め込み"
+
+#: build/block-library/github-embed/index.js:534
+#: build/block-library/github-embed/index.js:486
+msgid "Paste the permalink of the Github code you want to display on your site."
+msgstr "サイトに表示したいGithubコードのパーマリンクを貼り付けます。"
+
+#: build/block-library/github-embed/index.js:560
+#: build/block-library/github-embed/index.js:518
+msgid "example :"
+msgstr "例:"
+
 #: build/block-library/icon/index.js:258 build/block-library/icon/index.js:266
 #: build/block-library/icon/index.js:228 build/block-library/icon/index.js:239
 msgid "Size"
@@ -846,9 +871,11 @@ msgstr "ホバー背景色"
 msgid "Link to page"
 msgstr "ページヘリンク"
 
-#: build/block-library/embed/index.js:1
+#: build/block-library/embed/index.js:511
+#: build/block-library/github-embed/index.js:399
+#: build/block-library/github-embed/index.js:351
 msgid "Clear cache"
-msgstr "キャッシュを消去"
+msgstr "キャッシュクリア"
 
 #: build/block-library/embed/index.js:1
 msgid "If the data is old, please clear the cache. It is usually updated every hour."
@@ -930,6 +957,20 @@ msgstr "Green"
 #: build/block-library/styles-switcher-item/index.js:134
 msgid "White"
 msgstr "White"
+
+#: build/components/index.js:617
+#: build/plugins/index.js:163
+#: build/components/index.js:1410
+#: build/plugins/index.js:87
+msgid "More Information"
+msgstr "詳細情報"
+
+#: build/components/index.js:633
+#: build/plugins/index.js:179
+#: build/components/index.js:1427
+#: build/plugins/index.js:104
+msgid "Learn More"
+msgstr "さらに詳しく"
 
 #: build/block-library/styles-switcher-item/index.js:2
 #: build/post-featured-image/blocks/post-author-name/index.js:1
@@ -1029,6 +1070,29 @@ msgstr "デフォルト NO IMAGE"
 msgid "NO IMAGE"
 msgstr "NO IMAGE 画像"
 
+#: build/plugins/index.js:589
+#: build/plugins/index.js:719
+#: build/plugins/index.js:460
+#: build/plugins/index.js:591
+msgid "GitHub Token"
+msgstr "GitHubトークン"
+
+#: build/plugins/index.js:590
+#: build/plugins/index.js:461
+msgid "You can get a GitHub token from your GitHub account settings. This token is used to increase the number of requests to the GitHub API."
+msgstr "GitHubアカウント設定からGitHubトークンを取得できます。このトークンは、GitHubAPIへのリクエスト数を増やすために使用されます。"
+
+#: build/plugins/index.js:591
+#: build/plugins/index.js:465
+msgid "https://mone-wp.com/get-github-token/"
+msgstr "https://mone-wp.com/get-github-token/"
+
+#: build/plugins/index.js:689
+#: build/plugins/index.js:543
+#: build/plugins/index.js:1 build/plugins/index.js:310
+msgid "Site settings"
+msgstr "サイト設定"
+
 #: build/plugins/index.js:1 build/plugins/index.js:405
 msgid "Show NO IMAGE in query"
 msgstr "クエリーでNO IMAGEを表示"
@@ -1036,10 +1100,6 @@ msgstr "クエリーでNO IMAGEを表示"
 #: build/plugins/index.js:1 build/plugins/index.js:423
 msgid "Show NO IMAGE on the page"
 msgstr "ページでNO IMAGEを表示"
-
-#: build/plugins/index.js:1 build/plugins/index.js:310
-msgid "Site settings"
-msgstr "サイト設定"
 
 #: build/plugins/index.js:1 build/plugins/index.js:582
 #: build/post-featured-image/index.js:11837
@@ -1058,6 +1118,11 @@ msgstr "アイキャッチテンプレート"
 #: build/plugins/index.js:1 build/plugins/index.js:709
 msgid "Mone settings"
 msgstr "Mone 設定"
+
+#: build/plugins/index.js:1322
+#: build/plugins/index.js:968
+msgid "This setting is immediately saved to the database."
+msgstr "この設定はすぐにデータベースに保存されます。"
 
 #: build/post-featured-image/blocks/post-author-name/index.js:1
 #: build/post-featured-image/blocks/post-author-name/index.js:59
@@ -1255,6 +1320,16 @@ msgstr "埋め込み"
 msgctxt "block description"
 msgid "Add a block that fetches and displays content from a URL."
 msgstr "URL からコンテンツを取得して表示するブロックを追加します。"
+
+#: build/block-library/github-embed/block.json
+msgctxt "block title"
+msgid "GitHub Code Embed"
+msgstr "Githubコード埋め込み"
+
+#: build/block-library/github-embed/block.json
+msgctxt "block description"
+msgid "View the code via the Github code permalink."
+msgstr "Github のコードパーマリンクからコードを表示します。"
 
 #: build/block-library/icon/block.json
 msgctxt "block title"
