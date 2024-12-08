@@ -12,6 +12,7 @@ import { Icon } from '@wordpress/icons';
  */
 import { STORE_NAME } from '../../../plugins/store/constants';
 import { eye, eyeClosed } from '../../../icons';
+import { InfoPopoverLabel } from '../../../components/info-popover-label';
 
 export const GithubToken = () => {
 	const { optionObj, githubAccessToken } = useSelect( ( select ) => {
@@ -32,7 +33,24 @@ export const GithubToken = () => {
 						className="mone__sidebar_text_control"
 						__nextHasNoMarginBottom
 						type={ type }
-						label={ __( 'Github token', 'mone' ) }
+						label={
+							<>
+								<InfoPopoverLabel
+									label={ __(
+										'GitHub Access Token',
+										'mone'
+									) }
+									message={ __(
+										'You can get a GitHub token from your GitHub account settings. This token is used to increase the number of requests to the GitHub API.',
+										'mone'
+									) }
+									link={ __(
+										'https://mone-wp.com/get-github-token/',
+										'mone'
+									) }
+								/>
+							</>
+						}
 						value={ githubAccessToken }
 						onChange={ ( value ) => {
 							const newOptionObj = {
@@ -60,14 +78,6 @@ export const GithubToken = () => {
 					</Button>
 				</FlexItem>
 			</Flex>
-			{ githubAccessToken === '' && (
-				<p style={ { margin: '8px 0 0 0' } }>
-					{ __(
-						'If you do not set a GitHub token, you will be limited to 60 times per hour. We recommend that you set one.',
-						'mone'
-					) }
-				</p>
-			) }
 		</>
 	);
 };

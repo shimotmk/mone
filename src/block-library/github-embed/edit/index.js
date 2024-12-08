@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 /**
  * WordPress dependencies
  */
@@ -31,6 +33,7 @@ import fetchUrlData from '../api/fetch-url-data';
 import URLPlaceholder from './url-placeholder';
 import { githubIcon } from '../../../icons';
 import { GithubToken } from './github-token';
+import { InfoPopoverLabel } from '../../../components/info-popover-label';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, onFocus } = props;
@@ -49,7 +52,6 @@ export default function Edit( props ) {
 		defaultValues: { px: 100, em: 10, rem: 10, vw: 10, vh: 25 },
 	} );
 
-	const blockProps = useBlockProps();
 	const { richData, isFetching } = useRemoteUrlData(
 		attributesUrl,
 		isLoadingClearCache
@@ -75,6 +77,12 @@ export default function Edit( props ) {
 		return Array.from( { length }, ( _, i ) => start + i );
 	};
 
+	const blockProps = useBlockProps( {
+		className: clsx( {
+			'cannot-embed': codeSnippet === false,
+		} ),
+	} );
+
 	return (
 		<>
 			<BlockControls>
@@ -98,57 +106,63 @@ export default function Edit( props ) {
 						} );
 					} }
 				>
-					<ToolsPanelItem
-						label={ __( 'Height', 'mone' ) }
-						isShownByDefault
-						hasValue={ () =>
-							height !== undefined ? true : false
-						}
-						onDeselect={ () =>
-							setAttributes( {
-								height: undefined,
-							} )
-						}
-					>
-						<View
-							className="tools-panel-item-spacing"
-							style={ { marginBottom: '16px' } }
+					{ codeSnippet && (
+						<ToolsPanelItem
+							label={ __( 'Height', 'mone' ) }
+							isShownByDefault
+							hasValue={ () =>
+								height !== undefined ? true : false
+							}
+							onDeselect={ () =>
+								setAttributes( {
+									height: undefined,
+								} )
+							}
 						>
-							<UnitControl
-								onChange={ ( value ) => {
-									setAttributes( {
-										height: value ? value : undefined,
-									} );
-								} }
-								value={ height }
-								units={ units }
-								label={ __( 'Height', 'mone' ) }
-								size="__unstable-large"
-							/>
-						</View>
-						{ richData?.data.post_id === undefined && (
-							<>
-								<Button
-									onClick={ onClickClearCache }
-									variant="primary"
-									isBusy={ isLoadingClearCache }
-									disabled={
-										!!! attributesUrl ? true : false
-									}
-								>
-									{ __( 'Clear cache', 'mone' ) }
-								</Button>
-								<p style={ { margin: '8px 0 0 0' } }>
-									{ __(
-										'If the data is old, please clear the cache. It is usually updated every day.',
-										'mone'
-									) }
-								</p>
-							</>
-						) }
-						<GithubToken />
-					</ToolsPanelItem>
+							<View
+								className="tools-panel-item-spacing"
+								style={ { marginBottom: '16px' } }
+							>
+								<UnitControl
+									onChange={ ( value ) => {
+										setAttributes( {
+											height: value ? value : undefined,
+										} );
+									} }
+									value={ height }
+									units={ units }
+									label={ __( 'Height', 'mone' ) }
+									size="__unstable-large"
+								/>
+							</View>
+						</ToolsPanelItem>
+					) }
 				</ToolsPanel>
+				<div
+					style={ {
+						padding: '0 16px 16px',
+					} }
+				>
+					{ richData?.data.post_id === undefined && (
+						<>
+							<Button
+								onClick={ onClickClearCache }
+								variant="primary"
+								isBusy={ isLoadingClearCache }
+								disabled={ !!! attributesUrl ? true : false }
+							>
+								{ __( 'Clear cache', 'mone' ) }
+							</Button>
+							<p style={ { margin: '8px 0 0 0' } }>
+								{ __(
+									'If the data is old, please clear the cache. It is usually updated every day.',
+									'mone'
+								) }
+							</p>
+						</>
+					) }
+					<GithubToken />
+				</div>
 			</InspectorControls>
 			{ ( () => {
 				if ( isFetching || isLoadingClearCache ) {
@@ -193,26 +207,28 @@ export default function Edit( props ) {
 								</div>
 							</div>
 
-							<pre
-								className="embed-github-pre"
-								style={ {
-									height: height ? height : undefined,
-								} }
-							>
-								<div className="embed-github-line-numbers">
-									{ range(
-										richData?.data.start_line,
-										richData?.data.end_line
-									)?.map( ( lineNumber ) => (
-										<span key={ lineNumber }>
-											{ lineNumber }
-										</span>
-									) ) }
-								</div>
-								<code className="embed-github-code prism-code hljs">
-									{ codeSnippet }
-								</code>
-							</pre>
+							{ codeSnippet && (
+								<pre
+									className="embed-github-pre"
+									style={ {
+										height: height ? height : undefined,
+									} }
+								>
+									<div className="embed-github-line-numbers">
+										{ range(
+											richData?.data.start_line,
+											richData?.data.end_line
+										)?.map( ( lineNumber ) => (
+											<span key={ lineNumber }>
+												{ lineNumber }
+											</span>
+										) ) }
+									</div>
+									<code className="embed-github-code prism-code hljs">
+										{ codeSnippet }
+									</code>
+								</pre>
+							) }
 						</div>
 					);
 				}

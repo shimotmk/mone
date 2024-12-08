@@ -36,7 +36,7 @@ function github_embed_render_callback( $attributes, $content ) {
 		},
 		$line_numbers
 	);
-	$code_snippet      = isset( $code ) ? implode( "\n", array_map( 'htmlspecialchars', $code ) ) : false;
+	$code_snippet = isset( $code ) && is_array( $code ) ? implode( "\n", array_map( 'htmlspecialchars', $code ) ) : false;
 
 	$content = '
 <div class="embed-github-head-meta">
