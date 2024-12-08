@@ -208,7 +208,7 @@ export default function Edit( props ) {
 								<div className="embed-github-head-meta_body">
 									<p className="embed-github-head-meta_url">
 										<a
-											href="#embed-github-pseudo-link"
+											href={ attributesUrl }
 											target="_blank"
 											onClick={ ( event ) =>
 												event.preventDefault()
