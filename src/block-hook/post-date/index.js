@@ -45,6 +45,7 @@ export const blockEditPostDate = createHigherOrderComponent(
 								setAttributes( { monePrefix: value } )
 							}
 							placeholder={ __( 'Prefix' ) }
+							__nextHasNoMarginBottom
 						/>
 						<TextControl
 							label={ __( 'Suffix' ) }
@@ -53,6 +54,7 @@ export const blockEditPostDate = createHigherOrderComponent(
 								setAttributes( { moneSuffix: value } )
 							}
 							placeholder={ __( 'Suffix' ) }
+							__nextHasNoMarginBottom
 						/>
 					</PanelBody>
 				</InspectorControls>

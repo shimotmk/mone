@@ -26,6 +26,7 @@ export const PostIncludeControls = ( { attributes, setAttributes } ) => {
 					} }
 					placeholder={ __( 'Example: 1,4,7', 'mone' ) }
 					help={ __( '*Please enter with commas.', 'mone' ) }
+					__nextHasNoMarginBottom
 				/>
 			</BaseControl>
 		</>
