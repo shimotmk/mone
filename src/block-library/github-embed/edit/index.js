@@ -32,8 +32,6 @@ import useRemoteUrlData from '../api/use-rich-url-data';
 import fetchUrlData from '../api/fetch-url-data';
 import URLPlaceholder from './url-placeholder';
 import { githubIcon } from '../../../icons';
-import { GithubToken } from './github-token';
-import { InfoPopoverLabel } from '../../../components/info-popover-label';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, onFocus } = props;
@@ -161,7 +159,6 @@ export default function Edit( props ) {
 							</p>
 						</>
 					) }
-					<GithubToken />
 				</div>
 			</InspectorControls>
 			{ ( () => {

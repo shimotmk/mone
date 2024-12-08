@@ -9,6 +9,7 @@ import './store';
 import { MoneAnimationLogo } from '../icons';
 import { Global } from './global';
 import { User } from './user';
+import { Head } from './head';
 
 const sidebarRender = () => {
 	return (
@@ -20,6 +21,7 @@ const sidebarRender = () => {
 				title={ __( 'Mone settings', 'mone' ) }
 				icon={ MoneAnimationLogo }
 			>
+				<Head />
 				<Global />
 				<User />
 			</PluginSidebar>
