@@ -4,6 +4,7 @@
 import { __, _x } from '@wordpress/i18n';
 import { Button, Placeholder } from '@wordpress/components';
 import { BlockIcon } from '@wordpress/block-editor';
+import { useCopyToClipboard } from '@wordpress/compose';
 
 const URLPlaceholder = ( {
 	icon,
@@ -15,13 +16,17 @@ const URLPlaceholder = ( {
 	fallback,
 	tryAgain,
 } ) => {
+	const exampleUrl =
+		'https://github.com/WordPress/gutenberg/blob/df98e3731b300c01a93d0900a59ffb1c60a3a0f3/gutenberg.php#L1-L5';
+
 	return (
 		<Placeholder
 			icon={ <BlockIcon icon={ icon } showColors /> }
 			label={ label }
 			className="wp-block-embed"
 			instructions={ __(
-				'Paste a link to the content you want to display on your site.'
+				'Paste the permalink of the Github code you want to display on your site.',
+				'mone'
 			) }
 		>
 			<form
@@ -45,6 +50,17 @@ const URLPlaceholder = ( {
 					{ _x( 'Embed', 'button label' ) }
 				</Button>
 			</form>
+			<p
+				style={ {
+					wordBreak: 'break-all',
+					margin: '0',
+				} }
+			>
+				{ __( 'example :', 'mone' ) }
+				<a href={ exampleUrl } target="_blank">
+					{ exampleUrl }
+				</a>
+			</p>
 			{ cannotEmbed && (
 				<div className="components-placeholder__error">
 					<div className="components-placeholder__instructions">

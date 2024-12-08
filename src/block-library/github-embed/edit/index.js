@@ -19,7 +19,7 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { addCard, edit } from '@wordpress/icons';
+import { edit } from '@wordpress/icons';
 import { View } from '@wordpress/primitives';
 import { decodeEntities } from '@wordpress/html-entities';
 
@@ -32,7 +32,7 @@ import URLPlaceholder from './url-placeholder';
 import { githubIcon } from '../../../icons';
 
 export default function Edit( props ) {
-	const { attributes, setAttributes } = props;
+	const { attributes, setAttributes, onFocus } = props;
 	const { url: attributesUrl, height } = attributes;
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ url, setURL ] = useState( attributesUrl );
@@ -74,8 +74,6 @@ export default function Edit( props ) {
 		return Array.from( { length }, ( _, i ) => start + i );
 	};
 
-	console.log( 'richData', richData );
-
 	return (
 		<>
 			<BlockControls>
@@ -91,24 +89,6 @@ export default function Edit( props ) {
 				) }
 			</BlockControls>
 			<InspectorControls group="settings">
-				{ richData?.data.post_id === undefined && (
-					<>
-						<Button
-							onClick={ onClickClearCache }
-							variant="primary"
-							isBusy={ isLoadingClearCache }
-							disabled={ !!! attributesUrl ? true : false }
-						>
-							{ __( 'Clear cache', 'mone' ) }
-						</Button>
-						<p style={ { marginTop: '8px' } }>
-							{ __(
-								'If the data is old, please clear the cache. It is usually updated every day.',
-								'mone'
-							) }
-						</p>
-					</>
-				) }
 				<ToolsPanel
 					label={ __( 'Settings' ) }
 					resetAll={ () => {
@@ -129,7 +109,10 @@ export default function Edit( props ) {
 							} )
 						}
 					>
-						<View className="tools-panel-item-spacing">
+						<View
+							className="tools-panel-item-spacing"
+							style={ { marginBottom: '16px' } }
+						>
 							<UnitControl
 								onChange={ ( value ) => {
 									setAttributes( {
@@ -142,6 +125,26 @@ export default function Edit( props ) {
 								size="__unstable-large"
 							/>
 						</View>
+						{ richData?.data.post_id === undefined && (
+							<>
+								<Button
+									onClick={ onClickClearCache }
+									variant="primary"
+									isBusy={ isLoadingClearCache }
+									disabled={
+										!!! attributesUrl ? true : false
+									}
+								>
+									{ __( 'Clear cache', 'mone' ) }
+								</Button>
+								<p style={ { margin: '8px 0 0 0' } }>
+									{ __(
+										'If the data is old, please clear the cache. It is usually updated every day.',
+										'mone'
+									) }
+								</p>
+							</>
+						) }
 					</ToolsPanelItem>
 				</ToolsPanel>
 			</InspectorControls>
@@ -212,27 +215,28 @@ export default function Edit( props ) {
 					);
 				}
 				return (
-					<URLPlaceholder
-						icon={ addCard }
-						label={ 'label' }
-						// onFocus={ onFocus }
-						onSubmit={ ( event ) => {
-							if ( event ) {
-								event.preventDefault();
-							}
-							if ( !! url ) {
-								setIsEditingURL( false );
-								setAttributes( { url } );
-							}
-						} }
-						value={ url }
-						cannotEmbed={ cannotEmbed }
-						onChange={ ( event ) => {
-							setURL( event.target.value );
-						} }
-						// fallback={ () => fallback( url, onReplace ) }
-						tryAgain={ onClickClearCache }
-					/>
+					<div { ...blockProps }>
+						<URLPlaceholder
+							icon={ githubIcon }
+							label={ __( 'GitHub Code Embed', 'mone' ) }
+							onFocus={ onFocus }
+							onSubmit={ ( event ) => {
+								if ( event ) {
+									event.preventDefault();
+								}
+								if ( !! url ) {
+									setIsEditingURL( false );
+									setAttributes( { url } );
+								}
+							} }
+							value={ url }
+							cannotEmbed={ cannotEmbed }
+							onChange={ ( event ) => {
+								setURL( event.target.value );
+							} }
+							tryAgain={ onClickClearCache }
+						/>
+					</div>
 				);
 			} )() }
 		</>
