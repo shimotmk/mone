@@ -36,10 +36,7 @@ export const GithubToken = () => {
 						label={
 							<>
 								<InfoPopoverLabel
-									label={ __(
-										'GitHub Access Token',
-										'mone'
-									) }
+									label={ __( 'GitHub Token', 'mone' ) }
 									message={ __(
 										'You can get a GitHub token from your GitHub account settings. This token is used to increase the number of requests to the GitHub API.',
 										'mone'

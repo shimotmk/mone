@@ -43,7 +43,6 @@ class Mone_Github_Embed {
 			$data = $cached_response;
 		} else {
 			$data = static::get_embed_data_from_url( $url );
-			// あとでキャッシュを有効にする
 			static::set_cache( $cache_key, $data );
 		}
 
@@ -51,7 +50,7 @@ class Mone_Github_Embed {
 	}
 
 	/**
-	 * 外部サイトの場合のdata
+	 * Get data
 	 *
 	 * @param url $url URL.
 	 * @return array.
@@ -68,24 +67,6 @@ class Mone_Github_Embed {
 
 		return $embed_data;
 	}
-
-	/**
-	 * Fetch GitHub file content
-	 *
-	 * @param string $api_url GitHub API URL
-	 * @return array
-	 */
-	public static function fetch_github_file_content2( $api_url ) {
-		$options  = array(
-			'http' => array(
-				'header' => "User-Agent: PHP\r\n",
-			),
-		);
-		$context  = stream_context_create( $options );
-		$response = file_get_contents( $api_url, false, $context );
-		return json_decode( $response, true );
-	}
-
 
 	/**
 	 * Fetch GitHub file content

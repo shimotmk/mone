@@ -86,7 +86,7 @@ export const Global = () => {
 					hasValue={ () =>
 						! optionObj.github_access_token ? false : true
 					}
-					label={ __( 'パーソナルアクセストークン', 'mone' ) }
+					label={ __( 'GitHub Token', 'mone' ) }
 					isShownByDefault={ true }
 					onDeselect={ () => {
 						const newOptionObj = {
