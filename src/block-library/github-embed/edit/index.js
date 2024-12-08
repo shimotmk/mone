@@ -230,7 +230,7 @@ export default function Edit( props ) {
 								<pre
 									className="embed-github-pre"
 									style={ {
-										height: height ? height : undefined,
+										maxHeight: height ? height : undefined,
 									} }
 								>
 									<div className="embed-github-line-numbers">

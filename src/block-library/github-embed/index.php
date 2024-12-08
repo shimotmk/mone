@@ -59,7 +59,7 @@ function github_embed_render_callback( $attributes, $content ) {
 	if ( $code_snippet ) {
 		$style = '';
 		if ( $height ) {
-			$style = 'height: ' . $height;
+			$style = 'max-height: ' . $height;
 		}
 
 		$content .= '
