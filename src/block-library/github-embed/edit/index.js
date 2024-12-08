@@ -24,6 +24,7 @@ import { useState } from '@wordpress/element';
 import { edit } from '@wordpress/icons';
 import { View } from '@wordpress/primitives';
 import { decodeEntities } from '@wordpress/html-entities';
+import { dispatch, useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -32,6 +33,7 @@ import useRemoteUrlData from '../api/use-rich-url-data';
 import fetchUrlData from '../api/fetch-url-data';
 import URLPlaceholder from './url-placeholder';
 import { githubIcon } from '../../../icons';
+import { STORE_NAME } from '../../../plugins/store/constants';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, onFocus } = props;
@@ -39,6 +41,13 @@ export default function Edit( props ) {
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ url, setURL ] = useState( attributesUrl );
 	const [ isLoadingClearCache, setIsLoadingClearCache ] = useState( false );
+
+	const { githubAccessToken } = useSelect( ( select ) => {
+		const { getOptions } = select( STORE_NAME );
+		return {
+			githubAccessToken: getOptions().github_access_token || '',
+		};
+	}, [] );
 
 	const [ spacingUnits ] = useSettings( 'spacing.units' );
 	const availableUnits = spacingUnits
@@ -104,6 +113,19 @@ export default function Edit( props ) {
 						} );
 					} }
 				>
+					{ githubAccessToken === '' && (
+						<Button
+							onClick={ () => {
+								dispatch( 'core/edit-post' ).openGeneralSidebar(
+									'mone-sidebar-plugins/mone-sidebar-plugins'
+								);
+							} }
+							variant="link"
+							style={ { gridColumn: '1 / -1' } }
+						>
+							{ __( 'Please set your Github token.', 'mone' ) }
+						</Button>
+					) }
 					{ codeSnippet && (
 						<ToolsPanelItem
 							label={ __( 'Height', 'mone' ) }
