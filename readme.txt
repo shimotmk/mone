@@ -10,6 +10,23 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.2.0 = 2024-12-09
+
+- Added horizontal article scrolling function
+- Added Github code embed block
+- Other minor adjustments
+
+= 1.1.0 = 2024-12-01
+
+- Added the ability to add links to entire group blocks
+- Revised the display of default controls for block support.
+- Added icon block
+- Added box menu block variations
+
+= 1.0.0 = 2024-11-25
+
+- Initial Release🎉
+
 == Copyright ==
 
 ## Satori
