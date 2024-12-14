@@ -21,6 +21,7 @@ function mone_register_block_hook() {
 		'comments-pagination',
 		'core-embed',
 		'group',
+		'heading',
 		'list',
 		'navigation-link',
 		'post-content',
