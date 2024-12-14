@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mone 1.1.0\n"
+"Project-Id-Version: Mone 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-08T08:11:41+00:00\n"
+"POT-Creation-Date: 2024-12-14T06:12:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -46,6 +46,7 @@ msgid "User email saved successfully."
 msgstr ""
 
 #: build/block-hook/archives/index.php:22
+#: build/block-hook/archives copy/index.php:22
 msgid "Archives List Unstyled"
 msgstr ""
 
@@ -64,6 +65,10 @@ msgstr ""
 
 #: build/block-hook/code/index.php:73
 msgid "Copied"
+msgstr ""
+
+#: build/block-hook/heading/index.php:22
+msgid "Plane"
 msgstr ""
 
 #: build/block-hook/list/index.php:22
@@ -337,7 +342,7 @@ msgstr ""
 #: patterns/sidebar.php:56
 #: patterns/template-query-loop.php:39
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:176
+#: build/block-hook/query/index.js:177
 msgid "Please add text or a block to display when the query returns no results."
 msgstr ""
 
@@ -346,7 +351,7 @@ msgstr ""
 #: patterns/sidebar.php:57
 #: patterns/template-query-loop.php:40
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:174
+#: build/block-hook/query/index.js:175
 msgid "No results found"
 msgstr ""
 
@@ -391,8 +396,8 @@ msgstr ""
 
 #: patterns/sidebar.php:39
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:191
-#: build/block-hook/query/index.js:237
+#: build/block-hook/query/index.js:192
+#: build/block-hook/query/index.js:238
 msgid "Most Read Articles"
 msgstr ""
 
@@ -777,28 +782,28 @@ msgid "Include Posts"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:301
+#: build/block-hook/query/index.js:302
 msgid "Pick Up Articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:302
+#: build/block-hook/query/index.js:303
 msgid "Display the selected article."
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:192
+#: build/block-hook/query/index.js:193
 msgid "Shows the most read articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:245
-#: build/block-hook/query/index.js:281
+#: build/block-hook/query/index.js:246
+#: build/block-hook/query/index.js:282
 msgid "Related articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:246
+#: build/block-hook/query/index.js:247
 msgid "Displays random articles from the same category as the post."
 msgstr ""
 
@@ -883,12 +888,12 @@ msgid "If the data is old, please clear the cache. It is usually updated every h
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:486
+#: build/block-library/github-embed/index.js:485
 msgid "Paste the permalink of the Github code you want to display on your site."
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:518
+#: build/block-library/github-embed/index.js:517
 msgid "example :"
 msgstr ""
 
@@ -1285,6 +1290,7 @@ msgid "Embed Title"
 msgstr ""
 
 #: build/block-library/embed-title/block.json
+#: build/block-library/feed-for-youtube-video/block.json
 msgctxt "block description"
 msgid "Displays the title obtained from the URL."
 msgstr ""
@@ -1297,6 +1303,11 @@ msgstr ""
 #: build/block-library/embed/block.json
 msgctxt "block description"
 msgid "Add a block that fetches and displays content from a URL."
+msgstr ""
+
+#: build/block-library/feed-for-youtube-video/block.json
+msgctxt "block title"
+msgid "YouTube Feed Video"
 msgstr ""
 
 #: build/block-library/github-embed/block.json

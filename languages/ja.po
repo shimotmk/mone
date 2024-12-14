@@ -52,6 +52,10 @@ msgstr "コードをコピーしました!"
 msgid "Copied"
 msgstr "コピーしました"
 
+#: build/block-hook/heading/index.php:22
+msgid "Plane"
+msgstr "プレーン"
+
 #: build/block-hook/image/index.php:15 build/block-hook/image copy/index.php:15
 msgid "Mone Option Overrides"
 msgstr "Mone オプションのオーバーライド"
