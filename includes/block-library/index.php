@@ -37,6 +37,7 @@ function get_blocks() {
 		'mega-menu',
 		'styles-switcher',
 		'styles-switcher-item',
+		'table-of-contents',
 		'user-icon',
 	);
 }

@@ -1,0 +1,52 @@
+.wp-block-mone-table-of-contents {
+
+	.contents-outline {
+		ol {
+			padding: 0;
+    		list-style: none;
+			position: relative;
+		}
+
+		.ol-depth-1 {
+			padding-left: 21px;
+		}
+
+		.ol-depth-1:before {
+			position: absolute;
+			top: 17px;
+			bottom: 8px;
+			left: 5px;
+			width: 2px;
+			content: "";
+			background: #465460;
+			border-radius: 0 0 5px 5px;
+		}
+
+		.ol-depth-1>li {
+			position: relative;
+			margin-top: 5px;
+			font-weight: 700;
+		}
+
+		.ol-depth-1>li.active:before,
+		.ol-depth-2>li.active:before,
+		.ol-depth-3>li.active:before,
+		.ol-depth-4>li.active:before,
+		.ol-depth-5>li.active:before {
+			background: #082d4b;
+			border-color: #082d4b;
+		}
+
+		li:before {
+			top: 6px;
+			left: -19px;
+			width: 8px;
+			height: 8px;
+			background: #d9eafb;
+			border: 2px solid #fff;
+			position: absolute;
+			content: "";
+			border-radius: 99rem;
+		}
+	}
+}

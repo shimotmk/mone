@@ -1,0 +1,47 @@
+{
+	"apiVersion": 3,
+	"name": "mone/table-of-contents",
+	"category": "mone-block-cat",
+	"title": "Table of contents",
+	"description": "Table of contents",
+	"textdomain": "mone",
+	"attributes": {
+		"title": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"gradients": true,
+			"link": false,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		},
+		"interactivity": true,
+		"html": false
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./style.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js",
+	"style": "file:./style-index.css"
+}
