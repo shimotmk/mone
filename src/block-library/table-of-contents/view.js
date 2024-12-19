@@ -1,21 +1,15 @@
 document.addEventListener( 'DOMContentLoaded', () => {
 	const entryContent = document.querySelector( '.entry-content' );
-	if ( ! entryContent ) {
-		console.log( 'entry-content not found' );
-		return;
-	}
+	if ( ! entryContent ) return console.log( 'entry-content not found' );
 
-	const tocContainers = document.querySelectorAll( '.contents-outline' );
-	if ( tocContainers.length === 0 ) {
-		console.log( 'contents-outline not found' );
-		return;
-	}
+	const tocContainers = document.querySelectorAll(
+		'.wp-block-mone-table-of-contents'
+	);
+	if ( tocContainers.length === 0 )
+		return console.log( 'wp-block-mone-table-of-contents not found' );
 
 	const headings = entryContent.querySelectorAll( 'h2, h3, h4, h5, h6' );
-	if ( headings.length === 0 ) {
-		console.log( 'No headings found' );
-		return;
-	}
+	if ( headings.length === 0 ) return console.log( 'No headings found' );
 
 	const idMap = new Map();
 
@@ -23,17 +17,11 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		let id =
 			heading.id ||
 			heading.textContent.trim().toLowerCase().replace( /\s+/g, '-' );
-
 		if ( ! heading.id ) {
-			if ( idMap.has( id ) ) {
-				let count = idMap.get( id );
-				count++;
-				idMap.set( id, count );
-				id = `${ id }-${ count }`;
-			} else {
-				idMap.set( id, 1 );
+			idMap.set( id, ( idMap.get( id ) || 0 ) + 1 );
+			if ( idMap.get( id ) > 1 ) {
+				id += `-${ idMap.get( id ) }`;
 			}
-
 			heading.id = id;
 		}
 	} );
@@ -41,38 +29,41 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	tocContainers.forEach( ( tocContainer ) => {
 		const tocList = document.createElement( 'ol' );
 		tocList.classList.add( 'ol-depth-1' );
-		let currentLevel = 2;
+		let currentLevel = parseInt( headings[ 0 ].tagName.substring( 1 ) ); // 最初の見出しのレベルに設定
 		let currentList = tocList;
-		let listStack = [ tocList ];
+		const listStack = [ tocList ];
 
 		headings.forEach( ( heading ) => {
 			const level = parseInt( heading.tagName.substring( 1 ) );
 			const listItem = document.createElement( 'li' );
 			const link = document.createElement( 'a' );
-			const id = heading.id;
-
-			link.href = `#${ id }`;
+			link.href = `#${ heading.id }`;
 			link.textContent = heading.textContent;
-
 			listItem.appendChild( link );
 
 			if ( level > currentLevel ) {
 				const newList = document.createElement( 'ol' );
-				newList.classList.add( `ol-depth-${ level - 1 }` );
-				listStack[ listStack.length - 1 ].lastElementChild.appendChild(
-					newList
-				);
+				newList.classList.add( `ol-depth-${ level }` ); // 修正: level - 1 から level に変更
+				if ( listStack[ listStack.length - 1 ].lastElementChild ) {
+					listStack[
+						listStack.length - 1
+					].lastElementChild.appendChild( newList );
+				} else {
+					listStack[ listStack.length - 1 ].appendChild( newList );
+				}
 				listStack.push( newList );
 				currentList = newList;
-			} else if ( level < currentLevel ) {
-				while ( level < currentLevel ) {
+			} else {
+				while ( level < currentLevel && listStack.length > 1 ) {
 					listStack.pop();
 					currentList = listStack[ listStack.length - 1 ];
 					currentLevel--;
 				}
 			}
 
-			currentList.appendChild( listItem );
+			if ( currentList ) {
+				currentList.appendChild( listItem );
+			}
 			currentLevel = level;
 		} );
 
@@ -80,9 +71,16 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		console.log( 'Table of contents generated' );
 	} );
 
-	// スクロールイベントをリッスンして、現在の見出しに対応する目次項目にactiveクラスを追加
 	window.addEventListener( 'scroll', () => {
 		let currentHeading = null;
+		const offset =
+			parseFloat(
+				getComputedStyle( document.documentElement ).getPropertyValue(
+					'--wp--style--block-gap'
+				)
+			) *
+				16 +
+			1.2 * 16;
 
 		headings.forEach( ( heading, index ) => {
 			const nextHeading = headings[ index + 1 ];
@@ -90,10 +88,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			const nextRect = nextHeading
 				? nextHeading.getBoundingClientRect()
 				: { top: Infinity };
-
-			if ( rect.top <= 0 && nextRect.top > 0 ) {
+			if ( rect.top <= offset && nextRect.top > offset )
 				currentHeading = heading;
-			}
 		} );
 
 		tocContainers.forEach( ( tocContainer ) => {
@@ -102,19 +98,28 @@ document.addEventListener( 'DOMContentLoaded', () => {
 			links.forEach( ( link ) => {
 				const listItem = link.parentElement;
 				listItem.classList.remove( 'active' );
+				if ( listItem.classList.length === 0 ) {
+					listItem.removeAttribute( 'class' );
+				}
 				if (
 					currentHeading &&
 					link.getAttribute( 'href' ) === `#${ currentHeading.id }`
 				) {
 					listItem.classList.add( 'active' );
 					activeFound = true;
+					if (
+						tocContainer.classList.contains( 'sidebar' ) &&
+						window.innerWidth >= 781
+					) {
+						listItem.scrollIntoView( {
+							behavior: 'smooth',
+							block: 'nearest',
+						} );
+					}
 				}
 			} );
-
-			// activeクラスが存在しない場合は最初の要素にactiveクラスを追加
-			if ( ! activeFound && links.length > 0 ) {
+			if ( ! activeFound && links.length > 0 )
 				links[ 0 ].parentElement.classList.add( 'active' );
-			}
 		} );
 	} );
 } );

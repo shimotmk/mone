@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Embed render callback
+ * table of contents render callback
  *
  * @param array  $attributes Block attributes.
  * @param string $content Inner content.
@@ -20,13 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function table_of_contents_render_callback( $attributes, $content ) {
 
-	$content = '目次';
-	
 	$wrapper_attributes = get_block_wrapper_attributes();
 	return sprintf(
-		'<div %1$s>
-			<div class="contents-outline"></div>
-		</div>',
+		'<div %1$s></div>',
 		$wrapper_attributes
 	);
 }
@@ -37,7 +33,7 @@ function table_of_contents_render_callback( $attributes, $content ) {
  *
  * @return void
  */
-function register_block_mega_menu() {
+function register_block_table_of_contents() {
 	register_block_type(
 		__DIR__,
 		array(
@@ -45,4 +41,4 @@ function register_block_mega_menu() {
 		)
 	);
 }
-add_action( 'init', __NAMESPACE__ . '\register_block_mega_menu' );
+add_action( 'init', __NAMESPACE__ . '\register_block_table_of_contents' );

@@ -36,6 +36,19 @@
 				"fontSize": true
 			}
 		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"style": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"style": true
+			}
+		},
+		"shadow": true,
 		"interactivity": true,
 		"html": false
 	},

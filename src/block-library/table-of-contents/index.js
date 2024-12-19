@@ -6,7 +6,7 @@ import { registerBlockType } from '@wordpress/blocks';
 /**
  * block type
  */
-import { toggle as icon } from '../../icons';
+import { blockCategoryIcon as icon } from '../../icons';
 import metadata from './block.json';
 import edit from './edit';
 import './style.scss';
