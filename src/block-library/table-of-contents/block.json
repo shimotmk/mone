@@ -8,6 +8,9 @@
 	"attributes": {
 		"title": {
 			"type": "string"
+		},
+		"maxHeight": {
+			"type": "string"
 		}
 	},
 	"supports": {

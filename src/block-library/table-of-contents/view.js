@@ -109,17 +109,19 @@ document.addEventListener( 'DOMContentLoaded', () => {
 					activeFound = true;
 					if (
 						tocContainer.classList.contains( 'sidebar' ) &&
+						tocContainer.classList.contains( 'has-max-height' ) &&
 						window.innerWidth >= 781
 					) {
-						listItem.scrollIntoView( {
-							behavior: 'smooth',
-							block: 'nearest',
-						} );
+						// listItem.scrollIntoView( {
+						// 	behavior: 'smooth',
+						// 	block: 'nearest',
+						// } );
 					}
 				}
 			} );
-			if ( ! activeFound && links.length > 0 )
+			if ( ! activeFound && links.length > 0 ) {
 				links[ 0 ].parentElement.classList.add( 'active' );
+			}
 		} );
 	} );
 } );

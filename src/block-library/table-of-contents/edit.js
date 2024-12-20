@@ -4,11 +4,19 @@ import clsx from 'clsx';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+import {
+	InspectorControls,
+	useBlockProps,
+	HeightControl,
+} from '@wordpress/block-editor';
 
 export default function TableOfContentEdit( props ) {
-	const { attributes, setAttributes } = props;
-	const { label } = attributes;
+	const { attributes, setAttributes, clientId } = props;
+	const { maxHeight } = attributes;
 
 	const blockProps = useBlockProps( {
 		className: clsx( 'mone-mega-menu' ),
@@ -16,7 +24,25 @@ export default function TableOfContentEdit( props ) {
 
 	return (
 		<>
-			<InspectorControls></InspectorControls>
+			<InspectorControls group="dimensions">
+				<ToolsPanelItem
+					hasValue={ () => maxHeight !== undefined }
+					label={ __( 'Max height', 'mone' ) }
+					onDeselect={ () =>
+						setAttributes( { maxHeight: undefined } )
+					}
+					isShownByDefault={ true }
+					panelId={ clientId }
+				>
+					<HeightControl
+						label={ __( 'Max height', 'mone' ) }
+						value={ maxHeight }
+						onChange={ ( value ) =>
+							setAttributes( { maxHeight: value } )
+						}
+					/>
+				</ToolsPanelItem>
+			</InspectorControls>
 			<div { ...blockProps }>
 				<ol className="ol-depth-1">
 					<li className="active">

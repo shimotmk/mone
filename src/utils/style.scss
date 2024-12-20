@@ -2,3 +2,7 @@
 .wp-block-post-content *[style*="font-weight"] a {
 	font-weight: inherit;
 }
+
+:where(body) {
+    word-break: break-word;
+}
