@@ -1,0 +1,91 @@
+.wp-block-mone-table-of-contents {
+	overflow-y: auto;
+	max-height: var(--the-max-height);
+
+	ol {
+		padding: 0;
+		list-style: none;
+		position: relative;
+		a {
+			color: var(--wp--preset--color--content-contrast-2);
+			text-decoration: none;
+			margin: 8px 0;
+			display: block;
+			line-height: 1.5;
+		}
+	}
+
+	.ol-depth-1 {
+		padding-left: 21px;
+		margin: 0;
+
+		>li a{
+			font-weight: 500;
+			font-size: var(--wp--preset--font-size--medium);
+		}
+
+		ol li a {
+			font-weight: 400;
+			font-size: var(--wp--preset--font-size--small);
+		}
+	}
+
+	.ol-depth-1:before {
+		position: absolute;
+		top: 17px;
+		bottom: 8px;
+		left: 7px;
+		width: 2px;
+		content: "";
+		background: var(--wp--preset--color--heading-bg);
+	}
+
+	.ol-depth-1>li {
+		position: relative;
+	}
+
+	.ol-depth-1>li.active:before,
+	.ol-depth-2>li.active:before,
+	.ol-depth-3>li.active:before,
+	.ol-depth-4>li.active:before,
+	.ol-depth-5>li.active:before,
+	.ol-depth-6>li.active:before {
+		background: var(--wp--preset--color--key-2);
+		transition: background-color 0.3s ease-in-out;
+	}
+
+	.active {
+		> a {
+			color: var(--wp--preset--color--content-contrast);
+			transition: color 0.3s ease-in-out;
+		}
+	}
+
+	li {
+		position: relative;
+	}
+
+	li:before {
+		top: 6px;
+		background: #d9eafb;
+		position: absolute;
+		content: "";
+		border-radius: 100%;
+	}
+
+	.ol-depth-1>li:before {
+		width: 12px;
+		height: 12px;
+		left: -19px;
+	}
+
+	.ol-depth-2>li:before,
+	.ol-depth-3>li:before,
+	.ol-depth-4>li:before,
+	.ol-depth-5>li:before,
+	.ol-depth-6>li:before {
+		left: -17px;
+		width: 8px;
+		height: 8px;
+	}
+}
