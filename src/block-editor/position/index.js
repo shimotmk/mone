@@ -138,135 +138,148 @@ function addInspectorControls( BlockEdit ) {
 								] }
 							/>
 						</ToolsPanelItem>
-						{ style?.position?.type !== '' && (
-							<>
-								<div
-									className="block-editor-block-inspector__position-wrapper"
-									style={ {
-										gridColumn: '1 / -1',
-										display: 'flex',
-										flexDirection: 'column',
-										gap: '2px',
-									} }
-								>
-									<legend className="blocks-base-control__label">
-										{ __( 'Position', 'mone' ) }
-									</legend>
-									<ToolsPanelItem
-										label={ __( 'Top', 'mone' ) }
-										isShownByDefault
-										hasValue={ () =>
-											!! style?.position?.top
-										}
-										onDeselect={ () =>
-											onChangeType( { top: undefined } )
-										}
+						{ style?.position?.type !== '' &&
+							style?.position?.type !== undefined && (
+								<>
+									<div
+										className="block-editor-block-inspector__position-wrapper"
+										style={ {
+											gridColumn: '1 / -1',
+											display: 'flex',
+											flexDirection: 'column',
+											gap: '2px',
+										} }
 									>
-										<HStack className="spacing-sizes-control__wrapper">
-											<Icon
-												className="spacing-sizes-control__icon"
-												icon={ sidesTop }
-												size={ 24 }
-											/>
-											<HeightControl
-												label={ '' }
-												value={ style?.position?.top }
-												onChange={ ( value ) => {
-													onChangeType( {
-														top: value,
-													} );
-												} }
-											/>
-										</HStack>
-									</ToolsPanelItem>
-									<ToolsPanelItem
-										label={ __( 'Right', 'mone' ) }
-										isShownByDefault
-										hasValue={ () =>
-											!! style?.position?.right
-										}
-										onDeselect={ () =>
-											onChangeType( { right: undefined } )
-										}
-									>
-										<HStack className="spacing-sizes-control__wrapper">
-											<Icon
-												className="spacing-sizes-control__icon"
-												icon={ sidesRight }
-												size={ 24 }
-											/>
-											<HeightControl
-												label={ '' }
-												value={ style?.position?.right }
-												onChange={ ( value ) => {
-													onChangeType( {
-														right: value,
-													} );
-												} }
-											/>
-										</HStack>
-									</ToolsPanelItem>
-									<ToolsPanelItem
-										label={ __( 'Bottom', 'mone' ) }
-										isShownByDefault
-										hasValue={ () =>
-											!! style?.position?.bottom
-										}
-										onDeselect={ () =>
-											onChangeType( {
-												bottom: undefined,
-											} )
-										}
-									>
-										<HStack className="spacing-sizes-control__wrapper">
-											<Icon
-												className="spacing-sizes-control__icon"
-												icon={ sidesBottom }
-												size={ 24 }
-											/>
-											<HeightControl
-												label={ '' }
-												value={
-													style?.position?.bottom
-												}
-												onChange={ ( value ) => {
-													onChangeType( {
-														bottom: value,
-													} );
-												} }
-											/>
-										</HStack>
-									</ToolsPanelItem>
-									<ToolsPanelItem
-										label={ __( 'Left', 'mone' ) }
-										isShownByDefault
-										hasValue={ () =>
-											!! style?.position?.left
-										}
-										onDeselect={ () =>
-											onChangeType( { left: undefined } )
-										}
-									>
-										<HStack className="spacing-sizes-control__wrapper">
-											<Icon
-												className="spacing-sizes-control__icon"
-												icon={ sidesLeft }
-												size={ 24 }
-											/>
-											<HeightControl
-												label={ '' }
-												value={ style?.position?.left }
-												onChange={ ( value ) => {
-													onChangeType( {
-														left: value,
-													} );
-												} }
-											/>
-										</HStack>
-									</ToolsPanelItem>
-								</div>
-							</>
-						) }
+										<legend className="blocks-base-control__label">
+											{ __( 'Position', 'mone' ) }
+										</legend>
+										<ToolsPanelItem
+											label={ __( 'Top', 'mone' ) }
+											isShownByDefault
+											hasValue={ () =>
+												!! style?.position?.top
+											}
+											onDeselect={ () =>
+												onChangeType( {
+													top: undefined,
+												} )
+											}
+										>
+											<HStack className="spacing-sizes-control__wrapper">
+												<Icon
+													className="spacing-sizes-control__icon"
+													icon={ sidesTop }
+													size={ 24 }
+												/>
+												<HeightControl
+													label={ '' }
+													value={
+														style?.position?.top
+													}
+													onChange={ ( value ) => {
+														onChangeType( {
+															top: value,
+														} );
+													} }
+												/>
+											</HStack>
+										</ToolsPanelItem>
+										<ToolsPanelItem
+											label={ __( 'Right', 'mone' ) }
+											isShownByDefault
+											hasValue={ () =>
+												!! style?.position?.right
+											}
+											onDeselect={ () =>
+												onChangeType( {
+													right: undefined,
+												} )
+											}
+										>
+											<HStack className="spacing-sizes-control__wrapper">
+												<Icon
+													className="spacing-sizes-control__icon"
+													icon={ sidesRight }
+													size={ 24 }
+												/>
+												<HeightControl
+													label={ '' }
+													value={
+														style?.position?.right
+													}
+													onChange={ ( value ) => {
+														onChangeType( {
+															right: value,
+														} );
+													} }
+												/>
+											</HStack>
+										</ToolsPanelItem>
+										<ToolsPanelItem
+											label={ __( 'Bottom', 'mone' ) }
+											isShownByDefault
+											hasValue={ () =>
+												!! style?.position?.bottom
+											}
+											onDeselect={ () =>
+												onChangeType( {
+													bottom: undefined,
+												} )
+											}
+										>
+											<HStack className="spacing-sizes-control__wrapper">
+												<Icon
+													className="spacing-sizes-control__icon"
+													icon={ sidesBottom }
+													size={ 24 }
+												/>
+												<HeightControl
+													label={ '' }
+													value={
+														style?.position?.bottom
+													}
+													onChange={ ( value ) => {
+														onChangeType( {
+															bottom: value,
+														} );
+													} }
+												/>
+											</HStack>
+										</ToolsPanelItem>
+										<ToolsPanelItem
+											label={ __( 'Left', 'mone' ) }
+											isShownByDefault
+											hasValue={ () =>
+												!! style?.position?.left
+											}
+											onDeselect={ () =>
+												onChangeType( {
+													left: undefined,
+												} )
+											}
+										>
+											<HStack className="spacing-sizes-control__wrapper">
+												<Icon
+													className="spacing-sizes-control__icon"
+													icon={ sidesLeft }
+													size={ 24 }
+												/>
+												<HeightControl
+													label={ '' }
+													value={
+														style?.position?.left
+													}
+													onChange={ ( value ) => {
+														onChangeType( {
+															left: value,
+														} );
+													} }
+												/>
+											</HStack>
+										</ToolsPanelItem>
+									</div>
+								</>
+							) }
 						<style>
 							{ `
 								.block-editor-block-inspector__position-wrapper .components-base-control__label {
