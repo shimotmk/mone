@@ -58,6 +58,6 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./style.css",
 	"render": "file:./render.php",
-	"viewScriptModule": "file:./view.js",
+	"viewScriptModule": "file:./view/index.js",
 	"style": "file:./style-index.css"
 }

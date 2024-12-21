@@ -1,8 +1,5 @@
 import clsx from 'clsx';
 
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n';
 import { __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components';
 import {
@@ -13,10 +10,23 @@ import {
 
 export default function TableOfContentEdit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { maxHeight } = attributes;
+	const { maxHeight} = attributes;
+
+	const paddingTop = attributes.style?.spacing?.padding?.top || '0';
+	const paddingBottom = attributes.style?.spacing?.padding?.bottom || '0';
+
+	let maxHeightVar = '';
+	if ( maxHeight ) {
+		maxHeightVar += `calc(${ maxHeight } - ${ paddingTop } - ${ paddingBottom })`;
+	}
 
 	const blockProps = useBlockProps( {
-		className: clsx( 'mone-mega-menu' ),
+		className: clsx( {
+			[ `has-max-height` ]: maxHeight,
+		} ),
+		style: {
+			'--the-max-height': maxHeightVar,
+		},
 	} );
 
 	return (
@@ -44,40 +54,60 @@ export default function TableOfContentEdit( props ) {
 				<ol className="ol-depth-1">
 					<li className="active">
 						<a href="#pseudo-link">
-							目次エディター プレビュー H2見出し
+							{ __(
+								'目次エディター プレビュー H2見出し',
+								'text-domain'
+							) }
 						</a>
 						<ol className="ol-depth-2">
 							<li>
 								<a href="#pseudo-link">
-									目次エディター プレビュー H3見出し
+									{ __(
+										'目次エディター プレビュー H3見出し',
+										'text-domain'
+									) }
 								</a>
 							</li>
 							<li>
 								<a href="#pseudo-link">
-									目次エディター プレビュー H3見出し
+									{ __(
+										'目次エディター プレビュー H3見出し',
+										'text-domain'
+									) }
 								</a>
 							</li>
 						</ol>
 					</li>
 					<li>
 						<a href="#pseudo-link">
-							目次エディター プレビュー H2見出し
+							{ __(
+								'目次エディター プレビュー H2見出し',
+								'text-domain'
+							) }
 						</a>
 						<ol className="ol-depth-2">
 							<li>
 								<a href="#pseudo-link">
-									目次エディター プレビュー H3見出し
+									{ __(
+										'目次エディター プレビュー H3見出し',
+										'text-domain'
+									) }
 								</a>
 								<ol className="ol-depth-3">
 									<li>
 										<a href="#pseudo-link">
-											目次エディター プレビュー H4見出し
+											{ __(
+												'目次エディター プレビュー H4見出し',
+												'text-domain'
+											) }
 										</a>
 										<ol className="ol-depth-4">
 											<li>
 												<a href="#pseudo-link">
-													目次エディター プレビュー
-													H5見出し
+													{ __(
+														'目次エディター プレビュー H5見出し',
+														'text-domain'
+													) }
 												</a>
 											</li>
 										</ol>
@@ -88,12 +118,18 @@ export default function TableOfContentEdit( props ) {
 					</li>
 					<li>
 						<a href="#pseudo-link">
-							目次エディター プレビュー H2見出し
+							{ __(
+								'目次エディター プレビュー H2見出し',
+								'text-domain'
+							) }
 						</a>
 						<ol className="ol-depth-2">
 							<li>
 								<a href="#pseudo-link">
-									目次エディター プレビュー H3見出し
+									{ __(
+										'目次エディター プレビュー H3見出し',
+										'text-domain'
+									) }
 								</a>
 							</li>
 						</ol>
