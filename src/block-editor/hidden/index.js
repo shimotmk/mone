@@ -39,22 +39,23 @@ export const BlockEditHidden = createHigherOrderComponent(
 				<InspectorControls>
 					<ToolsPanel
 						label={ __( 'Hide settings', 'mone' ) }
-						resetAll={ () => {
-							deleteClass(
-								[ 'mone-pc-none', 'mone-sp-none' ],
-								className,
-								setAttributes
-							);
-						} }
+						resetAll={ () => {} }
 						dropdownMenuProps={ dropdownMenuProps }
 					>
 						<ToolsPanelItem
 							label={ __( 'Hide on PC', 'mone' ) }
 							isShownByDefault={ false }
 							hasValue={ () =>
-								!! existsClass( className, 'mone-pc-none' )
+								existsClass( className, 'mone-pc-none' )
 							}
 							onDeselect={ () => {
+								deleteClass(
+									'mone-pc-none',
+									className,
+									setAttributes
+								);
+							} }
+							resetAllFilter={ () => {
 								deleteClass(
 									'mone-pc-none',
 									className,
@@ -82,9 +83,16 @@ export const BlockEditHidden = createHigherOrderComponent(
 							label={ __( 'Hide on mobile', 'mone' ) }
 							isShownByDefault={ false }
 							hasValue={ () =>
-								!! existsClass( className, 'mone-sp-none' )
+								existsClass( className, 'mone-sp-none' )
 							}
 							onDeselect={ () => {
+								deleteClass(
+									'mone-sp-none',
+									className,
+									setAttributes
+								);
+							} }
+							resetAllFilter={ () => {
 								deleteClass(
 									'mone-sp-none',
 									className,
