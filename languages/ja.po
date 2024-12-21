@@ -528,6 +528,53 @@ msgstr "PC 非表示"
 msgid "Hide on mobile"
 msgstr "モバイル 非表示"
 
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:479
+#: build/block-editor/index.js:560
+msgid "Position"
+msgstr "位置"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:499
+#: build/block-editor/index.js:518
+msgid "Type"
+msgstr "タイプ"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:534
+msgid "Default"
+msgstr "デフォルト"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:538
+msgid "Sticky"
+msgstr "張り付き"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:542
+msgid "Fixed"
+msgstr "固定"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:563
+msgid "Top"
+msgstr "上"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:590
+msgid "Right"
+msgstr "右"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:617
+msgid "Bottom"
+msgstr "下"
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:648
+msgid "Left"
+msgstr "左"
+
 #: build/block-editor/index.js:1 build/block-editor/index.js:385
 msgid "Unlock content only"
 msgstr "コンテンツ ロック 解除"
@@ -1012,6 +1059,13 @@ msgstr "白"
 #: build/block-library/styles-switcher/index.js:87
 msgid "isToggle"
 msgstr "トグル"
+
+#: build/block-library/table-of-contents/index.js:50
+#: build/block-library/table-of-contents/index.js:57
+#: build/block-library/table-of-contents/index.js:27
+#: build/block-library/table-of-contents/index.js:35
+msgid "Max height"
+msgstr "最大の高さ"
 
 #: build/edit-post/index.js:1 build/edit-post/index.js:79
 msgid "Mone post settings"
