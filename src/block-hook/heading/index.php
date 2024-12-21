@@ -21,19 +21,19 @@ function init() {
 			'name'       => 'mone-heading-plane',
 			'label'      => __( 'Plane', 'mone' ),
 			'style_data' => array(
-				"border"=> array(
-					"style"=> "solid",
-					"width"=> "0px"
+				'border'  => array(
+					'style' => 'solid',
+					'width' => '0px',
 				),
-				"spacing"=> array(
-					"padding"=> array(
-						"bottom"=> "var(--wp--preset--spacing--10)",
-						"left"=> "0",
-						"right"=> "0",
-						"top"=> "var(--wp--preset--spacing--10)"
-					)
+				'spacing' => array(
+					'padding' => array(
+						'bottom' => 'var(--wp--preset--spacing--10)',
+						'left'   => '0',
+						'right'  => '0',
+						'top'    => 'var(--wp--preset--spacing--10)',
+					),
 				),
-				'css' => 'background: inherit;',
+				'css'     => 'background: inherit;',
 			),
 		)
 	);
