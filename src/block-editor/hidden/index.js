@@ -1,6 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+	ToggleControl,
+} from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
@@ -8,7 +12,9 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import {
 	setClassName,
 	existsClass,
+	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export const BlockEditHidden = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -25,40 +31,84 @@ export const BlockEditHidden = createHigherOrderComponent(
 		if ( ! hasSupportCustomClassName ) {
 			return <BlockEdit { ...props } />;
 		}
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		return (
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Hide settings', 'mone' ) }
-						initialOpen={ false }
+					<ToolsPanel
+						label={ __( 'Hide settings', 'mone' ) }
+						resetAll={ () => {
+							deleteClass(
+								[ 'mone-pc-none', 'mone-sp-none' ],
+								className,
+								setAttributes
+							);
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<ToggleControl
+						<ToolsPanelItem
 							label={ __( 'Hide on PC', 'mone' ) }
-							checked={ existsClass( className, 'mone-pc-none' ) }
-							onChange={ () =>
-								setClassName(
+							isShownByDefault={ false }
+							hasValue={ () =>
+								!! existsClass( className, 'mone-pc-none' )
+							}
+							onDeselect={ () => {
+								deleteClass(
 									'mone-pc-none',
 									className,
 									setAttributes
-								)
-							}
-							__nextHasNoMarginBottom
-						/>
-						<ToggleControl
+								);
+							} }
+						>
+							<ToggleControl
+								label={ __( 'Hide on PC', 'mone' ) }
+								checked={ existsClass(
+									className,
+									'mone-pc-none'
+								) }
+								onChange={ () =>
+									setClassName(
+										'mone-pc-none',
+										className,
+										setAttributes
+									)
+								}
+								__nextHasNoMarginBottom
+							/>
+						</ToolsPanelItem>
+						<ToolsPanelItem
 							label={ __( 'Hide on mobile', 'mone' ) }
-							checked={ existsClass( className, 'mone-sp-none' ) }
-							onChange={ () =>
-								setClassName(
+							isShownByDefault={ false }
+							hasValue={ () =>
+								!! existsClass( className, 'mone-sp-none' )
+							}
+							onDeselect={ () => {
+								deleteClass(
 									'mone-sp-none',
 									className,
 									setAttributes
-								)
-							}
-							__nextHasNoMarginBottom
-						/>
-					</PanelBody>
+								);
+							} }
+						>
+							<ToggleControl
+								label={ __( 'Hide on mobile', 'mone' ) }
+								checked={ existsClass(
+									className,
+									'mone-sp-none'
+								) }
+								onChange={ () =>
+									setClassName(
+										'mone-sp-none',
+										className,
+										setAttributes
+									)
+								}
+								__nextHasNoMarginBottom
+							/>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);
