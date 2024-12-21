@@ -1,6 +1,8 @@
 .wp-block-mone-table-of-contents {
-	overflow-y: auto;
-	max-height: var(--the-max-height);
+
+	&.has-max-height {
+		overflow-y: auto;
+	}
 
 	ol {
 		padding: 0;

@@ -10,22 +10,15 @@ import {
 
 export default function TableOfContentEdit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { maxHeight} = attributes;
+	const { maxHeight } = attributes;
 
-	const paddingTop = attributes.style?.spacing?.padding?.top || '0';
-	const paddingBottom = attributes.style?.spacing?.padding?.bottom || '0';
-
-	let maxHeightVar = '';
-	if ( maxHeight ) {
-		maxHeightVar += `calc(${ maxHeight } - ${ paddingTop } - ${ paddingBottom })`;
-	}
 
 	const blockProps = useBlockProps( {
 		className: clsx( {
 			[ `has-max-height` ]: maxHeight,
 		} ),
 		style: {
-			'--the-max-height': maxHeightVar,
+			'max-height': maxHeight,
 		},
 	} );
 
