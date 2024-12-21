@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Add position to theme.json
- * 
+ *
  * @param object $theme_json Theme JSON.
  * @return object $theme_json Theme JSON.
  */
 function add_position_theme_json_theme( $theme_json ) {
-	$get_data = $theme_json->get_data();
+	$get_data     = $theme_json->get_data();
 	$add_position = array(
-		'fixed'  => true,
+		'fixed' => true,
 	);
-	$add_data = array_merge(
+	$add_data     = array_merge(
 		$get_data['settings']['position'],
 		$add_position
 	);
-	$new_data = array(
+	$new_data     = array(
 		'version'  => 3,
 		'settings' => array(
 			'position' => $add_data,
