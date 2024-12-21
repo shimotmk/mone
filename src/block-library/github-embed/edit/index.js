@@ -213,6 +213,7 @@ export default function Edit( props ) {
 											onClick={ ( event ) =>
 												event.preventDefault()
 											}
+											rel="noreferrer"
 										>
 											{ richData?.data.extract_path }
 										</a>
