@@ -46,6 +46,10 @@ add_filter( 'block_categories_all', __NAMESPACE__ . '\block_categories', 10, 2 )
  * @return string $block_content block_content.
  */
 function render_block_embed( $block_content, $parsed_block ) {
+	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+		return $block_content;
+	}
+
 	if ( ! isset( $parsed_block['attrs']['providerNameSlug'] ) && 'youtube' !== $parsed_block['attrs']['providerNameSlug'] ) {
 		return $block_content;
 	}
