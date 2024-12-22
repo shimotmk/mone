@@ -1,14 +1,16 @@
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
 
-import {
-	setClassName,
-	existsClass,
-} from '../../utils-func/class-name/classAttribute.js';
+import { deleteRegExClass } from '../../utils-func/class-name/classAttribute.js';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
+
+import { PostType } from './post-type';
+import { MediaQuery } from './media-query';
+import { Toc } from './table-of-contents';
 
 export const BlockEditHidden = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -17,6 +19,8 @@ export const BlockEditHidden = createHigherOrderComponent(
 			attributes: { className },
 			setAttributes,
 		} = props;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 		const hasSupportCustomClassName = hasBlockSupport(
 			name,
 			'customClassName',
@@ -30,35 +34,21 @@ export const BlockEditHidden = createHigherOrderComponent(
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Hide settings', 'mone' ) }
-						initialOpen={ false }
+					<ToolsPanel
+						label={ __( 'Hide settings', 'mone' ) }
+						dropdownMenuProps={ dropdownMenuProps }
+						resetAll={ () => {
+							deleteRegExClass(
+								/^mone-.*-none$/,
+								className,
+								setAttributes
+							);
+						} }
 					>
-						<ToggleControl
-							label={ __( 'Hide on PC', 'mone' ) }
-							checked={ existsClass( className, 'mone-pc-none' ) }
-							onChange={ () =>
-								setClassName(
-									'mone-pc-none',
-									className,
-									setAttributes
-								)
-							}
-							__nextHasNoMarginBottom
-						/>
-						<ToggleControl
-							label={ __( 'Hide on mobile', 'mone' ) }
-							checked={ existsClass( className, 'mone-sp-none' ) }
-							onChange={ () =>
-								setClassName(
-									'mone-sp-none',
-									className,
-									setAttributes
-								)
-							}
-							__nextHasNoMarginBottom
-						/>
-					</PanelBody>
+						<MediaQuery { ...props } />
+						<Toc { ...props } />
+						<PostType { ...props } />
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);
