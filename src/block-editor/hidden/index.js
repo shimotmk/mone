@@ -3,19 +3,32 @@ import { addFilter } from '@wordpress/hooks';
 import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { InspectorControls } from '@wordpress/block-editor';
+import { hasBlockSupport } from '@wordpress/blocks';
 
-import { deleteClass } from '../../utils-func/class-name/classAttribute.js';
+import { deleteRegExClass } from '../../utils-func/class-name/classAttribute.js';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
+import { PostType } from './post-type';
 import { MediaQuery } from './media-query';
+import { Toc } from './table-of-contents';
 
 export const BlockEditHidden = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const {
+			name,
 			attributes: { className },
 			setAttributes,
 		} = props;
 		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
+		const hasSupportCustomClassName = hasBlockSupport(
+			name,
+			'customClassName',
+			true
+		);
+		if ( ! hasSupportCustomClassName ) {
+			return <BlockEdit { ...props } />;
+		}
 
 		return (
 			<>
@@ -25,14 +38,16 @@ export const BlockEditHidden = createHigherOrderComponent(
 						label={ __( 'Hide settings', 'mone' ) }
 						dropdownMenuProps={ dropdownMenuProps }
 						resetAll={ () => {
-							deleteClass(
-								[ 'mone-pc-none', 'mone-sp-none' ],
+							deleteRegExClass(
+								/^mone-.*-none$/,
 								className,
 								setAttributes
 							);
 						} }
 					>
 						<MediaQuery { ...props } />
+						<Toc { ...props } />
+						<PostType { ...props } />
 					</ToolsPanel>
 				</InspectorControls>
 			</>
