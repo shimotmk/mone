@@ -54,6 +54,15 @@ export function generateTableOfContents( tocContainers, headings ) {
 		// 		tocContainer.scrollTop += event.deltaY;
 		// 	}
 		// } );
+
+		// activeクラスが存在しない場合は最初のliをactiveにする
+		const activeItems = tocContainer.querySelectorAll( 'li.active' );
+		if ( activeItems.length === 0 ) {
+			const firstListItem = tocContainer.querySelector( 'li' );
+			if ( firstListItem ) {
+				firstListItem.classList.add( 'active' );
+			}
+		}
 	} );
 }
 

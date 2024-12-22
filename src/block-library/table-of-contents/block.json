@@ -6,7 +6,22 @@
 	"description": "Table of contents",
 	"textdomain": "mone",
 	"attributes": {
-		"title": {
+		"deactivateTextColor": {
+			"type": "string"
+		},
+		"customDeactivateTextColor": {
+			"type": "string"
+		},
+		"circleColor": {
+			"type": "string"
+		},
+		"customCircleColor": {
+			"type": "string"
+		},
+		"lineColor": {
+			"type": "string"
+		},
+		"customLineColor": {
 			"type": "string"
 		},
 		"maxHeight": {
@@ -27,8 +42,6 @@
 			"padding": true
 		},
 		"typography": {
-			"fontSize": true,
-			"lineHeight": true,
 			"__experimentalFontFamily": true,
 			"__experimentalFontWeight": true,
 			"__experimentalFontStyle": true,

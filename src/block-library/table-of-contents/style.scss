@@ -9,11 +9,11 @@
 		list-style: none;
 		position: relative;
 		a {
-			color: var(--wp--preset--color--content-contrast-2);
 			text-decoration: none;
 			margin: 8px 0;
 			display: block;
 			line-height: 1.5;
+			transition: color 0.3s ease-in-out;
 		}
 	}
 
@@ -39,7 +39,15 @@
 		left: 7px;
 		width: 2px;
 		content: "";
-		background: var(--wp--preset--color--heading-bg);
+	}
+
+	&:not(.has-line-color) {
+		.ol-depth-1:before {
+			background: var(--wp--preset--color--mone-border);
+		}
+	}
+	.ol-depth-1:before {
+		background: var(--the-line-color, var(--wp--preset--color--mone-border));
 	}
 
 	.ol-depth-1>li {
@@ -52,14 +60,23 @@
 	.ol-depth-4>li.active:before,
 	.ol-depth-5>li.active:before,
 	.ol-depth-6>li.active:before {
-		background: var(--wp--preset--color--key-2);
+		background: var(--the-circle-color, var(--wp--preset--color--key-2));
 		transition: background-color 0.3s ease-in-out;
 	}
 
-	.active {
-		> a {
-			color: var(--wp--preset--color--content-contrast);
-			transition: color 0.3s ease-in-out;
+	&.has-deactivate-text-color {
+		li:not(.active) {
+			> a {
+				color: var(--the-deactivate-text-color,var(--wp--preset--color--content-contrast-2));
+			}
+		}
+	}
+
+	&:not(.has-deactivate-text-color) {
+		li:not(.active) {
+			> a {
+				color: color-mix(in srgb, currentColor 60%, #fff);
+			}
 		}
 	}
 
@@ -69,7 +86,7 @@
 
 	li:before {
 		top: 6px;
-		background: #d9eafb;
+		background: color-mix(in srgb, var(--the-circle-color, var(--wp--preset--color--key-2)) 40%, #fff);
 		position: absolute;
 		content: "";
 		border-radius: 100%;

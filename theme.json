@@ -603,6 +603,21 @@
 				"color": {
 					"text": "#6f6f6f"
 				}
+			},
+			"mone/table-of-contents": {
+				"spacing": {
+					"padding": {
+						"bottom": "var:preset|spacing|10",
+						"left": "var:preset|spacing|10",
+						"right": "var:preset|spacing|10",
+						"top": "var:preset|spacing|10"
+					}
+				},
+				"border": {
+					"color": "var(--wp--preset--color--mone-border)",
+					"style": "solid",
+					"width": "1px"
+				}
 			}
 		},
 		"color": {
