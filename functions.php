@@ -19,6 +19,7 @@ require 'vendor/autoload.php';
 
 require_once __DIR__ . '/build/admin/index.php';
 require_once __DIR__ . '/build/block-editor/custom-css/index.php';
+require_once __DIR__ . '/build/block-editor/hidden/index.php';
 require_once __DIR__ . '/build/block-editor/position/index.php';
 require_once __DIR__ . '/build/post-featured-image/index.php';
 require_once __DIR__ . '/includes/block-editor/index.php';

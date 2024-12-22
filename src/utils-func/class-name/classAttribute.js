@@ -52,3 +52,14 @@ export const existsClass = ( classNames, targetClassName ) => {
 		: classStringToClassArray( classNames );
 	return classArray.indexOf( targetClassName ) !== -1;
 };
+
+export const deleteRegExClass = ( regEx, className, setAttributes ) => {
+	const classArray = classStringToClassArray( className );
+	const filteredClassArray = classArray.filter(
+		( classItem ) => ! regEx.test( classItem )
+	);
+
+	setAttributes( {
+		className: emptyStringToUndefined( clsx( filteredClassArray ) ),
+	} );
+};
