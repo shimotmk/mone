@@ -15,14 +15,10 @@ const isSiteEditor = getPath( window.location.href )?.includes(
 
 const variations = [
 	{
-		name: 'default-toc',
-		title: __( '目次', 'block-library' ),
+		name: 'mone-default-toc',
+		title: __( 'Table of contents', 'block-library' ),
 		attributes: {
-			style: {
-				border: {
-					color: '#6f00ff',
-				},
-			},
+			className: 'is-style-mone-default-toc',
 		},
 		innerBlocks: [],
 		icon: blockCategoryIcon,
@@ -31,15 +27,9 @@ const variations = [
 	},
 	{
 		name: 'side-toc',
-		title: __( '目次(サイド)', 'block-library' ),
+		title: __( 'ドット', 'block-library' ),
 		attributes: {
-			isLink: true,
-			linkTarget: '_blank',
-			style: {
-				border: {
-					color: '#ff0000',
-				},
-			},
+			className: 'is-style-mone-side-toc',
 		},
 		innerBlocks: [],
 		icon: blockCategoryIcon,

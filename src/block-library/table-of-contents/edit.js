@@ -11,6 +11,8 @@ import {
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 
+import { classStringToClassArray } from '../../utils-func/class-name/classAttribute.js';
+
 function TableOfContentEdit( props ) {
 	const {
 		attributes,
@@ -23,7 +25,11 @@ function TableOfContentEdit( props ) {
 		lineColor,
 		setLineColor,
 	} = props;
-	const { maxHeight } = attributes;
+	const { maxHeight, className } = attributes;
+	const classArray = classStringToClassArray( className );
+	const hasDefaultTocStyle = classArray.includes(
+		'is-style-mone-default-toc'
+	);
 
 	const blockProps = useBlockProps( {
 		className: clsx( {
@@ -31,9 +37,11 @@ function TableOfContentEdit( props ) {
 			[ `has-deactivate-text-color` ]: !! deactivateTextColor.color,
 			[ `has-circle-color` ]: !! circleColor.color,
 			[ `has-line-color` ]: !! lineColor.color,
+			[ `mone-toc` ]: ! hasDefaultTocStyle,
 		} ),
 		style: {
 			maxHeight,
+			overflowY: maxHeight ? 'auto' : undefined,
 			'--the-deactivate-text-color': !! deactivateTextColor?.slug
 				? `var(--wp--preset--color--${ deactivateTextColor.slug })`
 				: deactivateTextColor?.color,
@@ -57,25 +65,31 @@ function TableOfContentEdit( props ) {
 							colorValue: deactivateTextColor.color,
 							onColorChange: setDeactivateTextColor,
 							resetAllFilter: () => setDeactivateTextColor(),
-							isShownByDefault: false,
+							isShownByDefault: true,
 							enableAlpha: true,
 						},
 						{
-							label: __( 'Circle Color', 'mone' ),
+							label: hasDefaultTocStyle
+								? __( 'Circle Color', 'mone' )
+								: __( 'Number Color', 'mone' ),
 							colorValue: circleColor.color,
 							onColorChange: setCircleColor,
 							resetAllFilter: () => setCircleColor(),
 							isShownByDefault: true,
 							enableAlpha: true,
 						},
-						{
-							label: __( 'Line Color', 'mone' ),
-							colorValue: lineColor.color,
-							onColorChange: setLineColor,
-							resetAllFilter: () => setLineColor(),
-							isShownByDefault: false,
-							enableAlpha: true,
-						},
+						...( hasDefaultTocStyle
+							? [
+									{
+										label: __( 'Line Color', 'mone' ),
+										colorValue: lineColor.color,
+										onColorChange: setLineColor,
+										resetAllFilter: () => setLineColor(),
+										isShownByDefault: true,
+										enableAlpha: true,
+									},
+							  ]
+							: [] ),
 					] }
 					panelId={ clientId }
 					{ ...useMultipleOriginColorsAndGradients() }
@@ -139,6 +153,36 @@ function TableOfContentEdit( props ) {
 								'mone'
 							) }
 						</a>
+						<ol className="ol-depth-2">
+							<li>
+								<a href="#pseudo-link">
+									{ __(
+										'目次エディター プレビュー H3見出し',
+										'mone'
+									) }
+								</a>
+								<ol className="ol-depth-3">
+									<li>
+										<a href="#pseudo-link">
+											{ __(
+												'目次エディター プレビュー H4見出し',
+												'mone'
+											) }
+										</a>
+										<ol className="ol-depth-4">
+											<li>
+												<a href="#pseudo-link">
+													{ __(
+														'目次エディター プレビュー H5見出し',
+														'mone'
+													) }
+												</a>
+											</li>
+										</ol>
+									</li>
+								</ol>
+							</li>
+						</ol>
 						<ol className="ol-depth-2">
 							<li>
 								<a href="#pseudo-link">

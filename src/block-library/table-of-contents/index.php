@@ -25,12 +25,17 @@ function table_of_contents_render_callback( $attributes ) {
 	$custom_circle_color         = isset( $attributes['customCircleColor'] ) ? $attributes['customCircleColor'] : null;
 	$line_color                = isset( $attributes['lineColor'] ) ? $attributes['lineColor'] : null;
 	$custom_line_color         = isset( $attributes['customLineColor'] ) ? $attributes['customLineColor'] : null;
+	$class_name  = $attributes['className'] ?? '';
+	$class_array = explode( ' ', $class_name );
 
 	$classes         = array();
 	$style_attribute = '';
+	if ( ! in_array( 'is-style-mone-default-toc', $class_array, true ) ) {
+        $classes[] = 'mone-toc';
+    }
 	if ( $max_height ) {
 		$classes[]        = 'has-max-height';
-		$style_attribute .= 'max-height:' . $max_height . ';';
+		$style_attribute .= 'max-height:' . $max_height . '; overflow-y: auto;';
 	}
 	if ( ! empty( $deactivate_text_color ) ) {
 		$classes[]        = 'has-deactivate-text-color';
@@ -76,6 +81,18 @@ function table_of_contents_render_callback( $attributes ) {
  * @return void
  */
 function register_block_table_of_contents() {
+
+	register_block_style(
+		'mone/table-of-contents',
+		array(
+			'name'       => 'mone-default-toc',
+			'label'      => __( 'Mone table of contents', 'mone' ),
+			'style_data' => array(
+				'css'        => '',
+			),
+		)
+	);
+
 	register_block_type(
 		__DIR__,
 		array(

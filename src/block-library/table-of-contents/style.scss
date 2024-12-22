@@ -1,8 +1,4 @@
-.wp-block-mone-table-of-contents {
-
-	&.has-max-height {
-		overflow-y: auto;
-	}
+.wp-block-mone-table-of-contents.is-style-mone-default-toc {
 
 	ol {
 		padding: 0;
@@ -106,5 +102,55 @@
 		left: -17px;
 		width: 8px;
 		height: 8px;
+	}
+}
+
+// デフォルトのスタイルの時
+.wp-block-mone-table-of-contents.mone-toc {
+    ol {
+        list-style: none;
+        counter-reset: item;
+		padding-inline-start: 1.5rem;
+
+		a {
+			transition: color 0.3s ease-in-out;
+		}
+
+		&:first-child {
+			padding: 0;
+		}
+
+        li {
+            counter-increment: item;
+			margin: 8px 0;
+			line-height: 1.5;
+            &:first-child {
+                counter-reset: toc;
+            }
+            &:before {
+                content: counters(item, ".");
+                margin-right: 0.5em;
+            }
+
+            ol {
+                counter-reset: item;
+            }
+        }
+    }
+
+	&.has-circle-color {
+		ol li {
+			&::before {
+				color: var(--the-circle-color, var(--wp--preset--color--key-2));
+			}
+		}
+	}
+
+	&.has-deactivate-text-color {
+		li:not(.active) {
+			> a {
+				color: var(--the-deactivate-text-color,var(--wp--preset--color--content-contrast-2));
+			}
+		}
 	}
 }

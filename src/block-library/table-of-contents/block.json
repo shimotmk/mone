@@ -3,7 +3,7 @@
 	"name": "mone/table-of-contents",
 	"category": "mone-block-cat",
 	"title": "Table of contents",
-	"description": "Table of contents",
+	"description": "A table of contents is automatically created by retrieving headings from the content.A preview is displayed in the editor.",
 	"textdomain": "mone",
 	"attributes": {
 		"deactivateTextColor": {
