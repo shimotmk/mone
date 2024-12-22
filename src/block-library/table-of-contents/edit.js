@@ -12,7 +12,6 @@ export default function TableOfContentEdit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const { maxHeight } = attributes;
 
-
 	const blockProps = useBlockProps( {
 		className: clsx( {
 			[ `has-max-height` ]: maxHeight,
