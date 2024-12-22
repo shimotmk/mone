@@ -520,6 +520,13 @@ msgstr "追加CSS"
 msgid "Hide settings"
 msgstr "非表示設定"
 
+#: build/block-editor/index.js:591
+#: build/block-editor/index.js:607
+#: build/block-editor/index.js:419
+#: build/block-editor/index.js:447
+msgid "Media Query"
+msgstr "メディアクエリー"
+
 #: build/block-editor/index.js:1 build/block-editor/index.js:292
 msgid "Hide on PC"
 msgstr "PC 非表示"
@@ -527,6 +534,27 @@ msgstr "PC 非表示"
 #: build/block-editor/index.js:1 build/block-editor/index.js:303
 msgid "Hide on mobile"
 msgstr "モバイル 非表示"
+
+#: build/block-editor/index.js:667
+#: build/block-editor/index.js:509
+msgid "Post Type"
+msgstr "投稿タイプ"
+
+#. translators: Hide on %s
+#: build/block-editor/index.js:678
+#: build/block-editor/index.js:535
+msgid "Hide on %s"
+msgstr "%s 非表示"
+
+#: build/block-editor/index.js:769
+#: build/block-editor/index.js:618
+msgid "Table Of Contents"
+msgstr "目次"
+
+#: build/block-editor/index.js:779
+#: build/block-editor/index.js:629
+msgid "Hide if no table of contents"
+msgstr "目次がない場合は非表示"
 
 #: build/block-editor/index.js:1
 #: build/block-editor/index.js:479

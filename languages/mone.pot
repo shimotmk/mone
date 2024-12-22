@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-21T02:50:37+00:00\n"
+"POT-Creation-Date: 2024-12-22T01:31:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -555,77 +555,105 @@ msgstr ""
 msgid "Additional CSS"
 msgstr ""
 
-#: build/block-editor/index.js:532
-#: build/block-editor/index.js:368
+#: build/block-editor/index.js:541
+#: build/block-editor/index.js:372
 msgid "Hide settings"
 msgstr ""
 
-#: build/block-editor/index.js:535
-#: build/block-editor/index.js:372
+#: build/block-editor/index.js:591
+#: build/block-editor/index.js:607
+#: build/block-editor/index.js:419
+#: build/block-editor/index.js:447
+msgid "Media Query"
+msgstr ""
+
+#: build/block-editor/index.js:601
+#: build/block-editor/index.js:438
 msgid "Hide on PC"
 msgstr ""
 
-#: build/block-editor/index.js:540
-#: build/block-editor/index.js:384
+#: build/block-editor/index.js:617
+#: build/block-editor/index.js:466
 msgid "Hide on mobile"
 msgstr ""
 
-#: build/block-editor/index.js:646
-#: build/block-editor/index.js:719
-#: build/block-editor/index.js:479
-#: build/block-editor/index.js:561
+#: build/block-editor/index.js:667
+#: build/block-editor/index.js:509
+msgid "Post Type"
+msgstr ""
+
+#. translators: Hide on %s
+#: build/block-editor/index.js:678
+#: build/block-editor/index.js:535
+msgid "Hide on %s"
+msgstr ""
+
+#: build/block-editor/index.js:769
+#: build/block-editor/index.js:618
+msgid "Table Of Contents"
+msgstr ""
+
+#: build/block-editor/index.js:779
+#: build/block-editor/index.js:629
+msgid "Hide if no table of contents"
+msgstr ""
+
+#: build/block-editor/index.js:883
+#: build/block-editor/index.js:956
+#: build/block-editor/index.js:716
+#: build/block-editor/index.js:798
 msgid "Position"
 msgstr ""
 
-#: build/block-editor/index.js:665
-#: build/block-editor/index.js:683
-#: build/block-editor/index.js:499
-#: build/block-editor/index.js:518
+#: build/block-editor/index.js:902
+#: build/block-editor/index.js:920
+#: build/block-editor/index.js:736
+#: build/block-editor/index.js:755
 msgid "Type"
 msgstr ""
 
-#: build/block-editor/index.js:698
-#: build/block-editor/index.js:534
+#: build/block-editor/index.js:935
+#: build/block-editor/index.js:771
 msgid "Default"
 msgstr ""
 
-#: build/block-editor/index.js:701
-#: build/block-editor/index.js:538
+#: build/block-editor/index.js:938
+#: build/block-editor/index.js:775
 msgid "Sticky"
 msgstr ""
 
-#: build/block-editor/index.js:704
-#: build/block-editor/index.js:542
+#: build/block-editor/index.js:941
+#: build/block-editor/index.js:779
 msgid "Fixed"
 msgstr ""
 
-#: build/block-editor/index.js:721
-#: build/block-editor/index.js:564
+#: build/block-editor/index.js:958
+#: build/block-editor/index.js:801
 msgid "Top"
 msgstr ""
 
-#: build/block-editor/index.js:744
-#: build/block-editor/index.js:595
+#: build/block-editor/index.js:981
+#: build/block-editor/index.js:832
 msgid "Right"
 msgstr ""
 
-#: build/block-editor/index.js:767
-#: build/block-editor/index.js:626
+#: build/block-editor/index.js:1004
+#: build/block-editor/index.js:863
 msgid "Bottom"
 msgstr ""
 
-#: build/block-editor/index.js:790
-#: build/block-editor/index.js:657
+#: build/block-editor/index.js:1027
+#: build/block-editor/index.js:894
 msgid "Left"
 msgstr ""
 
-#: build/block-editor/index.js:966
-#: build/block-editor/index.js:843
+#: build/block-editor/index.js:1203
+#: build/block-editor/index.js:1080
 msgid "Unlock content only"
 msgstr ""
 
-#: build/block-editor/index.js:966
-#: build/block-editor/index.js:844
+#: build/block-editor/index.js:1203
+#: build/block-editor/index.js:1081
 msgid "Lock content only"
 msgstr ""
 
@@ -1149,10 +1177,10 @@ msgstr ""
 msgid "white"
 msgstr ""
 
-#: build/block-library/table-of-contents/index.js:50
-#: build/block-library/table-of-contents/index.js:57
-#: build/block-library/table-of-contents/index.js:27
-#: build/block-library/table-of-contents/index.js:35
+#: build/block-library/table-of-contents/index.js:51
+#: build/block-library/table-of-contents/index.js:58
+#: build/block-library/table-of-contents/index.js:30
+#: build/block-library/table-of-contents/index.js:38
 msgid "Max height"
 msgstr ""
 

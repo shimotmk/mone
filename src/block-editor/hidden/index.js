@@ -46,8 +46,8 @@ export const BlockEditHidden = createHigherOrderComponent(
 						} }
 					>
 						<MediaQuery { ...props } />
-						<PostType { ...props } />
 						<Toc { ...props } />
+						<PostType { ...props } />
 					</ToolsPanel>
 				</InspectorControls>
 			</>
