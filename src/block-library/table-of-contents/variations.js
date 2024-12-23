@@ -25,7 +25,7 @@ const variations = [
 	},
 	{
 		name: 'side-toc',
-		title: __( '目次(ドット)', 'mone' ),
+		title: __( 'Table of Contents (dot)', 'mone' ),
 		attributes: {
 			maxHeight: '80vh',
 			className: 'mone-is-scroll-animation is-style-mone-default-toc',

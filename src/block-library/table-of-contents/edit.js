@@ -218,7 +218,7 @@ function TableOfContentEdit( props ) {
 					<li className="active">
 						<a href="#pseudo-link">
 							{ __(
-								'目次エディター プレビュー H2見出し',
+								'Table of Contents Editor Preview H2 Heading',
 								'mone'
 							) }
 						</a>
@@ -226,7 +226,7 @@ function TableOfContentEdit( props ) {
 							<li>
 								<a href="#pseudo-link">
 									{ __(
-										'目次エディター プレビュー H3見出し',
+										'Table of Contents Editor Preview H3 Heading',
 										'mone'
 									) }
 								</a>
@@ -234,7 +234,7 @@ function TableOfContentEdit( props ) {
 							<li>
 								<a href="#pseudo-link">
 									{ __(
-										'目次エディター プレビュー H3見出し',
+										'Table of Contents Editor Preview H3 Heading',
 										'mone'
 									) }
 								</a>
@@ -244,7 +244,7 @@ function TableOfContentEdit( props ) {
 					<li>
 						<a href="#pseudo-link">
 							{ __(
-								'目次エディター プレビュー H2見出し',
+								'Table of Contents Editor Preview H2 Heading',
 								'mone'
 							) }
 						</a>
@@ -252,7 +252,7 @@ function TableOfContentEdit( props ) {
 							<li>
 								<a href="#pseudo-link">
 									{ __(
-										'目次エディター プレビュー H3見出し',
+										'Table of Contents Editor Preview H3 Heading',
 										'mone'
 									) }
 								</a>
@@ -260,7 +260,7 @@ function TableOfContentEdit( props ) {
 									<li>
 										<a href="#pseudo-link">
 											{ __(
-												'目次エディター プレビュー H4見出し',
+												'Table of Contents Editor Preview H4 Heading',
 												'mone'
 											) }
 										</a>
@@ -268,7 +268,7 @@ function TableOfContentEdit( props ) {
 											<li>
 												<a href="#pseudo-link">
 													{ __(
-														'目次エディター プレビュー H5見出し',
+														'Table of Contents Editor Preview H5 Heading',
 														'mone'
 													) }
 												</a>
@@ -282,7 +282,7 @@ function TableOfContentEdit( props ) {
 							<li>
 								<a href="#pseudo-link">
 									{ __(
-										'目次エディター プレビュー H3見出し',
+										'Table of Contents Editor Preview H3 Heading',
 										'mone'
 									) }
 								</a>
@@ -290,7 +290,7 @@ function TableOfContentEdit( props ) {
 									<li>
 										<a href="#pseudo-link">
 											{ __(
-												'目次エディター プレビュー H4見出し',
+												'Table of Contents Editor Preview H4 Heading',
 												'mone'
 											) }
 										</a>
@@ -298,7 +298,7 @@ function TableOfContentEdit( props ) {
 											<li>
 												<a href="#pseudo-link">
 													{ __(
-														'目次エディター プレビュー H5見出し',
+														'Table of Contents Editor Preview H5 Heading',
 														'mone'
 													) }
 												</a>
@@ -312,7 +312,7 @@ function TableOfContentEdit( props ) {
 					<li>
 						<a href="#pseudo-link">
 							{ __(
-								'目次エディター プレビュー H2見出し',
+								'Table of Contents Editor Preview H2 Heading',
 								'mone'
 							) }
 						</a>
@@ -320,7 +320,7 @@ function TableOfContentEdit( props ) {
 							<li>
 								<a href="#pseudo-link">
 									{ __(
-										'目次エディター プレビュー H3見出し',
+										'Table of Contents Editor Preview H3 Heading',
 										'mone'
 									) }
 								</a>
