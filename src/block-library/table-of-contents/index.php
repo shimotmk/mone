@@ -12,29 +12,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * table of contents render callback
+ * Table of contents render callback
  *
  * @param array $attributes Block attributes.
  * @return string
  */
 function table_of_contents_render_callback( $attributes ) {
-	$max_height                  = $attributes['maxHeight'] ?? false;
-	$deactivate_text_color       = isset( $attributes['deactivateTextColor'] ) ? $attributes['deactivateTextColor'] : null;
-	$custom_deactivate_textColor = isset( $attributes['customDeactivateTextColor'] ) ? $attributes['customDeactivateTextColor'] : null;
-	$before_color                = isset( $attributes['beforeColor'] ) ? $attributes['beforeColor'] : null;
-	$custom_before_color         = isset( $attributes['customBeforeColor'] ) ? $attributes['customBeforeColor'] : null;
-	$before_deactivate_color                = isset( $attributes['beforeDeactivateColor'] ) ? $attributes['beforeDeactivateColor'] : null;
-	$custom_before_deactivate_color         = isset( $attributes['customBeforeDeactivateColor'] ) ? $attributes['customBeforeDeactivateColor'] : null;
-	$line_color                = isset( $attributes['lineColor'] ) ? $attributes['lineColor'] : null;
-	$custom_line_color         = isset( $attributes['customLineColor'] ) ? $attributes['customLineColor'] : null;
-	$class_name  = $attributes['className'] ?? '';
-	$class_array = explode( ' ', $class_name );
+	$max_height                     = $attributes['maxHeight'] ?? false;
+	$deactivate_text_color          = isset( $attributes['deactivateTextColor'] ) ? $attributes['deactivateTextColor'] : null;
+	$custom_deactivate_text_color   = isset( $attributes['customDeactivateTextColor'] ) ? $attributes['customDeactivateTextColor'] : null;
+	$before_color                   = isset( $attributes['beforeColor'] ) ? $attributes['beforeColor'] : null;
+	$custom_before_color            = isset( $attributes['customBeforeColor'] ) ? $attributes['customBeforeColor'] : null;
+	$before_deactivate_color        = isset( $attributes['beforeDeactivateColor'] ) ? $attributes['beforeDeactivateColor'] : null;
+	$custom_before_deactivate_color = isset( $attributes['customBeforeDeactivateColor'] ) ? $attributes['customBeforeDeactivateColor'] : null;
+	$line_color                     = isset( $attributes['lineColor'] ) ? $attributes['lineColor'] : null;
+	$custom_line_color              = isset( $attributes['customLineColor'] ) ? $attributes['customLineColor'] : null;
+	$class_name                     = $attributes['className'] ?? '';
+	$class_array                    = explode( ' ', $class_name );
 
 	$classes         = array();
 	$style_attribute = '';
 	if ( ! in_array( 'is-style-mone-default-toc', $class_array, true ) ) {
-        $classes[] = 'mone-toc';
-    }
+		$classes[] = 'mone-toc';
+	}
 	if ( $max_height ) {
 		$classes[]        = 'has-max-height';
 		$style_attribute .= 'max-height:' . $max_height . '; overflow-y: auto;';
@@ -44,11 +44,11 @@ function table_of_contents_render_callback( $attributes ) {
 			$classes[]        = 'has-deactivate-text-color';
 			$style_attribute .= '--the-deactivate-text-color:var(--wp--preset--color--' . $deactivate_text_color . ');';
 		}
-		if ( ! empty( $custom_deactivate_textColor ) ) {
+		if ( ! empty( $custom_deactivate_text_color ) ) {
 			$classes[]        = 'has-deactivate-text-color';
-			$style_attribute .= '--the-deactivate-text-color:' . $custom_deactivate_textColor . ';';
+			$style_attribute .= '--the-deactivate-text-color:' . $custom_deactivate_text_color . ';';
 		}
-    }
+	}
 	if ( ! empty( $before_color ) ) {
 		$classes[]        = 'has-before-color';
 		$style_attribute .= '--the-before-color:var(--wp--preset--color--' . $before_color . ');';
@@ -101,9 +101,6 @@ function register_block_table_of_contents() {
 		array(
 			'name'       => 'mone-default-toc',
 			'label'      => __( 'Mone table of contents', 'mone' ),
-			'style_data' => array(
-				'css'        => '',
-			),
 		)
 	);
 
