@@ -99,8 +99,8 @@ function register_block_table_of_contents() {
 	register_block_style(
 		'mone/table-of-contents',
 		array(
-			'name'       => 'mone-default-toc',
-			'label'      => __( 'Mone table of contents', 'mone' ),
+			'name'  => 'mone-default-toc',
+			'label' => __( 'Mone table of contents', 'mone' ),
 		)
 	);
 
