@@ -50,25 +50,14 @@
 		position: relative;
 	}
 
-	.ol-depth-1>li.active:before,
-	.ol-depth-2>li.active:before,
-	.ol-depth-3>li.active:before,
-	.ol-depth-4>li.active:before,
-	.ol-depth-5>li.active:before,
-	.ol-depth-6>li.active:before {
-		background: var(--the-circle-color, var(--wp--preset--color--key-2));
-		transition: background-color 0.3s ease-in-out;
-	}
-
-	&.has-deactivate-text-color {
+	&.mone-is-scroll-animation.has-deactivate-text-color {
 		li:not(.active) {
 			> a {
-				color: var(--the-deactivate-text-color,var(--wp--preset--color--content-contrast-2));
+				color: var(--the-deactivate-text-color, currentColor);
 			}
 		}
 	}
-
-	&:not(.has-deactivate-text-color) {
+	&.mone-is-scroll-animation:not(.has-deactivate-text-color) {
 		li:not(.active) {
 			> a {
 				color: color-mix(in srgb, currentColor 60%, #fff);
@@ -82,11 +71,38 @@
 
 	li:before {
 		top: 6px;
-		background: color-mix(in srgb, var(--the-circle-color, var(--wp--preset--color--key-2)) 40%, #fff);
 		position: absolute;
 		content: "";
 		border-radius: 100%;
 	}
+
+	.ol-depth-1>li.active:before,
+	.ol-depth-2>li.active:before,
+	.ol-depth-3>li.active:before,
+	.ol-depth-4>li.active:before,
+	.ol-depth-5>li.active:before,
+	.ol-depth-6>li.active:before {
+		background: var(--the-before-color, var(--wp--preset--color--key-2));
+		transition: background-color 0.3s ease-in-out;
+	}
+
+	&.mone-is-scroll-animation {
+		&.has-before-deactivate-color {
+			li:not(.active):before {
+				background: var(--the-before-deactivate-color);
+			}
+		}
+		&:not(.has-before-deactivate-color) li:not(.active):before {
+			background: color-mix(in srgb, var(--the-before-color, var(--wp--preset--color--key-2)) 40%, #fff);
+		}
+	}
+
+	&:not(.mone-is-scroll-animation) {
+		&:not(.has-before-deactivate-color) li:not(.active):before {
+			background: var(--the-before-color, var(--wp--preset--color--key-2));
+		}
+	}
+
 
 	.ol-depth-1>li:before {
 		width: 12px;
@@ -138,19 +154,36 @@
         }
     }
 
-	&.has-circle-color {
-		ol li {
-			&::before {
-				color: var(--the-circle-color, var(--wp--preset--color--key-2));
+	&.mone-is-scroll-animation:not(.has-deactivate-text-color) {
+		li:not(.active) {
+			> a {
+				color: color-mix(in srgb, currentColor 60%, #fff);
 			}
 		}
 	}
 
-	&.has-deactivate-text-color {
+	&.has-before-color {
+		ol li {
+			&::before {
+				color: var(--the-before-color, var(--wp--preset--color--key-2));
+			}
+		}
+	}
+
+	&.mone-is-scroll-animation.has-deactivate-text-color {
 		li:not(.active) {
 			> a {
 				color: var(--the-deactivate-text-color,var(--wp--preset--color--content-contrast-2));
 			}
 		}
 	}
+
+	&.mone-is-scroll-animation.has-before-deactivate-color {
+		ol li:not(.active) {
+			&::before {
+				color: var(--the-before-deactivate-color, var(--wp--preset--color--key-2));
+			}
+		}
+	}
+
 }

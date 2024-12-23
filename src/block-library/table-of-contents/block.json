@@ -12,10 +12,16 @@
 		"customDeactivateTextColor": {
 			"type": "string"
 		},
-		"circleColor": {
+		"beforeColor": {
 			"type": "string"
 		},
-		"customCircleColor": {
+		"customBeforeColor": {
+			"type": "string"
+		},
+		"beforeDeactivateColor": {
+			"type": "string"
+		},
+		"customBeforeDeactivateColor": {
 			"type": "string"
 		},
 		"lineColor": {

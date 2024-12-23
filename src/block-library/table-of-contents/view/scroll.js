@@ -30,7 +30,7 @@ export function handleScroll( headings, tocContainers ) {
 		const isTocFullyVisible =
 			tocRect.top >= 0 && tocRect.bottom <= window.innerHeight;
 
-		links.forEach( ( link ) => {
+		links.forEach( ( link, index ) => {
 			const listItem = link.parentElement;
 			listItem.classList.remove( 'active' );
 			if ( listItem.classList.length === 0 ) {
@@ -44,11 +44,36 @@ export function handleScroll( headings, tocContainers ) {
 				activeFound = true;
 				if (
 					isTocFullyVisible &&
-					tocContainer.classList.contains( 'sidebar' ) &&
+					tocContainer.classList.contains(
+						'mone-is-scroll-animation'
+					) &&
 					tocContainer.classList.contains( 'has-max-height' ) &&
 					window.innerWidth >= 781
 				) {
-					listItem.scrollIntoView( { block: 'nearest' } );
+					const listItemRect = listItem.getBoundingClientRect();
+					const tocContainerRect =
+						tocContainer.getBoundingClientRect();
+
+					if ( index === 0 ) {
+						// 先頭にスクロール
+						tocContainer.scrollTop = 0;
+					} else if ( index === links.length - 1 ) {
+						// 最下部にスクロール
+						tocContainer.scrollTop = tocContainer.scrollHeight;
+					} else if ( listItemRect.top < tocContainerRect.top ) {
+						// 通常のスクロール（上方向）
+						tocContainer.scrollTop -=
+							tocContainerRect.top - listItemRect.top;
+					} else if (
+						listItemRect.bottom > tocContainerRect.bottom
+					) {
+						// 通常のスクロール（下方向）
+						tocContainer.scrollTop +=
+							listItemRect.bottom - tocContainerRect.bottom;
+					} else {
+						// 通常のスクロール
+						listItem.scrollIntoView( { block: 'nearest' } );
+					}
 				}
 			}
 		} );

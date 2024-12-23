@@ -21,8 +21,10 @@ function table_of_contents_render_callback( $attributes ) {
 	$max_height                  = $attributes['maxHeight'] ?? false;
 	$deactivate_text_color       = isset( $attributes['deactivateTextColor'] ) ? $attributes['deactivateTextColor'] : null;
 	$custom_deactivate_textColor = isset( $attributes['customDeactivateTextColor'] ) ? $attributes['customDeactivateTextColor'] : null;
-	$circle_color                = isset( $attributes['circleColor'] ) ? $attributes['circleColor'] : null;
-	$custom_circle_color         = isset( $attributes['customCircleColor'] ) ? $attributes['customCircleColor'] : null;
+	$before_color                = isset( $attributes['beforeColor'] ) ? $attributes['beforeColor'] : null;
+	$custom_before_color         = isset( $attributes['customBeforeColor'] ) ? $attributes['customBeforeColor'] : null;
+	$before_deactivate_color                = isset( $attributes['beforeDeactivateColor'] ) ? $attributes['beforeDeactivateColor'] : null;
+	$custom_before_deactivate_color         = isset( $attributes['customBeforeDeactivateColor'] ) ? $attributes['customBeforeDeactivateColor'] : null;
 	$line_color                = isset( $attributes['lineColor'] ) ? $attributes['lineColor'] : null;
 	$custom_line_color         = isset( $attributes['customLineColor'] ) ? $attributes['customLineColor'] : null;
 	$class_name  = $attributes['className'] ?? '';
@@ -37,21 +39,33 @@ function table_of_contents_render_callback( $attributes ) {
 		$classes[]        = 'has-max-height';
 		$style_attribute .= 'max-height:' . $max_height . '; overflow-y: auto;';
 	}
-	if ( ! empty( $deactivate_text_color ) ) {
-		$classes[]        = 'has-deactivate-text-color';
-		$style_attribute .= '--the-deactivate-text-color:var(--wp--preset--color--' . $deactivate_text_color . ');';
+	if ( in_array( 'mone-is-scroll-animation', $class_array, true ) ) {
+		if ( ! empty( $deactivate_text_color ) ) {
+			$classes[]        = 'has-deactivate-text-color';
+			$style_attribute .= '--the-deactivate-text-color:var(--wp--preset--color--' . $deactivate_text_color . ');';
+		}
+		if ( ! empty( $custom_deactivate_textColor ) ) {
+			$classes[]        = 'has-deactivate-text-color';
+			$style_attribute .= '--the-deactivate-text-color:' . $custom_deactivate_textColor . ';';
+		}
+    }
+	if ( ! empty( $before_color ) ) {
+		$classes[]        = 'has-before-color';
+		$style_attribute .= '--the-before-color:var(--wp--preset--color--' . $before_color . ');';
 	}
-	if ( ! empty( $custom_deactivate_textColor ) ) {
-		$classes[]        = 'has-deactivate-text-color';
-		$style_attribute .= '--the-deactivate-text-color:' . $custom_deactivate_textColor . ';';
+	if ( ! empty( $custom_before_color ) ) {
+		$classes[]        = 'has-before-color';
+		$style_attribute .= '--the-before-color:' . $custom_before_color . ';';
 	}
-	if ( ! empty( $circle_color ) ) {
-		$classes[]        = 'has-circle-color';
-		$style_attribute .= '--the-circle-color:var(--wp--preset--color--' . $circle_color . ');';
-	}
-	if ( ! empty( $custom_circle_color ) ) {
-		$classes[]        = 'has-circle-color';
-		$style_attribute .= '--the-circle-color:' . $custom_circle_color . ';';
+	if ( in_array( 'mone-is-scroll-animation', $class_array, true ) ) {
+		if ( ! empty( $before_deactivate_color ) ) {
+			$classes[]        = 'has-before-deactivate-color';
+			$style_attribute .= '--the-before-deactivate-color:var(--wp--preset--color--' . $before_deactivate_color . ');';
+		}
+		if ( ! empty( $custom_before_deactivate_color ) ) {
+			$classes[]        = 'has-before-deactivate-color';
+			$style_attribute .= '--the-before-deactivate-color:' . $custom_before_deactivate_color . ';';
+		}
 	}
 	if ( ! empty( $line_color ) ) {
 		$classes[]        = 'has-line-color';
