@@ -1,4 +1,5 @@
 import { handleScroll } from './scroll.js';
+/* global IntersectionObserver */
 
 export function assignHeadingIds( headings, idMap ) {
 	headings.forEach( ( heading ) => {
@@ -7,7 +8,9 @@ export function assignHeadingIds( headings, idMap ) {
 			heading.textContent.trim().toLowerCase().replace( /\s+/g, '-' );
 		if ( ! heading.id ) {
 			idMap.set( id, ( idMap.get( id ) || 0 ) + 1 );
-			if ( idMap.get( id ) > 1 ) id += `-${ idMap.get( id ) }`;
+			if ( idMap.get( id ) > 1 ) {
+				id += `-${ idMap.get( id ) }`;
+			}
 			heading.id = id;
 		}
 	} );
@@ -46,14 +49,6 @@ export function generateTableOfContents( tocContainers, headings ) {
 		} );
 
 		tocContainer.appendChild( tocList );
-
-		// 目次エリアのスクロールイベントを制御
-		// tocContainer.addEventListener( 'wheel', ( event ) => {
-		// 	if ( tocContainer.matches( ':hover' ) ) {
-		// 		event.preventDefault();
-		// 		tocContainer.scrollTop += event.deltaY;
-		// 	}
-		// } );
 
 		// activeクラスが存在しない場合は最初のliをactiveにする
 		const activeItems = tocContainer.querySelectorAll( 'li.active' );
