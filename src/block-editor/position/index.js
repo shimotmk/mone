@@ -49,7 +49,10 @@ function addInspectorControls( BlockEdit ) {
 			if (
 				( style?.position?.type === 'sticky' ||
 					style?.position?.type === 'fixed' ) &&
-				style?.position?.top === undefined
+				style?.position?.top === undefined &&
+				style?.position?.left === undefined &&
+				style?.position?.right === undefined &&
+				style?.position?.bottom === undefined
 			) {
 				const newStyle = {
 					...style,
