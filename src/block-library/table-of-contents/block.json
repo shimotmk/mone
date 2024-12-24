@@ -29,9 +29,6 @@
 		},
 		"customLineColor": {
 			"type": "string"
-		},
-		"maxHeight": {
-			"type": "string"
 		}
 	},
 	"supports": {

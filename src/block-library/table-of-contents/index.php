@@ -35,11 +35,8 @@ function table_of_contents_render_callback( $attributes ) {
 	if ( ! in_array( 'is-style-mone-default-toc', $class_array, true ) ) {
 		$classes[] = 'mone-toc';
 	}
-	if ( $max_height ) {
-		$classes[]        = 'has-max-height';
-		$style_attribute .= 'max-height:' . $max_height . '; overflow-y: auto;';
-	}
 	if ( in_array( 'mone-is-scroll-animation', $class_array, true ) ) {
+		$style_attribute .= 'overflow-y: auto;';
 		if ( ! empty( $deactivate_text_color ) ) {
 			$classes[]        = 'has-deactivate-text-color';
 			$style_attribute .= '--the-deactivate-text-color:var(--wp--preset--color--' . $deactivate_text_color . ');';

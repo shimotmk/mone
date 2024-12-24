@@ -9,7 +9,6 @@ import {
 import {
 	InspectorControls,
 	useBlockProps,
-	HeightControl,
 	withColors,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -38,7 +37,7 @@ function TableOfContentEdit( props ) {
 		lineColor,
 		setLineColor,
 	} = props;
-	const { maxHeight, className } = attributes;
+	const { className } = attributes;
 	const classArray = classStringToClassArray( className );
 	const hasDefaultTocStyle = classArray.includes(
 		'is-style-mone-default-toc'
@@ -47,7 +46,6 @@ function TableOfContentEdit( props ) {
 
 	const blockProps = useBlockProps( {
 		className: clsx( {
-			[ `has-max-height` ]: maxHeight,
 			[ `has-deactivate-text-color` ]:
 				existsClass( className, scrollAnimationClassName ) &&
 				!! deactivateTextColor.color,
@@ -59,8 +57,9 @@ function TableOfContentEdit( props ) {
 			[ `mone-toc` ]: ! hasDefaultTocStyle,
 		} ),
 		style: {
-			maxHeight,
-			overflowY: maxHeight ? 'auto' : undefined,
+			overflowY: existsClass( className, scrollAnimationClassName )
+				? 'auto'
+				: undefined,
 			'--the-deactivate-text-color':
 				existsClass( className, scrollAnimationClassName ) &&
 				( !! deactivateTextColor?.slug
@@ -190,28 +189,6 @@ function TableOfContentEdit( props ) {
 					{ ...useMultipleOriginColorsAndGradients() }
 					disableCustomGradients
 				/>
-			</InspectorControls>
-			<InspectorControls group="dimensions">
-				<ToolsPanelItem
-					hasValue={ () => maxHeight !== undefined }
-					label={ __( 'Max height', 'mone' ) }
-					onDeselect={ () =>
-						setAttributes( { maxHeight: undefined } )
-					}
-					isShownByDefault={ true }
-					panelId={ clientId }
-					resetAllFilter={ () => {
-						setAttributes( { maxHeight: undefined } );
-					} }
-				>
-					<HeightControl
-						label={ __( 'Max height', 'mone' ) }
-						value={ maxHeight }
-						onChange={ ( value ) =>
-							setAttributes( { maxHeight: value } )
-						}
-					/>
-				</ToolsPanelItem>
 			</InspectorControls>
 			<div { ...blockProps }>
 				<ol className="ol-depth-1">

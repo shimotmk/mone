@@ -22,6 +22,17 @@
 			font-size: var(--wp--preset--font-size--medium);
 		}
 
+		>li:first-child > a{
+			&:first-child {
+                margin-top: 0;
+            }
+		}
+		>li:last-child a{
+			&:last-child {
+                margin-bottom: 0;
+            }
+		}
+
 		ol li a {
 			font-weight: 400;
 			font-size: var(--wp--preset--font-size--small);

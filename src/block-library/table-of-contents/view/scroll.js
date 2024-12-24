@@ -47,7 +47,6 @@ export function handleScroll( headings, tocContainers ) {
 					tocContainer.classList.contains(
 						'mone-is-scroll-animation'
 					) &&
-					tocContainer.classList.contains( 'has-max-height' ) &&
 					window.innerWidth >= 781
 				) {
 					const listItemRect = listItem.getBoundingClientRect();

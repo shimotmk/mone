@@ -4,6 +4,7 @@ import {
 	setupIntersectionObserver,
 } from './toc.js';
 import { hideElementsWithClass } from './hide-element';
+import { calculateHeight } from './calculate-height';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	// Get the entry content element
@@ -29,8 +30,13 @@ document.addEventListener( 'DOMContentLoaded', () => {
 		return;
 	}
 
+	calculateHeight( tocContainers );
+	window.addEventListener( 'resize', () => calculateHeight( tocContainers ) );
+	window.addEventListener( 'scroll', () => calculateHeight( tocContainers ) );
+
 	const idMap = new Map();
 	assignHeadingIds( headings, idMap );
 	generateTableOfContents( tocContainers, headings );
 	setupIntersectionObserver( tocContainers, headings );
+
 } );
