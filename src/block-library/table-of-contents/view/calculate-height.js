@@ -1,5 +1,3 @@
-/* global getComputedStyle */
-
 export const calculateHeight = ( tocContainers ) => {
 	tocContainers.forEach( ( tocContainer ) => {
 		if ( tocContainer.classList.contains( 'mone-is-scroll-animation' ) ) {

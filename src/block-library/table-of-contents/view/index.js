@@ -38,5 +38,4 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	assignHeadingIds( headings, idMap );
 	generateTableOfContents( tocContainers, headings );
 	setupIntersectionObserver( tocContainers, headings );
-
 } );
