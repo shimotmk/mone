@@ -597,7 +597,8 @@
 				"border": {
 					"color": "var(--wp--preset--color--mone-border)",
 					"width": "1px"
-				}
+				},
+				"css": "& .wp-block-search__inside-wrapper { padding: 0; }"
 			},
 			"core/site-tagline": {
 				"color": {

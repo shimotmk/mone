@@ -25,7 +25,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
 
 	// Get all headings in the entry content
 	const headings = entryContent.querySelectorAll( 'h2, h3, h4, h5, h6' );
-	if ( headings.length === 0 ) {
+	if ( headings.length < 2 ) {
 		hideElementsWithClass( 'mone-toc-none' );
 		return;
 	}

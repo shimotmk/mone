@@ -62,5 +62,11 @@
 	.wp-block-group.mone_wrap-on-mobile.is-layout-grid {
 		grid-template-columns: 1fr;
 		column-gap: 0;
+
+		// とても細くした時に横スクロールするのを防ぐ
+		// https://coliss.com/articles/build-websites/operation/css/minimum-content-size-in-css-grid.html
+		> * {
+            min-width: 0;
+        }
 	}
 }
