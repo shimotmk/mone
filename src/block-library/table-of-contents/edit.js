@@ -13,6 +13,7 @@ import {
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
+import { getPath } from '@wordpress/url';
 
 import {
 	classStringToClassArray,
@@ -21,6 +22,10 @@ import {
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
+
+const isSiteEditor = getPath( window.location.href )?.includes(
+	'site-editor.php'
+);
 
 function TableOfContentEdit( props ) {
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
@@ -81,50 +86,55 @@ function TableOfContentEdit( props ) {
 
 	return (
 		<>
-			<InspectorControls group="settings">
-				<ToolsPanel
-					label={ __( 'Settings' ) }
-					resetAll={ () => {
-						deleteClass(
-							scrollAnimationClassName,
-							className,
-							setAttributes
-						);
-					} }
-					dropdownMenuProps={ dropdownMenuProps }
-				>
-					<ToolsPanelItem
-						label={ __( 'Scroll animation', 'mone' ) }
-						isShownByDefault
-						hasValue={ () =>
-							existsClass( className, scrollAnimationClassName )
-						}
-						onDeselect={ () =>
+			{ isSiteEditor && (
+				<InspectorControls group="settings">
+					<ToolsPanel
+						label={ __( 'Settings' ) }
+						resetAll={ () => {
 							deleteClass(
 								scrollAnimationClassName,
 								className,
 								setAttributes
-							)
-						}
+							);
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<ToggleControl
+						<ToolsPanelItem
 							label={ __( 'Scroll animation', 'mone' ) }
-							checked={ existsClass(
-								className,
-								scrollAnimationClassName
-							) }
-							onChange={ () => {
-								setClassName(
+							isShownByDefault
+							hasValue={ () =>
+								existsClass(
+									className,
+									scrollAnimationClassName
+								)
+							}
+							onDeselect={ () =>
+								deleteClass(
 									scrollAnimationClassName,
 									className,
 									setAttributes
-								);
-							} }
-							__nextHasNoMarginBottom
-						/>
-					</ToolsPanelItem>
-				</ToolsPanel>
-			</InspectorControls>
+								)
+							}
+						>
+							<ToggleControl
+								label={ __( 'Scroll animation', 'mone' ) }
+								checked={ existsClass(
+									className,
+									scrollAnimationClassName
+								) }
+								onChange={ () => {
+									setClassName(
+										scrollAnimationClassName,
+										className,
+										setAttributes
+									);
+								} }
+								__nextHasNoMarginBottom
+							/>
+						</ToolsPanelItem>
+					</ToolsPanel>
+				</InspectorControls>
+			) }
 			<InspectorControls group="color">
 				<ColorGradientSettingsDropdown
 					__experimentalIsRenderedInSidebar
