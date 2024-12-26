@@ -25,9 +25,8 @@ const variations = [
 	},
 	{
 		name: 'side-toc',
-		title: __( 'Table of Contents (dot)', 'mone' ),
+		title: __( 'Sidebar Table of Contents', 'mone' ),
 		attributes: {
-			maxHeight: '80vh',
 			className: 'mone-is-scroll-animation is-style-mone-default-toc',
 		},
 		innerBlocks: [],
