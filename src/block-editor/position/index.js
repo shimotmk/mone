@@ -134,10 +134,11 @@ function addInspectorControls( BlockEdit ) {
 										label: __( 'Sticky', 'mone' ),
 										value: 'sticky',
 									},
-									{
-										label: __( 'Fixed', 'mone' ),
-										value: 'fixed',
-									},
+									// fixedはtocで調整が必要
+									// {
+									// 	label: __( 'Fixed', 'mone' ),
+									// 	value: 'fixed',
+									// },
 								] }
 							/>
 						</ToolsPanelItem>
