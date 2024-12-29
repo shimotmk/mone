@@ -251,66 +251,8 @@ function TableOfContentEdit( props ) {
 												'mone'
 											) }
 										</a>
-										<ol className="ol-depth-4">
-											<li>
-												<a href="#pseudo-link">
-													{ __(
-														'Table of Contents Editor Preview H5 Heading',
-														'mone'
-													) }
-												</a>
-											</li>
-										</ol>
 									</li>
 								</ol>
-							</li>
-						</ol>
-						<ol className="ol-depth-2">
-							<li>
-								<a href="#pseudo-link">
-									{ __(
-										'Table of Contents Editor Preview H3 Heading',
-										'mone'
-									) }
-								</a>
-								<ol className="ol-depth-3">
-									<li>
-										<a href="#pseudo-link">
-											{ __(
-												'Table of Contents Editor Preview H4 Heading',
-												'mone'
-											) }
-										</a>
-										<ol className="ol-depth-4">
-											<li>
-												<a href="#pseudo-link">
-													{ __(
-														'Table of Contents Editor Preview H5 Heading',
-														'mone'
-													) }
-												</a>
-											</li>
-										</ol>
-									</li>
-								</ol>
-							</li>
-						</ol>
-					</li>
-					<li>
-						<a href="#pseudo-link">
-							{ __(
-								'Table of Contents Editor Preview H2 Heading',
-								'mone'
-							) }
-						</a>
-						<ol className="ol-depth-2">
-							<li>
-								<a href="#pseudo-link">
-									{ __(
-										'Table of Contents Editor Preview H3 Heading',
-										'mone'
-									) }
-								</a>
 							</li>
 						</ol>
 					</li>

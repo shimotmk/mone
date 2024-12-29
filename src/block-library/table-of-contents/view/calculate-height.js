@@ -1,9 +1,7 @@
 export const calculateHeight = ( tocContainers ) => {
 	tocContainers.forEach( ( tocContainer ) => {
 		if ( tocContainer.classList.contains( 'mone-is-scroll-animation' ) ) {
-			const stickyParent = tocContainer.closest(
-				'.is-position-sticky, .is-position-fixed'
-			);
+			const stickyParent = tocContainer.closest( '.is-position-sticky' );
 			if ( stickyParent ) {
 				const stickyParentStyle =
 					window.getComputedStyle( stickyParent );
