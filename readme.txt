@@ -14,6 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - Added Table of Contents block
 - Added heading plane style
+- Added Position UI
 
 = 1.2.0 = 2024-12-09
 
