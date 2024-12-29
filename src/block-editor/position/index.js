@@ -49,7 +49,10 @@ function addInspectorControls( BlockEdit ) {
 			if (
 				( style?.position?.type === 'sticky' ||
 					style?.position?.type === 'fixed' ) &&
-				style?.position?.top === undefined
+				style?.position?.top === undefined &&
+				style?.position?.left === undefined &&
+				style?.position?.right === undefined &&
+				style?.position?.bottom === undefined
 			) {
 				const newStyle = {
 					...style,
@@ -131,10 +134,11 @@ function addInspectorControls( BlockEdit ) {
 										label: __( 'Sticky', 'mone' ),
 										value: 'sticky',
 									},
-									{
-										label: __( 'Fixed', 'mone' ),
-										value: 'fixed',
-									},
+									// fixedはtocで調整が必要
+									// {
+									// 	label: __( 'Fixed', 'mone' ),
+									// 	value: 'fixed',
+									// },
 								] }
 							/>
 						</ToolsPanelItem>

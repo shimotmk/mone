@@ -72,6 +72,10 @@ msgstr "テンプレートパーツを作成するとメガメニューで選択
 msgid "Menu"
 msgstr "メニュー"
 
+#: build/block-library/table-of-contents/index.php:100
+msgid "Mone table of contents"
+msgstr "Mone 目次"
+
 #: build/block-library/user-icon/index.php:93
 msgid "Mone Settings"
 msgstr "Mone設定"
@@ -550,6 +554,11 @@ msgstr "%s 非表示"
 #: build/block-editor/index.js:618
 msgid "Table Of Contents"
 msgstr "目次"
+
+#: build/block-library/table-of-contents/block.json
+msgctxt "block description"
+msgid "A table of contents is automatically created by retrieving headings from the content.A preview is displayed in the editor."
+msgstr "コンテンツから見出しを取得して目次を自動的に作成します。プレビューはエディターに表示されます。"
 
 #: build/block-editor/index.js:779
 #: build/block-editor/index.js:629
@@ -1036,6 +1045,84 @@ msgstr "Green"
 #: build/block-library/styles-switcher-item/index.js:134
 msgid "White"
 msgstr "White"
+
+#: build/block-library/table-of-contents/index.js:84
+#: build/block-library/table-of-contents/index.js:89
+#: build/block-library/table-of-contents/index.js:103
+#: build/block-library/table-of-contents/index.js:120
+msgid "Scroll animation"
+msgstr "スクロールアニメーション"
+
+#: build/block-library/table-of-contents/index.js:103
+#: build/block-library/table-of-contents/index.js:144
+msgid "Circle Color"
+msgstr "サークル カラー"
+
+#: build/block-library/table-of-contents/index.js:103
+#: build/block-library/table-of-contents/index.js:145
+msgid "Number Color"
+msgstr "ナンバー カラー"
+
+#: build/block-library/table-of-contents/index.js:110
+#: build/block-library/table-of-contents/index.js:155
+msgid "Deactivate text Color"
+msgstr "非活性テキストカラー"
+
+#: build/block-library/table-of-contents/index.js:117
+#: build/block-library/table-of-contents/index.js:168
+msgid "Circle deactivate Color"
+msgstr "サークル非活性カラー"
+
+#: build/block-library/table-of-contents/index.js:117
+#: build/block-library/table-of-contents/index.js:172
+msgid "Number deactivate Color"
+msgstr "ナンバー非活性カラー"
+
+#: build/block-library/table-of-contents/index.js:124
+#: build/block-library/table-of-contents/index.js:188
+msgid "Line Color"
+msgstr "ラインカラー"
+
+#: build/block-library/table-of-contents/index.js:143
+#: build/block-library/table-of-contents/index.js:161
+#: build/block-library/table-of-contents/index.js:214
+#: build/block-library/table-of-contents/index.js:207
+#: build/block-library/table-of-contents/index.js:233
+#: build/block-library/table-of-contents/index.js:301
+msgid "Table of Contents Editor Preview H2 Heading"
+msgstr "目次エディタプレビュー H2 見出し"
+
+#: build/block-library/table-of-contents/index.js:149
+#: build/block-library/table-of-contents/index.js:154
+#: build/block-library/table-of-contents/index.js:167
+#: build/block-library/table-of-contents/index.js:191
+#: build/block-library/table-of-contents/index.js:220
+#: build/block-library/table-of-contents/index.js:215
+#: build/block-library/table-of-contents/index.js:223
+#: build/block-library/table-of-contents/index.js:241
+#: build/block-library/table-of-contents/index.js:271
+#: build/block-library/table-of-contents/index.js:309
+msgid "Table of Contents Editor Preview H3 Heading"
+msgstr "目次エディタプレビュー H3 見出し"
+
+#: build/block-library/table-of-contents/index.js:173
+#: build/block-library/table-of-contents/index.js:197
+#: build/block-library/table-of-contents/index.js:249
+#: build/block-library/table-of-contents/index.js:279
+msgid "Table of Contents Editor Preview H4 Heading"
+msgstr "目次エディタプレビュー H4 見出し"
+
+#: build/block-library/table-of-contents/index.js:179
+#: build/block-library/table-of-contents/index.js:203
+#: build/block-library/table-of-contents/index.js:257
+#: build/block-library/table-of-contents/index.js:287
+msgid "Table of Contents Editor Preview H5 Heading"
+msgstr "目次エディタプレビュー H5 見出し"
+
+#: build/block-library/table-of-contents/index.js:309
+#: build/block-library/table-of-contents/index.js:372
+msgid "Table of contents"
+msgstr "目次"
 
 #: build/components/index.js:617
 #: build/plugins/index.js:163
