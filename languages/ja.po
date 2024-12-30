@@ -73,8 +73,8 @@ msgid "Menu"
 msgstr "メニュー"
 
 #: build/block-library/table-of-contents/index.php:100
-msgid "Mone table of contents"
-msgstr "Mone 目次"
+msgid "Dot"
+msgstr "ドット"
 
 #: build/block-library/user-icon/index.php:93
 msgid "Mone Settings"
@@ -553,6 +553,11 @@ msgstr "%s 非表示"
 #: build/block-editor/index.js:769
 #: build/block-editor/index.js:618
 msgid "Table Of Contents"
+msgstr "目次"
+
+#: build/block-library/table-of-contents/block.json
+msgctxt "block title"
+msgid "Table of contents"
 msgstr "目次"
 
 #: build/block-library/table-of-contents/block.json

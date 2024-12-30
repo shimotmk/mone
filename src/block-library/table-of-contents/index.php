@@ -97,7 +97,7 @@ function register_block_table_of_contents() {
 		'mone/table-of-contents',
 		array(
 			'name'  => 'mone-default-toc',
-			'label' => __( 'Mone table of contents', 'mone' ),
+			'label' => __( 'Dot', 'mone' ),
 		)
 	);
 
