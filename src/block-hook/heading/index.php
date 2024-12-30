@@ -27,10 +27,10 @@ function init() {
 				),
 				'spacing' => array(
 					'padding' => array(
-						'bottom' => 'var(--wp--preset--spacing--10)',
+						'bottom' => '0',
 						'left'   => '0',
 						'right'  => '0',
-						'top'    => 'var(--wp--preset--spacing--10)',
+						'top'    => '0',
 					),
 				),
 				'css'     => 'background: inherit;',
