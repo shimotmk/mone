@@ -45,6 +45,7 @@ import {
 	ReactIcon,
 	createSvgUrl,
 } from '../../components/icon-search-popover/ReactIcon';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
@@ -164,6 +165,7 @@ export default function Edit( props ) {
 					resetAll={ () =>
 						setAttributes( { width: undefined, height: undefined } )
 					}
+					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 				>
 					<ToolsPanelItem
 						label={ __( 'Size', 'mone' ) }

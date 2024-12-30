@@ -34,6 +34,7 @@ import fetchUrlData from '../api/fetch-url-data';
 import URLPlaceholder from './url-placeholder';
 import { githubIcon } from '../../../icons';
 import { STORE_NAME } from '../../../plugins/store/constants';
+import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
 
 export default function Edit( props ) {
 	const { attributes, setAttributes, onFocus } = props;
@@ -112,6 +113,7 @@ export default function Edit( props ) {
 							height: undefined,
 						} );
 					} }
+					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 				>
 					{ githubAccessToken === '' && (
 						<Button

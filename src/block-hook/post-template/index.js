@@ -29,6 +29,7 @@ import {
 	existsClass,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export function registerBlockTypePostTemplate( settings, name ) {
 	if ( name !== 'core/post-template' ) {
@@ -105,6 +106,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								setAttributes
 							);
 						} }
+						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
 						<ToolsPanelItem
 							label={ __( 'Horizontal scrolling', 'mone' ) }
