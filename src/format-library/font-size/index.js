@@ -45,6 +45,7 @@ function FontSizeEdit( {
 	return (
 		<>
 			<RichTextToolbarButton
+				name="moneMenu"
 				title={ __( 'Inline Font Size', 'mone' ) }
 				onClick={
 					hasFontSizeToChoose
