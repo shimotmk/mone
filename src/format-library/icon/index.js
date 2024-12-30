@@ -26,6 +26,7 @@ const InlineIcon = ( props ) => {
 	return (
 		<>
 			<RichTextToolbarButton
+				name="moneMenu"
 				title={ __( 'Icon', 'mone' ) }
 				icon={ fontSizeIcon }
 				onClick={ () => {

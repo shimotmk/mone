@@ -36,7 +36,7 @@ export const bag = {
 					onUse={ onToggle }
 				/>
 				<RichTextToolbarButton
-					// name="bold"
+					name="moneMenu"
 					icon={ formatBold }
 					title={ title }
 					onClick={ onClick }
