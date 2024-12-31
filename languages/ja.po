@@ -1143,6 +1143,14 @@ msgstr "詳細情報"
 msgid "Learn More"
 msgstr "さらに詳しく"
 
+#: build/format-library/index.js:1
+msgid "Back view gradation"
+msgstr "バックビューグラデーション"
+
+#: build/format-library/index.js:1
+msgid "If you are using a background gradient and a text gradient, we recommend setting the background gradient first, and then the text gradient."
+msgstr "背景グラデーションとテキストグラデーションを使う場合は最初に背景グラデーションを設定してからテキストグラデーションの設定をお勧めします。"
+
 #: build/block-library/styles-switcher-item/index.js:2
 #: build/post-featured-image/blocks/post-author-name/index.js:1
 #: build/post-featured-image/blocks/post-title/index.js:1
@@ -1203,15 +1211,25 @@ msgstr "SNSシェアボタンを表示する"
 msgid "Display Date on the page"
 msgstr "日付を表示する"
 
-#: build/format-library/font-size/index.js:1
-#: build/format-library/font-size/index.js:77
+#: build/format-library/font-size/index.js:62
+#: build/format-library/index.js:1
+#: build/format-library/font-size/index.js:49
+#: build/format-library/index.js:1773
+#: build/format-library/index.js:1933
 msgid "Inline font size"
 msgstr "インライン文字サイズ"
 
-#: build/format-library/font-size/index.js:1
-#: build/format-library/font-size/index.js:48
+#: build/format-library/font-size/index.js:82
+#: build/format-library/index.js:1
+#: build/format-library/font-size/index.js:78
+#: build/format-library/index.js:1962
 msgid "Inline Font Size"
 msgstr "インライン文字サイズ"
+
+#: build/format-library/gradient/index.js:75
+#: build/format-library/gradient/index.js:57
+msgid "Gradient text"
+msgstr "テキスト グラデーション"
 
 #: build/block-library/icon/index.js:915
 #: build/components/icon-search-popover/index.js:22057
@@ -1225,6 +1243,36 @@ msgstr "アイコンが見つかりません。"
 #: build/format-library/icon/index.js:1 build/format-library/icon/index.js:1431
 msgid "Inline Icon"
 msgstr "インラインアイコン"
+
+#: build/format-library/index.js:1
+#: build/format-library/index.js:1774
+#: build/format-library/index.js:2350
+#: build/format-library/index.js:2385
+msgid "Text Gradient"
+msgstr "テキスト グラデーション"
+
+#: build/format-library/index.js:1
+#: build/format-library/index.js:1515
+#: build/format-library/index.js:1550
+#: build/format-library/index.js:1775
+msgid "Background Gradient"
+msgstr "背景グラデーション"
+
+#: build/format-library/index.js:1
+#: build/format-library/index.js:1776
+#: build/format-library/index.js:1838
+msgid "Bold"
+msgstr "太字"
+
+#: build/format-library/index.js:1
+#: build/format-library/index.js:1777
+msgid "Reset Formatting"
+msgstr "書式リセット"
+
+#: build/format-library/index.js:1
+#: build/format-library/index.js:1795
+msgid "Mone Menu"
+msgstr "Moneメニュー"
 
 #: build/block-library/icon/index.js:277 build/format-library/icon/index.js:596
 #: build/post-featured-image/blocks/post-author-icon/index.js:176
