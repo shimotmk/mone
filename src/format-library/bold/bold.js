@@ -11,7 +11,7 @@ import {
 import { formatBold } from '@wordpress/icons';
 
 const name = 'mone/b';
-const title = __( 'Bold' );
+const title = __( 'Bold', 'mone' );
 
 export const bag = {
 	name,

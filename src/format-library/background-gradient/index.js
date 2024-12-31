@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import clsx from 'clsx';
-
 import { __ } from '@wordpress/i18n';
 import {
 	RichTextToolbarButton,
@@ -13,9 +8,10 @@ import { useState, useCallback, useMemo } from '@wordpress/element';
 import { ColorIndicator } from '@wordpress/components';
 
 import { default as InlineIconUI, getActiveColors } from './inline';
+import clsx from 'clsx';
 
 export const transparentValue = 'transparent';
-const name = 'mone/text-gradient';
+const name = 'mone/background-gradient';
 
 const InlineGradient = ( props ) => {
 	const { value, onChange, contentRef, activeAttributes, isActive } = props;
@@ -41,7 +37,7 @@ const InlineGradient = ( props ) => {
 				name="moneMenu"
 				className="format-library-text-color-button"
 				isActive={ isActive }
-				title={ __( 'Text Gradient', 'mone' ) }
+				title={ __( 'Background Gradient', 'mone' ) }
 				icon={
 					<span
 						className={ clsx( 'mone-color-indicator-button', {
@@ -76,9 +72,9 @@ const InlineGradient = ( props ) => {
 };
 
 export const inlineSettings = {
-	title: __( 'Text Gradient', 'mone' ),
+	title: __( 'Background Gradient', 'mone' ),
 	tagName: 'span',
-	className: 'mone-has-gradient-color-for-text',
+	className: 'mone-has-gradient-color-for-background',
 	attributes: {
 		style: 'style',
 		class: 'class',

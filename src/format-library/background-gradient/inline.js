@@ -26,7 +26,7 @@ function parseCSS( css = '', gradientsSettings ) {
 		if ( rule ) {
 			const [ property, value ] = rule.split( ':' );
 			if (
-				property === '--the-gradient-color-for-text' &&
+				property === '--the-gradient-color-for-background' &&
 				value !== transparentValue
 			) {
 				const gradientValue = value.startsWith(
@@ -88,7 +88,7 @@ function setColors( value, name, colors, gradientSettings ) {
 		const gradient = gradientObject
 			? `var(--wp--preset--gradient--${ gradientObject.slug })`
 			: gradientColor;
-		styles.push( `--the-gradient-color-for-text:${ gradient }` );
+		styles.push( `--the-gradient-color-for-background:${ gradient }` );
 	}
 
 	if ( styles.length ) {
@@ -155,7 +155,7 @@ export default function InlineColorUI( {
 		>
 			<div className="mone-gradient-popover-color-picker">
 				<h4 className="mone-gradient-popover-color-picker-title">
-					{ __( 'テキスト グラデーション', 'mone' ) }
+					{ __( '背景 グラデーション', 'mone' ) }
 				</h4>
 				<ColorPicker
 					name={ name }
