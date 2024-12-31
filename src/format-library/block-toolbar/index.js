@@ -32,6 +32,25 @@ const BlockToolbar = () => {
 						( { isActive } ) => isActive
 					);
 
+					const order = [
+						__( 'Icon', 'mone' ),
+						__( 'Inline Font Size', 'mone' ),
+						__( 'Text Gradient', 'mone' ),
+						__( 'Background Gradient', 'mone' ),
+						__( 'Bold', 'mone' ),
+						__( 'Reset Formatting', 'mone' ),
+					];
+					const sortedFills = fills.sort( ( a, b ) => {
+						const titleA = a[ 0 ].props.title;
+						const titleB = b[ 0 ].props.title;
+						return (
+							order.indexOf( titleA ) - order.indexOf( titleB )
+						);
+					} );
+					const controls = sortedFills.map(
+						( [ { props } ] ) => props
+					);
+
 					return (
 						<ToolbarItem>
 							{ ( toggleProps ) => (
@@ -48,9 +67,7 @@ const BlockToolbar = () => {
 											'Displays more mone tools'
 										),
 									} }
-									controls={ fills.map(
-										( [ { props } ] ) => props
-									) }
+									controls={ controls }
 									popoverProps={ POPOVER_PROPS }
 								/>
 							) }

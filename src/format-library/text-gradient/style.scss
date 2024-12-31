@@ -1,0 +1,13 @@
+.mone-has-gradient-color-for-text {
+	padding: 3px 0;
+	background: var(--the-gradient-color-for-text);
+	color: transparent;
+	background-clip: text;
+	-webkit-background-clip: text;
+}
+
+.has-inline-color[style*="background-color"] {
+	padding: 3px 0;
+}
+
+// font-family: Arial, sans-serif;

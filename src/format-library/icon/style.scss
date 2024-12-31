@@ -9,7 +9,7 @@
 }
 
 .mone-inline-icon::after {
-	background: currentcolor;
+	background: var(--the-gradient-color-for-text, currentcolor);
 	content: "";
 	display: block;
 	height: 100%;

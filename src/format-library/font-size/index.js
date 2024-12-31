@@ -9,7 +9,7 @@ import { RichTextToolbarButton } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
-import { fontSizeIcon } from '../../icons';
+import { fontSize as Icon } from '../../icons';
 import { default as InlineFontSizeUI, getActiveInlineFontSize } from './inline';
 
 const name = 'mone/inline-font-size';
@@ -56,7 +56,7 @@ function FontSizeEdit( {
 				shortcutCharacter={ shortcutChar }
 				className="format-library-text-color-button"
 				isActive={ isActive }
-				icon={ fontSizeIcon }
+				icon={ Icon }
 			/>
 			{ isSettingFontSize && (
 				<InlineFontSizeUI
