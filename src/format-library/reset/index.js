@@ -19,11 +19,7 @@ export const unknown = {
 	title,
 	tagName: '*',
 	className: null,
-	edit( { isActive, value, onChange, onFocus } ) {
-		// if ( ! isActive ) {
-		// 	return null;
-		// }
-
+	edit( { value, onChange, onFocus } ) {
 		const formatTypeList = select( richTextStore ).getFormatTypes();
 		const nameList = formatTypeList.map( ( format ) => format.name );
 
