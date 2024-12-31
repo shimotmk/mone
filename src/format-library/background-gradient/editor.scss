@@ -1,9 +1,10 @@
 .mone-gradient-popover {
+
 	.components-custom-gradient-picker__control-point-button {
 		padding: 0;
 	}
 
-	
+
 	.mone-gradient-popover-color-picker-title {
 		margin: 0 0 8px;
 	}
@@ -14,17 +15,18 @@
 	}
 }
 
- /* カーソルの色を設定 */
+/* カーソルの色を設定 */
 .mone-has-gradient {
-    caret-color: var(--wp--preset--color--content-contrast);
+	caret-color: var(--wp--preset--color--content-contrast);
 }
 
 .mone-color-indicator-button {
 	width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	&.is-active {
 		background-color: #1e1e1e;
 		border-radius: 1px;
