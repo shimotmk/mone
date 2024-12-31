@@ -7,10 +7,10 @@ import { InfoPopover } from '../info-popover';
 import './editor.scss';
 
 export const InfoPopoverLabel = ( props ) => {
-	const { label } = props;
+	const { label, className = '' } = props;
 
 	return (
-		<Flex justify="flex-start" gap="0">
+		<Flex className={ className } justify="flex-start" gap="0">
 			<FlexItem>{ label }</FlexItem>
 			<FlexItem
 				style={ {

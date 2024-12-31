@@ -20,6 +20,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { inlineSettings as settings, transparentValue } from './index';
+import { InfoPopoverLabel } from '../../components/info-popover-label';
 
 function parseCSS( css = '', gradientsSettings ) {
 	return css.split( ';' ).reduce( ( accumulator, rule ) => {
@@ -154,9 +155,14 @@ export default function InlineColorUI( {
 			anchor={ popoverAnchor }
 		>
 			<div className="mone-gradient-popover-color-picker">
-				<h4 className="mone-gradient-popover-color-picker-title">
-					{ __( '背景 グラデーション', 'mone' ) }
-				</h4>
+				<InfoPopoverLabel
+					className="mone-gradient-popover-color-picker-title"
+					label={ __( '背景 グラデーション', 'mone' ) }
+					message={ __(
+						'背景グラデーションは、最初に設定してテキストをラップして使用をおすすめします。',
+						'mone'
+					) }
+				/>
 				<ColorPicker
 					name={ name }
 					property={ 'gradientColor' }

@@ -38,6 +38,7 @@ const BlockToolbar = () => {
 						__( 'Text Gradient', 'mone' ),
 						__( 'Background Gradient', 'mone' ),
 						__( 'Bold', 'mone' ),
+						__( 'Reset Formatting', 'mone' ),
 					];
 					const sortedFills = fills.sort( ( a, b ) => {
 						const titleA = a[ 0 ].props.title;
