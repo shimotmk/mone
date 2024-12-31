@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-31T07:22:29+00:00\n"
+"POT-Creation-Date: 2024-12-31T07:38:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -345,7 +345,6 @@ msgstr ""
 #: patterns/sidebar.php:56
 #: patterns/template-query-loop.php:39
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:177
 msgid "Please add text or a block to display when the query returns no results."
 msgstr ""
 
@@ -354,7 +353,6 @@ msgstr ""
 #: patterns/sidebar.php:57
 #: patterns/template-query-loop.php:40
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:175
 msgid "No results found"
 msgstr ""
 
@@ -399,8 +397,6 @@ msgstr ""
 
 #: patterns/sidebar.php:39
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:192
-#: build/block-hook/query/index.js:238
 msgid "Most Read Articles"
 msgstr ""
 
@@ -461,475 +457,365 @@ msgid "Next Post"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:69
 msgid "Mone Activation Settings"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:76
 msgid "Step 1"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:81
 msgid "Register the domain you want to authenticate on your Mone My Page"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:93
 msgid "Mone Mypage"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:95
 msgid "Please register the following domains"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:115
 msgid "Copied!"
 msgstr ""
 
 #: build/admin/index.js:1
 #: build/block-hook/button/index.js:1
-#: build/admin/index.js:118
-#: build/block-hook/button/index.js:311
 msgid "Copy"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:131
 msgid "Step 2"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:136
 msgid "Mone user Enter your email address"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:143
 msgid "Enter your Mone user email address below and save"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:32
 msgid "user email saved successfully"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:38
 msgid "An error occurred while saving the user email."
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:168
 msgid "Save"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:181
 msgid "Step 3"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:186
 msgid "Authentication Check"
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:190
 msgid "If you press the button below and no alert appears, authentication is complete."
 msgstr ""
 
 #: build/admin/index.js:1
-#: build/admin/index.js:199
 msgid "Check authentication"
 msgstr ""
 
 #: build/block-editor/index.js:1
-#: build/block-editor/index.js:217
 msgid "Using the selector, it can be rewritten to a block-specific class."
 msgstr ""
 
 #: build/block-editor/index.js:1
-#: build/block-editor/index.js:223
 msgid "Additional CSS"
 msgstr ""
 
 #: build/block-editor/index.js:1
-#: build/block-editor/index.js:509
 msgid "Post Type"
 msgstr ""
 
 #. translators: Hide on %s
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:535
 msgid "Hide on %s"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:419
-#: build/block-editor/index.js:447
 msgid "Media Query"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:438
 msgid "Hide on PC"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:466
 msgid "Hide on mobile"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:618
 msgid "Table Of Contents"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:629
 msgid "Hide if no table of contents"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:372
 msgid "Hide settings"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:719
-#: build/block-editor/index.js:802
 msgid "Position"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:739
-#: build/block-editor/index.js:758
 msgid "Type"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:774
 msgid "Default"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:778
 msgid "Sticky"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:805
 msgid "Top"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:836
 msgid "Right"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:867
 msgid "Bottom"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:898
 msgid "Left"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:1084
 msgid "Unlock content only"
 msgstr ""
 
 #: build/block-editor/index.js:2
-#: build/block-editor/index.js:1085
 msgid "Lock content only"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:305
 msgid "None"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:306
 msgid "Facebook"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:307
 msgid "X"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:308
 msgid "Hatena"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:309
 msgid "Pocket"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:310
 msgid "LINE"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:319
 msgid "Share Settings"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:326
 msgid "Share Button Provider"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:27
 msgid "Add image"
 msgstr ""
 
 #: build/block-hook/button/index.js:1
-#: build/block-hook/button/index.js:153
 msgid "Click animation image"
 msgstr ""
 
 #: build/block-hook/code/index.js:1
-#: build/block-hook/code/index.js:84
 msgid "Code Settings"
 msgstr ""
 
 #: build/block-hook/code/index.js:1
-#: build/block-hook/code/index.js:91
 msgid "Code Language"
 msgstr ""
 
 #: build/block-hook/code/index.js:1
 #: build/block-library/github-embed/index.js:1
-#: build/block-hook/code/index.js:112
-#: build/block-library/github-embed/index.js:310
-#: build/block-library/github-embed/index.js:333
 msgid "Height"
 msgstr ""
 
 #: build/block-hook/columns/index.js:1
-#: build/block-hook/columns/index.js:46
 msgid "Fold backwards on mobile"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:401
-#: build/block-hook/group/index.js:486
 msgid "Hand"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:422
 msgid "Applause Button"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:423
 msgid "Applause button and counter that can be pressed multiple times without logging in"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:541
-#: build/block-hook/group/index.js:601
-#: build/block-hook/group/index.js:602
-#: build/block-hook/group/index.js:618
 msgid "Balloon"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:552
-#: build/block-hook/group/index.js:633
 msgid "Balloon icon"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:588
-#: build/block-hook/group/index.js:669
 msgid "Hello, write your sentence here!"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:958
-#: build/block-hook/group/index.js:959
 msgid "Box Menu"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:1011
 msgid "Vertical layout on mobile"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
 #: build/block-library/icon/index.js:1
-#: build/block-hook/group/index.js:122
-#: build/block-library/icon/index.js:115
 msgid "Mark as nofollow"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-#: build/block-hook/group/index.js:176
 msgid "Hover Background"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
 #: build/block-library/icon/index.js:1
-#: build/block-hook/group/index.js:219
-#: build/block-library/icon/index.js:346
 msgid "Link"
 msgstr ""
 
 #: build/block-hook/post-date/index.js:1
-#: build/block-hook/post-date/index.js:93
 msgid "Mone prefix suffix"
 msgstr ""
 
 #: build/block-hook/post-template/index.js:1
-#: build/block-hook/post-template/index.js:185
-#: build/block-hook/post-template/index.js:199
 msgid "Horizontal scrolling"
 msgstr ""
 
 #: build/block-hook/post-template/index.js:1
-#: build/block-hook/post-template/index.js:231
-#: build/block-hook/post-template/index.js:241
 msgid "Scroll Snap"
 msgstr ""
 
 #: build/block-hook/post-template/index.js:1
-#: build/block-hook/post-template/index.js:260
-#: build/block-hook/post-template/index.js:272
 msgid "Snap placement"
 msgstr ""
 
 #: build/block-hook/post-template/index.js:1
-#: build/block-hook/post-template/index.js:307
 msgid "Recommend an odd number of columns for snap scrolling."
 msgstr ""
 
 #: build/block-hook/post-terms/index.js:1
-#: build/block-hook/post-terms/index.js:64
 msgid "Tags"
 msgstr ""
 
 #: build/block-hook/query-pagination-next/index.js:1
-#: build/block-hook/query-pagination-next/index.js:44
 msgid "Next Article"
 msgstr ""
 
 #: build/block-hook/query-pagination-previous/index.js:1
-#: build/block-hook/query-pagination-previous/index.js:44
 msgid "Previous article"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:64
 msgid "Post Ids"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:77
 msgid "Example: 1,4,7"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:78
 msgid "*Please enter with commas."
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:31
 msgid "Include Posts"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:302
 msgid "Pick Up Articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:303
 msgid "Display the selected article."
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:193
 msgid "Shows the most read articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:246
-#: build/block-hook/query/index.js:282
 msgid "Related articles"
 msgstr ""
 
 #: build/block-hook/query/index.js:1
-#: build/block-hook/query/index.js:247
 msgid "Displays random articles from the same category as the post."
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:61
 msgid "You cannot select multiple cells from different sections."
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1027
 msgid "Merging and splitting cells"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1062
 msgid "Merge Cells"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1086
 msgid "Split Cell"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1218
 msgid "The cell was repaired"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1208
 msgid "No cells to repair"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1234
 msgid "Repairing broken cells"
 msgstr ""
 
 #: build/block-hook/table/index.js:1
-#: build/block-hook/table/index.js:1254
 msgid "Clear Selection"
 msgstr ""
 
 #: build/block-library/embed-featured-image/index.js:1
 #: build/block-library/embed-title/index.js:1
-#: build/block-library/embed-featured-image/index.js:285
-#: build/block-library/embed-title/index.js:63
 msgid "Link to URL"
 msgstr ""
 
 #: build/block-library/embed-site-logo/index.js:1
 #: build/block-library/embed-site-title/index.js:1
-#: build/block-library/embed-site-logo/index.js:50
-#: build/block-library/embed-site-title/index.js:65
 msgid "Link to home page"
 msgstr ""
 
@@ -951,7 +837,6 @@ msgstr ""
 
 #: build/block-library/embed/index.js:1
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:353
 msgid "Clear cache"
 msgstr ""
 
@@ -960,349 +845,231 @@ msgid "If the data is old, please clear the cache. It is usually updated every h
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:488
 msgid "Paste the permalink of the Github code you want to display on your site."
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:520
 msgid "example :"
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:305
 msgid "Please set your Github token."
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:356
 msgid "If the data is old, please clear the cache. It is usually updated every day."
 msgstr ""
 
 #: build/block-library/github-embed/index.js:1
-#: build/block-library/github-embed/index.js:438
 msgid "GitHub Code Embed"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/block-library/icon/index.js:230
-#: build/block-library/icon/index.js:241
 msgid "Size"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/format-library/icon/index.js:597
 #: build/format-library/index.js:1
-#: build/block-library/icon/index.js:253
-#: build/format-library/icon/index.js:1409
-#: build/format-library/index.js:1772
-#: build/format-library/index.js:2176
 msgid "Icon"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/block-library/icon/index.js:274
 msgid "Icon Color"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/block-library/icon/index.js:306
 msgid "Hover background Color"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/format-library/icon/index.js:413
 #: build/format-library/index.js:1
-#: build/block-library/icon/index.js:1745
-#: build/components/icon-search-popover/index.js:17369
-#: build/components/index.js:1212
-#: build/format-library/icon/index.js:1198
-#: build/format-library/index.js:1226
 msgid "Icon not found."
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/format-library/icon/index.js:533
-#: build/block-library/icon/index.js:1908
-#: build/components/icon-search-popover/index.js:17532
-#: build/components/index.js:1375
-#: build/format-library/icon/index.js:1361
-#: build/format-library/index.js:1389
 msgid "Select Icon"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:79
 msgid "Menu Template"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:98
 msgid "Edit"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:106
 msgid "Create a template part"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:110
 msgid "Click to open"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:179
 msgid "Mega menu link text"
 msgstr ""
 
 #: build/block-library/mega-menu/index.js:1
-#: build/block-library/mega-menu/index.js:180
 msgid "Mega menu label"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:1
-#: build/block-library/styles-switcher-item/index.js:20
 msgid "Variation Name"
 msgstr ""
 
 #. translators: %s: switcher item
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:230
 msgid "%s switcher item"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:40
-#: build/block-library/styles-switcher-item/index.js:129
 msgid "Current"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:41
-#: build/block-library/styles-switcher-item/index.js:130
 msgid "Mone Default"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:42
-#: build/block-library/styles-switcher-item/index.js:131
 msgid "Blue"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:43
-#: build/block-library/styles-switcher-item/index.js:132
 msgid "Dark"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:44
-#: build/block-library/styles-switcher-item/index.js:133
 msgid "Green"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:45
-#: build/block-library/styles-switcher-item/index.js:134
 msgid "White"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:142
 msgid "Settings"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:149
 msgid "Style variation settings"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
-#: build/block-library/styles-switcher-item/index.js:56
 msgid "VariationOption"
 msgstr ""
 
 #: build/block-library/styles-switcher/index.js:1
-#: build/block-library/styles-switcher/index.js:106
-#: build/block-library/styles-switcher/index.js:178
 msgid "Defaults"
 msgstr ""
 
 #: build/block-library/styles-switcher/index.js:1
-#: build/block-library/styles-switcher/index.js:203
 msgid "white"
 msgstr ""
 
 #: build/block-library/styles-switcher/index.js:1
-#: build/block-library/styles-switcher/index.js:87
 msgid "isToggle"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:103
-#: build/block-library/table-of-contents/index.js:120
 msgid "Scroll animation"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:144
 msgid "Circle Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:145
 msgid "Number Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:155
 msgid "Deactivate text Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:168
 msgid "Circle deactivate Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:172
 msgid "Number deactivate Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:188
 msgid "Line Color"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:207
-#: build/block-library/table-of-contents/index.js:233
 msgid "Table of Contents Editor Preview H2 Heading"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:215
-#: build/block-library/table-of-contents/index.js:223
-#: build/block-library/table-of-contents/index.js:241
 msgid "Table of Contents Editor Preview H3 Heading"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:249
 msgid "Table of Contents Editor Preview H4 Heading"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:314
 msgid "Table of contents"
 msgstr ""
 
 #: build/block-library/table-of-contents/index.js:1
-#: build/block-library/table-of-contents/index.js:323
 msgid "Sidebar Table of Contents"
 msgstr ""
 
 #: build/edit-post/index.js:1
-#: build/edit-post/index.js:94
 msgid "Mone post settings"
 msgstr ""
 
 #: build/edit-post/index.js:1
-#: build/edit-post/index.js:99
 msgid "Display eye-catcher on the page"
 msgstr ""
 
 #: build/edit-post/index.js:1
-#: build/edit-post/index.js:119
 msgid "Display SNS Share Button on the page"
 msgstr ""
 
 #: build/edit-post/index.js:1
-#: build/edit-post/index.js:139
 msgid "Display Date on the page"
 msgstr ""
 
-#: build/format-library/font-size/index.js:62
 #: build/format-library/index.js:1
-#: build/format-library/font-size/index.js:49
-#: build/format-library/index.js:1773
-#: build/format-library/index.js:1933
-msgid "Inline Font Size"
-msgstr ""
-
-#: build/format-library/font-size/index.js:82
-#: build/format-library/index.js:1
-#: build/format-library/font-size/index.js:78
-#: build/format-library/index.js:1962
-msgid "Inline font size"
-msgstr ""
-
-#: build/format-library/gradient/index.js:57
-#: build/format-library/gradient/index.js:34
-msgid "グラデーション"
-msgstr ""
-
-#: build/format-library/gradient/index.js:75
-#: build/format-library/gradient/index.js:57
-msgid "Gradient text"
-msgstr ""
-
-#: build/format-library/icon/index.js:614
-#: build/format-library/index.js:1
-#: build/format-library/icon/index.js:1431
-#: build/format-library/index.js:2198
-msgid "Inline Icon"
-msgstr ""
-
-#: build/format-library/index.js:1
-#: build/format-library/index.js:1819
 msgid "Block Toolbar"
 msgstr ""
 
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1774
-#: build/format-library/index.js:2350
-#: build/format-library/index.js:2385
+msgid "Inline Font Size"
+msgstr ""
+
+#: build/format-library/index.js:1
 msgid "Text Gradient"
 msgstr ""
 
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1515
-#: build/format-library/index.js:1550
-#: build/format-library/index.js:1775
 msgid "Background Gradient"
 msgstr ""
 
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1776
-#: build/format-library/index.js:1838
 msgid "Bold"
 msgstr ""
 
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1777
 msgid "Reset Formatting"
 msgstr ""
 
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1795
 msgid "Mone Menu"
 msgstr ""
 
 #: build/format-library/index.js:1
 #: build/plugins/index.js:1
-#: build/components/index.js:1410
-#: build/format-library/index.js:1449
-#: build/plugins/index.js:87
 msgid "More Information"
 msgstr ""
 
 #: build/format-library/index.js:1
 #: build/plugins/index.js:1
-#: build/components/index.js:1427
-#: build/format-library/index.js:1466
-#: build/plugins/index.js:104
 msgid "Learn More"
 msgstr ""
 
@@ -1314,107 +1081,81 @@ msgstr ""
 msgid "If you are using a background gradient and a text gradient, we recommend setting the background gradient first, and then the text gradient."
 msgstr ""
 
+#: build/format-library/index.js:1
+msgid "Inline font size"
+msgstr ""
+
+#: build/format-library/index.js:1
+msgid "Inline Icon"
+msgstr ""
+
 #: build/plugins/index.js:1
-#: build/plugins/index.js:303
 msgid "Add NO IMAGE"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:374
-#: build/plugins/index.js:568
 msgid "Default NO IMAGE"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:380
-#: build/plugins/index.js:591
 msgid "NO IMAGE"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:671
 msgid "Show NO IMAGE in query"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:689
 msgid "Show NO IMAGE on the page"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:477
-#: build/plugins/index.js:608
 msgid "GitHub Token"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:478
 msgid "You can get a GitHub token from your GitHub account settings. This token is used to increase the number of requests to the GitHub API."
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:482
 msgid "https://mone-wp.com/get-github-token/"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:560
 msgid "Site settings"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:848
-#: build/post-featured-image/index.js:11739
 msgid "Display eye-catching template"
 msgstr ""
 
 #: build/plugins/index.js:1
 #: build/post-featured-image/index.js:1
-#: build/plugins/index.js:878
-#: build/post-featured-image/index.js:11773
 msgid "User Settings"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:881
 msgid "Eye-catching template"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:984
 msgid "Mone settings"
 msgstr ""
 
 #: build/plugins/index.js:1
-#: build/plugins/index.js:985
 msgid "This setting is immediately saved to the database."
 msgstr ""
 
 #: build/post-featured-image/index.js:1
-#: build/post-featured-image/index.js:12100
 msgid "Upload & Eye-Catch Updated"
 msgstr ""
 
 #: build/post-featured-image/index.js:1
-#: build/post-featured-image/index.js:12144
 msgid "Upload & Update Eyecatcher"
 msgstr ""
 
 #: build/post-featured-image/index.js:1
-#: build/post-featured-image/index.js:11960
 msgid "Featured image Templates"
-msgstr ""
-
-#: build/format-library/index.js:1720
-msgid "背景 グラデーション"
-msgstr ""
-
-#: build/format-library/index.js:1721
-msgid "背景グラデーションは、最初に設定してテキストをラップして使用をおすすめします。"
-msgstr ""
-
-#: build/format-library/index.js:2553
-msgid "テキスト グラデーション"
 msgstr ""
 
 #: build/block-library/embed-excerpt/block.json

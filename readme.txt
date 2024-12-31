@@ -13,6 +13,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 = 1.4.0 = 
 
 - Added Format Settings
+- Added Text Gradient Format
+- Added Background Gradient Format
+- Other minor adjustments
 
 = 1.3.0 = 2024-12-30
 
