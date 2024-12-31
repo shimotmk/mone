@@ -59,25 +59,30 @@ function mone_register_block_hook() {
 		$view_asset_file        = file_exists( $view_asset_file_path ) ? include $view_asset_file_path : null;
 		$view_script_module_url = MONE_TEMPLATE_DIR_URL . '/build/block-hook/' . $block . '/view.js';
 
-		// ブロックエディター,フロント両方で読み込む.
+		// フロント両方で読み込む.
 		add_action(
-			'enqueue_block_assets',
-			function () use ( $block, $style_path, $style_url, $asset_file ) {
-				if ( file_exists( $style_path ) && $asset_file ) {
-					wp_enqueue_style(
-						'mone-' . $block . '-style',
-						$style_url,
-						array(),
-						$asset_file['version']
-					);
+			'render_block',
+			function ( $block_content, $parsed_block ) use ( $block, $style_path, $style_url, $asset_file ) {
+				if ( 'core/' . $block === $parsed_block['blockName'] ) {
+					if ( file_exists( $style_path ) && $asset_file ) {
+						wp_enqueue_style(
+							'mone-' . $block . '-style',
+							$style_url,
+							array(),
+							$asset_file['version']
+						);
+					}
 				}
-			}
+				return $block_content;
+			},
+			10,
+			2
 		);
 
 		// ブロックエディターで読み込む.
 		add_action(
 			'enqueue_block_assets',
-			function () use ( $block, $editor_script_path, $editor_script_url, $asset_file, $editor_style_url, $editor_style_path ) {
+			function () use ( $block, $style_path, $style_url, $editor_script_path, $editor_script_url, $asset_file, $editor_style_url, $editor_style_path ) {
 				if ( is_admin() ) {
 					if ( file_exists( $editor_script_path ) && $asset_file ) {
 						wp_enqueue_script(
@@ -101,24 +106,37 @@ function mone_register_block_hook() {
 							$asset_file['version']
 						);
 					}
+					if ( file_exists( $style_path ) && $asset_file ) {
+						wp_enqueue_style(
+							'mone-' . $block . '-style',
+							$style_url,
+							array(),
+							$asset_file['version']
+						);
+					}
 				}
 			}
 		);
 
 		// フロントで読み込む.
 		add_action(
-			'wp_enqueue_scripts',
-			function () use ( $block, $view_script_module_url, $view_asset_file ) {
-				if ( $view_asset_file ) {
-					wp_enqueue_script_module(
-						'mone-' . $block . '-view-script-module',
-						$view_script_module_url,
-						$view_asset_file['dependencies'],
-						$view_asset_file['version'],
-						true
-					);
+			'render_block',
+			function ( $block_content, $parsed_block ) use ( $block, $view_script_module_url, $view_asset_file ) {
+				if ( 'core/' . $block === $parsed_block['blockName'] ) {
+					if ( $view_asset_file ) {
+						wp_enqueue_script_module(
+							'mone-' . $block . '-view-script-module',
+							$view_script_module_url,
+							$view_asset_file['dependencies'],
+							$view_asset_file['version'],
+							false
+						);
+					}
 				}
-			}
+				return $block_content;
+			},
+			10,
+			2
 		);
 	}
 }
