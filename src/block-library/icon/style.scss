@@ -5,8 +5,9 @@
 	height: 2rem;
 
 	&.has-icon-color {
+
 		svg {
-			fill: currentColor;
+			fill: currentcolor;
 		}
 	}
 
@@ -29,6 +30,7 @@
 		mask-size: contain;
 		width: 100%;
 		box-sizing: inherit;
+
 		svg {
 			display: none;
 		}
