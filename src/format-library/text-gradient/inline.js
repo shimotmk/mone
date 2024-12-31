@@ -9,6 +9,7 @@ import {
 	useAnchor,
 } from '@wordpress/rich-text';
 import {
+	useCachedTruthy,
 	getGradientValueBySlug,
 	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -146,6 +147,8 @@ export default function InlineColorUI( {
 		editableContentElement: contentRef.current,
 		settings: { ...settings, isActive },
 	} );
+	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
 	return (
 		<Popover
