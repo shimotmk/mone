@@ -1,33 +1,38 @@
 .mone-scroll.wp-block-post-template {
-    overflow-x: auto;
-    display: flex;
+	overflow-x: auto;
+	display: flex;
 
-    .wp-block-post {
-        min-width: var(--mone--the--min--width);
+	.wp-block-post {
+		min-width: var(--mone--the--min--width);
 
-        @media screen and (max-width: 600px) {
-            min-width: 100%;
-        }
-    }
+		@media screen and (max-width: 600px) {
+			min-width: 100%;
+		}
+	}
 
-    &.mone-scroll-snap {
-        scroll-behavior: smooth;
-        scroll-snap-type: x proximity;
+	&.mone-scroll-snap {
+		scroll-behavior: smooth;
+		scroll-snap-type: x proximity;
 
 		&.mone-scroll-snap-center {
+
 			.wp-block-post {
-				scroll-snap-align: center; 
+				scroll-snap-align: center;
 			}
 		}
+
 		&.mone-scroll-snap-start {
+
 			.wp-block-post {
-				scroll-snap-align: start; 
+				scroll-snap-align: start;
 			}
 		}
+
 		&.mone-scroll-snap-end {
+
 			.wp-block-post {
 				scroll-snap-align: end;
 			}
 		}
-    }
+	}
 }
