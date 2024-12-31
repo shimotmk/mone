@@ -1,0 +1,20 @@
+.mone-gradient-popover {
+	.components-custom-gradient-picker__control-point-button {
+		padding: 0;
+	}
+
+	
+	.mone-gradient-popover-color-picker-title {
+		margin: 0 0 8px;
+	}
+
+	.mone-gradient-popover-color-picker {
+		padding: 16px;
+		width: 260px;
+	}
+}
+
+ /* カーソルの色を設定 */
+.mone-has-gradient {
+    caret-color: var(--wp--preset--color--content-contrast);
+}

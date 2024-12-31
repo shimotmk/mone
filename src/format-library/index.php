@@ -29,11 +29,19 @@ function enqueue_block_editor_format() {
 			'mone',
 			MONE_TEMPLATE_DIR_PATH . '/languages'
 		);
+		wp_enqueue_style(
+			'mone/format-library-editor',
+			MONE_TEMPLATE_DIR_URL . '/build/format-library/index.css',
+			array(),
+			$asset_file['version']
+		);
 	}
 
 	wp_enqueue_style(
-		'mone/format',
-		MONE_TEMPLATE_DIR_URL . '/build/format-library/style-index.css'
+		'mone/format-library',
+		MONE_TEMPLATE_DIR_URL . '/build/format-library/style-index.css',
+		array(),
+		$asset_file['version']
 	);
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_editor_format' );
