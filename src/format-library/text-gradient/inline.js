@@ -155,7 +155,7 @@ export default function InlineColorUI( {
 		>
 			<div className="mone-gradient-popover-color-picker">
 				<div className="mone-gradient-popover-color-picker-title">
-					{ __( 'テキスト グラデーション', 'mone' ) }
+					{ __( 'Text Gradient', 'mone' ) }
 				</div>
 				<ColorPicker
 					name={ name }

@@ -157,9 +157,9 @@ export default function InlineColorUI( {
 			<div className="mone-gradient-popover-color-picker">
 				<InfoPopoverLabel
 					className="mone-gradient-popover-color-picker-title"
-					label={ __( '背景 グラデーション', 'mone' ) }
+					label={ __( 'Back view gradation', 'mone' ) }
 					message={ __(
-						'背景グラデーションは、最初に設定してテキストをラップして使用をおすすめします。',
+						'If you are using a background gradient and a text gradient, we recommend setting the background gradient first, and then the text gradient.',
 						'mone'
 					) }
 				/>
