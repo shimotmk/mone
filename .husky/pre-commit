@@ -3,5 +3,6 @@
 
 npm run format
 npm run lint:js
+npm run lint:css
 composer format
 composer phpcs
