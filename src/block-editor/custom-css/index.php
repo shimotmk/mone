@@ -118,6 +118,9 @@ function escape_inline_style( $css ) {
 	// <style>タグと<script>タグを削除
 	$css = preg_replace( '/<style\b[^>]*>(.*?)<\/style>/is', '', $css );
 	$css = preg_replace( '/<script\b[^>]*>(.*?)<\/script>/is', '', $css );
+	$css = trim( $css );
+	$css = preg_replace( '/[\n\r\t]/', '', $css );
+	$css = preg_replace( '/\s(?=\s)/', '', $css );
 
 	return $css;
 }
