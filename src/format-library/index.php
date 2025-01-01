@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/background-gradient/index.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/code/index.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/icon/index.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/image/index.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/text-gradient/index.php';
+
 /**
  * Enqueue_block_editor_font_size
  */
@@ -35,14 +41,13 @@ function enqueue_block_editor_format() {
 			array(),
 			$asset_file['version']
 		);
+		wp_enqueue_style(
+			'mone/format-library',
+			MONE_TEMPLATE_DIR_URL . '/build/format-library/style-index.css',
+			array(),
+			$asset_file['version']
+		);
 	}
-
-	wp_enqueue_style(
-		'mone/format-library',
-		MONE_TEMPLATE_DIR_URL . '/build/format-library/style-index.css',
-		array(),
-		$asset_file['version']
-	);
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_editor_format' );
 
