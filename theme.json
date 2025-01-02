@@ -210,7 +210,17 @@
 			"fluid": true,
 			"fontFamilies": [
 				{
-					"fontFamily": "Noto, Hiragino Sans, Helvetica, Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Noto Sans",
+							"fontStyle": "normal",
+							"fontWeight": "100 900",
+							"src": [
+								"file:./assets/fonts/noto-sans/noto-sans-100-900-normal.ttf"
+							]
+						}
+					],
+					"fontFamily": "Noto, Noto Sans, Hiragino Sans, Helvetica, Arial, sans-serif",
 					"name": "System Font",
 					"slug": "system-font"
 				},

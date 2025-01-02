@@ -24,7 +24,6 @@ function render_format_block_style( $block_content ) {
 		if ( ! $is_rendered ) {
 			$custom_css = '
 				.mone-has-gradient-color-for-text {
-					padding: 3px 0;
 					background: var(--the-gradient-color-for-text);
 					color: transparent;
 					background-clip: text;
