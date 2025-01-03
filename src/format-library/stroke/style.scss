@@ -1,0 +1,6 @@
+.mone-has-stroke {
+	-webkit-text-stroke-width: var(--the-stroke-width, 1px);
+	stroke-width: var(--the-stroke-width, 1px);
+	-webkit-text-stroke-color: var(--the-stroke-color);
+	stroke: var(--the-stroke-color);
+}

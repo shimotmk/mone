@@ -15,6 +15,7 @@ require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/background-gradient
 require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/code/index.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/icon/index.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/image/index.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/stroke/index.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/format-library/text-gradient/index.php';
 
 /**
