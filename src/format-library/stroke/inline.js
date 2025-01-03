@@ -226,7 +226,7 @@ export default function InlineUI( {
 						} }
 						size="small"
 					>
-						{ __( 'All clear', 'mone' ) }
+						{ __( 'Reset', 'mone' ) }
 					</Button>
 				</div>
 			</div>

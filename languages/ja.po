@@ -1224,8 +1224,8 @@ msgid "Stroke width"
 msgstr "ストローク幅"
 
 #: build/format-library/index.js:1
-msgid "All clear"
-msgstr "全てリセット"
+msgid "Reset"
+msgstr "リセット"
 
 #: build/format-library/font-size/index.js:82
 #: build/format-library/index.js:1
