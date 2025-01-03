@@ -1,4 +1,4 @@
-# Copyright (C) 2024 Tomoki Shimomura
+# Copyright (C) 2025 Tomoki Shimomura
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-31T07:38:25+00:00\n"
+"POT-Creation-Date: 2025-01-03T21:46:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -1052,11 +1052,19 @@ msgid "Background Gradient"
 msgstr ""
 
 #: build/format-library/index.js:1
+msgid "Stroke"
+msgstr ""
+
+#: build/format-library/index.js:1
 msgid "Bold"
 msgstr ""
 
 #: build/format-library/index.js:1
 msgid "Reset Formatting"
+msgstr ""
+
+#: build/format-library/index.js:1
+msgid "Remove Format"
 msgstr ""
 
 #: build/format-library/index.js:1
@@ -1083,6 +1091,14 @@ msgstr ""
 
 #: build/format-library/index.js:1
 msgid "Inline font size"
+msgstr ""
+
+#: build/format-library/index.js:1
+msgid "Stroke width"
+msgstr ""
+
+#: build/format-library/index.js:1
+msgid "Reset"
 msgstr ""
 
 #: build/format-library/index.js:1

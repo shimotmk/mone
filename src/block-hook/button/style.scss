@@ -25,3 +25,7 @@
 		transition: 0.5s;
 	}
 }
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	box-shadow: inherit;
+}

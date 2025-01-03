@@ -15,6 +15,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Added Format Settings
 - Added Text Gradient Format
 - Added Background Gradient Format
+- Added Stroke Format
+- Added Reset Format
+- Update Noto sans font
+- Fix Button is-style-outline style
 - Other minor adjustments
 
 = 1.3.0 = 2024-12-30
