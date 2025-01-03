@@ -1282,6 +1282,10 @@ msgid "Reset Formatting"
 msgstr "書式リセット"
 
 #: build/format-library/index.js:1
+msgid "Remove Format"
+msgstr "書式をクリア"
+
+#: build/format-library/index.js:1
 #: build/format-library/index.js:1795
 msgid "Mone Menu"
 msgstr "Moneメニュー"

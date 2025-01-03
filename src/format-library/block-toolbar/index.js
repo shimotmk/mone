@@ -40,6 +40,7 @@ const BlockToolbar = () => {
 						__( 'Stroke', 'mone' ),
 						__( 'Bold', 'mone' ),
 						__( 'Reset Formatting', 'mone' ),
+						__( 'Remove Format', 'mone' ),
 					];
 					const sortedFills = fills.sort( ( a, b ) => {
 						const titleA = a[ 0 ].props.title;
