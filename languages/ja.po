@@ -1145,7 +1145,7 @@ msgstr "さらに詳しく"
 
 #: build/format-library/index.js:1
 msgid "Back view gradation"
-msgstr "バックビューグラデーション"
+msgstr "背景グラデーション"
 
 #: build/format-library/index.js:1
 msgid "If you are using a background gradient and a text gradient, we recommend setting the background gradient first, and then the text gradient."
