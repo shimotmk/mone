@@ -37,6 +37,7 @@ const BlockToolbar = () => {
 						__( 'Inline Font Size', 'mone' ),
 						__( 'Text Gradient', 'mone' ),
 						__( 'Background Gradient', 'mone' ),
+						__( 'Stroke', 'mone' ),
 						__( 'Bold', 'mone' ),
 						__( 'Reset Formatting', 'mone' ),
 					];

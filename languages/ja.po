@@ -1219,6 +1219,14 @@ msgstr "日付を表示する"
 msgid "Inline font size"
 msgstr "インライン文字サイズ"
 
+#: build/format-library/index.js:1
+msgid "Stroke width"
+msgstr "ストローク幅"
+
+#: build/format-library/index.js:1
+msgid "All clear"
+msgstr "全てリセット"
+
 #: build/format-library/font-size/index.js:82
 #: build/format-library/index.js:1
 #: build/format-library/font-size/index.js:78
@@ -1257,6 +1265,10 @@ msgstr "テキスト グラデーション"
 #: build/format-library/index.js:1775
 msgid "Background Gradient"
 msgstr "背景グラデーション"
+
+#: build/format-library/index.js:1
+msgid "Stroke"
+msgstr "ストローク"
 
 #: build/format-library/index.js:1
 #: build/format-library/index.js:1776

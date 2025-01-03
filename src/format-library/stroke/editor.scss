@@ -1,0 +1,9 @@
+.mone-gradient-popover-color-picker.stroke-popover {
+	display: flex;
+	flex-direction: column;
+	gap: calc(16px);
+
+	.mone-clear-button {
+		text-align: right;
+	}
+}
