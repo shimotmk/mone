@@ -7,6 +7,7 @@ import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
 import { PhosphorIconList } from './icon-list/phosphor-icons';
 import { PhosphorLogo } from '../../icons';
+import { Phosphor } from './phosphor';
 
 /**
  * WordPress dependencies
@@ -201,44 +202,10 @@ export const IconPopoverContent = ( props ) => {
 						);
 					} else if ( 'phosphor' === tab.name ) {
 						return (
-							<div className="mone-icon-tab-content">
-								<ButtonGroup>
-									{ PhosphorIconList.map(
-										( iconObj, idx ) => {
-											return (
-												<Button
-													className="mone-icon-button fi"
-													key={ idx }
-													variant={
-														iconObj.name ===
-														iconName
-															? 'primary'
-															: undefined
-													}
-													onClick={ () => {
-														const newIcon =
-															iconObj.name ===
-															iconName
-																? ''
-																: iconObj.name;
-														onChange( newIcon );
-													} }
-													label={ iconObj.name }
-												>
-													<Icon
-														icon={
-															iconObj
-																.iconList[ 1 ]
-																.svgHtml
-														}
-														size={ 24 }
-													/>
-												</Button>
-											);
-										}
-									) }
-								</ButtonGroup>
-							</div>
+							<Phosphor
+								iconName={ iconName }
+								onChange={ onChange }
+							/>
 						);
 					}
 				} }

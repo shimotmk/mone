@@ -7,6 +7,13 @@
 		margin-right: 16px;
 	}
 
+	.mone-icon-tab {
+
+		[role="tablist"] {
+			border-bottom: 1px solid #ddd;
+		}
+	}
+
 	.mone-icon-tab-content {
 		height: 58vh;
 		overflow-y: scroll;
