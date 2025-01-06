@@ -6,19 +6,15 @@ import { PhosphorIconList } from '../icon-list/phosphor-icons';
 /**
  * WordPress dependencies
  */
-import {
-	Modal,
-	Button,
-	ButtonGroup,
-	TabPanel,
-	SearchControl,
-} from '@wordpress/components';
-import { __ } from '@wordpress/i18n';
+import { Button, ButtonGroup, TabPanel } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { Icon, symbol } from '@wordpress/icons';
+import { Icon } from '@wordpress/icons';
 
 export const Phosphor = ( { iconName, onChange } ) => {
-	const [ iconType, setIconType ] = useState( 'thin' );
+	const parts = iconName?.includes( '_' ) ? iconName.split( '_' ) : [];
+	const _iconType = parts[ 1 ] || '';
+	const iconNamePart = parts[ 2 ] || '';
+	const [ iconType, setIconType ] = useState( _iconType );
 
 	return (
 		<>
@@ -54,18 +50,22 @@ export const Phosphor = ( { iconName, onChange } ) => {
 													className="mone-icon-button fi"
 													key={ idx }
 													variant={
+														iconObj.iconList.find(
+															( icon ) =>
+																icon.type ===
+																_iconType
+														) &&
 														iconObj.name ===
-														iconName
+															iconNamePart
 															? 'primary'
 															: undefined
 													}
 													onClick={ () => {
 														const newIcon =
 															iconObj.name ===
-															iconName
+															iconNamePart
 																? ''
-																: iconObj.name;
-														// iconの識別nameをつける
+																: `Phosphor_${ iconType }_${ iconObj.name }`;
 														onChange( newIcon );
 													} }
 													label={ iconObj.name }
@@ -73,8 +73,8 @@ export const Phosphor = ( { iconName, onChange } ) => {
 													<Icon
 														icon={
 															iconObj.iconList.find(
-																( iconList ) =>
-																	iconList.type ===
+																( icon ) =>
+																	icon.type ===
 																	iconType
 															)?.svgHtml
 														}

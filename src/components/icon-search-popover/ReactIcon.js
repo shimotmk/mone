@@ -11,6 +11,8 @@ import * as FaIcons6 from 'react-icons/fa6';
 import * as IoIcons from 'react-icons/io5';
 import * as FiIcons from 'react-icons/fi';
 
+import { PhosphorIconList } from './icon-list/phosphor-icons';
+
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
 export const ReactIconKinds = ( icon ) => {
@@ -21,6 +23,19 @@ export const ReactIconKinds = ( icon ) => {
 		return 'fa';
 	} else if ( icon.startsWith( 'Io' ) && IoIcons[ icon ] !== undefined ) {
 		return 'io';
+	} else if ( icon.startsWith( 'Phosphor_' ) ) {
+		return 'phosphor';
+	}
+	return null;
+};
+
+const getSvgHtml = ( iconName, _iconType ) => {
+	const iconObj = PhosphorIconList.find( ( icon ) => icon.name === iconName );
+	if ( iconObj ) {
+		const iconTypeObj = iconObj.iconList.find(
+			( icon ) => icon.type === _iconType
+		);
+		return iconTypeObj ? iconTypeObj.svgHtml : null;
 	}
 	return null;
 };
@@ -37,6 +52,11 @@ export const ReactIcon = ( {
 		return createElement( FaIcons[ icon ], { size, className } );
 	} else if ( ReactIconKinds( icon ) === 'io' ) {
 		return createElement( IoIcons[ icon ], { size, className } );
+	} else if ( ReactIconKinds( icon ) === 'phosphor' ) {
+		const parts = icon.split( '_' );
+		const _iconType = parts[ 1 ];
+		const iconNamePart = parts[ 2 ];
+		return getSvgHtml( iconNamePart, _iconType );
 	}
 	return null;
 };
@@ -44,17 +64,6 @@ export const ReactIcon = ( {
 export const IconExternalLink = ( { icon } ) => {
 	const SVG = renderToString( <ReactIcon icon={ icon } /> );
 	return 'data:image/svg+xml,' + encodeURIComponent( SVG );
-};
-
-export const getReactIcon = ( { icon, className = '', size = undefined } ) => {
-	if ( ReactIconKinds( icon ) === 'fi' ) {
-		return FiIcons[ icon ], { size, className };
-	} else if ( ReactIconKinds( icon ) === 'fa' ) {
-		return FaIcons[ icon ], { size, className };
-	} else if ( ReactIconKinds( icon ) === 'io' ) {
-		return IoIcons[ icon ], { size, className };
-	}
-	return null;
 };
 
 export const createSvgUrl = ( svgString ) => {

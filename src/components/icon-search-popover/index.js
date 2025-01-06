@@ -5,7 +5,6 @@ import { ReactIcon, ReactIconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
-import { PhosphorIconList } from './icon-list/phosphor-icons';
 import { PhosphorLogo } from '../../icons';
 import { Phosphor } from './phosphor';
 
