@@ -148,6 +148,7 @@ function TableOfContentEdit( props ) {
 							resetAllFilter: () => setBeforeColor(),
 							isShownByDefault: true,
 							enableAlpha: true,
+							clearable: true,
 						},
 						...( existsClass( className, scrollAnimationClassName )
 							? [
@@ -162,6 +163,7 @@ function TableOfContentEdit( props ) {
 											setDeactivateTextColor(),
 										isShownByDefault: true,
 										enableAlpha: true,
+										clearable: true,
 									},
 									{
 										label: hasDefaultTocStyle
@@ -179,6 +181,7 @@ function TableOfContentEdit( props ) {
 											setBeforeDeactivateColor(),
 										isShownByDefault: true,
 										enableAlpha: true,
+										clearable: true,
 									},
 							  ]
 							: [] ),
@@ -191,6 +194,7 @@ function TableOfContentEdit( props ) {
 										resetAllFilter: () => setLineColor(),
 										isShownByDefault: true,
 										enableAlpha: true,
+										clearable: true,
 									},
 							  ]
 							: [] ),
