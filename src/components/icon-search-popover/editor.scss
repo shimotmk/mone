@@ -9,14 +9,24 @@
 
 	.mone-icon-tab {
 
-		[role="tablist"] {
-			border-bottom: 1px solid #ddd;
-		}
 	}
 
 	.mone-icon-tab-content {
 		height: 58vh;
 		overflow-y: scroll;
+		border: 1px solid var(--wp--preset--color--mone-border);
+	}
+
+	.mone-icon-type-toggle-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.mone-icon-type-toggle {
+		width: 150px;
 	}
 
 	.mone-icon-button-group {
