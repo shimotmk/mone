@@ -46,6 +46,7 @@ import {
 	createSvgUrl,
 } from '../../components/icon-search-popover/ReactIcon';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
+import { parseIcon } from './utils/parse-icon';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
@@ -154,8 +155,8 @@ export default function Edit( props ) {
 	}, [ popoverClose ] );
 
 	const SVG = iconName
-		? renderToString( <ReactIcon icon={ iconName } /> )
-		: renderToString( <ReactIcon icon="FaWordpress" /> );
+		? renderToString( <ReactIcon iconName={ iconName } /> )
+		: renderToString( <ReactIcon iconName="FaWordpress" /> );
 
 	return (
 		<>
@@ -346,10 +347,11 @@ export default function Edit( props ) {
 							} }
 						>
 							{ iconName ? (
-								<ReactIcon icon={ iconName } />
+								<ReactIcon iconName={ iconName } />
 							) : (
-								<ReactIcon icon="FaWordpress" />
+								<ReactIcon iconName="FaWordpress" />
 							) }
+							{ parseIcon( SVG ) }
 						</span>
 					</a>
 				) : (
@@ -364,9 +366,9 @@ export default function Edit( props ) {
 							} }
 						>
 							{ iconName ? (
-								<ReactIcon icon={ iconName } />
+								<ReactIcon iconName={ iconName } />
 							) : (
-								<ReactIcon icon="FaWordpress" />
+								<ReactIcon iconName="FaWordpress" />
 							) }
 						</span>
 					</>

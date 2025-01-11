@@ -24,7 +24,9 @@ import { IconPopoverContent } from '../../components/icon-search-popover';
 
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const getInsertIconValue = ( icon ) => {
-		const SVG = renderToString( <ReactIcon icon={ icon } size="100%" /> );
+		const SVG = renderToString(
+			<ReactIcon iconName={ icon } size="100%" />
+		);
 		const dataSvg = createSvgUrl( SVG );
 
 		const activeFormat = getActiveFormat( value, name );

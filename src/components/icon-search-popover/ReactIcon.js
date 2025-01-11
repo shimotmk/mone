@@ -41,19 +41,19 @@ const getSvgHtml = ( iconName, _iconType ) => {
 };
 
 export const ReactIcon = ( {
-	icon,
+	iconName,
 	className = '',
 	size = undefined,
 	style = { fill: 'none' },
 } ) => {
-	if ( ReactIconKinds( icon ) === 'fi' ) {
-		return createElement( FiIcons[ icon ], { size, className, style } );
-	} else if ( ReactIconKinds( icon ) === 'fa' ) {
-		return createElement( FaIcons[ icon ], { size, className } );
-	} else if ( ReactIconKinds( icon ) === 'io' ) {
-		return createElement( IoIcons[ icon ], { size, className } );
-	} else if ( ReactIconKinds( icon ) === 'phosphor' ) {
-		const parts = icon.split( '_' );
+	if ( ReactIconKinds( iconName ) === 'fi' ) {
+		return createElement( FiIcons[ iconName ], { size, className, style } );
+	} else if ( ReactIconKinds( iconName ) === 'fa' ) {
+		return createElement( FaIcons[ iconName ], { size, className } );
+	} else if ( ReactIconKinds( iconName ) === 'io' ) {
+		return createElement( IoIcons[ iconName ], { size, className } );
+	} else if ( ReactIconKinds( iconName ) === 'phosphor' ) {
+		const parts = iconName.split( '_' );
 		const _iconType = parts[ 1 ];
 		const iconNamePart = parts[ 2 ];
 		return getSvgHtml( iconNamePart, _iconType );
@@ -62,7 +62,7 @@ export const ReactIcon = ( {
 };
 
 export const IconExternalLink = ( { icon } ) => {
-	const SVG = renderToString( <ReactIcon icon={ icon } /> );
+	const SVG = renderToString( <ReactIcon iconName={ icon } /> );
 	return 'data:image/svg+xml,' + encodeURIComponent( SVG );
 };
 

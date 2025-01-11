@@ -69,8 +69,8 @@ export default function save( props ) {
 	};
 
 	const SVG = iconName
-		? renderToString( <ReactIcon icon={ iconName } /> )
-		: renderToString( <ReactIcon icon="FaWordpress" /> );
+		? renderToString( <ReactIcon iconName={ iconName } /> )
+		: renderToString( <ReactIcon iconName="FaWordpress" /> );
 
 	return (
 		<div { ...blockProps }>
@@ -89,9 +89,9 @@ export default function save( props ) {
 						} }
 					>
 						{ iconName ? (
-							<ReactIcon icon={ iconName } />
+							<ReactIcon iconName={ iconName } />
 						) : (
-							<ReactIcon icon="FaWordpress" />
+							<ReactIcon iconName="FaWordpress" />
 						) }
 					</span>
 				</a>
@@ -105,9 +105,9 @@ export default function save( props ) {
 						} }
 					>
 						{ iconName ? (
-							<ReactIcon icon={ iconName } />
+							<ReactIcon iconName={ iconName } />
 						) : (
-							<ReactIcon icon="FaWordpress" />
+							<ReactIcon iconName="FaWordpress" />
 						) }
 					</span>
 				</>

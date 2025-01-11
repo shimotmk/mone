@@ -20,4 +20,5 @@ registerBlockType( name, {
 	icon,
 	edit,
 	variations,
+	example,
 } );

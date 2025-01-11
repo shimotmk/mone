@@ -58,7 +58,7 @@ export const IconPopoverContent = ( props ) => {
 							} }
 							label={ icon }
 						>
-							<ReactIcon icon={ icon } size="100%" />
+							<ReactIcon iconName={ icon } size="100%" />
 						</Button>
 					);
 				} ) }
@@ -75,19 +75,22 @@ export const IconPopoverContent = ( props ) => {
 					{
 						name: 'fa',
 						title: (
-							<ReactIcon icon="FaFontAwesomeFlag" size="100%" />
+							<ReactIcon
+								iconName="FaFontAwesomeFlag"
+								size="100%"
+							/>
 						),
 					},
 					{
 						name: 'io',
-						title: <ReactIcon icon="IoLogoIonic" size="100%" />,
+						title: <ReactIcon iconName="IoLogoIonic" size="100%" />,
 					},
 					{
 						name: 'fi',
 						title: (
 							<ReactIcon
 								className="mone-icon-button-fi"
-								icon="FiFeather"
+								iconName="FiFeather"
 								size="100%"
 							/>
 						),
@@ -124,7 +127,7 @@ export const IconPopoverContent = ( props ) => {
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
@@ -157,7 +160,7 @@ export const IconPopoverContent = ( props ) => {
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
@@ -190,7 +193,7 @@ export const IconPopoverContent = ( props ) => {
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
