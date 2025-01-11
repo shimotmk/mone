@@ -15,15 +15,21 @@ import { PhosphorIconList } from './icon-list/phosphor-icons';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-export const IconKinds = ( icon ) => {
+export const IconKinds = ( iconName ) => {
 	// プレフィックスからアイコン種類を判別
-	if ( icon.startsWith( 'Fi' ) && FiIcons[ icon ] !== undefined ) {
+	if ( iconName.startsWith( 'Fi' ) && FiIcons[ iconName ] !== undefined ) {
 		return 'fi';
-	} else if ( icon.startsWith( 'Fa' ) && FaIcons[ icon ] !== undefined ) {
+	} else if (
+		iconName.startsWith( 'Fa' ) &&
+		FaIcons[ iconName ] !== undefined
+	) {
 		return 'fa';
-	} else if ( icon.startsWith( 'Io' ) && IoIcons[ icon ] !== undefined ) {
+	} else if (
+		iconName.startsWith( 'Io' ) &&
+		IoIcons[ iconName ] !== undefined
+	) {
 		return 'io';
-	} else if ( icon.startsWith( 'Phosphor_' ) ) {
+	} else if ( iconName.startsWith( 'Phosphor_' ) ) {
 		return 'phosphor';
 	}
 	return null;
