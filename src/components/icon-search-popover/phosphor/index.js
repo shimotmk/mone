@@ -1,11 +1,7 @@
 /**
- * Internal dependencies
- */
-import { PhosphorIconList } from '../icon-list/phosphor-icons';
-
-/**
  * WordPress dependencies
  */
+import { __ } from '@wordpress/i18n';
 import {
 	Button,
 	ButtonGroup,
@@ -14,6 +10,11 @@ import {
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
+
+/**
+ * Internal dependencies
+ */
+import { PhosphorIconList } from '../icon-list/phosphor-icons';
 
 export const Phosphor = ( { iconName, onChange } ) => {
 	const parts = iconName?.includes( '_' ) ? iconName.split( '_' ) : [];
@@ -58,12 +59,15 @@ export const Phosphor = ( { iconName, onChange } ) => {
 									variant={
 										iconObj.iconList.find(
 											( icon ) => icon.type === _iconType
-										) && iconObj.name === iconNamePart
+										) &&
+										iconType === _iconType &&
+										iconObj.name === iconNamePart
 											? 'primary'
 											: undefined
 									}
 									onClick={ () => {
 										const newIcon =
+											iconType === _iconType &&
 											iconObj.name === iconNamePart
 												? ''
 												: `Phosphor_${ iconType }_${ iconObj.name }`;
