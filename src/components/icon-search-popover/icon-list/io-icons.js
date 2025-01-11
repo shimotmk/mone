@@ -206,5 +206,6 @@ export const ioIcons = [
 	'IoLogoVimeo',
 	'IoLogoWordpress',
 	'IoLogoYen',
+	'IoLogoIonic',
 	'IoLogoYoutube',
 ];
