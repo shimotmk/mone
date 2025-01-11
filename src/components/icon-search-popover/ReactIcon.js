@@ -15,7 +15,7 @@ import { PhosphorIconList } from './icon-list/phosphor-icons';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-export const ReactIconKinds = ( icon ) => {
+export const IconKinds = ( icon ) => {
 	// プレフィックスからアイコン種類を判別
 	if ( icon.startsWith( 'Fi' ) && FiIcons[ icon ] !== undefined ) {
 		return 'fi';
@@ -46,13 +46,13 @@ export const ReactIcon = ( {
 	size = undefined,
 	style = { fill: 'none' },
 } ) => {
-	if ( ReactIconKinds( iconName ) === 'fi' ) {
+	if ( IconKinds( iconName ) === 'fi' ) {
 		return createElement( FiIcons[ iconName ], { size, className, style } );
-	} else if ( ReactIconKinds( iconName ) === 'fa' ) {
+	} else if ( IconKinds( iconName ) === 'fa' ) {
 		return createElement( FaIcons[ iconName ], { size, className } );
-	} else if ( ReactIconKinds( iconName ) === 'io' ) {
+	} else if ( IconKinds( iconName ) === 'io' ) {
 		return createElement( IoIcons[ iconName ], { size, className } );
-	} else if ( ReactIconKinds( iconName ) === 'phosphor' ) {
+	} else if ( IconKinds( iconName ) === 'phosphor' ) {
 		const parts = iconName.split( '_' );
 		const _iconType = parts[ 1 ];
 		const iconNamePart = parts[ 2 ];

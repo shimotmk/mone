@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { ReactIcon, ReactIconKinds } from './ReactIcon';
+import { ReactIcon, IconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
@@ -100,7 +100,7 @@ export const IconPopoverContent = ( props ) => {
 						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
 					},
 				] }
-				initialTabName={ iconName ? ReactIconKinds( iconName ) : 'fa' }
+				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
 			>
 				{ ( tab ) => {
 					if ( 'fa' === tab.name ) {
