@@ -5,8 +5,9 @@ import { ReactIcon, IconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
-import { PhosphorLogo } from '../../icons';
+import { PhosphorLogo, CodeBlock } from '../../icons';
 import { Phosphor } from './phosphor';
+import { CustomIcon } from './custom-icon';
 
 /**
  * WordPress dependencies
@@ -27,7 +28,7 @@ import './editor.scss';
 const ALL_ICONS = fiIcons.concat( ioIcons, faIcons );
 
 export const IconPopoverContent = ( props ) => {
-	const { onChange, value } = props;
+	const { onChange, value, iconSVG } = props;
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
 
@@ -98,6 +99,10 @@ export const IconPopoverContent = ( props ) => {
 					{
 						name: 'phosphor',
 						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
+					},
+					{
+						name: 'custom',
+						title: <Icon icon={ CodeBlock } size={ 42 } />,
 					},
 				] }
 				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
@@ -209,6 +214,14 @@ export const IconPopoverContent = ( props ) => {
 								onChange={ onChange }
 							/>
 						);
+					} else if ( 'custom' === tab.name ) {
+						return (
+							<CustomIcon
+								iconName={ iconName }
+								onChange={ onChange }
+								iconSVG={ iconSVG }
+							/>
+						);
 					}
 				} }
 			</TabPanel>
@@ -232,7 +245,6 @@ export const IconPopoverContent = ( props ) => {
 };
 
 export const IconSearchModal = ( props ) => {
-	const { value, onChange } = props;
 	const [ isVisible, setIsVisible ] = useState( false );
 
 	return (
@@ -250,8 +262,7 @@ export const IconSearchModal = ( props ) => {
 					onRequestClose={ () => setIsVisible( false ) }
 				>
 					<IconPopoverContent
-						value={ value }
-						onChange={ onChange }
+						{ ...props }
 						setIsVisible={ setIsVisible }
 					/>
 				</Modal>
