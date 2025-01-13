@@ -5,6 +5,7 @@ import { ReactIcon, IconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
+import { PhosphorIconList } from './icon-list/phosphor-icons';
 import { PhosphorLogo, CodeBlock } from '../../icons';
 import { Phosphor } from './phosphor';
 import { CustomIcon } from './custom-icon';
@@ -25,7 +26,11 @@ import { Icon, symbol } from '@wordpress/icons';
 
 import './editor.scss';
 
-const ALL_ICONS = fiIcons.concat( ioIcons, faIcons );
+const ALL_ICONS = fiIcons.concat(
+	ioIcons,
+	faIcons,
+	PhosphorIconList.map( ( icon ) => icon.name )
+);
 
 export const IconPopoverContent = ( props ) => {
 	const { onChange, value, iconSVG } = props;

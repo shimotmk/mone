@@ -18,11 +18,10 @@ import { fiIcons } from './icon-list/feather-icons';
 import { faIcons } from './icon-list/fa-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { PhosphorIconList } from './icon-list/phosphor-icons';
-import { parseIcon } from './utils/parse-icon';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-const parseIconName = ( iconName ) => {
+export const parseIconName = ( iconName ) => {
 	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Phosphor_light_aperture';
 	let iconKind, iconType, iconNamePart;
 	if ( iconName?.includes( '_' ) ) {

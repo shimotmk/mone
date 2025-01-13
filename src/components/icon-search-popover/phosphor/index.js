@@ -15,11 +15,12 @@ import { Icon } from '@wordpress/icons';
  * Internal dependencies
  */
 import { PhosphorIconList } from '../icon-list/phosphor-icons';
+import { parseIconName } from '../ReactIcon';
 
 export const Phosphor = ( { iconName, onChange } ) => {
-	const parts = iconName?.includes( '_' ) ? iconName.split( '_' ) : [];
-	const _iconType = parts[ 1 ] || 'thin';
-	const iconNamePart = parts[ 2 ] || '';
+	const { iconType: type, iconNamePart: _part } = parseIconName( iconName );
+	const _iconType = type || 'thin';
+	const iconNamePart = _part || '';
 	const [ iconType, setIconType ] = useState( _iconType );
 
 	return (
