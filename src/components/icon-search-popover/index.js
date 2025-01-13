@@ -1,7 +1,12 @@
 /**
  * Internal dependencies
  */
-import { ReactIcon, IconKinds } from './ReactIcon';
+import {
+	ReactIcon,
+	IconKinds,
+	generateIconName,
+	parseIconName,
+} from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
@@ -21,21 +26,33 @@ import {
 	SearchControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
+import { useState, useMemo } from '@wordpress/element';
 import { Icon, symbol } from '@wordpress/icons';
 
 import './editor.scss';
-
-const ALL_ICONS = fiIcons.concat(
-	ioIcons,
-	faIcons,
-	PhosphorIconList.map( ( icon ) => icon.name )
-);
 
 export const IconPopoverContent = ( props ) => {
 	const { onChange, value, iconSVG } = props;
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
+
+	const ALL_ICONS = useMemo(
+		() =>
+			fiIcons.concat(
+				ioIcons,
+				faIcons,
+				PhosphorIconList.flatMap( ( icon ) =>
+					icon.iconList.map( ( iconTypeObj ) =>
+						generateIconName( {
+							iconKind: 'Phosphor',
+							iconType: iconTypeObj.type,
+							iconNamePart: icon.name,
+						} )
+					)
+				)
+			),
+		[]
+	);
 
 	let filteredIcons = null;
 	let iconList = null;
@@ -51,20 +68,34 @@ export const IconPopoverContent = ( props ) => {
 	if ( filteredIcons ) {
 		iconList = filteredIcons.length ? (
 			<ButtonGroup className="mone-icon-button-group">
-				{ filteredIcons.map( ( icon, idx ) => {
+				{ filteredIcons.map( ( _iconName, idx ) => {
+					// const {
+					// 	iconKind,
+					// 	iconType: type,
+					// 	iconNamePart: _part,
+					// } = parseIconName( _iconName );
+					// if ( iconKind === 'Phosphor' ) {
+					// 	return (
+					// 		<Phosphor
+					// 			key={ idx }
+					// 			iconName={ _iconName }
+					// 			onChange={ onChange }
+					// 		/>
+					// 	);
+					// }
 					return (
 						<Button
 							className="mone-icon-button"
 							key={ idx }
 							variant={
-								icon === iconName ? 'primary' : undefined
+								_iconName === iconName ? 'primary' : undefined
 							}
 							onClick={ () => {
-								onChange( icon );
+								onChange( _iconName );
 							} }
-							label={ icon }
+							label={ _iconName }
 						>
-							<ReactIcon iconName={ icon } size="100%" />
+							<ReactIcon iconName={ _iconName } size="100%" />
 						</Button>
 					);
 				} ) }

@@ -15,7 +15,7 @@ import { Icon } from '@wordpress/icons';
  * Internal dependencies
  */
 import { PhosphorIconList } from '../icon-list/phosphor-icons';
-import { parseIconName } from '../ReactIcon';
+import { parseIconName, generateIconName } from '../ReactIcon';
 
 export const Phosphor = ( { iconName, onChange } ) => {
 	const { iconType: type, iconNamePart: _part } = parseIconName( iconName );
@@ -71,7 +71,12 @@ export const Phosphor = ( { iconName, onChange } ) => {
 											iconType === _iconType &&
 											iconObj.name === iconNamePart
 												? ''
-												: `Phosphor_${ iconType }_${ iconObj.name }`;
+												: generateIconName( {
+														iconKind: 'Phosphor',
+														iconType,
+														iconNamePart:
+															iconObj.name,
+												  } );
 										onChange( newIcon );
 									} }
 									label={ iconObj.name }

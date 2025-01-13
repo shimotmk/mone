@@ -40,6 +40,15 @@ export const parseIconName = ( iconName ) => {
 	return {};
 };
 
+export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
+	if ( ! iconKind || ! iconType || ! iconNamePart ) {
+		throw new Error(
+			'All parts (iconKind, iconType, iconNamePart) must be provided'
+		);
+	}
+	return `${ iconKind }_${ iconType }_${ iconNamePart }`;
+};
+
 export const isCustomIcon = ( iconName ) => {
 	if ( IconKinds( iconName ) === 'custom' ) {
 		return true;
