@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Alert blue",
+	"slug": "mone-alert-blue",
+	"blockTypes": ["core/paragraph"],
+	"styles": {
+		"css": "display: flex; align-items: flex-start; &::before{ --the-alert-icon-color: #299ADE; --alert-icon-size: 2em; --alert-icon-margin-right: .4em; --the-alert-icon: url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2232%22 height=%2232%22 viewBox=%220 0 256 256%22%3E%3Cpath d=%22M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm-8,56a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm8,104a12,12,0,1,1,12-12A12,12,0,0,1,128,184Z%22%3E%3C/path%3E%3C/svg%3E'); content: ''; display: inline-block; margin-right: var(--alert-icon-margin-right); width: var(--alert-icon-size); min-width: var(--alert-icon-size); height: var(--alert-icon-size); mask-size: var(--alert-icon-size); background-color: var(--the-alert-icon-color); mask-position: top center; mask-repeat: no-repeat; mask-image: var(--the-alert-icon); }",
+		"color": {
+			"background":"#E9F8FF",
+			"text":"#000000b3"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var(--wp--preset--spacing--10)",
+				"right": "var(--wp--preset--spacing--10)",
+				"bottom": "var(--wp--preset--spacing--10)",
+				"left": "var(--wp--preset--spacing--10)"
+			}
+		}
+	}
+}
