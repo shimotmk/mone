@@ -24,6 +24,7 @@ function mone_register_block_hook() {
 		'heading',
 		'list',
 		'navigation-link',
+		'paragraph',
 		'post-content',
 		'post-date',
 		'post-featured-image',
