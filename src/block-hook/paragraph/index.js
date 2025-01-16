@@ -11,6 +11,8 @@ import {
 	store as blockEditorStore,
 	getColorObjectByColorValue,
 	__experimentalUseGradient as useGradient,
+	getTypographyClassesAndStyles as useTypographyProps,
+	useSettings,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { renderToString, useEffect } from '@wordpress/element';
@@ -24,6 +26,13 @@ import {
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import { existsClass } from '../../utils-func/class-name/classAttribute.js';
+import { isHexColor } from '../../utils-func/is-hex-color';
+
+const targetClasses = [
+	'is-style-mone-alert-red',
+	'is-style-mone-alert-blue',
+	'is-style-mone-alert-yellow',
+];
 
 export function registerBlockTypeParagraph( settings, name ) {
 	if ( name !== 'core/paragraph' ) {
@@ -65,17 +74,8 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIconColor,
 			moneAlertIconName,
 			moneAlertIcon,
-			moneIconGradient,
-			moneIconCustomGradient,
 			className,
 		} = attributes;
-		const targetClasses = [
-			'is-style-mone-alert-red',
-			'is-style-mone-alert-blue',
-			'is-style-mone-alert-yellow',
-		];
-		// const targetClasses = 'is-style-mone-alert-red';
-
 		if ( ! existsClass( className, targetClasses ) ) {
 			return <BlockEdit { ...props } />;
 		}
@@ -86,7 +86,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			customGradientAttribute: 'moneIconCustomGradient',
 		} );
 
-		console.log( 'moneAlertIconName', moneAlertIconName );
 
 		useEffect( () => {
 			if ( moneAlertIconName ) {
@@ -141,55 +140,49 @@ export const blockEditParagraph = createHigherOrderComponent(
 					</ToolsPanel>
 				</InspectorControls>
 				<InspectorControls group="color">
-					{ moneAlertIconName && (
-						<ColorGradientSettingsDropdown
-							__experimentalIsRenderedInSidebar
-							settings={ [
-								{
-									colorValue:
-										colorSlugToColorCode(
-											moneAlertIconColor
-										),
-									label: __( 'Icon Color', 'mone' ),
-									onColorChange: ( newValue ) => {
-										const colorSet =
-											select(
-												blockEditorStore
-											).getSettings().colors;
-										const ColorValue =
-											getColorObjectByColorValue(
-												colorSet,
-												newValue
-											);
+					<ColorGradientSettingsDropdown
+						__experimentalIsRenderedInSidebar
+						settings={ [
+							{
+								colorValue:
+									colorSlugToColorCode( moneAlertIconColor ),
+								label: __( 'Icon Color', 'mone' ),
+								onColorChange: ( newValue ) => {
+									const colorSet =
+										select( blockEditorStore ).getSettings()
+											.colors;
+									const ColorValue =
+										getColorObjectByColorValue(
+											colorSet,
+											newValue
+										);
 
-										if ( ColorValue !== undefined ) {
-											setAttributes( {
-												moneAlertIconColor:
-													ColorValue.slug,
-											} );
-										} else {
-											setAttributes( {
-												moneAlertIconColor: newValue,
-											} );
-										}
-									},
-									resetAllFilter: () => {
+									if ( ColorValue !== undefined ) {
 										setAttributes( {
-											moneAlertIconColor: undefined,
-											moneIconGradient: undefined,
-											moneIconCustomGradient: undefined,
+											moneAlertIconColor: ColorValue.slug,
 										} );
-									},
-									gradientValue,
-									onGradientChange: setGradient,
-									enableAlpha: true,
-									clearable: true,
+									} else {
+										setAttributes( {
+											moneAlertIconColor: newValue,
+										} );
+									}
 								},
-							] }
-							panelId={ clientId }
-							{ ...colorGradientSettings }
-						/>
-					) }
+								resetAllFilter: () => {
+									setAttributes( {
+										moneAlertIconColor: undefined,
+										moneIconGradient: undefined,
+										moneIconCustomGradient: undefined,
+									} );
+								},
+								gradientValue,
+								onGradientChange: setGradient,
+								enableAlpha: true,
+								clearable: true,
+							},
+						] }
+						panelId={ clientId }
+						{ ...colorGradientSettings }
+					/>
 				</InspectorControls>
 			</>
 		);
@@ -207,18 +200,42 @@ const blockListBlockParagraph = createHigherOrderComponent(
 		}
 		const {
 			moneAlertIconColor,
-			moneAlertIconName,
 			moneAlertIcon,
 			moneIconGradient,
 			moneIconCustomGradient,
+			className,
 		} = attributes;
+		if ( ! existsClass( className, targetClasses ) ) {
+			return <BlockListBlock { ...props } />;
+		}
+
+		const [ fluidTypographySettings, layout ] = useSettings(
+			'typography.fluid',
+			'layout'
+		);
+		const typographyProps = useTypographyProps( attributes, {
+			typography: {
+				fluid: fluidTypographySettings,
+			},
+			layout: {
+				wideSize: layout?.wideSize,
+			},
+		} );
+
 		const extraStyle = {
 			'--the-alert-icon-custom': moneAlertIcon
 				? `url(${ moneAlertIcon })`
 				: undefined,
 			'--the-alert-icon-color-custom': moneIconGradient
 				? `var(--wp--preset--gradient--${ moneIconGradient })`
-				: moneIconCustomGradient,
+				: moneIconCustomGradient ||
+				  ( moneAlertIconColor &&
+						( isHexColor( moneAlertIconColor )
+							? moneAlertIconColor
+							: `var(--wp--preset--color--${ moneAlertIconColor })` ) ),
+			'--the-alert-font-size': attributes.fontSize
+				? `var(--wp--preset--font-size--${ attributes.fontSize })`
+				: typographyProps.style.fontSize,
 		};
 
 		const blockWrapperProps = {

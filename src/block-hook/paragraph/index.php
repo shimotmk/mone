@@ -6,6 +6,7 @@
  */
 
 namespace Mone_Theme\Paragraph;
+use function Mone_Theme\UtilsFunc\mone_is_hex_color;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,11 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function render_block_paragraph( $block_content, $parsed_block ) {
-	$alert_icon_url = $parsed_block['attrs']['moneAlertIcon'] ?? '';
-	$icon_gradient = isset( $parsed_block['attrs']['moneIconGradient'] ) ? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')' : '';
-	$icon_custom_gradient = $parsed_block['attrs']['moneIconCustomGradient'] ?? '';
-	$alert_icon_color_custom = $icon_custom_gradient ? $icon_custom_gradient : ($icon_gradient ? $icon_gradient : '');
-	$font_size = $parsed_block['attrs']['fontSize'] ?? '';
+	$alert_icon_url          = $parsed_block['attrs']['moneAlertIcon'] ?? '';
+	$alert_icon_color_custom = isset( $parsed_block['attrs']['moneIconGradient'] )
+	? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')'
+	: ( $parsed_block['attrs']['moneIconCustomGradient'] ?? ( isset( $parsed_block['attrs']['moneAlertIconColor'] ) && mone_is_hex_color( $parsed_block['attrs']['moneAlertIconColor'] )
+		? $parsed_block['attrs']['moneAlertIconColor']
+		: ( isset( $parsed_block['attrs']['moneAlertIconColor'] ) ? 'var(--wp--preset--color--' . $parsed_block['attrs']['moneAlertIconColor'] . ')' : '' ) ) );
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag() ) {
@@ -46,7 +48,7 @@ function render_block_paragraph( $block_content, $parsed_block ) {
 			$updated_style .= '--the-alert-icon-color-custom: ' . $alert_icon_color_custom . ';';
 		}
 
-		$has_named_font_size   = ! empty( $parsed_block['attrs']['fontSize'] );
+		$has_named_font_size = ! empty( $parsed_block['attrs']['fontSize'] );
 		if ( $has_named_font_size ) {
 			$updated_style .= '--the-alert-font-size: var(--wp--preset--font-size--' . $parsed_block['attrs']['fontSize'] . ');';
 		}
@@ -57,7 +59,7 @@ function render_block_paragraph( $block_content, $parsed_block ) {
 					'size' => $parsed_block['attrs']['style']['typography']['fontSize'],
 				)
 			);
-			$updated_style .= '--the-alert-font-size: ' . $typography_styles . ';';
+			$updated_style    .= '--the-alert-font-size: ' . $typography_styles . ';';
 		}
 
 		$p->set_attribute( 'style', $updated_style );
