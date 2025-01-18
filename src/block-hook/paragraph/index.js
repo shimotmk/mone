@@ -102,7 +102,12 @@ export const blockEditParagraph = createHigherOrderComponent(
 					moneAlertIcon: dataSvg,
 				} );
 			}
-		}, [ moneAlertIconName, moneAlertIcon, setAttributes ] );
+		}, [
+			moneAlertIconName,
+			moneAlertIcon,
+			moneAlertIconColor,
+			setAttributes,
+		] );
 
 		return (
 			<>
@@ -241,15 +246,12 @@ const blockListBlockParagraph = createHigherOrderComponent(
 							? moneAlertIconColor
 							: `var(--wp--preset--color--${ moneAlertIconColor })` ) ),
 			'--the-alert-icon-padding-top-custom': paddingTop || undefined,
-			'--the-alert-icon-padding-left-custom': paddingLeft
-				? paddingLeft !== '0'
-					? paddingLeft
-					: '0px'
-				: undefined,
+			'--the-alert-icon-padding-left-custom':
+				paddingLeft !== '0' ? paddingLeft : '0px',
 			'--the-alert-font-size': attributes.fontSize
 				? `var(--wp--preset--font-size--${ attributes.fontSize })`
 				: typographyProps.style.fontSize,
-			paddingLeft: `calc( var( --the-alert-icon-padding-left-custom, calc(var(--wp--preset--spacing--10) )) + var(--the-alert-font-size, var(--wp--preset--font-size--medium)) + var(--the-alert-icon-text-gap) )`,
+			paddingLeft: `calc( var( --the-alert-icon-padding-left-custom, calc(var(--wp--preset--spacing--10) )) + ( var(--the-alert-font-size, var(--wp--preset--font-size--medium)) * 1.5 ) + var(--the-alert-icon-text-gap) )`,
 		};
 
 		const blockWrapperProps = {
