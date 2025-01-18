@@ -13,6 +13,7 @@ import {
 	__experimentalUseGradient as useGradient,
 	getTypographyClassesAndStyles as useTypographyProps,
 	useSettings,
+	__experimentalGetGapCSSValue as getGapCSSValue,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { renderToString, useEffect } from '@wordpress/element';
@@ -85,7 +86,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			gradientAttribute: 'moneIconGradient',
 			customGradientAttribute: 'moneIconCustomGradient',
 		} );
-
 
 		useEffect( () => {
 			if ( moneAlertIconName ) {
@@ -204,6 +204,7 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			moneIconGradient,
 			moneIconCustomGradient,
 			className,
+			style,
 		} = attributes;
 		if ( ! existsClass( className, targetClasses ) ) {
 			return <BlockListBlock { ...props } />;
@@ -221,6 +222,12 @@ const blockListBlockParagraph = createHigherOrderComponent(
 				wideSize: layout?.wideSize,
 			},
 		} );
+		const paddingTop =
+			style?.spacing?.padding?.top &&
+			getGapCSSValue( style?.spacing?.padding?.top );
+		const paddingLeft =
+			style?.spacing?.padding?.left &&
+			getGapCSSValue( style?.spacing?.padding?.left );
 
 		const extraStyle = {
 			'--the-alert-icon-custom': moneAlertIcon
@@ -233,9 +240,16 @@ const blockListBlockParagraph = createHigherOrderComponent(
 						( isHexColor( moneAlertIconColor )
 							? moneAlertIconColor
 							: `var(--wp--preset--color--${ moneAlertIconColor })` ) ),
+			'--the-alert-icon-padding-top-custom': paddingTop || undefined,
+			'--the-alert-icon-padding-left-custom': paddingLeft
+				? paddingLeft !== '0'
+					? paddingLeft
+					: '0px'
+				: undefined,
 			'--the-alert-font-size': attributes.fontSize
 				? `var(--wp--preset--font-size--${ attributes.fontSize })`
 				: typographyProps.style.fontSize,
+			paddingLeft: `calc( var( --the-alert-icon-padding-left-custom, calc(var(--wp--preset--spacing--10) )) + var(--the-alert-font-size, var(--wp--preset--font-size--medium)) + var(--the-alert-icon-text-gap) )`,
 		};
 
 		const blockWrapperProps = {
@@ -272,5 +286,6 @@ addFilter(
 addFilter(
 	'editor.BlockListBlock',
 	'mone/editor/block-list-block/paragraph',
-	blockListBlockParagraph
+	blockListBlockParagraph,
+	9
 );
