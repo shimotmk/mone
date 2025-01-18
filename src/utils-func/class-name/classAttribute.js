@@ -50,6 +50,13 @@ export const existsClass = ( classNames, targetClassName ) => {
 	const classArray = Array.isArray( classNames )
 		? classNames
 		: classStringToClassArray( classNames );
+
+	if ( Array.isArray( targetClassName ) ) {
+		return targetClassName.some(
+			( target ) => classArray.indexOf( target ) !== -1
+		);
+	}
+
 	return classArray.indexOf( targetClassName ) !== -1;
 };
 

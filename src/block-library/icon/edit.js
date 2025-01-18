@@ -242,6 +242,7 @@ export default function Edit( props ) {
 							},
 							isShownByDefault: true,
 							enableAlpha: true,
+							clearable: true,
 							colorValue: colorSlugToColorCode( iconColor ),
 							onColorChange: ( newValue ) => {
 								const colorSet =
@@ -274,6 +275,7 @@ export default function Edit( props ) {
 							},
 							isShownByDefault: true,
 							enableAlpha: true,
+							clearable: true,
 							colorValue:
 								colorSlugToColorCode( hoverBackgroundColor ),
 							onColorChange: ( newValue ) => {

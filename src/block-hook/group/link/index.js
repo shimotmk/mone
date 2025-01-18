@@ -143,6 +143,7 @@ function addInspectorControls( BlockEdit ) {
 									},
 									isShownByDefault: false,
 									enableAlpha: true,
+									clearable: true,
 								},
 							] }
 							panelId={ clientId }
