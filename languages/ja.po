@@ -762,6 +762,18 @@ msgstr "モバイルでは縦に並べる"
 msgid "List style none"
 msgstr "リストスタイルなし"
 
+#: build/block-hook/paragraph/index.php:115
+msgid "Alert red"
+msgstr "アラート レッド"
+
+#: build/block-hook/paragraph/index.php:122
+msgid "Alert yellow"
+msgstr "アラート イエロー"
+
+#: build/block-hook/paragraph/index.php:129
+msgid "Alert blue"
+msgstr "アラート ブルー"
+
 #: build/block-hook/paragraph/index.js:1
 #: build/block-hook/paragraph/index.js:16279
 msgid "スタイル"
