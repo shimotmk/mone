@@ -764,15 +764,15 @@ msgstr "リストスタイルなし"
 
 #: build/block-hook/paragraph/index.php:115
 msgid "Alert red"
-msgstr "アラート レッド"
+msgstr "アラート 赤"
 
 #: build/block-hook/paragraph/index.php:122
 msgid "Alert yellow"
-msgstr "アラート イエロー"
+msgstr "アラート 黄色"
 
 #: build/block-hook/paragraph/index.php:129
 msgid "Alert blue"
-msgstr "アラート ブルー"
+msgstr "アラート 青"
 
 #: build/block-hook/paragraph/index.js:1
 #: build/block-hook/paragraph/index.js:16279
