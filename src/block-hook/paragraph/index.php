@@ -89,9 +89,11 @@ function render_block_paragraph( $block_content, $parsed_block ) {
 
 			if ( '0' === $left ) {
 				$updated_style .= '--the-alert-icon-padding-left-custom: 0px;';
+				$updated_style = preg_replace( '/padding-left:\s*[^;]+;/', '', $updated_style );
 				$updated_style .= 'padding-left: calc( var(--the-alert-font-size, var(--wp--preset--font-size--medium)) + var(--the-alert-icon-text-gap) );';
 			} else {
 				$updated_style .= '--the-alert-icon-padding-left-custom: ' . $left . ';';
+				$updated_style = preg_replace( '/padding-left:\s*[^;]+;/', '', $updated_style );
 				$updated_style .= 'padding-left: calc( var( --the-alert-icon-padding-left-custom, calc(var(--wp--preset--spacing--10) )) + var(--the-alert-font-size, var(--wp--preset--font-size--medium)) + var(--the-alert-icon-text-gap) );';
 			}
 		}
@@ -152,7 +154,7 @@ function init() {
 					),
 					'css'     => "
                     position: relative; 
-                    --the-alert-icon-text-gap: 5px;
+                    --the-alert-icon-text-gap: calc( var(--the-alert-font-size, var(--wp--preset--font-size--medium)) / 2 );
                     padding-left: calc(var(--wp--preset--spacing--10) + var(--the-alert-font-size, var(--wp--preset--font-size--medium)) + var(--the-alert-icon-text-gap));
                     &::before{ 
                     --the-alert-icon-color: var( --the-alert-icon-color-custom, {$style['icon_color']});
@@ -165,7 +167,7 @@ function init() {
                     position: absolute; 
                     top: var(--the-alert-icon-padding-top); 
                     left: var(--the-alert-icon-padding-left); 
-                    transform: translate(-100%, 50%); 
+                    transform: translate(-100%, 50%) scale(1.5); 
                     width: var(--the-alert-icon-size); 
                     min-width: var(--the-alert-icon-size); 
                     height: var(--the-alert-icon-size); 
