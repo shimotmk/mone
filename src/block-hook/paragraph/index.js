@@ -1,3 +1,6 @@
+/**
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import {
@@ -19,6 +22,9 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { renderToString, useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
+/**
+ * Internal dependencies
+ */
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 import { IconSearchModal } from '../../components/icon-search-popover';
 import {
