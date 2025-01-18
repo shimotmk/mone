@@ -30,6 +30,7 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import { existsClass } from '../../utils-func/class-name/classAttribute.js';
@@ -57,6 +58,9 @@ export function registerBlockTypeParagraph( settings, name ) {
 		moneAlertIconName: {
 			type: 'string',
 		},
+		moneAlertIconSVG: {
+			type: 'string',
+		},
 		moneAlertIcon: {
 			type: 'string',
 		},
@@ -81,6 +85,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIconColor,
 			moneAlertIconName,
 			moneAlertIcon,
+			moneAlertIconSVG,
 			className,
 		} = attributes;
 		if ( ! existsClass( className, targetClasses ) ) {
@@ -94,14 +99,15 @@ export const blockEditParagraph = createHigherOrderComponent(
 		} );
 
 		useEffect( () => {
-			if ( moneAlertIconName ) {
-				const SVG = renderToString(
-					<ReactIcon
-						icon={ moneAlertIconName }
-						size="100%"
-						color={ moneAlertIconColor }
-					/>
-				);
+			if ( moneAlertIconName || moneAlertIconSVG ) {
+				let SVG;
+				if ( moneAlertIconName && isCustomIcon( moneAlertIconName ) ) {
+					SVG = moneAlertIconSVG;
+				} else if ( moneAlertIconName ) {
+					SVG = renderToString(
+						<ReactIcon iconName={ moneAlertIconName } />
+					);
+				}
 				const dataSvg = createSvgUrl( SVG );
 
 				setAttributes( {
@@ -112,6 +118,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIconName,
 			moneAlertIcon,
 			moneAlertIconColor,
+			moneAlertIconSVG,
 			setAttributes,
 		] );
 
@@ -141,10 +148,22 @@ export const blockEditParagraph = createHigherOrderComponent(
 						>
 							<IconSearchModal
 								value={ moneAlertIconName }
+								iconSVG={ moneAlertIconSVG }
 								onChange={ ( value ) => {
-									setAttributes( {
-										moneAlertIconName: value,
-									} );
+									if (
+										typeof value === 'object' &&
+										value !== null &&
+										value.iconType === 'custom'
+									) {
+										setAttributes( {
+											moneAlertIconName: value.iconType,
+											moneAlertIconSVG: value.iconSVG,
+										} );
+									} else {
+										setAttributes( {
+											moneAlertIconName: value,
+										} );
+									}
 								} }
 							/>
 						</ToolsPanelItem>
