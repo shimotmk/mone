@@ -126,3 +126,13 @@ export const createSvgUrl = ( svgString ) => {
 	const imageSrc = `data:image/svg+xml;base64,${ svgBase64 }`;
 	return imageSrc;
 };
+
+export const decodeSvgBase64 = ( encodedSvgUrl ) => {
+	if ( ! encodedSvgUrl ) {
+		return '';
+	}
+	const base64Data = encodedSvgUrl.split( ',' )[ 1 ];
+	const decodedString = window.atob( base64Data );
+	const svgString = decodeURIComponent( decodedString );
+	return svgString;
+};

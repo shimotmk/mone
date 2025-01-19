@@ -306,10 +306,7 @@ export const IconSearchModal = ( props ) => {
 									!! iconSVG ? (
 										parseIcon( iconSVG )
 									) : (
-										<ReactIcon
-											iconName={ value }
-											size="20px"
-										/>
+										<ReactIcon iconName={ value } />
 									) ) }
 							</Flex>
 						</ZStack>

@@ -31,6 +31,7 @@ import {
 	ReactIcon,
 	createSvgUrl,
 	isCustomIcon,
+	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import { existsClass } from '../../utils-func/class-name/classAttribute.js';
@@ -155,7 +156,10 @@ export const blockEditParagraph = createHigherOrderComponent(
 						>
 							<IconSearchModal
 								value={ moneAlertIconName }
-								iconSVG={ moneAlertIconSVG }
+								iconSVG={
+									decodeSvgBase64( moneAlertIcon ) ||
+									undefined
+								}
 								onChange={ ( value ) => {
 									if (
 										typeof value === 'object' &&
