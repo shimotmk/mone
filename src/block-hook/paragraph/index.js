@@ -59,9 +59,6 @@ export function registerBlockTypeParagraph( settings, name ) {
 		moneAlertIconName: {
 			type: 'string',
 		},
-		moneAlertIconSVG: {
-			type: 'string',
-		},
 		moneAlertIcon: {
 			type: 'string',
 		},
@@ -86,7 +83,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIconColor,
 			moneAlertIconName,
 			moneAlertIcon,
-			moneAlertIconSVG,
 			className,
 		} = attributes;
 		if ( ! existsClass( className, targetClasses ) ) {
@@ -98,30 +94,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			gradientAttribute: 'moneIconGradient',
 			customGradientAttribute: 'moneIconCustomGradient',
 		} );
-
-		useEffect( () => {
-			if ( moneAlertIconName || moneAlertIconSVG ) {
-				let SVG;
-				if ( moneAlertIconName && isCustomIcon( moneAlertIconName ) ) {
-					SVG = moneAlertIconSVG;
-				} else if ( moneAlertIconName ) {
-					SVG = renderToString(
-						<ReactIcon iconName={ moneAlertIconName } />
-					);
-				}
-				const dataSvg = createSvgUrl( SVG );
-
-				setAttributes( {
-					moneAlertIcon: dataSvg,
-				} );
-			}
-		}, [
-			moneAlertIconName,
-			moneAlertIcon,
-			moneAlertIconColor,
-			moneAlertIconSVG,
-			setAttributes,
-		] );
 
 		return (
 			<>
@@ -142,14 +114,11 @@ export const blockEditParagraph = createHigherOrderComponent(
 							label={ __( 'Icon', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								!! moneAlertIconName ||
-								!! moneAlertIconSVG ||
-								!! moneAlertIcon
+								!! moneAlertIconName || !! moneAlertIcon
 							}
 							onDeselect={ () =>
 								setAttributes( {
 									moneAlertIconName: undefined,
-									moneAlertIconSVG: undefined,
 									moneAlertIcon: undefined,
 								} )
 							}
@@ -161,18 +130,35 @@ export const blockEditParagraph = createHigherOrderComponent(
 									undefined
 								}
 								onChange={ ( value ) => {
+									let SVG;
+									const iconType = value?.iconType || value;
 									if (
 										typeof value === 'object' &&
 										value !== null &&
-										value.iconType === 'custom'
+										iconType === 'custom'
 									) {
+										SVG = isCustomIcon( iconType )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ iconType }
+													/>
+											  );
 										setAttributes( {
-											moneAlertIconName: value.iconType,
-											moneAlertIconSVG: value.iconSVG,
+											moneAlertIconName: iconType,
+											moneAlertIcon: createSvgUrl( SVG ),
 										} );
-									} else {
+									} else if ( value ) {
+										SVG = isCustomIcon( value )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ value }
+													/>
+											  );
 										setAttributes( {
 											moneAlertIconName: value,
+											moneAlertIcon: createSvgUrl( SVG ),
 										} );
 									}
 								} }
