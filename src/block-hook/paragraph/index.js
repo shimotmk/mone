@@ -140,10 +140,16 @@ export const blockEditParagraph = createHigherOrderComponent(
 							className="mone-block-editor-tools-panel-icon-settings__item"
 							label={ __( 'Icon', 'mone' ) }
 							isShownByDefault
-							hasValue={ () => !! moneAlertIconName }
+							hasValue={ () =>
+								!! moneAlertIconName ||
+								!! moneAlertIconSVG ||
+								!! moneAlertIcon
+							}
 							onDeselect={ () =>
 								setAttributes( {
 									moneAlertIconName: undefined,
+									moneAlertIconSVG: undefined,
+									moneAlertIcon: undefined,
 								} )
 							}
 						>
