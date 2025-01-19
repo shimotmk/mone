@@ -10,7 +10,7 @@ import {
 	useBlockProps,
 	__experimentalGetSpacingClassesAndStyles as getSpacingClassesAndStyles,
 } from '@wordpress/block-editor';
-import { renderToString, useEffect } from '@wordpress/element';
+import { renderToString } from '@wordpress/element';
 
 import { isHexColor } from '../../utils-func/is-hex-color';
 import {
