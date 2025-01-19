@@ -19,7 +19,7 @@ import { parseIconName, generateIconName } from '../ReactIcon';
 
 export const Phosphor = ( { iconName, onChange } ) => {
 	const { iconType: type, iconNamePart: _part } = parseIconName( iconName );
-	const _iconType = type || 'thin';
+	const _iconType = type || 'light';
 	const iconNamePart = _part || '';
 	const [ iconType, setIconType ] = useState( _iconType );
 
