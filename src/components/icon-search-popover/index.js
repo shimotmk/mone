@@ -29,11 +29,10 @@ import {
 	__experimentalZStack as ZStack,
 	Flex,
 	FlexItem,
-	ColorIndicator,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useMemo } from '@wordpress/element';
-import { Icon, symbol } from '@wordpress/icons';
+import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
 
@@ -298,7 +297,7 @@ export const IconSearchModal = ( props ) => {
 					onClick={ () => setIsVisible( ! isVisible ) }
 					__next40pxDefaultSize
 				>
-					<HStack justify="flex-start">
+					<HStack justify={ hasValue ? 'start' : 'center' }>
 						<ZStack isLayered={ false } offset={ -8 }>
 							<Flex expanded={ false }>
 								{ hasValue &&
