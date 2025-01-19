@@ -126,8 +126,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 							<IconSearchModal
 								value={ moneAlertIconName }
 								iconSVG={
-									decodeSvgBase64( moneAlertIcon ) ||
-									undefined
+									decodeSvgBase64( moneAlertIcon ) || ''
 								}
 								onChange={ ( value ) => {
 									let SVG;
