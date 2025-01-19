@@ -1,6 +1,6 @@
 <?php
 /**
- * typography Extension
+ * Typography Extension
  *
  * @package mone
  */
