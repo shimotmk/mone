@@ -166,7 +166,7 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }
@@ -199,7 +199,7 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }
@@ -232,7 +232,7 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }

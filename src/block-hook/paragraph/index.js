@@ -159,6 +159,11 @@ export const blockEditParagraph = createHigherOrderComponent(
 											moneAlertIconName: value,
 											moneAlertIcon: createSvgUrl( SVG ),
 										} );
+									} else {
+										setAttributes( {
+											moneAlertIconName: undefined,
+											moneAlertIcon: undefined,
+										} );
 									}
 								} }
 							/>
