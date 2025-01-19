@@ -5,7 +5,7 @@ import {
 	ReactIcon,
 	IconKinds,
 	generateIconName,
-	parseIconName,
+	isCustomIcon,
 } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
@@ -14,6 +14,7 @@ import { PhosphorIconList } from './icon-list/phosphor-icons';
 import { PhosphorLogo, CodeBlock } from '../../icons';
 import { Phosphor } from './phosphor';
 import { CustomIcon } from './custom-icon';
+import { parseIcon } from './utils/parse-icon';
 
 /**
  * WordPress dependencies
@@ -24,6 +25,11 @@ import {
 	ButtonGroup,
 	TabPanel,
 	SearchControl,
+	__experimentalHStack as HStack,
+	__experimentalZStack as ZStack,
+	Flex,
+	FlexItem,
+	ColorIndicator,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useMemo } from '@wordpress/element';
@@ -281,17 +287,39 @@ export const IconPopoverContent = ( props ) => {
 };
 
 export const IconSearchModal = ( props ) => {
+	const { value, iconSVG } = props;
 	const [ isVisible, setIsVisible ] = useState( false );
+	const hasValue = !! value || !! iconSVG;
 
 	return (
 		<>
-			<Button
-				variant="secondary"
-				onClick={ () => setIsVisible( ! isVisible ) }
-			>
-				{ __( 'Select Icon', 'mone' ) }
-				<Icon icon={ symbol } />
-			</Button>
+			<div className="mone-block-editor-panel-icon-settings__dropdown">
+				<Button
+					onClick={ () => setIsVisible( ! isVisible ) }
+					__next40pxDefaultSize
+				>
+					<HStack justify="flex-start">
+						<ZStack isLayered={ false } offset={ -8 }>
+							<Flex expanded={ false }>
+								{ hasValue &&
+									( value &&
+									isCustomIcon( value ) &&
+									!! iconSVG ? (
+										parseIcon( iconSVG )
+									) : (
+										<ReactIcon
+											iconName={ value }
+											size="20px"
+										/>
+									) ) }
+							</Flex>
+						</ZStack>
+						<FlexItem className="block-editor-panel-color-gradient-settings__color-name">
+							{ __( 'Select Icon', 'mone' ) }
+						</FlexItem>
+					</HStack>
+				</Button>
+			</div>
 			{ isVisible && (
 				<Modal
 					className="mone-icon-modal mone-icon-modal--search"

@@ -137,6 +137,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
 						<ToolsPanelItem
+							className="mone-block-editor-tools-panel-icon-settings__item"
 							label={ __( 'Icon', 'mone' ) }
 							isShownByDefault
 							hasValue={ () => !! moneAlertIconName }

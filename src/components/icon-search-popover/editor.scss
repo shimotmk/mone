@@ -1,3 +1,23 @@
+.mone-block-editor-tools-panel-icon-settings__item {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+.mone-block-editor-panel-icon-settings__dropdown {
+	display: block;
+	padding: 0;
+
+	>button {
+		padding-bottom: 10px;
+		padding-top: 10px;
+		text-align: left;
+		width: 100%;
+	}
+}
+
 .mone-icon-modal {
 	max-height: 88% !important;
 	max-width: 92% !important;
