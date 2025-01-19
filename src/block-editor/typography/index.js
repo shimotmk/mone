@@ -43,7 +43,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 				<BlockEdit { ...props } />
 				<InspectorControls group="typography">
 					<ToolsPanelItem
-						label={ __( 'テキスト1行中央寄せ', 'mone' ) }
+						label={ __( 'One line text center', 'mone' ) }
 						isShownByDefault={ true }
 						hasValue={ () =>
 							existsClass( className, 'mone-one-line-center' )
@@ -69,7 +69,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 							label={
 								<ToggleControl
 									label={ __(
-										'テキスト1行中央寄せ',
+										'One line text center',
 										'mone'
 									) }
 									checked={ existsClass(
@@ -87,7 +87,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 								/>
 							}
 							message={ __(
-								'テキストが2行以上になった場合は左寄せで文字を折り返します。',
+								'If the text is more than one line, it will be left justified and wrapped.',
 								'mone'
 							) }
 							popoverProps={ {
