@@ -209,7 +209,7 @@ export default function Edit( props ) {
 					>
 						<IconSearchModal
 							value={ iconName }
-							iconSVG={ iconSVG }
+							iconSVG={ iconSVG || '' }
 							onChange={ ( value ) => {
 								if (
 									typeof value === 'object' &&

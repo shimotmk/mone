@@ -8,7 +8,9 @@ import { useState, useCallback } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
 import { fontSizeIcon } from '../../icons';
-import { default as InlineIconUI } from './inline';
+import { default as InlineIconUI, getActiveIcons } from './inline';
+import { decodeSvgBase64 } from '../../components/icon-search-popover/ReactIcon';
+import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 
 import './style.scss';
 
@@ -23,13 +25,25 @@ const InlineIcon = ( props ) => {
 		[ setIsAdding ]
 	);
 
+	const activeFormat = getActiveIcons( value, name );
+	const svg = activeFormat[ '--the-icon-svg' ]
+		? parseIcon(
+				decodeSvgBase64(
+					activeFormat[ '--the-icon-svg' ].replace(
+						/^url\(|\)$/g,
+						''
+					)
+				)
+		  )
+		: fontSizeIcon;
+
 	return (
 		<>
 			<RichTextToolbarButton
 				isActive={ isActive }
 				name="moneMenu"
 				title={ __( 'Icon', 'mone' ) }
-				icon={ fontSizeIcon }
+				icon={ svg }
 				onClick={ () => {
 					setIsAdding( true );
 				} }

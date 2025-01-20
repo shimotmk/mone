@@ -29,12 +29,28 @@
 	max-height: 88% !important;
 	max-width: 92% !important;
 	width: 480px;
+	margin-right: 16px;
+
+	@media screen and (max-width: 768px) {
+		margin: auto;
+	}
 
 	&.mone-icon-modal--search {
-		margin-right: 16px;
 	}
 
 	.mone-icon-tab {
+
+		.components-tab-panel__tabs {
+			flex-wrap: wrap;
+		}
+
+		.components-tab-panel__tabs-item {
+			width: calc( 100% / 6 );
+
+			@media screen and (max-width: 768px) {
+				width: calc( 100% / 3 );
+			}
+		}
 
 	}
 
@@ -103,6 +119,10 @@
 		padding: 6px;
 		border-radius: 6px;
 		box-shadow: 0 1px 3px #0000001a;
+
+		@media screen and (max-width: 768px) {
+			width: 20%;
+		}
 	}
 
 }
