@@ -8,7 +8,12 @@ import { useState, useCallback } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
 import { fontSizeIcon } from '../../icons';
-import { default as InlineIconUI, getActiveIcons } from './inline';
+import {
+	default as InlineIconUI,
+	getActiveIcons,
+	hasIconFormat,
+} from './inline';
+import { default as StyleInlineIconUI } from './style-inline';
 import { decodeSvgBase64 } from '../../components/icon-search-popover/ReactIcon';
 import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 
@@ -50,6 +55,17 @@ const InlineIcon = ( props ) => {
 			/>
 			{ isAdding && (
 				<InlineIconUI
+					name={ name }
+					onClose={ disableIsAdding }
+					activeAttributes={ activeAttributes }
+					value={ value }
+					onChange={ onChange }
+					contentRef={ contentRef }
+					setIsAdding={ setIsAdding }
+				/>
+			) }
+			{ hasIconFormat( value, name ) && (
+				<StyleInlineIconUI
 					name={ name }
 					onClose={ disableIsAdding }
 					activeAttributes={ activeAttributes }

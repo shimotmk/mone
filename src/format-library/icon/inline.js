@@ -71,8 +71,8 @@ export function getActiveIcons( value, name ) {
 	}
 
 	return {
-		...parseCSS( activeFormat.attributes.style ),
-		...parseCSS( activeFormat.unregisteredAttributes.style ),
+		...parseCSS( activeFormat.attributes?.style ),
+		...parseCSS( activeFormat.unregisteredAttributes?.style ),
 		...parseClassName( activeFormat.attributes.class ),
 	};
 }

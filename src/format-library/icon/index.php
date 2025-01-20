@@ -33,7 +33,7 @@ function render_format_block_style( $block_content ) {
 				}
 
 				.mone-inline-icon::after {
-					background: var(--the-gradient-color-for-text, currentcolor);
+					background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
 					content: "";
 					display: block;
 					height: 100%;
