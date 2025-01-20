@@ -15,7 +15,7 @@ import './style.scss';
 const name = 'mone/inline-icon';
 
 const InlineIcon = ( props ) => {
-	const { value, onChange, contentRef, activeAttributes } = props;
+	const { value, onChange, contentRef, activeAttributes, isActive } = props;
 
 	const [ isAdding, setIsAdding ] = useState( false );
 	const disableIsAdding = useCallback(
@@ -26,6 +26,7 @@ const InlineIcon = ( props ) => {
 	return (
 		<>
 			<RichTextToolbarButton
+				isActive={ isActive }
 				name="moneMenu"
 				title={ __( 'Icon', 'mone' ) }
 				icon={ fontSizeIcon }
