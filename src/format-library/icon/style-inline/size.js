@@ -2,19 +2,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useCallback, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import {
-	useCachedTruthy,
-	getFontSizeObjectByValue,
-	getFontSize,
-	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	store as blockEditorStore,
 	useSettings,
 } from '@wordpress/block-editor';
 import {
-	Popover,
 	FontSizePicker,
 	Button,
 	__experimentalHStack as HStack,
@@ -26,8 +21,8 @@ import {
 import { getActiveIcons } from '../inline';
 import { setAttributes } from './index';
 
-export function Size( { name, property, value, onChange } ) {
-	const colors = useSelect( ( select ) => {
+export function Size( { name, value, onChange } ) {
+	const colorSettings = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
 	}, [] );
@@ -37,8 +32,15 @@ export function Size( { name, property, value, onChange } ) {
 		.flat();
 	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const activeFontSize = useMemo(
-		() => getActiveIcons( value, name, colors, gradientValues, fontSizes ),
-		[ value, name, colors, gradientValues, fontSizes ]
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizes
+			),
+		[ value, name, colorSettings, gradientValues, fontSizes ]
 	);
 
 	const buttonStyle = {
@@ -57,7 +59,7 @@ export function Size( { name, property, value, onChange } ) {
 							setAttributes(
 								value,
 								name,
-								colors,
+								colorSettings,
 								'',
 								colorGradientSettings.gradients,
 								fontSizes,
@@ -74,7 +76,7 @@ export function Size( { name, property, value, onChange } ) {
 								setAttributes(
 									value,
 									name,
-									colors,
+									colorSettings,
 									'',
 									colorGradientSettings.gradients,
 									fontSizes,

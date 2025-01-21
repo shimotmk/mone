@@ -16,7 +16,7 @@ import { getActiveIcons } from '../inline';
 import { setAttributes } from './index';
 
 export function GradientColorPicker( { name, value, onChange } ) {
-	const colors = useSelect( ( select ) => {
+	const colorSettings = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
 	}, [] );
@@ -25,8 +25,8 @@ export function GradientColorPicker( { name, value, onChange } ) {
 		.map( ( setting ) => setting.gradients )
 		.flat();
 	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colors, gradientValues ),
-		[ name, value, colors, gradientValues ]
+		() => getActiveIcons( value, name, colorSettings, gradientValues ),
+		[ name, value, colorSettings, gradientValues ]
 	);
 
 	const onColorChange = useCallback(
@@ -35,13 +35,19 @@ export function GradientColorPicker( { name, value, onChange } ) {
 				setAttributes(
 					value,
 					name,
-					colors,
+					colorSettings,
 					{ iconGradientColor: color },
 					colorGradientSettings.gradients
 				)
 			);
 		},
-		[ onChange, value, name, colors, colorGradientSettings.gradients ]
+		[
+			onChange,
+			value,
+			name,
+			colorSettings,
+			colorGradientSettings.gradients,
+		]
 	);
 
 	return (
