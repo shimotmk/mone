@@ -5,7 +5,6 @@ import {
 	applyFormat,
 	insert,
 	create,
-	remove,
 	useAnchor,
 	getActiveFormat,
 } from '@wordpress/rich-text';
@@ -33,6 +32,7 @@ import {
 	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
+import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
 
 function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	const rules = [];
@@ -97,16 +97,21 @@ function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 }
 
 function parseClassName( className = '', fontSettings ) {
-	return className.split( ' ' ).reduce( ( accumulator, name ) => {
-		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
-			const fontSlug = name
-				.replace( /^has-/, '' )
-				.replace( /-font-size$/, '' );
-			const fontSizeObject = getFontSize( fontSettings, fontSlug );
-			accumulator.fontSize = fontSizeObject.size;
-		}
+	const classArray = stringToArrayClassName( className );
+
+	const fontClassNames = classArray.filter(
+		( name ) => name.startsWith( 'has-' ) && name.endsWith( '-font-size' )
+	);
+	const obj = fontClassNames.reduce( ( accumulator, name ) => {
+		const fontSlug = name
+			.replace( /^has-/, '' )
+			.replace( /-font-size$/, '' );
+		const fontSizeObject = getFontSize( fontSettings, fontSlug );
+		accumulator.fontSize = fontSizeObject.size;
 		return accumulator;
 	}, {} );
+
+	return obj;
 }
 
 export function getActiveIcons(

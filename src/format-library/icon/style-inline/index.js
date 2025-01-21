@@ -12,6 +12,7 @@ import {
 	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	getFontSizeObjectByValue,
+	useSettings,
 } from '@wordpress/block-editor';
 import { Popover, TabPanel } from '@wordpress/components';
 
@@ -134,7 +135,7 @@ export default function StyleInlineIconUI( {
 	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
 	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
-	const colors = useSelect( ( select ) => {
+	const colorSettings = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
 	}, [] );
@@ -142,9 +143,18 @@ export default function StyleInlineIconUI( {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colors, gradientValues ),
-		[ name, value, colors, gradientValues ]
+	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizesSettings
+			),
+		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 
 	return (
@@ -171,7 +181,7 @@ export default function StyleInlineIconUI( {
 					},
 				] }
 				initialTabName={
-					!! activeColors[ '--the-icon-gradient-color' ]
+					!! activeIcons[ '--the-icon-gradient-color' ]
 						? 'iconGradientColor'
 						: 'iconColor'
 				}
