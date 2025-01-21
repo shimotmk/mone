@@ -15,6 +15,8 @@ import {
 	getColorObjectByAttributeValues,
 	getGradientValueBySlug,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	getFontSize,
+	useSettings,
 } from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
 import { renderToString, useMemo } from '@wordpress/element';
@@ -94,15 +96,25 @@ function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	return obj;
 }
 
-function parseClassName( className = '' ) {
-	return className.split( ' ' );
+function parseClassName( className = '', fontSettings ) {
+	return className.split( ' ' ).reduce( ( accumulator, name ) => {
+		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
+			const fontSlug = name
+				.replace( /^has-/, '' )
+				.replace( /-font-size$/, '' );
+			const fontSizeObject = getFontSize( fontSettings, fontSlug );
+			accumulator.fontSize = fontSizeObject.size;
+		}
+		return accumulator;
+	}, {} );
 }
 
 export function getActiveIcons(
 	value,
 	name,
 	colorSettings,
-	colorGradientSettings
+	colorGradientSettings,
+	fontSettings
 ) {
 	const activeFormat = getActiveFormat( value, name );
 
@@ -121,7 +133,7 @@ export function getActiveIcons(
 			colorSettings,
 			colorGradientSettings
 		),
-		...parseClassName( activeFormat.attributes.class ),
+		...parseClassName( activeFormat.attributes.class, fontSettings ),
 	};
 }
 
@@ -129,13 +141,15 @@ export function hasIconFormat(
 	value,
 	name,
 	colorSettings,
-	colorGradientSettings
+	colorGradientSettings,
+	fontSettings
 ) {
 	const activeFormat = getActiveIcons(
 		value,
 		name,
 		colorSettings,
-		colorGradientSettings
+		colorGradientSettings,
+		fontSettings
 	);
 
 	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
@@ -176,6 +190,7 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const getInsertIconValue = ( iconValue ) => {
 		const { SVG, iconName } = getIconDetails( iconValue );
@@ -204,8 +219,15 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	};
 
 	const activeFormat = useMemo(
-		() => getActiveIcons( value, name, colorSettings, gradientValues ),
-		[ name, value, colorSettings, gradientValues ]
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizes
+			),
+		[ name, value, colorSettings, gradientValues, fontSizes ]
 	);
 
 	return (

@@ -3,6 +3,7 @@ import {
 	RichTextToolbarButton,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	store as blockEditorStore,
+	useSettings,
 } from '@wordpress/block-editor';
 import {
 	registerFormatType,
@@ -35,6 +36,7 @@ const InlineIcon = ( props ) => {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const [ isAdding, setIsAdding ] = useState( false );
 	const disableIsAdding = useCallback(
@@ -42,7 +44,13 @@ const InlineIcon = ( props ) => {
 		[ setIsAdding ]
 	);
 
-	const activeFormat = getActiveIcons( value, name );
+	const activeFormat = getActiveIcons(
+		value,
+		name,
+		colorSettings,
+		gradientValues,
+		fontSizes
+	);
 	const svg = activeFormat[ '--the-icon-svg' ]
 		? parseIcon(
 				decodeSvgBase64(
@@ -76,7 +84,13 @@ const InlineIcon = ( props ) => {
 					setIsAdding={ setIsAdding }
 				/>
 			) }
-			{ hasIconFormat( value, name, colorSettings, gradientValues ) && (
+			{ hasIconFormat(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizes
+			) && (
 				<StyleInlineIconUI
 					name={ name }
 					onClose={ disableIsAdding }

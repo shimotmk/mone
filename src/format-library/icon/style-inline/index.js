@@ -1,26 +1,38 @@
 /**
  * WordPress dependencies
  */
-import { useCallback, useMemo } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
+import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import { applyFormat, useAnchor, removeFormat } from '@wordpress/rich-text';
+import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
-	ColorPalette,
 	useCachedTruthy,
 	store as blockEditorStore,
 	getColorObjectByColorValue,
 	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	getFontSizeObjectByValue,
 } from '@wordpress/block-editor';
-import { Popover, GradientPicker, TabPanel } from '@wordpress/components';
+import { Popover, TabPanel } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import { inlineIconSettings as settings } from './index';
-import { getActiveIcons } from './inline';
+import { inlineIconSettings as settings } from '../index';
+import { getActiveIcons } from '../inline';
+import { ColorPicker } from './color';
+import { GradientColorPicker } from './gradient-picker';
+import { Size } from './size';
 
-function setColors( value, name, colorSettings, colors, gradientSettings ) {
+export function setColors(
+	value,
+	name,
+	colorSettings,
+	colors,
+	gradientSettings,
+	fontSizesSettings,
+	newFontSize
+) {
 	const { iconColor } = {
 		...getActiveIcons( value, name, colorSettings, gradientSettings ),
 		...colors,
@@ -32,6 +44,16 @@ function setColors( value, name, colorSettings, colors, gradientSettings ) {
 		...getActiveIcons( value, name, colorSettings, gradientSettings ),
 		...colors,
 	};
+	const { fontSize } = {
+		...getActiveIcons(
+			value,
+			name,
+			colorSettings,
+			gradientSettings,
+			fontSizesSettings
+		),
+		fontSize: newFontSize,
+	};
 
 	const styles = [];
 	const classNames = [];
@@ -40,7 +62,8 @@ function setColors( value, name, colorSettings, colors, gradientSettings ) {
 		value,
 		name,
 		colorSettings,
-		gradientSettings
+		gradientSettings,
+		fontSizesSettings
 	);
 
 	if ( activeFormat[ '--the-icon-name' ] ) {
@@ -81,6 +104,19 @@ function setColors( value, name, colorSettings, colors, gradientSettings ) {
 		styles.push( `--the-icon-gradient-color:${ gradient }` );
 	}
 
+	if ( fontSize ) {
+		const fontSizeSlug = getFontSizeObjectByValue(
+			fontSizesSettings,
+			fontSize
+		);
+
+		if ( fontSizeSlug?.slug ) {
+			classNames.push( `has-${ fontSizeSlug.slug }-font-size` );
+		} else {
+			styles.push( [ 'font-size', fontSizeSlug.size ].join( ':' ) );
+		}
+	}
+
 	if ( styles.length ) {
 		attributes.style = styles.join( ';' );
 	}
@@ -89,90 +125,6 @@ function setColors( value, name, colorSettings, colors, gradientSettings ) {
 	}
 
 	return applyFormat( value, { type: name, attributes } );
-}
-
-function ColorPicker( { name, property, value, onChange } ) {
-	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
-		return getSettings().colors ?? [];
-	}, [] );
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-	const gradientValues = colorGradientSettings.gradients
-		.map( ( setting ) => setting.gradients )
-		.flat();
-	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colors, gradientValues ),
-		[ name, value, colors, gradientValues ]
-	);
-
-	const onColorChange = useCallback(
-		( color ) => {
-			onChange(
-				setColors(
-					value,
-					name,
-					colors,
-					{ [ property ]: color },
-					colorGradientSettings.gradients
-				)
-			);
-		},
-		[ onChange, property, value, name, colors, colorGradientSettings ]
-	);
-
-	return (
-		<ColorPalette
-			value={ activeColors[ '--the-icon-color' ] }
-			onChange={ onColorChange }
-			clearable={ true }
-			enableAlpha={ true }
-		/>
-	);
-}
-
-function GradientColorPicker( { name, property, value, onChange } ) {
-	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
-		return getSettings().colors ?? [];
-	}, [] );
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-	const gradientValues = colorGradientSettings.gradients
-		.map( ( setting ) => setting.gradients )
-		.flat();
-	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colors, gradientValues ),
-		[ name, value, colors, gradientValues ]
-	);
-
-	const onColorChange = useCallback(
-		( color ) => {
-			onChange(
-				setColors(
-					value,
-					name,
-					colors,
-					{ [ property ]: color },
-					colorGradientSettings.gradients
-				)
-			);
-		},
-		[
-			onChange,
-			property,
-			value,
-			name,
-			colors,
-			colorGradientSettings.gradients,
-		]
-	);
-
-	return (
-		<GradientPicker
-			value={ activeColors[ '--the-icon-gradient-color' ] }
-			onChange={ onColorChange }
-			gradients={ colorGradientSettings.gradients }
-		/>
-	);
 }
 
 export default function StyleInlineIconUI( {
@@ -214,15 +166,15 @@ export default function StyleInlineIconUI( {
 				tabs={ [
 					{
 						name: 'iconColor',
-						title: 'Color',
+						title: __( 'Color', 'mone' ),
 					},
 					{
 						name: 'iconGradientColor',
-						title: 'GradientColor',
+						title: __( 'Gradient', 'mone' ),
 					},
 					{
 						name: 'size',
-						title: 'size',
+						title: __( 'Size', 'mone' ),
 					},
 				] }
 				initialTabName={
@@ -256,7 +208,13 @@ export default function StyleInlineIconUI( {
 						);
 					} else if ( 'size' === tab.name ) {
 						return (
-							<div className="mone-icon-tab-content">size</div>
+							<div className="mone-popover-color-picker">
+								<Size
+									name={ name }
+									value={ value }
+									onChange={ onChange }
+								/>
+							</div>
 						);
 					}
 				} }
