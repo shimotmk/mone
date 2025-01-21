@@ -1,71 +1,18 @@
 /**
  * WordPress dependencies
  */
-import { useCallback, useMemo } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
-import {
-	store as blockEditorStore,
-	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	useSettings,
-} from '@wordpress/block-editor';
+import { __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients } from '@wordpress/block-editor';
 import { GradientPicker } from '@wordpress/components';
 
-/**
- * Internal dependencies
- */
-import { getActiveIcons } from '../inline';
-import { setAttributes } from './index';
-
-export function GradientColorPicker( { name, value, onChange } ) {
-	const colorSettings = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
-		return getSettings().colors ?? [];
-	}, [] );
+export function GradientColorPicker( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-	const gradientValues = colorGradientSettings.gradients
-		.map( ( setting ) => setting.gradients )
-		.flat();
-	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
-	const activeIcons = useMemo(
-		() =>
-			getActiveIcons( {
-				value,
-				name,
-				colorSettings,
-				colorGradientSettings: gradientValues,
-				fontSizesSettings,
-			} ),
-		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
-	);
-
-	const onColorChange = useCallback(
-		( color ) => {
-			onChange(
-				setAttributes(
-					value,
-					name,
-					colorSettings,
-					{ iconGradientColor: color },
-					colorGradientSettings.gradients,
-					fontSizesSettings
-				)
-			);
-		},
-		[
-			onChange,
-			value,
-			name,
-			colorSettings,
-			colorGradientSettings.gradients,
-			fontSizesSettings,
-		]
-	);
-	console.log( 'activeIcons', activeIcons );
 
 	return (
 		<GradientPicker
 			value={ activeIcons[ '--the-icon-gradient-color' ] }
-			onChange={ onColorChange }
+			onChange={ ( newValue ) => {
+				onIconChange( { iconGradientColor: newValue } );
+			} }
 			gradients={ colorGradientSettings.gradients }
 		/>
 	);

@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useMemo } from '@wordpress/element';
+import { useCallback, useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
@@ -29,10 +29,11 @@ export function setAttributes(
 	value,
 	name,
 	colorSettings,
-	colors,
+	newValueObject,
 	gradientSettings,
 	fontSizesSettings,
-	newFontSize
+	newFontSize,
+	activeIcons
 ) {
 	const { iconColor, iconGradientColor, fontSize } = {
 		...getActiveIcons( {
@@ -42,29 +43,22 @@ export function setAttributes(
 			colorGradientSettings: gradientSettings,
 			fontSizesSettings,
 		} ),
-		...colors,
 		fontSize: newFontSize,
+		...newValueObject,
 	};
-	const activeFormat = getActiveIcons( {
-		value,
-		name,
-		colorSettings,
-		colorGradientSettings: gradientSettings,
-		fontSizesSettings,
-	} );
 
 	const styles = [];
 	const classNames = [];
 	const attributes = {};
 
-	if ( activeFormat[ '--the-icon-name' ] ) {
+	if ( activeIcons[ '--the-icon-name' ] ) {
 		styles.push(
-			[ '--the-icon-name', activeFormat[ '--the-icon-name' ] ].join( ':' )
+			[ '--the-icon-name', activeIcons[ '--the-icon-name' ] ].join( ':' )
 		);
 	}
-	if ( activeFormat[ '--the-icon-svg' ] ) {
+	if ( activeIcons[ '--the-icon-svg' ] ) {
 		styles.push(
-			[ '--the-icon-svg', activeFormat[ '--the-icon-svg' ] ].join( ':' )
+			[ '--the-icon-svg', activeIcons[ '--the-icon-svg' ] ].join( ':' )
 		);
 	}
 	if ( iconColor ) {
@@ -156,6 +150,30 @@ export default function StyleInlineIconUI( {
 			} ),
 		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
+	const onIconChange = useCallback(
+		( newValueObj ) => {
+			onChange(
+				setAttributes(
+					value,
+					name,
+					colorSettings,
+					newValueObj,
+					colorGradientSettings.gradients,
+					fontSizesSettings,
+					activeIcons
+				)
+			);
+		},
+		[
+			onChange,
+			value,
+			name,
+			colorSettings,
+			colorGradientSettings,
+			fontSizesSettings,
+			activeIcons,
+		]
+	);
 
 	return (
 		<Popover
@@ -191,9 +209,8 @@ export default function StyleInlineIconUI( {
 						return (
 							<div className="mone-popover-color-picker">
 								<ColorPicker
-									name={ name }
-									value={ value }
-									onChange={ onChange }
+									activeIcons={ activeIcons }
+									onIconChange={ onIconChange }
 								/>
 							</div>
 						);
@@ -201,9 +218,8 @@ export default function StyleInlineIconUI( {
 						return (
 							<div className="mone-popover-color-picker">
 								<GradientColorPicker
-									name={ name }
-									value={ value }
-									onChange={ onChange }
+									activeIcons={ activeIcons }
+									onIconChange={ onIconChange }
 								/>
 							</div>
 						);
@@ -214,6 +230,7 @@ export default function StyleInlineIconUI( {
 									name={ name }
 									value={ value }
 									onChange={ onChange }
+									activeIcons={ activeIcons }
 								/>
 							</div>
 						);
