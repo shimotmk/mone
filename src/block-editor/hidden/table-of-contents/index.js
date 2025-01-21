@@ -21,7 +21,7 @@ export const Toc = ( props ) => {
 			<ToolsPanelItem
 				label={ __( 'Table Of Contents', 'mone' ) }
 				isShownByDefault={ false }
-				hasValue={ () => existsClassName( className, 'mone-toc-none' ) }
+				hasValue={ () => existsClassName( 'mone-toc-none', className ) }
 				onDeselect={ () => {
 					deleteClass( 'mone-toc-none', className, setAttributes );
 				} }
@@ -31,7 +31,7 @@ export const Toc = ( props ) => {
 			>
 				<ToggleControl
 					label={ __( 'Hide if no table of contents', 'mone' ) }
-					checked={ existsClassName( className, 'mone-toc-none' ) }
+					checked={ existsClassName( 'mone-toc-none', className ) }
 					onChange={ () =>
 						toggleClass( 'mone-toc-none', className, setAttributes )
 					}

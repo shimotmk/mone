@@ -46,7 +46,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 						label={ __( 'One line text center', 'mone' ) }
 						isShownByDefault={ true }
 						hasValue={ () =>
-							existsClassName( className, 'mone-one-line-center' )
+							existsClassName( 'mone-one-line-center', className )
 						}
 						onDeselect={ () => {
 							deleteClass(
@@ -73,8 +73,8 @@ export const BlockEditTypography = createHigherOrderComponent(
 										'mone'
 									) }
 									checked={ existsClassName(
-										className,
-										'mone-one-line-center'
+										'mone-one-line-center',
+										className
 									) }
 									onChange={ () =>
 										toggleClass(

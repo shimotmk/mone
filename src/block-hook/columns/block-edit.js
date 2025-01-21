@@ -46,8 +46,8 @@ export const withInspectorControls = createHigherOrderComponent(
 							label={ __( 'Fold backwards on mobile', 'mone' ) }
 							disabled={ ! isStackedOnMobile }
 							checked={ existsClassName(
-								className,
-								flexWrapReverseClassName
+								flexWrapReverseClassName,
+								className
 							) }
 							onChange={ () =>
 								toggleClass(

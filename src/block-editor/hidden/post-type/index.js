@@ -33,8 +33,8 @@ export const PostType = ( props ) => {
 							isShownByDefault={ false }
 							hasValue={ () =>
 								existsClassName(
-									className,
-									`mone-post-type-${ postType.value }-none`
+									`mone-post-type-${ postType.value }-none`,
+									className
 								)
 							}
 							onDeselect={ () => {
@@ -59,8 +59,8 @@ export const PostType = ( props ) => {
 									postType.label
 								) }
 								checked={ existsClassName(
-									className,
-									`mone-post-type-${ postType.value }-none`
+									`mone-post-type-${ postType.value }-none`,
+									className
 								) }
 								onChange={ () =>
 									toggleClass(

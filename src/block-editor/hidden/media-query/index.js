@@ -21,7 +21,7 @@ export const MediaQuery = ( props ) => {
 			<ToolsPanelItem
 				label={ __( 'Media Query', 'mone' ) }
 				isShownByDefault={ false }
-				hasValue={ () => existsClassName( className, 'mone-pc-none' ) }
+				hasValue={ () => existsClassName( 'mone-pc-none', className ) }
 				onDeselect={ () => {
 					deleteClass(
 						[ 'mone-pc-none', 'mone-sp-none' ],
@@ -39,7 +39,7 @@ export const MediaQuery = ( props ) => {
 			>
 				<ToggleControl
 					label={ __( 'Hide on PC', 'mone' ) }
-					checked={ existsClassName( className, 'mone-pc-none' ) }
+					checked={ existsClassName( 'mone-pc-none', className ) }
 					onChange={ () =>
 						toggleClass( 'mone-pc-none', className, setAttributes )
 					}
@@ -49,7 +49,7 @@ export const MediaQuery = ( props ) => {
 			<ToolsPanelItem
 				label={ __( 'Media Query', 'mone' ) }
 				isShownByDefault={ false }
-				hasValue={ () => existsClassName( className, 'mone-sp-none' ) }
+				hasValue={ () => existsClassName( 'mone-sp-none', className ) }
 				onDeselect={ () => {
 					deleteClass(
 						[ 'mone-pc-none', 'mone-sp-none' ],
@@ -67,7 +67,7 @@ export const MediaQuery = ( props ) => {
 			>
 				<ToggleControl
 					label={ __( 'Hide on mobile', 'mone' ) }
-					checked={ existsClassName( className, 'mone-sp-none' ) }
+					checked={ existsClassName( 'mone-sp-none', className ) }
 					onChange={ () =>
 						toggleClass( 'mone-sp-none', className, setAttributes )
 					}

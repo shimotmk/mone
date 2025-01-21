@@ -37,8 +37,8 @@ export const withInspectorControls = createHigherOrderComponent(
 						<ToggleControl
 							label={ __( 'Vertical layout on mobile', 'mone' ) }
 							checked={ existsClassName(
-								className,
-								wrapOnMobileClassName
+								wrapOnMobileClassName,
+								className
 							) }
 							onChange={ () =>
 								toggleClass(

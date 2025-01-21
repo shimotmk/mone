@@ -13,7 +13,7 @@ export const arrayToStringClassName = ( classArray ) => {
 	return Array.isArray( classArray ) ? classArray.join( ' ' ) : '';
 };
 
-export const existsClassName = ( classNames, targetClassName ) => {
+export const existsClassName = ( targetClassName, classNames ) => {
 	const classArray = Array.isArray( classNames )
 		? classNames
 		: stringToArrayClassName( classNames );
@@ -33,7 +33,7 @@ export const deleteClassName = ( targetClassNames, className ) => {
 		: [ targetClassNames ];
 
 	targetClassArray.forEach( ( targetClassName ) => {
-		if ( existsClassName( className, targetClassName ) ) {
+		if ( existsClassName( targetClassName, className ) ) {
 			const index = classArray.indexOf( targetClassName );
 			classArray.splice( index, 1 );
 		}
@@ -43,14 +43,14 @@ export const deleteClassName = ( targetClassNames, className ) => {
 
 export const addClassName = ( targetClassName, className ) => {
 	const classArray = stringToArrayClassName( className );
-	if ( ! existsClassName( className, targetClassName ) ) {
+	if ( ! existsClassName( targetClassName, className ) ) {
 		classArray.push( targetClassName );
 	}
 	return arrayToStringClassName( classArray );
 };
 
 export const toggleClass = ( targetClassName, className, setAttributes ) => {
-	const updatedClassName = existsClassName( className, targetClassName )
+	const updatedClassName = existsClassName( targetClassName, className )
 		? deleteClassName( targetClassName, className )
 		: addClassName( targetClassName, className );
 

@@ -83,7 +83,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIcon,
 			className,
 		} = attributes;
-		if ( ! existsClassName( className, targetClasses ) ) {
+		if ( ! existsClassName( targetClasses, className ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
@@ -217,7 +217,7 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			className,
 			style,
 		} = attributes;
-		if ( ! existsClassName( className, targetClasses ) ) {
+		if ( ! existsClassName( targetClasses, className ) ) {
 			return <BlockListBlock { ...props } />;
 		}
 

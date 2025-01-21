@@ -52,21 +52,21 @@ function TableOfContentEdit( props ) {
 	const blockProps = useBlockProps( {
 		className: clsx( {
 			[ `has-deactivate-text-color` ]:
-				existsClassName( className, scrollAnimationClassName ) &&
+				existsClassName( scrollAnimationClassName, className ) &&
 				!! deactivateTextColor.color,
 			[ `has-before-color` ]: !! beforeColor.color,
 			[ `has-before-deactivate-color` ]:
-				existsClassName( className, scrollAnimationClassName ) &&
+				existsClassName( scrollAnimationClassName, className ) &&
 				!! beforeDeactivateColor.color,
 			[ `has-line-color` ]: !! lineColor.color,
 			[ `mone-toc` ]: ! hasDefaultTocStyle,
 		} ),
 		style: {
-			overflowY: existsClassName( className, scrollAnimationClassName )
+			overflowY: existsClassName( scrollAnimationClassName, className )
 				? 'auto'
 				: undefined,
 			'--the-deactivate-text-color':
-				existsClassName( className, scrollAnimationClassName ) &&
+				existsClassName( scrollAnimationClassName, className ) &&
 				( !! deactivateTextColor?.slug
 					? `var(--wp--preset--color--${ deactivateTextColor.slug })`
 					: deactivateTextColor?.color ),
@@ -74,7 +74,7 @@ function TableOfContentEdit( props ) {
 				? `var(--wp--preset--color--${ beforeColor.slug })`
 				: beforeColor?.color,
 			'--the-before-deactivate-color':
-				existsClassName( className, scrollAnimationClassName ) &&
+				existsClassName( scrollAnimationClassName, className ) &&
 				( !! beforeDeactivateColor?.slug
 					? `var(--wp--preset--color--${ beforeDeactivateColor.slug })`
 					: beforeDeactivateColor?.color ),
@@ -104,8 +104,8 @@ function TableOfContentEdit( props ) {
 							isShownByDefault
 							hasValue={ () =>
 								existsClassName(
-									className,
-									scrollAnimationClassName
+									scrollAnimationClassName,
+									className
 								)
 							}
 							onDeselect={ () =>
@@ -119,8 +119,8 @@ function TableOfContentEdit( props ) {
 							<ToggleControl
 								label={ __( 'Scroll animation', 'mone' ) }
 								checked={ existsClassName(
-									className,
-									scrollAnimationClassName
+									scrollAnimationClassName,
+									className
 								) }
 								onChange={ () => {
 									toggleClass(
@@ -151,8 +151,8 @@ function TableOfContentEdit( props ) {
 							clearable: true,
 						},
 						...( existsClassName(
-							className,
-							scrollAnimationClassName
+							scrollAnimationClassName,
+							className
 						)
 							? [
 									{

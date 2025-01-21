@@ -112,7 +112,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 							label={ __( 'Horizontal scrolling', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								existsClassName( className, scrollClassName )
+								existsClassName( scrollClassName, className )
 							}
 							onDeselect={ () =>
 								deleteClass(
@@ -125,8 +125,8 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 							<ToggleControl
 								label={ __( 'Horizontal scrolling', 'mone' ) }
 								checked={ existsClassName(
-									className,
-									scrollClassName
+									scrollClassName,
+									className
 								) }
 								onChange={ () => {
 									toggleClass(
@@ -153,7 +153,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								__nextHasNoMarginBottom
 							/>
 						</ToolsPanelItem>
-						{ existsClassName( className, scrollClassName ) && (
+						{ existsClassName( scrollClassName, className ) && (
 							<ToolsPanelItem
 								label={ __( 'Scroll Snap', 'mone' ) }
 								isShownByDefault
@@ -181,7 +181,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								/>
 							</ToolsPanelItem>
 						) }
-						{ existsClassName( className, scrollClassName ) &&
+						{ existsClassName( scrollClassName, className ) &&
 							moneScrollSnap === 'snap' && (
 								<ToolsPanelItem
 									label={ __( 'Snap placement', 'mone' ) }
