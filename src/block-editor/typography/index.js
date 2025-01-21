@@ -87,7 +87,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 								/>
 							}
 							message={ __(
-								'If the text is more than one line, it will be left justified and wrapped.',
+								'When there is one line of text, it is centered, and when there is two or more lines of text, it is left-justified and the text wraps.',
 								'mone'
 							) }
 							popoverProps={ {
