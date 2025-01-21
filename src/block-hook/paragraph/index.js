@@ -32,7 +32,7 @@ import {
 	createSvgUrl,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
-import { existsClass } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name/classAttribute.js';
 import { isHexColor } from '../../utils-func/is-hex-color';
 
 const targetClasses = [
@@ -83,7 +83,7 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIcon,
 			className,
 		} = attributes;
-		if ( ! existsClass( className, targetClasses ) ) {
+		if ( ! existsClassName( targetClasses, className ) ) {
 			return <BlockEdit { ...props } />;
 		}
 
@@ -217,7 +217,7 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			className,
 			style,
 		} = attributes;
-		if ( ! existsClass( className, targetClasses ) ) {
+		if ( ! existsClassName( targetClasses, className ) ) {
 			return <BlockListBlock { ...props } />;
 		}
 
