@@ -9,8 +9,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
 
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 import { InfoPopoverLabel } from '../../components/info-popover-label';
@@ -46,7 +46,7 @@ export const BlockEditTypography = createHigherOrderComponent(
 						label={ __( 'One line text center', 'mone' ) }
 						isShownByDefault={ true }
 						hasValue={ () =>
-							existsClass( className, 'mone-one-line-center' )
+							existsClassName( className, 'mone-one-line-center' )
 						}
 						onDeselect={ () => {
 							deleteClass(
@@ -72,12 +72,12 @@ export const BlockEditTypography = createHigherOrderComponent(
 										'One line text center',
 										'mone'
 									) }
-									checked={ existsClass(
+									checked={ existsClassName(
 										className,
 										'mone-one-line-center'
 									) }
 									onChange={ () =>
-										setClassName(
+										toggleClass(
 											'mone-one-line-center',
 											className,
 											setAttributes

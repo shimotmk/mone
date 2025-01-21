@@ -9,8 +9,8 @@ import { createHigherOrderComponent } from '@wordpress/compose';
 import { useEffect } from '@wordpress/element';
 
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 
@@ -45,12 +45,12 @@ export const withInspectorControls = createHigherOrderComponent(
 						<ToggleControl
 							label={ __( 'Fold backwards on mobile', 'mone' ) }
 							disabled={ ! isStackedOnMobile }
-							checked={ existsClass(
+							checked={ existsClassName(
 								className,
 								flexWrapReverseClassName
 							) }
 							onChange={ () =>
-								setClassName(
+								toggleClass(
 									flexWrapReverseClassName,
 									className,
 									setAttributes

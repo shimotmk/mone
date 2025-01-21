@@ -16,9 +16,9 @@ import {
 import { getPath } from '@wordpress/url';
 
 import {
-	classStringToClassArray,
-	setClassName,
-	existsClass,
+	stringToArrayClassName,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
@@ -43,7 +43,7 @@ function TableOfContentEdit( props ) {
 		setLineColor,
 	} = props;
 	const { className } = attributes;
-	const classArray = classStringToClassArray( className );
+	const classArray = stringToArrayClassName( className );
 	const hasDefaultTocStyle = classArray.includes(
 		'is-style-mone-default-toc'
 	);
@@ -52,21 +52,21 @@ function TableOfContentEdit( props ) {
 	const blockProps = useBlockProps( {
 		className: clsx( {
 			[ `has-deactivate-text-color` ]:
-				existsClass( className, scrollAnimationClassName ) &&
+				existsClassName( className, scrollAnimationClassName ) &&
 				!! deactivateTextColor.color,
 			[ `has-before-color` ]: !! beforeColor.color,
 			[ `has-before-deactivate-color` ]:
-				existsClass( className, scrollAnimationClassName ) &&
+				existsClassName( className, scrollAnimationClassName ) &&
 				!! beforeDeactivateColor.color,
 			[ `has-line-color` ]: !! lineColor.color,
 			[ `mone-toc` ]: ! hasDefaultTocStyle,
 		} ),
 		style: {
-			overflowY: existsClass( className, scrollAnimationClassName )
+			overflowY: existsClassName( className, scrollAnimationClassName )
 				? 'auto'
 				: undefined,
 			'--the-deactivate-text-color':
-				existsClass( className, scrollAnimationClassName ) &&
+				existsClassName( className, scrollAnimationClassName ) &&
 				( !! deactivateTextColor?.slug
 					? `var(--wp--preset--color--${ deactivateTextColor.slug })`
 					: deactivateTextColor?.color ),
@@ -74,7 +74,7 @@ function TableOfContentEdit( props ) {
 				? `var(--wp--preset--color--${ beforeColor.slug })`
 				: beforeColor?.color,
 			'--the-before-deactivate-color':
-				existsClass( className, scrollAnimationClassName ) &&
+				existsClassName( className, scrollAnimationClassName ) &&
 				( !! beforeDeactivateColor?.slug
 					? `var(--wp--preset--color--${ beforeDeactivateColor.slug })`
 					: beforeDeactivateColor?.color ),
@@ -103,7 +103,7 @@ function TableOfContentEdit( props ) {
 							label={ __( 'Scroll animation', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								existsClass(
+								existsClassName(
 									className,
 									scrollAnimationClassName
 								)
@@ -118,12 +118,12 @@ function TableOfContentEdit( props ) {
 						>
 							<ToggleControl
 								label={ __( 'Scroll animation', 'mone' ) }
-								checked={ existsClass(
+								checked={ existsClassName(
 									className,
 									scrollAnimationClassName
 								) }
 								onChange={ () => {
-									setClassName(
+									toggleClass(
 										scrollAnimationClassName,
 										className,
 										setAttributes
@@ -150,7 +150,7 @@ function TableOfContentEdit( props ) {
 							enableAlpha: true,
 							clearable: true,
 						},
-						...( existsClass( className, scrollAnimationClassName )
+						...( existsClassName( className, scrollAnimationClassName )
 							? [
 									{
 										label: __(

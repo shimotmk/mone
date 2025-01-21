@@ -25,8 +25,8 @@ import {
 
 import './style.scss';
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
@@ -112,7 +112,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 							label={ __( 'Horizontal scrolling', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								existsClass( className, scrollClassName )
+								existsClassName( className, scrollClassName )
 							}
 							onDeselect={ () =>
 								deleteClass(
@@ -124,12 +124,12 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 						>
 							<ToggleControl
 								label={ __( 'Horizontal scrolling', 'mone' ) }
-								checked={ existsClass(
+								checked={ existsClassName(
 									className,
 									scrollClassName
 								) }
 								onChange={ () => {
-									setClassName(
+									toggleClass(
 										scrollClassName,
 										className,
 										setAttributes
@@ -153,7 +153,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								__nextHasNoMarginBottom
 							/>
 						</ToolsPanelItem>
-						{ existsClass( className, scrollClassName ) && (
+						{ existsClassName( className, scrollClassName ) && (
 							<ToolsPanelItem
 								label={ __( 'Scroll Snap', 'mone' ) }
 								isShownByDefault
@@ -181,7 +181,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								/>
 							</ToolsPanelItem>
 						) }
-						{ existsClass( className, scrollClassName ) &&
+						{ existsClassName( className, scrollClassName ) &&
 							moneScrollSnap === 'snap' && (
 								<ToolsPanelItem
 									label={ __( 'Snap placement', 'mone' ) }

@@ -7,8 +7,8 @@ import { Fragment } from '@wordpress/element';
 
 import { usePostTypes } from './utils/use-post-types.js';
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../../utils-func/class-name/classAttribute.js';
 
@@ -32,7 +32,7 @@ export const PostType = ( props ) => {
 							label={ __( 'Post Type', 'mone' ) }
 							isShownByDefault={ false }
 							hasValue={ () =>
-								existsClass(
+								existsClassName(
 									className,
 									`mone-post-type-${ postType.value }-none`
 								)
@@ -58,12 +58,12 @@ export const PostType = ( props ) => {
 									__( 'Hide on %s', 'mone' ),
 									postType.label
 								) }
-								checked={ existsClass(
+								checked={ existsClassName(
 									className,
 									`mone-post-type-${ postType.value }-none`
 								) }
 								onChange={ () =>
-									setClassName(
+									toggleClass(
 										`mone-post-type-${ postType.value }-none`,
 										className,
 										setAttributes
