@@ -8,7 +8,7 @@ import { info } from '@wordpress/icons';
 import './editor.scss';
 
 export const InfoPopover = ( props ) => {
-	const { message, link, position } = props;
+	const { message, link, position, popoverProps } = props;
 	const popoverPosition = position ?? 'middle bottom';
 
 	return (
@@ -24,6 +24,7 @@ export const InfoPopover = ( props ) => {
 					focusOnMount: 'container',
 					position: popoverPosition,
 					noArrow: false,
+					...popoverProps,
 				} }
 			>
 				{ () => (
