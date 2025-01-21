@@ -34,8 +34,8 @@ export const deleteClassName = ( targetClassNames, className ) => {
 
 	targetClassArray.forEach( ( targetClassName ) => {
 		if ( existsClassName( className, targetClassName ) ) {
-			const _deleteClassName = classArray.indexOf( targetClassName );
-			classArray.splice( _deleteClassName, 1 );
+			const index = classArray.indexOf( targetClassName );
+			classArray.splice( index, 1 );
 		}
 	} );
 	return arrayToStringClassName( classArray );
@@ -50,24 +50,19 @@ export const addClassName = ( targetClassName, className ) => {
 };
 
 export const toggleClass = ( targetClassName, className, setAttributes ) => {
-	if ( ! existsClassName( className, targetClassName ) ) {
-		setAttributes( {
-			className: emptyStringToUndefined(
-				addClassName( targetClassName, className )
-			),
-		} );
-	} else {
-		const _className = deleteClassName( targetClassName, className );
-		setAttributes( {
-			className: emptyStringToUndefined( _className ),
-		} );
-	}
+	const updatedClassName = existsClassName( className, targetClassName )
+		? deleteClassName( targetClassName, className )
+		: addClassName( targetClassName, className );
+
+	setAttributes( {
+		className: emptyStringToUndefined( updatedClassName ),
+	} );
 };
 
 export const deleteClass = ( targetClassNames, className, setAttributes ) => {
-	const _className = deleteClassName( targetClassNames, className );
+	const updatedClassName = deleteClassName( targetClassNames, className );
 	setAttributes( {
-		className: emptyStringToUndefined( _className ),
+		className: emptyStringToUndefined( updatedClassName ),
 	} );
 };
 

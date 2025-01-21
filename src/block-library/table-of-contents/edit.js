@@ -150,7 +150,10 @@ function TableOfContentEdit( props ) {
 							enableAlpha: true,
 							clearable: true,
 						},
-						...( existsClassName( className, scrollAnimationClassName )
+						...( existsClassName(
+							className,
+							scrollAnimationClassName
+						)
 							? [
 									{
 										label: __(
