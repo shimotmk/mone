@@ -24,7 +24,7 @@ import { ColorPicker } from './color';
 import { GradientColorPicker } from './gradient-picker';
 import { Size } from './size';
 
-export function setColors(
+export function setAttributes(
 	value,
 	name,
 	colorSettings,
@@ -33,18 +33,7 @@ export function setColors(
 	fontSizesSettings,
 	newFontSize
 ) {
-	const { iconColor } = {
-		...getActiveIcons( value, name, colorSettings, gradientSettings ),
-		...colors,
-	};
-	const gradientValues = gradientSettings
-		?.map( ( setting ) => setting.gradients )
-		.flat();
-	const { iconGradientColor } = {
-		...getActiveIcons( value, name, colorSettings, gradientSettings ),
-		...colors,
-	};
-	const { fontSize } = {
+	const { iconColor, iconGradientColor, fontSize } = {
 		...getActiveIcons(
 			value,
 			name,
@@ -52,12 +41,9 @@ export function setColors(
 			gradientSettings,
 			fontSizesSettings
 		),
+		...colors,
 		fontSize: newFontSize,
 	};
-
-	const styles = [];
-	const classNames = [];
-	const attributes = {};
 	const activeFormat = getActiveIcons(
 		value,
 		name,
@@ -65,6 +51,10 @@ export function setColors(
 		gradientSettings,
 		fontSizesSettings
 	);
+
+	const styles = [];
+	const classNames = [];
+	const attributes = {};
 
 	if ( activeFormat[ '--the-icon-name' ] ) {
 		styles.push(
@@ -93,6 +83,9 @@ export function setColors(
 		}
 	}
 
+	const gradientValues = gradientSettings
+		?.map( ( setting ) => setting.gradients )
+		.flat();
 	const gradientObject = __experimentalGetGradientObjectByGradientValue(
 		gradientValues,
 		iconGradientColor
@@ -189,7 +182,6 @@ export default function StyleInlineIconUI( {
 							<div className="mone-popover-color-picker">
 								<ColorPicker
 									name={ name }
-									property={ 'iconColor' }
 									value={ value }
 									onChange={ onChange }
 								/>
@@ -200,7 +192,6 @@ export default function StyleInlineIconUI( {
 							<div className="mone-popover-color-picker">
 								<GradientColorPicker
 									name={ name }
-									property={ 'iconGradientColor' }
 									value={ value }
 									onChange={ onChange }
 								/>

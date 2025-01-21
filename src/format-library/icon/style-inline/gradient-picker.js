@@ -13,9 +13,9 @@ import { GradientPicker } from '@wordpress/components';
  * Internal dependencies
  */
 import { getActiveIcons } from '../inline';
-import { setColors } from './index';
+import { setAttributes } from './index';
 
-export function GradientColorPicker( { name, property, value, onChange } ) {
+export function GradientColorPicker( { name, value, onChange } ) {
 	const colors = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
@@ -32,23 +32,16 @@ export function GradientColorPicker( { name, property, value, onChange } ) {
 	const onColorChange = useCallback(
 		( color ) => {
 			onChange(
-				setColors(
+				setAttributes(
 					value,
 					name,
 					colors,
-					{ [ property ]: color },
+					{ iconGradientColor: color },
 					colorGradientSettings.gradients
 				)
 			);
 		},
-		[
-			onChange,
-			property,
-			value,
-			name,
-			colors,
-			colorGradientSettings.gradients,
-		]
+		[ onChange, value, name, colors, colorGradientSettings.gradients ]
 	);
 
 	return (

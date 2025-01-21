@@ -13,9 +13,9 @@ import {
  * Internal dependencies
  */
 import { getActiveIcons } from '../inline';
-import { setColors } from './index';
+import { setAttributes } from './index';
 
-export function ColorPicker( { name, property, value, onChange } ) {
+export function ColorPicker( { name, value, onChange } ) {
 	const colors = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
@@ -32,16 +32,16 @@ export function ColorPicker( { name, property, value, onChange } ) {
 	const onColorChange = useCallback(
 		( color ) => {
 			onChange(
-				setColors(
+				setAttributes(
 					value,
 					name,
 					colors,
-					{ [ property ]: color },
+					{ iconColor: color },
 					colorGradientSettings.gradients
 				)
 			);
 		},
-		[ onChange, property, value, name, colors, colorGradientSettings ]
+		[ onChange, value, name, colors, colorGradientSettings ]
 	);
 
 	return (

@@ -24,7 +24,7 @@ import {
  * Internal dependencies
  */
 import { getActiveIcons } from '../inline';
-import { setColors } from './index';
+import { setAttributes } from './index';
 
 export function Size( { name, property, value, onChange } ) {
 	const colors = useSelect( ( select ) => {
@@ -54,7 +54,7 @@ export function Size( { name, property, value, onChange } ) {
 					value={ activeFontSize.fontSize }
 					onChange={ ( newFontSize ) => {
 						onChange(
-							setColors(
+							setAttributes(
 								value,
 								name,
 								colors,
@@ -71,7 +71,7 @@ export function Size( { name, property, value, onChange } ) {
 					<Button
 						onClick={ () => {
 							onChange(
-								setColors(
+								setAttributes(
 									value,
 									name,
 									colors,
