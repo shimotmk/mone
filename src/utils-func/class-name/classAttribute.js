@@ -1,72 +1,75 @@
-/**
- * External dependencies
- */
-import clsx from 'clsx';
-
 import { emptyStringToUndefined } from './empty-string-to-undefined.js';
 
-export const classStringToClassArray = ( className ) => {
+export const stringToArrayClassName = ( className ) => {
 	return className ? String( className ).split( ' ' ) : [];
 };
 
-export const setClassName = ( targetClassName, className, setAttributes ) => {
-	const classArray = classStringToClassArray( className );
-	if ( ! existsClass( className, targetClassName ) ) {
-		setAttributes( {
-			className: emptyStringToUndefined(
-				clsx( classArray, targetClassName )
-			),
-		} );
-	} else {
-		// クラスを削除
-		const deleteClass = classArray.indexOf( targetClassName );
-		classArray.splice( deleteClass, 1 );
-		setAttributes( {
-			className: emptyStringToUndefined( clsx( classArray ) ),
-		} );
-	}
+export const arrayToStringClassName = ( classArray ) => {
+	return Array.isArray( classArray ) ? classArray.join( ' ' ) : '';
 };
 
-export const deleteClass = ( targetClassNames, className, setAttributes ) => {
-	const classArray = classStringToClassArray( className );
-	const targetClassArray = Array.isArray( targetClassNames )
-		? targetClassNames
-		: [ targetClassNames ];
-
-	targetClassArray.forEach( ( targetClassName ) => {
-		if ( existsClass( className, targetClassName ) ) {
-			// クラスを削除
-			const deleteClassName = classArray.indexOf( targetClassName );
-			classArray.splice( deleteClassName, 1 );
-		}
-	} );
-
-	setAttributes( {
-		className: emptyStringToUndefined( clsx( classArray ) ),
-	} );
-};
-
-export const existsClass = ( classNames, targetClassName ) => {
+export const existsClassName = ( targetClassName, classNames ) => {
 	const classArray = Array.isArray( classNames )
 		? classNames
-		: classStringToClassArray( classNames );
+		: stringToArrayClassName( classNames );
 
 	if ( Array.isArray( targetClassName ) ) {
 		return targetClassName.some(
 			( target ) => classArray.indexOf( target ) !== -1
 		);
 	}
-
 	return classArray.indexOf( targetClassName ) !== -1;
 };
 
+export const deleteClassName = ( targetClassNames, className ) => {
+	const classArray = stringToArrayClassName( className );
+	const targetClassArray = Array.isArray( targetClassNames )
+		? targetClassNames
+		: [ targetClassNames ];
+
+	targetClassArray.forEach( ( targetClassName ) => {
+		if ( existsClassName( targetClassName, className ) ) {
+			const index = classArray.indexOf( targetClassName );
+			classArray.splice( index, 1 );
+		}
+	} );
+	return arrayToStringClassName( classArray );
+};
+
+export const addClassName = ( targetClassName, className ) => {
+	const classArray = stringToArrayClassName( className );
+	if ( ! existsClassName( targetClassName, className ) ) {
+		classArray.push( targetClassName );
+	}
+	return arrayToStringClassName( classArray );
+};
+
+export const toggleClass = ( targetClassName, className, setAttributes ) => {
+	const updatedClassName = existsClassName( targetClassName, className )
+		? deleteClassName( targetClassName, className )
+		: addClassName( targetClassName, className );
+
+	setAttributes( {
+		className: emptyStringToUndefined( updatedClassName ),
+	} );
+};
+
+export const deleteClass = ( targetClassNames, className, setAttributes ) => {
+	const updatedClassName = deleteClassName( targetClassNames, className );
+	setAttributes( {
+		className: emptyStringToUndefined( updatedClassName ),
+	} );
+};
+
 export const deleteRegExClass = ( regEx, className, setAttributes ) => {
-	const classArray = classStringToClassArray( className );
+	const classArray = stringToArrayClassName( className );
 	const filteredClassArray = classArray.filter(
 		( classItem ) => ! regEx.test( classItem )
 	);
 
 	setAttributes( {
-		className: emptyStringToUndefined( clsx( filteredClassArray ) ),
+		className: emptyStringToUndefined(
+			arrayToStringClassName( filteredClassArray )
+		),
 	} );
 };

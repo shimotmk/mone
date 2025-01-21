@@ -5,8 +5,8 @@ import {
 } from '@wordpress/components';
 
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 	deleteClass,
 } from '../../../utils-func/class-name/classAttribute.js';
 
@@ -21,7 +21,7 @@ export const MediaQuery = ( props ) => {
 			<ToolsPanelItem
 				label={ __( 'Media Query', 'mone' ) }
 				isShownByDefault={ false }
-				hasValue={ () => existsClass( className, 'mone-pc-none' ) }
+				hasValue={ () => existsClassName( 'mone-pc-none', className ) }
 				onDeselect={ () => {
 					deleteClass(
 						[ 'mone-pc-none', 'mone-sp-none' ],
@@ -39,9 +39,9 @@ export const MediaQuery = ( props ) => {
 			>
 				<ToggleControl
 					label={ __( 'Hide on PC', 'mone' ) }
-					checked={ existsClass( className, 'mone-pc-none' ) }
+					checked={ existsClassName( 'mone-pc-none', className ) }
 					onChange={ () =>
-						setClassName( 'mone-pc-none', className, setAttributes )
+						toggleClass( 'mone-pc-none', className, setAttributes )
 					}
 					__nextHasNoMarginBottom
 				/>
@@ -49,7 +49,7 @@ export const MediaQuery = ( props ) => {
 			<ToolsPanelItem
 				label={ __( 'Media Query', 'mone' ) }
 				isShownByDefault={ false }
-				hasValue={ () => existsClass( className, 'mone-sp-none' ) }
+				hasValue={ () => existsClassName( 'mone-sp-none', className ) }
 				onDeselect={ () => {
 					deleteClass(
 						[ 'mone-pc-none', 'mone-sp-none' ],
@@ -67,9 +67,9 @@ export const MediaQuery = ( props ) => {
 			>
 				<ToggleControl
 					label={ __( 'Hide on mobile', 'mone' ) }
-					checked={ existsClass( className, 'mone-sp-none' ) }
+					checked={ existsClassName( 'mone-sp-none', className ) }
 					onChange={ () =>
-						setClassName( 'mone-sp-none', className, setAttributes )
+						toggleClass( 'mone-sp-none', className, setAttributes )
 					}
 					__nextHasNoMarginBottom
 				/>
