@@ -33,13 +33,13 @@ export function Size( { name, value, onChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
-			getActiveIcons(
+			getActiveIcons( {
 				value,
 				name,
 				colorSettings,
-				gradientValues,
-				fontSizesSettings
-			),
+				colorGradientSettings: gradientValues,
+				fontSizesSettings,
+			} ),
 		[ value, name, colorSettings, gradientValues, fontSizesSettings ]
 	);
 

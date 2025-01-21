@@ -35,23 +35,23 @@ export function setAttributes(
 	newFontSize
 ) {
 	const { iconColor, iconGradientColor, fontSize } = {
-		...getActiveIcons(
+		...getActiveIcons( {
 			value,
 			name,
 			colorSettings,
-			gradientSettings,
-			fontSizesSettings
-		),
+			colorGradientSettings: gradientSettings,
+			fontSizesSettings,
+		} ),
 		...colors,
 		fontSize: newFontSize,
 	};
-	const activeFormat = getActiveIcons(
+	const activeFormat = getActiveIcons( {
 		value,
 		name,
 		colorSettings,
-		gradientSettings,
-		fontSizesSettings
-	);
+		colorGradientSettings: gradientSettings,
+		fontSizesSettings,
+	} );
 
 	const styles = [];
 	const classNames = [];
@@ -147,13 +147,13 @@ export default function StyleInlineIconUI( {
 
 	const activeIcons = useMemo(
 		() =>
-			getActiveIcons(
+			getActiveIcons( {
 				value,
 				name,
 				colorSettings,
-				gradientValues,
-				fontSizesSettings
-			),
+				colorGradientSettings: gradientValues,
+				fontSizesSettings,
+			} ),
 		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 

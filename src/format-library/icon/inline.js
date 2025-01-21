@@ -114,13 +114,13 @@ function parseClassName( className = '', fontSettings ) {
 	return obj;
 }
 
-export function getActiveIcons(
+export function getActiveIcons( {
 	value,
 	name,
 	colorSettings,
 	colorGradientSettings,
-	fontSettings
-) {
+	fontSettings,
+} ) {
 	const activeFormat = getActiveFormat( value, name );
 
 	if ( ! activeFormat ) {
@@ -149,13 +149,13 @@ export function hasIconFormat(
 	colorGradientSettings,
 	fontSettings
 ) {
-	const activeFormat = getActiveIcons(
+	const activeFormat = getActiveIcons( {
 		value,
 		name,
 		colorSettings,
 		colorGradientSettings,
-		fontSettings
-	);
+		fontSettings,
+	} );
 
 	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
 		? true
@@ -198,13 +198,13 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
-			getActiveIcons(
+			getActiveIcons( {
 				value,
 				name,
 				colorSettings,
-				gradientValues,
-				fontSizesSettings
-			),
+				colorGradientSettings: gradientValues,
+				fontSizesSettings,
+			} ),
 		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 

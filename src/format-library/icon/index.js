@@ -44,13 +44,13 @@ const InlineIcon = ( props ) => {
 		[ setIsAdding ]
 	);
 
-	const activeFormat = getActiveIcons(
+	const activeFormat = getActiveIcons( {
 		value,
 		name,
 		colorSettings,
-		gradientValues,
-		fontSizes
-	);
+		colorGradientSettings: gradientValues,
+		fontSizes,
+	} );
 	const svg = activeFormat[ '--the-icon-svg' ]
 		? parseIcon(
 				decodeSvgBase64(

@@ -28,13 +28,13 @@ export function ColorPicker( { name, value, onChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
-			getActiveIcons(
+			getActiveIcons( {
 				value,
 				name,
 				colorSettings,
-				gradientValues,
-				fontSizesSettings
-			),
+				colorGradientSettings: gradientValues,
+				fontSizesSettings,
+			} ),
 		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 
