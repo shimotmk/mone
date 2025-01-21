@@ -1141,25 +1141,19 @@ msgstr "目次エディタプレビュー H5 見出し"
 msgid "Table of contents"
 msgstr "目次"
 
-#: build/block-editor/index.js:2
-#: build/format-library/index.js:1
-#: build/plugins/index.js:1
+#: build/components/index.js:617
+#: build/plugins/index.js:163
+#: build/components/index.js:1410
+#: build/plugins/index.js:87
 msgid "More Information"
 msgstr "詳細情報"
 
-#: build/block-editor/index.js:2
-#: build/format-library/index.js:1
-#: build/plugins/index.js:1
+#: build/components/index.js:633
+#: build/plugins/index.js:179
+#: build/components/index.js:1427
+#: build/plugins/index.js:104
 msgid "Learn More"
 msgstr "さらに詳しく"
-
-#: build/block-editor/index.js:2
-msgid "One line text center"
-msgstr "テキスト1行中央寄せ"
-
-#: build/block-editor/index.js:2
-msgid "If the text is more than one line, it will be left justified and wrapped."
-msgstr "テキストが2行以上になった場合は左寄せで文字を折り返します。"
 
 #: build/format-library/index.js:1
 msgid "Back view gradation"

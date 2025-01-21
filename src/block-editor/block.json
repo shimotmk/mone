@@ -1,6 +1,4 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"editorStyle": "file:./index.css",
-	"editorScript": "file:./index.js",
-	"style": "file:./style-index.css"
+	"editorScript": "file:./index.js"
 }

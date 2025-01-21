@@ -19,7 +19,7 @@ import {
 	__experimentalGetGapCSSValue as getGapCSSValue,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { renderToString } from '@wordpress/element';
+import { renderToString, useEffect } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
 /**
