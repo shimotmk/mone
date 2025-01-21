@@ -30,17 +30,17 @@ export function Size( { name, value, onChange } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
-	const activeFontSize = useMemo(
+	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const activeIcons = useMemo(
 		() =>
 			getActiveIcons(
 				value,
 				name,
 				colorSettings,
 				gradientValues,
-				fontSizes
+				fontSizesSettings
 			),
-		[ value, name, colorSettings, gradientValues, fontSizes ]
+		[ value, name, colorSettings, gradientValues, fontSizesSettings ]
 	);
 
 	const buttonStyle = {
@@ -52,8 +52,8 @@ export function Size( { name, value, onChange } ) {
 		<>
 			<div>
 				<FontSizePicker
-					fontSizes={ fontSizes }
-					value={ activeFontSize.fontSize }
+					fontSizes={ fontSizesSettings }
+					value={ activeIcons.fontSize }
 					onChange={ ( newFontSize ) => {
 						onChange(
 							setAttributes(
@@ -62,7 +62,7 @@ export function Size( { name, value, onChange } ) {
 								colorSettings,
 								'',
 								colorGradientSettings.gradients,
-								fontSizes,
+								fontSizesSettings,
 								newFontSize
 							)
 						);
@@ -79,7 +79,7 @@ export function Size( { name, value, onChange } ) {
 									colorSettings,
 									'',
 									colorGradientSettings.gradients,
-									fontSizes,
+									fontSizesSettings,
 									false
 								)
 							);

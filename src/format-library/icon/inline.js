@@ -190,14 +190,25 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
+	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizesSettings
+			),
+		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
+	);
 
 	const getInsertIconValue = ( iconValue ) => {
 		const { SVG, iconName } = getIconDetails( iconValue );
 		const dataSvg = createSvgUrl( SVG );
 
-		const activeFormat = getActiveFormat( value, name );
-		if ( ! activeFormat ) {
+		const _activeFormat = getActiveFormat( value, name );
+		if ( ! _activeFormat ) {
 			value.activeFormats = {};
 		}
 
@@ -218,25 +229,13 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 		setIsAdding( false );
 	};
 
-	const activeFormat = useMemo(
-		() =>
-			getActiveIcons(
-				value,
-				name,
-				colorSettings,
-				gradientValues,
-				fontSizes
-			),
-		[ name, value, colorSettings, gradientValues, fontSizes ]
-	);
-
 	return (
 		<IconPopoverContent
 			onChange={ getInsertIconValue }
-			value={ activeFormat[ '--the-icon-name' ] || '' }
+			value={ activeIcons[ '--the-icon-name' ] || '' }
 			iconSVG={
 				decodeSvgBase64(
-					activeFormat[ '--the-icon-svg' ]?.replace(
+					activeIcons[ '--the-icon-svg' ]?.replace(
 						/^url\(|\)$/g,
 						''
 					)

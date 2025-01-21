@@ -7,6 +7,7 @@ import {
 	ColorPalette,
 	store as blockEditorStore,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	useSettings,
 } from '@wordpress/block-editor';
 
 /**
@@ -24,9 +25,17 @@ export function ColorPicker( { name, value, onChange } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colorSettings, gradientValues ),
-		[ name, value, colorSettings, gradientValues ]
+	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizesSettings
+			),
+		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 
 	const onColorChange = useCallback(
@@ -37,16 +46,24 @@ export function ColorPicker( { name, value, onChange } ) {
 					name,
 					colorSettings,
 					{ iconColor: color },
-					colorGradientSettings.gradients
+					colorGradientSettings.gradients,
+					fontSizesSettings
 				)
 			);
 		},
-		[ onChange, value, name, colorSettings, colorGradientSettings ]
+		[
+			onChange,
+			value,
+			name,
+			colorSettings,
+			colorGradientSettings,
+			fontSizesSettings,
+		]
 	);
 
 	return (
 		<ColorPalette
-			value={ activeColors[ '--the-icon-color' ] }
+			value={ activeIcons[ '--the-icon-color' ] }
 			onChange={ onColorChange }
 			clearable={ true }
 			enableAlpha={ true }

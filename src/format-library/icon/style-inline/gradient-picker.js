@@ -6,6 +6,7 @@ import { useSelect } from '@wordpress/data';
 import {
 	store as blockEditorStore,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	useSettings,
 } from '@wordpress/block-editor';
 import { GradientPicker } from '@wordpress/components';
 
@@ -24,9 +25,17 @@ export function GradientColorPicker( { name, value, onChange } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colorSettings, gradientValues ),
-		[ name, value, colorSettings, gradientValues ]
+	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons(
+				value,
+				name,
+				colorSettings,
+				gradientValues,
+				fontSizesSettings
+			),
+		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
 	);
 
 	const onColorChange = useCallback(
@@ -37,7 +46,8 @@ export function GradientColorPicker( { name, value, onChange } ) {
 					name,
 					colorSettings,
 					{ iconGradientColor: color },
-					colorGradientSettings.gradients
+					colorGradientSettings.gradients,
+					fontSizesSettings
 				)
 			);
 		},
@@ -47,12 +57,13 @@ export function GradientColorPicker( { name, value, onChange } ) {
 			name,
 			colorSettings,
 			colorGradientSettings.gradients,
+			fontSizesSettings,
 		]
 	);
 
 	return (
 		<GradientPicker
-			value={ activeColors[ '--the-icon-gradient-color' ] }
+			value={ activeIcons[ '--the-icon-gradient-color' ] }
 			onChange={ onColorChange }
 			gradients={ colorGradientSettings.gradients }
 		/>
