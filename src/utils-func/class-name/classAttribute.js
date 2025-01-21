@@ -1,8 +1,3 @@
-/**
- * External dependencies
- */
-import clsx from 'clsx';
-
 import { emptyStringToUndefined } from './empty-string-to-undefined.js';
 
 export const stringToArrayClassName = ( className ) => {
@@ -73,6 +68,8 @@ export const deleteRegExClass = ( regEx, className, setAttributes ) => {
 	);
 
 	setAttributes( {
-		className: emptyStringToUndefined( clsx( filteredClassArray ) ),
+		className: emptyStringToUndefined(
+			arrayToStringClassName( filteredClassArray )
+		),
 	} );
 };
