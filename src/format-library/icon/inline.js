@@ -9,9 +9,16 @@ import {
 	useAnchor,
 	getActiveFormat,
 } from '@wordpress/rich-text';
-import { useCachedTruthy } from '@wordpress/block-editor';
+import {
+	useCachedTruthy,
+	store as blockEditorStore,
+	getColorObjectByAttributeValues,
+	getGradientValueBySlug,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+} from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
-import { renderToString } from '@wordpress/element';
+import { renderToString, useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -25,7 +32,7 @@ import {
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
 
-function parseCSS( css = '' ) {
+function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	const rules = [];
 	let rule = '';
 	let insideUrl = false;
@@ -52,7 +59,35 @@ function parseCSS( css = '' ) {
 		const [ property, ...valueParts ] = _rule.split( ':' );
 		const value = valueParts.join( ':' ).trim();
 		if ( property && value ) {
-			obj[ property.trim() ] = value;
+			if ( property === '--the-icon-color' ) {
+				const colorSlug = value
+					.replace( 'var(--wp--preset--color--', '' )
+					.replace( ')', '' );
+				const colorValue = value.startsWith(
+					'var(--wp--preset--color--'
+				)
+					? getColorObjectByAttributeValues(
+							colorSettings,
+							colorSlug
+					  ).color
+					: value;
+				obj[ property.trim() ] = colorValue;
+			} else if ( property === '--the-icon-gradient-color' ) {
+				const gradientValue = value.startsWith(
+					'var(--wp--preset--gradient--'
+				)
+					? colorGradientSettings &&
+					  getGradientValueBySlug(
+							colorGradientSettings,
+							value
+								.replace( 'var(--wp--preset--gradient--', '' )
+								.replace( ')', '' )
+					  )
+					: value;
+				obj[ property.trim() ] = gradientValue;
+			} else {
+				obj[ property.trim() ] = value;
+			}
 		}
 	} );
 
@@ -63,7 +98,12 @@ function parseClassName( className = '' ) {
 	return className.split( ' ' );
 }
 
-export function getActiveIcons( value, name ) {
+export function getActiveIcons(
+	value,
+	name,
+	colorSettings,
+	colorGradientSettings
+) {
 	const activeFormat = getActiveFormat( value, name );
 
 	if ( ! activeFormat ) {
@@ -71,14 +111,32 @@ export function getActiveIcons( value, name ) {
 	}
 
 	return {
-		...parseCSS( activeFormat.attributes?.style ),
-		...parseCSS( activeFormat.unregisteredAttributes?.style ),
+		...parseCSS(
+			activeFormat.attributes?.style,
+			colorSettings,
+			colorGradientSettings
+		),
+		...parseCSS(
+			activeFormat.unregisteredAttributes?.style,
+			colorSettings,
+			colorGradientSettings
+		),
 		...parseClassName( activeFormat.attributes.class ),
 	};
 }
 
-export function hasIconFormat( value, name ) {
-	const activeFormat = getActiveIcons( value, name );
+export function hasIconFormat(
+	value,
+	name,
+	colorSettings,
+	colorGradientSettings
+) {
+	const activeFormat = getActiveIcons(
+		value,
+		name,
+		colorSettings,
+		colorGradientSettings
+	);
 
 	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
 		? true
@@ -110,6 +168,15 @@ export const getIconDetails = ( iconValue ) => {
 };
 
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
+	const colorSettings = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		return getSettings().colors ?? [];
+	}, [] );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const gradientValues = colorGradientSettings.gradients
+		.map( ( setting ) => setting.gradients )
+		.flat();
+
 	const getInsertIconValue = ( iconValue ) => {
 		const { SVG, iconName } = getIconDetails( iconValue );
 		const dataSvg = createSvgUrl( SVG );
@@ -136,7 +203,10 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 		setIsAdding( false );
 	};
 
-	const activeFormat = getActiveIcons( value, name );
+	const activeFormat = useMemo(
+		() => getActiveIcons( value, name, colorSettings, gradientValues ),
+		[ name, value, colorSettings, gradientValues ]
+	);
 
 	return (
 		<IconPopoverContent

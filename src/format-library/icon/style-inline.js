@@ -22,34 +22,37 @@ import { getActiveIcons } from './inline';
 
 function setColors( value, name, colorSettings, colors, gradientSettings ) {
 	const { iconColor } = {
-		...getActiveIcons( value, name, colorSettings ),
+		...getActiveIcons( value, name, colorSettings, gradientSettings ),
 		...colors,
 	};
 	const gradientValues = gradientSettings
 		?.map( ( setting ) => setting.gradients )
 		.flat();
 	const { iconGradientColor } = {
-		...getActiveIcons( value, name, gradientValues ),
+		...getActiveIcons( value, name, colorSettings, gradientSettings ),
 		...colors,
 	};
 
 	const styles = [];
 	const classNames = [];
 	const attributes = {};
-	const activeFormat = getActiveIcons( value, name );
+	const activeFormat = getActiveIcons(
+		value,
+		name,
+		colorSettings,
+		gradientSettings
+	);
 
 	if ( activeFormat[ '--the-icon-name' ] ) {
 		styles.push(
 			[ '--the-icon-name', activeFormat[ '--the-icon-name' ] ].join( ':' )
 		);
 	}
-
 	if ( activeFormat[ '--the-icon-svg' ] ) {
 		styles.push(
 			[ '--the-icon-svg', activeFormat[ '--the-icon-svg' ] ].join( ':' )
 		);
 	}
-
 	if ( iconColor ) {
 		const colorObject = getColorObjectByColorValue(
 			colorSettings,
@@ -93,18 +96,28 @@ function ColorPicker( { name, property, value, onChange } ) {
 		const { getSettings } = select( blockEditorStore );
 		return getSettings().colors ?? [];
 	}, [] );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const gradientValues = colorGradientSettings.gradients
+		.map( ( setting ) => setting.gradients )
+		.flat();
 	const activeColors = useMemo(
-		() => getActiveIcons( value, name, colors ),
-		[ name, value, colors ]
+		() => getActiveIcons( value, name, colors, gradientValues ),
+		[ name, value, colors, gradientValues ]
 	);
 
 	const onColorChange = useCallback(
 		( color ) => {
 			onChange(
-				setColors( value, name, colors, { [ property ]: color } )
+				setColors(
+					value,
+					name,
+					colors,
+					{ [ property ]: color },
+					colorGradientSettings.gradients
+				)
 			);
 		},
-		[ onChange, property, value, name, colors ]
+		[ onChange, property, value, name, colors, colorGradientSettings ]
 	);
 
 	return (
@@ -118,13 +131,17 @@ function ColorPicker( { name, property, value, onChange } ) {
 }
 
 function GradientColorPicker( { name, property, value, onChange } ) {
+	const colors = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		return getSettings().colors ?? [];
+	}, [] );
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
 	const activeColors = useMemo(
-		() => getActiveIcons( value, name, gradientValues ),
-		[ name, value, gradientValues ]
+		() => getActiveIcons( value, name, colors, gradientValues ),
+		[ name, value, colors, gradientValues ]
 	);
 
 	const onColorChange = useCallback(
@@ -133,18 +150,25 @@ function GradientColorPicker( { name, property, value, onChange } ) {
 				setColors(
 					value,
 					name,
-					'',
+					colors,
 					{ [ property ]: color },
 					colorGradientSettings.gradients
 				)
 			);
 		},
-		[ onChange, property, value, name, colorGradientSettings.gradients ]
+		[
+			onChange,
+			property,
+			value,
+			name,
+			colors,
+			colorGradientSettings.gradients,
+		]
 	);
 
 	return (
 		<GradientPicker
-			value={ activeColors[ property ] }
+			value={ activeColors[ '--the-icon-gradient-color' ] }
 			onChange={ onColorChange }
 			gradients={ colorGradientSettings.gradients }
 		/>
@@ -157,7 +181,6 @@ export default function StyleInlineIconUI( {
 	onChange,
 	onClose,
 	contentRef,
-	setIsAdding,
 } ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
@@ -165,6 +188,19 @@ export default function StyleInlineIconUI( {
 	} );
 	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
 	popoverAnchor.getBoundingClientRect = () => cachedRect;
+
+	const colors = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		return getSettings().colors ?? [];
+	}, [] );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const gradientValues = colorGradientSettings.gradients
+		.map( ( setting ) => setting.gradients )
+		.flat();
+	const activeColors = useMemo(
+		() => getActiveIcons( value, name, colors, gradientValues ),
+		[ name, value, colors, gradientValues ]
+	);
 
 	return (
 		<Popover
@@ -189,7 +225,11 @@ export default function StyleInlineIconUI( {
 						title: 'size',
 					},
 				] }
-				initialTabName={ 'iconColor' }
+				initialTabName={
+					!! activeColors[ '--the-icon-gradient-color' ]
+						? 'iconGradientColor'
+						: 'iconColor'
+				}
 			>
 				{ ( tab ) => {
 					if ( 'iconColor' === tab.name ) {

@@ -1,11 +1,15 @@
 import { __ } from '@wordpress/i18n';
-import { RichTextToolbarButton } from '@wordpress/block-editor';
+import {
+	RichTextToolbarButton,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	store as blockEditorStore,
+} from '@wordpress/block-editor';
 import {
 	registerFormatType,
 	store as richTextStore,
 } from '@wordpress/rich-text';
 import { useState, useCallback } from '@wordpress/element';
-import { select } from '@wordpress/data';
+import { select, useSelect } from '@wordpress/data';
 
 import { fontSizeIcon } from '../../icons';
 import {
@@ -23,6 +27,14 @@ const name = 'mone/inline-icon';
 
 const InlineIcon = ( props ) => {
 	const { value, onChange, contentRef, activeAttributes, isActive } = props;
+	const colorSettings = useSelect( ( _select ) => {
+		const { getSettings } = _select( blockEditorStore );
+		return getSettings().colors ?? [];
+	}, [] );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const gradientValues = colorGradientSettings.gradients
+		.map( ( setting ) => setting.gradients )
+		.flat();
 
 	const [ isAdding, setIsAdding ] = useState( false );
 	const disableIsAdding = useCallback(
@@ -64,7 +76,7 @@ const InlineIcon = ( props ) => {
 					setIsAdding={ setIsAdding }
 				/>
 			) }
-			{ hasIconFormat( value, name ) && (
+			{ hasIconFormat( value, name, colorSettings, gradientValues ) && (
 				<StyleInlineIconUI
 					name={ name }
 					onClose={ disableIsAdding }
