@@ -49,10 +49,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Copyright ==
 
-## Satori
-MPL 2.0 license
-Source: https://github.com/vercel/satori/
-
 Noto Sans Font
 Copyright 2015-2021 Google LLC. All Rights Reserved. 
 This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL 
@@ -76,3 +72,24 @@ icomoon Font
   
 -- End of icomoon Font credits --
 
+## Font Awesome
+https://fontawesome.com
+License: MIT License
+
+## Feather
+https://feathericons.com
+License: MIT License
+
+## Ionicons
+https://ionic.io/ionicons
+License: MIT License
+
+## highlight.js
+https://highlightjs.org
+License: BSD 3-Clause License
+Copyright (c) 2006, Ivan Sagalaev.
+All rights reserved.
+
+## Satori
+https://github.com/vercel/satori
+License: MPL 2.0 license

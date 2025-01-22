@@ -1,4 +1,15 @@
 /**
+ * Parts of this source were derived and modified from flexible-table-block,
+ * released under the GPL-2.0+ license.
+ *
+ * https://github.com/t-hamano/flexible-table-block
+ *
+ * @author Aki Hamano
+ *
+ * https://github.com/t-hamano/flexible-table-block/blob/main/LICENSE
+ */
+
+/**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
