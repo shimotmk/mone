@@ -88,7 +88,7 @@ function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 					: value;
 				obj[ property.trim() ] = gradientValue;
 			} else {
-				obj[ property.trim() ] = value;
+				obj[ property ] = value;
 			}
 		}
 	} );

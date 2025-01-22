@@ -8,7 +8,10 @@ export function ColorPicker( { activeIcons, onIconChange } ) {
 		<ColorPalette
 			value={ activeIcons[ '--the-icon-color' ] }
 			onChange={ ( newValue ) => {
-				onIconChange( { iconColor: newValue } );
+				onIconChange( {
+					'--the-icon-color': newValue,
+					'--the-icon-gradient-color': undefined,
+				} );
 			} }
 			clearable={ true }
 			enableAlpha={ true }

@@ -25,17 +25,21 @@ import { ColorPicker } from './color';
 import { GradientColorPicker } from './gradient-picker';
 import { Size } from './size';
 
-export function setAttributes(
+export function setAttributes( {
 	value,
 	name,
 	colorSettings,
-	newValueObject,
 	gradientSettings,
 	fontSizesSettings,
-	newFontSize,
-	activeIcons
-) {
-	const { iconColor, iconGradientColor, fontSize } = {
+	newValueObj,
+} ) {
+	const {
+		'--the-icon-color': iconColor,
+		'--the-icon-name': iconName,
+		'--the-icon-svg': iconSvg,
+		'--the-icon-gradient-color': iconGradientColor,
+		'font-size': fontSize,
+	} = {
 		...getActiveIcons( {
 			value,
 			name,
@@ -43,24 +47,20 @@ export function setAttributes(
 			colorGradientSettings: gradientSettings,
 			fontSizesSettings,
 		} ),
-		fontSize: newFontSize,
-		...newValueObject,
+		...newValueObj,
 	};
 
 	const styles = [];
 	const classNames = [];
 	const attributes = {};
 
-	if ( activeIcons[ '--the-icon-name' ] ) {
-		styles.push(
-			[ '--the-icon-name', activeIcons[ '--the-icon-name' ] ].join( ':' )
-		);
+	if ( iconName ) {
+		styles.push( `--the-icon-name:${ iconName }` );
 	}
-	if ( activeIcons[ '--the-icon-svg' ] ) {
-		styles.push(
-			[ '--the-icon-svg', activeIcons[ '--the-icon-svg' ] ].join( ':' )
-		);
+	if ( iconSvg ) {
+		styles.push( `--the-icon-svg:${ iconSvg }` );
 	}
+
 	if ( iconColor ) {
 		const colorObject = getColorObjectByColorValue(
 			colorSettings,
@@ -68,24 +68,18 @@ export function setAttributes(
 		);
 		if ( colorObject ) {
 			styles.push(
-				[
-					'--the-icon-color',
-					`var(--wp--preset--color--${ colorObject.slug })`,
-				].join( ':' )
+				`--the-icon-color:var(--wp--preset--color--${ colorObject.slug })`
 			);
 		} else {
-			styles.push( [ '--the-icon-color', iconColor ].join( ':' ) );
+			styles.push( `--the-icon-color:${ iconColor }` );
 		}
 	}
 
-	const gradientValues = gradientSettings
-		?.map( ( setting ) => setting.gradients )
-		.flat();
-	const gradientObject = __experimentalGetGradientObjectByGradientValue(
-		gradientValues,
-		iconGradientColor
-	);
-	if ( gradientObject || iconGradientColor ) {
+	if ( iconGradientColor ) {
+		const gradientObject = __experimentalGetGradientObjectByGradientValue(
+			gradientSettings,
+			iconGradientColor
+		);
 		const gradient = gradientObject
 			? `var(--wp--preset--gradient--${ gradientObject.slug })`
 			: iconGradientColor;
@@ -101,7 +95,7 @@ export function setAttributes(
 		if ( fontSizeSlug?.slug ) {
 			classNames.push( `has-${ fontSizeSlug.slug }-font-size` );
 		} else {
-			styles.push( [ 'font-size', fontSizeSlug.size ].join( ':' ) );
+			styles.push( `font-size: ${ fontSizeSlug.size }` );
 		}
 	}
 
@@ -153,15 +147,14 @@ export default function StyleInlineIconUI( {
 	const onIconChange = useCallback(
 		( newValueObj ) => {
 			onChange(
-				setAttributes(
+				setAttributes( {
 					value,
 					name,
 					colorSettings,
-					newValueObj,
-					colorGradientSettings.gradients,
+					gradientSettings: colorGradientSettings.gradients,
 					fontSizesSettings,
-					activeIcons
-				)
+					newValueObj,
+				} )
 			);
 		},
 		[
@@ -171,7 +164,6 @@ export default function StyleInlineIconUI( {
 			colorSettings,
 			colorGradientSettings,
 			fontSizesSettings,
-			activeIcons,
 		]
 	);
 
@@ -227,10 +219,8 @@ export default function StyleInlineIconUI( {
 						return (
 							<div className="mone-popover-color-picker">
 								<Size
-									name={ name }
-									value={ value }
-									onChange={ onChange }
 									activeIcons={ activeIcons }
+									onIconChange={ onIconChange }
 								/>
 							</div>
 						);

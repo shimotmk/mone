@@ -2,29 +2,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
-import {
-	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	store as blockEditorStore,
-	useSettings,
-} from '@wordpress/block-editor';
+import { useSettings } from '@wordpress/block-editor';
 import {
 	FontSizePicker,
 	Button,
 	__experimentalHStack as HStack,
 } from '@wordpress/components';
 
-/**
- * Internal dependencies
- */
-import { setAttributes } from './index';
-
-export function Size( { name, value, onChange, activeIcons } ) {
-	const colorSettings = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
-		return getSettings().colors ?? [];
-	}, [] );
-	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+export function Size( { activeIcons, onIconChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 
 	const buttonStyle = {
@@ -37,38 +22,16 @@ export function Size( { name, value, onChange, activeIcons } ) {
 			<div>
 				<FontSizePicker
 					fontSizes={ fontSizesSettings }
-					value={ activeIcons.fontSize }
-					onChange={ ( newFontSize ) => {
-						onChange(
-							setAttributes(
-								value,
-								name,
-								colorSettings,
-								'',
-								colorGradientSettings.gradients,
-								fontSizesSettings,
-								newFontSize,
-								activeIcons
-							)
-						);
+					value={ activeIcons[ 'font-size' ] }
+					onChange={ ( newValue ) => {
+						onIconChange( { 'font-size': newValue } );
 					} }
 					withReset={ false }
 				/>
 				<HStack alignment="right">
 					<Button
 						onClick={ () => {
-							onChange(
-								setAttributes(
-									value,
-									name,
-									colorSettings,
-									'',
-									colorGradientSettings.gradients,
-									fontSizesSettings,
-									false,
-									activeIcons
-								)
-							);
+							onIconChange( { 'font-size': undefined } );
 						} }
 						variant="secondary"
 						style={ buttonStyle }

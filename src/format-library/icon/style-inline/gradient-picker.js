@@ -11,7 +11,10 @@ export function GradientColorPicker( { activeIcons, onIconChange } ) {
 		<GradientPicker
 			value={ activeIcons[ '--the-icon-gradient-color' ] }
 			onChange={ ( newValue ) => {
-				onIconChange( { iconGradientColor: newValue } );
+				onIconChange( {
+					'--the-icon-color': undefined,
+					'--the-icon-gradient-color': newValue,
+				} );
 			} }
 			gradients={ colorGradientSettings.gradients }
 		/>
