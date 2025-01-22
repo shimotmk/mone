@@ -98,18 +98,17 @@ function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 
 function parseClassName( className = '', fontSettings ) {
 	const classArray = stringToArrayClassName( className );
+	const obj = {};
 
-	const fontClassNames = classArray.filter(
-		( name ) => name.startsWith( 'has-' ) && name.endsWith( '-font-size' )
-	);
-	const obj = fontClassNames.reduce( ( accumulator, name ) => {
-		const fontSlug = name
-			.replace( /^has-/, '' )
-			.replace( /-font-size$/, '' );
-		const fontSizeObject = getFontSize( fontSettings, fontSlug );
-		accumulator.fontSize = fontSizeObject.size;
-		return accumulator;
-	}, {} );
+	classArray.forEach( ( name ) => {
+		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
+			const fontSlug = name
+				.replace( /^has-/, '' )
+				.replace( /-font-size$/, '' );
+			const fontSizeObject = getFontSize( fontSettings, fontSlug );
+			obj[ 'font-size' ] = fontSizeObject.size;
+		}
+	} );
 
 	return obj;
 }
