@@ -1,3 +1,14 @@
+/**
+ * Parts of this source were derived and modified from flexible-table-block,
+ * released under the GPL-2.0+ license.
+ *
+ * https://github.com/t-hamano/flexible-table-block
+ *
+ * @author Aki Hamano
+ *
+ * https://github.com/t-hamano/flexible-table-block/blob/main/LICENSE
+ */
+
 // https://github.com/t-hamano/flexible-table-block/blob/deac8c0a373c468030daed63cc462d6803b5af26/src/utils/table-state.ts
 // appreciate for t-hamano
 
