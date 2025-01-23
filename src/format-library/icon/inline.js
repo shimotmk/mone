@@ -126,6 +126,8 @@ export function getActiveIcons( {
 		return {};
 	}
 
+	console.log("activeFormat",activeFormat);
+
 	return {
 		...parseCSS(
 			activeFormat.attributes?.style,

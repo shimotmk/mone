@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useCallback, useMemo } from '@wordpress/element';
+import { useCallback } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
@@ -35,10 +35,9 @@ export function setAttributes( {
 } ) {
 	const {
 		'--the-icon-color': iconColor,
-		'--the-icon-name': iconName,
-		'--the-icon-svg': iconSvg,
 		'--the-icon-gradient-color': iconGradientColor,
 		'font-size': fontSize,
+		...declaration
 	} = {
 		...getActiveIcons( {
 			value,
@@ -54,12 +53,11 @@ export function setAttributes( {
 	const classNames = [];
 	const attributes = {};
 
-	if ( iconName ) {
-		styles.push( `--the-icon-name:${ iconName }` );
-	}
-	if ( iconSvg ) {
-		styles.push( `--the-icon-svg:${ iconSvg }` );
-	}
+	Object.entries( declaration ).forEach( ( [ property, _value ] ) => {
+		if ( _value ) {
+			styles.push( `${ property }:${ _value }` );
+		}
+	} );
 
 	if ( iconColor ) {
 		const colorObject = getColorObjectByColorValue(
@@ -133,39 +131,25 @@ export default function StyleInlineIconUI( {
 		.flat();
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 
-	const activeIcons = useMemo(
-		() =>
-			getActiveIcons( {
+	const activeIcons = getActiveIcons( {
+		value,
+		name,
+		colorSettings,
+		colorGradientSettings: gradientValues,
+		fontSizesSettings,
+	} );
+	const onIconChange = ( newValueObj ) => {
+		onChange(
+			setAttributes( {
 				value,
 				name,
 				colorSettings,
-				colorGradientSettings: gradientValues,
+				gradientSettings: colorGradientSettings.gradients,
 				fontSizesSettings,
-			} ),
-		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
-	);
-	const onIconChange = useCallback(
-		( newValueObj ) => {
-			onChange(
-				setAttributes( {
-					value,
-					name,
-					colorSettings,
-					gradientSettings: colorGradientSettings.gradients,
-					fontSizesSettings,
-					newValueObj,
-				} )
-			);
-		},
-		[
-			onChange,
-			value,
-			name,
-			colorSettings,
-			colorGradientSettings,
-			fontSizesSettings,
-		]
-	);
+				newValueObj,
+			} )
+		);
+	};
 
 	return (
 		<Popover
