@@ -1,8 +1,8 @@
 .mone-block-editor-tools-panel-icon-settings__item {
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 	border-radius: 2px;
 }
 
@@ -45,10 +45,10 @@
 		}
 
 		.components-tab-panel__tabs-item {
-			width: calc( 100% / 6 );
+			width: calc(100% / 6);
 
 			@media screen and (max-width: 768px) {
-				width: calc( 100% / 3 );
+				width: calc(100% / 3);
 			}
 		}
 
@@ -83,14 +83,14 @@
 				height: 100%;
 			}
 		}
-	
+
 		.mone-preview-svg-textarea {
 			flex-grow: 1;
-	
+
 			.components-base-control__field {
 				height: 100%;
 			}
-	
+
 			.components-textarea-control__input {
 				height: 100%;
 				resize: none;
