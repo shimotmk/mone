@@ -8,9 +8,18 @@ import {
 	useAnchor,
 	getActiveFormat,
 } from '@wordpress/rich-text';
-import { useCachedTruthy } from '@wordpress/block-editor';
+import {
+	useCachedTruthy,
+	store as blockEditorStore,
+	getColorObjectByAttributeValues,
+	getGradientValueBySlug,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
+	getFontSize,
+	useSettings,
+} from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
-import { renderToString } from '@wordpress/element';
+import { renderToString, useMemo } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
 
 /**
  * Internal dependencies
@@ -19,22 +28,197 @@ import { inlineIconSettings as settings } from './index';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
+	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
+import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
+
+function parseCSS( css = '', colorSettings, colorGradientSettings ) {
+	const rules = [];
+	let rule = '';
+	let insideUrl = false;
+
+	for ( let i = 0; i < css.length; i++ ) {
+		const char = css[ i ];
+		if ( char === ';' && ! insideUrl ) {
+			rules.push( rule.trim() );
+			rule = '';
+		} else {
+			rule += char;
+			if ( char === '(' && rule.includes( 'url' ) ) {
+				insideUrl = true;
+			} else if ( char === ')' ) {
+				insideUrl = false;
+			}
+		}
+	}
+	if ( rule.trim() ) {
+		rules.push( rule.trim() );
+	}
+	const obj = {};
+	rules.forEach( ( _rule ) => {
+		const [ property, ...valueParts ] = _rule.split( ':' );
+		const value = valueParts.join( ':' ).trim();
+		if ( property && value ) {
+			if ( property === '--the-icon-color' ) {
+				const colorSlug = value
+					.replace( 'var(--wp--preset--color--', '' )
+					.replace( ')', '' );
+				const colorValue = value.startsWith(
+					'var(--wp--preset--color--'
+				)
+					? getColorObjectByAttributeValues(
+							colorSettings,
+							colorSlug
+					  ).color
+					: value;
+				obj[ property.trim() ] = colorValue;
+			} else if ( property === '--the-icon-gradient-color' ) {
+				const gradientValue = value.startsWith(
+					'var(--wp--preset--gradient--'
+				)
+					? colorGradientSettings &&
+					  getGradientValueBySlug(
+							colorGradientSettings,
+							value
+								.replace( 'var(--wp--preset--gradient--', '' )
+								.replace( ')', '' )
+					  )
+					: value;
+				obj[ property.trim() ] = gradientValue;
+			} else {
+				obj[ property ] = value;
+			}
+		}
+	} );
+
+	return obj;
+}
+
+function parseClassName( className = '', fontSettings ) {
+	const classArray = stringToArrayClassName( className );
+	const obj = {};
+
+	classArray.forEach( ( name ) => {
+		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
+			const fontSlug = name
+				.replace( /^has-/, '' )
+				.replace( /-font-size$/, '' );
+			const fontSizeObject = getFontSize( fontSettings, fontSlug );
+			obj[ 'font-size' ] = fontSizeObject.size;
+		}
+	} );
+
+	return obj;
+}
+
+export function getActiveIcons( {
+	value,
+	name,
+	colorSettings,
+	colorGradientSettings,
+	fontSettings,
+} ) {
+	const activeFormat = getActiveFormat( value, name );
+
+	if ( ! activeFormat ) {
+		return {};
+	}
+
+	return {
+		...parseCSS(
+			activeFormat.attributes?.style,
+			colorSettings,
+			colorGradientSettings
+		),
+		...parseCSS(
+			activeFormat.unregisteredAttributes?.style,
+			colorSettings,
+			colorGradientSettings
+		),
+		...parseClassName( activeFormat.attributes.class, fontSettings ),
+	};
+}
+
+export function hasIconFormat(
+	value,
+	name,
+	colorSettings,
+	colorGradientSettings,
+	fontSettings
+) {
+	const activeFormat = getActiveIcons( {
+		value,
+		name,
+		colorSettings,
+		colorGradientSettings,
+		fontSettings,
+	} );
+
+	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
+		? true
+		: false;
+}
+
+export const getIconDetails = ( iconValue ) => {
+	let SVG = '';
+	let iconName = 'custom';
+	const iconType = iconValue?.iconType || iconValue;
+
+	if (
+		typeof iconValue === 'object' &&
+		iconValue !== null &&
+		iconType === 'custom'
+	) {
+		SVG = isCustomIcon( iconType )
+			? iconValue.iconSVG
+			: renderToString( <ReactIcon iconName={ iconType } /> );
+		iconName = iconType;
+	} else if ( iconValue ) {
+		SVG = isCustomIcon( iconValue )
+			? iconValue.iconSVG
+			: renderToString( <ReactIcon iconName={ iconValue } /> );
+		iconName = iconValue;
+	}
+
+	return { SVG, iconName };
+};
 
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
-	const getInsertIconValue = ( icon ) => {
-		const SVG = renderToString( <ReactIcon icon={ icon } size="100%" /> );
+	const colorSettings = useSelect( ( select ) => {
+		const { getSettings } = select( blockEditorStore );
+		return getSettings().colors ?? [];
+	}, [] );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+	const gradientValues = colorGradientSettings.gradients
+		.map( ( setting ) => setting.gradients )
+		.flat();
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons( {
+				value,
+				name,
+				colorSettings,
+				colorGradientSettings: gradientValues,
+				fontSettings: fontSizes,
+			} ),
+		[ name, value, colorSettings, gradientValues, fontSizes ]
+	);
+
+	const getInsertIconValue = ( iconValue ) => {
+		const { SVG, iconName } = getIconDetails( iconValue );
 		const dataSvg = createSvgUrl( SVG );
 
-		const activeFormat = getActiveFormat( value, name );
-		if ( ! activeFormat ) {
+		const _activeFormat = getActiveFormat( value, name );
+		if ( ! _activeFormat ) {
 			value.activeFormats = {};
 		}
 
 		let newValue = value;
 		let html = '';
-		html += `<span class="mone-inline-icon" aria-hidden="true" style="--the-icon-svg: url(${ dataSvg });" >&emsp;</span>`;
+		html += `<span class="mone-inline-icon" aria-hidden="true" style="--the-icon-name:${ iconName }; --the-icon-svg:url(${ dataSvg });" >&emsp;</span>`;
 		newValue = insert(
 			newValue,
 			applyFormat( create( { html } ), {
@@ -52,7 +236,15 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	return (
 		<IconPopoverContent
 			onChange={ getInsertIconValue }
-			// value={searchValue}
+			value={ activeIcons[ '--the-icon-name' ] || '' }
+			iconSVG={
+				decodeSvgBase64(
+					activeIcons[ '--the-icon-svg' ]?.replace(
+						/^url\(|\)$/g,
+						''
+					)
+				) || ''
+			}
 			setIsVisible={ setIsAdding }
 		/>
 	);

@@ -1,15 +1,113 @@
+.mone-block-editor-tools-panel-icon-settings__item {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-radius: 2px;
+}
+
+.mone-block-editor-panel-icon-settings__dropdown {
+	display: block;
+	padding: 0;
+
+	>button {
+		padding-bottom: 10px;
+		padding-top: 10px;
+		text-align: left;
+		width: 100%;
+
+		svg {
+			width: 25px;
+			height: 25px;
+			max-width: 25px;
+			max-height: 25px;
+		}
+	}
+}
+
 .mone-icon-modal {
 	max-height: 88% !important;
 	max-width: 92% !important;
 	width: 480px;
+	margin-right: 16px;
+
+	@media screen and (max-width: 768px) {
+		margin: auto;
+	}
 
 	&.mone-icon-modal--search {
-		margin-right: 16px;
+	}
+
+	.mone-icon-tab {
+
+		.components-tab-panel__tabs {
+			flex-wrap: wrap;
+		}
+
+		.components-tab-panel__tabs-item {
+			width: calc(100% / 6);
+
+			@media screen and (max-width: 768px) {
+				width: calc(100% / 3);
+			}
+		}
+
 	}
 
 	.mone-icon-tab-content {
 		height: 58vh;
-		overflow-y: scroll;
+		overflow-y: auto;
+		border: 1px solid var(--wp--preset--color--mone-border);
+	}
+
+	.mone-icon-tab-content--custom {
+		border: 1px solid var(--wp--preset--color--mone-border);
+		height: 58vh;
+		padding: 6px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		.mone-preview-svg-icon {
+			height: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&.default-icon {
+				opacity: 0.5;
+			}
+
+			svg {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.mone-preview-svg-textarea {
+			flex-grow: 1;
+
+			.components-base-control__field {
+				height: 100%;
+			}
+
+			.components-textarea-control__input {
+				height: 100%;
+				resize: none;
+			}
+		}
+	}
+
+	.mone-icon-type-toggle-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.mone-icon-type-toggle {
+		width: 150px;
 	}
 
 	.mone-icon-button-group {
@@ -21,6 +119,10 @@
 		padding: 6px;
 		border-radius: 6px;
 		box-shadow: 0 1px 3px #0000001a;
+
+		@media screen and (max-width: 768px) {
+			width: 20%;
+		}
 	}
 
 }

@@ -11,50 +11,111 @@ import * as FaIcons6 from 'react-icons/fa6';
 import * as IoIcons from 'react-icons/io5';
 import * as FiIcons from 'react-icons/fi';
 
+/**
+ * Internal dependencies
+ */
+import { fiIcons } from './icon-list/feather-icons';
+import { faIcons } from './icon-list/fa-icons';
+import { ioIcons } from './icon-list/io-icons';
+import { PhosphorIconList } from './icon-list/phosphor-icons';
+
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-export const ReactIconKinds = ( icon ) => {
-	// プレフィックスからアイコン種類を判別
-	if ( icon.startsWith( 'Fi' ) && FiIcons[ icon ] !== undefined ) {
+export const parseIconName = ( iconName ) => {
+	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Phosphor_light_aperture';
+	let iconKind, iconType, iconNamePart;
+	if ( iconName?.includes( '_' ) ) {
+		[ iconKind, iconType, iconNamePart ] = iconName.split( '_' );
+	} else {
+		iconKind = iconType = iconNamePart = iconName;
+	}
+
+	const iconObj = PhosphorIconList.find(
+		( icon ) => icon.name === iconNamePart
+	);
+	if ( iconObj ) {
+		return { iconKind, iconType, iconNamePart };
+	}
+
+	return {};
+};
+
+export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
+	if ( ! iconKind || ! iconType || ! iconNamePart ) {
+		throw new Error(
+			'All parts (iconKind, iconType, iconNamePart) must be provided'
+		);
+	}
+	return `${ iconKind }_${ iconType }_${ iconNamePart }`;
+};
+
+export const isCustomIcon = ( iconName ) => {
+	if ( IconKinds( iconName ) === 'custom' ) {
+		return true;
+	}
+	return false;
+};
+
+// プレフィックスからアイコン種類を判別
+export const IconKinds = ( iconName ) => {
+	if ( ! iconName ) {
+		return 'custom';
+	}
+
+	const { iconKind } = parseIconName( iconName );
+	if ( iconKind === 'Phosphor' ) {
+		return 'phosphor';
+	} else if ( iconName.startsWith( 'Fi' ) && fiIcons.includes( iconName ) ) {
 		return 'fi';
-	} else if ( icon.startsWith( 'Fa' ) && FaIcons[ icon ] !== undefined ) {
+	} else if ( iconName.startsWith( 'Fa' ) && faIcons.includes( iconName ) ) {
 		return 'fa';
-	} else if ( icon.startsWith( 'Io' ) && IoIcons[ icon ] !== undefined ) {
+	} else if ( iconName.startsWith( 'Io' ) && ioIcons.includes( iconName ) ) {
 		return 'io';
+	}
+	return 'custom';
+};
+
+const getSvgHtml = ( iconName, _iconType ) => {
+	const iconObj = PhosphorIconList.find( ( icon ) => icon.name === iconName );
+	if ( iconObj ) {
+		const iconTypeObj = iconObj.iconList.find(
+			( icon ) => icon.type === _iconType
+		);
+		return iconTypeObj ? iconTypeObj.svgHtml : null;
 	}
 	return null;
 };
 
 export const ReactIcon = ( {
-	icon,
+	iconName,
 	className = '',
 	size = undefined,
 	style = { fill: 'none' },
 } ) => {
-	if ( ReactIconKinds( icon ) === 'fi' ) {
-		return createElement( FiIcons[ icon ], { size, className, style } );
-	} else if ( ReactIconKinds( icon ) === 'fa' ) {
-		return createElement( FaIcons[ icon ], { size, className } );
-	} else if ( ReactIconKinds( icon ) === 'io' ) {
-		return createElement( IoIcons[ icon ], { size, className } );
+	const { iconKind, iconType, iconNamePart } = parseIconName( iconName );
+	if ( iconKind === 'Phosphor' ) {
+		return getSvgHtml( iconNamePart, iconType );
 	}
+
+	if ( IconKinds( iconName ) === 'fi' ) {
+		return createElement( FiIcons[ iconName ], { size, className, style } );
+	} else if ( IconKinds( iconName ) === 'fa' ) {
+		return createElement( FaIcons[ iconName ], { size, className } );
+	} else if ( IconKinds( iconName ) === 'io' ) {
+		return createElement( IoIcons[ iconName ], { size, className } );
+	}
+	// return ({
+	// 	parseIcon( svg )
+	// });
+
+	// return createElement( parseIcon( svg ) );
+
 	return null;
 };
 
 export const IconExternalLink = ( { icon } ) => {
-	const SVG = renderToString( <ReactIcon icon={ icon } /> );
+	const SVG = renderToString( <ReactIcon iconName={ icon } /> );
 	return 'data:image/svg+xml,' + encodeURIComponent( SVG );
-};
-
-export const getReactIcon = ( { icon, className = '', size = undefined } ) => {
-	if ( ReactIconKinds( icon ) === 'fi' ) {
-		return FiIcons[ icon ], { size, className };
-	} else if ( ReactIconKinds( icon ) === 'fa' ) {
-		return FaIcons[ icon ], { size, className };
-	} else if ( ReactIconKinds( icon ) === 'io' ) {
-		return IoIcons[ icon ], { size, className };
-	}
-	return null;
 };
 
 export const createSvgUrl = ( svgString ) => {
@@ -64,4 +125,14 @@ export const createSvgUrl = ( svgString ) => {
 
 	const imageSrc = `data:image/svg+xml;base64,${ svgBase64 }`;
 	return imageSrc;
+};
+
+export const decodeSvgBase64 = ( encodedSvgUrl ) => {
+	if ( ! encodedSvgUrl ) {
+		return '';
+	}
+	const base64Data = encodedSvgUrl.split( ',' )[ 1 ];
+	const decodedString = window.atob( base64Data );
+	const svgString = decodeURIComponent( decodedString );
+	return svgString;
 };

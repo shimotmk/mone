@@ -44,8 +44,10 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
+import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
 
@@ -60,6 +62,7 @@ const LINK_SETTINGS = [
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		iconSVG,
 		iconName,
 		iconColor,
 		width,
@@ -153,9 +156,14 @@ export default function Edit( props ) {
 		return () => document.body.removeEventListener( 'click', popoverClose );
 	}, [ popoverClose ] );
 
-	const SVG = iconName
-		? renderToString( <ReactIcon icon={ iconName } /> )
-		: renderToString( <ReactIcon icon="FaWordpress" /> );
+	let SVG;
+	if ( iconName && isCustomIcon( iconName ) ) {
+		SVG = iconSVG;
+	} else if ( iconName ) {
+		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
+	} else {
+		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
+	}
 
 	return (
 		<>
@@ -191,6 +199,7 @@ export default function Edit( props ) {
 						/>
 					</ToolsPanelItem>
 					<ToolsPanelItem
+						className="mone-block-editor-tools-panel-icon-settings__item"
 						label={ __( 'Icon', 'mone' ) }
 						isShownByDefault
 						hasValue={ () => !! iconName }
@@ -200,9 +209,23 @@ export default function Edit( props ) {
 					>
 						<IconSearchModal
 							value={ iconName }
-							onChange={ ( value ) =>
-								setAttributes( { iconName: value } )
-							}
+							iconSVG={ iconSVG || '' }
+							onChange={ ( value ) => {
+								if (
+									typeof value === 'object' &&
+									value !== null &&
+									value.iconType === 'custom'
+								) {
+									setAttributes( {
+										iconName: value.iconType,
+										iconSVG: value.iconSVG,
+									} );
+								} else {
+									setAttributes( {
+										iconName: value,
+									} );
+								}
+							} }
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
@@ -347,11 +370,18 @@ export default function Edit( props ) {
 								) })`,
 							} }
 						>
-							{ iconName ? (
-								<ReactIcon icon={ iconName } />
-							) : (
-								<ReactIcon icon="FaWordpress" />
-							) }
+							{ ( () => {
+								if (
+									iconName &&
+									isCustomIcon( iconName ) &&
+									!! SVG
+								) {
+									return parseIcon( SVG );
+								} else if ( iconName ) {
+									return <ReactIcon iconName={ iconName } />;
+								}
+								return <ReactIcon iconName="FaWordpress" />;
+							} )() }
 						</span>
 					</a>
 				) : (
@@ -365,11 +395,18 @@ export default function Edit( props ) {
 								) })`,
 							} }
 						>
-							{ iconName ? (
-								<ReactIcon icon={ iconName } />
-							) : (
-								<ReactIcon icon="FaWordpress" />
-							) }
+							{ ( () => {
+								if (
+									iconName &&
+									isCustomIcon( iconName ) &&
+									!! SVG
+								) {
+									return parseIcon( SVG );
+								} else if ( iconName ) {
+									return <ReactIcon iconName={ iconName } />;
+								}
+								return <ReactIcon iconName="FaWordpress" />;
+							} )() }
 						</span>
 					</>
 				) }

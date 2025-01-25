@@ -21,6 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string
  */
 function render_block_paragraph( $block_content, $parsed_block ) {
+	$class_name = $parsed_block['attrs']['className'] ?? '';
+	if ( ! $class_name || ! str_contains( $class_name, 'is-style-mone-alert-' ) ) {
+		return $block_content;
+	}
+
 	$alert_icon_url          = $parsed_block['attrs']['moneAlertIcon'] ?? '';
 	$alert_icon_color_custom = isset( $parsed_block['attrs']['moneIconGradient'] )
 	? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')'

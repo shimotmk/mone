@@ -19,7 +19,7 @@ import {
 	__experimentalGetGapCSSValue as getGapCSSValue,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { renderToString, useEffect } from '@wordpress/element';
+import { renderToString } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
 /**
@@ -30,6 +30,8 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
+	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import { existsClassName } from '../../utils-func/class-name/classAttribute.js';
@@ -93,28 +95,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			customGradientAttribute: 'moneIconCustomGradient',
 		} );
 
-		useEffect( () => {
-			if ( moneAlertIconName ) {
-				const SVG = renderToString(
-					<ReactIcon
-						icon={ moneAlertIconName }
-						size="100%"
-						color={ moneAlertIconColor }
-					/>
-				);
-				const dataSvg = createSvgUrl( SVG );
-
-				setAttributes( {
-					moneAlertIcon: dataSvg,
-				} );
-			}
-		}, [
-			moneAlertIconName,
-			moneAlertIcon,
-			moneAlertIconColor,
-			setAttributes,
-		] );
-
 		return (
 			<>
 				<BlockEdit { ...props } />
@@ -130,21 +110,61 @@ export const blockEditParagraph = createHigherOrderComponent(
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
 						<ToolsPanelItem
+							className="mone-block-editor-tools-panel-icon-settings__item"
 							label={ __( 'Icon', 'mone' ) }
 							isShownByDefault
-							hasValue={ () => !! moneAlertIconName }
+							hasValue={ () =>
+								!! moneAlertIconName || !! moneAlertIcon
+							}
 							onDeselect={ () =>
 								setAttributes( {
 									moneAlertIconName: undefined,
+									moneAlertIcon: undefined,
 								} )
 							}
 						>
 							<IconSearchModal
 								value={ moneAlertIconName }
+								iconSVG={
+									decodeSvgBase64( moneAlertIcon ) || ''
+								}
 								onChange={ ( value ) => {
-									setAttributes( {
-										moneAlertIconName: value,
-									} );
+									let SVG;
+									const iconType = value?.iconType || value;
+									if (
+										typeof value === 'object' &&
+										value !== null &&
+										iconType === 'custom'
+									) {
+										SVG = isCustomIcon( iconType )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ iconType }
+													/>
+											  );
+										setAttributes( {
+											moneAlertIconName: iconType,
+											moneAlertIcon: createSvgUrl( SVG ),
+										} );
+									} else if ( value ) {
+										SVG = isCustomIcon( value )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ value }
+													/>
+											  );
+										setAttributes( {
+											moneAlertIconName: value,
+											moneAlertIcon: createSvgUrl( SVG ),
+										} );
+									} else {
+										setAttributes( {
+											moneAlertIconName: undefined,
+											moneAlertIcon: undefined,
+										} );
+									}
 								} }
 							/>
 						</ToolsPanelItem>

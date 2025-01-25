@@ -16,11 +16,14 @@ import { isHexColor } from '../../utils-func/is-hex-color';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
+import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 
 export default function save( props ) {
 	const { attributes } = props;
 	const {
+		iconSVG,
 		width,
 		height,
 		iconColor,
@@ -68,9 +71,14 @@ export default function save( props ) {
 		},
 	};
 
-	const SVG = iconName
-		? renderToString( <ReactIcon icon={ iconName } /> )
-		: renderToString( <ReactIcon icon="FaWordpress" /> );
+	let SVG;
+	if ( iconName && isCustomIcon( iconName ) ) {
+		SVG = iconSVG;
+	} else if ( iconName ) {
+		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
+	} else {
+		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
+	}
 
 	return (
 		<div { ...blockProps }>
@@ -88,11 +96,18 @@ export default function save( props ) {
 							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
 						} }
 					>
-						{ iconName ? (
-							<ReactIcon icon={ iconName } />
-						) : (
-							<ReactIcon icon="FaWordpress" />
-						) }
+						{ ( () => {
+							if (
+								iconName &&
+								isCustomIcon( iconName ) &&
+								!! SVG
+							) {
+								return parseIcon( SVG );
+							} else if ( iconName ) {
+								return <ReactIcon iconName={ iconName } />;
+							}
+							return <ReactIcon iconName="FaWordpress" />;
+						} )() }
 					</span>
 				</a>
 			) : (
@@ -104,11 +119,18 @@ export default function save( props ) {
 							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
 						} }
 					>
-						{ iconName ? (
-							<ReactIcon icon={ iconName } />
-						) : (
-							<ReactIcon icon="FaWordpress" />
-						) }
+						{ ( () => {
+							if (
+								iconName &&
+								isCustomIcon( iconName ) &&
+								!! SVG
+							) {
+								return parseIcon( SVG );
+							} else if ( iconName ) {
+								return <ReactIcon iconName={ iconName } />;
+							}
+							return <ReactIcon iconName="FaWordpress" />;
+						} )() }
 					</span>
 				</>
 			) }

@@ -1,10 +1,20 @@
 /**
  * Internal dependencies
  */
-import { ReactIcon, ReactIconKinds } from './ReactIcon';
+import {
+	ReactIcon,
+	IconKinds,
+	generateIconName,
+	isCustomIcon,
+} from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
+import { PhosphorIconList } from './icon-list/phosphor-icons';
+import { PhosphorLogo, CodeBlock } from '../../icons';
+import { Phosphor } from './phosphor';
+import { CustomIcon } from './custom-icon';
+import { parseIcon } from './utils/parse-icon';
 
 /**
  * WordPress dependencies
@@ -15,19 +25,39 @@ import {
 	ButtonGroup,
 	TabPanel,
 	SearchControl,
+	__experimentalHStack as HStack,
+	__experimentalZStack as ZStack,
+	Flex,
+	FlexItem,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState } from '@wordpress/element';
-import { Icon, symbol } from '@wordpress/icons';
+import { useState, useMemo } from '@wordpress/element';
+import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
 
-const ALL_ICONS = fiIcons.concat( ioIcons, faIcons );
-
 export const IconPopoverContent = ( props ) => {
-	const { onChange, value } = props;
+	const { onChange, value, iconSVG } = props;
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
+
+	const ALL_ICONS = useMemo(
+		() =>
+			fiIcons.concat(
+				ioIcons,
+				faIcons,
+				PhosphorIconList.flatMap( ( icon ) =>
+					icon.iconList.map( ( iconTypeObj ) =>
+						generateIconName( {
+							iconKind: 'Phosphor',
+							iconType: iconTypeObj.type,
+							iconNamePart: icon.name,
+						} )
+					)
+				)
+			),
+		[]
+	);
 
 	let filteredIcons = null;
 	let iconList = null;
@@ -43,20 +73,34 @@ export const IconPopoverContent = ( props ) => {
 	if ( filteredIcons ) {
 		iconList = filteredIcons.length ? (
 			<ButtonGroup className="mone-icon-button-group">
-				{ filteredIcons.map( ( icon, idx ) => {
+				{ filteredIcons.map( ( _iconName, idx ) => {
+					// const {
+					// 	iconKind,
+					// 	iconType: type,
+					// 	iconNamePart: _part,
+					// } = parseIconName( _iconName );
+					// if ( iconKind === 'Phosphor' ) {
+					// 	return (
+					// 		<Phosphor
+					// 			key={ idx }
+					// 			iconName={ _iconName }
+					// 			onChange={ onChange }
+					// 		/>
+					// 	);
+					// }
 					return (
 						<Button
 							className="mone-icon-button"
 							key={ idx }
 							variant={
-								icon === iconName ? 'primary' : undefined
+								_iconName === iconName ? 'primary' : undefined
 							}
 							onClick={ () => {
-								onChange( icon );
+								onChange( _iconName );
 							} }
-							label={ icon }
+							label={ _iconName }
 						>
-							<ReactIcon icon={ icon } size="100%" />
+							<ReactIcon iconName={ _iconName } size="100%" />
 						</Button>
 					);
 				} ) }
@@ -73,25 +117,36 @@ export const IconPopoverContent = ( props ) => {
 					{
 						name: 'fa',
 						title: (
-							<ReactIcon icon="FaFontAwesomeFlag" size="100%" />
+							<ReactIcon
+								iconName="FaFontAwesomeFlag"
+								size="100%"
+							/>
 						),
 					},
 					{
 						name: 'io',
-						title: <ReactIcon icon="IoLogoIonic" size="100%" />,
+						title: <ReactIcon iconName="IoLogoIonic" size="100%" />,
 					},
 					{
 						name: 'fi',
 						title: (
 							<ReactIcon
 								className="mone-icon-button-fi"
-								icon="FiFeather"
+								iconName="FiFeather"
 								size="100%"
 							/>
 						),
 					},
+					{
+						name: 'phosphor',
+						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
+					},
+					{
+						name: 'custom',
+						title: <Icon icon={ CodeBlock } size={ 42 } />,
+					},
 				] }
-				initialTabName={ iconName ? ReactIconKinds( iconName ) : 'fa' }
+				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
 			>
 				{ ( tab ) => {
 					if ( 'fa' === tab.name ) {
@@ -111,14 +166,14 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
@@ -144,14 +199,14 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
@@ -177,14 +232,14 @@ export const IconPopoverContent = ( props ) => {
 												onClick={ () => {
 													const newIcon =
 														icon === iconName
-															? ''
+															? undefined
 															: icon;
 													onChange( newIcon );
 												} }
 												label={ icon }
 											>
 												<ReactIcon
-													icon={ icon }
+													iconName={ icon }
 													size="100%"
 												/>
 											</Button>
@@ -192,6 +247,21 @@ export const IconPopoverContent = ( props ) => {
 									} ) }
 								</ButtonGroup>
 							</div>
+						);
+					} else if ( 'phosphor' === tab.name ) {
+						return (
+							<Phosphor
+								iconName={ iconName }
+								onChange={ onChange }
+							/>
+						);
+					} else if ( 'custom' === tab.name ) {
+						return (
+							<CustomIcon
+								iconName={ iconName }
+								onChange={ onChange }
+								iconSVG={ iconSVG }
+							/>
 						);
 					}
 				} }
@@ -216,26 +286,43 @@ export const IconPopoverContent = ( props ) => {
 };
 
 export const IconSearchModal = ( props ) => {
-	const { value, onChange } = props;
+	const { value, iconSVG } = props;
 	const [ isVisible, setIsVisible ] = useState( false );
+	const hasValue = !! value || !! iconSVG;
 
 	return (
 		<>
-			<Button
-				variant="secondary"
-				onClick={ () => setIsVisible( ! isVisible ) }
-			>
-				{ __( 'Select Icon', 'mone' ) }
-				<Icon icon={ symbol } />
-			</Button>
+			<div className="mone-block-editor-panel-icon-settings__dropdown">
+				<Button
+					onClick={ () => setIsVisible( ! isVisible ) }
+					__next40pxDefaultSize
+				>
+					<HStack justify={ hasValue ? 'start' : 'center' }>
+						<ZStack isLayered={ false } offset={ -8 }>
+							<Flex expanded={ false }>
+								{ hasValue &&
+									( value &&
+									isCustomIcon( value ) &&
+									!! iconSVG ? (
+										parseIcon( iconSVG )
+									) : (
+										<ReactIcon iconName={ value } />
+									) ) }
+							</Flex>
+						</ZStack>
+						<FlexItem className="block-editor-panel-color-gradient-settings__color-name">
+							{ __( 'Select Icon', 'mone' ) }
+						</FlexItem>
+					</HStack>
+				</Button>
+			</div>
 			{ isVisible && (
 				<Modal
 					className="mone-icon-modal mone-icon-modal--search"
 					onRequestClose={ () => setIsVisible( false ) }
 				>
 					<IconPopoverContent
-						value={ value }
-						onChange={ onChange }
+						{ ...props }
 						setIsVisible={ setIsVisible }
 					/>
 				</Modal>
