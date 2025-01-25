@@ -14,6 +14,7 @@ export const InfoPopover = ( props ) => {
 	return (
 		<div className="info-popover">
 			<DropdownMenu
+				className="info-popover-dropdown-menu"
 				label={ __( 'More Information', 'mone' ) }
 				icon={ info }
 				toggleProps={ {

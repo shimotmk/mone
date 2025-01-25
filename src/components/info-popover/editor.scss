@@ -1,4 +1,9 @@
 .info-popover {
+	line-height: 1;
+
+	.info-popover-dropdown-menu {
+		line-height: 1 !important;
+	}
 
 	.info-popover__button {
 		box-shadow: none !important;
