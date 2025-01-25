@@ -43,7 +43,6 @@ export function Size( { activeIcons, onIconChange } ) {
 		getCssVarToWpVar( activeIcons[ 'margin-right' ] ),
 		spacingSizes
 	);
-	console.log("fontSize", activeIcons[ 'font-size' ]);
 
 	return (
 		<>

@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useCallback } from '@wordpress/element';
+import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
@@ -44,7 +44,7 @@ export function setAttributes( {
 			name,
 			colorSettings,
 			colorGradientSettings: gradientSettings,
-			fontSizesSettings,
+			fontSettings: fontSizesSettings,
 		} ),
 		...newValueObj,
 	};
@@ -129,15 +129,19 @@ export default function StyleInlineIconUI( {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
-	const activeIcons = getActiveIcons( {
-		value,
-		name,
-		colorSettings,
-		colorGradientSettings: gradientValues,
-		fontSizesSettings,
-	} );
+	const activeIcons = useMemo(
+		() =>
+			getActiveIcons( {
+				value,
+				name,
+				colorSettings,
+				colorGradientSettings: gradientValues,
+				fontSettings: fontSizes,
+			} ),
+		[ value, name, colorSettings, gradientValues, fontSizes ]
+	);
 	const onIconChange = ( newValueObj ) => {
 		onChange(
 			setAttributes( {
@@ -145,11 +149,12 @@ export default function StyleInlineIconUI( {
 				name,
 				colorSettings,
 				gradientSettings: colorGradientSettings.gradients,
-				fontSizesSettings,
+				fontSizesSettings: fontSizes,
 				newValueObj,
 			} )
 		);
 	};
+	console.log( 'activeIcons', activeIcons );
 
 	return (
 		<Popover

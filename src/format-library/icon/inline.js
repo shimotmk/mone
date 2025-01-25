@@ -110,6 +110,7 @@ function parseClassName( className = '', fontSettings ) {
 		}
 	} );
 
+	console.log( 'obj', obj );
 	return obj;
 }
 
@@ -125,8 +126,6 @@ export function getActiveIcons( {
 	if ( ! activeFormat ) {
 		return {};
 	}
-
-	console.log("activeFormat",activeFormat);
 
 	return {
 		...parseCSS(
@@ -196,7 +195,7 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
@@ -204,9 +203,9 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 				name,
 				colorSettings,
 				colorGradientSettings: gradientValues,
-				fontSizesSettings,
+				fontSettings: fontSizes,
 			} ),
-		[ name, value, colorSettings, gradientValues, fontSizesSettings ]
+		[ name, value, colorSettings, gradientValues, fontSizes ]
 	);
 
 	const getInsertIconValue = ( iconValue ) => {
