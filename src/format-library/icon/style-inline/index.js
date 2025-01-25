@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useCallback, useEffect, useMemo, useState } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
@@ -154,7 +154,6 @@ export default function StyleInlineIconUI( {
 			} )
 		);
 	};
-	console.log( 'activeIcons', activeIcons );
 
 	return (
 		<Popover

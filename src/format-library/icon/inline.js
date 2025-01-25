@@ -110,7 +110,6 @@ function parseClassName( className = '', fontSettings ) {
 		}
 	} );
 
-	console.log( 'obj', obj );
 	return obj;
 }
 
