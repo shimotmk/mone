@@ -14,6 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Added Icon format color,gradient,size,margin setting
 - Added Icon block custom icon svg
 - Added Icon Phosphor icon
+- Added Paragraph,Heading One line text center
 
 = 1.4.0 = 2025-01-05
 
