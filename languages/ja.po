@@ -1242,6 +1242,22 @@ msgid "Stroke width"
 msgstr "ストローク幅"
 
 #: build/format-library/index.js:1
+msgid "Clear"
+msgstr "クリア"
+
+#: build/format-library/index.js:1
+msgid "Margin"
+msgstr "マージン"
+
+#: build/format-library/index.js:1
+msgid "Color"
+msgstr "カラー"
+
+#: build/format-library/index.js:1
+msgid "Gradient"
+msgstr "グラデーション"
+
+#: build/format-library/index.js:1
 msgid "Reset"
 msgstr "リセット"
 
@@ -1256,6 +1272,24 @@ msgstr "インライン文字サイズ"
 #: build/format-library/gradient/index.js:57
 msgid "Gradient text"
 msgstr "テキスト グラデーション"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Invalid SVG code"
+msgstr "無効なSVGコードです"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Svg code is here"
+msgstr "SVGをコードはこちらに入力してください"
+
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Insert custom icon"
+msgstr "カスタムアイコンを挿入"
 
 #: build/block-library/icon/index.js:915
 #: build/components/icon-search-popover/index.js:22057
