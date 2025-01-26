@@ -6,9 +6,7 @@ import { addFilter } from '@wordpress/hooks';
 import {
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
-	ToggleControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
-	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 import {
@@ -20,10 +18,9 @@ import {
 	__experimentalUseGradient as useGradient,
 	getTypographyClassesAndStyles as useTypographyProps,
 	useSettings,
-	__experimentalGetGapCSSValue as getGapCSSValue,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { renderToString, useEffect } from '@wordpress/element';
+import { renderToString } from '@wordpress/element';
 import { select } from '@wordpress/data';
 import { pullLeft, pullRight, chevronDown } from '@wordpress/icons';
 
@@ -35,6 +32,8 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
+	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import {
@@ -127,28 +126,6 @@ export const blockEditDetails = createHigherOrderComponent(
 			gradientAttribute: 'moneSummaryOpenGradient',
 			customGradientAttribute: 'moneSummaryOpenCustomGradient',
 		} );
-
-		useEffect( () => {
-			if ( moneDetailsIconName ) {
-				const SVG = renderToString(
-					<ReactIcon
-						icon={ moneDetailsIconName }
-						size="100%"
-						color={ moneIconColor }
-					/>
-				);
-				const dataSvg = createSvgUrl( SVG );
-
-				setAttributes( {
-					moneDetailsIcon: dataSvg,
-				} );
-			}
-		}, [
-			moneDetailsIconName,
-			moneDetailsIcon,
-			moneIconColor,
-			setAttributes,
-		] );
 
 		return (
 			<>
@@ -306,12 +283,49 @@ export const blockEditDetails = createHigherOrderComponent(
 							} }
 						>
 							<IconSearchModal
-								label={ __( 'Close icon', 'mone' ) }
 								value={ moneDetailsIconName }
+								iconSVG={
+									decodeSvgBase64( moneDetailsIcon ) || ''
+								}
 								onChange={ ( value ) => {
-									setAttributes( {
-										moneDetailsIconName: value,
-									} );
+									let SVG;
+									const iconType = value?.iconType || value;
+									if (
+										typeof value === 'object' &&
+										value !== null &&
+										iconType === 'custom'
+									) {
+										SVG = isCustomIcon( iconType )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ iconType }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsIconName: iconType,
+											moneDetailsIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else if ( value ) {
+										SVG = isCustomIcon( value )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ value }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsIconName: value,
+											moneDetailsIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else {
+										setAttributes( {
+											moneDetailsIconName: undefined,
+											moneDetailsIcon: undefined,
+										} );
+									}
 								} }
 							/>
 							<IconSearchModal
@@ -517,8 +531,6 @@ const blockListBlockDetails = createHigherOrderComponent(
 			moneDetailsIcon,
 			moneIconGradient,
 			moneIconCustomGradient,
-			className,
-			style,
 		} = attributes;
 
 		const [ fluidTypographySettings, layout ] = useSettings(
