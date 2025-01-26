@@ -9,6 +9,11 @@
 .mone-block-editor-panel-icon-settings__dropdown {
 	display: block;
 	padding: 0;
+	border-bottom: 1px solid #ddd;
+
+	&:last-child {
+		border-bottom: none;
+	}
 
 	>button {
 		padding-bottom: 10px;

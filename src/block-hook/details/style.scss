@@ -1,0 +1,167 @@
+.is-style-mone-details-icon {
+	--the-border-bottom-color: var(--wp--preset--color--mone-border, var(--the-border-bottom-color-custom, #d6e3ed));
+	--the-border-radius-top-left: var(--the-border-radius-top-left-custom, 10px);
+	--the-border-radius-top-right: var(--the-border-radius-top-right-custom, 10px);
+	--the-border-radius-bottom-left: var(--the-border-radius-bottom-left-custom, 10px);
+	--the-border-radius-bottom-right: var(--the-border-radius-bottom-right-custom, 10px);
+	--the-summary-open-background: var(--the-summary-open-background-custom, var(--wp--preset--color--heading-bg, #f1f5f9));
+	--the-summary-icon-color: var(--the-summary-icon-color-custom, currentColor);
+	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
+	--the-border-bottom-style: var(--the-border-bottom-style-custom, solid);
+	--the-border-bottom-width: var(--the-border-bottom-width-custom, 1px);
+	--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"/><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="88" x2="128" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>));
+
+	--the-border-color: var(--wp--preset--color--mone-border, #d6e3ed);
+	--the-border-radius: var(--the-border-radius-custom, 10px);
+	--the-summary-open-background: var(--the-summary-open-background-custom, var(--wp--preset--color--heading-bg, #f1f5f9));
+	--the-summary-icon-color: var(--the-summary-icon-color-custom, currentColor);
+	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
+	--wp--preset--spacing--10: 10px;
+
+	&.mone-detail-icon-plusminus,
+	&.mone-detail-icon-triangle,
+	&.mone-detail-icon-custom {
+
+		summary {
+			padding-top: var(--wp--preset--spacing--10);
+			padding-bottom: var(--wp--preset--spacing--10);
+			padding-left: var(--wp--preset--spacing--10);
+			padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--wp--preset--spacing--10));
+			border-radius: var(--the-border-radius-top-left) var(--the-border-radius-top-right) var(--the-border-radius-bottom-left) var(--the-border-radius-bottom-right);
+
+
+			position: relative;
+			list-style: none;
+
+			&::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translate(-50%, -50%) scale(1.25);
+				transition: transform 0.3s ease-in-out;
+				width: var(--the-summary-icon-size);
+				min-width: var(--the-summary-icon-size);
+				height: var(--the-summary-icon-size);
+				mask-size: contain;
+				background: var(--the-summary-icon-color);
+				mask-position: top center;
+				mask-repeat: no-repeat;
+				mask-image: var(--the-summary-icon);
+			}
+
+
+			&:focus-visible {
+				outline-width: 1px;
+				outline-style: solid;
+				outline-color: color-mix(in srgb, currentcolor 40%, transparent);
+			}
+		}
+
+		&[open] {
+
+			summary {
+				background: var(--the-summary-open-background);
+				border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
+				border-radius: calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
+			}
+		}
+	}
+
+	&.mone-details-icon-position-right {
+
+		summary {
+			padding-top: var(--wp--preset--spacing--10);
+			padding-bottom: var(--wp--preset--spacing--10);
+			padding-left: var(--wp--preset--spacing--10);
+			padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--wp--preset--spacing--10));
+
+			&::after {
+				right: 0;
+			}
+		}
+	}
+
+	&.mone-details-icon-position-left {
+
+		summary {
+			padding-top: var(--wp--preset--spacing--10);
+			padding-bottom: var(--wp--preset--spacing--10);
+			padding-left: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--wp--preset--spacing--10));
+			padding-right: var(--wp--preset--spacing--10);
+
+			&::after {
+				transform: translate(50%, -50%) scale(1.25);
+				left: 0;
+			}
+		}
+	}
+
+	&.mone-detail-icon-triangle {
+
+		summary {
+			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>));
+			transition: transform 0.3s ease-in-out;
+		}
+
+		&[open] {
+
+			summary {
+
+				&::after {
+					transform: translate(-50%, -50%) scale(1.25) rotate(-180deg);
+					transition: transform 0.3s ease-in-out;
+				}
+			}
+		}
+
+		&.mone-details-icon-position-left {
+
+			&[open] {
+
+				summary {
+
+					&::after {
+						transform: translate(50%, -50%) scale(1.25) rotate(180deg);
+						transition: transform 0.3s ease-in-out;
+					}
+				}
+			}
+		}
+	}
+
+	&.mone-detail-icon-plusminus {
+
+		summary {
+			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>));
+		}
+
+		&[open] {
+
+			summary {
+
+				&::after {
+					--the-summary-icon: var(--the-summary-open-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"></path></svg>));
+				}
+			}
+		}
+	}
+
+	&.mone-detail-icon-custom {
+
+		summary {
+			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm45.66-109.66a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32,0l-40-40a8,8,0,0,1,11.32-11.32L128,140.69l34.34-34.35A8,8,0,0,1,173.66,106.34Z"></path></svg>));
+		}
+
+		&[open] {
+
+			summary {
+
+				&::after {
+					--the-summary-icon: var(--the-summary-open-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm45.66-77.66a8,8,0,0,1-11.32,11.32L128,115.31,93.66,149.66a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,0Z"></path></svg>));
+				}
+			}
+		}
+	}
+}

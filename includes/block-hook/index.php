@@ -20,6 +20,7 @@ function mone_register_block_hook() {
 		'columns',
 		'comments-pagination',
 		'core-embed',
+		'details',
 		'group',
 		'heading',
 		'list',

@@ -286,7 +286,7 @@ export const IconPopoverContent = ( props ) => {
 };
 
 export const IconSearchModal = ( props ) => {
-	const { value, iconSVG } = props;
+	const { value, iconSVG, label } = props;
 	const [ isVisible, setIsVisible ] = useState( false );
 	const hasValue = !! value || !! iconSVG;
 
@@ -311,7 +311,7 @@ export const IconSearchModal = ( props ) => {
 							</Flex>
 						</ZStack>
 						<FlexItem className="block-editor-panel-color-gradient-settings__color-name">
-							{ __( 'Select Icon', 'mone' ) }
+							{ label ? label : __( 'Select Icon', 'mone' ) }
 						</FlexItem>
 					</HStack>
 				</Button>
