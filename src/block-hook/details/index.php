@@ -47,6 +47,8 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\details_register_block
  * @param object $block block.
  */
 function render_block_details( $block_content, $parsed_block ) {
+	$summary_icon_url          = $parsed_block['attrs']['moneDetailsIcon'] ?? '';
+	$summary_open_icon_url          = $parsed_block['attrs']['moneDetailsOpenIcon'] ?? '';
 	$summary_icon_color_custom      = isset( $parsed_block['attrs']['moneIconGradient'] )
 	? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')'
 	: ( $parsed_block['attrs']['moneIconCustomGradient'] ?? ( isset( $parsed_block['attrs']['moneIconColor'] ) && mone_is_hex_color( $parsed_block['attrs']['moneIconColor'] )
@@ -104,6 +106,14 @@ function render_block_details( $block_content, $parsed_block ) {
 			if ( ! str_ends_with( $existing_style, ';' ) ) {
 				$updated_style .= ';';
 			}
+		}
+
+		if ( ! empty( $summary_icon_url ) ) {
+			$updated_style .= '--the-summary-icon-custom: url(' . $summary_icon_url . ');';
+		}
+
+		if ( ! empty( $summary_open_icon_url ) ) {
+			$updated_style .= '--the-summary-open-icon-custom: url(' . $summary_open_icon_url . ');';
 		}
 
 		$has_named_font_size = ! empty( $parsed_block['attrs']['fontSize'] );

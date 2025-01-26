@@ -81,6 +81,12 @@ export function registerBlockTypeDetails( settings, name ) {
 		moneDetailsIcon: {
 			type: 'string',
 		},
+		moneDetailsOpenIconName: {
+			type: 'string',
+		},
+		moneDetailsOpenIcon: {
+			type: 'string',
+		},
 		moneIconColor: {
 			type: 'string',
 		},
@@ -106,6 +112,8 @@ export const blockEditDetails = createHigherOrderComponent(
 			moneSummaryOpenColor,
 			moneDetailsIconName,
 			moneDetailsIcon,
+			moneDetailsOpenIconName,
+			moneDetailsOpenIcon,
 			moneIconColor,
 			className,
 		} = attributes;
@@ -134,10 +142,22 @@ export const blockEditDetails = createHigherOrderComponent(
 					<ToolsPanel
 						label={ __( 'Settings' ) }
 						resetAll={ () =>
-							setAttributes( {
-								moneDetailsIconName: undefined,
-								moneDetailsIcon: undefined,
-							} )
+							{
+								setAttributes( {
+									moneDetailsIconName: undefined,
+									moneDetailsIcon: undefined,
+									moneDetailsOpenIconName: undefined,
+									moneDetailsOpenIcon: undefined,
+								} );
+								deleteClass(
+									[
+										'mone-details-icon-position-left',
+										'mone-details-icon-position-right',
+									],
+									className,
+									setAttributes
+								)
+							}
 						}
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
@@ -270,10 +290,13 @@ export const blockEditDetails = createHigherOrderComponent(
 							label={ __( 'Icon', 'mone' ) }
 							className="mone-block-editor-tools-panel-icon-settings__item"
 							isShownByDefault
-							hasValue={ () => !! moneDetailsIconName }
+							hasValue={ () => !! moneDetailsIconName || !! moneDetailsOpenIconName }
 							onDeselect={ () => {
 								setAttributes( {
 									moneDetailsIconName: undefined,
+									moneDetailsIcon: undefined,
+									moneDetailsOpenIconName: undefined,
+									moneDetailsOpenIcon: undefined,
 								} );
 								deleteClass(
 									[ 'mone-detail-icon-custom' ],
@@ -330,11 +353,49 @@ export const blockEditDetails = createHigherOrderComponent(
 							/>
 							<IconSearchModal
 								label={ __( 'Open icon', 'mone' ) }
-								value={ moneDetailsIconName }
+								value={ moneDetailsOpenIconName }
+								iconSVG={
+									decodeSvgBase64( moneDetailsOpenIcon ) || ''
+								}
 								onChange={ ( value ) => {
-									setAttributes( {
-										moneDetailsIconName: value,
-									} );
+									let SVG;
+									const iconType = value?.iconType || value;
+									if (
+										typeof value === 'object' &&
+										value !== null &&
+										iconType === 'custom'
+									) {
+										SVG = isCustomIcon( iconType )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ iconType }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsOpenIconName: iconType,
+											moneDetailsOpenIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else if ( value ) {
+										SVG = isCustomIcon( value )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ value }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsOpenIconName: value,
+											moneDetailsOpenIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else {
+										setAttributes( {
+											moneDetailsOpenIconName: undefined,
+											moneDetailsOpenIcon: undefined,
+										} );
+									}
 								} }
 							/>
 						</ToolsPanelItem>
@@ -342,10 +403,7 @@ export const blockEditDetails = createHigherOrderComponent(
 							label={ __( 'Icon Position', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								existsClassName( className, [
-									'mone-details-icon-position-left',
-									'mone-details-icon-position-right',
-								] )
+								!! existsClassName( className, 'mone-details-icon-position-left' ) ||  !! existsClassName( className, 'mone-details-icon-position-right' )
 							}
 							onDeselect={ () =>
 								deleteClass(
@@ -529,6 +587,7 @@ const blockListBlockDetails = createHigherOrderComponent(
 			moneSummaryOpenCustomGradient,
 			moneIconColor,
 			moneDetailsIcon,
+			moneDetailsOpenIcon,
 			moneIconGradient,
 			moneIconCustomGradient,
 		} = attributes;
@@ -547,8 +606,11 @@ const blockListBlockDetails = createHigherOrderComponent(
 		} );
 
 		const extraStyle = {
-			'--the-alert-icon-custom': moneDetailsIcon
+			'--the-summary-icon-custom': moneDetailsIcon
 				? `url(${ moneDetailsIcon })`
+				: undefined,
+			'--the-summary-open-icon-custom': moneDetailsOpenIcon
+				? `url(${ moneDetailsOpenIcon })`
 				: undefined,
 			'--the-summary-open-background-custom': moneSummaryOpenGradient
 				? `var(--wp--preset--gradient--${ moneSummaryOpenGradient })`
