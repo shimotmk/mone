@@ -39,6 +39,7 @@ import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code'
 import {
 	existsClassName,
 	toggleClass,
+	addClass,
 	deleteClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
@@ -150,6 +151,8 @@ export const blockEditDetails = createHigherOrderComponent(
 							} );
 							deleteClass(
 								[
+									'mone-detail-icon-triangle',
+									'mone-detail-icon-custom',
 									'mone-details-icon-position-left',
 									'mone-details-icon-position-right',
 								],
@@ -169,7 +172,6 @@ export const blockEditDetails = createHigherOrderComponent(
 								} );
 								deleteClass(
 									[
-										'mone-detail-icon-plusminus',
 										'mone-detail-icon-triangle',
 										'mone-detail-icon-custom',
 									],
@@ -222,10 +224,10 @@ export const blockEditDetails = createHigherOrderComponent(
 											setAttributes
 										);
 										setAttributes( {
-											moneDetailsIconName: undefined,
-											moneDetailsIcon: undefined,
-											moneDetailsOpenIconName: undefined,
-											moneDetailsOpenIcon: undefined,
+											moneDetailsIconName:
+												'Phosphor_bold_caret-down',
+											moneDetailsIcon:
+												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMTYuNDksMTA0LjQ5bC04MCw4MGExMiwxMiwwLDAsMS0xNywwbC04MC04MGExMiwxMiwwLDAsMSwxNy0xN0wxMjgsMTU5bDcxLjUxLTcxLjUyYTEyLDEyLDAsMCwxLDE3LDE3WiI+PC9wYXRoPjwvc3ZnPg==',
 										} );
 									} else if ( newValue === 'plusminus' ) {
 										_className = deleteClassName(
@@ -272,14 +274,14 @@ export const blockEditDetails = createHigherOrderComponent(
 								} }
 							>
 								<ToggleGroupControlOptionIcon
-									label={ __( 'Triangle', 'mone' ) }
-									icon={ chevronDown }
-									value="triangle"
-								/>
-								<ToggleGroupControlOptionIcon
 									label={ __( 'Plus Minus', 'mone' ) }
 									icon={ plusMinus }
 									value="plusminus"
+								/>
+								<ToggleGroupControlOptionIcon
+									label={ __( 'Triangle', 'mone' ) }
+									icon={ chevronDown }
+									value="triangle"
 								/>
 							</ToggleGroupControl>
 						</ToolsPanelItem>
@@ -299,72 +301,72 @@ export const blockEditDetails = createHigherOrderComponent(
 									moneDetailsOpenIcon: undefined,
 								} );
 								deleteClass(
-									[ 'mone-detail-icon-custom' ],
+									[
+										'mone-detail-icon-triangle',
+										'mone-detail-icon-custom',
+									],
 									className,
 									setAttributes
 								);
 							} }
 						>
+							<IconSearchModal
+								value={ moneDetailsIconName }
+								iconSVG={
+									decodeSvgBase64( moneDetailsIcon ) || ''
+								}
+								onChange={ ( value ) => {
+									addClass(
+										'mone-detail-icon-custom',
+										className,
+										setAttributes
+									);
+
+									let SVG;
+									const iconType = value?.iconType || value;
+									if (
+										typeof value === 'object' &&
+										value !== null &&
+										iconType === 'custom'
+									) {
+										SVG = isCustomIcon( iconType )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ iconType }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsIconName: iconType,
+											moneDetailsIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else if ( value ) {
+										SVG = isCustomIcon( value )
+											? value.iconSVG
+											: renderToString(
+													<ReactIcon
+														iconName={ value }
+													/>
+											  );
+										setAttributes( {
+											moneDetailsIconName: value,
+											moneDetailsIcon:
+												createSvgUrl( SVG ),
+										} );
+									} else {
+										setAttributes( {
+											moneDetailsIconName: undefined,
+											moneDetailsIcon: undefined,
+										} );
+									}
+								} }
+							/>
 							{ ! existsClassName(
 								'mone-detail-icon-triangle',
 								className
 							) && (
 								<>
-									<IconSearchModal
-										value={ moneDetailsIconName }
-										iconSVG={
-											decodeSvgBase64(
-												moneDetailsIcon
-											) || ''
-										}
-										onChange={ ( value ) => {
-											let SVG;
-											const iconType =
-												value?.iconType || value;
-											if (
-												typeof value === 'object' &&
-												value !== null &&
-												iconType === 'custom'
-											) {
-												SVG = isCustomIcon( iconType )
-													? value.iconSVG
-													: renderToString(
-															<ReactIcon
-																iconName={
-																	iconType
-																}
-															/>
-													  );
-												setAttributes( {
-													moneDetailsIconName:
-														iconType,
-													moneDetailsIcon:
-														createSvgUrl( SVG ),
-												} );
-											} else if ( value ) {
-												SVG = isCustomIcon( value )
-													? value.iconSVG
-													: renderToString(
-															<ReactIcon
-																iconName={
-																	value
-																}
-															/>
-													  );
-												setAttributes( {
-													moneDetailsIconName: value,
-													moneDetailsIcon:
-														createSvgUrl( SVG ),
-												} );
-											} else {
-												setAttributes( {
-													moneDetailsIconName:
-														undefined,
-													moneDetailsIcon: undefined,
-												} );
-											}
-										} }
-									/>
 									<IconSearchModal
 										label={ __( 'Open icon', 'mone' ) }
 										value={ moneDetailsOpenIconName }
@@ -374,6 +376,12 @@ export const blockEditDetails = createHigherOrderComponent(
 											) || ''
 										}
 										onChange={ ( value ) => {
+											addClass(
+												'mone-detail-icon-custom',
+												className,
+												setAttributes
+											);
+
 											let SVG;
 											const iconType =
 												value?.iconType || value;
