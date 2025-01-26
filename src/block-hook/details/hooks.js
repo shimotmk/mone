@@ -44,7 +44,7 @@ import {
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
 import { isHexColor } from '../../utils-func/is-hex-color';
-import { plusMinus, blockCategoryIcon } from '../../icons';
+import { plusMinus } from '../../icons';
 
 export function registerBlockTypeDetails( settings, name ) {
 	if ( name !== 'core/details' ) {
