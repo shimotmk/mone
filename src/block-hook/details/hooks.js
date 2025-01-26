@@ -316,11 +316,18 @@ export const blockEditDetails = createHigherOrderComponent(
 									decodeSvgBase64( moneDetailsIcon ) || ''
 								}
 								onChange={ ( value ) => {
-									addClass(
-										'mone-detail-icon-custom',
-										className,
-										setAttributes
-									);
+									if (
+										! existsClassName(
+											'mone-detail-icon-triangle',
+											className
+										)
+									) {
+										addClass(
+											'mone-detail-icon-custom',
+											className,
+											setAttributes
+										);
+									}
 
 									let SVG;
 									const iconType = value?.iconType || value;
@@ -359,6 +366,11 @@ export const blockEditDetails = createHigherOrderComponent(
 											moneDetailsIconName: undefined,
 											moneDetailsIcon: undefined,
 										} );
+										deleteClass(
+											'mone-detail-icon-custom',
+											className,
+											setAttributes
+										);
 									}
 								} }
 							/>
@@ -376,11 +388,18 @@ export const blockEditDetails = createHigherOrderComponent(
 											) || ''
 										}
 										onChange={ ( value ) => {
-											addClass(
-												'mone-detail-icon-custom',
-												className,
-												setAttributes
-											);
+											if (
+												! existsClassName(
+													'mone-detail-icon-triangle',
+													className
+												)
+											) {
+												addClass(
+													'mone-detail-icon-custom',
+													className,
+													setAttributes
+												);
+											}
 
 											let SVG;
 											const iconType =
@@ -428,6 +447,11 @@ export const blockEditDetails = createHigherOrderComponent(
 													moneDetailsOpenIcon:
 														undefined,
 												} );
+												deleteClass(
+													'mone-detail-icon-custom',
+													className,
+													setAttributes
+												);
 											}
 										} }
 									/>
