@@ -141,24 +141,22 @@ export const blockEditDetails = createHigherOrderComponent(
 				<InspectorControls group="settings">
 					<ToolsPanel
 						label={ __( 'Settings' ) }
-						resetAll={ () =>
-							{
-								setAttributes( {
-									moneDetailsIconName: undefined,
-									moneDetailsIcon: undefined,
-									moneDetailsOpenIconName: undefined,
-									moneDetailsOpenIcon: undefined,
-								} );
-								deleteClass(
-									[
-										'mone-details-icon-position-left',
-										'mone-details-icon-position-right',
-									],
-									className,
-									setAttributes
-								)
-							}
-						}
+						resetAll={ () => {
+							setAttributes( {
+								moneDetailsIconName: undefined,
+								moneDetailsIcon: undefined,
+								moneDetailsOpenIconName: undefined,
+								moneDetailsOpenIcon: undefined,
+							} );
+							deleteClass(
+								[
+									'mone-details-icon-position-left',
+									'mone-details-icon-position-right',
+								],
+								className,
+								setAttributes
+							);
+						} }
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
 						<ToolsPanelItem
@@ -188,24 +186,24 @@ export const blockEditDetails = createHigherOrderComponent(
 								value={ ( () => {
 									if (
 										existsClassName(
-											className,
-											'mone-detail-icon-plusminus'
+											'mone-detail-icon-plusminus',
+											className
 										)
 									) {
 										return 'plusminus';
 									}
 									if (
 										existsClassName(
-											className,
-											'mone-detail-icon-triangle'
+											'mone-detail-icon-triangle',
+											className
 										)
 									) {
 										return 'triangle';
 									}
 									if (
 										existsClassName(
-											className,
-											'mone-detail-icon-custom'
+											'mone-detail-icon-custom',
+											className
 										)
 									) {
 										return 'custom';
@@ -290,7 +288,10 @@ export const blockEditDetails = createHigherOrderComponent(
 							label={ __( 'Icon', 'mone' ) }
 							className="mone-block-editor-tools-panel-icon-settings__item"
 							isShownByDefault
-							hasValue={ () => !! moneDetailsIconName || !! moneDetailsOpenIconName }
+							hasValue={ () =>
+								!! moneDetailsIconName ||
+								!! moneDetailsOpenIconName
+							}
 							onDeselect={ () => {
 								setAttributes( {
 									moneDetailsIconName: undefined,
@@ -403,7 +404,14 @@ export const blockEditDetails = createHigherOrderComponent(
 							label={ __( 'Icon Position', 'mone' ) }
 							isShownByDefault
 							hasValue={ () =>
-								!! existsClassName( className, 'mone-details-icon-position-left' ) ||  !! existsClassName( className, 'mone-details-icon-position-right' )
+								existsClassName(
+									'mone-details-icon-position-left',
+									className
+								) ||
+								existsClassName(
+									'mone-details-icon-position-right',
+									className
+								)
 							}
 							onDeselect={ () =>
 								deleteClass(
@@ -423,13 +431,13 @@ export const blockEditDetails = createHigherOrderComponent(
 								label={ __( 'Icon Position', 'mone' ) }
 								value={
 									existsClassName(
-										className,
-										'mone-details-icon-position-left'
+										'mone-details-icon-position-left',
+										className
 									)
 										? 'left'
 										: existsClassName(
-												className,
-												'mone-details-icon-position-right'
+												'mone-details-icon-position-right',
+												className
 										  )
 										? 'right'
 										: undefined
