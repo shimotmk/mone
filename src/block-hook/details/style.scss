@@ -1,16 +1,16 @@
 .is-style-mone-details-icon {
-	--the-border-bottom-color: var(--wp--preset--color--mone-border, var(--the-border-bottom-color-custom, #d6e3ed));
+	--the-border-bottom-color: var(--wp--preset--color--mone-border, var(--the-border-bottom-color-custom));
 	--the-border-radius-top-left: var(--the-border-radius-top-left-custom, 10px);
 	--the-border-radius-top-right: var(--the-border-radius-top-right-custom, 10px);
 	--the-border-radius-bottom-left: var(--the-border-radius-bottom-left-custom, 10px);
 	--the-border-radius-bottom-right: var(--the-border-radius-bottom-right-custom, 10px);
-	--the-summary-open-background: var(--the-summary-open-background-custom, var(--wp--preset--color--heading-bg, #f1f5f9));
+	--the-summary-open-background: var(--the-summary-open-background-custom, var(--wp--preset--color--heading-bg));
 	--the-summary-icon-color: var(--the-summary-icon-color-custom, currentColor);
 	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
 	--the-border-bottom-style: var(--the-border-bottom-style-custom, solid);
 	--the-border-bottom-width: var(--the-border-bottom-width-custom, 1px);
 	--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"/><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="88" x2="128" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>));
-	--the-border-color: var(--wp--preset--color--mone-border, #d6e3ed);
+	--the-border-color: var(--wp--preset--color--mone-border);
 	--the-border-radius: var(--the-border-radius-custom, 10px);
 	--the-summary--spacing: var(---the-summary--spacing-custom, 10px);
 
