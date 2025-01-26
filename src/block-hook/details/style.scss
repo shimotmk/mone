@@ -18,7 +18,6 @@
 	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
 	--wp--preset--spacing--10: 10px;
 
-	&.mone-detail-icon-plusminus,
 	&.mone-detail-icon-triangle,
 	&.mone-detail-icon-custom {
 
@@ -126,23 +125,6 @@
 						transform: translate(50%, -50%) scale(1.25) rotate(180deg);
 						transition: transform 0.3s ease-in-out;
 					}
-				}
-			}
-		}
-	}
-
-	&.mone-detail-icon-plusminus {
-
-		summary {
-			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>));
-		}
-
-		&[open] {
-
-			summary {
-
-				&::after {
-					--the-summary-icon: var(--the-summary-open-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"></path></svg>));
 				}
 			}
 		}

@@ -181,14 +181,18 @@ export const blockEditDetails = createHigherOrderComponent(
 							<ToggleGroupControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
-								isDeselectable
+								// isDeselectable
 								label={ __( 'Icon', 'mone' ) }
 								value={ ( () => {
 									if (
-										existsClassName(
-											'mone-detail-icon-plusminus',
-											className
-										)
+										moneDetailsIconName ===
+											'Phosphor_bold_plus' &&
+										moneDetailsIcon ===
+											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=' &&
+										moneDetailsOpenIconName ===
+											'Phosphor_bold_minus' &&
+										moneDetailsOpenIcon ===
+											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+'
 									) {
 										return 'plusminus';
 									}
@@ -200,14 +204,6 @@ export const blockEditDetails = createHigherOrderComponent(
 									) {
 										return 'triangle';
 									}
-									if (
-										existsClassName(
-											'mone-detail-icon-custom',
-											className
-										)
-									) {
-										return 'custom';
-									}
 									return undefined;
 								} )() }
 								onChange={ ( newValue ) => {
@@ -215,7 +211,6 @@ export const blockEditDetails = createHigherOrderComponent(
 									if ( newValue === 'triangle' ) {
 										_className = deleteClassName(
 											[
-												'mone-detail-icon-plusminus',
 												'mone-detail-icon-triangle',
 												'mone-detail-icon-custom',
 											],
@@ -226,24 +221,34 @@ export const blockEditDetails = createHigherOrderComponent(
 											_className,
 											setAttributes
 										);
+										setAttributes( {
+											moneDetailsIconName: undefined,
+											moneDetailsIcon: undefined,
+											moneDetailsOpenIconName: undefined,
+											moneDetailsOpenIcon: undefined,
+										} );
 									} else if ( newValue === 'plusminus' ) {
 										_className = deleteClassName(
 											[
-												'mone-detail-icon-plusminus',
 												'mone-detail-icon-triangle',
 												'mone-detail-icon-custom',
 											],
 											_className
 										);
-										toggleClass(
-											'mone-detail-icon-plusminus',
-											_className,
-											setAttributes
-										);
+										setAttributes( {
+											className: `${ _className } mone-detail-icon-custom`,
+											moneDetailsIconName:
+												'Phosphor_bold_plus',
+											moneDetailsIcon:
+												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=',
+											moneDetailsOpenIconName:
+												'Phosphor_bold_minus',
+											moneDetailsOpenIcon:
+												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+',
+										} );
 									} else if ( newValue === 'custom' ) {
 										_className = deleteClassName(
 											[
-												'mone-detail-icon-plusminus',
 												'mone-detail-icon-triangle',
 												'mone-detail-icon-custom',
 											],
@@ -257,7 +262,6 @@ export const blockEditDetails = createHigherOrderComponent(
 									} else {
 										deleteClass(
 											[
-												'mone-detail-icon-plusminus',
 												'mone-detail-icon-triangle',
 												'mone-detail-icon-custom',
 											],
@@ -276,11 +280,6 @@ export const blockEditDetails = createHigherOrderComponent(
 									label={ __( 'Plus Minus', 'mone' ) }
 									icon={ plusMinus }
 									value="plusminus"
-								/>
-								<ToggleGroupControlOptionIcon
-									label={ __( 'Custom Icons', 'mone' ) }
-									icon={ blockCategoryIcon }
-									value="custom"
 								/>
 							</ToggleGroupControl>
 						</ToolsPanelItem>
@@ -306,99 +305,126 @@ export const blockEditDetails = createHigherOrderComponent(
 								);
 							} }
 						>
-							<IconSearchModal
-								value={ moneDetailsIconName }
-								iconSVG={
-									decodeSvgBase64( moneDetailsIcon ) || ''
-								}
-								onChange={ ( value ) => {
-									let SVG;
-									const iconType = value?.iconType || value;
-									if (
-										typeof value === 'object' &&
-										value !== null &&
-										iconType === 'custom'
-									) {
-										SVG = isCustomIcon( iconType )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ iconType }
-													/>
-											  );
-										setAttributes( {
-											moneDetailsIconName: iconType,
-											moneDetailsIcon:
-												createSvgUrl( SVG ),
-										} );
-									} else if ( value ) {
-										SVG = isCustomIcon( value )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ value }
-													/>
-											  );
-										setAttributes( {
-											moneDetailsIconName: value,
-											moneDetailsIcon:
-												createSvgUrl( SVG ),
-										} );
-									} else {
-										setAttributes( {
-											moneDetailsIconName: undefined,
-											moneDetailsIcon: undefined,
-										} );
-									}
-								} }
-							/>
-							<IconSearchModal
-								label={ __( 'Open icon', 'mone' ) }
-								value={ moneDetailsOpenIconName }
-								iconSVG={
-									decodeSvgBase64( moneDetailsOpenIcon ) || ''
-								}
-								onChange={ ( value ) => {
-									let SVG;
-									const iconType = value?.iconType || value;
-									if (
-										typeof value === 'object' &&
-										value !== null &&
-										iconType === 'custom'
-									) {
-										SVG = isCustomIcon( iconType )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ iconType }
-													/>
-											  );
-										setAttributes( {
-											moneDetailsOpenIconName: iconType,
-											moneDetailsOpenIcon:
-												createSvgUrl( SVG ),
-										} );
-									} else if ( value ) {
-										SVG = isCustomIcon( value )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ value }
-													/>
-											  );
-										setAttributes( {
-											moneDetailsOpenIconName: value,
-											moneDetailsOpenIcon:
-												createSvgUrl( SVG ),
-										} );
-									} else {
-										setAttributes( {
-											moneDetailsOpenIconName: undefined,
-											moneDetailsOpenIcon: undefined,
-										} );
-									}
-								} }
-							/>
+							{ ! existsClassName(
+								'mone-detail-icon-triangle',
+								className
+							) && (
+								<>
+									<IconSearchModal
+										value={ moneDetailsIconName }
+										iconSVG={
+											decodeSvgBase64(
+												moneDetailsIcon
+											) || ''
+										}
+										onChange={ ( value ) => {
+											let SVG;
+											const iconType =
+												value?.iconType || value;
+											if (
+												typeof value === 'object' &&
+												value !== null &&
+												iconType === 'custom'
+											) {
+												SVG = isCustomIcon( iconType )
+													? value.iconSVG
+													: renderToString(
+															<ReactIcon
+																iconName={
+																	iconType
+																}
+															/>
+													  );
+												setAttributes( {
+													moneDetailsIconName:
+														iconType,
+													moneDetailsIcon:
+														createSvgUrl( SVG ),
+												} );
+											} else if ( value ) {
+												SVG = isCustomIcon( value )
+													? value.iconSVG
+													: renderToString(
+															<ReactIcon
+																iconName={
+																	value
+																}
+															/>
+													  );
+												setAttributes( {
+													moneDetailsIconName: value,
+													moneDetailsIcon:
+														createSvgUrl( SVG ),
+												} );
+											} else {
+												setAttributes( {
+													moneDetailsIconName:
+														undefined,
+													moneDetailsIcon: undefined,
+												} );
+											}
+										} }
+									/>
+									<IconSearchModal
+										label={ __( 'Open icon', 'mone' ) }
+										value={ moneDetailsOpenIconName }
+										iconSVG={
+											decodeSvgBase64(
+												moneDetailsOpenIcon
+											) || ''
+										}
+										onChange={ ( value ) => {
+											let SVG;
+											const iconType =
+												value?.iconType || value;
+											if (
+												typeof value === 'object' &&
+												value !== null &&
+												iconType === 'custom'
+											) {
+												SVG = isCustomIcon( iconType )
+													? value.iconSVG
+													: renderToString(
+															<ReactIcon
+																iconName={
+																	iconType
+																}
+															/>
+													  );
+												setAttributes( {
+													moneDetailsOpenIconName:
+														iconType,
+													moneDetailsOpenIcon:
+														createSvgUrl( SVG ),
+												} );
+											} else if ( value ) {
+												SVG = isCustomIcon( value )
+													? value.iconSVG
+													: renderToString(
+															<ReactIcon
+																iconName={
+																	value
+																}
+															/>
+													  );
+												setAttributes( {
+													moneDetailsOpenIconName:
+														value,
+													moneDetailsOpenIcon:
+														createSvgUrl( SVG ),
+												} );
+											} else {
+												setAttributes( {
+													moneDetailsOpenIconName:
+														undefined,
+													moneDetailsOpenIcon:
+														undefined,
+												} );
+											}
+										} }
+									/>
+								</>
+							) }
 						</ToolsPanelItem>
 						<ToolsPanelItem
 							label={ __( 'Icon Position', 'mone' ) }
