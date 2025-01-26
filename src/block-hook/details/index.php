@@ -5,7 +5,6 @@
  * @package mone
  */
 
-
 namespace Mone_Theme\Details;
 use function Mone_Theme\UtilsFunc\mone_is_hex_color;
 
@@ -44,10 +43,10 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\details_register_block
  *
  * @param string $block_content block_content.
  * @param array  $parsed_block parsed_block.
- * @param object $block block.
+ * @return string
  */
 function render_block_details( $block_content, $parsed_block ) {
-	$summary_icon_url          = $parsed_block['attrs']['moneDetailsIcon'] ?? '';
+	$summary_icon_url               = $parsed_block['attrs']['moneDetailsIcon'] ?? '';
 	$summary_open_icon_url          = $parsed_block['attrs']['moneDetailsOpenIcon'] ?? '';
 	$summary_icon_color_custom      = isset( $parsed_block['attrs']['moneIconGradient'] )
 	? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')'
