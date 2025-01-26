@@ -274,14 +274,14 @@ export const blockEditDetails = createHigherOrderComponent(
 								} }
 							>
 								<ToggleGroupControlOptionIcon
-									label={ __( 'Plus Minus', 'mone' ) }
-									icon={ plusMinus }
-									value="plusminus"
-								/>
-								<ToggleGroupControlOptionIcon
 									label={ __( 'Triangle', 'mone' ) }
 									icon={ chevronDown }
 									value="triangle"
+								/>
+								<ToggleGroupControlOptionIcon
+									label={ __( 'Plus Minus', 'mone' ) }
+									icon={ plusMinus }
+									value="plusminus"
 								/>
 							</ToggleGroupControl>
 						</ToolsPanelItem>
@@ -463,19 +463,25 @@ export const blockEditDetails = createHigherOrderComponent(
 								__nextHasNoMarginBottom
 								isDeselectable
 								label={ __( 'Icon Position', 'mone' ) }
-								value={
-									existsClassName(
-										'mone-details-icon-position-left',
-										className
-									)
-										? 'left'
-										: existsClassName(
-												'mone-details-icon-position-right',
-												className
-										  )
-										? 'right'
-										: undefined
-								}
+								value={ ( () => {
+									if (
+										existsClassName(
+											'mone-details-icon-position-left',
+											className
+										)
+									) {
+										return 'left';
+									}
+									if (
+										existsClassName(
+											'mone-details-icon-position-right',
+											className
+										)
+									) {
+										return 'right';
+									}
+									return undefined;
+								} )() }
 								onChange={ ( newValue ) => {
 									let _className = className;
 									if ( newValue === 'left' ) {

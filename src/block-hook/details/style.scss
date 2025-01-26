@@ -18,53 +18,49 @@
 	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
 	--wp--preset--spacing--10: 10px;
 
-	&.mone-detail-icon-triangle,
-	&.mone-detail-icon-custom {
+	summary {
+		padding-top: var(--wp--preset--spacing--10);
+		padding-bottom: var(--wp--preset--spacing--10);
+		padding-left: var(--wp--preset--spacing--10);
+		padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--wp--preset--spacing--10));
+		border-radius: var(--the-border-radius-top-left) var(--the-border-radius-top-right) var(--the-border-radius-bottom-left) var(--the-border-radius-bottom-right);
 
-		summary {
-			padding-top: var(--wp--preset--spacing--10);
-			padding-bottom: var(--wp--preset--spacing--10);
-			padding-left: var(--wp--preset--spacing--10);
-			padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--wp--preset--spacing--10));
-			border-radius: var(--the-border-radius-top-left) var(--the-border-radius-top-right) var(--the-border-radius-bottom-left) var(--the-border-radius-bottom-right);
+		position: relative;
+		list-style: none;
 
-
-			position: relative;
-			list-style: none;
-
-			&::after {
-				content: "";
-				display: inline-block;
-				position: absolute;
-				top: 50%;
-				right: 0;
-				transform: translate(-50%, -50%) scale(1.25);
-				transition: transform 0.3s ease-in-out;
-				width: var(--the-summary-icon-size);
-				min-width: var(--the-summary-icon-size);
-				height: var(--the-summary-icon-size);
-				mask-size: contain;
-				background: var(--the-summary-icon-color);
-				mask-position: top center;
-				mask-repeat: no-repeat;
-				mask-image: var(--the-summary-icon);
-			}
-
-
-			&:focus-visible {
-				outline-width: 1px;
-				outline-style: solid;
-				outline-color: color-mix(in srgb, currentcolor 40%, transparent);
-			}
+		&::after {
+			content: "";
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translate(-50%, -50%) scale(1.25);
+			transition: transform 0.3s ease-in-out;
+			width: var(--the-summary-icon-size);
+			min-width: var(--the-summary-icon-size);
+			height: var(--the-summary-icon-size);
+			mask-size: contain;
+			background: var(--the-summary-icon-color);
+			mask-position: top center;
+			mask-repeat: no-repeat;
+			mask-image: var(--the-summary-icon);
 		}
 
-		&[open] {
 
-			summary {
-				background: var(--the-summary-open-background);
-				border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
-				border-radius: calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
-			}
+		&:focus-visible {
+			outline-width: 1px;
+			outline-style: solid;
+			outline-color: color-mix(in srgb, currentcolor 40%, transparent);
+		}
+	}
+
+	&[open] {
+
+		summary {
+			background: var(--the-summary-open-background);
+			border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
+			border-radius: calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
+
 		}
 	}
 
