@@ -482,75 +482,86 @@ export const blockEditDetails = createHigherOrderComponent(
 								)
 							}
 						>
-							<ToggleGroupControl
-								__next40pxDefaultSize
-								__nextHasNoMarginBottom
-								isDeselectable
-								label={ __( 'Icon Position', 'mone' ) }
-								value={ ( () => {
-									if (
-										existsClassName(
-											'mone-details-icon-position-left',
-											className
-										)
-									) {
-										return 'left';
-									}
-									if (
-										existsClassName(
-											'mone-details-icon-position-right',
-											className
-										)
-									) {
-										return 'right';
-									}
-									return undefined;
-								} )() }
-								onChange={ ( newValue ) => {
-									let _className = className;
-									if ( newValue === 'left' ) {
-										_className = deleteClassName(
-											'mone-details-icon-position-right',
-											_className
-										);
-										toggleClass(
-											'mone-details-icon-position-left',
-											_className,
-											setAttributes
-										);
-									} else if ( newValue === 'right' ) {
-										_className = deleteClassName(
-											'mone-details-icon-position-left',
-											_className
-										);
-										toggleClass(
-											'mone-details-icon-position-right',
-											_className,
-											setAttributes
-										);
-									} else {
-										deleteClass(
-											[
-												'mone-details-icon-position-left',
-												'mone-details-icon-position-right',
-											],
-											_className,
-											setAttributes
-										);
-									}
-								} }
-							>
-								<ToggleGroupControlOptionIcon
-									label="Left"
-									icon={ pullLeft }
-									value="left"
-								/>
-								<ToggleGroupControlOptionIcon
-									label="Right"
-									icon={ pullRight }
-									value="right"
-								/>
-							</ToggleGroupControl>
+							{ ( existsClassName(
+								'mone-detail-icon-triangle',
+								className
+							) ||
+								existsClassName(
+									'mone-detail-icon-custom',
+									className
+								) ) && (
+								<>
+									<ToggleGroupControl
+										__next40pxDefaultSize
+										__nextHasNoMarginBottom
+										isDeselectable
+										label={ __( 'Icon Position', 'mone' ) }
+										value={ ( () => {
+											if (
+												existsClassName(
+													'mone-details-icon-position-left',
+													className
+												)
+											) {
+												return 'left';
+											}
+											if (
+												existsClassName(
+													'mone-details-icon-position-right',
+													className
+												)
+											) {
+												return 'right';
+											}
+											return undefined;
+										} )() }
+										onChange={ ( newValue ) => {
+											let _className = className;
+											if ( newValue === 'left' ) {
+												_className = deleteClassName(
+													'mone-details-icon-position-right',
+													_className
+												);
+												toggleClass(
+													'mone-details-icon-position-left',
+													_className,
+													setAttributes
+												);
+											} else if ( newValue === 'right' ) {
+												_className = deleteClassName(
+													'mone-details-icon-position-left',
+													_className
+												);
+												toggleClass(
+													'mone-details-icon-position-right',
+													_className,
+													setAttributes
+												);
+											} else {
+												deleteClass(
+													[
+														'mone-details-icon-position-left',
+														'mone-details-icon-position-right',
+													],
+													_className,
+													setAttributes
+												);
+											}
+										} }
+									>
+										<ToggleGroupControlOptionIcon
+											label="Left"
+											icon={ pullLeft }
+											value="left"
+										/>
+										<ToggleGroupControlOptionIcon
+											label="Right"
+											icon={ pullRight }
+											value="right"
+										/>
+									</ToggleGroupControl>
+								</>
+							) }
 						</ToolsPanelItem>
 					</ToolsPanel>
 				</InspectorControls>
