@@ -20,14 +20,14 @@ import {
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	__experimentalGetSpacingClassesAndStyles as useSpacingProps,
+	useSettings,
 } from '@wordpress/block-editor';
 import {
-	__experimentalUnitControl as UnitControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
-	__experimentalUseCustomUnits as useCustomUnits,
 	ToolbarButton,
 	Popover,
+	FontSizePicker,
 } from '@wordpress/components';
 import { link } from '@wordpress/icons';
 import { select } from '@wordpress/data';
@@ -77,6 +77,7 @@ export default function Edit( props ) {
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
 	const spacingProps = useSpacingProps( attributes );
+	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const onDimensionChange = ( dimension, nextValue ) => {
 		const parsedValue = parseFloat( nextValue );
@@ -87,10 +88,6 @@ export default function Edit( props ) {
 			[ dimension ]: parsedValue < 0 ? '0' : nextValue,
 		} );
 	};
-	const defaultUnits = [ 'px', 'vw', 'em', 'rem', 'vh' ];
-	const units = useCustomUnits( {
-		availableUnits: defaultUnits,
-	} );
 
 	const { gradientValue, setGradient } = useGradient( {
 		gradientAttribute: 'iconGradient',
@@ -176,29 +173,6 @@ export default function Edit( props ) {
 					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 				>
 					<ToolsPanelItem
-						label={ __( 'Size', 'mone' ) }
-						isShownByDefault
-						hasValue={ () => !! width }
-						onDeselect={ () =>
-							setAttributes( {
-								width: undefined,
-								height: undefined,
-							} )
-						}
-					>
-						<UnitControl
-							label={ __( 'Size', 'mone' ) }
-							labelPosition="top"
-							value={ width || '' }
-							min={ 0 }
-							onChange={ ( nextWidth ) => {
-								onDimensionChange( 'width', nextWidth );
-								onDimensionChange( 'height', nextWidth );
-							} }
-							units={ units }
-						/>
-					</ToolsPanelItem>
-					<ToolsPanelItem
 						className="mone-block-editor-tools-panel-icon-settings__item"
 						label={ __( 'Icon', 'mone' ) }
 						isShownByDefault
@@ -226,6 +200,28 @@ export default function Edit( props ) {
 									} );
 								}
 							} }
+						/>
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Size', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! width }
+						onDeselect={ () =>
+							setAttributes( {
+								width: undefined,
+								height: undefined,
+							} )
+						}
+					>
+						<FontSizePicker
+							__next40pxDefaultSize
+							fontSizes={ fontSizes }
+							onChange={ ( nextValue ) => {
+								onDimensionChange( 'width', nextValue );
+								onDimensionChange( 'height', nextValue );
+							} }
+							value={ width || '' }
+							withReset={ false }
 						/>
 					</ToolsPanelItem>
 				</ToolsPanel>
