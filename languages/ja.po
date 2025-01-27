@@ -1350,6 +1350,34 @@ msgstr "Moneメニュー"
 msgid "Icon"
 msgstr "アイコン"
 
+#: build/block-hook/details/index.js:1
+msgid "Triangle"
+msgstr "三角"
+
+#: build/block-hook/details/index.js:1
+msgid "Plus Minus"
+msgstr "プラスマイナス"
+
+#: build/block-hook/details/index.js:1
+msgid "Select Open icon"
+msgstr "オープン アイコンを選択"
+
+#: build/block-hook/details/index.js:1
+msgid "Icon Position"
+msgstr "アイコン位置"
+
+#: build/block-hook/details/index.js:1
+msgid "Title Open Background"
+msgstr "タイトル オープン背景色"
+
+#: build/block-hook/details/index.js:1
+msgid "Accordion"
+msgstr "アコーディオン"
+
+#: build/block-hook/details/index.js:1
+msgid "Accordion contents"
+msgstr "アコーディオン コンテンツ"
+
 #: build/plugins/index.js:1 build/plugins/index.js:135
 msgid "Add NO IMAGE"
 msgstr "NO IMAGEを追加"

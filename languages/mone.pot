@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-25T12:07:01+00:00\n"
+"POT-Creation-Date: 2025-01-27T12:11:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -695,6 +695,81 @@ msgstr ""
 msgid "Fold backwards on mobile"
 msgstr ""
 
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Icon"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Triangle"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Plus Minus"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Select Open icon"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Icon Position"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+msgid "Icon Color"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Title Open Background"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Accordion"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+msgid "Accordion contents"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Invalid SVG code"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Svg code is here"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Insert custom icon"
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/format-library/index.js:1
+msgid "Icon not found."
+msgstr ""
+
+#: build/block-hook/details/index.js:1
+#: build/block-hook/paragraph/index.js:1
+#: build/block-library/icon/index.js:1
+msgid "Select Icon"
+msgstr ""
+
 #: build/block-hook/group/index.js:1
 msgid "Hand"
 msgstr ""
@@ -739,46 +814,6 @@ msgstr ""
 #: build/block-hook/group/index.js:1
 #: build/block-library/icon/index.js:1
 msgid "Link"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
-msgid "Invalid SVG code"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
-msgid "Svg code is here"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
-msgid "Insert custom icon"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
-msgid "Icon not found."
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-msgid "Select Icon"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
-msgid "Icon"
-msgstr ""
-
-#: build/block-hook/paragraph/index.js:1
-#: build/block-library/icon/index.js:1
-msgid "Icon Color"
 msgstr ""
 
 #: build/block-hook/post-date/index.js:1
@@ -1199,7 +1234,11 @@ msgid "https://mone-wp.com/get-github-token/"
 msgstr ""
 
 #: build/plugins/index.js:1
-msgid "Site settings"
+msgid "Mone settings"
+msgstr ""
+
+#: build/plugins/index.js:1
+msgid "This setting is immediately saved to the database."
 msgstr ""
 
 #: build/plugins/index.js:1
@@ -1213,14 +1252,6 @@ msgstr ""
 
 #: build/plugins/index.js:1
 msgid "Eye-catching template"
-msgstr ""
-
-#: build/plugins/index.js:1
-msgid "Mone settings"
-msgstr ""
-
-#: build/plugins/index.js:1
-msgid "This setting is immediately saved to the database."
 msgstr ""
 
 #: build/post-featured-image/index.js:1

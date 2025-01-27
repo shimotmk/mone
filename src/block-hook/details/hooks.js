@@ -379,7 +379,10 @@ export const blockEditDetails = createHigherOrderComponent(
 							) && (
 								<>
 									<IconSearchModal
-										label={ __( 'Open icon', 'mone' ) }
+										label={ __(
+											'Select Open icon',
+											'mone'
+										) }
 										value={ moneDetailsOpenIconName }
 										iconSVG={
 											decodeSvgBase64(
