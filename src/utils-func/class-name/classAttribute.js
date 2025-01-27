@@ -44,6 +44,13 @@ export const addClassName = ( targetClassName, className ) => {
 	return arrayToStringClassName( classArray );
 };
 
+export const addClass = ( targetClassNames, className, setAttributes ) => {
+	const updatedClassName = addClassName( targetClassNames, className );
+	setAttributes( {
+		className: emptyStringToUndefined( updatedClassName ),
+	} );
+};
+
 export const toggleClass = ( targetClassName, className, setAttributes ) => {
 	const updatedClassName = existsClassName( targetClassName, className )
 		? deleteClassName( targetClassName, className )

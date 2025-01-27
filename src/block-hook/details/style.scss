@@ -1,0 +1,165 @@
+.is-style-mone-details-icon {
+	--the-border-bottom-color: var(--the-border-bottom-color-custom, var(--wp--preset--color--mone-border,));
+	--the-border-radius-top-left: var(--the-border-radius-top-left-custom, 10px);
+	--the-border-radius-top-right: var(--the-border-radius-top-right-custom, 10px);
+	--the-border-radius-bottom-left: var(--the-border-radius-bottom-left-custom, 10px);
+	--the-border-radius-bottom-right: var(--the-border-radius-bottom-right-custom, 10px);
+	--the-summary-open-background: var(--the-summary-open-background-custom);
+	--the-summary-icon-color: var(--the-summary-icon-color-custom, currentColor);
+	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
+	--the-border-bottom-style: var(--the-border-bottom-style-custom, solid);
+	--the-border-bottom-width: var(--the-border-bottom-width-custom, 1px);
+	--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16"/><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="128" y1="88" x2="128" y2="168" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>));
+	--the-border-color: var(--wp--preset--color--mone-border);
+	--the-border-radius: var(--the-border-radius-custom, 10px);
+	--the-summary--spacing: var(--the-summary--spacing-custom, 10px);
+
+	summary {
+		padding-top: var(--the-summary--spacing);
+		padding-bottom: var(--the-summary--spacing);
+		padding-left: var(--the-summary--spacing);
+		padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+		border-radius: var(--the-border-radius-top-left) var(--the-border-radius-top-right) var(--the-border-radius-bottom-left) var(--the-border-radius-bottom-right);
+		min-height: calc( var(--the-summary--spacing) * 2 );
+
+		&:focus-visible {
+			outline-width: 1px;
+			outline-style: solid;
+			outline-color: color-mix(in srgb, currentcolor 40%, transparent);
+		}
+	}
+
+	&[open] {
+
+		summary {
+			background: var(--the-summary-open-background);
+		}
+	}
+
+	&[style*="--the-border-bottom-color"] {
+
+		&[open] {
+
+			summary {
+				border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
+			}
+		}
+	}
+
+	&[style*="--the-border-radius-top-left"],
+	&[style*="--the-border-radius-top-rig"] {
+
+		&[open] {
+
+			summary {
+				border-radius: calc(var(--the-border-radius-top-left) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
+			}
+		}
+	}
+
+	&.mone-detail-icon-triangle,
+	&.mone-detail-icon-custom {
+
+		summary {
+			position: relative;
+			list-style: none;
+
+			&::after {
+				content: "";
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translate(-50%, -50%) scale(1.25);
+				transition: transform 0.3s ease-in-out;
+				width: var(--the-summary-icon-size);
+				min-width: var(--the-summary-icon-size);
+				height: var(--the-summary-icon-size);
+				mask-size: contain;
+				background: var(--the-summary-icon-color);
+				mask-position: top center;
+				mask-repeat: no-repeat;
+				mask-image: var(--the-summary-icon);
+			}
+		}
+	}
+
+	&.mone-details-icon-position-right {
+
+		summary {
+			padding-top: var(--the-summary--spacing);
+			padding-bottom: var(--the-summary--spacing);
+			padding-left: var(--the-summary--spacing);
+			padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+
+			&::after {
+				right: 0;
+			}
+		}
+	}
+
+	&.mone-details-icon-position-left {
+
+		summary {
+			padding-top: var(--the-summary--spacing);
+			padding-bottom: var(--the-summary--spacing);
+			padding-left: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+			padding-right: var(--the-summary--spacing);
+
+			&::after {
+				transform: translate(50%, -50%) scale(1.25);
+				left: 0;
+			}
+		}
+	}
+
+	&.mone-detail-icon-triangle {
+
+		summary {
+			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>));
+			transition: transform 0.3s ease-in-out;
+		}
+
+		&[open] {
+
+			summary {
+
+				&::after {
+					transform: translate(-50%, -50%) scale(1.25) rotate(-180deg);
+					transition: transform 0.3s ease-in-out;
+				}
+			}
+		}
+
+		&.mone-details-icon-position-left {
+
+			&[open] {
+
+				summary {
+
+					&::after {
+						transform: translate(50%, -50%) scale(1.25) rotate(180deg);
+						transition: transform 0.3s ease-in-out;
+					}
+				}
+			}
+		}
+	}
+
+	&.mone-detail-icon-custom {
+
+		summary {
+			--the-summary-icon: var(--the-summary-icon-custom, url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=));
+		}
+
+		&[open] {
+
+			summary {
+
+				&::after {
+					--the-summary-icon: var(--the-summary-open-icon-custom, url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+));
+				}
+			}
+		}
+	}
+}
