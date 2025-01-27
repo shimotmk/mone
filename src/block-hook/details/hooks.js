@@ -183,7 +183,6 @@ export const blockEditDetails = createHigherOrderComponent(
 							<ToggleGroupControl
 								__next40pxDefaultSize
 								__nextHasNoMarginBottom
-								// isDeselectable
 								label={ __( 'Icon', 'mone' ) }
 								value={ ( () => {
 									if (
@@ -675,7 +674,12 @@ const blockListBlockDetails = createHigherOrderComponent(
 			moneIconCustomGradient,
 			style,
 			borderColor,
+			className,
 		} = attributes;
+
+		if ( ! existsClassName( 'is-style-mone-details-icon', className ) ) {
+			return <BlockListBlock { ...props } />;
+		}
 
 		const [ fluidTypographySettings, layout ] = useSettings(
 			'typography.fluid',

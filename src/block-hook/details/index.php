@@ -46,6 +46,11 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\details_register_block
  * @return string
  */
 function render_block_details( $block_content, $parsed_block ) {
+	$class_name = $parsed_block['attrs']['className'] ?? '';
+	if ( ! $class_name || ! str_contains( $class_name, 'is-style-mone-details-icon' ) ) {
+		return $block_content;
+	}
+
 	$summary_icon_url               = $parsed_block['attrs']['moneDetailsIcon'] ?? '';
 	$summary_open_icon_url          = $parsed_block['attrs']['moneDetailsOpenIcon'] ?? '';
 	$summary_icon_color_custom      = isset( $parsed_block['attrs']['moneIconGradient'] )
