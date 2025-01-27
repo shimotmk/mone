@@ -50,7 +50,7 @@ function render_block_embed( $block_content, $parsed_block ) {
 		return $block_content;
 	}
 
-	if ( ! isset( $parsed_block['attrs']['providerNameSlug'] ) && 'youtube' !== $parsed_block['attrs']['providerNameSlug'] ) {
+	if ( ! isset( $parsed_block['attrs']['providerNameSlug'] ) || 'youtube' !== $parsed_block['attrs']['providerNameSlug'] ) {
 		return $block_content;
 	}
 

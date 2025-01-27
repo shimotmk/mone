@@ -9873,4 +9873,5 @@ export const PhosphorIconList = [
 			},
 		],
 	},
+	// brackets-curlyの次から
 ];
