@@ -119,9 +119,9 @@ export const blockEditDetails = createHigherOrderComponent(
 			className,
 		} = attributes;
 
-		// if ( ! existsClassName( className, targetClasses ) ) {
-		//  return <BlockEdit { ...props } />;
-		// }
+		if ( ! existsClassName( 'is-style-mone-details-icon', className ) ) {
+			return <BlockEdit { ...props } />;
+		}
 
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
 		const { gradientValue, setGradient } = useGradient( {
@@ -673,6 +673,8 @@ const blockListBlockDetails = createHigherOrderComponent(
 			moneDetailsOpenIcon,
 			moneIconGradient,
 			moneIconCustomGradient,
+			style,
+			borderColor,
 		} = attributes;
 
 		const [ fluidTypographySettings, layout ] = useSettings(
@@ -688,6 +690,23 @@ const blockListBlockDetails = createHigherOrderComponent(
 			},
 		} );
 
+		let borderBottomColor = '';
+		if ( style?.border?.top?.color ) {
+			let value = style.border.top.color;
+			const hasColorPreset = value.includes( 'var:preset|color|' );
+			if ( hasColorPreset ) {
+				const namedColorValue = value.substring(
+					value.lastIndexOf( '|' ) + 1
+				);
+				value = `var(--wp--preset--color--${ namedColorValue })`;
+			}
+			borderBottomColor = value;
+		} else {
+			borderBottomColor = borderColor
+				? `var(--wp--preset--color--${ borderColor })`
+				: style?.border?.color || '';
+		}
+
 		const extraStyle = {
 			'--the-summary-icon-custom': moneDetailsIcon
 				? `url(${ moneDetailsIcon })`
@@ -695,6 +714,9 @@ const blockListBlockDetails = createHigherOrderComponent(
 			'--the-summary-open-icon-custom': moneDetailsOpenIcon
 				? `url(${ moneDetailsOpenIcon })`
 				: undefined,
+			'--the-summary-icon-size': attributes.fontSize
+				? `var(--wp--preset--font-size--${ attributes.fontSize })`
+				: typographyProps.style.fontSize,
 			'--the-summary-open-background-custom': moneSummaryOpenGradient
 				? `var(--wp--preset--gradient--${ moneSummaryOpenGradient })`
 				: moneSummaryOpenCustomGradient ||
@@ -709,9 +731,29 @@ const blockListBlockDetails = createHigherOrderComponent(
 						( isHexColor( moneIconColor )
 							? moneIconColor
 							: `var(--wp--preset--color--${ moneIconColor })` ) ),
-			'--the-summary-icon-size': attributes.fontSize
-				? `var(--wp--preset--font-size--${ attributes.fontSize })`
-				: typographyProps.style.fontSize,
+			'--the-border-radius-top-left-custom':
+				typeof style.border.radius === 'string'
+					? style.border.radius
+					: style.border.radius?.topLeft || '',
+			'--the-border-radius-top-right-custom':
+				typeof style.border.radius === 'string'
+					? style.border.radius
+					: style.border.radius?.topRight || '',
+			'--the-border-radius-bottom-left-custom':
+				typeof style.border.radius === 'string'
+					? style.border.radius
+					: style.border.radius?.topLeft || '',
+			'--the-border-radius-bottom-right-custom':
+				typeof style.border.radius === 'string'
+					? style.border.radius
+					: style.border.radius?.topRight || '',
+			'--the-border-bottom-color-custom': borderBottomColor,
+			'--the-border-bottom-style-custom': style?.border?.top?.style
+				? style.border.top.style
+				: style?.border?.style || '',
+			'--the-border-bottom-width-custom': style?.border?.top?.width
+				? style.border.top.width
+				: style?.border?.width || '',
 		};
 
 		const blockWrapperProps = {

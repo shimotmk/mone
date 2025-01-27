@@ -1,10 +1,10 @@
 .is-style-mone-details-icon {
-	--the-border-bottom-color: var(--wp--preset--color--mone-border, var(--the-border-bottom-color-custom));
+	--the-border-bottom-color: var(--the-border-bottom-color-custom, var(--wp--preset--color--mone-border,));
 	--the-border-radius-top-left: var(--the-border-radius-top-left-custom, 10px);
 	--the-border-radius-top-right: var(--the-border-radius-top-right-custom, 10px);
 	--the-border-radius-bottom-left: var(--the-border-radius-bottom-left-custom, 10px);
 	--the-border-radius-bottom-right: var(--the-border-radius-bottom-right-custom, 10px);
-	--the-summary-open-background: var(--the-summary-open-background-custom, var(--wp--preset--color--heading-bg));
+	--the-summary-open-background: var(--the-summary-open-background-custom);
 	--the-summary-icon-color: var(--the-summary-icon-color-custom, currentColor);
 	--the-summary-icon-size: var(--the-alert-font-size, var(--wp--preset--font-size--medium));
 	--the-border-bottom-style: var(--the-border-bottom-style-custom, solid);
@@ -32,9 +32,27 @@
 
 		summary {
 			background: var(--the-summary-open-background);
-			border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
-			border-radius: calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
+		}
+	}
 
+	&[style*="--the-border-bottom-color"] {
+
+		&[open] {
+
+			summary {
+				border-bottom: var(--the-border-bottom-width) var(--the-border-bottom-style) var(--the-border-bottom-color);
+			}
+		}
+	}
+
+	&[style*="--the-border-radius-top-left"],
+	&[style*="--the-border-radius-top-rig"] {
+
+		&[open] {
+
+			summary {
+				border-radius: calc(var(--the-border-radius-top-left) - var(--the-border-bottom-width)) calc(var(--the-border-radius-top-right) - var(--the-border-bottom-width)) 0 0;
+			}
 		}
 	}
 

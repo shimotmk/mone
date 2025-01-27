@@ -502,7 +502,7 @@
 			},
 			"core/quote": {
 				"border": {
-					"radius": "3px"
+					"radius": "4px"
 				},
 				"color": {
 					"background": "var(--wp--preset--color--quote-bg)",
