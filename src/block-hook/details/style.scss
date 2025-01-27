@@ -18,9 +18,9 @@
 		padding-top: var(--the-summary--spacing);
 		padding-bottom: var(--the-summary--spacing);
 		padding-left: var(--the-summary--spacing);
-		padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+		padding-right: calc(( var(--the-summary-icon-size) ) + var(--the-summary--spacing));
 		border-radius: var(--the-border-radius-top-left) var(--the-border-radius-top-right) var(--the-border-radius-bottom-left) var(--the-border-radius-bottom-right);
-		min-height: calc( var(--the-summary--spacing) * 2 );
+		min-height: calc(var(--the-summary--spacing) * 2);
 
 		&:focus-visible {
 			outline-width: 1px;
@@ -70,7 +70,7 @@
 				position: absolute;
 				top: 50%;
 				right: 0;
-				transform: translate(-50%, -50%) scale(1.25);
+				transform: translate(-50%, -50%);
 				transition: transform 0.3s ease-in-out;
 				width: var(--the-summary-icon-size);
 				min-width: var(--the-summary-icon-size);
@@ -90,7 +90,7 @@
 			padding-top: var(--the-summary--spacing);
 			padding-bottom: var(--the-summary--spacing);
 			padding-left: var(--the-summary--spacing);
-			padding-right: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+			padding-right: calc(( var(--the-summary-icon-size) ) + var(--the-summary--spacing));
 
 			&::after {
 				right: 0;
@@ -103,11 +103,11 @@
 		summary {
 			padding-top: var(--the-summary--spacing);
 			padding-bottom: var(--the-summary--spacing);
-			padding-left: calc(( var(--the-summary-icon-size) * 1.25 ) + var(--the-summary--spacing));
+			padding-left: calc(( var(--the-summary-icon-size) ) + var(--the-summary--spacing));
 			padding-right: var(--the-summary--spacing);
 
 			&::after {
-				transform: translate(50%, -50%) scale(1.25);
+				transform: translate(50%, -50%);
 				left: 0;
 			}
 		}
@@ -125,7 +125,7 @@
 			summary {
 
 				&::after {
-					transform: translate(-50%, -50%) scale(1.25) rotate(-180deg);
+					transform: translate(-50%, -50%) rotate(-180deg);
 					transition: transform 0.3s ease-in-out;
 				}
 			}
@@ -138,7 +138,7 @@
 				summary {
 
 					&::after {
-						transform: translate(50%, -50%) scale(1.25) rotate(180deg);
+						transform: translate(50%, -50%) rotate(180deg);
 						transition: transform 0.3s ease-in-out;
 					}
 				}
