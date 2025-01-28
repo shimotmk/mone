@@ -23,7 +23,7 @@ import { inlineIconSettings as settings } from '../index';
 import { getActiveIcons } from '../inline';
 import { ColorPicker } from './color';
 import { GradientColorPicker } from './gradient-picker';
-import { Size } from './size';
+import { Settings } from './settings';
 
 export function setAttributes( {
 	value,
@@ -174,8 +174,8 @@ export default function StyleInlineIconUI( {
 						title: __( 'Gradient', 'mone' ),
 					},
 					{
-						name: 'size',
-						title: __( 'Size', 'mone' ),
+						name: 'settings',
+						title: __( 'Settings', 'mone' ),
 					},
 				] }
 				initialTabName={
@@ -203,10 +203,10 @@ export default function StyleInlineIconUI( {
 								/>
 							</div>
 						);
-					} else if ( 'size' === tab.name ) {
+					} else if ( 'settings' === tab.name ) {
 						return (
 							<div className="mone-popover-color-picker">
-								<Size
+								<Settings
 									activeIcons={ activeIcons }
 									onIconChange={ onIconChange }
 								/>

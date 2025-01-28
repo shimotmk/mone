@@ -25,7 +25,7 @@ import {
 	justifyCenterVertical,
 } from '../../../icons';
 
-export function Size( { activeIcons, onIconChange } ) {
+export function Settings( { activeIcons, onIconChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
 
 	const buttonStyle = {
