@@ -50,7 +50,7 @@ export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
 };
 
 export const isCustomIcon = ( iconName ) => {
-	if ( IconKinds( iconName ) === 'custom' ) {
+	if ( iconName === 'custom' || IconKinds( iconName ) === 'custom' ) {
 		return true;
 	}
 	return false;
