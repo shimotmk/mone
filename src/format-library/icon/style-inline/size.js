@@ -13,10 +13,17 @@ import {
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 	__experimentalUseCustomUnits as useCustomUnits,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
 } from '@wordpress/components';
 
 import { getPresetValueFromCustomValue } from '../../../utils-func/getPresetValueFromCustomValue';
 import { getCssVarToWpVar } from '../../../utils-func/cssVar-to-wpVar';
+import {
+	justifyTop,
+	justifyBottom,
+	justifyCenterVertical,
+} from '../../../icons';
 
 export function Size( { activeIcons, onIconChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
@@ -59,6 +66,45 @@ export function Size( { activeIcons, onIconChange } ) {
 					<Button
 						onClick={ () => {
 							onIconChange( { 'font-size': '' } );
+						} }
+						variant="tertiary"
+						style={ buttonStyle }
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+				</HStack>
+				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
+				<ToggleGroupControl
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+					isBlock
+					label={ __( 'Position', 'mone' ) }
+					isDeselectable
+					value={ activeIcons[ 'vertical-align' ] || '' }
+					onChange={ ( newValue ) => {
+						onIconChange( { 'vertical-align': newValue } );
+					} }
+				>
+					<ToggleGroupControlOptionIcon
+						label="Top"
+						icon={ justifyTop }
+						value="text-top"
+					/>
+					<ToggleGroupControlOptionIcon
+						label="Middle"
+						icon={ justifyCenterVertical }
+						value="middle"
+					/>
+					<ToggleGroupControlOptionIcon
+						label="Bottom"
+						icon={ justifyBottom }
+						value="text-bottom"
+					/>
+				</ToggleGroupControl>
+				<HStack alignment="right">
+					<Button
+						onClick={ () => {
+							onIconChange( { 'vertical-align': '' } );
 						} }
 						variant="tertiary"
 						style={ buttonStyle }

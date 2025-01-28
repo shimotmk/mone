@@ -229,3 +229,21 @@ export const plusMinus = (
 		<path d="M205.66,61.66l-144,144a8,8,0,0,1-11.32-11.32l144-144a8,8,0,0,1,11.32,11.32ZM64,112a8,8,0,0,0,16,0V80h32a8,8,0,0,0,0-16H80V32a8,8,0,0,0-16,0V64H32a8,8,0,0,0,0,16H64Zm160,64H144a8,8,0,0,0,0,16h80a8,8,0,0,0,0-16Z"></path>
 	</svg>
 );
+
+export const justifyTop = (
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<path d="M9 20h6V9H9v11zM4 4v1.5h16V4H4z" />
+	</svg>
+);
+
+export const justifyBottom = (
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<path d="M15 4H9v11h6V4zM4 18.5V20h16v-1.5H4z" />
+	</svg>
+);
+
+export const justifyCenterVertical = (
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+		<path d="M20 11h-5V4H9v7H4v1.5h5V20h6v-7.5h5z" />
+	</svg>
+);

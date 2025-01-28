@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Changelog ==
 
 - Added Paragraph Alert style
-- Added Icon format color,gradient,size,margin setting
+- Added Icon format color,gradient,size,position,margin setting
 - Added Icon block custom icon svg
 - Added Icon Phosphor icon
 - Added Paragraph,Heading One line text center

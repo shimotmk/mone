@@ -30,6 +30,7 @@ function render_format_block_style( $block_content ) {
 					min-width: 1em;
 					position: relative;
 					pointer-events: none;
+					line-height: 1;
 				}
 
 				.mone-inline-icon::after {
