@@ -80,6 +80,27 @@ export default function save( props ) {
 		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
 	}
 
+	const renderIcon = () => {
+		if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
+			return parseIcon( SVG );
+		} else if ( iconName ) {
+			return <ReactIcon iconName={ iconName } />;
+		}
+		return <ReactIcon iconName="FaWordpress" />;
+	};
+
+	const renderIconSpan = () => (
+		<span
+			className="wp-block-mone-icon-mask-image"
+			aria-hidden="true"
+			style={ {
+				'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
+			} }
+		>
+			{ renderIcon() }
+		</span>
+	);
+
 	return (
 		<div { ...blockProps }>
 			{ !! url ? (
@@ -89,50 +110,10 @@ export default function save( props ) {
 					target={ linkTarget }
 					rel={ rel }
 				>
-					<span
-						className="wp-block-mone-icon-mask-image"
-						aria-hidden="true"
-						style={ {
-							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
-						} }
-					>
-						{ ( () => {
-							if (
-								iconName &&
-								isCustomIcon( iconName ) &&
-								!! SVG
-							) {
-								return parseIcon( SVG );
-							} else if ( iconName ) {
-								return <ReactIcon iconName={ iconName } />;
-							}
-							return <ReactIcon iconName="FaWordpress" />;
-						} )() }
-					</span>
+					{ renderIconSpan() }
 				</a>
 			) : (
-				<>
-					<span
-						className="wp-block-mone-icon-mask-image"
-						aria-hidden="true"
-						style={ {
-							'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
-						} }
-					>
-						{ ( () => {
-							if (
-								iconName &&
-								isCustomIcon( iconName ) &&
-								!! SVG
-							) {
-								return parseIcon( SVG );
-							} else if ( iconName ) {
-								return <ReactIcon iconName={ iconName } />;
-							}
-							return <ReactIcon iconName="FaWordpress" />;
-						} )() }
-					</span>
-				</>
+				<>{ renderIconSpan() }</>
 			) }
 		</div>
 	);
