@@ -235,6 +235,8 @@ export default function Edit( props ) {
 							resetAllFilter: () => {
 								setAttributes( {
 									iconColor: undefined,
+									iconGradient: undefined,
+									iconCustomGradient: undefined,
 								} );
 							},
 							isShownByDefault: true,
