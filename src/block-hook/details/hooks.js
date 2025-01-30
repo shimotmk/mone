@@ -34,6 +34,7 @@ import {
 	createSvgUrl,
 	isCustomIcon,
 	decodeSvgBase64,
+	ReactIconKinds,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import {
@@ -186,12 +187,11 @@ export const blockEditDetails = createHigherOrderComponent(
 								label={ __( 'Icon', 'mone' ) }
 								value={ ( () => {
 									if (
-										moneDetailsIconName ===
-											'Phosphor_bold_plus' &&
+										moneDetailsIconName === 'Phplus_bold' &&
 										moneDetailsIcon ===
 											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=' &&
 										moneDetailsOpenIconName ===
-											'Phosphor_bold_minus' &&
+											'Phminus_bold' &&
 										moneDetailsOpenIcon ===
 											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+'
 									) {
@@ -224,7 +224,7 @@ export const blockEditDetails = createHigherOrderComponent(
 										);
 										setAttributes( {
 											moneDetailsIconName:
-												'Phosphor_bold_caret-down',
+												'Phcaret-down_bold',
 											moneDetailsIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMTYuNDksMTA0LjQ5bC04MCw4MGExMiwxMiwwLDAsMS0xNywwbC04MC04MGExMiwxMiwwLDAsMSwxNy0xN0wxMjgsMTU5bDcxLjUxLTcxLjUyYTEyLDEyLDAsMCwxLDE3LDE3WiI+PC9wYXRoPjwvc3ZnPg==',
 										} );
@@ -238,12 +238,11 @@ export const blockEditDetails = createHigherOrderComponent(
 										);
 										setAttributes( {
 											className: `${ _className } mone-detail-icon-custom`,
-											moneDetailsIconName:
-												'Phosphor_bold_plus',
+											moneDetailsIconName: 'Phplus_bold',
 											moneDetailsIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=',
 											moneDetailsOpenIconName:
-												'Phosphor_bold_minus',
+												'Phminus_bold',
 											moneDetailsOpenIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+',
 										} );
@@ -310,7 +309,13 @@ export const blockEditDetails = createHigherOrderComponent(
 							} }
 						>
 							<IconSearchModal
-								value={ moneDetailsIconName }
+								value={
+									moneDetailsIconName &&
+									ReactIconKinds( moneDetailsIconName ) !==
+										null
+										? moneDetailsIconName
+										: ''
+								}
 								iconSVG={
 									decodeSvgBase64( moneDetailsIcon ) || ''
 								}
@@ -383,7 +388,14 @@ export const blockEditDetails = createHigherOrderComponent(
 											'Select Open icon',
 											'mone'
 										) }
-										value={ moneDetailsOpenIconName }
+										value={
+											moneDetailsOpenIconName &&
+											ReactIconKinds(
+												moneDetailsOpenIconName
+											) !== null
+												? moneDetailsOpenIconName
+												: ''
+										}
 										iconSVG={
 											decodeSvgBase64(
 												moneDetailsOpenIcon
