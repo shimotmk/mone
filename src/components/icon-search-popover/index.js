@@ -1,19 +1,12 @@
 /**
  * Internal dependencies
  */
-import {
-	ReactIcon,
-	IconKinds,
-	generateIconName,
-	isCustomIcon,
-} from './ReactIcon';
+import { ReactIcon, IconKinds, isCustomIcon } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
-import { PhosphorIconList } from './icon-list/phosphor-icons';
-import { PhosphorLogo, CodeBlock } from '../../icons';
-import { Phosphor } from './phosphor';
-import { CustomIcon } from './custom-icon';
+import { CodeBlock } from '../../icons';
+// import { CustomIcon } from './custom-icon';
 import { parseIcon } from './utils/parse-icon';
 
 /**
@@ -41,23 +34,7 @@ export const IconPopoverContent = ( props ) => {
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
 
-	const ALL_ICONS = useMemo(
-		() =>
-			fiIcons.concat(
-				ioIcons,
-				faIcons,
-				PhosphorIconList.flatMap( ( icon ) =>
-					icon.iconList.map( ( iconTypeObj ) =>
-						generateIconName( {
-							iconKind: 'Phosphor',
-							iconType: iconTypeObj.type,
-							iconNamePart: icon.name,
-						} )
-					)
-				)
-			),
-		[]
-	);
+	const ALL_ICONS = useMemo( () => fiIcons.concat( ioIcons, faIcons ), [] );
 
 	let filteredIcons = null;
 	let iconList = null;
@@ -74,20 +51,6 @@ export const IconPopoverContent = ( props ) => {
 		iconList = filteredIcons.length ? (
 			<ButtonGroup className="mone-icon-button-group">
 				{ filteredIcons.map( ( _iconName, idx ) => {
-					// const {
-					// 	iconKind,
-					// 	iconType: type,
-					// 	iconNamePart: _part,
-					// } = parseIconName( _iconName );
-					// if ( iconKind === 'Phosphor' ) {
-					// 	return (
-					// 		<Phosphor
-					// 			key={ idx }
-					// 			iconName={ _iconName }
-					// 			onChange={ onChange }
-					// 		/>
-					// 	);
-					// }
 					return (
 						<Button
 							className="mone-icon-button"
@@ -137,14 +100,10 @@ export const IconPopoverContent = ( props ) => {
 							/>
 						),
 					},
-					{
-						name: 'phosphor',
-						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
-					},
-					{
-						name: 'custom',
-						title: <Icon icon={ CodeBlock } size={ 42 } />,
-					},
+					// {
+					// 	name: 'custom',
+					// 	title: <Icon icon={ CodeBlock } size={ 42 } />,
+					// },
 				] }
 				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
 			>
@@ -248,21 +207,14 @@ export const IconPopoverContent = ( props ) => {
 								</ButtonGroup>
 							</div>
 						);
-					} else if ( 'phosphor' === tab.name ) {
-						return (
-							<Phosphor
-								iconName={ iconName }
-								onChange={ onChange }
-							/>
-						);
-					} else if ( 'custom' === tab.name ) {
-						return (
-							<CustomIcon
-								iconName={ iconName }
-								onChange={ onChange }
-								iconSVG={ iconSVG }
-							/>
-						);
+						// } else if ( 'custom' === tab.name ) {
+						// 	return (
+						// 		<CustomIcon
+						// 			iconName={ iconName }
+						// 			onChange={ onChange }
+						// 			iconSVG={ iconSVG }
+						// 		/>
+						// 	);
 					}
 				} }
 			</TabPanel>
@@ -300,14 +252,9 @@ export const IconSearchModal = ( props ) => {
 					<HStack justify={ hasValue ? 'start' : 'center' }>
 						<ZStack isLayered={ false } offset={ -8 }>
 							<Flex expanded={ false }>
-								{ hasValue &&
-									( value &&
-									isCustomIcon( value ) &&
-									!! iconSVG ? (
-										parseIcon( iconSVG )
-									) : (
-										<ReactIcon iconName={ value } />
-									) ) }
+								{ hasValue && value && (
+									<ReactIcon iconName={ value } />
+								) }
 							</Flex>
 						</ZStack>
 						<FlexItem className="block-editor-panel-color-gradient-settings__color-name">

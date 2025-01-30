@@ -17,28 +17,28 @@ import * as FiIcons from 'react-icons/fi';
 import { fiIcons } from './icon-list/feather-icons';
 import { faIcons } from './icon-list/fa-icons';
 import { ioIcons } from './icon-list/io-icons';
-import { PhosphorIconList } from './icon-list/phosphor-icons';
+// import { PhosphorIconList } from './icon-list/phosphor-icons';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-export const parseIconName = ( iconName ) => {
-	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Phosphor_light_aperture';
-	let iconKind, iconType, iconNamePart;
-	if ( iconName?.includes( '_' ) ) {
-		[ iconKind, iconType, iconNamePart ] = iconName.split( '_' );
-	} else {
-		iconKind = iconType = iconNamePart = iconName;
-	}
+// export const parseIconName = ( iconName ) => {
+// 	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Phosphor_light_aperture';
+// 	let iconKind, iconType, iconNamePart;
+// 	if ( iconName?.includes( '_' ) ) {
+// 		[ iconKind, iconType, iconNamePart ] = iconName.split( '_' );
+// 	} else {
+// 		iconKind = iconType = iconNamePart = iconName;
+// 	}
 
-	const iconObj = PhosphorIconList.find(
-		( icon ) => icon.name === iconNamePart
-	);
-	if ( iconObj ) {
-		return { iconKind, iconType, iconNamePart };
-	}
+// 	const iconObj = PhosphorIconList.find(
+// 		( icon ) => icon.name === iconNamePart
+// 	);
+// 	if ( iconObj ) {
+// 		return { iconKind, iconType, iconNamePart };
+// 	}
 
-	return {};
-};
+// 	return {};
+// };
 
 export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
 	if ( ! iconKind || ! iconType || ! iconNamePart ) {
@@ -58,14 +58,7 @@ export const isCustomIcon = ( iconName ) => {
 
 // プレフィックスからアイコン種類を判別
 export const IconKinds = ( iconName ) => {
-	if ( ! iconName ) {
-		return 'custom';
-	}
-
-	const { iconKind } = parseIconName( iconName );
-	if ( iconKind === 'Phosphor' ) {
-		return 'phosphor';
-	} else if ( iconName.startsWith( 'Fi' ) && fiIcons.includes( iconName ) ) {
+	if ( iconName.startsWith( 'Fi' ) && fiIcons.includes( iconName ) ) {
 		return 'fi';
 	} else if ( iconName.startsWith( 'Fa' ) && faIcons.includes( iconName ) ) {
 		return 'fa';
@@ -75,13 +68,31 @@ export const IconKinds = ( iconName ) => {
 	return 'custom';
 };
 
-const getSvgHtml = ( iconName, _iconType ) => {
-	const iconObj = PhosphorIconList.find( ( icon ) => icon.name === iconName );
-	if ( iconObj ) {
-		const iconTypeObj = iconObj.iconList.find(
-			( icon ) => icon.type === _iconType
-		);
-		return iconTypeObj ? iconTypeObj.svgHtml : null;
+// const getSvgHtml = ( iconName, _iconType ) => {
+// 	const iconObj = PhosphorIconList.find( ( icon ) => icon.name === iconName );
+// 	if ( iconObj ) {
+// 		const iconTypeObj = iconObj.iconList.find(
+// 			( icon ) => icon.type === _iconType
+// 		);
+// 		return iconTypeObj ? iconTypeObj.svgHtml : null;
+// 	}
+// 	return null;
+// };
+
+export const ReactIconKinds = ( iconName ) => {
+	// プレフィックスからアイコン種類を判別
+	if ( iconName.startsWith( 'Fi' ) && FiIcons[ iconName ] !== undefined ) {
+		return 'fi';
+	} else if (
+		iconName.startsWith( 'Fa' ) &&
+		FaIcons[ iconName ] !== undefined
+	) {
+		return 'fa';
+	} else if (
+		iconName.startsWith( 'Io' ) &&
+		IoIcons[ iconName ] !== undefined
+	) {
+		return 'io';
 	}
 	return null;
 };
@@ -92,24 +103,13 @@ export const ReactIcon = ( {
 	size = undefined,
 	style = { fill: 'none' },
 } ) => {
-	const { iconKind, iconType, iconNamePart } = parseIconName( iconName );
-	if ( iconKind === 'Phosphor' ) {
-		return getSvgHtml( iconNamePart, iconType );
-	}
-
-	if ( IconKinds( iconName ) === 'fi' ) {
+	if ( ReactIconKinds( iconName ) === 'fi' ) {
 		return createElement( FiIcons[ iconName ], { size, className, style } );
-	} else if ( IconKinds( iconName ) === 'fa' ) {
+	} else if ( ReactIconKinds( iconName ) === 'fa' ) {
 		return createElement( FaIcons[ iconName ], { size, className } );
-	} else if ( IconKinds( iconName ) === 'io' ) {
+	} else if ( ReactIconKinds( iconName ) === 'io' ) {
 		return createElement( IoIcons[ iconName ], { size, className } );
 	}
-	// return ({
-	// 	parseIcon( svg )
-	// });
-
-	// return createElement( parseIcon( svg ) );
-
 	return null;
 };
 
