@@ -7,11 +7,6 @@
 	"parent": [ "mone/icons" ],
 	"textdomain": "mone",
 	"attributes": {
-		"iconSVG": {
-			"type": "string",
-			"source": "html",
-			"selector": ".wp-block-mone-icon-mask-image"
-		},
 		"iconName": {
 			"type": "string"
 		},
