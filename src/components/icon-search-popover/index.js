@@ -1,13 +1,13 @@
 /**
  * Internal dependencies
  */
-import { ReactIcon, IconKinds, isCustomIcon } from './ReactIcon';
+import { ReactIcon, IconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
-import { CodeBlock } from '../../icons';
+// import { CodeBlock } from '../../icons';
 // import { CustomIcon } from './custom-icon';
-import { parseIcon } from './utils/parse-icon';
+// import { parseIcon } from './utils/parse-icon';
 
 /**
  * WordPress dependencies
@@ -25,12 +25,12 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useMemo } from '@wordpress/element';
-import { Icon } from '@wordpress/icons';
+// import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
 
 export const IconPopoverContent = ( props ) => {
-	const { onChange, value, iconSVG } = props;
+	const { onChange, value } = props;
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
 
