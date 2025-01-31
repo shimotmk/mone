@@ -104,7 +104,7 @@ export const IconPopoverContent = ( props ) => {
 						),
 					},
 					{
-						name: 'phosphor',
+						name: 'ph',
 						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
 					},
 					// {
@@ -112,7 +112,7 @@ export const IconPopoverContent = ( props ) => {
 					// 	title: <Icon icon={ CodeBlock } size={ 42 } />,
 					// },
 				] }
-				initialTabName={ 'fa' }
+				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
 			>
 				{ ( tab ) => {
 					if ( 'fa' === tab.name ) {
@@ -214,7 +214,7 @@ export const IconPopoverContent = ( props ) => {
 								</ButtonGroup>
 							</div>
 						);
-					} else if ( 'phosphor' === tab.name ) {
+					} else if ( 'ph' === tab.name ) {
 						return (
 							<div className="mone-icon-tab-content">
 								<PhosphorIcon
