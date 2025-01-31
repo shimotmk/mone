@@ -6,7 +6,6 @@ import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import {
-	useCachedTruthy,
 	store as blockEditorStore,
 	getColorObjectByColorValue,
 	__experimentalGetGradientObjectByGradientValue,
