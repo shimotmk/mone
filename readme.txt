@@ -10,11 +10,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.5.0 = 2025-02-01
+
 - Added Paragraph Alert style
 - Added Icon format color,gradient,size,position,margin setting
 - Added Icon Phosphor icon
 - Added Paragraph,Heading One line text center
 - Added Details variation,icon,color,position
+- Other minor adjustments
 
 = 1.4.0 = 2025-01-05
 
