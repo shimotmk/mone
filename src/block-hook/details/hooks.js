@@ -187,11 +187,12 @@ export const blockEditDetails = createHigherOrderComponent(
 								label={ __( 'Icon', 'mone' ) }
 								value={ ( () => {
 									if (
-										moneDetailsIconName === 'Phplus_bold' &&
+										moneDetailsIconName ===
+											'Ph_plus_bold' &&
 										moneDetailsIcon ===
 											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=' &&
 										moneDetailsOpenIconName ===
-											'Phminus_bold' &&
+											'Ph_minus_bold' &&
 										moneDetailsOpenIcon ===
 											'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+'
 									) {
@@ -224,7 +225,7 @@ export const blockEditDetails = createHigherOrderComponent(
 										);
 										setAttributes( {
 											moneDetailsIconName:
-												'Phcaret-down_bold',
+												'Ph_caret-down_bold',
 											moneDetailsIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMTYuNDksMTA0LjQ5bC04MCw4MGExMiwxMiwwLDAsMS0xNywwbC04MC04MGExMiwxMiwwLDAsMSwxNy0xN0wxMjgsMTU5bDcxLjUxLTcxLjUyYTEyLDEyLDAsMCwxLDE3LDE3WiI+PC9wYXRoPjwvc3ZnPg==',
 										} );
@@ -238,11 +239,11 @@ export const blockEditDetails = createHigherOrderComponent(
 										);
 										setAttributes( {
 											className: `${ _className } mone-detail-icon-custom`,
-											moneDetailsIconName: 'Phplus_bold',
+											moneDetailsIconName: 'Ph_plus_bold',
 											moneDetailsIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDE0MHY3NmExMiwxMiwwLDAsMS0yNCwwVjE0MEg0MGExMiwxMiwwLDAsMSwwLTI0aDc2VjQwYTEyLDEyLDAsMCwxLDI0LDB2NzZoNzZBMTIsMTIsMCwwLDEsMjI4LDEyOFoiPjwvcGF0aD48L3N2Zz4=',
 											moneDetailsOpenIconName:
-												'Phminus_bold',
+												'Ph_minus_bold',
 											moneDetailsOpenIcon:
 												'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik0yMjgsMTI4YTEyLDEyLDAsMCwxLTEyLDEySDQwYTEyLDEyLDAsMCwxLDAtMjRIMjE2QTEyLDEyLDAsMCwxLDIyOCwxMjhaIj48L3BhdGg+PC9zdmc+',
 										} );

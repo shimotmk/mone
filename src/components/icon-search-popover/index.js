@@ -5,9 +5,9 @@ import { ReactIcon, IconKinds } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
-// import { CodeBlock } from '../../icons';
-// import { CustomIcon } from './custom-icon';
-// import { parseIcon } from './utils/parse-icon';
+import { PHOSPHOR_ICONS } from './icon-list/phosphor-icons';
+import { PhosphorLogo } from '../../icons';
+import { PhosphorIcon } from './phosphor';
 
 /**
  * WordPress dependencies
@@ -25,7 +25,7 @@ import {
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useMemo } from '@wordpress/element';
-// import { Icon } from '@wordpress/icons';
+import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
 
@@ -34,7 +34,10 @@ export const IconPopoverContent = ( props ) => {
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
 
-	const ALL_ICONS = useMemo( () => fiIcons.concat( ioIcons, faIcons ), [] );
+	const ALL_ICONS = useMemo(
+		() => fiIcons.concat( ioIcons, faIcons, PHOSPHOR_ICONS ),
+		[]
+	);
 
 	let filteredIcons = null;
 	let iconList = null;
@@ -99,6 +102,10 @@ export const IconPopoverContent = ( props ) => {
 								size="100%"
 							/>
 						),
+					},
+					{
+						name: 'ph',
+						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
 					},
 					// {
 					// 	name: 'custom',
@@ -207,14 +214,15 @@ export const IconPopoverContent = ( props ) => {
 								</ButtonGroup>
 							</div>
 						);
-						// } else if ( 'custom' === tab.name ) {
-						// 	return (
-						// 		<CustomIcon
-						// 			iconName={ iconName }
-						// 			onChange={ onChange }
-						// 			iconSVG={ iconSVG }
-						// 		/>
-						// 	);
+					} else if ( 'ph' === tab.name ) {
+						return (
+							<div className="mone-icon-tab-content">
+								<PhosphorIcon
+									iconName={ iconName }
+									onChange={ onChange }
+								/>
+							</div>
+						);
 					}
 				} }
 			</TabPanel>

@@ -187,6 +187,7 @@ export default function Edit( props ) {
 						/>
 					</ToolsPanelItem>
 					<ToolsPanelItem
+						className="mone-block-editor-tools-panel-icon-settings__item"
 						label={ __( 'Icon', 'mone' ) }
 						isShownByDefault
 						hasValue={ () => !! iconName }

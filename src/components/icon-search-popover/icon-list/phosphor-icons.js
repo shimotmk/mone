@@ -1,4 +1,24 @@
 // https://phosphoricons.com/?weight=%22thin%22&size=32
+
+export const getPhosphorIconSvg = ( iconName ) => {
+	if ( ! iconName?.startsWith( 'Ph_' ) ) {
+		return null;
+	}
+
+	const parts = iconName.split( '_' );
+	const icon = PhosphorIconList.find( ( item ) => item.name === parts[ 1 ] );
+
+	if ( ! icon ) {
+		return null;
+	}
+
+	const iconTypeObj = icon.iconList.find(
+		( typeObj ) => typeObj.type === parts[ 2 ]
+	);
+
+	return iconTypeObj?.svgHtml || null;
+};
+
 export const PhosphorIconList = [
 	{
 		name: 'acorn',
@@ -9875,3 +9895,9 @@ export const PhosphorIconList = [
 	},
 	// brackets-curlyの次から
 ];
+
+export const PHOSPHOR_ICONS = PhosphorIconList.flatMap( ( icon ) =>
+	icon.iconList.map(
+		( iconTypeObj ) => `Ph_${ icon.name }_${ iconTypeObj.type }`
+	)
+);

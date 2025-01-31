@@ -17,28 +17,29 @@ import * as FiIcons from 'react-icons/fi';
 import { fiIcons } from './icon-list/feather-icons';
 import { faIcons } from './icon-list/fa-icons';
 import { ioIcons } from './icon-list/io-icons';
-// import { PhosphorIconList } from './icon-list/phosphor-icons';
+import { PHOSPHOR_ICONS, getPhosphorIconSvg } from './icon-list/phosphor-icons';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
 
-// export const parseIconName = ( iconName ) => {
-// 	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Phosphor_light_aperture';
-// 	let iconKind, iconType, iconNamePart;
-// 	if ( iconName?.includes( '_' ) ) {
-// 		[ iconKind, iconType, iconNamePart ] = iconName.split( '_' );
-// 	} else {
-// 		iconKind = iconType = iconNamePart = iconName;
-// 	}
+export const parseIconName = ( iconName ) => {
+	// アイコン名から種類、タイプ、アイコン名を取得 ex: 'Ph_light_aperture';
+	let iconKind, iconNamePart, iconType;
+	if ( iconName?.includes( '_' ) ) {
+		const parts = iconName.split( '_' );
+		iconKind = parts[ 0 ];
+		iconNamePart = parts[ 1 ];
+		iconType = parts[ 2 ];
+	} else {
+		iconKind = iconType = iconNamePart = iconName;
+	}
 
-// 	const iconObj = PhosphorIconList.find(
-// 		( icon ) => icon.name === iconNamePart
-// 	);
-// 	if ( iconObj ) {
-// 		return { iconKind, iconType, iconNamePart };
-// 	}
+	const iconObj = PHOSPHOR_ICONS.find( ( icon ) => icon === iconName );
+	if ( iconObj ) {
+		return { iconKind, iconNamePart, iconType };
+	}
 
-// 	return {};
-// };
+	return {};
+};
 
 export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
 	if ( ! iconKind || ! iconType || ! iconNamePart ) {
@@ -64,20 +65,14 @@ export const IconKinds = ( iconName ) => {
 		return 'fa';
 	} else if ( iconName.startsWith( 'Io' ) && ioIcons.includes( iconName ) ) {
 		return 'io';
+	} else if (
+		iconName.startsWith( 'Ph' ) &&
+		PHOSPHOR_ICONS.includes( iconName )
+	) {
+		return 'ph';
 	}
 	return 'custom';
 };
-
-// const getSvgHtml = ( iconName, _iconType ) => {
-// 	const iconObj = PhosphorIconList.find( ( icon ) => icon.name === iconName );
-// 	if ( iconObj ) {
-// 		const iconTypeObj = iconObj.iconList.find(
-// 			( icon ) => icon.type === _iconType
-// 		);
-// 		return iconTypeObj ? iconTypeObj.svgHtml : null;
-// 	}
-// 	return null;
-// };
 
 export const ReactIconKinds = ( iconName ) => {
 	// プレフィックスからアイコン種類を判別
@@ -93,6 +88,11 @@ export const ReactIconKinds = ( iconName ) => {
 		IoIcons[ iconName ] !== undefined
 	) {
 		return 'io';
+	} else if (
+		iconName.startsWith( 'Ph' ) &&
+		PHOSPHOR_ICONS.includes( iconName )
+	) {
+		return 'ph';
 	}
 	return null;
 };
@@ -109,8 +109,10 @@ export const ReactIcon = ( {
 		return createElement( FaIcons[ iconName ], { size, className } );
 	} else if ( ReactIconKinds( iconName ) === 'io' ) {
 		return createElement( IoIcons[ iconName ], { size, className } );
+	} else if ( ReactIconKinds( iconName ) === 'ph' ) {
+		const phosphorIcons = getPhosphorIconSvg( iconName );
+		return phosphorIcons;
 	}
-	return null;
 };
 
 export const IconExternalLink = ( { icon } ) => {
