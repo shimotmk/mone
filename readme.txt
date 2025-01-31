@@ -12,6 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - Added Paragraph Alert style
 - Added Icon format color,gradient,size,position,margin setting
+- Added Icon Phosphor icon
 - Added Paragraph,Heading One line text center
 - Added Details variation,icon,color,position
 
@@ -85,6 +86,10 @@ License: MIT License
 
 ## Ionicons
 https://ionic.io/ionicons
+License: MIT License
+
+## Phosphor Icons
+https://phosphoricons.com
 License: MIT License
 
 ## highlight.js
