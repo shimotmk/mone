@@ -2,6 +2,7 @@
  * External dependencies
  */
 import clsx from 'clsx';
+
 /**
  * WordPress dependencies
  */
@@ -15,17 +16,10 @@ import { isHexColor } from '../../../utils-func/is-hex-color';
 import {
 	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 } from '../../../components/icon-search-popover/ReactIcon';
-import { parseIcon } from '../../../components/icon-search-popover/utils/parse-icon';
 
 export const v1 = {
 	attributes: {
-		iconSVG: {
-			type: 'string',
-			source: 'html',
-			selector: '.wp-block-mone-icon-mask-image',
-		},
 		iconName: {
 			type: 'string',
 		},
@@ -90,7 +84,6 @@ export const v1 = {
 	save( props ) {
 		const { attributes } = props;
 		const {
-			iconSVG,
 			width,
 			height,
 			iconColor,
@@ -137,36 +130,9 @@ export const v1 = {
 				...spacingProps.style,
 			},
 		};
-
-		let SVG;
-		if ( iconName && isCustomIcon( iconName ) ) {
-			SVG = iconSVG;
-		} else if ( iconName ) {
-			SVG = renderToString( <ReactIcon iconName={ iconName } /> );
-		} else {
-			SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
-		}
-
-		const renderIcon = () => {
-			if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
-				return parseIcon( SVG );
-			} else if ( iconName ) {
-				return <ReactIcon iconName={ iconName } />;
-			}
-			return <ReactIcon iconName="FaWordpress" />;
-		};
-
-		const renderIconSpan = () => (
-			<span
-				className="wp-block-mone-icon-mask-image"
-				aria-hidden="true"
-				style={ {
-					'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
-				} }
-			>
-				{ renderIcon() }
-			</span>
-		);
+		const SVG = iconName
+			? renderToString( <ReactIcon iconName={ iconName } /> )
+			: renderToString( <ReactIcon iconName="FaWordpress" /> );
 
 		return (
 			<div { ...blockProps }>
@@ -177,10 +143,40 @@ export const v1 = {
 						target={ linkTarget }
 						rel={ rel }
 					>
-						{ renderIconSpan() }
+						<span
+							className="wp-block-mone-icon-mask-image"
+							aria-hidden="true"
+							style={ {
+								'--the-icon-svg': `url(${ createSvgUrl(
+									SVG
+								) })`,
+							} }
+						>
+							{ iconName ? (
+								<ReactIcon iconName={ iconName } />
+							) : (
+								<ReactIcon iconName="FaWordpress" />
+							) }
+						</span>
 					</a>
 				) : (
-					<>{ renderIconSpan() }</>
+					<>
+						<span
+							className="wp-block-mone-icon-mask-image"
+							aria-hidden="true"
+							style={ {
+								'--the-icon-svg': `url(${ createSvgUrl(
+									SVG
+								) })`,
+							} }
+						>
+							{ iconName ? (
+								<ReactIcon iconName={ iconName } />
+							) : (
+								<ReactIcon iconName="FaWordpress" />
+							) }
+						</span>
+					</>
 				) }
 			</div>
 		);
