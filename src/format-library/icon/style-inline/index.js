@@ -118,8 +118,6 @@ export default function StyleInlineIconUI( {
 		editableContentElement: contentRef.current,
 		settings,
 	} );
-	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
-	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
 	const colorSettings = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
