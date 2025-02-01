@@ -1,4 +1,4 @@
-@import "./highlightjs/default";
+@use "./highlightjs/default" as highlightjs;
 
 .wp-block-mone-github-embed {
 	overflow: hidden;

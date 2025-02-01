@@ -1,6 +1,6 @@
-@import "./background-gradient/style";
-@import "./code/style";
-@import "./text-gradient/style";
-@import "./icon/style";
-@import "./image/style";
-@import "./stroke/style";
+@use "./background-gradient/style" as background-gradient;
+@use "./code/style" as code;
+@use "./text-gradient/style" as text-gradient;
+@use "./icon/style" as icon;
+@use "./image/style" as image;
+@use "./stroke/style" as stroke;
