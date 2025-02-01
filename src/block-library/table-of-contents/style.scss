@@ -1,0 +1,226 @@
+.wp-block-mone-table-of-contents.is-style-mone-default-toc {
+
+	ol {
+		padding: 0;
+		list-style: none;
+		position: relative;
+
+		a {
+			text-decoration: none;
+			margin: 8px 0;
+			display: block;
+			line-height: 1.5;
+			transition: color 0.3s ease-in-out;
+		}
+	}
+
+	.ol-depth-1 {
+		padding-left: 21px;
+		margin: 0;
+
+		>li a {
+			font-weight: 500;
+			font-size: var(--wp--preset--font-size--medium);
+		}
+
+		>li:first-child > a {
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		>li:last-child a {
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		ol li a {
+			font-weight: 400;
+			font-size: var(--wp--preset--font-size--small);
+		}
+	}
+
+	.ol-depth-1::before {
+		position: absolute;
+		top: 17px;
+		bottom: 8px;
+		left: 7px;
+		width: 2px;
+		content: "";
+	}
+
+	&:not(.has-line-color) {
+
+		.ol-depth-1::before {
+			background: var(--wp--preset--color--mone-border);
+		}
+	}
+
+	.ol-depth-1::before {
+		background: var(--the-line-color, var(--wp--preset--color--mone-border));
+	}
+
+	.ol-depth-1 > li {
+		position: relative;
+	}
+
+	&.mone-is-scroll-animation.has-deactivate-text-color {
+
+		li:not(.active) {
+
+			> a {
+				color: var(--the-deactivate-text-color, currentColor);
+			}
+		}
+	}
+
+	&.mone-is-scroll-animation:not(.has-deactivate-text-color) {
+
+		li:not(.active) {
+
+			> a {
+				color: color-mix(in srgb, currentColor 60%, #fff);
+			}
+		}
+	}
+
+	li {
+		position: relative;
+	}
+
+	li::before {
+		top: 6px;
+		position: absolute;
+		content: "";
+		border-radius: 100%;
+	}
+
+	.ol-depth-1 > li.active::before,
+	.ol-depth-2 > li.active::before,
+	.ol-depth-3 > li.active::before,
+	.ol-depth-4 > li.active::before,
+	.ol-depth-5 > li.active::before,
+	.ol-depth-6 > li.active::before {
+		background: var(--the-before-color, var(--wp--preset--color--key-2));
+		transition: background-color 0.3s ease-in-out;
+	}
+
+	&.mone-is-scroll-animation {
+
+		&.has-before-deactivate-color {
+
+			li:not(.active)::before {
+				background: var(--the-before-deactivate-color);
+			}
+		}
+
+		&:not(.has-before-deactivate-color) li:not(.active)::before {
+			background: color-mix(in srgb, var(--the-before-color, var(--wp--preset--color--key-2)) 40%, #fff);
+		}
+	}
+
+	&:not(.mone-is-scroll-animation) {
+
+		&:not(.has-before-deactivate-color) li:not(.active)::before {
+			background: var(--the-before-color, var(--wp--preset--color--key-2));
+		}
+	}
+
+
+	.ol-depth-1 > li::before {
+		width: 12px;
+		height: 12px;
+		left: -19px;
+	}
+
+	.ol-depth-2 > li::before,
+	.ol-depth-3 > li::before,
+	.ol-depth-4 > li::before,
+	.ol-depth-5 > li::before,
+	.ol-depth-6 > li::before {
+		left: -17px;
+		width: 8px;
+		height: 8px;
+	}
+}
+
+// デフォルトのスタイルの時
+.wp-block-mone-table-of-contents.mone-toc {
+
+	ol {
+		list-style: none;
+		counter-reset: item;
+		padding-inline-start: 1.5rem;
+
+		a {
+			transition: color 0.3s ease-in-out;
+		}
+
+		&:first-child {
+			padding: 0;
+		}
+
+		li {
+			counter-increment: item;
+			margin: 8px 0;
+			line-height: 1.5;
+
+			&:first-child {
+				counter-reset: toc;
+			}
+
+			&::before {
+				content: counters(item, ".");
+				margin-right: 0.5em;
+			}
+
+			ol {
+				counter-reset: item;
+			}
+		}
+	}
+
+	&.mone-is-scroll-animation:not(.has-deactivate-text-color) {
+
+		li:not(.active) {
+
+			> a {
+				color: color-mix(in srgb, currentColor 60%, #fff);
+			}
+		}
+	}
+
+	&.has-before-color {
+
+		ol li {
+
+			&::before {
+				color: var(--the-before-color, var(--wp--preset--color--key-2));
+			}
+		}
+	}
+
+	&.mone-is-scroll-animation.has-deactivate-text-color {
+
+		li:not(.active) {
+
+			> a {
+				color: var(--the-deactivate-text-color, var(--wp--preset--color--content-contrast-2));
+			}
+		}
+	}
+
+	&.mone-is-scroll-animation.has-before-deactivate-color {
+
+		ol li:not(.active) {
+
+			&::before {
+				color: var(--the-before-deactivate-color, var(--wp--preset--color--key-2));
+			}
+		}
+	}
+
+}

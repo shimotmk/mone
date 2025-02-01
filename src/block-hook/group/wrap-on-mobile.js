@@ -8,8 +8,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 
 import {
-	setClassName,
-	existsClass,
+	toggleClass,
+	existsClassName,
 } from '../../utils-func/class-name/classAttribute.js';
 
 /**
@@ -36,12 +36,12 @@ export const withInspectorControls = createHigherOrderComponent(
 					<PanelBody>
 						<ToggleControl
 							label={ __( 'Vertical layout on mobile', 'mone' ) }
-							checked={ existsClass(
-								className,
-								wrapOnMobileClassName
+							checked={ existsClassName(
+								wrapOnMobileClassName,
+								className
 							) }
 							onChange={ () =>
-								setClassName(
+								toggleClass(
 									wrapOnMobileClassName,
 									className,
 									setAttributes

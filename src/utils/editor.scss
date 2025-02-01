@@ -1,65 +1,77 @@
-.editor-styles-wrapper.block-editor-writing-flow {
+body.editor-styles-wrapper {
 	background-color: var(--wp--preset--color--content-bg);
 }
 
 // エディターで背景が効いていない
 :where(code:not(.prism-code,.block-editor-rich-text__editable)) {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-  }
-  
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #c7254e;
+	background-color: #f9f2f4;
+	border-radius: 4px;
+}
 
-.editor-visual-editor__post-title-wrapper{
-    .wp-block-post-title {
-        font-size: var(--wp--preset--font-size--large);
-    }
+
+.editor-visual-editor__post-title-wrapper {
+
+	.wp-block-post-title {
+		font-size: var(--wp--preset--font-size--large);
+	}
 }
 
 
 @keyframes logo_animation {
-    0% {
-        stroke-dashoffset: 600px;
-        stroke-dasharray: 600px;
-    }
 
-    to {
-        stroke-dashoffset: 0;
-        stroke-dasharray: 600px;
-    }
+	0% {
+		stroke-dashoffset: 600px;
+		stroke-dasharray: 600px;
+	}
+
+	to {
+		stroke-dashoffset: 0;
+		stroke-dasharray: 600px;
+	}
 }
 
 .components-button svg.animation_logo_svg {
-    animation: logo_animation 1.5s ease-out both;
+	animation: logo_animation 1.5s ease-out both;
 }
 
 @keyframes late-open {
-  0% {
-    fill: currentColor;
-    fill-opacity: 0;
-  }
-  100% {
-    fill-opacity: 1;
-  }
+
+	0% {
+		fill: currentcolor;
+		fill-opacity: 0;
+	}
+
+	100% {
+		fill-opacity: 1;
+	}
 }
 
 .right-eye {
-  fill: currentColor;
-  fill-opacity: 0;
-  animation: late-open 0.2s ease 1s both;
+	fill: currentcolor;
+	fill-opacity: 0;
+	animation: late-open 0.2s ease 1s both;
 }
 
 .left-eye {
-  fill: currentColor;
-  fill-opacity: 0;
-  animation: late-open 1s ease 1.25s both;
+	fill: currentcolor;
+	fill-opacity: 0;
+	animation: late-open 1s ease 1.25s both;
 }
 
 // 横並びの子要素のサイズなどに使われているトグルコンポーネントが日本語で改行されてしまうので、スタイルを上書き
 .components-toggle-group-control {
+
 	button.components-toggle-group-control-option-base {
 		padding: 0;
+	}
+}
+
+.mone__sidebar_text_control {
+
+	.components-base-control__label {
+		text-transform: inherit;
 	}
 }

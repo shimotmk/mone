@@ -12,27 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * マイグレーションする
- */
-function migrate_mone_post_views_count() {
-	$args = array(
-		'post_type'      => 'post',
-		'posts_per_page' => -1,
-		'post_status'    => 'any',
-	);
-
-	$all_posts = get_posts( $args );
-
-	foreach ( $all_posts as $post ) {
-		$post_id     = $post->ID;
-		$views_count = get_post_meta( $post_id, 'post_views_count', true );
-		update_post_meta( $post_id, 'mone_post_views_count', $views_count );
-		delete_post_meta( $post_id, 'post_views_count' );
-	}
-}
-add_action( 'init', __NAMESPACE__ . '\migrate_mone_post_views_count' );
-
-/**
  * Set_post_views
  *
  * @param string $post_id post_id.

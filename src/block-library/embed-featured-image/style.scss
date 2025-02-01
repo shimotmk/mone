@@ -3,10 +3,12 @@ $black: #000;
 .wp-block-mone-embed-featured-image {
 	margin-left: 0;
 	margin-right: 0;
+
 	a {
 		display: block;
 		height: 100%;
 	}
+
 	img {
 		max-width: 100%;
 		width: 100%;
@@ -16,6 +18,7 @@ $black: #000;
 	}
 
 	.wp-block-post-featured-image__overlay {
+
 		&.has-background-dim {
 			position: absolute;
 			inset: 0;

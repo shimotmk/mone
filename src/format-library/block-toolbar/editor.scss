@@ -1,0 +1,10 @@
+.mone-format-toolbar {
+	border-left: 1px solid #1e1e1e;
+	display: flex;
+	order: 10;
+	margin-left: 6px;
+
+	.components-toolbar-group {
+		padding-right: 0;
+	}
+}

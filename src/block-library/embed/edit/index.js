@@ -33,7 +33,13 @@ import fetchUrlData from '../api/fetch-url-data';
 
 export default function EmbedWrapperEdit( props ) {
 	const { attributes, setAttributes, clientId } = props;
-	const { url: attributesUrl, isLink, rel, linkTarget } = attributes;
+	const {
+		url: attributesUrl,
+		isLink,
+		rel,
+		linkTarget,
+		templateLock,
+	} = attributes;
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ url, setURL ] = useState( attributesUrl );
 	const [ isLoadingClearCache, setIsLoadingClearCache ] = useState( false );
@@ -69,6 +75,7 @@ export default function EmbedWrapperEdit( props ) {
 			'mone/embed-site-title',
 			'mone/embed-title',
 		],
+		templateLock,
 	} );
 
 	// url以外のattributesをundefinedにする
@@ -81,7 +88,7 @@ export default function EmbedWrapperEdit( props ) {
 		}
 		return newObj;
 	}
-	const propertiesToKeep = [ 'url' ];
+	const propertiesToKeep = [ 'url', 'templateLock' ];
 	const replaceAttributes = setUndefinedExceptSpecifiedProps(
 		attributes,
 		propertiesToKeep

@@ -27,36 +27,86 @@ import { useMemo } from '@wordpress/element';
  */
 import { inlineFontSize as settings } from './index';
 
-function parseFontSize( fontSize = '' ) {
-	return fontSize.replace( 'font-size:', '' );
+function parseCSS( css = '' ) {
+	return css.split( ';' ).reduce( ( accumulator, rule ) => {
+		if ( rule ) {
+			const [ property, value ] = rule.split( ':' );
+			if ( property === 'font-size' ) {
+				accumulator.fontSize = value;
+			}
+		}
+		return accumulator;
+	}, {} );
 }
 
-export function getActiveInlineFontSize( value, name, fontSizes ) {
+export function parseClassName( className = '', fontSettings ) {
+	return className.split( ' ' ).reduce( ( accumulator, name ) => {
+		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
+			const fontSlug = name
+				.replace( /^has-/, '' )
+				.replace( /-font-size$/, '' );
+			const fontSizeObject = getFontSize( fontSettings, fontSlug );
+			accumulator.fontSize = fontSizeObject.size;
+		}
+		return accumulator;
+	}, {} );
+}
+
+export function getActiveInlineFontSize( value, name, fontSizesSettings ) {
 	const activeInlineFontSizeFormat = getActiveFormat( value, name );
 
 	if ( ! activeInlineFontSizeFormat ) {
-		return undefined;
+		return {};
 	}
 
-	const styleFontSize = activeInlineFontSizeFormat.attributes.style;
-	if ( styleFontSize ) {
-		return parseFontSize( activeInlineFontSizeFormat.attributes.style );
+	return {
+		...parseCSS( activeInlineFontSizeFormat.attributes.style ),
+		...parseClassName(
+			activeInlineFontSizeFormat.attributes.class,
+			fontSizesSettings
+		),
+	};
+}
+
+function setFontSize( value, name, fontSizesSettings, newFontSize ) {
+	const { fontSize } = {
+		...getActiveInlineFontSize( value, name, fontSizesSettings ),
+		fontSize: newFontSize,
+	};
+
+	if ( newFontSize === false ) {
+		return removeFormat( value, name );
 	}
 
-	const moneFontSizeClass = activeInlineFontSizeFormat.attributes.class;
-	if ( moneFontSizeClass ) {
-		const moneFontSizeSlug = moneFontSizeClass.replace(
-			/.*has-([^\s]*)-font-size.*/,
-			'$1'
-		);
-		const fontSizeObject = getFontSize(
-			fontSizes,
-			moneFontSizeSlug,
-			moneFontSizeSlug
-		);
-		const fontSizeValue = fontSizeObject?.size;
-		return fontSizeValue;
+	if ( ! fontSize ) {
+		return removeFormat( value, name );
 	}
+
+	const styles = [];
+	const classNames = [];
+	const attributes = {};
+
+	if ( fontSize ) {
+		const fontSizeSlug = getFontSizeObjectByValue(
+			fontSizesSettings,
+			fontSize
+		);
+
+		if ( fontSizeSlug?.slug ) {
+			classNames.push( `has-${ fontSizeSlug.slug }-font-size` );
+		} else {
+			styles.push( [ 'font-size', fontSizeSlug.size ].join( ':' ) );
+		}
+	}
+
+	if ( styles.length ) {
+		attributes.style = styles.join( ';' );
+	}
+	if ( classNames.length ) {
+		attributes.class = classNames.join( ' ' );
+	}
+
+	return applyFormat( value, { type: name, attributes } );
 }
 
 function InlineFontSizePicker( {
@@ -73,53 +123,30 @@ function InlineFontSizePicker( {
 		height: '30px',
 	};
 
-	const onInlineFontSizeChange = ( newFontSize ) => {
-		const fontSizeSlug = getFontSizeObjectByValue(
-			fontSizes,
-			newFontSize
-		).slug;
-		if ( ! newFontSize ) {
-			onChange( removeFormat( value, name ) );
-		} else if ( fontSizeSlug ) {
-			onChange(
-				applyFormat( value, {
-					type: name,
-					attributes: {
-						class: `has-${ fontSizeSlug }-font-size`,
-					},
-				} )
-			);
-		} else {
-			onChange(
-				applyFormat( value, {
-					type: name,
-					attributes: {
-						style: `font-size: ${ newFontSize };`,
-					},
-				} )
-			);
-		}
-	};
-
 	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const activeFontSize = useMemo(
-		() => getActiveInlineFontSize( name, value, fontSizes ),
-		[ name, value, fontSizes ]
+		() => getActiveInlineFontSize( value, name, fontSizes ),
+		[ value, name, fontSizes ]
 	);
 
 	return (
 		<div style={ pickerStyle }>
 			<FontSizePicker
 				fontSizes={ fontSizes }
-				value={ activeFontSize }
-				onChange={ onInlineFontSizeChange }
+				value={ activeFontSize.fontSize }
+				onChange={ ( newFontSize ) => {
+					onChange(
+						setFontSize( value, name, fontSizes, newFontSize )
+					);
+				} }
 				withReset={ false }
-				units={ [ '%', 'px', 'em', 'rem', 'vw', 'vh' ] }
 			/>
 			<HStack alignment="right">
 				<Button
 					onClick={ () => {
-						onInlineFontSizeChange( false );
+						onChange(
+							setFontSize( value, name, fontSizes, false )
+						);
 					} }
 					variant="secondary"
 					style={ buttonStyle }

@@ -1,0 +1,49 @@
+{
+	"apiVersion": 3,
+	"name": "mone/icons",
+	"category": "mone-block-cat",
+	"title": "Icons",
+	"description": "Accentuate your website with icon groups with configurable colors and links.",
+	"textdomain": "mone",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"color": {
+			"gradients": true,
+			"text": false,
+			"__experimentalDefaultControls": {
+				"background": true
+			}
+		},
+		"spacing": {
+			"blockGap": [ "horizontal", "vertical" ],
+			"padding": true,
+			"margin": [ "top", "bottom" ],
+			"__experimentalDefaultControls": {
+				"blockGap": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"style": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"style": true
+			}
+		},
+		"layout": {
+			"allowSwitching": false,
+			"allowInheriting": false,
+			"default": {
+				"type": "flex"
+			}
+		},
+		"shadow": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

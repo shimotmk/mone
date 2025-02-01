@@ -10,11 +10,51 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
-== Copyright ==
+= 1.5.0 = 2025-02-01
 
-## Satori
-MPL 2.0 license
-Source: https://github.com/vercel/satori/
+- Added Paragraph Alert style
+- Added Icon format color,gradient,size,position,margin setting
+- Added Icon Phosphor icon
+- Added Paragraph,Heading One line text center
+- Added Details variation,icon,color,position
+- Other minor adjustments
+
+= 1.4.0 = 2025-01-05
+
+- Added Format Settings
+- Added Text Gradient Format
+- Added Background Gradient Format
+- Added Stroke Format
+- Added Reset Format
+- Update Noto sans font
+- Fix Button is-style-outline style
+- Other minor adjustments
+
+= 1.3.0 = 2024-12-30
+
+- Added Table of Contents block
+- Added heading plane style
+- Added Position UI
+- Other minor adjustments
+
+= 1.2.0 = 2024-12-09
+
+- Added horizontal article scrolling function
+- Added Github code embed block
+- Other minor adjustments
+
+= 1.1.0 = 2024-12-01
+
+- Added the ability to add links to entire group blocks
+- Revised the display of default controls for block support.
+- Added icon block
+- Added box menu block variations
+
+= 1.0.0 = 2024-11-25
+
+- Initial Release🎉
+
+== Copyright ==
 
 Noto Sans Font
 Copyright 2015-2021 Google LLC. All Rights Reserved. 
@@ -39,3 +79,28 @@ icomoon Font
   
 -- End of icomoon Font credits --
 
+## Font Awesome
+https://fontawesome.com
+License: MIT License
+
+## Feather
+https://feathericons.com
+License: MIT License
+
+## Ionicons
+https://ionic.io/ionicons
+License: MIT License
+
+## Phosphor Icons
+https://phosphoricons.com
+License: MIT License
+
+## highlight.js
+https://highlightjs.org
+License: BSD 3-Clause License
+Copyright (c) 2006, Ivan Sagalaev.
+All rights reserved.
+
+## Satori
+https://github.com/vercel/satori
+License: MPL 2.0 license

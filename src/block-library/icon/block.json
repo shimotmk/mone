@@ -1,0 +1,74 @@
+{
+	"apiVersion": 3,
+	"name": "mone/icon",
+	"category": "mone-block-cat",
+	"title": "Icon child",
+	"description": "Icons with configurable colors and links.",
+	"parent": [ "mone/icons" ],
+	"textdomain": "mone",
+	"attributes": {
+		"iconName": {
+			"type": "string"
+		},
+		"iconColor": {
+			"type": "string"
+		},
+		"iconGradient": {
+			"type": "string"
+		},
+		"iconCustomGradient": {
+			"type": "string"
+		},
+		"width": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"url": {
+			"type": "string",
+			"role": "content"
+		},
+		"linkTarget": {
+			"type": "string",
+			"role": "content"
+		},
+		"rel": {
+			"type": "string",
+			"role": "content"
+		},
+		"hoverBackgroundColor": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"color": {
+			"text": false,
+			"background": true,
+			"gradients": true
+		},
+		"spacing": {
+			"padding": true,
+			"__experimentalSkipSerialization": true,
+			"__experimentalDefaultControls": {
+				"padding": false
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"style": true,
+			"__experimentalDefaultControls": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"style": true
+			}
+		},
+		"shadow": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

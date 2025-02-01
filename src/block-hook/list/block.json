@@ -1,4 +1,3 @@
 {
-	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"editorScript": "file:./index.js"
+	"$schema": "https://schemas.wp.org/trunk/block.json"
 }

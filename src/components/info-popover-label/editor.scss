@@ -1,0 +1,28 @@
+.info-popover {
+
+	.info-popover__button {
+		box-shadow: none !important;
+		padding: 0;
+		height: 20px;
+		min-width: 20px;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
+
+.info-popover__container {
+
+	.components-popover__content {
+		max-width: 250px;
+		min-width: 220px;
+		padding: 12px;
+		text-align: left;
+
+		p {
+			margin: 0;
+		}
+	}
+}

@@ -1,23 +1,26 @@
 .is-style-mone-comments-pagination {
 
-	.wp-block-comments-pagination-numbers{
+	.wp-block-comments-pagination-numbers {
+
 		.page-numbers {
 			font-size: var(--wp--preset--font-size--small);
 			padding: 10px 15px;
 			border: 1px solid var(--wp--preset--color--mone-border);
 		}
+
 		span.current {
 			border: 1px solid var(--wp--preset--color--mone-border);
 			background: var(--wp--preset--color--content-contrast);
 			color: var(--wp--preset--color--key-2-contrast);
 		}
+
 		a:hover {
 			color: var(--wp--preset--color--content-contrast);
 			border: 1px solid var(--wp--preset--color--mone-border);
 			text-decoration: none;
 		}
 	}
-	
+
 	.wp-block-comments-pagination-previous,
 	.wp-block-comments-pagination-next {
 		font-size: var(--wp--preset--font-size--small);

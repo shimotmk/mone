@@ -6,73 +6,56 @@
  */
 
 namespace Mone_Theme\Format_Library\Icon;
+use function Mone_Theme\Custom_Css\escape_inline_style;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 /**
- * Enqueue_block_editor_icon
- */
-function enqueue_block_editor_icon() {
-	if ( is_admin() ) {
-		$asset_file = include MONE_TEMPLATE_DIR_PATH . '/build/format-library/icon/index.asset.php';
-		wp_register_script(
-			'mone-icon-script',
-			MONE_TEMPLATE_DIR_URL . '/build/format-library/icon/index.js',
-			$asset_file['dependencies'],
-			$asset_file['version'],
-			true
-		);
-
-		wp_enqueue_script( 'mone-icon-script' );
-		$data_to_pass = array(
-			'some_value'  => 'This is a value from PHP',
-			'templateUri' => MONE_TEMPLATE_DIR_URL,
-		);
-		wp_localize_script( 'mone-icon-script', 'moneData', $data_to_pass );
-		wp_set_script_translations(
-			'mone-icon-script',
-			'mone',
-			MONE_TEMPLATE_DIR_PATH . '/languages'
-		);
-	}
-
-	wp_enqueue_style(
-		'mone/icon',
-		MONE_TEMPLATE_DIR_URL . '/build/format-library/icon/style-index.css'
-	);
-}
-add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_editor_icon' );
-
-/**
- * Enqueue_style_icon
- */
-function register_format_icon() {
-	$asset_file = include MONE_TEMPLATE_DIR_PATH . '/build/format-library/icon/index.asset.php';
-	wp_enqueue_style(
-		'mone/icon',
-		MONE_TEMPLATE_DIR_URL . '/build/format-library/icon/style-index.css',
-		array(),
-		$asset_file['version']
-	);
-}
-add_action( 'init', __NAMESPACE__ . '\register_format_icon' );
-
-/**
- * Mark CSS safe if it contains a "--the-icon-svg: url(data:image/svg+xml" rule.
+ * Render_block_background_gradient
  *
- * @param bool   $allow_css Whether the CSS is allowed.
- * @param string $css_test_string The CSS to test.
+ * @param string $block_content block_content.
+ * @return string $block_content
  */
-function safecss_filter_attr_allow_css( $allow_css, $css_test_string ) {
-	// インラインアイコンを許可.
-	if ( '--the-icon-svg: url(data:image/svg+xml' === $css_test_string ) {
-		return true;
+function render_format_block_style( $block_content ) {
+	if ( strpos( $block_content, 'mone-inline-icon' ) !== false ) {
+		static $is_rendered = false;
+		if ( ! $is_rendered ) {
+			$custom_css = '
+				.mone-inline-icon {
+					display: inline-block;
+					margin-left: 0.1em;
+					margin-right: 0.1em;
+					min-width: 1em;
+					position: relative;
+					pointer-events: none;
+					line-height: 1;
+				}
+
+				.mone-inline-icon::after {
+					background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
+					content: "";
+					display: block;
+					height: 100%;
+					left: 0;
+					mask-image: var(--the-icon-svg);
+					mask-position: center center;
+					mask-repeat: no-repeat;
+					mask-size: contain;
+					position: absolute;
+					top: 0;
+					width: 100%;
+					box-sizing: inherit;
+				}
+			';
+			wp_register_style( 'mone-format-mone-inline-icon-style', false );
+			wp_enqueue_style( 'mone-format-mone-inline-icon-style' );
+			wp_add_inline_style( 'mone-format-mone-inline-icon-style', escape_inline_style( $custom_css ) );
+
+			$is_rendered = true;
+		}
 	}
-	if ( preg_match( '/^base64,[-a-zA-Z0-9_\/\+=]+\)/', $css_test_string ) ) {
-		$allow_css = true;
-	}
-	return $allow_css;
+	return $block_content;
 }
-add_filter( 'safecss_filter_attr_allow_css', __NAMESPACE__ . '\safecss_filter_attr_allow_css', 10, 2 );
+add_filter( 'render_block', __NAMESPACE__ . '\render_format_block_style' );

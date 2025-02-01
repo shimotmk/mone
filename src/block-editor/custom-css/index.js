@@ -14,6 +14,8 @@ import {
 } from '@wordpress/block-editor';
 import { hasBlockSupport } from '@wordpress/blocks';
 
+import { emptyStringToUndefined } from '../../utils-func/class-name/empty-string-to-undefined.js';
+
 export function registerBlockTypeCustomCss( settings, name ) {
 	const hasSupportCustomClassName = hasBlockSupport(
 		name,
@@ -66,7 +68,10 @@ export const BlockEditCustomCss = createHigherOrderComponent(
 							__nextHasNoMarginBottom
 							value={ moneCustomCss }
 							onChange={ ( newValue ) =>
-								setAttributes( { moneCustomCss: newValue } )
+								setAttributes( {
+									moneCustomCss:
+										emptyStringToUndefined( newValue ),
+								} )
 							}
 							className="block-editor-global-styles-advanced-panel__custom-css-input"
 						/>

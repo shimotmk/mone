@@ -1,15 +1,18 @@
 // inspector
 .mone_styles_switcher_lists {
-    .mone_styles_switcher_list {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-        .icon-search-modal-button-wrap {
-            width: 50%;
-        }
-        .icon-wrapper {
-            width: 30%;
-        }
-    }
+
+	.mone_styles_switcher_list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 10px;
+
+		.icon-search-modal-button-wrap {
+			width: 50%;
+		}
+
+		.icon-wrapper {
+			width: 30%;
+		}
+	}
 }

@@ -1,39 +1,45 @@
 .wp-block-mone-inspector-table {
 	margin-block-end: 1em;
+
 	table {
 		border-collapse: collapse;
 		table-layout: fixed;
 		width: 100%;
 
 		thead {
-			border-bottom: 1px solid #333333;
+			border-bottom: 1px solid #333;
 			background-color: #7b7b7b;
+
 			th {
 				color: #fff;
 				background-color: #7b7b7b;
 			}
 		}
 
-		td,th {
+		td,
+		th {
 			height: 30px;
 			overflow: hidden;
 			padding: 4px;
 			text-overflow: ellipsis;
-			border: 1px solid #333333;
+			border: 1px solid #333;
 			white-space: nowrap;
 			cursor: pointer;
+
 			&:hover {
 				background-color: rgba(var(--wp-admin-theme-color--rgb), 0.5);
 			}
 		}
 
-		td.is-selected,th.is-selected {
+		td.is-selected,
+		th.is-selected {
 			color: #fff;
 		}
 
 		tfoot {
-			border-top: 1px solid #333333;
+			border-top: 1px solid #333;
 			background-color: #7b7b7b;
+
 			td {
 				color: #fff;
 				background-color: #7b7b7b;

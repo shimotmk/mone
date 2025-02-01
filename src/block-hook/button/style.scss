@@ -1,26 +1,31 @@
 // https://github.com/WordPress/gutenberg/issues/64662
 :root :where(.wp-element-button, .wp-block-button__link) {
-  font-weight: inherit;
+	font-weight: inherit;
 }
 
 .wp-block-button {
-  .mone-copy-button {
-    position: relative;
-  }
-   
-  /* Tooltip */
-  .copied::after {
-    content: var(--copy-message);
-    display: inline-block;
-    width: max-content;
-    color: #fff;
-    background-color: inherit;
-    border-radius: 3px;
-    padding: 0 3px;
-    position: absolute;
-    top: -1.5rem;
-    right: -12px;
-    font-size: .7rem;
-    transition: .5s;
-  }
+
+	.mone-copy-button {
+		position: relative;
+	}
+
+	/* Tooltip */
+	.copied::after {
+		content: var(--copy-message);
+		display: inline-block;
+		width: max-content;
+		color: #fff;
+		background-color: inherit;
+		border-radius: 3px;
+		padding: 0 3px;
+		position: absolute;
+		top: -1.5rem;
+		right: -12px;
+		font-size: 0.7rem;
+		transition: 0.5s;
+	}
+}
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+	box-shadow: inherit;
 }

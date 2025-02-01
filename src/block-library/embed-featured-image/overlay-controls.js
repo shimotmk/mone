@@ -41,6 +41,7 @@ const Overlay = ( {
 						onColorChange: setOverlayColor,
 						onGradientChange: setGradient,
 						isShownByDefault: true,
+						clearable: true,
 						resetAllFilter: () => ( {
 							overlayColor: undefined,
 							customOverlayColor: undefined,
