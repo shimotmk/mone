@@ -15,13 +15,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render block post date
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
- * @param object $block block.
+ * @param array  $block block.
+ * @param object $instance instance.
  *
  * @return string
  */
-function render_block_post_date( $block_content, $parsed_block, $block ) {
-	if ( ! isset( $parsed_block['attrs']['isParentQuery'] ) ) {
+function render_block_post_date( $block_content, $block, $instance ) {
+	if ( ! isset( $block['attrs']['isParentQuery'] ) ) {
 		// ページ内で投稿日を非表示にする設定がされている場合は非表示にする.
 		global $post;
 		$show_post_date_on_page = get_post_meta( $post->ID, 'mone_is_show_post_date_on_page', true );
@@ -30,30 +30,30 @@ function render_block_post_date( $block_content, $parsed_block, $block ) {
 		}
 	}
 
-	if ( ! isset( $block->context['postId'] ) ) {
+	if ( ! isset( $instance->context['postId'] ) ) {
 		return $block_content;
 	}
 
-	$post_ID = $block->context['postId'];
+	$post_ID = $instance->context['postId'];
 	// If the update date and posting date are the same, the update date will not be displayed.
-	if ( isset( $parsed_block['attrs']['displayType'] ) && 'modified' === $parsed_block['attrs']['displayType'] ) {
+	if ( isset( $block['attrs']['displayType'] ) && 'modified' === $block['attrs']['displayType'] ) {
 		if ( get_the_modified_date( 'Ymd', $post_ID ) === get_the_date( 'Ymd', $post_ID ) ) {
 			return '';
 		}
 	}
 
-	if ( isset( $parsed_block['attrs']['monePrefix'] ) && $parsed_block['attrs']['monePrefix'] ) {
-		$prefix        = '<span class="wp-block-post-date__prefix">' . $parsed_block['attrs']['monePrefix'] . '</span>';
+	if ( isset( $block['attrs']['monePrefix'] ) && $block['attrs']['monePrefix'] ) {
+		$prefix        = '<span class="wp-block-post-date__prefix">' . $block['attrs']['monePrefix'] . '</span>';
 		$block_content = preg_replace( '/<time/', $prefix . '<time', $block_content );
 	}
 
-	if ( isset( $parsed_block['attrs']['moneSuffix'] ) && $parsed_block['attrs']['moneSuffix'] ) {
-		$suffix        = '<span class="wp-block-post-date__suffix">' . $parsed_block['attrs']['moneSuffix'] . '</span>';
+	if ( isset( $block['attrs']['moneSuffix'] ) && $block['attrs']['moneSuffix'] ) {
+		$suffix        = '<span class="wp-block-post-date__suffix">' . $block['attrs']['moneSuffix'] . '</span>';
 		$block_content = preg_replace( '/<\/time>/', '</time>' . $suffix, $block_content );
 	}
 
 	$block_content = new \WP_HTML_Tag_Processor( $block_content );
-	if ( isset( $parsed_block['attrs']['displayType'] ) && 'modified' === $parsed_block['attrs']['displayType'] ) {
+	if ( isset( $block['attrs']['displayType'] ) && 'modified' === $block['attrs']['displayType'] ) {
 		if ( $block_content->next_tag( 'time' ) ) {
 			$block_content->set_attribute( 'itemprop', 'dateModified' );
 		}

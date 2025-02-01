@@ -12,15 +12,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Variation switch
  *
- * @param array  $block_content block_content.
- * @param string $parsed_block parsed_block.
+ * @param array $block_content block_content.
+ * @param array $block block.
  * @return string
  */
-function mone_render_block_styles_switcher( $block_content, $parsed_block ) {
+function mone_render_block_styles_switcher( $block_content, $block ) {
 	$variation_title        = mone_get_style_variation_from_url() ?? '';
-	$open_dropdown_on_click = $parsed_block['attrs']['openDropdownOnClick'] ?? false;
-	$is_toggle              = $parsed_block['attrs']['isToggle'] ?? false;
-	$has_two_child_blocks   = isset( $parsed_block['innerBlocks'] ) && count( $parsed_block['innerBlocks'] ) === 2;
+	$open_dropdown_on_click = $block['attrs']['openDropdownOnClick'] ?? false;
+	$is_toggle              = $block['attrs']['isToggle'] ?? false;
+	$has_two_child_blocks   = isset( $block['innerBlocks'] ) && count( $block['innerBlocks'] ) === 2;
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 

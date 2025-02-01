@@ -15,15 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render Group
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $block block.
  */
-function render_block_show_share_button( $block_content, $parsed_block ) {
+function render_block_show_share_button( $block_content, $block ) {
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return $block_content;
 	}
 
 	$pattern_names = array( 'mone/sns-share', 'mone/sns-share-simple' );
-	if ( ! isset( $parsed_block['attrs']['metadata']['patternName'] ) || ! in_array( $parsed_block['attrs']['metadata']['patternName'], $pattern_names, true ) ) {
+	if ( ! isset( $block['attrs']['metadata']['patternName'] ) || ! in_array( $block['attrs']['metadata']['patternName'], $pattern_names, true ) ) {
 		return $block_content;
 	}
 

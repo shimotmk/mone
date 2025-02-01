@@ -42,15 +42,15 @@ add_filter( 'block_categories_all', __NAMESPACE__ . '\block_categories', 10, 2 )
  * Embed block
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $block block.
  * @return string $block_content block_content.
  */
-function render_block_embed( $block_content, $parsed_block ) {
+function render_block_embed( $block_content, $block ) {
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return $block_content;
 	}
 
-	if ( ! isset( $parsed_block['attrs']['providerNameSlug'] ) || 'youtube' !== $parsed_block['attrs']['providerNameSlug'] ) {
+	if ( ! isset( $block['attrs']['providerNameSlug'] ) || 'youtube' !== $block['attrs']['providerNameSlug'] ) {
 		return $block_content;
 	}
 

@@ -16,22 +16,22 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render block post date
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $block block.
  *
  * @return string
  */
-function render_block_paragraph( $block_content, $parsed_block ) {
-	$class_name = $parsed_block['attrs']['className'] ?? '';
+function render_block_paragraph( $block_content, $block ) {
+	$class_name = $block['attrs']['className'] ?? '';
 	if ( ! $class_name || ! str_contains( $class_name, 'is-style-mone-alert-' ) ) {
 		return $block_content;
 	}
 
-	$alert_icon_url          = $parsed_block['attrs']['moneAlertIcon'] ?? '';
-	$alert_icon_color_custom = isset( $parsed_block['attrs']['moneIconGradient'] )
-	? 'var(--wp--preset--gradient--' . $parsed_block['attrs']['moneIconGradient'] . ')'
-	: ( $parsed_block['attrs']['moneIconCustomGradient'] ?? ( isset( $parsed_block['attrs']['moneAlertIconColor'] ) && mone_is_hex_color( $parsed_block['attrs']['moneAlertIconColor'] )
-		? $parsed_block['attrs']['moneAlertIconColor']
-		: ( isset( $parsed_block['attrs']['moneAlertIconColor'] ) ? 'var(--wp--preset--color--' . $parsed_block['attrs']['moneAlertIconColor'] . ')' : '' ) ) );
+	$alert_icon_url          = $block['attrs']['moneAlertIcon'] ?? '';
+	$alert_icon_color_custom = isset( $block['attrs']['moneIconGradient'] )
+	? 'var(--wp--preset--gradient--' . $block['attrs']['moneIconGradient'] . ')'
+	: ( $block['attrs']['moneIconCustomGradient'] ?? ( isset( $block['attrs']['moneAlertIconColor'] ) && mone_is_hex_color( $block['attrs']['moneAlertIconColor'] )
+		? $block['attrs']['moneAlertIconColor']
+		: ( isset( $block['attrs']['moneAlertIconColor'] ) ? 'var(--wp--preset--color--' . $block['attrs']['moneAlertIconColor'] . ')' : '' ) ) );
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag() ) {
@@ -52,21 +52,21 @@ function render_block_paragraph( $block_content, $parsed_block ) {
 			$updated_style .= '--the-alert-icon-color-custom: ' . $alert_icon_color_custom . ';';
 		}
 
-		$has_named_font_size = ! empty( $parsed_block['attrs']['fontSize'] );
+		$has_named_font_size = ! empty( $block['attrs']['fontSize'] );
 		if ( $has_named_font_size ) {
-			$updated_style .= '--the-alert-font-size: var(--wp--preset--font-size--' . $parsed_block['attrs']['fontSize'] . ');';
+			$updated_style .= '--the-alert-font-size: var(--wp--preset--font-size--' . $block['attrs']['fontSize'] . ');';
 		}
-		if ( ! empty( $parsed_block['attrs']['style']['typography']['fontSize'] ) ) {
+		if ( ! empty( $block['attrs']['style']['typography']['fontSize'] ) ) {
 			$typography_styles = wp_get_typography_font_size_value(
 				array(
-					'size' => $parsed_block['attrs']['style']['typography']['fontSize'],
+					'size' => $block['attrs']['style']['typography']['fontSize'],
 				)
 			);
 			$updated_style    .= '--the-alert-font-size: ' . $typography_styles . ';';
 		}
 
-		if ( isset( $parsed_block['attrs']['style']['spacing']['padding']['top'] ) ) {
-			$top = $parsed_block['attrs']['style']['spacing']['padding']['top'];
+		if ( isset( $block['attrs']['style']['spacing']['padding']['top'] ) ) {
+			$top = $block['attrs']['style']['spacing']['padding']['top'];
 			$top = is_string( $top ) ? $top : '';
 			$top = $top && preg_match( '%[\\\(&=}]|/\*%', $top ) ? null : $top;
 			if ( is_string( $top ) && str_contains( $top, 'var:preset|spacing|' ) ) {
@@ -82,8 +82,8 @@ function render_block_paragraph( $block_content, $parsed_block ) {
 			}
 		}
 
-		if ( isset( $parsed_block['attrs']['style']['spacing']['padding']['left'] ) ) {
-			$left = $parsed_block['attrs']['style']['spacing']['padding']['left'];
+		if ( isset( $block['attrs']['style']['spacing']['padding']['left'] ) ) {
+			$left = $block['attrs']['style']['spacing']['padding']['left'];
 			$left = is_string( $left ) ? $left : '';
 			$left = $left && preg_match( '%[\\\(&=}]|/\*%', $left ) ? null : $left;
 			if ( is_string( $left ) && str_contains( $left, 'var:preset|spacing|' ) ) {

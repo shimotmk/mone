@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Register block
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $block block.
  */
-function render_block_styles_switcher_item( $block_content, $parsed_block ) {
-	$style_variations = $parsed_block['attrs']['styleVariations'] ?? '';
+function render_block_styles_switcher_item( $block_content, $block ) {
+	$style_variations = $block['attrs']['styleVariations'] ?? '';
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( 'button' ) ) {

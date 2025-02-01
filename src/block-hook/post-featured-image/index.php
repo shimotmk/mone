@@ -172,17 +172,17 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\add_is_template' );
  * Render block
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $parsed parsed.
  *
  * @return string
  */
-function render_block( $block_content, $parsed_block ) {
+function render_block( $block_content, $parsed ) {
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return $block_content;
 	}
 
 	// ループ内はNO IMAGEを表示.
-	if ( isset( $parsed_block['attrs']['isParentQuery'] ) ) {
+	if ( isset( $parsed['attrs']['isParentQuery'] ) ) {
 		return $block_content;
 	}
 
