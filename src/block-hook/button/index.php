@@ -15,23 +15,23 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render_post_button
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
- * @param object $block block.
+ * @param array  $block block.
+ * @param object $instance instance.
  */
-function render_block_button( $block_content, $parsed_block, $block ) {
+function render_block_button( $block_content, $block, $instance ) {
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return $block_content;
 	}
 
 	global $post;
 	$post->ID;
-	$post_id = isset( $block->context['postId'] ) ? $block->context['postId'] : $post->ID;
+	$post_id = isset( $instance->context['postId'] ) ? $instance->context['postId'] : $post->ID;
 
-	if ( ! isset( $parsed_block['attrs']['moneShareProviderNameSlug'] ) ) {
+	if ( ! isset( $block['attrs']['moneShareProviderNameSlug'] ) ) {
 		return $block_content;
 	}
 
-	if ( isset( $parsed_block['attrs']['tagName'] ) && 'button' !== $parsed_block['attrs']['tagName'] ) {
+	if ( isset( $block['attrs']['tagName'] ) && 'button' !== $block['attrs']['tagName'] ) {
 		return $block_content;
 	}
 
@@ -48,22 +48,22 @@ function render_block_button( $block_content, $parsed_block, $block ) {
 		$line_share_url      = 'https://social-plugins.line.me/lineit/share?url=' . $url . ';text=' . $title;
 
 		$p->set_attribute( 'data-wp-interactive', 'mone/share-button' );
-		if ( 'facebook' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		if ( 'facebook' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			$p->set_attribute( 'value', $facebook_share_url );
 			$p->set_attribute( 'data-wp-on--click', 'mone/share-button::actions.navigate' );
-		} elseif ( 'x' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		} elseif ( 'x' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			$p->set_attribute( 'value', $x_share_url );
 			$p->set_attribute( 'data-wp-on--click', 'mone/share-button::actions.navigate' );
-		} elseif ( 'hatena' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		} elseif ( 'hatena' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			$p->set_attribute( 'value', $hatebu_share_url );
 			$p->set_attribute( 'data-wp-on--click', 'mone/share-button::actions.navigate' );
-		} elseif ( 'line' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		} elseif ( 'line' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			$p->set_attribute( 'value', $line_share_url );
 			$p->set_attribute( 'data-wp-on--click', 'mone/share-button::actions.navigate' );
-		} elseif ( 'getpocket' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		} elseif ( 'getpocket' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			$p->set_attribute( 'value', $getpocket_share_url );
 			$p->set_attribute( 'data-wp-on--click', 'mone/share-button::actions.navigate' );
-		} elseif ( 'copy' === $parsed_block['attrs']['moneShareProviderNameSlug'] ) {
+		} elseif ( 'copy' === $block['attrs']['moneShareProviderNameSlug'] ) {
 			wp_enqueue_script( 'clipboard' );
 			$p->add_class( 'mone-copy-button' );
 			$p->set_attribute( 'data-clipboard-text', $url );
@@ -95,15 +95,15 @@ add_filter( 'render_block_core/button', __NAMESPACE__ . '\render_block_button', 
  * Render_post_button
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
+ * @param array  $block block.
  * @return string $block_content block_content.
  */
-function render_block_appreciate_button( $block_content, $parsed_block ) {
-	if ( ! isset( $parsed_block['attrs']['moneAppreciateAnimationImageUrl'] ) ) {
+function render_block_appreciate_button( $block_content, $block ) {
+	if ( ! isset( $block['attrs']['moneAppreciateAnimationImageUrl'] ) ) {
 		return $block_content;
 	}
 
-	if ( isset( $parsed_block['attrs']['tagName'] ) && 'button' !== $parsed_block['attrs']['tagName'] ) {
+	if ( isset( $block['attrs']['tagName'] ) && 'button' !== $block['attrs']['tagName'] ) {
 		return $block_content;
 	}
 
@@ -140,7 +140,7 @@ function render_block_appreciate_button( $block_content, $parsed_block ) {
 	}
 	$height = $width * $aspect_ratio;
 
-	$animation_image = '<img width="' . $width . '" height="' . $height . '" class="mone-animation-image" style="' . $img_existing_style . '" src=" ' . $parsed_block['attrs']['moneAppreciateAnimationImageUrl'] . ' " />';
+	$animation_image = '<img width="' . $width . '" height="' . $height . '" class="mone-animation-image" style="' . $img_existing_style . '" src=" ' . $block['attrs']['moneAppreciateAnimationImageUrl'] . ' " />';
 
 	$block_content = preg_replace(
 		'/(<img[^>]*class="[^"]*mone-hand-image[^"]*"[^>]*>)/',

@@ -86,19 +86,19 @@ add_action( 'init', __NAMESPACE__ . '\appreciate_count_register_meta' );
  * Render_post_button
  *
  * @param string $block_content block_content.
- * @param array  $parsed_block parsed_block.
- * @param object $block block.
+ * @param array  $block block.
+ * @param object $instance instance.
  */
-function render_block_appreciate_group( $block_content, $parsed_block, $block ) {
-	if ( ! isset( $block->context['postId'] ) ) {
+function render_block_appreciate_group( $block_content, $block, $instance ) {
+	if ( ! isset( $instance->context['postId'] ) ) {
 		return $block_content;
 	}
 
-	if ( ! isset( $parsed_block['attrs']['moneIsApplause'] ) ) {
+	if ( ! isset( $block['attrs']['moneIsApplause'] ) ) {
 		return $block_content;
 	}
 
-	$initial_count = get_post_meta( $block->context['postId'], 'mone_appreciate_count', true );
+	$initial_count = get_post_meta( $instance->context['postId'], 'mone_appreciate_count', true );
 	if ( ! $initial_count ) {
 		$initial_count = 0;
 	}
@@ -106,7 +106,7 @@ function render_block_appreciate_group( $block_content, $parsed_block, $block ) 
 	wp_interactivity_state(
 		'mone/click-applause-button',
 		array(
-			$block->context['postId'] => array(
+			$instance->context['postId'] => array(
 				'count' => $initial_count,
 			),
 		)
@@ -116,7 +116,7 @@ function render_block_appreciate_group( $block_content, $parsed_block, $block ) 
 	if ( $p->next_tag() ) {
 
 		$p->set_attribute( 'data-wp-interactive', 'mone/click-applause-button' );
-		$p->set_attribute( 'data-wp-context', '{ "postId": ' . $block->context['postId'] . ', "isClicked": false, "showCount": false }' );
+		$p->set_attribute( 'data-wp-context', '{ "postId": ' . $instance->context['postId'] . ', "isClicked": false, "showCount": false }' );
 	}
 
 	if ( $p->next_tag( 'button' ) ) {

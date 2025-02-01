@@ -14,19 +14,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Render block code
  *
- * @param string $content content.
- * @param array  $parsed_block parsed block.
+ * @param string $block_content block_content.
+ * @param array  $block parsed block.
  * @return string
  */
-function render_block_code( $content, $parsed_block ) {
-	$content   = new \WP_HTML_Tag_Processor( $content );
-	$unique_id = wp_unique_id( 'code-' );
-	if ( $content->next_tag( 'pre' ) ) {
-		if ( isset( $parsed_block['attrs']['moneLanguageName'] ) ) {
-				$content->add_class( 'language-' . $parsed_block['attrs']['moneLanguageName'] );
+function render_block_code( $block_content, $block ) {
+	$block_content = new \WP_HTML_Tag_Processor( $block_content );
+	$unique_id     = wp_unique_id( 'code-' );
+	if ( $block_content->next_tag( 'pre' ) ) {
+		if ( isset( $block['attrs']['moneLanguageName'] ) ) {
+				$block_content->add_class( 'language-' . $block['attrs']['moneLanguageName'] );
 		}
-		$content->set_attribute( 'data-wp-interactive', 'mone/code' );
-		$content->set_attribute(
+		$block_content->set_attribute( 'data-wp-interactive', 'mone/code' );
+		$block_content->set_attribute(
 			'data-wp-context',
 			wp_json_encode(
 				array(
@@ -36,8 +36,8 @@ function render_block_code( $content, $parsed_block ) {
 			)
 		);
 
-		if ( isset( $parsed_block['attrs']['moneHeight'] ) ) {
-			$existing_style = $content->get_attribute( 'style' );
+		if ( isset( $block['attrs']['moneHeight'] ) ) {
+			$existing_style = $block_content->get_attribute( 'style' );
 			$updated_style  = '';
 			if ( ! empty( $existing_style ) ) {
 				$updated_style = $existing_style;
@@ -46,20 +46,20 @@ function render_block_code( $content, $parsed_block ) {
 				}
 			}
 
-			$updated_style .= 'height:' . $parsed_block['attrs']['moneHeight'] . ';';
-			$content->set_attribute( 'style', $updated_style );
+			$updated_style .= 'height:' . $block['attrs']['moneHeight'] . ';';
+			$block_content->set_attribute( 'style', $updated_style );
 		}
 	}
 
-	if ( $content->next_tag( 'code' ) ) {
-		$content->set_attribute( 'data-mb-clip', $unique_id );
-		$content->set_attribute( 'data-wp-interactive', 'mone/code' );
-		$content->set_attribute( 'data-wp-bind--style', 'context.isWrap' );
-		$content->add_class( 'prism-code' );
+	if ( $block_content->next_tag( 'code' ) ) {
+		$block_content->set_attribute( 'data-mb-clip', $unique_id );
+		$block_content->set_attribute( 'data-wp-interactive', 'mone/code' );
+		$block_content->set_attribute( 'data-wp-bind--style', 'context.isWrap' );
+		$block_content->add_class( 'prism-code' );
 	}
-	$content = $content->get_updated_html();
+	$block_content = $block_content->get_updated_html();
 
-	$button  = '<div class="mone-code-buttons"><button
+	$button        = '<div class="mone-code-buttons"><button
 		class="mone-copy-button"
 		type="button"
 		aria-label="' . __( 'Copy to clipboard', 'mone' ) . '"
@@ -78,7 +78,7 @@ function render_block_code( $content, $parsed_block ) {
 	>
     <img src="' . esc_url( MONE_TEMPLATE_DIR_URL . '/assets/images/corner-up-left.png' ) . '" alt="wrap" class="mone-code-wrap-icon">
 	</button></div>';
-	$content = preg_replace( '/<code/', $button . '<code', $content, 1 );
+	$block_content = preg_replace( '/<code/', $button . '<code', $block_content, 1 );
 
 	wp_enqueue_script( 'clipboard' );
 	$asset_file = include MONE_TEMPLATE_DIR_PATH . '/build/block-hook/code/index.asset.php';
@@ -90,6 +90,6 @@ function render_block_code( $content, $parsed_block ) {
 		true
 	);
 
-	return $content;
+	return $block_content;
 }
 add_filter( 'render_block_core/code', __NAMESPACE__ . '\render_block_code', 10, 3 );
