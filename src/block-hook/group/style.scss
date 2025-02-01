@@ -1,4 +1,4 @@
-@import "./link/style";
+@use "./link/style" as link;
 
 .mone-applause-button {
 	position: relative;

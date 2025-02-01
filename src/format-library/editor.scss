@@ -1,5 +1,5 @@
-@import "./background-gradient/editor";
-@import "./block-toolbar/editor";
-@import "./icon/editor";
-@import "./text-gradient/editor";
-@import "./stroke/editor";
+@use "./background-gradient/editor" as background-gradient;
+@use "./block-toolbar/editor" as block-toolbar;
+@use "./icon/editor" as icon;
+@use "./text-gradient/editor" as text-gradient;
+@use "./stroke/editor" as stroke;
