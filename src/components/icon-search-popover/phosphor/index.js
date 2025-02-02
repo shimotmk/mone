@@ -3,7 +3,6 @@
  */
 import {
 	Button,
-	ButtonGroup,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
@@ -29,57 +28,39 @@ export const PhosphorIcon = ( { iconName, onChange } ) => {
 
 	return (
 		<>
-			<div className="mone-icon-type-tab">
-				<div className="mone-icon-tab-content">
-					<div className="mone-icon-type-toggle-wrapper">
-						<div className="mone-icon-type-toggle">
-							<ToggleGroupControl
-								value={ iconType }
-								isBlock
-								__nextHasNoMarginBottom
-								__next40pxDefaultSize
-								onChange={ ( value ) => setIconType( value ) }
-							>
-								<ToggleGroupControlOption
-									value="thin"
-									label="Thin"
-								/>
-								<ToggleGroupControlOption
-									value="light"
-									label="Light"
-								/>
-								<ToggleGroupControlOption
-									value="bold"
-									label="Bold"
-								/>
-							</ToggleGroupControl>
-						</div>
-					</div>
-					<ButtonGroup>
-						{ filteredIcons.map( ( phIconName, idx ) => {
-							return (
-								<Button
-									className="mone-icon-button fi"
-									key={ idx }
-									variant={
-										phIconName === iconName
-											? 'primary'
-											: undefined
-									}
-									onClick={ () => {
-										onChange( phIconName );
-									} }
-									label={ phIconName }
-								>
-									<ReactIcon
-										iconName={ phIconName }
-										size="100%"
-									/>
-								</Button>
-							);
-						} ) }
-					</ButtonGroup>
+			<div className="mone-icon-type-toggle-wrapper">
+				<div className="mone-icon-type-toggle">
+					<ToggleGroupControl
+						value={ iconType }
+						isBlock
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
+						onChange={ ( value ) => setIconType( value ) }
+					>
+						<ToggleGroupControlOption value="thin" label="Thin" />
+						<ToggleGroupControlOption value="light" label="Light" />
+						<ToggleGroupControlOption value="bold" label="Bold" />
+					</ToggleGroupControl>
 				</div>
+			</div>
+			<div className="mone-icon-button-wrapper">
+				{ filteredIcons.map( ( phIconName, idx ) => {
+					return (
+						<Button
+							className="mone-icon-button fi"
+							key={ idx }
+							variant={
+								phIconName === iconName ? 'primary' : undefined
+							}
+							onClick={ () => {
+								onChange( phIconName );
+							} }
+							label={ phIconName }
+						>
+							<ReactIcon iconName={ phIconName } size="100%" />
+						</Button>
+					);
+				} ) }
 			</div>
 		</>
 	);

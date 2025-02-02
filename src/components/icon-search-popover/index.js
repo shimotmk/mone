@@ -17,7 +17,6 @@ import { parseIcon } from './utils/parse-icon';
 import {
 	Modal,
 	Button,
-	ButtonGroup,
 	TabPanel,
 	SearchControl,
 	__experimentalHStack as HStack,
@@ -54,7 +53,7 @@ export const IconPopoverContent = ( props ) => {
 
 	if ( filteredIcons ) {
 		iconList = filteredIcons.length ? (
-			<ButtonGroup className="mone-icon-button-group">
+			<div className="mone-icon-button-wrapper">
 				{ filteredIcons.map( ( _iconName, idx ) => {
 					return (
 						<Button
@@ -72,7 +71,7 @@ export const IconPopoverContent = ( props ) => {
 						</Button>
 					);
 				} ) }
-			</ButtonGroup>
+			</div>
 		) : (
 			<div className="no-icon">{ __( 'Icon not found.', 'mone' ) }</div>
 		);
@@ -120,7 +119,7 @@ export const IconPopoverContent = ( props ) => {
 					if ( 'fa' === tab.name ) {
 						return (
 							<div className="mone-icon-tab-content">
-								<ButtonGroup>
+								<div className="mone-icon-button-wrapper">
 									{ faIcons.map( ( icon, idx ) => {
 										return (
 											<Button
@@ -147,13 +146,13 @@ export const IconPopoverContent = ( props ) => {
 											</Button>
 										);
 									} ) }
-								</ButtonGroup>
+								</div>
 							</div>
 						);
 					} else if ( 'io' === tab.name ) {
 						return (
 							<div className="mone-icon-tab-content">
-								<ButtonGroup>
+								<div className="mone-icon-button-wrapper">
 									{ ioIcons.map( ( icon, idx ) => {
 										return (
 											<Button
@@ -180,13 +179,13 @@ export const IconPopoverContent = ( props ) => {
 											</Button>
 										);
 									} ) }
-								</ButtonGroup>
+								</div>
 							</div>
 						);
 					} else if ( 'fi' === tab.name ) {
 						return (
 							<div className="mone-icon-tab-content">
-								<ButtonGroup>
+								<div className="mone-icon-button-wrapper">
 									{ fiIcons.map( ( icon, idx ) => {
 										return (
 											<Button
@@ -213,7 +212,7 @@ export const IconPopoverContent = ( props ) => {
 											</Button>
 										);
 									} ) }
-								</ButtonGroup>
+								</div>
 							</div>
 						);
 					} else if ( 'ph' === tab.name ) {
