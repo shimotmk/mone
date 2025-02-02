@@ -14,9 +14,6 @@ import * as FiIcons from 'react-icons/fi';
 /**
  * Internal dependencies
  */
-import { fiIcons } from './icon-list/feather-icons';
-import { faIcons } from './icon-list/fa-icons';
-import { ioIcons } from './icon-list/io-icons';
 import { PHOSPHOR_ICONS, getPhosphorIconSvg } from './icon-list/phosphor-icons';
 
 export const FaIcons = { ..._FaIcons, ...FaIcons6 };
