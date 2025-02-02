@@ -195,7 +195,12 @@ export default function Edit( props ) {
 				<ToolsPanel
 					label={ __( 'Settings' ) }
 					resetAll={ () =>
-						setAttributes( { width: undefined, height: undefined } )
+						setAttributes( {
+							width: undefined,
+							height: undefined,
+							iconName: undefined,
+							iconSVG: undefined,
+						} )
 					}
 					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 				>
@@ -262,6 +267,8 @@ export default function Edit( props ) {
 							resetAllFilter: () => {
 								setAttributes( {
 									iconColor: undefined,
+									iconGradient: undefined,
+									iconCustomGradient: undefined,
 								} );
 							},
 							isShownByDefault: true,
