@@ -44,7 +44,9 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
+	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
+import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const ALLOWED_BLOCKS = [ 'mone/icon' ];
@@ -60,6 +62,7 @@ const LINK_SETTINGS = [
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const {
+		iconSVG,
 		iconName,
 		iconColor,
 		width,
@@ -97,6 +100,7 @@ export default function Edit( props ) {
 		className: clsx( {
 			'has-icon-color': iconColor,
 			'has-icon-gradient-color': gradientValue,
+			'wp-block-mone-icon-wrapper': ! iconColor && ! gradientValue,
 		} ),
 		style: {
 			width,
@@ -150,9 +154,40 @@ export default function Edit( props ) {
 		return () => document.body.removeEventListener( 'click', popoverClose );
 	}, [ popoverClose ] );
 
-	const SVG = iconName
-		? renderToString( <ReactIcon iconName={ iconName } /> )
-		: renderToString( <ReactIcon iconName="FaWordpress" /> );
+	let SVG;
+	if ( iconName && isCustomIcon( iconName ) ) {
+		SVG = iconSVG;
+	} else if ( iconName ) {
+		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
+	} else {
+		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
+	}
+
+	const renderIcon = () => {
+		if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
+			return parseIcon( SVG );
+		} else if ( iconName ) {
+			return <ReactIcon iconName={ iconName } />;
+		}
+		return <ReactIcon iconName="FaWordpress" />;
+	};
+
+	const renderingIcon =
+		iconColor || gradientValue ? (
+			<>
+				<span
+					className="wp-block-mone-icon-mask-image wp-block-mone-icon-wrapper"
+					aria-hidden="true"
+					style={ {
+						'--the-icon-svg': `url(${ createSvgUrl( SVG ) })`,
+					} }
+				>
+					{ renderIcon() }
+				</span>
+			</>
+		) : (
+			<>{ renderIcon() }</>
+		);
 
 	return (
 		<>
@@ -197,10 +232,22 @@ export default function Edit( props ) {
 					>
 						<IconSearchModal
 							value={ iconName }
+							iconSVG={ iconSVG || '' }
 							onChange={ ( value ) => {
-								setAttributes( {
-									iconName: value,
-								} );
+								if (
+									typeof value === 'object' &&
+									value !== null &&
+									value.iconType === 'custom'
+								) {
+									setAttributes( {
+										iconName: value.iconType,
+										iconSVG: value.iconSVG,
+									} );
+								} else {
+									setAttributes( {
+										iconName: value,
+									} );
+								}
 							} }
 						/>
 					</ToolsPanelItem>
@@ -337,40 +384,10 @@ export default function Edit( props ) {
 						href="#icon-pseudo-link"
 						onClick={ ( event ) => event.preventDefault() }
 					>
-						<span
-							className="wp-block-mone-icon-mask-image"
-							aria-hidden="true"
-							style={ {
-								'--the-icon-svg': `url(${ createSvgUrl(
-									SVG
-								) })`,
-							} }
-						>
-							{ iconName ? (
-								<ReactIcon iconName={ iconName } />
-							) : (
-								<ReactIcon iconName="FaWordpress" />
-							) }
-						</span>
+						{ renderingIcon }
 					</a>
 				) : (
-					<>
-						<span
-							className="wp-block-mone-icon-mask-image"
-							aria-hidden="true"
-							style={ {
-								'--the-icon-svg': `url(${ createSvgUrl(
-									SVG
-								) })`,
-							} }
-						>
-							{ iconName ? (
-								<ReactIcon iconName={ iconName } />
-							) : (
-								<ReactIcon iconName="FaWordpress" />
-							) }
-						</span>
-					</>
+					<>{ renderingIcon }</>
 				) }
 			</div>
 		</>

@@ -51,30 +51,20 @@ export const generateIconName = ( { iconKind, iconType, iconNamePart } ) => {
 };
 
 export const isCustomIcon = ( iconName ) => {
-	if ( iconName === 'custom' || IconKinds( iconName ) === 'custom' ) {
+	if ( iconName === 'custom' ) {
+		return true;
+	}
+	if ( ReactIconKinds( iconName ) === null ) {
 		return true;
 	}
 	return false;
 };
 
-// プレフィックスからアイコン種類を判別
-export const IconKinds = ( iconName ) => {
-	if ( iconName.startsWith( 'Fi' ) && fiIcons.includes( iconName ) ) {
-		return 'fi';
-	} else if ( iconName.startsWith( 'Fa' ) && faIcons.includes( iconName ) ) {
-		return 'fa';
-	} else if ( iconName.startsWith( 'Io' ) && ioIcons.includes( iconName ) ) {
-		return 'io';
-	} else if (
-		iconName.startsWith( 'Ph' ) &&
-		PHOSPHOR_ICONS.includes( iconName )
-	) {
-		return 'ph';
-	}
-	return 'custom';
-};
-
 export const ReactIconKinds = ( iconName ) => {
+	if ( ! iconName ) {
+		return null;
+	}
+
 	// プレフィックスからアイコン種類を判別
 	if ( iconName.startsWith( 'Fi' ) && FiIcons[ iconName ] !== undefined ) {
 		return 'fi';

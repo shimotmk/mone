@@ -1,13 +1,15 @@
 /**
  * Internal dependencies
  */
-import { ReactIcon, IconKinds } from './ReactIcon';
+import { ReactIcon, ReactIconKinds, isCustomIcon } from './ReactIcon';
 import { fiIcons } from './icon-list/feather-icons';
 import { ioIcons } from './icon-list/io-icons';
 import { faIcons } from './icon-list/fa-icons';
 import { PHOSPHOR_ICONS } from './icon-list/phosphor-icons';
-import { PhosphorLogo } from '../../icons';
+import { PhosphorLogo, CodeBlock } from '../../icons';
 import { PhosphorIcon } from './phosphor';
+import { CustomIcon } from './custom-icon';
+import { parseIcon } from './utils/parse-icon';
 
 /**
  * WordPress dependencies
@@ -30,7 +32,7 @@ import { Icon } from '@wordpress/icons';
 import './editor.scss';
 
 export const IconPopoverContent = ( props ) => {
-	const { onChange, value } = props;
+	const { onChange, value, iconSVG } = props;
 	const iconName = value;
 	const [ searchValue, setSearchValue ] = useState( '' );
 
@@ -107,12 +109,12 @@ export const IconPopoverContent = ( props ) => {
 						name: 'ph',
 						title: <Icon icon={ PhosphorLogo } size={ 42 } />,
 					},
-					// {
-					// 	name: 'custom',
-					// 	title: <Icon icon={ CodeBlock } size={ 42 } />,
-					// },
+					{
+						name: 'custom',
+						title: <Icon icon={ CodeBlock } size={ 42 } />,
+					},
 				] }
-				initialTabName={ iconName ? IconKinds( iconName ) : 'fa' }
+				initialTabName={ iconName ? ReactIconKinds( iconName ) : 'fa' }
 			>
 				{ ( tab ) => {
 					if ( 'fa' === tab.name ) {
@@ -223,6 +225,14 @@ export const IconPopoverContent = ( props ) => {
 								/>
 							</div>
 						);
+					} else if ( 'custom' === tab.name ) {
+						return (
+							<CustomIcon
+								iconName={ iconName }
+								onChange={ onChange }
+								iconSVG={ iconSVG }
+							/>
+						);
 					}
 				} }
 			</TabPanel>
@@ -260,8 +270,10 @@ export const IconSearchModal = ( props ) => {
 					<HStack justify={ hasValue ? 'start' : 'center' }>
 						<ZStack isLayered={ false } offset={ -8 }>
 							<Flex expanded={ false }>
-								{ hasValue && value && (
+								{ ! isCustomIcon( value ) ? (
 									<ReactIcon iconName={ value } />
+								) : (
+									parseIcon( iconSVG )
 								) }
 							</Flex>
 						</ZStack>

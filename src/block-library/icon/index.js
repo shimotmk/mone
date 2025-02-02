@@ -10,6 +10,7 @@ import { blockCategoryIcon as icon } from '../../icons';
 import metadata from './block.json';
 import edit from './edit';
 import save from './save';
+import deprecated from './deprecated';
 import example from './example';
 import './style.scss';
 
@@ -21,5 +22,6 @@ registerBlockType( name, {
 	icon,
 	edit,
 	save,
+	deprecated,
 	example,
 } );

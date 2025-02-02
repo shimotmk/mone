@@ -18,7 +18,23 @@ import {
 	createSvgUrl,
 } from '../../../components/icon-search-popover/ReactIcon';
 
+function migrateV1ToV2( attributes ) {
+	if ( ! attributes.iconSVG ) {
+		const SVG = attributes.iconName
+			? renderToString( <ReactIcon iconName={ attributes.iconName } /> )
+			: renderToString( <ReactIcon iconName="FaWordpress" /> );
+		attributes = {
+			...attributes,
+			iconSVG: SVG,
+		};
+	}
+	return {
+		...attributes,
+	};
+}
+
 export const v1 = {
+	migrate: migrateV1ToV2,
 	attributes: {
 		iconName: {
 			type: 'string',
