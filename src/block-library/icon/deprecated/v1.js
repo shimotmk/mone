@@ -18,7 +18,7 @@ import {
 	createSvgUrl,
 } from '../../../components/icon-search-popover/ReactIcon';
 
-function migrateV1ToV2( attributes ) {
+function migrateV0ToV1( attributes ) {
 	if ( ! attributes.iconSVG ) {
 		const SVG = attributes.iconName
 			? renderToString( <ReactIcon iconName={ attributes.iconName } /> )
@@ -34,7 +34,7 @@ function migrateV1ToV2( attributes ) {
 }
 
 export const v1 = {
-	migrate: migrateV1ToV2,
+	migrate: migrateV0ToV1,
 	attributes: {
 		iconName: {
 			type: 'string',
