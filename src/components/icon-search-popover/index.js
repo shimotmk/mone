@@ -25,7 +25,7 @@ import {
 	FlexItem,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState, useMemo } from '@wordpress/element';
+import { useState, useMemo, renderToString } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
@@ -135,7 +135,20 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													const iconSvgString =
+														icon === iconName
+															? undefined
+															: renderToString(
+																	<ReactIcon
+																		iconName={
+																			icon
+																		}
+																	/>
+															  );
+													onChange( {
+														iconType: newIcon,
+														iconSVG: iconSvgString,
+													} );
 												} }
 												label={ icon }
 											>
@@ -168,7 +181,20 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													const iconSvgString =
+														icon === iconName
+															? undefined
+															: renderToString(
+																	<ReactIcon
+																		iconName={
+																			icon
+																		}
+																	/>
+															  );
+													onChange( {
+														iconType: newIcon,
+														iconSVG: iconSvgString,
+													} );
 												} }
 												label={ icon }
 											>
@@ -201,7 +227,20 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													const iconSvgString =
+														icon === iconName
+															? undefined
+															: renderToString(
+																	<ReactIcon
+																		iconName={
+																			icon
+																		}
+																	/>
+															  );
+													onChange( {
+														iconType: newIcon,
+														iconSVG: iconSvgString,
+													} );
 												} }
 												label={ icon }
 											>

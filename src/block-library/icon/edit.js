@@ -30,13 +30,14 @@ import {
 	Popover,
 } from '@wordpress/components';
 import { link } from '@wordpress/icons';
-import { select } from '@wordpress/data';
+import { select, useSelect } from '@wordpress/data';
 import {
 	useState,
 	useCallback,
 	useEffect,
 	renderToString,
 } from '@wordpress/element';
+import { serialize } from '@wordpress/blocks';
 
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import { isHexColor } from '../../utils-func/is-hex-color';
@@ -44,7 +45,6 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
 import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
@@ -155,21 +155,14 @@ export default function Edit( props ) {
 	}, [ popoverClose ] );
 
 	let SVG;
-	if ( iconName && isCustomIcon( iconName ) ) {
+	if ( !! iconSVG ) {
 		SVG = iconSVG;
-	} else if ( iconName ) {
-		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
 	} else {
 		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
 	}
 
 	const renderIcon = () => {
-		if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
-			return parseIcon( SVG );
-		} else if ( iconName ) {
-			return <ReactIcon iconName={ iconName } />;
-		}
-		return <ReactIcon iconName="FaWordpress" />;
+		return parseIcon( SVG );
 	};
 
 	const renderingIcon =
@@ -239,20 +232,10 @@ export default function Edit( props ) {
 							value={ iconName }
 							iconSVG={ iconSVG || '' }
 							onChange={ ( value ) => {
-								if (
-									typeof value === 'object' &&
-									value !== null &&
-									value.iconType === 'custom'
-								) {
-									setAttributes( {
-										iconName: value.iconType,
-										iconSVG: value.iconSVG,
-									} );
-								} else {
-									setAttributes( {
-										iconName: value,
-									} );
-								}
+								setAttributes( {
+									iconName: value.iconType,
+									iconSVG: value.iconSVG,
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

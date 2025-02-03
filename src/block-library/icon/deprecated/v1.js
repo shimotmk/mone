@@ -11,6 +11,11 @@ import {
 	__experimentalGetSpacingClassesAndStyles as getSpacingClassesAndStyles,
 } from '@wordpress/block-editor';
 import { renderToString } from '@wordpress/element';
+import {
+	createBlock,
+	serialize,
+	__unstableSerializeAndClean,
+} from '@wordpress/blocks';
 
 import { isHexColor } from '../../../utils-func/is-hex-color';
 import {
@@ -28,13 +33,13 @@ function migrateV0ToV1( attributes ) {
 			iconSVG: SVG,
 		};
 	}
+
 	return {
 		...attributes,
 	};
 }
 
 export const v1 = {
-	migrate: migrateV0ToV1,
 	attributes: {
 		iconName: {
 			type: 'string',
@@ -197,4 +202,5 @@ export const v1 = {
 			</div>
 		);
 	},
+	migrate: migrateV0ToV1,
 };

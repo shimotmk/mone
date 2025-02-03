@@ -16,7 +16,6 @@ import { isHexColor } from '../../utils-func/is-hex-color';
 import {
 	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
 import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 
@@ -33,7 +32,6 @@ export default function save( props ) {
 		hoverBackgroundColor,
 		iconGradient,
 		iconCustomGradient,
-		iconName,
 	} = attributes;
 	const spacingProps = getSpacingClassesAndStyles( attributes );
 
@@ -73,21 +71,14 @@ export default function save( props ) {
 	};
 
 	let SVG;
-	if ( iconName && isCustomIcon( iconName ) ) {
+	if ( !! iconSVG ) {
 		SVG = iconSVG;
-	} else if ( iconName ) {
-		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
 	} else {
 		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
 	}
 
 	const renderIcon = () => {
-		if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
-			return parseIcon( SVG );
-		} else if ( iconName ) {
-			return <ReactIcon iconName={ iconName } />;
-		}
-		return <ReactIcon iconName="FaWordpress" />;
+		return parseIcon( SVG );
 	};
 
 	const renderingIcon =
