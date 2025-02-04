@@ -44,7 +44,6 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 } from '../../components/icon-search-popover/ReactIcon';
 import { parseIcon } from '../../components/icon-search-popover/utils/parse-icon';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
