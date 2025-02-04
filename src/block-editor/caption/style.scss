@@ -1,0 +1,94 @@
+.mone-caption-left {
+
+	> .wp-element-caption {
+		text-align: left;
+	}
+}
+
+
+.mone-caption-center {
+
+	> .wp-element-caption {
+		text-align: center;
+	}
+}
+
+
+.mone-caption-right {
+
+	> .wp-element-caption {
+		text-align: right;
+	}
+}
+
+
+.mone-caption-one-line-center {
+
+	> .wp-element-caption {
+		margin-inline: auto;
+		max-inline-size: max-content;
+		text-align: initial;
+	}
+}
+
+
+.wp-block-gallery.has-nested-images figure.wp-block-image.mone-caption-one-line-center {
+
+	&::before {
+		background: linear-gradient(0deg, #0006, #0000);
+	}
+
+
+	> figcaption.wp-element-caption {
+		background: initial;
+		margin-inline: auto;
+		max-inline-size: max-content;
+		text-align: initial;
+		word-break: break-word;
+	}
+}
+
+
+.wp-block-gallery.has-nested-images.mone-caption-one-line-center {
+
+	> .blocks-gallery-caption {
+		margin-inline: auto;
+		max-inline-size: max-content;
+		text-align: initial;
+		word-break: break-word;
+	}
+}
+
+
+.wp-block-quote {
+
+	&.mone-caption-left {
+
+		cite {
+			justify-content: start;
+		}
+	}
+
+	&.mone-caption-center {
+
+		cite {
+			text-align: center;
+			justify-content: center;
+		}
+	}
+
+	.mone-caption-one-line-center {
+
+		cite {
+			justify-content: center;
+		}
+	}
+
+	&.mone-caption-right {
+
+		cite {
+			text-align: right;
+			justify-content: flex-end;
+		}
+	}
+}
