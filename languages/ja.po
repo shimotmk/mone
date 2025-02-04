@@ -512,6 +512,10 @@ msgstr "以下のボタンを押してアラートが出なければ認証完了
 msgid "Check authentication"
 msgstr "認証チェック"
 
+#: build/block-editor/index.js:1
+msgid "Caption Position"
+msgstr "キャプション位置"
+
 #: build/block-editor/index.js:1 build/block-editor/index.js:137
 msgid "Using the selector, it can be rewritten to a block-specific class."
 msgstr "selectorを使用して、ブロック固有のクラスに書き換えることができます。"
@@ -601,6 +605,10 @@ msgstr "固定"
 #: build/block-editor/index.js:563
 msgid "Top"
 msgstr "上"
+
+#: build/block-editor/index.js:1
+msgid "Center"
+msgstr "中央"
 
 #: build/block-editor/index.js:1
 #: build/block-editor/index.js:590
