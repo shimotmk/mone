@@ -1,3 +1,4 @@
+import './caption';
 import './custom-css';
 import './hidden';
 import './position';

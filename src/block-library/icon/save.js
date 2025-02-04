@@ -32,7 +32,6 @@ export default function save( props ) {
 		hoverBackgroundColor,
 		iconGradient,
 		iconCustomGradient,
-		iconName,
 	} = attributes;
 	const spacingProps = getSpacingClassesAndStyles( attributes );
 

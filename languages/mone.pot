@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mone 1.4.0\n"
+"Project-Id-Version: Mone 1.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-01-27T12:11:44+00:00\n"
+"POT-Creation-Date: 2025-02-04T22:49:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -538,6 +538,29 @@ msgid "Check authentication"
 msgstr ""
 
 #: build/block-editor/index.js:1
+#: build/block-editor/index.js:2
+msgid "Left"
+msgstr ""
+
+#: build/block-editor/index.js:1
+msgid "Center"
+msgstr ""
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:2
+msgid "Right"
+msgstr ""
+
+#: build/block-editor/index.js:1
+#: build/block-editor/index.js:2
+msgid "One line text center"
+msgstr ""
+
+#: build/block-editor/index.js:1
+msgid "Caption Position"
+msgstr ""
+
+#: build/block-editor/index.js:1
 msgid "Using the selector, it can be rewritten to a block-specific class."
 msgstr ""
 
@@ -579,6 +602,7 @@ msgid "Hide settings"
 msgstr ""
 
 #: build/block-editor/index.js:2
+#: build/format-library/index.js:1
 msgid "Position"
 msgstr ""
 
@@ -599,15 +623,7 @@ msgid "Top"
 msgstr ""
 
 #: build/block-editor/index.js:2
-msgid "Right"
-msgstr ""
-
-#: build/block-editor/index.js:2
 msgid "Bottom"
-msgstr ""
-
-#: build/block-editor/index.js:2
-msgid "Left"
 msgstr ""
 
 #: build/block-editor/index.js:2
@@ -628,10 +644,6 @@ msgstr ""
 #: build/format-library/index.js:1
 #: build/plugins/index.js:1
 msgid "Learn More"
-msgstr ""
-
-#: build/block-editor/index.js:2
-msgid "One line text center"
 msgstr ""
 
 #: build/block-editor/index.js:2
@@ -972,7 +984,6 @@ msgid "GitHub Code Embed"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
-#: build/format-library/index.js:1
 msgid "Size"
 msgstr ""
 
@@ -1038,6 +1049,7 @@ msgid "White"
 msgstr ""
 
 #: build/block-library/styles-switcher-item/index.js:2
+#: build/format-library/index.js:1
 msgid "Settings"
 msgstr ""
 

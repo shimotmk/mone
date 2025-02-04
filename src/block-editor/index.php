@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-editor/caption/index.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-editor/typography/index.php';
 
 /**
