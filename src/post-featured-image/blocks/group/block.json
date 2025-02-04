@@ -1,0 +1,51 @@
+{
+	"apiVersion": 3,
+	"name": "mone/satori-group",
+	"category": "mone-block-cat",
+	"title": "Group",
+	"textdomain": "mone",
+	"ancestor": [ "mone/satori-wrapper" ],
+	"attributes": {
+		"display": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"moneSatori": {
+			"background": {
+				"backgroundImage": true,
+				"__experimentalDefaultControls": {
+					"backgroundImage": true
+				}
+			},
+			"blockGap": true,
+			"color": {
+				"gradients": true,
+				"__experimentalDefaultControls": {
+					"background": true,
+					"text": true
+				}
+			},
+			"layout": true,
+			"spacing": {
+				"padding": true
+			},
+			"__experimentalBorder": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"__experimentalDefaultControls": {
+					"color": true,
+					"radius": true,
+					"width": true
+				}
+			}
+		},
+		"inserter": false,
+		"customClassName": false,
+		"className": false,
+		"renaming": false,
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}

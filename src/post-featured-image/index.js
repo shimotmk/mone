@@ -2,20 +2,26 @@ import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { useDispatch } from '@wordpress/data';
 import {
+	Button,
 	__experimentalHStack as HStack,
 	__experimentalText as Text,
 } from '@wordpress/components';
+import { useState } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 
 import { InsertThumbnail } from './insert-thumbnail';
+import { CustomThumbnailModal } from './custom-thumbnail-modal';
 import { ThumbnailDropdownMenu } from './dropdown-menu';
 import { blockCategoryIcon } from './icons';
 import { usePreferencesStore } from '../plugins/user/disable-featured-image-template';
 import './style.scss';
+import './store';
+import './mone-supports';
 
 const postFeaturedImageSetting = ( OriginalComponent ) => ( props ) => {
 	const { onRemoveImage, onUpdateImage, ...restProps } = props;
 	const { editPost } = useDispatch( 'core/editor' );
+	const [ isCustomModalOpen, setIsCustomModalOpen ] = useState( false );
 
 	const removeImage = () => {
 		editPost( {
@@ -71,6 +77,26 @@ const postFeaturedImageSetting = ( OriginalComponent ) => ( props ) => {
 							currentPostId={ props.currentPostId }
 						/>
 					</div>
+					<p style={ { margin: 0 } }>
+						<Button
+							variant="link"
+							onClick={ () =>
+								setIsCustomModalOpen( ! isCustomModalOpen )
+							}
+						>
+							{ __(
+								'You can customize it from the eye-catching template.',
+								'mone'
+							) }
+						</Button>
+						{ isCustomModalOpen && (
+							<CustomThumbnailModal
+								onModalClose={ () =>
+									setIsCustomModalOpen( false )
+								}
+							/>
+						) }
+					</p>
 					<hr style={ { margin: 0 } } />
 				</>
 			) }
