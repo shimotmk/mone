@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_caption_style( $block_content, $block ) {
 	$class_name = $block['attrs']['className'] ?? '';
-	if ( ! $class_name ) {
+	if ( empty( $class_name ) ) {
 		return $block_content;
 	}
 
@@ -80,12 +80,20 @@ function render_caption_style( $block_content, $block ) {
 					word-break: break-word;
 				}
 			}
-			.wp-block-gallery.has-nested-images.mone-caption-one-line-center {
-				> .blocks-gallery-caption {
-					margin-inline: auto;
-					max-inline-size: max-content;
-					text-align: initial;
-					word-break: break-word;
+
+			.wp-block-gallery.has-nested-images.mone-caption-left {
+				> .wp-element-caption {
+					text-align: left;
+				}
+			}
+			.wp-block-gallery.has-nested-images.mone-caption-center {
+				> .wp-element-caption {
+					text-align: center;
+				}
+			}
+			.wp-block-gallery.has-nested-images.mone-caption-right {
+				> .wp-element-caption {
+					text-align: right;
 				}
 			}
 		';

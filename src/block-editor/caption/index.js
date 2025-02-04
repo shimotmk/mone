@@ -70,6 +70,28 @@ export const blockEditCaption = createHigherOrderComponent(
 			'mone-caption-one-line-center',
 		];
 
+		const basePositions = [
+			{ value: 'left', label: __( 'Left', 'mone' ), icon: alignLeft },
+			{
+				value: 'center',
+				label: __( 'Center', 'mone' ),
+				icon: alignCenter,
+			},
+			{ value: 'right', label: __( 'Right', 'mone' ), icon: alignRight },
+		];
+
+		const captionPositions =
+			name !== 'core/gallery'
+				? [
+						...basePositions,
+						{
+							value: 'one-line-center',
+							label: __( 'One line text center', 'mone' ),
+							icon: alignOneLinerCenter,
+						},
+				  ]
+				: basePositions;
+
 		return (
 			<>
 				<BlockEdit { ...props } />
@@ -109,56 +131,37 @@ export const blockEditCaption = createHigherOrderComponent(
 									isDeselectable
 									label={ __( 'Caption Position', 'mone' ) }
 									value={
-										[
-											'left',
-											'center',
-											'one-line-center',
-											'right',
-										].find( ( pos ) =>
+										captionPositions.find( ( { value } ) =>
 											existsClassName(
 												className,
-												`mone-caption-${ pos }`
+												`mone-caption-${ value }`
 											)
-										) || undefined
+										)?.value
 									}
-									onChange={ ( newValue ) => {
-										const _className = deleteClassName(
-											captionAllClasses,
-											className
-										);
-										const newClass = newValue
-											? `mone-caption-${ newValue }`
+									onChange={ ( value ) => {
+										const newClassName = value
+											? `mone-caption-${ value }`
 											: '';
 										toggleClass(
-											newClass,
-											_className,
+											newClassName,
+											deleteClassName(
+												captionAllClasses,
+												className
+											),
 											setAttributes
 										);
 									} }
 								>
-									<ToggleGroupControlOptionIcon
-										label={ __( 'Left', 'mone' ) }
-										icon={ alignLeft }
-										value="left"
-									/>
-									<ToggleGroupControlOptionIcon
-										label={ __( 'Center', 'mone' ) }
-										icon={ alignCenter }
-										value="center"
-									/>
-									<ToggleGroupControlOptionIcon
-										label={ __(
-											'One line text center',
-											'mone'
-										) }
-										icon={ alignOneLinerCenter }
-										value="one-line-center"
-									/>
-									<ToggleGroupControlOptionIcon
-										label={ __( 'Right', 'mone' ) }
-										icon={ alignRight }
-										value="right"
-									/>
+									{ captionPositions.map(
+										( { value, label, icon } ) => (
+											<ToggleGroupControlOptionIcon
+												key={ value }
+												value={ value }
+												label={ label }
+												icon={ icon }
+											/>
+										)
+									) }
 								</ToggleGroupControl>
 							</ToolsPanelItem>
 						) }

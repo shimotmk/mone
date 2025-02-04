@@ -31,7 +31,7 @@
 	}
 }
 
-
+// ギャラリーブロック内の1行テキストセンター
 .wp-block-gallery.has-nested-images figure.wp-block-image.mone-caption-one-line-center {
 
 	&::before {
@@ -48,17 +48,26 @@
 	}
 }
 
+.wp-block-gallery.has-nested-images.mone-caption-left {
 
-.wp-block-gallery.has-nested-images.mone-caption-one-line-center {
-
-	> .blocks-gallery-caption {
-		margin-inline: auto;
-		max-inline-size: max-content;
-		text-align: initial;
-		word-break: break-word;
+	> .wp-element-caption {
+		text-align: left;
 	}
 }
 
+.wp-block-gallery.has-nested-images.mone-caption-center {
+
+	> .wp-element-caption {
+		text-align: center;
+	}
+}
+
+.wp-block-gallery.has-nested-images.mone-caption-right {
+
+	> .wp-element-caption {
+		text-align: right;
+	}
+}
 
 .wp-block-quote {
 
