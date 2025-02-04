@@ -25,7 +25,7 @@ import {
 	FlexItem,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useState, useMemo } from '@wordpress/element';
+import { useState, useMemo, renderToString } from '@wordpress/element';
 import { Icon } from '@wordpress/icons';
 
 import './editor.scss';
@@ -63,7 +63,12 @@ export const IconPopoverContent = ( props ) => {
 								_iconName === iconName ? 'primary' : undefined
 							}
 							onClick={ () => {
-								onChange( _iconName );
+								onChange( {
+									iconName: _iconName,
+									iconSVG: renderToString(
+										<ReactIcon iconName={ _iconName } />
+									),
+								} );
 							} }
 							label={ _iconName }
 						>
@@ -135,7 +140,16 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													onChange( {
+														iconName: newIcon,
+														iconSVG: renderToString(
+															<ReactIcon
+																iconName={
+																	newIcon
+																}
+															/>
+														),
+													} );
 												} }
 												label={ icon }
 											>
@@ -168,7 +182,16 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													onChange( {
+														iconName: newIcon,
+														iconSVG: renderToString(
+															<ReactIcon
+																iconName={
+																	newIcon
+																}
+															/>
+														),
+													} );
 												} }
 												label={ icon }
 											>
@@ -201,7 +224,16 @@ export const IconPopoverContent = ( props ) => {
 														icon === iconName
 															? undefined
 															: icon;
-													onChange( newIcon );
+													onChange( {
+														iconName: newIcon,
+														iconSVG: renderToString(
+															<ReactIcon
+																iconName={
+																	newIcon
+																}
+															/>
+														),
+													} );
 												} }
 												label={ icon }
 											>

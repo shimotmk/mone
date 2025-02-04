@@ -155,19 +155,15 @@ export default function Edit( props ) {
 	}, [ popoverClose ] );
 
 	let SVG;
-	if ( iconName && isCustomIcon( iconName ) ) {
+	if ( iconSVG ) {
 		SVG = iconSVG;
-	} else if ( iconName ) {
-		SVG = renderToString( <ReactIcon iconName={ iconName } /> );
 	} else {
 		SVG = renderToString( <ReactIcon iconName="FaWordpress" /> );
 	}
 
 	const renderIcon = () => {
-		if ( iconName && isCustomIcon( iconName ) && !! SVG ) {
+		if ( SVG ) {
 			return parseIcon( SVG );
-		} else if ( iconName ) {
-			return <ReactIcon iconName={ iconName } />;
 		}
 		return <ReactIcon iconName="FaWordpress" />;
 	};
@@ -239,20 +235,10 @@ export default function Edit( props ) {
 							value={ iconName }
 							iconSVG={ iconSVG || '' }
 							onChange={ ( value ) => {
-								if (
-									typeof value === 'object' &&
-									value !== null &&
-									value.iconType === 'custom'
-								) {
-									setAttributes( {
-										iconName: value.iconType,
-										iconSVG: value.iconSVG,
-									} );
-								} else {
-									setAttributes( {
-										iconName: value,
-									} );
-								}
+								setAttributes( {
+									iconName: value.iconName,
+									iconSVG: value.iconSVG,
+								} );
 							} }
 						/>
 					</ToolsPanelItem>

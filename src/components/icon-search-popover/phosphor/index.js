@@ -6,7 +6,7 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-import { useState, useMemo } from '@wordpress/element';
+import { useState, useMemo, renderToString } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -53,7 +53,12 @@ export const PhosphorIcon = ( { iconName, onChange } ) => {
 								phIconName === iconName ? 'primary' : undefined
 							}
 							onClick={ () => {
-								onChange( phIconName );
+								onChange( {
+									iconName: phIconName,
+									iconSVG: renderToString(
+										<ReactIcon iconName={ phIconName } />
+									),
+								} );
 							} }
 							label={ phIconName }
 						>
