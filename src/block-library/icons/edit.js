@@ -61,6 +61,13 @@ export default function Edit( props ) {
 			getBlockAttributes( childId )
 		);
 
+		if ( ! blockAttributes.length ) {
+			return {
+				commonAttributes: {},
+				childrenClientIds: [],
+			};
+		}
+
 		const attributesToCheck = [
 			'iconColor',
 			'iconGradient',
