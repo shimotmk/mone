@@ -12,6 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - Added Icon custom svg icon
 - Added caption control (audio,embed,gallery,image,quote,table,video)
+- Added Icon added the ability to edit child blocks from a parent block at once.
 
 = 1.5.0 = 2025-02-01
 
