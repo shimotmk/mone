@@ -307,13 +307,7 @@ export const blockEditDetails = createHigherOrderComponent(
 							} }
 						>
 							<IconSearchModal
-								value={
-									moneDetailsIconName &&
-									ReactIconKinds( moneDetailsIconName ) !==
-										null
-										? moneDetailsIconName
-										: ''
-								}
+								value={ moneDetailsIconName || '' }
 								iconSVG={
 									decodeSvgBase64( moneDetailsIcon ) || ''
 								}
