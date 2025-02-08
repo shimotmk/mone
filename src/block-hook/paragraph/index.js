@@ -19,7 +19,6 @@ import {
 	__experimentalGetGapCSSValue as getGapCSSValue,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { renderToString } from '@wordpress/element';
 import { select } from '@wordpress/data';
 
 /**
@@ -28,9 +27,7 @@ import { select } from '@wordpress/data';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 import { IconSearchModal } from '../../components/icon-search-popover';
 import {
-	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
@@ -129,42 +126,12 @@ export const blockEditParagraph = createHigherOrderComponent(
 									decodeSvgBase64( moneAlertIcon ) || ''
 								}
 								onChange={ ( value ) => {
-									let SVG;
-									const iconType = value?.iconType || value;
-									if (
-										typeof value === 'object' &&
-										value !== null &&
-										iconType === 'custom'
-									) {
-										SVG = isCustomIcon( iconType )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ iconType }
-													/>
-											  );
-										setAttributes( {
-											moneAlertIconName: iconType,
-											moneAlertIcon: createSvgUrl( SVG ),
-										} );
-									} else if ( value ) {
-										SVG = isCustomIcon( value )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ value }
-													/>
-											  );
-										setAttributes( {
-											moneAlertIconName: value,
-											moneAlertIcon: createSvgUrl( SVG ),
-										} );
-									} else {
-										setAttributes( {
-											moneAlertIconName: undefined,
-											moneAlertIcon: undefined,
-										} );
-									}
+									setAttributes( {
+										moneAlertIconName: value.iconName,
+										moneAlertIcon: value.iconSVG
+											? createSvgUrl( value.iconSVG )
+											: undefined,
+									} );
 								} }
 							/>
 						</ToolsPanelItem>
