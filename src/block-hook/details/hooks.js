@@ -20,7 +20,6 @@ import {
 	useSettings,
 } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { renderToString } from '@wordpress/element';
 import { select } from '@wordpress/data';
 import { pullLeft, pullRight, chevronDown } from '@wordpress/icons';
 
@@ -30,9 +29,7 @@ import { pullLeft, pullRight, chevronDown } from '@wordpress/icons';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 import { IconSearchModal } from '../../components/icon-search-popover';
 import {
-	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 	decodeSvgBase64,
 	ReactIconKinds,
 } from '../../components/icon-search-popover/ReactIcon';
@@ -334,37 +331,12 @@ export const blockEditDetails = createHigherOrderComponent(
 										);
 									}
 
-									let SVG;
-									const iconType = value?.iconType || value;
-									if (
-										typeof value === 'object' &&
-										value !== null &&
-										iconType === 'custom'
-									) {
-										SVG = isCustomIcon( iconType )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ iconType }
-													/>
-											  );
+									if ( value ) {
 										setAttributes( {
-											moneDetailsIconName: iconType,
-											moneDetailsIcon:
-												createSvgUrl( SVG ),
-										} );
-									} else if ( value ) {
-										SVG = isCustomIcon( value )
-											? value.iconSVG
-											: renderToString(
-													<ReactIcon
-														iconName={ value }
-													/>
-											  );
-										setAttributes( {
-											moneDetailsIconName: value,
-											moneDetailsIcon:
-												createSvgUrl( SVG ),
+											moneDetailsIconName: value.iconName,
+											moneDetailsIcon: value.iconSVG
+												? createSvgUrl( value.iconSVG )
+												: undefined,
 										} );
 									} else {
 										setAttributes( {
@@ -389,14 +361,7 @@ export const blockEditDetails = createHigherOrderComponent(
 											'Select Open icon',
 											'mone'
 										) }
-										value={
-											moneDetailsOpenIconName &&
-											ReactIconKinds(
-												moneDetailsOpenIconName
-											) !== null
-												? moneDetailsOpenIconName
-												: ''
-										}
+										value={ moneDetailsOpenIconName || '' }
 										iconSVG={
 											decodeSvgBase64(
 												moneDetailsOpenIcon
@@ -416,44 +381,16 @@ export const blockEditDetails = createHigherOrderComponent(
 												);
 											}
 
-											let SVG;
-											const iconType =
-												value?.iconType || value;
-											if (
-												typeof value === 'object' &&
-												value !== null &&
-												iconType === 'custom'
-											) {
-												SVG = isCustomIcon( iconType )
-													? value.iconSVG
-													: renderToString(
-															<ReactIcon
-																iconName={
-																	iconType
-																}
-															/>
-													  );
+											if ( value ) {
 												setAttributes( {
 													moneDetailsOpenIconName:
-														iconType,
+														value.iconName,
 													moneDetailsOpenIcon:
-														createSvgUrl( SVG ),
-												} );
-											} else if ( value ) {
-												SVG = isCustomIcon( value )
-													? value.iconSVG
-													: renderToString(
-															<ReactIcon
-																iconName={
-																	value
-																}
-															/>
-													  );
-												setAttributes( {
-													moneDetailsOpenIconName:
-														value,
-													moneDetailsOpenIcon:
-														createSvgUrl( SVG ),
+														value.iconSVG
+															? createSvgUrl(
+																	value.iconSVG
+															  )
+															: undefined,
 												} );
 											} else {
 												setAttributes( {
@@ -469,6 +406,15 @@ export const blockEditDetails = createHigherOrderComponent(
 												);
 											}
 										} }
+
+										// onChange={ ( value ) => {
+										// 	setAttributes( {
+										// 		moneAlertIconName: value.iconName,
+										// 		moneAlertIcon: value.iconSVG
+										// 			? createSvgUrl( value.iconSVG )
+										// 			: undefined,
+										// 	} );
+										// } }
 									/>
 								</>
 							) }
