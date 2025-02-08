@@ -18,7 +18,7 @@ import {
 	useSettings,
 } from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
-import { renderToString, useMemo } from '@wordpress/element';
+import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 
 /**
@@ -26,9 +26,7 @@ import { useSelect } from '@wordpress/data';
  */
 import { inlineIconSettings as settings } from './index';
 import {
-	ReactIcon,
 	createSvgUrl,
-	isCustomIcon,
 	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
@@ -161,30 +159,6 @@ export function hasIconFormat(
 		: false;
 }
 
-export const getIconDetails = ( iconValue ) => {
-	let SVG = '';
-	let iconName = 'custom';
-	const iconType = iconValue?.iconType || iconValue;
-
-	if (
-		typeof iconValue === 'object' &&
-		iconValue !== null &&
-		iconType === 'custom'
-	) {
-		SVG = isCustomIcon( iconType )
-			? iconValue.iconSVG
-			: renderToString( <ReactIcon iconName={ iconType } /> );
-		iconName = iconType;
-	} else if ( iconValue ) {
-		SVG = isCustomIcon( iconValue )
-			? iconValue.iconSVG
-			: renderToString( <ReactIcon iconName={ iconValue } /> );
-		iconName = iconValue;
-	}
-
-	return { SVG, iconName };
-};
-
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const colorSettings = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
@@ -208,7 +182,8 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	);
 
 	const getInsertIconValue = ( iconValue ) => {
-		const { SVG, iconName } = getIconDetails( iconValue );
+		const SVG = iconValue.iconSVG;
+		const iconName = iconValue.iconName;
 		const dataSvg = createSvgUrl( SVG );
 
 		const _activeFormat = getActiveFormat( value, name );
@@ -235,7 +210,6 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 
 	return (
 		<IconPopoverContent
-			onChange={ getInsertIconValue }
 			value={ activeIcons[ '--the-icon-name' ] || '' }
 			iconSVG={
 				decodeSvgBase64(
@@ -245,6 +219,7 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 					)
 				) || ''
 			}
+			onChange={ getInsertIconValue }
 			setIsVisible={ setIsAdding }
 		/>
 	);
