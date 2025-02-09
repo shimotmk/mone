@@ -4,6 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import {
 	Button,
+	TextControl,
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 	__experimentalToggleGroupControl as ToggleGroupControl,
@@ -62,6 +63,17 @@ export function Settings( { activeIcons, onIconChange } ) {
 						{ __( 'Clear', 'mone' ) }
 					</Button>
 				</HStack>
+				{ /* <TextControl
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+					autoComplete="off"
+					label={ __( 'Additional CSS class(es)' ) }
+					value={ activeIcons.additionalClassName || '' }
+					onChange={ ( nextValue ) => {
+						onIconChange( { additionalClassName: nextValue } );
+					} }
+					help={ __( 'Separate multiple classes with spaces.' ) }
+				/> */ }
 			</VStack>
 		</>
 	);

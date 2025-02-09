@@ -238,12 +238,10 @@ export default function StyleInlineIconUI( {
 				{ ( tab ) => {
 					if ( 'iconColor' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Color
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Color
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					} else if ( 'background' === tab.name ) {
 						return (

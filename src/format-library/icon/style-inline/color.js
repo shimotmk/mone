@@ -6,13 +6,66 @@ import {
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	ColorPalette,
 } from '@wordpress/block-editor';
-import { GradientPicker, TabPanel } from '@wordpress/components';
+import {
+	GradientPicker,
+	TabPanel,
+	Dropdown,
+	Button,
+	MenuGroup,
+	MenuItem,
+	__experimentalHStack as HStack,
+	__experimentalHeading as Heading,
+} from '@wordpress/components';
+import { moreVertical } from '@wordpress/icons';
 
 export function Color( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	return (
 		<>
+			<HStack
+				style={ {
+					padding: '8px 16px',
+					borderBottom: '1px solid rgb(221, 221, 221)',
+				} }
+			>
+				<Heading level="4">{ __( 'Icon color', 'mone' ) }</Heading>
+				<Dropdown
+					popoverProps={ { placement: 'bottom-start' } }
+					renderToggle={ ( { isOpen, onToggle } ) => (
+						<Button
+							onClick={ onToggle }
+							aria-expanded={ isOpen }
+							icon={ moreVertical }
+							size="small"
+						/>
+					) }
+					renderContent={ () => (
+						<>
+							<MenuGroup label={ __( 'Icon color', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ '--the-icon-color' ] &&
+										! activeIcons[
+											'--the-icon-gradient-color'
+										]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'--the-icon-color': undefined,
+											'--the-icon-gradient-color':
+												undefined,
+										} );
+									} }
+								>
+									{ __( 'Reset all' ) }
+								</MenuItem>
+							</MenuGroup>
+						</>
+					) }
+				/>
+			</HStack>
 			<TabPanel
 				className="mone-tab"
 				activeClass="is-active"
@@ -35,11 +88,7 @@ export function Color( { activeIcons, onIconChange } ) {
 				{ ( tab ) => {
 					if ( 'color' === tab.name ) {
 						return (
-							<div
-								style={ {
-									padding: '8px 0',
-								} }
-							>
+							<div className="mone-popover-color-picker">
 								<ColorPalette
 									value={ activeIcons[ '--the-icon-color' ] }
 									onChange={ ( newValue ) => {
@@ -49,18 +98,14 @@ export function Color( { activeIcons, onIconChange } ) {
 												undefined,
 										} );
 									} }
-									clearable={ true }
+									clearable={ false }
 									enableAlpha={ true }
 								/>
 							</div>
 						);
 					} else if ( 'gradient' === tab.name ) {
 						return (
-							<div
-								style={ {
-									padding: '8px 0',
-								} }
-							>
+							<div className="mone-popover-color-picker">
 								<GradientPicker
 									value={
 										activeIcons[
@@ -77,6 +122,7 @@ export function Color( { activeIcons, onIconChange } ) {
 									gradients={
 										colorGradientSettings.gradients
 									}
+									clearable={ false }
 								/>
 							</div>
 						);
