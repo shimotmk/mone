@@ -67,7 +67,6 @@ export function Color( { activeIcons, onIconChange } ) {
 				/>
 			</HStack>
 			<TabPanel
-				className="mone-tab"
 				activeClass="is-active"
 				tabs={ [
 					{

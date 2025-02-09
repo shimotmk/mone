@@ -4,12 +4,16 @@
 import { __ } from '@wordpress/i18n';
 import {
 	Button,
-	TextControl,
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+	Dropdown,
+	MenuGroup,
+	MenuItem,
+	__experimentalHeading as Heading,
 } from '@wordpress/components';
+import { moreVertical } from '@wordpress/icons';
 
 import {
 	justifyTop,
@@ -18,13 +22,47 @@ import {
 } from '../../../icons';
 
 export function Settings( { activeIcons, onIconChange } ) {
-	const buttonStyle = {
-		height: '30px',
-	};
-
 	return (
 		<>
-			<VStack spacing={ 2 }>
+			<HStack
+				style={ {
+					padding: '8px 16px',
+					borderBottom: '1px solid rgb(221, 221, 221)',
+				} }
+			>
+				<Heading level="4">{ __( 'Settings', 'mone' ) }</Heading>
+				<Dropdown
+					popoverProps={ { placement: 'bottom-start' } }
+					renderToggle={ ( { isOpen, onToggle } ) => (
+						<Button
+							onClick={ onToggle }
+							aria-expanded={ isOpen }
+							icon={ moreVertical }
+							size="small"
+						/>
+					) }
+					renderContent={ () => (
+						<>
+							<MenuGroup label={ __( 'Settings', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'vertical-align' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'vertical-align': undefined,
+										} );
+									} }
+								>
+									{ __( 'Reset all' ) }
+								</MenuItem>
+							</MenuGroup>
+						</>
+					) }
+				/>
+			</HStack>
+			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<ToggleGroupControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
@@ -52,28 +90,6 @@ export function Settings( { activeIcons, onIconChange } ) {
 						value="text-bottom"
 					/>
 				</ToggleGroupControl>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( { 'vertical-align': '' } );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
-				{ /* <TextControl
-					__nextHasNoMarginBottom
-					__next40pxDefaultSize
-					autoComplete="off"
-					label={ __( 'Additional CSS class(es)' ) }
-					value={ activeIcons.additionalClassName || '' }
-					onChange={ ( nextValue ) => {
-						onIconChange( { additionalClassName: nextValue } );
-					} }
-					help={ __( 'Separate multiple classes with spaces.' ) }
-				/> */ }
 			</VStack>
 		</>
 	);

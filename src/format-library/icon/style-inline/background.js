@@ -6,15 +6,64 @@ import {
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	ColorPalette,
 } from '@wordpress/block-editor';
-import { GradientPicker, TabPanel } from '@wordpress/components';
+import {
+	GradientPicker,
+	TabPanel,
+	Dropdown,
+	MenuGroup,
+	MenuItem,
+	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Button,
+} from '@wordpress/components';
+import { moreVertical } from '@wordpress/icons';
 
 export function Background( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	return (
 		<>
+			<HStack
+				style={ {
+					padding: '8px 16px',
+					borderBottom: '1px solid rgb(221, 221, 221)',
+				} }
+			>
+				<Heading level="4">{ __( 'Background', 'mone' ) }</Heading>
+				<Dropdown
+					popoverProps={ { placement: 'bottom-start' } }
+					renderToggle={ ( { isOpen, onToggle } ) => (
+						<Button
+							onClick={ onToggle }
+							aria-expanded={ isOpen }
+							icon={ moreVertical }
+							size="small"
+						/>
+					) }
+					renderContent={ () => (
+						<>
+							<MenuGroup label={ __( 'Background', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'background-color' ] &&
+										! activeIcons.background
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'background-color': undefined,
+											background: undefined,
+										} );
+									} }
+								>
+									{ __( 'Reset all' ) }
+								</MenuItem>
+							</MenuGroup>
+						</>
+					) }
+				/>
+			</HStack>
 			<TabPanel
-				className="mone-tab"
 				activeClass="is-active"
 				tabs={ [
 					{
@@ -33,11 +82,7 @@ export function Background( { activeIcons, onIconChange } ) {
 				{ ( tab ) => {
 					if ( 'color' === tab.name ) {
 						return (
-							<div
-								style={ {
-									padding: '8px 0',
-								} }
-							>
+							<div className="mone-popover-color-picker">
 								<ColorPalette
 									value={ activeIcons[ 'background-color' ] }
 									onChange={ ( newValue ) => {
@@ -53,11 +98,7 @@ export function Background( { activeIcons, onIconChange } ) {
 						);
 					} else if ( 'gradient' === tab.name ) {
 						return (
-							<div
-								style={ {
-									padding: '8px 0',
-								} }
-							>
+							<div className="mone-popover-color-picker">
 								<GradientPicker
 									value={ activeIcons.background }
 									onChange={ ( newValue ) => {

@@ -13,17 +13,18 @@ import {
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
 	__experimentalUseCustomUnits as useCustomUnits,
+	Dropdown,
+	MenuGroup,
+	MenuItem,
+	__experimentalHeading as Heading,
 } from '@wordpress/components';
+import { moreVertical } from '@wordpress/icons';
 
 import { getPresetValueFromCustomValue } from '../../../utils-func/getPresetValueFromCustomValue';
 import { getCssVarToWpVar } from '../../../utils-func/cssVar-to-wpVar';
 
 export function Size( { activeIcons, onIconChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
-
-	const buttonStyle = {
-		height: '30px',
-	};
 
 	const [ spacingUnits ] = useSettings( 'spacing.units' );
 	const availableUnits = spacingUnits
@@ -63,7 +64,59 @@ export function Size( { activeIcons, onIconChange } ) {
 
 	return (
 		<>
-			<VStack spacing={ 2 }>
+			<HStack
+				style={ {
+					padding: '8px 16px',
+					borderBottom: '1px solid rgb(221, 221, 221)',
+				} }
+			>
+				<Heading level="4">{ __( 'Size', 'mone' ) }</Heading>
+				<Dropdown
+					popoverProps={ { placement: 'bottom-start' } }
+					renderToggle={ ( { isOpen, onToggle } ) => (
+						<Button
+							onClick={ onToggle }
+							aria-expanded={ isOpen }
+							icon={ moreVertical }
+							size="small"
+						/>
+					) }
+					renderContent={ () => (
+						<>
+							<MenuGroup label={ __( 'Size', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons.width &&
+										! activeIcons.height &&
+										! activeIcons[ 'margin-left' ] &&
+										! activeIcons[ 'margin-right' ] &&
+										! activeIcons[ 'padding-top' ] &&
+										! activeIcons[ 'padding-left' ] &&
+										! activeIcons[ 'padding-bottom' ] &&
+										! activeIcons[ 'padding-right' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											width: undefined,
+											height: undefined,
+											'margin-left': undefined,
+											'margin-right': undefined,
+											'padding-top': undefined,
+											'padding-left': undefined,
+											'padding-bottom': undefined,
+											'padding-right': undefined,
+										} );
+									} }
+								>
+									{ __( 'Reset all' ) }
+								</MenuItem>
+							</MenuGroup>
+						</>
+					) }
+				/>
+			</HStack>
+			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<FontSizePicker
 					fontSizes={ fontSizesSettings }
 					value={ activeIcons.width }
@@ -72,17 +125,6 @@ export function Size( { activeIcons, onIconChange } ) {
 					} }
 					withReset={ false }
 				/>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( { width: '', height: '' } );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
 				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
 				<div style={ { padding: '3px' } }>
 					<SpacingSizesControl
@@ -108,20 +150,6 @@ export function Size( { activeIcons, onIconChange } ) {
 						showSideInLabel={ false }
 					/>
 				</div>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( {
-								'margin-left': '',
-								'margin-right': '',
-							} );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
 				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
 				<div style={ { padding: '3px' } }>
 					<SpacingSizesControl
@@ -155,22 +183,6 @@ export function Size( { activeIcons, onIconChange } ) {
 						showSideInLabel={ false }
 					/>
 				</div>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( {
-								'padding-top': '',
-								'padding-left': '',
-								'padding-bottom': '',
-								'padding-right': '',
-							} );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
 			</VStack>
 		</>
 	);

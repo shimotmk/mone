@@ -200,33 +200,38 @@ export default function StyleInlineIconUI( {
 			anchor={ popoverAnchor }
 		>
 			<TabPanel
-				className="mone-tab"
+				className="mone-tab-head"
 				activeClass="is-active"
 				tabs={ [
 					{
 						name: 'iconColor',
 						title: __( 'Color', 'mone' ),
 						icon: colorIcon,
+						className: 'mone-tab-button',
 					},
 					{
 						name: 'background',
 						title: __( 'Background', 'mone' ),
 						icon: backgroundIcon,
+						className: 'mone-tab-button',
 					},
 					{
 						name: 'size',
 						title: __( 'Size', 'mone' ),
 						icon: sizeMoveIcon,
+						className: 'mone-tab-button',
 					},
 					{
 						name: 'iconBorder',
 						title: __( 'Border', 'mone' ),
 						icon: borderIcon,
+						className: 'mone-tab-button',
 					},
 					{
 						name: 'settings',
 						title: __( 'Settings', 'mone' ),
 						icon: cogIcon,
+						className: 'mone-tab-button',
 					},
 				] }
 				initialTabName={
@@ -245,39 +250,31 @@ export default function StyleInlineIconUI( {
 						);
 					} else if ( 'background' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Background
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Background
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					} else if ( 'size' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Size
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Size
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					} else if ( 'iconBorder' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Border
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Border
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					} else if ( 'settings' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Settings
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Settings
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					}
 				} }
