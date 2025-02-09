@@ -91,7 +91,7 @@ export function Background( { activeIcons, onIconChange } ) {
 											background: undefined,
 										} );
 									} }
-									clearable={ true }
+									clearable={ false }
 									enableAlpha={ true }
 								/>
 							</div>
@@ -110,6 +110,7 @@ export function Background( { activeIcons, onIconChange } ) {
 									gradients={
 										colorGradientSettings.gradients
 									}
+									clearable={ false }
 								/>
 							</div>
 						);
