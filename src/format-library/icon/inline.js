@@ -32,7 +32,7 @@ import {
 import { IconPopoverContent } from '../../components/icon-search-popover';
 import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
 
-function parseCSS( css = '', colorSettings, colorGradientSettings ) {
+export function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	const rules = [];
 	let rule = '';
 	let insideUrl = false;
@@ -112,30 +112,22 @@ function parseClassName( className = '', fontSettings ) {
 }
 
 export function getActiveIcons( {
-	value,
-	name,
 	colorSettings,
 	colorGradientSettings,
 	fontSettings,
+	activeObjectAttributes,
 } ) {
-	const activeFormat = getActiveFormat( value, name );
-
-	if ( ! activeFormat ) {
+	if ( ! activeObjectAttributes ) {
 		return {};
 	}
 
 	return {
 		...parseCSS(
-			activeFormat.attributes?.style,
+			activeObjectAttributes?.style,
 			colorSettings,
 			colorGradientSettings
 		),
-		...parseCSS(
-			activeFormat.unregisteredAttributes?.style,
-			colorSettings,
-			colorGradientSettings
-		),
-		...parseClassName( activeFormat.attributes.class, fontSettings ),
+		...parseClassName( activeObjectAttributes?.className, fontSettings ),
 	};
 }
 
@@ -172,18 +164,16 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
-				value,
-				name,
 				colorSettings,
 				colorGradientSettings: gradientValues,
 				fontSettings: fontSizes,
 			} ),
-		[ name, value, colorSettings, gradientValues, fontSizes ]
+		[ colorSettings, gradientValues, fontSizes ]
 	);
 
 	const getInsertIconValue = ( iconValue ) => {
 		const SVG = iconValue.iconSVG;
-		const iconName = iconValue.iconName;
+		const iconName = iconValue.iconName || 'custom';
 		const dataSvg = createSvgUrl( SVG );
 
 		const _activeFormat = getActiveFormat( value, name );
@@ -192,8 +182,7 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 		}
 
 		let newValue = value;
-		let html = '';
-		html += `<span class="mone-inline-icon" aria-hidden="true" style="--the-icon-name:${ iconName }; --the-icon-svg:url(${ dataSvg });" >&emsp;</span>`;
+		const html = `<span class="mone-inline-icon mone-inline-icon-wrapper" aria-hidden="true" style="--the-icon-name:${ iconName }; --the-icon-svg:url(${ dataSvg })">${ SVG }</span>`;
 		newValue = insert(
 			newValue,
 			applyFormat( create( { html } ), {

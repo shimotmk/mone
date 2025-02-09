@@ -4,7 +4,7 @@
 import { __ } from '@wordpress/i18n';
 import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import { applyFormat, useAnchor } from '@wordpress/rich-text';
+import { useAnchor } from '@wordpress/rich-text';
 import {
 	store as blockEditorStore,
 	getColorObjectByColorValue,
@@ -19,19 +19,26 @@ import { Popover, TabPanel } from '@wordpress/components';
  * Internal dependencies
  */
 import { inlineIconSettings as settings } from '../index';
-import { getActiveIcons } from '../inline';
+import { getActiveIcons, parseCSS } from '../inline';
 import { ColorPicker } from './color';
 import { GradientColorPicker } from './gradient-picker';
 import { Settings } from './settings';
+import {
+	stringToArrayClassName,
+	deleteRegExClassName,
+} from '../../../utils-func/class-name/classAttribute';
 
-export function setAttributes( {
+function setAttributes( {
 	value,
 	name,
 	colorSettings,
 	gradientSettings,
 	fontSizesSettings,
 	newValueObj,
+	activeObjectAttributes,
 } ) {
+	const parsedStyles = parseCSS( activeObjectAttributes.style );
+
 	const {
 		'--the-icon-color': iconColor,
 		'--the-icon-gradient-color': iconGradientColor,
@@ -39,18 +46,21 @@ export function setAttributes( {
 		...declaration
 	} = {
 		...getActiveIcons( {
-			value,
-			name,
 			colorSettings,
 			colorGradientSettings: gradientSettings,
 			fontSettings: fontSizesSettings,
 		} ),
+		...parsedStyles,
 		...newValueObj,
 	};
 
 	const styles = [];
-	const classNames = [];
+	let classNames = [];
 	const attributes = {};
+
+	if ( activeObjectAttributes?.class ) {
+		classNames = stringToArrayClassName( activeObjectAttributes.class );
+	}
 
 	Object.entries( declaration ).forEach( ( [ property, _value ] ) => {
 		if ( _value ) {
@@ -84,6 +94,10 @@ export function setAttributes( {
 	}
 
 	if ( fontSize ) {
+		classNames = stringToArrayClassName(
+			deleteRegExClassName( /has-.*-font-size/, classNames )
+		);
+
 		const fontSizeSlug = getFontSizeObjectByValue(
 			fontSizesSettings,
 			fontSize
@@ -94,6 +108,10 @@ export function setAttributes( {
 		} else {
 			styles.push( `font-size: ${ fontSizeSlug.size }` );
 		}
+	} else {
+		classNames = stringToArrayClassName(
+			deleteRegExClassName( /has-.*-font-size/, classNames )
+		);
 	}
 
 	if ( styles.length ) {
@@ -103,7 +121,21 @@ export function setAttributes( {
 		attributes.class = classNames.join( ' ' );
 	}
 
-	return applyFormat( value, { type: name, attributes } );
+	const newReplacements = value.replacements.slice();
+	newReplacements[ value.start ] = {
+		type: name,
+		attributes: {
+			style: attributes.style,
+			class: attributes.class,
+		},
+		innerHTML: value.replacements[ value.start ].innerHTML,
+	};
+	const returnObj = {
+		...value,
+		replacements: newReplacements,
+	};
+
+	return returnObj;
 }
 
 export default function StyleInlineIconUI( {
@@ -112,6 +144,7 @@ export default function StyleInlineIconUI( {
 	onChange,
 	onClose,
 	contentRef,
+	activeObjectAttributes,
 } ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
@@ -131,13 +164,12 @@ export default function StyleInlineIconUI( {
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
-				value,
-				name,
 				colorSettings,
 				colorGradientSettings: gradientValues,
 				fontSettings: fontSizes,
+				activeObjectAttributes,
 			} ),
-		[ value, name, colorSettings, gradientValues, fontSizes ]
+		[ colorSettings, gradientValues, fontSizes, activeObjectAttributes ]
 	);
 	const onIconChange = ( newValueObj ) => {
 		onChange(
@@ -148,6 +180,7 @@ export default function StyleInlineIconUI( {
 				gradientSettings: colorGradientSettings.gradients,
 				fontSizesSettings: fontSizes,
 				newValueObj,
+				activeObjectAttributes,
 			} )
 		);
 	};

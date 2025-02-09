@@ -33,7 +33,17 @@ function render_format_block_style( $block_content ) {
 					line-height: 1;
 				}
 
-				.mone-inline-icon::after {
+				.mone-inline-icon-wrapper {
+					vertical-align: middle;
+
+					svg {
+						display: block;
+						width: 1em;
+        				height: 1em;
+					}
+				}
+
+				.mone-inline-icon:not( .mone-inline-icon-wrapper )::after {
 					background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
 					content: "";
 					display: block;
@@ -47,6 +57,29 @@ function render_format_block_style( $block_content ) {
 					top: 0;
 					width: 100%;
 					box-sizing: inherit;
+				}
+
+				.mone-inline-icon-wrapper[style*="--the-icon-color"],
+				.mone-inline-icon-wrapper[style*="--the-icon-gradient-color"] {
+					svg {
+						opacity: 0;
+					}
+
+					&::after {
+						background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
+						content: "";
+						display: block;
+						height: 100%;
+						left: 0;
+						mask-image: var(--the-icon-svg);
+						mask-position: center center;
+						mask-repeat: no-repeat;
+						mask-size: contain;
+						position: absolute;
+						top: 0;
+						width: 100%;
+						box-sizing: inherit;
+					}
 				}
 			';
 			wp_register_style( 'mone-format-mone-inline-icon-style', false );
