@@ -14,19 +14,27 @@ import {
 	useSettings,
 } from '@wordpress/block-editor';
 import { Popover, TabPanel } from '@wordpress/components';
+import {
+	color as colorIcon,
+	cog as cogIcon,
+	background as backgroundIcon,
+} from '@wordpress/icons';
 
 /**
  * Internal dependencies
  */
 import { inlineIconSettings as settings } from '../index';
 import { getActiveIcons, parseCSS } from '../inline';
-import { ColorPicker } from './color';
-import { GradientColorPicker } from './gradient-picker';
+import { Background } from './background';
+import { Border } from './border';
+import { Color } from './color';
 import { Settings } from './settings';
+import { Size } from './size';
 import {
 	stringToArrayClassName,
 	deleteRegExClassName,
 } from '../../../utils-func/class-name/classAttribute';
+import { border as borderIcon, sizeMove as sizeMoveIcon } from '../../../icons';
 
 function setAttributes( {
 	value,
@@ -198,14 +206,27 @@ export default function StyleInlineIconUI( {
 					{
 						name: 'iconColor',
 						title: __( 'Color', 'mone' ),
+						icon: colorIcon,
 					},
 					{
-						name: 'iconGradientColor',
-						title: __( 'Gradient', 'mone' ),
+						name: 'background',
+						title: __( 'Background', 'mone' ),
+						icon: backgroundIcon,
+					},
+					{
+						name: 'size',
+						title: __( 'Size', 'mone' ),
+						icon: sizeMoveIcon,
+					},
+					{
+						name: 'iconBorder',
+						title: __( 'Border', 'mone' ),
+						icon: borderIcon,
 					},
 					{
 						name: 'settings',
 						title: __( 'Settings', 'mone' ),
+						icon: cogIcon,
 					},
 				] }
 				initialTabName={
@@ -218,16 +239,34 @@ export default function StyleInlineIconUI( {
 					if ( 'iconColor' === tab.name ) {
 						return (
 							<div className="mone-popover-color-picker">
-								<ColorPicker
+								<Color
 									activeIcons={ activeIcons }
 									onIconChange={ onIconChange }
 								/>
 							</div>
 						);
-					} else if ( 'iconGradientColor' === tab.name ) {
+					} else if ( 'background' === tab.name ) {
 						return (
 							<div className="mone-popover-color-picker">
-								<GradientColorPicker
+								<Background
+									activeIcons={ activeIcons }
+									onIconChange={ onIconChange }
+								/>
+							</div>
+						);
+					} else if ( 'size' === tab.name ) {
+						return (
+							<div className="mone-popover-color-picker">
+								<Size
+									activeIcons={ activeIcons }
+									onIconChange={ onIconChange }
+								/>
+							</div>
+						);
+					} else if ( 'iconBorder' === tab.name ) {
+						return (
+							<div className="mone-popover-color-picker">
+								<Border
 									activeIcons={ activeIcons }
 									onIconChange={ onIconChange }
 								/>

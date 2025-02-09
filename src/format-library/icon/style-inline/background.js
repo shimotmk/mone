@@ -8,7 +8,7 @@ import {
 } from '@wordpress/block-editor';
 import { GradientPicker, TabPanel } from '@wordpress/components';
 
-export function Color( { activeIcons, onIconChange } ) {
+export function Background( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	return (
@@ -27,9 +27,7 @@ export function Color( { activeIcons, onIconChange } ) {
 					},
 				] }
 				initialTabName={
-					!! activeIcons[ '--the-icon-gradient-color' ]
-						? 'gradient'
-						: 'color'
+					!! activeIcons.background ? 'gradient' : 'color'
 				}
 			>
 				{ ( tab ) => {
@@ -41,12 +39,11 @@ export function Color( { activeIcons, onIconChange } ) {
 								} }
 							>
 								<ColorPalette
-									value={ activeIcons[ '--the-icon-color' ] }
+									value={ activeIcons[ 'background-color' ] }
 									onChange={ ( newValue ) => {
 										onIconChange( {
-											'--the-icon-color': newValue,
-											'--the-icon-gradient-color':
-												undefined,
+											'background-color': newValue,
+											background: undefined,
 										} );
 									} }
 									clearable={ true }
@@ -62,16 +59,11 @@ export function Color( { activeIcons, onIconChange } ) {
 								} }
 							>
 								<GradientPicker
-									value={
-										activeIcons[
-											'--the-icon-gradient-color'
-										]
-									}
+									value={ activeIcons.background }
 									onChange={ ( newValue ) => {
 										onIconChange( {
-											'--the-icon-color': undefined,
-											'--the-icon-gradient-color':
-												newValue,
+											'background-color': undefined,
+											background: newValue,
 										} );
 									} }
 									gradients={

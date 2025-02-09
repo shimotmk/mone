@@ -35,11 +35,12 @@ function render_format_block_style( $block_content ) {
 
 				.mone-inline-icon-wrapper {
 					vertical-align: middle;
+					box-sizing: border-box;
 
 					svg {
 						display: block;
-						width: 1em;
-        				height: 1em;
+						width: 100%;
+						height: 100%;
 					}
 				}
 
