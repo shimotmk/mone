@@ -56,6 +56,7 @@ export function Border( { activeIcons, onIconChange } ) {
 									aria-disabled={
 										! activeIcons[ 'border-color' ] &&
 										! activeIcons[ 'border-style' ] &&
+										! activeIcons[ 'border-width' ] &&
 										! activeIcons[ 'border-radius' ]
 									}
 									variant="tertiary"
@@ -63,6 +64,7 @@ export function Border( { activeIcons, onIconChange } ) {
 										onIconChange( {
 											'border-color': undefined,
 											'border-style': undefined,
+											'border-width': undefined,
 											'border-radius': undefined,
 										} );
 									} }
@@ -111,6 +113,20 @@ export function Border( { activeIcons, onIconChange } ) {
 						/>
 					) ) }
 				</ToggleGroupControl>
+				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
+				<UnitControl
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+					label={ __( 'Border width', 'mone' ) }
+					max={ 100 }
+					min={ 0 }
+					value={ activeIcons[ 'border-width' ] }
+					onChange={ ( newValue ) => {
+						onIconChange( {
+							'border-width': newValue,
+						} );
+					} }
+				/>
 				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
 				<UnitControl
 					__nextHasNoMarginBottom
