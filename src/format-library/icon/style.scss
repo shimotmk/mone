@@ -21,7 +21,7 @@
 	}
 }
 
-.mone-inline-icon:not( .mone-inline-icon-wrapper )::after {
+.mone-inline-icon:not(.mone-inline-icon-wrapper)::after {
 	background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
 	content: "";
 	display: block;
@@ -39,6 +39,7 @@
 
 .mone-inline-icon-wrapper[style*="--the-icon-color"],
 .mone-inline-icon-wrapper[style*="--the-icon-gradient-color"] {
+
 	svg {
 		opacity: 0;
 	}

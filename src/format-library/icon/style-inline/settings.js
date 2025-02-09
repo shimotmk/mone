@@ -27,6 +27,7 @@ export function Settings( { activeIcons, onIconChange } ) {
 			<HStack
 				style={ {
 					padding: '8px 16px',
+					borderTop: '1px solid rgb(221, 221, 221)',
 					borderBottom: '1px solid rgb(221, 221, 221)',
 				} }
 			>
