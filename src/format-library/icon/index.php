@@ -62,13 +62,21 @@ function render_format_block_style( $block_content ) {
 					box-sizing: inherit;
 				}
 
+				a:has(.mone-inline-icon){
+					display: inline-block;
+				}
+
 				.mone-inline-icon-wrapper[style*="--the-icon-color"],
 				.mone-inline-icon-wrapper[style*="--the-icon-gradient-color"] {
 					svg {
 						opacity: 0;
 					}
 
-					&::after {
+					.mone-inline-icon-svg-wrapper {
+						position: relative;
+					}
+
+					.mone-inline-icon-svg-wrapper::after {
 						background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
 						content: "";
 						display: block;

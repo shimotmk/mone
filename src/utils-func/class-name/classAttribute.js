@@ -36,9 +36,11 @@ export const deleteClassName = ( targetClassNames, className ) => {
 	return arrayToStringClassName( classArray );
 };
 
-export const addClassName = ( targetClassName, className ) => {
-	const classArray = stringToArrayClassName( className );
-	if ( ! existsClassName( targetClassName, className ) ) {
+export const addClassName = ( targetClassName, classNames ) => {
+	const classArray = Array.isArray( classNames )
+		? classNames
+		: stringToArrayClassName( classNames );
+	if ( ! existsClassName( targetClassName, classNames ) ) {
 		classArray.push( targetClassName );
 	}
 	return arrayToStringClassName( classArray );

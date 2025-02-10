@@ -20,7 +20,6 @@ import { moreVertical } from '@wordpress/icons';
 
 export function Color( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
-
 	return (
 		<>
 			<HStack

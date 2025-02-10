@@ -10,8 +10,6 @@ import {
 	getColorObjectByColorValue,
 	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	getFontSizeObjectByValue,
-	useSettings,
 } from '@wordpress/block-editor';
 import { Popover, TabPanel } from '@wordpress/components';
 import {
@@ -31,10 +29,6 @@ import { Border } from './border';
 import { Color } from './color';
 import { Settings } from './settings';
 import { Size } from './size';
-import {
-	stringToArrayClassName,
-	deleteRegExClassName,
-} from '../../../utils-func/class-name/classAttribute';
 import { border as borderIcon, sizeMove as sizeMoveIcon } from '../../../icons';
 
 function setAttributes( {
@@ -42,7 +36,6 @@ function setAttributes( {
 	name,
 	colorSettings,
 	gradientSettings,
-	fontSizesSettings,
 	newValueObj,
 	activeObjectAttributes,
 } ) {
@@ -56,6 +49,7 @@ function setAttributes( {
 		'--the-icon-color': iconColor,
 		'--the-icon-gradient-color': iconGradientColor,
 		'font-size': fontSize,
+		className: attributesClassNames = '',
 		...declaration
 	} = {
 		...parsedStyles,
@@ -63,13 +57,8 @@ function setAttributes( {
 	};
 
 	const styles = [];
-	let classNames = [];
 	const attributes = {};
 	let hasColor = false;
-
-	if ( activeObjectAttributes?.class ) {
-		classNames = stringToArrayClassName( activeObjectAttributes.class );
-	}
 
 	Object.entries( declaration ).forEach( ( [ property, _value ] ) => {
 		if ( _value ) {
@@ -104,32 +93,14 @@ function setAttributes( {
 		hasColor = true;
 	}
 
-	if ( fontSize ) {
-		classNames = stringToArrayClassName(
-			deleteRegExClassName( /has-.*-font-size/, classNames )
-		);
-
-		const fontSizeSlug = getFontSizeObjectByValue(
-			fontSizesSettings,
-			fontSize
-		);
-
-		if ( fontSizeSlug?.slug ) {
-			classNames.push( `has-${ fontSizeSlug.slug }-font-size` );
-		} else {
-			styles.push( `font-size: ${ fontSizeSlug.size }` );
-		}
-	} else {
-		classNames = stringToArrayClassName(
-			deleteRegExClassName( /has-.*-font-size/, classNames )
-		);
-	}
-
 	if ( styles.length ) {
 		attributes.style = styles.length ? `${ styles.join( ';' ) };` : '';
 	}
-	if ( classNames.length ) {
-		attributes.class = classNames.join( ' ' );
+
+	if ( attributesClassNames ) {
+		attributes.class = 'mone-inline-icon-wrapper ' + attributesClassNames;
+	} else {
+		attributes.class = 'mone-inline-icon-wrapper';
 	}
 
 	const innerHTMLWrapTag = parseWithAttributeSchema(
@@ -203,17 +174,15 @@ export default function StyleInlineIconUI( {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
 				colorSettings,
 				colorGradientSettings: gradientValues,
-				fontSettings: fontSizes,
 				activeObjectAttributes,
 			} ),
-		[ colorSettings, gradientValues, fontSizes, activeObjectAttributes ]
+		[ colorSettings, gradientValues, activeObjectAttributes ]
 	);
 	const onIconChange = ( newValueObj ) => {
 		onChange(
@@ -222,7 +191,6 @@ export default function StyleInlineIconUI( {
 				name,
 				colorSettings,
 				gradientSettings: colorGradientSettings.gradients,
-				fontSizesSettings: fontSizes,
 				newValueObj,
 				activeObjectAttributes,
 			} )

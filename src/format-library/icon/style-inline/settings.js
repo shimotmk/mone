@@ -95,11 +95,10 @@ export function Settings( { activeIcons, onIconChange } ) {
 				<TextControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
-					autoComplete="off"
 					label={ __( 'Additional CSS class(es)' ) }
-					value={ activeIcons[ 'data-add-class' ] || '' }
+					value={ activeIcons.className }
 					onChange={ ( nextValue ) => {
-						onIconChange( { 'data-add-class': nextValue } );
+						onIconChange( { className: nextValue } );
 					} }
 					help={ __( 'Separate multiple classes with spaces.' ) }
 				/>

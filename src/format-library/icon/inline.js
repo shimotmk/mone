@@ -14,8 +14,6 @@ import {
 	getColorObjectByAttributeValues,
 	getGradientValueBySlug,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	getFontSize,
-	useSettings,
 } from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
@@ -94,19 +92,17 @@ export function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	return obj;
 }
 
-function parseClassName( className = '', fontSettings ) {
+function parseClassName( className = '' ) {
 	const classArray = stringToArrayClassName( className );
 	const obj = {};
 
-	classArray.forEach( ( name ) => {
-		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
-			const fontSlug = name
-				.replace( /^has-/, '' )
-				.replace( /-font-size$/, '' );
-			const fontSizeObject = getFontSize( fontSettings, fontSlug );
-			obj[ 'font-size' ] = fontSizeObject.size;
-		}
-	} );
+	const filteredClasses = classArray.filter(
+		( _className ) => _className !== 'mone-inline-icon-wrapper'
+	);
+
+	if ( filteredClasses.length ) {
+		obj.className = filteredClasses.join( ' ' );
+	}
 
 	return obj;
 }
@@ -114,41 +110,22 @@ function parseClassName( className = '', fontSettings ) {
 export function getActiveIcons( {
 	colorSettings,
 	colorGradientSettings,
-	fontSettings,
 	activeObjectAttributes,
 } ) {
 	if ( ! activeObjectAttributes ) {
 		return {};
 	}
 
-	return {
+	const returnObj = {
 		...parseCSS(
 			activeObjectAttributes?.style,
 			colorSettings,
 			colorGradientSettings
 		),
-		...parseClassName( activeObjectAttributes?.className, fontSettings ),
+		...parseClassName( activeObjectAttributes?.class ),
 	};
-}
 
-export function hasIconFormat(
-	value,
-	name,
-	colorSettings,
-	colorGradientSettings,
-	fontSettings
-) {
-	const activeFormat = getActiveIcons( {
-		value,
-		name,
-		colorSettings,
-		colorGradientSettings,
-		fontSettings,
-	} );
-
-	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
-		? true
-		: false;
+	return returnObj;
 }
 
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
@@ -160,15 +137,13 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
 				colorSettings,
 				colorGradientSettings: gradientValues,
-				fontSettings: fontSizes,
 			} ),
-		[ colorSettings, gradientValues, fontSizes ]
+		[ colorSettings, gradientValues ]
 	);
 
 	const getInsertIconValue = ( iconValue ) => {
