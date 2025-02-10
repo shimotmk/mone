@@ -29,68 +29,7 @@ import {
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
 import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
-
-export function parseCSS( css = '', colorSettings, colorGradientSettings ) {
-	const rules = [];
-	let rule = '';
-	let insideUrl = false;
-
-	for ( let i = 0; i < css.length; i++ ) {
-		const char = css[ i ];
-		if ( char === ';' && ! insideUrl ) {
-			rules.push( rule.trim() );
-			rule = '';
-		} else {
-			rule += char;
-			if ( char === '(' && rule.includes( 'url' ) ) {
-				insideUrl = true;
-			} else if ( char === ')' ) {
-				insideUrl = false;
-			}
-		}
-	}
-	if ( rule.trim() ) {
-		rules.push( rule.trim() );
-	}
-	const obj = {};
-	rules.forEach( ( _rule ) => {
-		const [ property, ...valueParts ] = _rule.split( ':' );
-		const value = valueParts.join( ':' ).trim();
-		if ( property && value ) {
-			if ( property === '--the-icon-color' ) {
-				const colorSlug = value
-					.replace( 'var(--wp--preset--color--', '' )
-					.replace( ')', '' );
-				const colorValue = value.startsWith(
-					'var(--wp--preset--color--'
-				)
-					? getColorObjectByAttributeValues(
-							colorSettings,
-							colorSlug
-					  ).color
-					: value;
-				obj[ property.trim() ] = colorValue;
-			} else if ( property === '--the-icon-gradient-color' ) {
-				const gradientValue = value.startsWith(
-					'var(--wp--preset--gradient--'
-				)
-					? colorGradientSettings &&
-					  getGradientValueBySlug(
-							colorGradientSettings,
-							value
-								.replace( 'var(--wp--preset--gradient--', '' )
-								.replace( ')', '' )
-					  )
-					: value;
-				obj[ property.trim() ] = gradientValue;
-			} else {
-				obj[ property ] = value;
-			}
-		}
-	} );
-
-	return obj;
-}
+import { parseCSS } from './parse';
 
 function parseClassName( className = '' ) {
 	const classArray = stringToArrayClassName( className );
