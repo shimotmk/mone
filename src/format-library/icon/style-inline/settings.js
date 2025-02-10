@@ -12,6 +12,7 @@ import {
 	MenuGroup,
 	MenuItem,
 	__experimentalHeading as Heading,
+	TextControl,
 } from '@wordpress/components';
 import { moreVertical } from '@wordpress/icons';
 
@@ -91,6 +92,17 @@ export function Settings( { activeIcons, onIconChange } ) {
 						value="text-bottom"
 					/>
 				</ToggleGroupControl>
+				<TextControl
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+					autoComplete="off"
+					label={ __( 'Additional CSS class(es)' ) }
+					value={ activeIcons[ 'data-add-class' ] || '' }
+					onChange={ ( nextValue ) => {
+						onIconChange( { 'data-add-class': nextValue } );
+					} }
+					help={ __( 'Separate multiple classes with spaces.' ) }
+				/>
 			</VStack>
 		</>
 	);

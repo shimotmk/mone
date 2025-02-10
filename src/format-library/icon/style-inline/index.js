@@ -19,6 +19,7 @@ import {
 	cog as cogIcon,
 	background as backgroundIcon,
 } from '@wordpress/icons';
+import { parseWithAttributeSchema } from '@wordpress/blocks';
 
 /**
  * Internal dependencies
@@ -45,7 +46,11 @@ function setAttributes( {
 	newValueObj,
 	activeObjectAttributes,
 } ) {
-	const parsedStyles = parseCSS( activeObjectAttributes.style );
+	const parsedStyles = parseCSS(
+		activeObjectAttributes.style,
+		colorSettings,
+		gradientSettings
+	);
 
 	const {
 		'--the-icon-color': iconColor,
@@ -53,11 +58,6 @@ function setAttributes( {
 		'font-size': fontSize,
 		...declaration
 	} = {
-		...getActiveIcons( {
-			colorSettings,
-			colorGradientSettings: gradientSettings,
-			fontSettings: fontSizesSettings,
-		} ),
 		...parsedStyles,
 		...newValueObj,
 	};
@@ -65,6 +65,7 @@ function setAttributes( {
 	const styles = [];
 	let classNames = [];
 	const attributes = {};
+	let hasColor = false;
 
 	if ( activeObjectAttributes?.class ) {
 		classNames = stringToArrayClassName( activeObjectAttributes.class );
@@ -88,6 +89,7 @@ function setAttributes( {
 		} else {
 			styles.push( `--the-icon-color:${ iconColor }` );
 		}
+		hasColor = true;
 	}
 
 	if ( iconGradientColor ) {
@@ -99,6 +101,7 @@ function setAttributes( {
 			? `var(--wp--preset--gradient--${ gradientObject.slug })`
 			: iconGradientColor;
 		styles.push( `--the-icon-gradient-color:${ gradient }` );
+		hasColor = true;
 	}
 
 	if ( fontSize ) {
@@ -123,10 +126,43 @@ function setAttributes( {
 	}
 
 	if ( styles.length ) {
-		attributes.style = styles.join( ';' );
+		attributes.style = styles.length ? `${ styles.join( ';' ) };` : '';
 	}
 	if ( classNames.length ) {
 		attributes.class = classNames.join( ' ' );
+	}
+
+	const innerHTMLWrapTag = parseWithAttributeSchema(
+		value.replacements[ value.start ].innerHTML,
+		{
+			source: 'tag',
+			selector: ':nth-child(1)',
+		}
+	);
+
+	const svgHTML = parseWithAttributeSchema(
+		value.replacements[ value.start ].innerHTML,
+		{
+			type: 'string',
+			source: 'html',
+			selector: '.mone-inline-icon-svg-wrapper',
+		}
+	);
+
+	let newInnerHTML;
+	if ( hasColor ) {
+		if ( innerHTMLWrapTag === 'svg' ) {
+			newInnerHTML =
+				'<span class="mone-inline-icon-svg-wrapper">' +
+				value.replacements[ value.start ].innerHTML +
+				'</span>';
+		} else {
+			newInnerHTML = value.replacements[ value.start ].innerHTML;
+		}
+	} else if ( svgHTML ) {
+		newInnerHTML = svgHTML;
+	} else {
+		newInnerHTML = value.replacements[ value.start ].innerHTML;
 	}
 
 	const newReplacements = value.replacements.slice();
@@ -136,7 +172,7 @@ function setAttributes( {
 			style: attributes.style,
 			class: attributes.class,
 		},
-		innerHTML: value.replacements[ value.start ].innerHTML,
+		innerHTML: newInnerHTML,
 	};
 	const returnObj = {
 		...value,
@@ -234,11 +270,7 @@ export default function StyleInlineIconUI( {
 						className: 'mone-tab-button',
 					},
 				] }
-				initialTabName={
-					!! activeIcons[ '--the-icon-gradient-color' ]
-						? 'iconGradientColor'
-						: 'iconColor'
-				}
+				initialTabName={ 'iconColor' }
 			>
 				{ ( tab ) => {
 					if ( 'iconColor' === tab.name ) {
