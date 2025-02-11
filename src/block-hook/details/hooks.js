@@ -31,7 +31,6 @@ import { IconSearchModal } from '../../components/icon-search-popover';
 import {
 	createSvgUrl,
 	decodeSvgBase64,
-	ReactIconKinds,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import {
@@ -400,15 +399,6 @@ export const blockEditDetails = createHigherOrderComponent(
 												);
 											}
 										} }
-
-										// onChange={ ( value ) => {
-										// 	setAttributes( {
-										// 		moneAlertIconName: value.iconName,
-										// 		moneAlertIcon: value.iconSVG
-										// 			? createSvgUrl( value.iconSVG )
-										// 			: undefined,
-										// 	} );
-										// } }
 									/>
 								</>
 							) }

@@ -36,12 +36,25 @@ export const deleteClassName = ( targetClassNames, className ) => {
 	return arrayToStringClassName( classArray );
 };
 
-export const addClassName = ( targetClassName, className ) => {
-	const classArray = stringToArrayClassName( className );
-	if ( ! existsClassName( targetClassName, className ) ) {
+export const addClassName = ( targetClassName, classNames ) => {
+	const classArray = Array.isArray( classNames )
+		? classNames
+		: stringToArrayClassName( classNames );
+	if ( ! existsClassName( targetClassName, classNames ) ) {
 		classArray.push( targetClassName );
 	}
 	return arrayToStringClassName( classArray );
+};
+
+export const deleteRegExClassName = ( regEx, classNames ) => {
+	const classArray = Array.isArray( classNames )
+		? classNames
+		: stringToArrayClassName( classNames );
+	const filteredClassArray = classArray.filter(
+		( classItem ) => ! regEx.test( classItem )
+	);
+
+	return arrayToStringClassName( filteredClassArray );
 };
 
 export const addClass = ( targetClassNames, className, setAttributes ) => {
@@ -69,14 +82,9 @@ export const deleteClass = ( targetClassNames, className, setAttributes ) => {
 };
 
 export const deleteRegExClass = ( regEx, className, setAttributes ) => {
-	const classArray = stringToArrayClassName( className );
-	const filteredClassArray = classArray.filter(
-		( classItem ) => ! regEx.test( classItem )
-	);
-
 	setAttributes( {
 		className: emptyStringToUndefined(
-			arrayToStringClassName( filteredClassArray )
+			deleteRegExClassName( regEx, className )
 		),
 	} );
 };

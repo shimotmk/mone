@@ -1254,12 +1254,48 @@ msgid "Clear"
 msgstr "クリア"
 
 #: build/format-library/index.js:1
+msgid "Border"
+msgstr "枠線"
+
+#: build/format-library/index.js:1
+msgid "Border color"
+msgstr "枠線色"
+
+#: build/format-library/index.js:1
+msgid "Border style"
+msgstr "枠線スタイル"
+
+#: build/format-library/index.js:1
+msgid "Border width"
+msgstr "枠線 幅"
+
+#: build/format-library/index.js:1
+msgid "Border radius"
+msgstr "角丸"
+
+#: build/format-library/index.js:1
+msgid "Icon color"
+msgstr "アイコンカラー"
+
+#: build/format-library/index.js:1
+msgid "Additional CSS class(es)"
+msgstr "追加 CSS クラス"
+
+#: build/format-library/index.js:1
 msgid "Margin"
 msgstr "マージン"
 
 #: build/format-library/index.js:1
+msgid "Padding"
+msgstr "パディング"
+
+#: build/format-library/index.js:1
 msgid "Color"
 msgstr "カラー"
+
+#: build/format-library/index.js:1
+msgid "Background"
+msgstr "背景"
 
 #: build/format-library/index.js:1
 msgid "Gradient"

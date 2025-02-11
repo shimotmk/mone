@@ -141,6 +141,7 @@ function ColorPicker( { name, property, value, onChange } ) {
 			onChange={ onColorChange }
 			clearable={ false }
 			enableAlpha={ true }
+			__experimentalIsRenderedInSidebar={ true }
 		/>
 	);
 }

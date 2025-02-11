@@ -4,107 +4,38 @@
 import { __ } from '@wordpress/i18n';
 import { useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import { applyFormat, useAnchor } from '@wordpress/rich-text';
+import { useAnchor } from '@wordpress/rich-text';
 import {
 	store as blockEditorStore,
-	getColorObjectByColorValue,
-	__experimentalGetGradientObjectByGradientValue,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	getFontSizeObjectByValue,
-	useSettings,
 } from '@wordpress/block-editor';
 import { Popover, TabPanel } from '@wordpress/components';
+import {
+	color as colorIcon,
+	cog as cogIcon,
+	background as backgroundIcon,
+} from '@wordpress/icons';
 
 /**
  * Internal dependencies
  */
 import { inlineIconSettings as settings } from '../index';
 import { getActiveIcons } from '../inline';
-import { ColorPicker } from './color';
-import { GradientColorPicker } from './gradient-picker';
+import { Background } from './background';
+import { Border } from './border';
+import { Color } from './color';
 import { Settings } from './settings';
+import { Size } from './size';
+import { border as borderIcon, sizeMove as sizeMoveIcon } from '../../../icons';
+import { setAttributes } from './set-attributes';
 
-export function setAttributes( {
-	value,
-	name,
-	colorSettings,
-	gradientSettings,
-	fontSizesSettings,
-	newValueObj,
-} ) {
-	const {
-		'--the-icon-color': iconColor,
-		'--the-icon-gradient-color': iconGradientColor,
-		'font-size': fontSize,
-		...declaration
-	} = {
-		...getActiveIcons( {
-			value,
-			name,
-			colorSettings,
-			colorGradientSettings: gradientSettings,
-			fontSettings: fontSizesSettings,
-		} ),
-		...newValueObj,
-	};
-
-	const styles = [];
-	const classNames = [];
-	const attributes = {};
-
-	Object.entries( declaration ).forEach( ( [ property, _value ] ) => {
-		if ( _value ) {
-			styles.push( `${ property }:${ _value }` );
-		}
-	} );
-
-	if ( iconColor ) {
-		const colorObject = getColorObjectByColorValue(
-			colorSettings,
-			iconColor
-		);
-		if ( colorObject ) {
-			styles.push(
-				`--the-icon-color:var(--wp--preset--color--${ colorObject.slug })`
-			);
-		} else {
-			styles.push( `--the-icon-color:${ iconColor }` );
-		}
-	}
-
-	if ( iconGradientColor ) {
-		const gradientObject = __experimentalGetGradientObjectByGradientValue(
-			gradientSettings,
-			iconGradientColor
-		);
-		const gradient = gradientObject
-			? `var(--wp--preset--gradient--${ gradientObject.slug })`
-			: iconGradientColor;
-		styles.push( `--the-icon-gradient-color:${ gradient }` );
-	}
-
-	if ( fontSize ) {
-		const fontSizeSlug = getFontSizeObjectByValue(
-			fontSizesSettings,
-			fontSize
-		);
-
-		if ( fontSizeSlug?.slug ) {
-			classNames.push( `has-${ fontSizeSlug.slug }-font-size` );
-		} else {
-			styles.push( `font-size: ${ fontSizeSlug.size }` );
-		}
-	}
-
-	if ( styles.length ) {
-		attributes.style = styles.join( ';' );
-	}
-	if ( classNames.length ) {
-		attributes.class = classNames.join( ' ' );
-	}
-
-	return applyFormat( value, { type: name, attributes } );
-}
+export const restButtonStyle = {
+	fontSize: '11px',
+	fontWeight: 500,
+	lineHeight: 1.4,
+	marginLeft: 'calc(12px)',
+	textTransform: 'uppercase',
+};
 
 export default function StyleInlineIconUI( {
 	name,
@@ -112,6 +43,7 @@ export default function StyleInlineIconUI( {
 	onChange,
 	onClose,
 	contentRef,
+	activeObjectAttributes,
 } ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
@@ -126,18 +58,15 @@ export default function StyleInlineIconUI( {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
-				value,
-				name,
 				colorSettings,
 				colorGradientSettings: gradientValues,
-				fontSettings: fontSizes,
+				activeObjectAttributes,
 			} ),
-		[ value, name, colorSettings, gradientValues, fontSizes ]
+		[ colorSettings, gradientValues, activeObjectAttributes ]
 	);
 	const onIconChange = ( newValueObj ) => {
 		onChange(
@@ -146,8 +75,8 @@ export default function StyleInlineIconUI( {
 				name,
 				colorSettings,
 				gradientSettings: colorGradientSettings.gradients,
-				fontSizesSettings: fontSizes,
 				newValueObj,
+				activeObjectAttributes,
 			} )
 		);
 	};
@@ -159,55 +88,77 @@ export default function StyleInlineIconUI( {
 			anchor={ popoverAnchor }
 		>
 			<TabPanel
-				className="mone-tab"
+				className="mone-tab-head"
 				activeClass="is-active"
 				tabs={ [
 					{
 						name: 'iconColor',
 						title: __( 'Color', 'mone' ),
+						icon: colorIcon,
+						className: 'mone-tab-button',
 					},
 					{
-						name: 'iconGradientColor',
-						title: __( 'Gradient', 'mone' ),
+						name: 'background',
+						title: __( 'Background', 'mone' ),
+						icon: backgroundIcon,
+						className: 'mone-tab-button',
+					},
+					{
+						name: 'size',
+						title: __( 'Size', 'mone' ),
+						icon: sizeMoveIcon,
+						className: 'mone-tab-button',
+					},
+					{
+						name: 'iconBorder',
+						title: __( 'Border', 'mone' ),
+						icon: borderIcon,
+						className: 'mone-tab-button',
 					},
 					{
 						name: 'settings',
 						title: __( 'Settings', 'mone' ),
+						icon: cogIcon,
+						className: 'mone-tab-button',
 					},
 				] }
-				initialTabName={
-					!! activeIcons[ '--the-icon-gradient-color' ]
-						? 'iconGradientColor'
-						: 'iconColor'
-				}
+				initialTabName={ 'iconColor' }
 			>
 				{ ( tab ) => {
 					if ( 'iconColor' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<ColorPicker
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Color
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
-					} else if ( 'iconGradientColor' === tab.name ) {
+					} else if ( 'background' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<GradientColorPicker
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Background
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
+						);
+					} else if ( 'size' === tab.name ) {
+						return (
+							<Size
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
+						);
+					} else if ( 'iconBorder' === tab.name ) {
+						return (
+							<Border
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					} else if ( 'settings' === tab.name ) {
 						return (
-							<div className="mone-popover-color-picker">
-								<Settings
-									activeIcons={ activeIcons }
-									onIconChange={ onIconChange }
-								/>
-							</div>
+							<Settings
+								activeIcons={ activeIcons }
+								onIconChange={ onIconChange }
+							/>
 						);
 					}
 				} }

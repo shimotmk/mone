@@ -11,11 +11,7 @@ import {
 import {
 	useCachedTruthy,
 	store as blockEditorStore,
-	getColorObjectByAttributeValues,
-	getGradientValueBySlug,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
-	getFontSize,
-	useSettings,
 } from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';
 import { useMemo } from '@wordpress/element';
@@ -31,132 +27,42 @@ import {
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
 import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
+import { parseCSS } from './parse';
 
-function parseCSS( css = '', colorSettings, colorGradientSettings ) {
-	const rules = [];
-	let rule = '';
-	let insideUrl = false;
-
-	for ( let i = 0; i < css.length; i++ ) {
-		const char = css[ i ];
-		if ( char === ';' && ! insideUrl ) {
-			rules.push( rule.trim() );
-			rule = '';
-		} else {
-			rule += char;
-			if ( char === '(' && rule.includes( 'url' ) ) {
-				insideUrl = true;
-			} else if ( char === ')' ) {
-				insideUrl = false;
-			}
-		}
-	}
-	if ( rule.trim() ) {
-		rules.push( rule.trim() );
-	}
-	const obj = {};
-	rules.forEach( ( _rule ) => {
-		const [ property, ...valueParts ] = _rule.split( ':' );
-		const value = valueParts.join( ':' ).trim();
-		if ( property && value ) {
-			if ( property === '--the-icon-color' ) {
-				const colorSlug = value
-					.replace( 'var(--wp--preset--color--', '' )
-					.replace( ')', '' );
-				const colorValue = value.startsWith(
-					'var(--wp--preset--color--'
-				)
-					? getColorObjectByAttributeValues(
-							colorSettings,
-							colorSlug
-					  ).color
-					: value;
-				obj[ property.trim() ] = colorValue;
-			} else if ( property === '--the-icon-gradient-color' ) {
-				const gradientValue = value.startsWith(
-					'var(--wp--preset--gradient--'
-				)
-					? colorGradientSettings &&
-					  getGradientValueBySlug(
-							colorGradientSettings,
-							value
-								.replace( 'var(--wp--preset--gradient--', '' )
-								.replace( ')', '' )
-					  )
-					: value;
-				obj[ property.trim() ] = gradientValue;
-			} else {
-				obj[ property ] = value;
-			}
-		}
-	} );
-
-	return obj;
-}
-
-function parseClassName( className = '', fontSettings ) {
+function parseClassName( className = '' ) {
 	const classArray = stringToArrayClassName( className );
 	const obj = {};
 
-	classArray.forEach( ( name ) => {
-		if ( name.startsWith( 'has-' ) && name.endsWith( '-font-size' ) ) {
-			const fontSlug = name
-				.replace( /^has-/, '' )
-				.replace( /-font-size$/, '' );
-			const fontSizeObject = getFontSize( fontSettings, fontSlug );
-			obj[ 'font-size' ] = fontSizeObject.size;
-		}
-	} );
+	const filteredClasses = classArray.filter(
+		( _className ) => _className !== 'mone-inline-icon-wrapper'
+	);
+
+	if ( filteredClasses.length ) {
+		obj.className = filteredClasses.join( ' ' );
+	}
 
 	return obj;
 }
 
 export function getActiveIcons( {
-	value,
-	name,
 	colorSettings,
 	colorGradientSettings,
-	fontSettings,
+	activeObjectAttributes,
 } ) {
-	const activeFormat = getActiveFormat( value, name );
-
-	if ( ! activeFormat ) {
+	if ( ! activeObjectAttributes ) {
 		return {};
 	}
 
-	return {
+	const returnObj = {
 		...parseCSS(
-			activeFormat.attributes?.style,
+			activeObjectAttributes?.style,
 			colorSettings,
 			colorGradientSettings
 		),
-		...parseCSS(
-			activeFormat.unregisteredAttributes?.style,
-			colorSettings,
-			colorGradientSettings
-		),
-		...parseClassName( activeFormat.attributes.class, fontSettings ),
+		...parseClassName( activeObjectAttributes?.class ),
 	};
-}
 
-export function hasIconFormat(
-	value,
-	name,
-	colorSettings,
-	colorGradientSettings,
-	fontSettings
-) {
-	const activeFormat = getActiveIcons( {
-		value,
-		name,
-		colorSettings,
-		colorGradientSettings,
-		fontSettings,
-	} );
-
-	return activeFormat[ '--the-icon-name' ] || activeFormat[ '--the-icon-svg' ]
-		? true
-		: false;
+	return returnObj;
 }
 
 function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
@@ -168,22 +74,18 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 	const gradientValues = colorGradientSettings.gradients
 		.map( ( setting ) => setting.gradients )
 		.flat();
-	const [ fontSizes ] = useSettings( 'typography.fontSizes' );
 	const activeIcons = useMemo(
 		() =>
 			getActiveIcons( {
-				value,
-				name,
 				colorSettings,
 				colorGradientSettings: gradientValues,
-				fontSettings: fontSizes,
 			} ),
-		[ name, value, colorSettings, gradientValues, fontSizes ]
+		[ colorSettings, gradientValues ]
 	);
 
 	const getInsertIconValue = ( iconValue ) => {
 		const SVG = iconValue.iconSVG;
-		const iconName = iconValue.iconName;
+		const iconName = iconValue.iconName || 'custom';
 		const dataSvg = createSvgUrl( SVG );
 
 		const _activeFormat = getActiveFormat( value, name );
@@ -192,8 +94,7 @@ function InlineIconPicker( { name, value, onChange, setIsAdding } ) {
 		}
 
 		let newValue = value;
-		let html = '';
-		html += `<span class="mone-inline-icon" aria-hidden="true" style="--the-icon-name:${ iconName }; --the-icon-svg:url(${ dataSvg });" >&emsp;</span>`;
+		const html = `<span class="mone-inline-icon mone-inline-icon-wrapper" aria-hidden="true" style="--the-icon-name:${ iconName }; --the-icon-svg:url(${ dataSvg })">${ SVG }</span>`;
 		newValue = insert(
 			newValue,
 			applyFormat( create( { html } ), {

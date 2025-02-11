@@ -3,77 +3,139 @@
  */
 import { __ } from '@wordpress/i18n';
 import {
-	useSettings,
-	__experimentalSpacingSizesControl as SpacingSizesControl,
-	getSpacingPresetCssVar,
-} from '@wordpress/block-editor';
-import {
-	FontSizePicker,
 	Button,
 	__experimentalHStack as HStack,
 	__experimentalVStack as VStack,
-	__experimentalUseCustomUnits as useCustomUnits,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon,
+	Dropdown,
+	MenuGroup,
+	MenuItem,
+	__experimentalHeading as Heading,
+	TextControl,
 } from '@wordpress/components';
+import { moreVertical } from '@wordpress/icons';
 
-import { getPresetValueFromCustomValue } from '../../../utils-func/getPresetValueFromCustomValue';
-import { getCssVarToWpVar } from '../../../utils-func/cssVar-to-wpVar';
 import {
 	justifyTop,
 	justifyBottom,
 	justifyCenterVertical,
 } from '../../../icons';
+import { restButtonStyle } from './index';
 
 export function Settings( { activeIcons, onIconChange } ) {
-	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
-
-	const buttonStyle = {
-		height: '30px',
-	};
-
-	const [ spacingUnits ] = useSettings( 'spacing.units' );
-	const availableUnits = spacingUnits
-		? spacingUnits.filter( ( unit ) => unit !== '%' )
-		: [ 'px', 'em', 'rem', 'vw', 'vh' ];
-	const units = useCustomUnits( {
-		availableUnits,
-		defaultValues: { px: 100, em: 10, rem: 10, vw: 10, vh: 25 },
-	} );
-
-	const [ spacingSizes ] = useSettings( 'spacing.spacingSizes' );
-	const marginLeft = getPresetValueFromCustomValue(
-		getCssVarToWpVar( activeIcons[ 'margin-left' ] ),
-		spacingSizes
-	);
-	const marginRight = getPresetValueFromCustomValue(
-		getCssVarToWpVar( activeIcons[ 'margin-right' ] ),
-		spacingSizes
-	);
-
 	return (
 		<>
-			<VStack spacing={ 2 }>
-				<FontSizePicker
-					fontSizes={ fontSizesSettings }
-					value={ activeIcons[ 'font-size' ] }
-					onChange={ ( newValue ) => {
-						onIconChange( { 'font-size': newValue } );
+			<HStack
+				style={ {
+					padding: '8px 16px',
+					borderTop: '1px solid rgb(221, 221, 221)',
+					borderBottom: '1px solid rgb(221, 221, 221)',
+				} }
+			>
+				<Heading level="4">{ __( 'Settings', 'mone' ) }</Heading>
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
 					} }
-					withReset={ false }
-				/>
-				<HStack alignment="right">
+				>
 					<Button
 						onClick={ () => {
-							onIconChange( { 'font-size': '' } );
+							onIconChange( {
+								'vertical-align': undefined,
+								className: undefined,
+							} );
 						} }
 						variant="tertiary"
-						style={ buttonStyle }
+						size="small"
+						disabled={
+							! activeIcons[ 'vertical-align' ] &&
+							! activeIcons.className
+						}
+						accessibleWhenDisabled
 					>
 						{ __( 'Clear', 'mone' ) }
 					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Settings', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-align' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-align': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Position', 'mone' ) }
+										</span>
+										{ activeIcons[ 'border-align' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons.className
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												className: undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __(
+												'Additional CSS class(es)',
+												'mone'
+											) }
+										</span>
+										{ activeIcons[ 'border-align' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'vertical-align' ] &&
+											! activeIcons.className
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'vertical-align': undefined,
+												className: undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
 				</HStack>
-				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
+			</HStack>
+			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<ToggleGroupControl
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
@@ -101,56 +163,16 @@ export function Settings( { activeIcons, onIconChange } ) {
 						value="text-bottom"
 					/>
 				</ToggleGroupControl>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( { 'vertical-align': '' } );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
-				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
-				<div style={ { padding: '3px' } }>
-					<SpacingSizesControl
-						values={ {
-							left: marginLeft,
-							right: marginRight,
-						} }
-						onChange={ ( newValue ) => {
-							onIconChange( {
-								'margin-left': getSpacingPresetCssVar(
-									newValue.left
-								),
-								'margin-right': getSpacingPresetCssVar(
-									newValue.right
-								),
-							} );
-						} }
-						label={ __( 'Margin', 'mone' ) }
-						sides={ [ 'right', 'left' ] }
-						units={ units }
-						allowReset={ false }
-						splitOnAxis={ false }
-						showSideInLabel={ false }
-					/>
-				</div>
-				<HStack alignment="right">
-					<Button
-						onClick={ () => {
-							onIconChange( {
-								'margin-left': '',
-								'margin-right': '',
-							} );
-						} }
-						variant="tertiary"
-						style={ buttonStyle }
-					>
-						{ __( 'Clear', 'mone' ) }
-					</Button>
-				</HStack>
+				<TextControl
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+					label={ __( 'Additional CSS class(es)' ) }
+					value={ activeIcons.className || '' }
+					onChange={ ( nextValue ) => {
+						onIconChange( { className: nextValue } );
+					} }
+					help={ __( 'Separate multiple classes with spaces.' ) }
+				/>
 			</VStack>
 		</>
 	);

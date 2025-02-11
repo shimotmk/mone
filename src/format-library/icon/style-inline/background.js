@@ -10,16 +10,17 @@ import {
 	GradientPicker,
 	TabPanel,
 	Dropdown,
-	Button,
 	MenuGroup,
 	MenuItem,
-	__experimentalHStack as HStack,
 	__experimentalHeading as Heading,
+	__experimentalHStack as HStack,
+	Button,
 } from '@wordpress/components';
 import { moreVertical } from '@wordpress/icons';
 
-export function Color( { activeIcons, onIconChange } ) {
+export function Background( { activeIcons, onIconChange } ) {
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
 	return (
 		<>
 			<HStack
@@ -29,7 +30,7 @@ export function Color( { activeIcons, onIconChange } ) {
 					borderBottom: '1px solid rgb(221, 221, 221)',
 				} }
 			>
-				<Heading level="4">{ __( 'Icon color', 'mone' ) }</Heading>
+				<Heading level="4">{ __( 'Background', 'mone' ) }</Heading>
 				<HStack
 					style={ {
 						width: 'auto',
@@ -40,15 +41,15 @@ export function Color( { activeIcons, onIconChange } ) {
 					<Button
 						onClick={ () => {
 							onIconChange( {
-								'--the-icon-color': undefined,
-								'--the-icon-gradient-color': undefined,
+								'background-color': undefined,
+								background: undefined,
 							} );
 						} }
 						variant="tertiary"
 						size="small"
 						disabled={
-							! activeIcons[ '--the-icon-color' ] &&
-							! activeIcons[ '--the-icon-gradient-color' ]
+							! activeIcons[ 'background-color' ] &&
+							! activeIcons.background
 						}
 						accessibleWhenDisabled
 					>
@@ -66,22 +67,18 @@ export function Color( { activeIcons, onIconChange } ) {
 						) }
 						renderContent={ () => (
 							<>
-								<MenuGroup label={ __( 'Icon color', 'mone' ) }>
+								<MenuGroup label={ __( 'Background', 'mone' ) }>
 									<MenuItem
 										aria-disabled={
 											! activeIcons[
-												'--the-icon-color'
-											] &&
-											! activeIcons[
-												'--the-icon-gradient-color'
-											]
+												'background-color'
+											] && ! activeIcons.background
 										}
 										variant="tertiary"
 										onClick={ () => {
 											onIconChange( {
-												'--the-icon-color': undefined,
-												'--the-icon-gradient-color':
-													undefined,
+												'background-color': undefined,
+												background: undefined,
 											} );
 										} }
 									>
@@ -106,9 +103,7 @@ export function Color( { activeIcons, onIconChange } ) {
 					},
 				] }
 				initialTabName={
-					!! activeIcons[ '--the-icon-gradient-color' ]
-						? 'gradient'
-						: 'color'
+					!! activeIcons.background ? 'gradient' : 'color'
 				}
 			>
 				{ ( tab ) => {
@@ -116,12 +111,11 @@ export function Color( { activeIcons, onIconChange } ) {
 						return (
 							<div className="mone-popover-color-picker">
 								<ColorPalette
-									value={ activeIcons[ '--the-icon-color' ] }
+									value={ activeIcons[ 'background-color' ] }
 									onChange={ ( newValue ) => {
 										onIconChange( {
-											'--the-icon-color': newValue,
-											'--the-icon-gradient-color':
-												undefined,
+											'background-color': newValue,
+											background: undefined,
 										} );
 									} }
 									clearable={ false }
@@ -134,16 +128,11 @@ export function Color( { activeIcons, onIconChange } ) {
 						return (
 							<div className="mone-popover-color-picker">
 								<GradientPicker
-									value={
-										activeIcons[
-											'--the-icon-gradient-color'
-										]
-									}
+									value={ activeIcons.background }
 									onChange={ ( newValue ) => {
 										onIconChange( {
-											'--the-icon-color': undefined,
-											'--the-icon-gradient-color':
-												newValue,
+											'background-color': undefined,
+											background: newValue,
 										} );
 									} }
 									gradients={

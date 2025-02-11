@@ -6,3 +6,16 @@
 		padding: 0;
 	}
 }
+
+.mone-tab-head {
+
+	.mone-tab-button {
+		width: calc(100% / 5);
+	}
+
+	.components-heading {
+		color: #1e1e1e;
+		font-size: 13px;
+		font-weight: 500;
+	}
+}
