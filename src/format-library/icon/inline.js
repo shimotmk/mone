@@ -11,8 +11,6 @@ import {
 import {
 	useCachedTruthy,
 	store as blockEditorStore,
-	getColorObjectByAttributeValues,
-	getGradientValueBySlug,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 } from '@wordpress/block-editor';
 import { Modal } from '@wordpress/components';

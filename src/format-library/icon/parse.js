@@ -23,6 +23,8 @@ export function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 			if (
 				property === '--the-icon-color' ||
 				property === '--the-icon-gradient-color' ||
+				property === 'background-color' ||
+				property === 'background' ||
 				property === 'border-color'
 			) {
 				obj[ property.trim() ] = processColorValue(
@@ -96,6 +98,27 @@ function processColorValue(
 	}
 
 	if ( property === '--the-icon-gradient-color' ) {
+		return value.startsWith( 'var(--wp--preset--gradient--' )
+			? colorGradientSettings &&
+					getGradientValueBySlug(
+						colorGradientSettings,
+						value
+							.replace( 'var(--wp--preset--gradient--', '' )
+							.replace( ')', '' )
+					)
+			: value;
+	}
+
+	if ( property === 'background-color' ) {
+		const colorSlug = value
+			.replace( 'var(--wp--preset--color--', '' )
+			.replace( ')', '' );
+		return value.startsWith( 'var(--wp--preset--color--' )
+			? getColorObjectByAttributeValues( colorSettings, colorSlug ).color
+			: value;
+	}
+
+	if ( property === 'background' ) {
 		return value.startsWith( 'var(--wp--preset--gradient--' )
 			? colorGradientSettings &&
 					getGradientValueBySlug(

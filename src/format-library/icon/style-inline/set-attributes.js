@@ -15,11 +15,16 @@ import { parseCSS } from '../parse';
 const processColorStyles = ( {
 	iconColor,
 	iconGradientColor,
+	backgroundColor,
+	background,
 	borderColor,
 	colorSettings,
 	gradientSettings,
 } ) => {
 	const styles = [];
+	const flattenGradients = ( _gradientSettings ) => {
+		return _gradientSettings.map( ( setting ) => setting.gradients ).flat();
+	};
 
 	if ( iconColor ) {
 		const colorObject = getColorObjectByColorValue(
@@ -34,13 +39,35 @@ const processColorStyles = ( {
 
 	if ( iconGradientColor ) {
 		const gradientObject = __experimentalGetGradientObjectByGradientValue(
-			gradientSettings,
+			flattenGradients( gradientSettings ),
 			iconGradientColor
 		);
 		const gradientValue = gradientObject
 			? `var(--wp--preset--gradient--${ gradientObject.slug })`
 			: iconGradientColor;
 		styles.push( `--the-icon-gradient-color:${ gradientValue }` );
+	}
+
+	if ( backgroundColor ) {
+		const colorObject = getColorObjectByColorValue(
+			colorSettings,
+			backgroundColor
+		);
+		const colorValue = colorObject
+			? `var(--wp--preset--color--${ colorObject.slug })`
+			: backgroundColor;
+		styles.push( `background-color:${ colorValue }` );
+	}
+
+	if ( background ) {
+		const gradientObject = __experimentalGetGradientObjectByGradientValue(
+			flattenGradients( gradientSettings ),
+			background
+		);
+		const gradientValue = gradientObject
+			? `var(--wp--preset--gradient--${ gradientObject.slug })`
+			: background;
+		styles.push( `background:${ gradientValue }` );
 	}
 
 	if ( borderColor ) {
@@ -79,6 +106,8 @@ export function setAttributes( {
 		'--the-icon-gradient-color': iconGradientColor,
 		'border-color': borderColor,
 		'font-size': fontSize,
+		'background-color': backgroundColor,
+		background: background,
 		className: attributesClassNames = '',
 		...declaration
 	} = {
@@ -98,6 +127,8 @@ export function setAttributes( {
 	const { styles: colorStyles, hasColor } = processColorStyles( {
 		iconColor,
 		iconGradientColor,
+		backgroundColor,
+		background,
 		borderColor,
 		colorSettings,
 		gradientSettings,
