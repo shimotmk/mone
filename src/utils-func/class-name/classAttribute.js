@@ -7,34 +7,25 @@ export const stringToArrayClassName = ( classList ) => {
 	return classList ? String( classList ).split( ' ' ) : [];
 };
 
-export const arrayToStringClassName = ( classArray ) => {
-	return Array.isArray( classArray ) ? classArray.join( ' ' ) : '';
+export const arrayToStringClassName = ( classList ) => {
+	return Array.isArray( classList ) ? classList.join( ' ' ) : '';
 };
 
 export const existsClassName = ( targetClassList, classList ) => {
 	const classArray = stringToArrayClassName( classList );
-
-	if ( Array.isArray( targetClassList ) ) {
-		return targetClassList.some(
-			( target ) => classArray.indexOf( target ) !== -1
-		);
-	}
-	return classArray.indexOf( targetClassList ) !== -1;
+	const targets = stringToArrayClassName( targetClassList );
+	return targets.some( ( target ) => classArray.includes( target ) );
 };
 
 export const deleteClassName = ( targetClassList, classList ) => {
 	const classArray = stringToArrayClassName( classList );
-	const targetClassArray = Array.isArray( targetClassList )
-		? targetClassList
-		: [ targetClassList ];
+	const targetArray = stringToArrayClassName( targetClassList );
 
-	targetClassArray.forEach( ( className ) => {
-		if ( existsClassName( className, classList ) ) {
-			const index = classArray.indexOf( className );
-			classArray.splice( index, 1 );
-		}
-	} );
-	return arrayToStringClassName( classArray );
+	const filteredClasses = classArray.filter(
+		( className ) => ! targetArray.includes( className )
+	);
+
+	return arrayToStringClassName( filteredClasses );
 };
 
 export const addClassName = ( targetClassList, classList ) => {
