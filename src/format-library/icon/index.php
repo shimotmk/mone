@@ -54,7 +54,7 @@ function render_format_block_style( $block_content ) {
 
 			$custom_css .= '
 				.mone-inline-icon-wrapper {
-					vertical-align: middle;
+					vertical-align: -0.1em;
 					box-sizing: border-box;
 					width: 1em;
 					height: 1em;
