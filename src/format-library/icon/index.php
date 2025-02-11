@@ -22,8 +22,9 @@ function render_format_block_style( $block_content ) {
 	if ( strpos( $block_content, 'mone-inline-icon' ) !== false ) {
 		static $is_rendered = false;
 		if ( ! $is_rendered ) {
-			$custom_css = '
-				// deprecated start
+			$custom_css = '';
+			// deprecated inline icon
+			$custom_css .= '
 				.mone-inline-icon {
 					display: inline-block;
 					margin-left: 0.1em;
@@ -49,8 +50,9 @@ function render_format_block_style( $block_content ) {
 					width: 100%;
 					box-sizing: inherit;
 				}
-				// deprecated end
+			';
 
+			$custom_css .= '
 				.mone-inline-icon-wrapper {
 					vertical-align: middle;
 					box-sizing: border-box;
