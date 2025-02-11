@@ -106,7 +106,6 @@ export function setAttributes( {
 		'--the-icon-color': iconColor,
 		'--the-icon-gradient-color': iconGradientColor,
 		'border-color': borderColor,
-		'font-size': fontSize,
 		'background-color': backgroundColor,
 		background: background,
 		className: attributesClassNames = '',
