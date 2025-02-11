@@ -9,7 +9,7 @@ import {
 /**
  * Internal dependencies
  */
-import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
+import { stringToArrayClassName } from '../../utils-func/class-name';
 
 export function parseCSS( css = '', colorSettings, colorGradientSettings ) {
 	const rules = splitRules( css );

@@ -26,7 +26,7 @@ import {
 	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { IconPopoverContent } from '../../components/icon-search-popover';
-import { stringToArrayClassName } from '../../utils-func/class-name/classAttribute';
+import { stringToArrayClassName } from '../../utils-func/class-name';
 import { parseCSS } from './parse';
 
 function parseClassName( className = '' ) {

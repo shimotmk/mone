@@ -8,9 +8,9 @@ import { Fragment } from '@wordpress/element';
 import { usePostTypes } from './utils/use-post-types.js';
 import {
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../../utils-func/class-name';
 
 export const PostType = ( props ) => {
 	const {

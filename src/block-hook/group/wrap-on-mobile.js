@@ -7,10 +7,8 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 
-import {
-	toggleClass,
-	existsClassName,
-} from '../../utils-func/class-name/classAttribute.js';
+import { toggleClass } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name';
 
 /**
  * Override the default edit UI to include layout controls

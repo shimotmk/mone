@@ -10,9 +10,9 @@ import { hasBlockSupport } from '@wordpress/blocks';
 
 import {
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name';
 import { InfoPopoverLabel } from '../../components/info-popover-label';
 
 export const BlockEditTypography = createHigherOrderComponent(

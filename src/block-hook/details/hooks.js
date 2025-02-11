@@ -34,12 +34,11 @@ import {
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
 import {
-	existsClassName,
 	toggleClass,
 	addClass,
-	deleteClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { deleteClassName, existsClassName } from '../../utils-func/class-name';
 import { isHexColor } from '../../utils-func/is-hex-color';
 import { plusMinus } from '../../icons';
 

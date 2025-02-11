@@ -16,11 +16,13 @@ import {
 import { getPath } from '@wordpress/url';
 
 import {
-	stringToArrayClassName,
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import {
+	stringToArrayClassName,
+	existsClassName,
+} from '../../utils-func/class-name';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const isSiteEditor = getPath( window.location.href )?.includes(

@@ -18,11 +18,10 @@ import { hasBlockSupport } from '@wordpress/blocks';
  */
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 import {
-	existsClassName,
 	toggleClass,
-	deleteClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { deleteClassName, existsClassName } from '../../utils-func/class-name';
 import {
 	alignCenter,
 	alignRight,

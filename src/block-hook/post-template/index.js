@@ -26,9 +26,9 @@ import {
 import './style.scss';
 import {
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export function registerBlockTypePostTemplate( settings, name ) {

@@ -31,7 +31,7 @@ import {
 	decodeSvgBase64,
 } from '../../components/icon-search-popover/ReactIcon';
 import { colorSlugToColorCode } from '../../utils-func/color-slug-to-color-code';
-import { existsClassName } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name';
 import { isHexColor } from '../../utils-func/is-hex-color';
 
 const targetClasses = [

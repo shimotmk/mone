@@ -10,9 +10,9 @@ import { useEffect } from '@wordpress/element';
 
 import {
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../utils-func/class-name';
 
 /**
  * Override the default edit UI to include layout controls

@@ -6,9 +6,9 @@ import {
 
 import {
 	toggleClass,
-	existsClassName,
 	deleteClass,
 } from '../../../utils-func/class-name/classAttribute.js';
+import { existsClassName } from '../../../utils-func/class-name';
 
 export const MediaQuery = ( props ) => {
 	const {
