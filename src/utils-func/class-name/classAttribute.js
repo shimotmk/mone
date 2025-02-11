@@ -1,6 +1,9 @@
 import { emptyStringToUndefined } from './empty-string-to-undefined.js';
 
 export const stringToArrayClassName = ( classList ) => {
+	if ( Array.isArray( classList ) ) {
+		return classList;
+	}
 	return classList ? String( classList ).split( ' ' ) : [];
 };
 
@@ -9,9 +12,7 @@ export const arrayToStringClassName = ( classArray ) => {
 };
 
 export const existsClassName = ( targetClassList, classList ) => {
-	const classArray = Array.isArray( classList )
-		? classList
-		: stringToArrayClassName( classList );
+	const classArray = stringToArrayClassName( classList );
 
 	if ( Array.isArray( targetClassList ) ) {
 		return targetClassList.some(
@@ -37,9 +38,7 @@ export const deleteClassName = ( targetClassNames, classList ) => {
 };
 
 export const addClassName = ( targetClassList, classList ) => {
-	const classArray = Array.isArray( classList )
-		? classList
-		: stringToArrayClassName( classList );
+	const classArray = stringToArrayClassName( classList );
 	if ( ! existsClassName( targetClassList, classList ) ) {
 		classArray.push( targetClassList );
 	}
@@ -47,9 +46,7 @@ export const addClassName = ( targetClassList, classList ) => {
 };
 
 export const deleteRegExClassName = ( regEx, classList ) => {
-	const classArray = Array.isArray( classList )
-		? classList
-		: stringToArrayClassName( classList );
+	const classArray = stringToArrayClassName( classList );
 	const filteredClassArray = classArray.filter(
 		( classItem ) => ! regEx.test( classItem )
 	);
