@@ -41,122 +41,151 @@ export function Border( { activeIcons, onIconChange } ) {
 				} }
 			>
 				<Heading level="4">{ __( 'Border', 'mone' ) }</Heading>
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<Button
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							icon={ moreVertical }
-							size="small"
-						/>
-					) }
-					renderContent={ () => (
-						<>
-							<MenuGroup label={ __( 'Border', 'mone' ) }>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-color' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-color': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Border color', 'mone' ) }
-									</span>
-									{ activeIcons[ 'border-color' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
+					} }
+				>
+					<Button
+						onClick={ () => {
+							onIconChange( {
+								'border-color': undefined,
+								'border-style': undefined,
+								'border-width': undefined,
+								'border-radius': undefined,
+							} );
+						} }
+						variant="tertiary"
+						size="small"
+						disabled={
+							! activeIcons[ 'border-color' ] &&
+							! activeIcons[ 'border-style' ] &&
+							! activeIcons[ 'border-width' ] &&
+							! activeIcons[ 'border-radius' ]
+						}
+						accessibleWhenDisabled
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Border', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-color' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-color': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Border color', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-style' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-style': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Border style', 'mone' ) }
-									</span>
-									{ activeIcons[ 'border-style' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+										{ activeIcons[ 'border-color' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-style' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-style': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Border style', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-width' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-width': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Border width', 'mone' ) }
-									</span>
-									{ activeIcons[ 'border-width' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+										{ activeIcons[ 'border-style' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-width' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-width': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Border width', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-radius' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-radius': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Border radius', 'mone' ) }
-									</span>
-									{ activeIcons[ 'border-radius' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+										{ activeIcons[ 'border-width' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-radius' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-radius': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Border radius', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-color' ] &&
-										! activeIcons[ 'border-style' ] &&
-										! activeIcons[ 'border-width' ] &&
-										! activeIcons[ 'border-radius' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-color': undefined,
-											'border-style': undefined,
-											'border-width': undefined,
-											'border-radius': undefined,
-										} );
-									} }
-								>
-									{ __( 'Reset all' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+										{ activeIcons[ 'border-radius' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-color' ] &&
+											! activeIcons[ 'border-style' ] &&
+											! activeIcons[ 'border-width' ] &&
+											! activeIcons[ 'border-radius' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-color': undefined,
+												'border-style': undefined,
+												'border-width': undefined,
+												'border-radius': undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
+				</HStack>
 			</HStack>
 			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<ColorPalette

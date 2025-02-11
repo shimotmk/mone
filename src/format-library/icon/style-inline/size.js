@@ -73,125 +73,164 @@ export function Size( { activeIcons, onIconChange } ) {
 				} }
 			>
 				<Heading level="4">{ __( 'Size', 'mone' ) }</Heading>
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<Button
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							icon={ moreVertical }
-							size="small"
-						/>
-					) }
-					renderContent={ () => (
-						<>
-							<MenuGroup label={ __( 'Size', 'mone' ) }>
-								<MenuItem
-									aria-disabled={
-										! activeIcons.width &&
-										! activeIcons.height
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											width: undefined,
-											height: undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Size', 'mone' ) }
-									</span>
-									{ activeIcons.width &&
-										activeIcons.height && (
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
+					} }
+				>
+					<Button
+						onClick={ () => {
+							onIconChange( {
+								width: undefined,
+								height: undefined,
+								'margin-left': undefined,
+								'margin-right': undefined,
+								'padding-top': undefined,
+								'padding-left': undefined,
+								'padding-bottom': undefined,
+								'padding-right': undefined,
+							} );
+						} }
+						variant="tertiary"
+						size="small"
+						disabled={
+							! activeIcons.width &&
+							! activeIcons.height &&
+							! activeIcons[ 'margin-left' ] &&
+							! activeIcons[ 'margin-right' ] &&
+							! activeIcons[ 'padding-top' ] &&
+							! activeIcons[ 'padding-left' ] &&
+							! activeIcons[ 'padding-bottom' ] &&
+							! activeIcons[ 'padding-right' ]
+						}
+						accessibleWhenDisabled
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Size', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons.width &&
+											! activeIcons.height
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												width: undefined,
+												height: undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Size', 'mone' ) }
+										</span>
+										{ activeIcons.width &&
+											activeIcons.height && (
+												<span style={ restButtonStyle }>
+													{ __( 'Reset', 'mone' ) }
+												</span>
+											) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'margin-left' ] &&
+											! activeIcons[ 'margin-right' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'margin-left': undefined,
+												'margin-right': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Margin', 'mone' ) }
+										</span>
+										{ ( activeIcons[ 'margin-left' ] ||
+											activeIcons[ 'margin-right' ] ) && (
 											<span style={ restButtonStyle }>
 												{ __( 'Reset', 'mone' ) }
 											</span>
 										) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'margin-left' ] &&
-										! activeIcons[ 'margin-right' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'margin-left': undefined,
-											'margin-right': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Margin', 'mone' ) }
-									</span>
-									{ ( activeIcons[ 'margin-left' ] ||
-										activeIcons[ 'margin-right' ] ) && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'padding-top' ] &&
+											! activeIcons[ 'padding-left' ] &&
+											! activeIcons[ 'padding-bottom' ] &&
+											! activeIcons[ 'padding-right' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'padding-top': undefined,
+												'padding-left': undefined,
+												'padding-bottom': undefined,
+												'padding-right': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Paddding', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'padding-top' ] &&
-										! activeIcons[ 'padding-left' ] &&
-										! activeIcons[ 'padding-bottom' ] &&
-										! activeIcons[ 'padding-right' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'padding-top': undefined,
-											'padding-left': undefined,
-											'padding-bottom': undefined,
-											'padding-right': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Paddding', 'mone' ) }
-									</span>
-									{ ( activeIcons[ 'padding-top' ] ||
-										activeIcons[ 'padding-left' ] ||
-										activeIcons[ 'padding-bottom' ] ||
-										activeIcons[ 'padding-right' ] ) && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
-										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons.width &&
-										! activeIcons.height &&
-										! activeIcons[ 'margin-left' ] &&
-										! activeIcons[ 'margin-right' ] &&
-										! activeIcons[ 'padding-top' ] &&
-										! activeIcons[ 'padding-left' ] &&
-										! activeIcons[ 'padding-bottom' ] &&
-										! activeIcons[ 'padding-right' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											width: undefined,
-											height: undefined,
-											'margin-left': undefined,
-											'margin-right': undefined,
-											'padding-top': undefined,
-											'padding-left': undefined,
-											'padding-bottom': undefined,
-											'padding-right': undefined,
-										} );
-									} }
-								>
-									{ __( 'Reset all' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+										{ ( activeIcons[ 'padding-top' ] ||
+											activeIcons[ 'padding-left' ] ||
+											activeIcons[ 'padding-bottom' ] ||
+											activeIcons[
+												'padding-right'
+											] ) && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons.width &&
+											! activeIcons.height &&
+											! activeIcons[ 'margin-left' ] &&
+											! activeIcons[ 'margin-right' ] &&
+											! activeIcons[ 'padding-top' ] &&
+											! activeIcons[ 'padding-left' ] &&
+											! activeIcons[ 'padding-bottom' ] &&
+											! activeIcons[ 'padding-right' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												width: undefined,
+												height: undefined,
+												'margin-left': undefined,
+												'margin-right': undefined,
+												'padding-top': undefined,
+												'padding-left': undefined,
+												'padding-bottom': undefined,
+												'padding-right': undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
+				</HStack>
 			</HStack>
 			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<FontSizePicker

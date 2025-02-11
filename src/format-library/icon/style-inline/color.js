@@ -30,41 +30,68 @@ export function Color( { activeIcons, onIconChange } ) {
 				} }
 			>
 				<Heading level="4">{ __( 'Icon color', 'mone' ) }</Heading>
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<Button
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							icon={ moreVertical }
-							size="small"
-						/>
-					) }
-					renderContent={ () => (
-						<>
-							<MenuGroup label={ __( 'Icon color', 'mone' ) }>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ '--the-icon-color' ] &&
-										! activeIcons[
-											'--the-icon-gradient-color'
-										]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'--the-icon-color': undefined,
-											'--the-icon-gradient-color':
-												undefined,
-										} );
-									} }
-								>
-									{ __( 'Reset all' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
+					} }
+				>
+					<Button
+						onClick={ () => {
+							onIconChange( {
+								'--the-icon-color': undefined,
+								'--the-icon-gradient-color': undefined,
+							} );
+						} }
+						variant="tertiary"
+						size="small"
+						disabled={
+							! activeIcons[ '--the-icon-color' ] &&
+							! activeIcons[ '--the-icon-gradient-color' ]
+						}
+						accessibleWhenDisabled
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Icon color', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[
+												'--the-icon-color'
+											] &&
+											! activeIcons[
+												'--the-icon-gradient-color'
+											]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'--the-icon-color': undefined,
+												'--the-icon-gradient-color':
+													undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
+				</HStack>
 			</HStack>
 			<TabPanel
 				activeClass="is-active"

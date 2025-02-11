@@ -31,38 +31,64 @@ export function Background( { activeIcons, onIconChange } ) {
 				} }
 			>
 				<Heading level="4">{ __( 'Background', 'mone' ) }</Heading>
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<Button
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							icon={ moreVertical }
-							size="small"
-						/>
-					) }
-					renderContent={ () => (
-						<>
-							<MenuGroup label={ __( 'Background', 'mone' ) }>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'background-color' ] &&
-										! activeIcons.background
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'background-color': undefined,
-											background: undefined,
-										} );
-									} }
-								>
-									{ __( 'Reset all' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
+					} }
+				>
+					<Button
+						onClick={ () => {
+							onIconChange( {
+								'background-color': undefined,
+								background: undefined,
+							} );
+						} }
+						variant="tertiary"
+						size="small"
+						disabled={
+							! activeIcons[ 'background-color' ] &&
+							! activeIcons.background
+						}
+						accessibleWhenDisabled
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Background', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[
+												'background-color'
+											] && ! activeIcons.background
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'background-color': undefined,
+												background: undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
+				</HStack>
 			</HStack>
 			<TabPanel
 				activeClass="is-active"

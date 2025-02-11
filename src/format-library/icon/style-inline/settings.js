@@ -34,79 +34,106 @@ export function Settings( { activeIcons, onIconChange } ) {
 				} }
 			>
 				<Heading level="4">{ __( 'Settings', 'mone' ) }</Heading>
-				<Dropdown
-					popoverProps={ { placement: 'bottom-start' } }
-					renderToggle={ ( { isOpen, onToggle } ) => (
-						<Button
-							onClick={ onToggle }
-							aria-expanded={ isOpen }
-							icon={ moreVertical }
-							size="small"
-						/>
-					) }
-					renderContent={ () => (
-						<>
-							<MenuGroup label={ __( 'Settings', 'mone' ) }>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'border-align' ]
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'border-align': undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __( 'Position', 'mone' ) }
-									</span>
-									{ activeIcons[ 'border-align' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+				<HStack
+					style={ {
+						width: 'auto',
+						justifyContent: 'right',
+						gap: 0,
+					} }
+				>
+					<Button
+						onClick={ () => {
+							onIconChange( {
+								'vertical-align': undefined,
+								className: undefined,
+							} );
+						} }
+						variant="tertiary"
+						size="small"
+						disabled={
+							! activeIcons[ 'vertical-align' ] &&
+							! activeIcons.className
+						}
+						accessibleWhenDisabled
+					>
+						{ __( 'Clear', 'mone' ) }
+					</Button>
+					<Dropdown
+						popoverProps={ { placement: 'bottom-start' } }
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<Button
+								onClick={ onToggle }
+								aria-expanded={ isOpen }
+								icon={ moreVertical }
+								size="small"
+							/>
+						) }
+						renderContent={ () => (
+							<>
+								<MenuGroup label={ __( 'Settings', 'mone' ) }>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'border-align' ]
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'border-align': undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __( 'Position', 'mone' ) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={ ! activeIcons.className }
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											className: undefined,
-										} );
-									} }
-								>
-									<span className="components-menu-item__item">
-										{ __(
-											'Additional CSS class(es)',
-											'mone'
+										{ activeIcons[ 'border-align' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
 										) }
-									</span>
-									{ activeIcons[ 'border-align' ] && (
-										<span style={ restButtonStyle }>
-											{ __( 'Reset', 'mone' ) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons.className
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												className: undefined,
+											} );
+										} }
+									>
+										<span className="components-menu-item__item">
+											{ __(
+												'Additional CSS class(es)',
+												'mone'
+											) }
 										</span>
-									) }
-								</MenuItem>
-								<MenuItem
-									aria-disabled={
-										! activeIcons[ 'vertical-align' ] &&
-										! activeIcons.className
-									}
-									variant="tertiary"
-									onClick={ () => {
-										onIconChange( {
-											'vertical-align': undefined,
-											className: undefined,
-										} );
-									} }
-								>
-									{ __( 'Reset all' ) }
-								</MenuItem>
-							</MenuGroup>
-						</>
-					) }
-				/>
+										{ activeIcons[ 'border-align' ] && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+									</MenuItem>
+									<MenuItem
+										aria-disabled={
+											! activeIcons[ 'vertical-align' ] &&
+											! activeIcons.className
+										}
+										variant="tertiary"
+										onClick={ () => {
+											onIconChange( {
+												'vertical-align': undefined,
+												className: undefined,
+											} );
+										} }
+									>
+										{ __( 'Reset all' ) }
+									</MenuItem>
+								</MenuGroup>
+							</>
+						) }
+					/>
+				</HStack>
 			</HStack>
 			<VStack spacing={ 2 } className="mone-popover-color-picker">
 				<ToggleGroupControl
