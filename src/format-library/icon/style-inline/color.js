@@ -99,6 +99,7 @@ export function Color( { activeIcons, onIconChange } ) {
 									} }
 									clearable={ false }
 									enableAlpha={ true }
+									__experimentalIsRenderedInSidebar={ true }
 								/>
 							</div>
 						);

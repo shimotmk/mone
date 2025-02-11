@@ -90,6 +90,7 @@ export function Border( { activeIcons, onIconChange } ) {
 					} }
 					clearable={ false }
 					enableAlpha={ true }
+					__experimentalIsRenderedInSidebar={ true }
 				/>
 				<hr style={ { borderTop: 'none', margin: 0, width: '100%' } } />
 				<ToggleGroupControl
