@@ -8,17 +8,17 @@ export const arrayToStringClassName = ( classArray ) => {
 	return Array.isArray( classArray ) ? classArray.join( ' ' ) : '';
 };
 
-export const existsClassName = ( targetClassName, classList ) => {
+export const existsClassName = ( targetClassList, classList ) => {
 	const classArray = Array.isArray( classList )
 		? classList
 		: stringToArrayClassName( classList );
 
-	if ( Array.isArray( targetClassName ) ) {
-		return targetClassName.some(
+	if ( Array.isArray( targetClassList ) ) {
+		return targetClassList.some(
 			( target ) => classArray.indexOf( target ) !== -1
 		);
 	}
-	return classArray.indexOf( targetClassName ) !== -1;
+	return classArray.indexOf( targetClassList ) !== -1;
 };
 
 export const deleteClassName = ( targetClassNames, classList ) => {
@@ -27,21 +27,21 @@ export const deleteClassName = ( targetClassNames, classList ) => {
 		? targetClassNames
 		: [ targetClassNames ];
 
-	targetClassArray.forEach( ( targetClassName ) => {
-		if ( existsClassName( targetClassName, classList ) ) {
-			const index = classArray.indexOf( targetClassName );
+	targetClassArray.forEach( ( targetClassList ) => {
+		if ( existsClassName( targetClassList, classList ) ) {
+			const index = classArray.indexOf( targetClassList );
 			classArray.splice( index, 1 );
 		}
 	} );
 	return arrayToStringClassName( classArray );
 };
 
-export const addClassName = ( targetClassName, classList ) => {
+export const addClassName = ( targetClassList, classList ) => {
 	const classArray = Array.isArray( classList )
 		? classList
 		: stringToArrayClassName( classList );
-	if ( ! existsClassName( targetClassName, classList ) ) {
-		classArray.push( targetClassName );
+	if ( ! existsClassName( targetClassList, classList ) ) {
+		classArray.push( targetClassList );
 	}
 	return arrayToStringClassName( classArray );
 };
@@ -64,10 +64,10 @@ export const addClass = ( targetClassNames, classList, setAttributes ) => {
 	} );
 };
 
-export const toggleClass = ( targetClassName, classList, setAttributes ) => {
-	const updatedClassName = existsClassName( targetClassName, classList )
-		? deleteClassName( targetClassName, classList )
-		: addClassName( targetClassName, classList );
+export const toggleClass = ( targetClassList, classList, setAttributes ) => {
+	const updatedClassName = existsClassName( targetClassList, classList )
+		? deleteClassName( targetClassList, classList )
+		: addClassName( targetClassList, classList );
 
 	setAttributes( {
 		className: emptyStringToUndefined( updatedClassName ),
