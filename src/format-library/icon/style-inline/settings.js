@@ -21,6 +21,7 @@ import {
 	justifyBottom,
 	justifyCenterVertical,
 } from '../../../icons';
+import { restButtonStyle } from './index';
 
 export function Settings( { activeIcons, onIconChange } ) {
 	return (
@@ -48,12 +49,55 @@ export function Settings( { activeIcons, onIconChange } ) {
 							<MenuGroup label={ __( 'Settings', 'mone' ) }>
 								<MenuItem
 									aria-disabled={
-										! activeIcons[ 'vertical-align' ]
+										! activeIcons[ 'border-align' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'border-align': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Position', 'mone' ) }
+									</span>
+									{ activeIcons[ 'border-align' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={ ! activeIcons.className }
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											className: undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __(
+											'Additional CSS class(es)',
+											'mone'
+										) }
+									</span>
+									{ activeIcons[ 'border-align' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'vertical-align' ] &&
+										! activeIcons.className
 									}
 									variant="tertiary"
 									onClick={ () => {
 										onIconChange( {
 											'vertical-align': undefined,
+											className: undefined,
 										} );
 									} }
 								>
@@ -96,7 +140,7 @@ export function Settings( { activeIcons, onIconChange } ) {
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
 					label={ __( 'Additional CSS class(es)' ) }
-					value={ activeIcons.className }
+					value={ activeIcons.className || '' }
 					onChange={ ( nextValue ) => {
 						onIconChange( { className: nextValue } );
 					} }

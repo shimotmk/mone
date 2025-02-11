@@ -22,6 +22,8 @@ import {
 } from '@wordpress/icons';
 import { __ } from '@wordpress/i18n';
 
+import { restButtonStyle } from './index';
+
 const BORDER_STYLES = [
 	{ label: __( 'Solid' ), icon: lineSolid, value: 'solid' },
 	{ label: __( 'Dashed' ), icon: lineDashed, value: 'dashed' },
@@ -52,6 +54,86 @@ export function Border( { activeIcons, onIconChange } ) {
 					renderContent={ () => (
 						<>
 							<MenuGroup label={ __( 'Border', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'border-color' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'border-color': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Border color', 'mone' ) }
+									</span>
+									{ activeIcons[ 'border-color' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'border-style' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'border-style': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Border style', 'mone' ) }
+									</span>
+									{ activeIcons[ 'border-style' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'border-width' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'border-width': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Border width', 'mone' ) }
+									</span>
+									{ activeIcons[ 'border-width' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'border-radius' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'border-radius': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Border radius', 'mone' ) }
+									</span>
+									{ activeIcons[ 'border-radius' ] && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
 								<MenuItem
 									aria-disabled={
 										! activeIcons[ 'border-color' ] &&

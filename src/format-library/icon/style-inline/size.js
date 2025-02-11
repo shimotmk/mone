@@ -22,6 +22,7 @@ import { moreVertical } from '@wordpress/icons';
 
 import { getPresetValueFromCustomValue } from '../../../utils-func/getPresetValueFromCustomValue';
 import { getCssVarToWpVar } from '../../../utils-func/cssVar-to-wpVar';
+import { restButtonStyle } from './index';
 
 export function Size( { activeIcons, onIconChange } ) {
 	const [ fontSizesSettings ] = useSettings( 'typography.fontSizes' );
@@ -85,6 +86,81 @@ export function Size( { activeIcons, onIconChange } ) {
 					renderContent={ () => (
 						<>
 							<MenuGroup label={ __( 'Size', 'mone' ) }>
+								<MenuItem
+									aria-disabled={
+										! activeIcons.width &&
+										! activeIcons.height
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											width: undefined,
+											height: undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Size', 'mone' ) }
+									</span>
+									{ activeIcons.width &&
+										activeIcons.height && (
+											<span style={ restButtonStyle }>
+												{ __( 'Reset', 'mone' ) }
+											</span>
+										) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'margin-left' ] &&
+										! activeIcons[ 'margin-right' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'margin-left': undefined,
+											'margin-right': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Margin', 'mone' ) }
+									</span>
+									{ ( activeIcons[ 'margin-left' ] ||
+										activeIcons[ 'margin-right' ] ) && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
+								<MenuItem
+									aria-disabled={
+										! activeIcons[ 'padding-top' ] &&
+										! activeIcons[ 'padding-left' ] &&
+										! activeIcons[ 'padding-bottom' ] &&
+										! activeIcons[ 'padding-right' ]
+									}
+									variant="tertiary"
+									onClick={ () => {
+										onIconChange( {
+											'padding-top': undefined,
+											'padding-left': undefined,
+											'padding-bottom': undefined,
+											'padding-right': undefined,
+										} );
+									} }
+								>
+									<span className="components-menu-item__item">
+										{ __( 'Paddding', 'mone' ) }
+									</span>
+									{ ( activeIcons[ 'padding-top' ] ||
+										activeIcons[ 'padding-left' ] ||
+										activeIcons[ 'padding-bottom' ] ||
+										activeIcons[ 'padding-right' ] ) && (
+										<span style={ restButtonStyle }>
+											{ __( 'Reset', 'mone' ) }
+										</span>
+									) }
+								</MenuItem>
 								<MenuItem
 									aria-disabled={
 										! activeIcons.width &&

@@ -29,6 +29,14 @@ import { Size } from './size';
 import { border as borderIcon, sizeMove as sizeMoveIcon } from '../../../icons';
 import { setAttributes } from './set-attributes';
 
+export const restButtonStyle = {
+	fontSize: '11px',
+	fontWeight: 500,
+	lineHeight: 1.4,
+	marginLeft: 'calc(12px)',
+	textTransform: 'uppercase',
+};
+
 export default function StyleInlineIconUI( {
 	name,
 	value,
