@@ -23,7 +23,7 @@ function render_format_block_style( $block_content ) {
 		static $is_rendered = false;
 		if ( ! $is_rendered ) {
 			$custom_css = '';
-			// deprecated inline icon
+			// Deprecated inline icon.
 			$custom_css .= '
 				.mone-inline-icon {
 					display: inline-block;
