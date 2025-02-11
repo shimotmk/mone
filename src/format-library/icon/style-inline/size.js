@@ -186,7 +186,7 @@ export function Size( { activeIcons, onIconChange } ) {
 										} }
 									>
 										<span className="components-menu-item__item">
-											{ __( 'Paddding', 'mone' ) }
+											{ __( 'Padding', 'mone' ) }
 										</span>
 										{ ( activeIcons[ 'padding-top' ] ||
 											activeIcons[ 'padding-left' ] ||
