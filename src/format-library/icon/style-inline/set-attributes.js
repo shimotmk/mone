@@ -19,12 +19,9 @@ const processColorStyles = ( {
 	background,
 	borderColor,
 	colorSettings,
-	gradientSettings,
+	flattenGradients,
 } ) => {
 	const styles = [];
-	const flattenGradients = ( _gradientSettings ) => {
-		return _gradientSettings.map( ( setting ) => setting.gradients ).flat();
-	};
 
 	if ( iconColor ) {
 		const colorObject = getColorObjectByColorValue(
@@ -38,14 +35,15 @@ const processColorStyles = ( {
 	}
 
 	if ( iconGradientColor ) {
-		const gradientObject = __experimentalGetGradientObjectByGradientValue(
-			flattenGradients( gradientSettings ),
-			iconGradientColor
-		);
-		const gradientValue = gradientObject
-			? `var(--wp--preset--gradient--${ gradientObject.slug })`
+		const iconGradientObject =
+			__experimentalGetGradientObjectByGradientValue(
+				flattenGradients,
+				iconGradientColor
+			);
+		const iconGradientValue = iconGradientObject
+			? `var(--wp--preset--gradient--${ iconGradientObject.slug })`
 			: iconGradientColor;
-		styles.push( `--the-icon-gradient-color:${ gradientValue }` );
+		styles.push( `--the-icon-gradient-color:${ iconGradientValue }` );
 	}
 
 	if ( backgroundColor ) {
@@ -60,14 +58,14 @@ const processColorStyles = ( {
 	}
 
 	if ( background ) {
-		const gradientObject = __experimentalGetGradientObjectByGradientValue(
-			flattenGradients( gradientSettings ),
+		const bgGradientObject = __experimentalGetGradientObjectByGradientValue(
+			flattenGradients,
 			background
 		);
-		const gradientValue = gradientObject
-			? `var(--wp--preset--gradient--${ gradientObject.slug })`
+		const bgGradientValue = bgGradientObject
+			? `var(--wp--preset--gradient--${ bgGradientObject.slug })`
 			: background;
-		styles.push( `background:${ gradientValue }` );
+		styles.push( `background:${ bgGradientValue }` );
 	}
 
 	if ( borderColor ) {
@@ -95,10 +93,13 @@ export function setAttributes( {
 	newValueObj,
 	activeObjectAttributes,
 } ) {
+	const flattenGradients = gradientSettings
+		.map( ( setting ) => setting.gradients )
+		.flat();
 	const parsedStyles = parseCSS(
 		activeObjectAttributes.style,
 		colorSettings,
-		gradientSettings
+		flattenGradients
 	);
 
 	const {
@@ -131,7 +132,7 @@ export function setAttributes( {
 		background,
 		borderColor,
 		colorSettings,
-		gradientSettings,
+		flattenGradients,
 	} );
 	styles.push( ...colorStyles );
 
