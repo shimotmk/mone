@@ -22,15 +22,15 @@ export const existsClassName = ( targetClassList, classList ) => {
 	return classArray.indexOf( targetClassList ) !== -1;
 };
 
-export const deleteClassName = ( targetClassNames, classList ) => {
+export const deleteClassName = ( targetClassList, classList ) => {
 	const classArray = stringToArrayClassName( classList );
-	const targetClassArray = Array.isArray( targetClassNames )
-		? targetClassNames
-		: [ targetClassNames ];
+	const targetClassArray = Array.isArray( targetClassList )
+		? targetClassList
+		: [ targetClassList ];
 
-	targetClassArray.forEach( ( targetClassList ) => {
-		if ( existsClassName( targetClassList, classList ) ) {
-			const index = classArray.indexOf( targetClassList );
+	targetClassArray.forEach( ( className ) => {
+		if ( existsClassName( className, classList ) ) {
+			const index = classArray.indexOf( className );
 			classArray.splice( index, 1 );
 		}
 	} );
