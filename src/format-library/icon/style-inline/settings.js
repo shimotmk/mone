@@ -13,6 +13,7 @@ import {
 	MenuItem,
 	__experimentalHeading as Heading,
 	TextControl,
+	PanelBody,
 } from '@wordpress/components';
 import { moreVertical } from '@wordpress/icons';
 
@@ -163,6 +164,12 @@ export function Settings( { activeIcons, onIconChange } ) {
 						value="text-bottom"
 					/>
 				</ToggleGroupControl>
+			</VStack>
+			<PanelBody
+				className="mone-format-advanced"
+				title={ __( 'Advanced' ) }
+				initialOpen={ false }
+			>
 				<TextControl
 					__nextHasNoMarginBottom
 					__next40pxDefaultSize
@@ -173,7 +180,7 @@ export function Settings( { activeIcons, onIconChange } ) {
 					} }
 					help={ __( 'Separate multiple classes with spaces.' ) }
 				/>
-			</VStack>
+			</PanelBody>
 		</>
 	);
 }

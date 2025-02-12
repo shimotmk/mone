@@ -184,6 +184,7 @@ export function setAttributes( {
 		attributes: {
 			style: attributes.style,
 			class: attributes.class,
+			'aria-hidden': true,
 		},
 		innerHTML: newInnerHTML,
 	};
