@@ -136,9 +136,50 @@ export const blockEditGroup = createHigherOrderComponent(
 							/>
 						</ToolsPanelItem>
 					</ToolsPanel>
+					<style>
+						{ `
+							.block-editor-block-variation-transforms {
+								display: none;
+							}
+							
+							.block-editor-block-inspector__tabs {
+								.components-panel__body:not(.block-editor-block-inspector__advanced):nth-child(1) {
+									display: none;
+								}
+							}
+
+							.components-tools-panel.block-editor-block-inspector__mone-position {
+								display: none;
+							}
+
+							/* HTML要素を非表示 */
+							.block-editor-block-inspector__advanced {
+								.components-base-control:nth-child(3) {
+									display: none;
+								}
+							}
+
+							/* ツールバーのリンク */
+							.components-toolbar-button[name="link"] {
+								display: none;
+							}
+						` }
+					</style>
 				</InspectorControls>
-				<InspectorControls group="mone-position"></InspectorControls>
-				<InspectorControls group="position"></InspectorControls>
+				<InspectorControls group="color">
+					<style>
+						{ `
+							.block-editor-block-variation-transforms {
+								display: none;
+							}
+
+							/* ツールバーのリンク */
+							.components-toolbar-button[name="link"] {
+								display: none;
+							}
+						` }
+					</style>
+				</InspectorControls>
 				<BlockControls group="block">
 					<ToolbarDropdownMenu
 						icon={
@@ -246,11 +287,11 @@ export const blockEditGroup = createHigherOrderComponent(
  */
 const blockListBlockGroup = createHigherOrderComponent(
 	( BlockListBlock ) => ( props ) => {
-		const { name, attributes, wrapperProps, clientId } = props;
+		const { name, attributes, wrapperProps } = props;
 		if ( name !== 'core/group' ) {
 			return <BlockListBlock { ...props } />;
 		}
-		const { tagName, className, anchor } = attributes;
+		const { tagName, className } = attributes;
 		if ( tagName !== 'dialog' ) {
 			return <BlockListBlock { ...props } />;
 		}

@@ -70,8 +70,9 @@ function addInspectorControls( BlockEdit ) {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				<InspectorControls group="mone-position">
+				<InspectorControls>
 					<ToolsPanel
+						className="block-editor-block-inspector__mone-position"
 						label={ __( 'Position', 'mone' ) }
 						resetAll={ () => {
 							const newStyle = {
