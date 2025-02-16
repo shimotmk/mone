@@ -70,7 +70,7 @@ function addInspectorControls( BlockEdit ) {
 		return (
 			<>
 				<BlockEdit { ...props } />
-				<InspectorControls>
+				<InspectorControls group="mone-position">
 					<ToolsPanel
 						label={ __( 'Position', 'mone' ) }
 						resetAll={ () => {

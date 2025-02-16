@@ -1,7 +1,10 @@
+body.dialog-open {
+	overflow: hidden;
+}
+
 dialog.mone-dialog-content::backdrop {
 	background-color: #00000059;
 }
-
 
 dialog.mone-dialog-content.wp-block-group {
 	margin-block-start: auto;

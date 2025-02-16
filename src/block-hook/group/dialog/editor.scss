@@ -4,7 +4,7 @@
     transform: translate(0, -50%);
     overflow: auto;
     max-width: calc(100% - 2em - 6px);
-    max-height: calc(100% - 2em - 6px);
+    max-height: calc(100% - 8em - 6px);
 	display: none;
 
 	&.alignwide,
@@ -14,8 +14,13 @@
 	}
 
 	&.is-selected ,
-	&:has(.is-selected) {
+	&:has(.is-selected),
+	&:has(.is-multi-selected) {
 		display: block;
 	}
 	
+}
+
+.block-editor-block-inspector__position {
+	display: none;
 }

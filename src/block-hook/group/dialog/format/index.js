@@ -9,17 +9,22 @@ import { addCard } from '@wordpress/icons';
 import { useSelect, useDispatch, useRegistry } from '@wordpress/data';
 
 import { default as InlineUI } from './inline';
+import { existsClassName } from '../../../../utils-func/class-name';
 
 const name = 'mone/dialog-link';
 
 const isDialogAnchor = ( block, dialogId ) =>
 	!! block.attributes.anchor && block.attributes.anchor === dialogId;
 
+const isEditorOpenClassName = ( block ) =>
+	existsClassName( 'mone-edit-show-dialog', block.attributes.className );
+
 const computeOutlineGroup = ( blocks = [], dialogId ) => {
 	return blocks.flatMap( ( block = {} ) => {
 		if (
 			block.name === 'core/group' &&
-			isDialogAnchor( block, dialogId )
+			isDialogAnchor( block, dialogId ) &&
+			isEditorOpenClassName( block )
 		) {
 			return {
 				...block,
@@ -61,10 +66,10 @@ const InlineEdit = ( props ) => {
 	}, [ dialogClientId, selectBlock ] );
 
 	useEffect( () => {
-		if ( isActive ) {
+		if ( isActive && dialogClientId ) {
 			onSelectParentBlock();
 		}
-	}, [ isActive, onSelectParentBlock ] );
+	}, [ isActive, onSelectParentBlock, dialogClientId ] );
 
 	return (
 		<>

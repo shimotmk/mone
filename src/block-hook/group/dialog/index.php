@@ -68,6 +68,7 @@ function render_block_dialog_group( $block_content, $block ) {
 		$id = $p->get_attribute( 'id' );
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-content' );
 		$p->set_attribute( 'data-wp-on--click', 'actions.closeDialogArea' );
+		$p->set_attribute( 'data-wp-on--keydown', 'actions.handleKeydown' );
 
 		$p->set_attribute(
 			'data-wp-context',

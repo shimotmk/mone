@@ -43,6 +43,17 @@ store(
 					document.body.classList.remove( 'dialog-open' );
 				}
 			},
+			handleKeydown( event ) {
+				const context = getContext();
+				const dialogRef = document.querySelector(
+					`dialog${ context.dialogHref }`
+				);
+
+				if ( event.key === 'Escape' ) {
+					dialogRef.close();
+					document.body.classList.remove( 'dialog-open' );
+				}
+			},
 		},
 	},
 	{ lock: true }

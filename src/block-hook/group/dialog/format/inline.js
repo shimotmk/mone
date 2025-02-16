@@ -1,13 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { useCallback, useMemo, useState } from '@wordpress/element';
-import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-	useAnchor,
-} from '@wordpress/rich-text';
+import { useCallback, useState } from '@wordpress/element';
+import { applyFormat, useAnchor } from '@wordpress/rich-text';
 import { useCachedTruthy } from '@wordpress/block-editor';
 import { Popover, TextControl, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
@@ -62,6 +57,7 @@ export default function InlineUI( {
 					onChange={ setPreUrl }
 				/>
 				<Button
+					size="small"
 					variant="secondary"
 					onClick={ () => {
 						onDialogChange();

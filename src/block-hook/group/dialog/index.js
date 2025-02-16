@@ -137,6 +137,8 @@ export const blockEditGruop = createHigherOrderComponent(
 						</ToolsPanelItem>
 					</ToolsPanel>
 				</InspectorControls>
+				<InspectorControls group="mone-position"></InspectorControls>
+				<InspectorControls group="position"></InspectorControls>
 				<BlockControls group="block">
 					<ToolbarDropdownMenu
 						icon={
