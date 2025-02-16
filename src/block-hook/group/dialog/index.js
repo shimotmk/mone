@@ -24,12 +24,18 @@ import {
 	existsClassName,
 } from '../../../utils-func/class-name';
 import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
+import { arrowAutoFit } from '../../../icons';
 import './format';
 
 const BLOCK_ALIGNMENTS_CONTROLS = {
 	none: {
 		icon: alignNone,
 		title: _x( 'None', 'Alignment option' ),
+	},
+	fit: {
+		icon: arrowAutoFit,
+		title: _x( 'Fit contents', 'Alignment option' ),
+		className: 'mone-alignfit',
 	},
 	wide: {
 		icon: stretchWide,
@@ -49,7 +55,7 @@ const ShowDialogEditClassName = 'mone-edit-show-dialog';
 export const blockEditGroup = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { name, attributes, setAttributes } = props;
-		const { align, className, tagName } = attributes;
+		const { className, tagName } = attributes;
 
 		if ( name !== 'core/group' ) {
 			return <BlockEdit { ...props } />;
@@ -164,98 +170,47 @@ export const blockEditGroup = createHigherOrderComponent(
 				<BlockControls group="block">
 					<ToolbarDropdownMenu
 						icon={
-							BLOCK_ALIGNMENTS_CONTROLS[ align || 'none' ].icon ||
-							alignNone
+							[
+								{
+									control: BLOCK_ALIGNMENTS_CONTROLS.fit,
+									icon: arrowAutoFit,
+								},
+								{
+									control: BLOCK_ALIGNMENTS_CONTROLS.wide,
+									icon: stretchFullWidth,
+								},
+								{
+									control: BLOCK_ALIGNMENTS_CONTROLS.full,
+									icon: stretchWide,
+								},
+							].find( ( { control } ) =>
+								existsClassName( control.className, className )
+							)?.icon || alignNone
 						}
 						label="Select a direction"
-						controls={ [
-							{
-								title: 'none',
-								icon: alignNone,
-								onClick: () => {
-									setAttributes( {
-										align: undefined,
-									} );
-									deleteClass(
-										[
-											BLOCK_ALIGNMENTS_CONTROLS.wide
-												.className,
-											BLOCK_ALIGNMENTS_CONTROLS.full
-												.className,
-										],
-										className,
-										setAttributes
-									);
-								},
-							},
-							{
-								title: 'wide',
-								icon: stretchFullWidth,
-								isActive: existsClassName(
-									BLOCK_ALIGNMENTS_CONTROLS.wide.className,
+						controls={ Object.values(
+							BLOCK_ALIGNMENTS_CONTROLS
+						).map( ( control ) => ( {
+							title: control.title,
+							icon: control.icon,
+							isActive: existsClassName(
+								control.className,
+								className
+							),
+							onClick: () => {
+								const _className = deleteClassName(
+									Object.values(
+										BLOCK_ALIGNMENTS_CONTROLS
+									).map( ( c ) => c.className ),
 									className
-								),
-								onClick: () => {
-									setAttributes( {
-										align: 'wide',
-									} );
-									let _className = className;
-									deleteClass(
-										BLOCK_ALIGNMENTS_CONTROLS.full
-											.className,
-										className,
-										setAttributes
-									);
-									_className = deleteClassName(
-										[
-											BLOCK_ALIGNMENTS_CONTROLS.wide
-												.className,
-											BLOCK_ALIGNMENTS_CONTROLS.full
-												.className,
-										],
-										_className
-									);
-									addClass(
-										BLOCK_ALIGNMENTS_CONTROLS.wide
-											.className,
-										_className,
-										setAttributes
-									);
-								},
+								);
+								toggleClass(
+									control.className,
+									_className,
+									setAttributes
+								);
 							},
-							{
-								title: 'full',
-								icon: stretchWide,
-								isActive: existsClassName(
-									BLOCK_ALIGNMENTS_CONTROLS.full.className,
-									className
-								),
-								onClick: () => {
-									let _className = className;
-									deleteClass(
-										BLOCK_ALIGNMENTS_CONTROLS.full
-											.className,
-										className,
-										setAttributes
-									);
-									_className = deleteClassName(
-										[
-											BLOCK_ALIGNMENTS_CONTROLS.wide
-												.className,
-											BLOCK_ALIGNMENTS_CONTROLS.full
-												.className,
-										],
-										_className
-									);
-									addClass(
-										BLOCK_ALIGNMENTS_CONTROLS.full
-											.className,
-										_className,
-										setAttributes
-									);
-								},
-							},
-						] }
+						} ) ) }
 					/>
 				</BlockControls>
 			</>

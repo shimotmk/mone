@@ -22,6 +22,10 @@ dialog.mone-dialog-content.wp-block-group {
 		width: var(--wp--style--global--wide-size);
 	}
 
+	&.mone-alignfit {
+		width: fit-content;
+	}
+
 	&.alignfull {
 		width: 100%;
 	}

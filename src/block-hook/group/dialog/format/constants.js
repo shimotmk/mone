@@ -41,7 +41,7 @@ export function createDialogBlock( id ) {
 							},
 						},
 					},
-					layout: { type: 'constrained' },
+					layout: { type: 'default' },
 				},
 				[
 					createBlock( 'core/paragraph', {
