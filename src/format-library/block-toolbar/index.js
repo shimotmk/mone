@@ -43,6 +43,7 @@ const BlockToolbar = () => {
 
 							const order = [
 								__( 'Icon', 'mone' ),
+								__( 'Dialog', 'mone' ),
 								__( 'Inline Font Size', 'mone' ),
 								__( 'Text Gradient', 'mone' ),
 								__( 'Background Gradient', 'mone' ),

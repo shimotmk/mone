@@ -16,7 +16,6 @@ import { alignNone, stretchFullWidth, stretchWide } from '@wordpress/icons';
 import './editor.scss';
 import {
 	toggleClass,
-	addClass,
 	deleteClass,
 } from '../../../utils-func/class-name/classAttribute.js';
 import {
@@ -30,21 +29,21 @@ import './format';
 const BLOCK_ALIGNMENTS_CONTROLS = {
 	none: {
 		icon: alignNone,
-		title: _x( 'None', 'Alignment option' ),
+		title: __( 'None', 'mone' ),
 	},
 	fit: {
 		icon: arrowAutoFit,
-		title: _x( 'Fit contents', 'Alignment option' ),
+		title: __( 'Fit contents', 'mone' ),
 		className: 'mone-alignfit',
 	},
 	wide: {
 		icon: stretchWide,
-		title: __( 'Wide width' ),
+		title: __( 'Wide width', 'mone' ),
 		className: 'alignwide',
 	},
 	full: {
 		icon: stretchFullWidth,
-		title: __( 'Full width' ),
+		title: __( 'Full width', 'mone' ),
 		className: 'alignfull',
 	},
 };
@@ -187,7 +186,7 @@ export const blockEditGroup = createHigherOrderComponent(
 								existsClassName( control.className, className )
 							)?.icon || alignNone
 						}
-						label="Select a direction"
+						label={ __( 'Select width', 'mone' ) }
 						controls={ Object.values(
 							BLOCK_ALIGNMENTS_CONTROLS
 						).map( ( control ) => ( {

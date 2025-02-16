@@ -16,6 +16,7 @@ import { useDispatch, useRegistry } from '@wordpress/data';
 import { default as InlineUI } from './inline';
 import { existsClassName } from '../../../../utils-func/class-name';
 import { createDialogBlock } from './constants';
+import { Dialog } from '../../../../icons';
 
 const name = 'mone/dialog-link';
 
@@ -128,7 +129,7 @@ const InlineEdit = ( props ) => {
 				className="format-library-text-color-button"
 				isActive={ isActive }
 				title={ __( 'Dialog', 'mone' ) }
-				icon={ addCard }
+				icon={ Dialog }
 				onClick={ () => {
 					onClick();
 					setIsAdding( true );
