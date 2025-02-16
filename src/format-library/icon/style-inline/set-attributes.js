@@ -163,8 +163,7 @@ export function setAttributes( {
 	);
 
 	function getInnerHTML( innerHTML ) {
-		// return typeof innerHTML === 'string' ? innerHTML : '';
-		return innerHTML;
+		return typeof innerHTML === 'string' ? innerHTML : '';
 	}
 
 	let newInnerHTML;

@@ -84,8 +84,6 @@ const InlineEdit = ( props ) => {
 		getSelectedBlockClientId,
 	] );
 
-	// インラインアイコンとダイアログを併用した時におかしくなるので調整する
-
 	function onClick() {
 		registry.batch( () => {
 			const id = 'dialog-' + createId();
@@ -139,7 +137,6 @@ export const inlineSettings = {
 	className: 'mone-dialog-link',
 	attributes: {
 		url: 'href',
-		style: 'style',
 		class: 'class',
 	},
 	edit: InlineEdit,
