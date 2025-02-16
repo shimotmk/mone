@@ -53,7 +53,7 @@ const BLOCK_ALIGNMENTS_CONTROLS = {
 const dialogClassName = 'mone-dialog-content';
 const ShowDialogEditClassName = 'mone-edit-show-dialog';
 
-export function registerBlockTypeGruop( settings, name ) {
+export function registerBlockTypeGroup( settings, name ) {
 	if ( name !== 'core/group' ) {
 		return settings;
 	}
@@ -65,7 +65,7 @@ export function registerBlockTypeGruop( settings, name ) {
 	return settings;
 }
 
-export const blockEditGruop = createHigherOrderComponent(
+export const blockEditGroup = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { name, attributes, setAttributes } = props;
 		const { align, className, tagName } = attributes;
@@ -244,7 +244,7 @@ export const blockEditGruop = createHigherOrderComponent(
 /**
  * Override the default block element to include elements styles.
  */
-const blockListBlockGruop = createHigherOrderComponent(
+const blockListBlockGroup = createHigherOrderComponent(
 	( BlockListBlock ) => ( props ) => {
 		const { name, attributes, wrapperProps, clientId } = props;
 		if ( name !== 'core/group' ) {
@@ -280,13 +280,13 @@ const blockListBlockGruop = createHigherOrderComponent(
 addFilter(
 	'blocks.registerBlockType',
 	'mone/blocks/register-block-type/group',
-	registerBlockTypeGruop
+	registerBlockTypeGroup
 );
 
-addFilter( 'editor.BlockEdit', 'mone/editor/block-edit/group', blockEditGruop );
+addFilter( 'editor.BlockEdit', 'mone/editor/block-edit/group', blockEditGroup );
 
 addFilter(
 	'editor.BlockListBlock',
 	'mone/editor/block-list-block/group',
-	blockListBlockGruop
+	blockListBlockGroup
 );
