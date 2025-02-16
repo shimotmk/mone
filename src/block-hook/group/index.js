@@ -4,6 +4,7 @@ import './style.scss';
 import { appreciateGroup, balloon, boxMenu } from './variations';
 import './wrap-on-mobile';
 import './link';
+import './dialog';
 
 export function registerBlockTypeGroup( settings, name ) {
 	if ( name !== 'core/group' ) {

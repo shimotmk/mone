@@ -1,0 +1,33 @@
+dialog.mone-dialog-content::backdrop {
+	background-color: #00000059;
+}
+
+
+dialog.mone-dialog-content.wp-block-group {
+	margin-block-start: auto;
+	margin-block-end: auto;
+	width: 100%;
+	outline: none;
+
+	&.alignwide,
+	&.alignfull {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&.alignfull {
+		max-width: none;
+	}
+
+	display: none;
+	&[open] {
+		display: block;
+	}
+}
+
+:where(dialog.mone-dialog-content) {
+
+	border: none;
+	box-shadow: 0 5px 15px #00000014, 0 15px 27px #00000012, 0 30px 36px #0000000a, 0 50px 43px #00000005;
+	width: 100%;
+}

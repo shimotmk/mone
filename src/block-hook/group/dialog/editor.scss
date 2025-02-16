@@ -1,0 +1,21 @@
+.block-editor-block-list__layout.mone-dialog-content.mone-edit-show-dialog {
+	width: 100%;
+	top: 50%;
+    transform: translate(0, -50%);
+    overflow: auto;
+    max-width: calc(100% - 2em - 6px);
+    max-height: calc(100% - 2em - 6px);
+	display: none;
+
+	&.alignwide,
+	&.alignfull {
+		margin-right: auto !important;
+		margin-left: auto !important;
+	}
+
+	&.is-selected ,
+	&:has(.is-selected) {
+		display: block;
+	}
+	
+}

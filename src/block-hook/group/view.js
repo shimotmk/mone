@@ -5,6 +5,8 @@ import axios from 'axios';
  */
 import { store, getContext } from '@wordpress/interactivity';
 
+import './dialog/view.js';
+
 const { state } = store(
 	'mone/click-applause-button',
 	{
