@@ -162,20 +162,29 @@ export function setAttributes( {
 		}
 	);
 
+	function getInnerHTML( innerHTML ) {
+		// return typeof innerHTML === 'string' ? innerHTML : '';
+		return innerHTML;
+	}
+
 	let newInnerHTML;
 	if ( hasColor ) {
 		if ( innerHTMLWrapTag === 'svg' ) {
 			newInnerHTML =
 				'<span class="mone-inline-icon-svg-wrapper">' +
-				value.replacements[ value.start ].innerHTML +
+				getInnerHTML( value.replacements[ value.start ].innerHTML ) +
 				'</span>';
 		} else {
-			newInnerHTML = value.replacements[ value.start ].innerHTML;
+			newInnerHTML = getInnerHTML(
+				value.replacements[ value.start ].innerHTML
+			);
 		}
 	} else if ( svgHTML ) {
 		newInnerHTML = svgHTML;
 	} else {
-		newInnerHTML = value.replacements[ value.start ].innerHTML;
+		newInnerHTML = getInnerHTML(
+			value.replacements[ value.start ].innerHTML
+		);
 	}
 
 	const newReplacements = value.replacements.slice();

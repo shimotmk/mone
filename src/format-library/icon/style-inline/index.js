@@ -44,6 +44,7 @@ export default function StyleInlineIconUI( {
 	onClose,
 	contentRef,
 	activeObjectAttributes,
+	openPopOver,
 } ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
@@ -80,6 +81,13 @@ export default function StyleInlineIconUI( {
 			} )
 		);
 	};
+
+	if (
+		! openPopOver &&
+		activeIcons[ '--mone-edit-show-on-click' ] !== 'show'
+	) {
+		return null;
+	}
 
 	return (
 		<Popover

@@ -9,7 +9,7 @@ import {
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import { registerFormatType, applyFormat } from '@wordpress/rich-text';
-import { useState, useCallback, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import { useDispatch, useRegistry } from '@wordpress/data';
 
 import { existsClassName } from '../../../../utils-func/class-name';
@@ -83,6 +83,8 @@ const InlineEdit = ( props ) => {
 		selectBlock,
 		getSelectedBlockClientId,
 	] );
+
+	// インラインアイコンとダイアログを併用した時におかしくなるので調整する
 
 	function onClick() {
 		registry.batch( () => {

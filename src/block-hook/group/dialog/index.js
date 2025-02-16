@@ -84,7 +84,10 @@ export const blockEditGroup = createHigherOrderComponent(
 						} }
 					>
 						<ToolsPanelItem
-							label={ __( 'Show dialog on click in editor', 'mone' ) }
+							label={ __(
+								'Show dialog on click in editor',
+								'mone'
+							) }
 							isShownByDefault={ true }
 							hasValue={ () =>
 								existsClassName(
