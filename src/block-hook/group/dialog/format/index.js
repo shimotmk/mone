@@ -10,10 +10,8 @@ import {
 } from '@wordpress/block-editor';
 import { registerFormatType, applyFormat } from '@wordpress/rich-text';
 import { useState, useCallback, useEffect } from '@wordpress/element';
-import { addCard } from '@wordpress/icons';
 import { useDispatch, useRegistry } from '@wordpress/data';
 
-import { default as InlineUI } from './inline';
 import { existsClassName } from '../../../../utils-func/class-name';
 import { createDialogBlock } from './constants';
 import { Dialog } from '../../../../icons';
@@ -26,18 +24,17 @@ const isDialogAnchor = ( block, dialogId ) =>
 const isEditorOpenClassName = ( block ) =>
 	existsClassName( 'mone-edit-show-dialog', block.attributes.className );
 
-const computeOutlineGroup = ( blocks = [], dialogId ) => {
+const computeDialogBlock = ( blocks = [], dialogId ) => {
 	return blocks.flatMap( ( block = {} ) => {
 		if (
 			block.name === 'core/group' &&
-			isDialogAnchor( block, dialogId ) &&
-			isEditorOpenClassName( block )
+			isDialogAnchor( block, dialogId )
 		) {
 			return {
 				...block,
 			};
 		}
-		return computeOutlineGroup( block.innerBlocks );
+		return computeDialogBlock( block.innerBlocks );
 	} );
 };
 
@@ -51,13 +48,7 @@ const getParagraphClientId = ( blocks = [] ) => {
 };
 
 const InlineEdit = ( props ) => {
-	const { value, onChange, contentRef, activeAttributes, isActive } = props;
-
-	const [ isAdding, setIsAdding ] = useState( false );
-	const disableIsAdding = useCallback(
-		() => setIsAdding( false ),
-		[ setIsAdding ]
-	);
+	const { value, onChange, activeAttributes, isActive } = props;
 
 	let dialogId = '';
 	if ( activeAttributes?.url ) {
@@ -73,25 +64,21 @@ const InlineEdit = ( props ) => {
 		registry.select( blockEditorStore );
 	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
 
-	const _blocks = getBlocks();
-	const outlineGroup = computeOutlineGroup( _blocks, dialogId );
-	const dialogClientId =
-		outlineGroup.length > 0 ? outlineGroup[ 0 ].clientId : null;
-
-	const onSelectParentBlock = useCallback( () => {
-		selectBlock( dialogClientId );
-	}, [ dialogClientId, selectBlock ] );
+	const dialogBlock = computeDialogBlock( getBlocks(), dialogId );
 
 	useEffect( () => {
+		const dialogClientId =
+			dialogBlock.length > 0 && isEditorOpenClassName( dialogBlock[ 0 ] )
+				? dialogBlock[ 0 ].clientId
+				: null;
 		if ( isActive && dialogClientId && !! activeAttributes?.url ) {
-			onSelectParentBlock();
+			selectBlock( dialogClientId );
 		} else {
 			selectBlock( getSelectedBlockClientId() );
 		}
 	}, [
+		dialogBlock,
 		isActive,
-		onSelectParentBlock,
-		dialogClientId,
 		activeAttributes?.url,
 		selectBlock,
 		getSelectedBlockClientId,
@@ -108,16 +95,15 @@ const InlineEdit = ( props ) => {
 					},
 				} )
 			);
-
 			const selectedClientId = getSelectedBlockClientId();
 			let rootClientId = getBlockRootClientId( selectedClientId );
 			while ( rootClientId ) {
 				rootClientId = getBlockRootClientId( rootClientId );
 			}
-			const dialogBlock = createDialogBlock( id );
-			insertBlock( dialogBlock, undefined, rootClientId );
+			const _dialogBlock = createDialogBlock( id );
+			insertBlock( _dialogBlock, undefined, rootClientId );
 
-			const paragraphClientIds = getParagraphClientId( [ dialogBlock ] );
+			const paragraphClientIds = getParagraphClientId( [ _dialogBlock ] );
 			selectBlock( paragraphClientIds[ 0 ] );
 		} );
 	}
@@ -131,22 +117,16 @@ const InlineEdit = ( props ) => {
 				title={ __( 'Dialog', 'mone' ) }
 				icon={ Dialog }
 				onClick={ () => {
-					onClick();
-					setIsAdding( true );
+					if ( ! isActive ) {
+						onClick();
+					} else {
+						selectBlock(
+							dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId
+						);
+					}
 				} }
 				role="menuitemcheckbox"
 			/>
-			{ isAdding && (
-				<InlineUI
-					name={ name }
-					onClose={ disableIsAdding }
-					activeAttributes={ activeAttributes }
-					value={ value }
-					onChange={ onChange }
-					contentRef={ contentRef }
-					setIsAdding={ setIsAdding }
-				/>
-			) }
 		</>
 	);
 };

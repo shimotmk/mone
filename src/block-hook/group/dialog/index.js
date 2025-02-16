@@ -1,7 +1,9 @@
+import clsx from 'clsx';
+
 /**
  * WordPress dependencies
  */
-import { __, _x } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import {
@@ -82,7 +84,7 @@ export const blockEditGroup = createHigherOrderComponent(
 						} }
 					>
 						<ToolsPanelItem
-							label={ __( 'Show dialog in editor', 'mone' ) }
+							label={ __( 'Show dialog on click in editor', 'mone' ) }
 							isShownByDefault={ true }
 							hasValue={ () =>
 								existsClassName(
@@ -215,6 +217,39 @@ export const blockEditGroup = createHigherOrderComponent(
 			</>
 		);
 	}
+);
+
+/**
+ * Override the default block element to include elements styles.
+ */
+const BlockListBlockGroup = createHigherOrderComponent(
+	( BlockListBlock ) => ( props ) => {
+		const { name, attributes, wrapperProps } = props;
+		const { tagName, anchor } = attributes;
+		if ( name !== 'core/group' ) {
+			return <BlockListBlock { ...props } />;
+		}
+		if ( tagName !== 'dialog' ) {
+			return <BlockListBlock { ...props } />;
+		}
+
+		const addWrapperProps = {
+			...wrapperProps,
+			className: clsx( wrapperProps?.className, anchor ),
+		};
+
+		return (
+			<>
+				<BlockListBlock { ...props } wrapperProps={ addWrapperProps } />
+			</>
+		);
+	}
+);
+
+addFilter(
+	'editor.BlockListBlock',
+	'mone/editor/block-list-block/group',
+	BlockListBlockGroup
 );
 
 addFilter( 'editor.BlockEdit', 'mone/editor/block-edit/group', blockEditGroup );

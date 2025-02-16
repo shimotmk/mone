@@ -12,7 +12,15 @@ store(
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogHref }`
 				);
-				console.log( 'context', context );
+
+				// URLのhrefのIDを削除
+				const url = new URL( window.location );
+				url.hash = '';
+				window.history.replaceState(
+					null,
+					document.title,
+					url.toString()
+				);
 
 				if ( dialogRef ) {
 					if ( dialogRef.open ) {
