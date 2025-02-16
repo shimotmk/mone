@@ -12,6 +12,7 @@ store(
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogHref }`
 				);
+				console.log( 'context', context );
 
 				if ( dialogRef ) {
 					if ( dialogRef.open ) {

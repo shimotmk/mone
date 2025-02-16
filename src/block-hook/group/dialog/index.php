@@ -20,9 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_block_dialog_link( $block_content ) {
 
-	//	インラインのダイアログに対してインタラクティビティーAPIを使う
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	if ( $p->next_tag( 'a' ) ) {
+	while ( $p->next_tag( 'a' ) ) {
 		$p->set_bookmark( 'aTag' );
 		$class = $p->get_attribute( 'class' );
 		$href = $p->get_attribute( 'href' );
