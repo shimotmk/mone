@@ -9,7 +9,7 @@ export function createDialogBlock( id ) {
 			tagName: 'dialog',
 			metadata: {
 				patternName: 'mone/dialog-group',
-				name: __( 'ダイアログ', 'mone' ),
+				name: __( 'Dialog', 'mone' ),
 			},
 			className: 'mone-dialog-content mone-edit-show-dialog',
 			style: {
@@ -29,7 +29,6 @@ export function createDialogBlock( id ) {
 			createBlock(
 				'core/group',
 				{
-					lock: { move: true, remove: true },
 					className: 'dialog_input_area',
 					style: {
 						spacing: {
@@ -45,7 +44,7 @@ export function createDialogBlock( id ) {
 				},
 				[
 					createBlock( 'core/paragraph', {
-						placeholder: __( 'ダイアログコンテンツ', 'mone' ),
+						placeholder: __( 'Dialog contents is here!', 'mone' ),
 					} ),
 				]
 			),
