@@ -1,15 +1,9 @@
-import clsx from 'clsx';
-
 /**
  * WordPress dependencies
  */
 import { __, _x } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import {
-	BlockControls,
-	InspectorControls,
-	store as blockEditorStore,
-} from '@wordpress/block-editor';
+import { BlockControls, InspectorControls } from '@wordpress/block-editor';
 import {
 	ToolbarDropdownMenu,
 	__experimentalToolsPanel as ToolsPanel,
@@ -18,7 +12,6 @@ import {
 } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { alignNone, stretchFullWidth, stretchWide } from '@wordpress/icons';
-import { useSelect } from '@wordpress/data';
 
 import './editor.scss';
 import {
@@ -52,18 +45,6 @@ const BLOCK_ALIGNMENTS_CONTROLS = {
 
 const dialogClassName = 'mone-dialog-content';
 const ShowDialogEditClassName = 'mone-edit-show-dialog';
-
-export function registerBlockTypeGroup( settings, name ) {
-	if ( name !== 'core/group' ) {
-		return settings;
-	}
-
-	settings.attributes = {
-		...settings.attributes,
-	};
-
-	return settings;
-}
 
 export const blockEditGroup = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -282,52 +263,4 @@ export const blockEditGroup = createHigherOrderComponent(
 	}
 );
 
-/**
- * Override the default block element to include elements styles.
- */
-const blockListBlockGroup = createHigherOrderComponent(
-	( BlockListBlock ) => ( props ) => {
-		const { name, attributes, wrapperProps } = props;
-		if ( name !== 'core/group' ) {
-			return <BlockListBlock { ...props } />;
-		}
-		const { tagName, className } = attributes;
-		if ( tagName !== 'dialog' ) {
-			return <BlockListBlock { ...props } />;
-		}
-		if ( ! existsClassName( dialogClassName, className ) ) {
-			return <BlockListBlock { ...props } />;
-		}
-
-		const blockWrapperProps = {
-			...wrapperProps,
-			className: clsx( wrapperProps?.className ),
-			style: {
-				...( wrapperProps && { ...wrapperProps.style } ),
-			},
-		};
-
-		return (
-			<>
-				<BlockListBlock
-					{ ...props }
-					wrapperProps={ blockWrapperProps }
-				/>
-			</>
-		);
-	}
-);
-
-addFilter(
-	'blocks.registerBlockType',
-	'mone/blocks/register-block-type/group',
-	registerBlockTypeGroup
-);
-
 addFilter( 'editor.BlockEdit', 'mone/editor/block-edit/group', blockEditGroup );
-
-addFilter(
-	'editor.BlockListBlock',
-	'mone/editor/block-list-block/group',
-	blockListBlockGroup
-);

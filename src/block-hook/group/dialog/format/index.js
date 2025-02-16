@@ -70,8 +70,7 @@ const InlineEdit = ( props ) => {
 	const registry = useRegistry();
 	const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 		registry.select( blockEditorStore );
-	const { selectBlock, insertBlock } =
-		useDispatch( blockEditorStore );
+	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
 
 	const _blocks = getBlocks();
 	const outlineGroup = computeOutlineGroup( _blocks, dialogId );
@@ -83,10 +82,19 @@ const InlineEdit = ( props ) => {
 	}, [ dialogClientId, selectBlock ] );
 
 	useEffect( () => {
-		if ( isActive && dialogClientId ) {
+		if ( isActive && dialogClientId && !! activeAttributes?.url ) {
 			onSelectParentBlock();
+		} else {
+			selectBlock( getSelectedBlockClientId() );
 		}
-	}, [ isActive, onSelectParentBlock, dialogClientId ] );
+	}, [
+		isActive,
+		onSelectParentBlock,
+		dialogClientId,
+		activeAttributes?.url,
+		selectBlock,
+		getSelectedBlockClientId,
+	] );
 
 	function onClick() {
 		registry.batch( () => {

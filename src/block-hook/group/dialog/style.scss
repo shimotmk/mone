@@ -9,7 +9,7 @@ dialog.mone-dialog-content::backdrop {
 dialog.mone-dialog-content.wp-block-group {
 	margin-block-start: auto;
 	margin-block-end: auto;
-	width: 100%;
+	width: var(--wp--style--global--content-size);
 	outline: none;
 
 	&.alignwide,
@@ -18,8 +18,12 @@ dialog.mone-dialog-content.wp-block-group {
 		margin-left: auto;
 	}
 
+	&.alignwide {
+		width: var(--wp--style--global--wide-size);
+	}
+
 	&.alignfull {
-		max-width: none;
+		width: 100%;
 	}
 
 	display: none;
