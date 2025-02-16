@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Render dialog link.
  *
  * @param string $block_content block_content.
- * @param array  $block block.
- * @param object $instance instance.
+ *
+ * @return string
  */
 function render_block_dialog_link( $block_content ) {
 
@@ -24,9 +24,9 @@ function render_block_dialog_link( $block_content ) {
 	while ( $p->next_tag( 'a' ) ) {
 		$p->set_bookmark( 'aTag' );
 		$class = $p->get_attribute( 'class' );
-		$href = $p->get_attribute( 'href' );
+		$href  = $p->get_attribute( 'href' );
 
-		if ( $class === 'mone-dialog-link' ) {
+		if ( 'mone-dialog-link' === $class ) {
 			$p->seek( 'aTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogButton' );
@@ -54,7 +54,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_link', 10, 2 )
  *
  * @param string $block_content block_content.
  * @param array  $block block.
- * @param object $instance instance.
+ * @return string
  */
 function render_block_dialog_group( $block_content, $block ) {
 	$class_name = $block['attrs']['className'] ?? '';
