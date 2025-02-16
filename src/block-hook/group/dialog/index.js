@@ -111,7 +111,10 @@ export const blockEditGroup = createHigherOrderComponent(
 							} }
 						>
 							<ToggleControl
-								label={ __( 'Show dialog in editor', 'mone' ) }
+								label={ __(
+									'Show dialog on click in editor',
+									'mone'
+								) }
 								checked={ existsClassName(
 									ShowDialogEditClassName,
 									className

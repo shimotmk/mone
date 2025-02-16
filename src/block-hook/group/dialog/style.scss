@@ -4,6 +4,7 @@ body.dialog-open {
 
 dialog.mone-dialog-content::backdrop {
 	background-color: #00000059;
+	cursor: zoom-out;
 }
 
 dialog.mone-dialog-content.wp-block-group {
@@ -11,6 +12,11 @@ dialog.mone-dialog-content.wp-block-group {
 	margin-block-end: auto;
 	width: var(--wp--style--global--content-size);
 	outline: none;
+	display: none;
+
+	&[open] {
+		display: block;
+	}
 
 	&.alignwide,
 	&.alignfull {
@@ -29,11 +35,6 @@ dialog.mone-dialog-content.wp-block-group {
 	&.alignfull {
 		width: 100%;
 	}
-
-	display: none;
-	&[open] {
-		display: block;
-	}
 }
 
 :where(dialog.mone-dialog-content) {
@@ -41,4 +42,11 @@ dialog.mone-dialog-content.wp-block-group {
 	border: none;
 	box-shadow: 0 5px 15px #00000014, 0 15px 27px #00000012, 0 30px 36px #0000000a, 0 50px 43px #00000005;
 	width: 100%;
+}
+
+.mone-dialog-link {
+
+	&:hover {
+		cursor: zoom-in;
+	}
 }
