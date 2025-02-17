@@ -26,7 +26,7 @@ function render_block_dialog_link( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$href  = $p->get_attribute( 'href' );
 
-		if ( 'mone-dialog-link' === $class ) {
+		if ( 'mone-dialog-link' === $class && strpos( $href, '#dialog-' ) === 0 ) {
 			$p->seek( 'aTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogButton' );
@@ -43,6 +43,8 @@ function render_block_dialog_link( $block_content ) {
 
 		}
 	}
+
+	
 	$block_content = $p->get_updated_html();
 
 	return $block_content;
