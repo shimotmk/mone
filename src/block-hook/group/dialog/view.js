@@ -7,7 +7,7 @@ store(
 	'mone/dialog-link',
 	{
 		actions: {
-			clickDialogButton() {
+			clickDialogLink() {
 				const context = getContext();
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogHref }`

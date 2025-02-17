@@ -241,9 +241,7 @@ const BlockListBlockGroup = createHigherOrderComponent(
 
 		const addWrapperProps = {
 			...wrapperProps,
-			className: clsx( wrapperProps?.className, anchor, {
-				// 'is-selected': isSelected,
-			} ),
+			className: clsx( wrapperProps?.className, anchor ),
 			open: isSelected,
 		};
 
