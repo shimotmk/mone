@@ -37,6 +37,16 @@ store(
 	{ lock: true }
 );
 
+function closeDialog( dialogRef ) {
+	dialogRef.classList.add( 'closing' );
+	setTimeout( () => {
+		document.body.classList.remove( 'dialog-open' );
+		dialogRef.close();
+		dialogRef.classList.remove( 'closing' );
+		dialogRef.removeAttribute( 'open' );
+	}, 450 );
+}
+
 store(
 	'mone/dialog-content',
 	{
@@ -48,8 +58,7 @@ store(
 				);
 
 				if ( event.target.closest( '.dialog_input_area' ) === null ) {
-					dialogRef.close();
-					document.body.classList.remove( 'dialog-open' );
+					closeDialog( dialogRef );
 				}
 			},
 			handleKeydown( event ) {
@@ -59,8 +68,7 @@ store(
 				);
 
 				if ( event.key === 'Escape' ) {
-					dialogRef.close();
-					document.body.classList.remove( 'dialog-open' );
+					closeDialog( dialogRef );
 				}
 			},
 		},

@@ -230,7 +230,7 @@ export const blockEditGroup = createHigherOrderComponent(
  */
 const BlockListBlockGroup = createHigherOrderComponent(
 	( BlockListBlock ) => ( props ) => {
-		const { name, attributes, wrapperProps } = props;
+		const { name, attributes, wrapperProps, isSelected } = props;
 		const { tagName, anchor } = attributes;
 		if ( name !== 'core/group' ) {
 			return <BlockListBlock { ...props } />;
@@ -241,7 +241,10 @@ const BlockListBlockGroup = createHigherOrderComponent(
 
 		const addWrapperProps = {
 			...wrapperProps,
-			className: clsx( wrapperProps?.className, anchor ),
+			className: clsx( wrapperProps?.className, anchor, {
+				// 'is-selected': isSelected,
+			} ),
+			open: isSelected,
 		};
 
 		return (

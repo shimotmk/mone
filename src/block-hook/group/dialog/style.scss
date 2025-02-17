@@ -44,9 +44,51 @@ dialog.mone-dialog-content.wp-block-group {
 	width: 100%;
 }
 
-.mone-dialog-link {
+@keyframes fadeInScale {
 
-	&:hover {
-		cursor: zoom-in;
+	0% {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes fadeOutScale {
+
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	100% {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+}
+
+dialog:not(.block-editor-block-list__block) {
+
+	&.mone-dialog-content {
+		transform: scale(0.5);
+		animation: fadeOutScale 0.45s ease forwards;
+	}
+
+	&[open].mone-dialog-content,
+	&.closing.mone-dialog-content {
+		animation-duration: 0.45s;
+		animation-timing-function: ease;
+		animation-fill-mode: forwards;
+	}
+
+	&[open].mone-dialog-content {
+		animation-name: fadeInScale;
+	}
+
+	&.closing.mone-dialog-content {
+		animation-name: fadeOutScale;
 	}
 }
