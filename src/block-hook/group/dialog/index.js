@@ -176,6 +176,7 @@ export const blockEditGroup = createHigherOrderComponent(
 				</InspectorControls>
 				<BlockControls group="block">
 					<ToolbarDropdownMenu
+						className="mone-align-menu"
 						icon={
 							[
 								{
@@ -219,6 +220,13 @@ export const blockEditGroup = createHigherOrderComponent(
 							},
 						} ) ) }
 					/>
+					<style>
+						{ `
+							.block-editor-block-toolbar__slot .components-dropdown-menu:not(.mone-align-menu) {
+								display: none;
+							}
+						` }
+					</style>
 				</BlockControls>
 			</>
 		);
