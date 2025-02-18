@@ -99,7 +99,8 @@ export default function Edit( props ) {
 		className: clsx( {
 			'has-icon-color': iconColor,
 			'has-icon-gradient-color': gradientValue,
-			'wp-block-mone-icon-wrapper': ! url && ! iconColor && ! gradientValue,
+			'wp-block-mone-icon-wrapper':
+				! url && ! iconColor && ! gradientValue,
 		} ),
 		style: {
 			width,

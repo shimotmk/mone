@@ -47,7 +47,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 
 		const dialogBlock = computeDialogBlock(
 			getBlocks(),
-			getDialogId( attributes, url )
+			getDialogId( attributes, 'url' )
 		);
 
 		function onClick() {
@@ -77,7 +77,11 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 							name="moneMenu"
 							className="format-library-text-color-button"
 							isActive={ isActive }
-							title={ __( 'Dialog', 'mone' ) }
+							title={
+								isActive
+									? __( 'Select Dialog', 'mone' )
+									: __( 'Set Dialog', 'mone' )
+							}
 							icon={ Dialog }
 							onClick={ () => {
 								if ( ! isActive ) {

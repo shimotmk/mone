@@ -11,7 +11,7 @@ export function createDialogBlock( id ) {
 				patternName: 'mone/dialog-group',
 				name: __( 'Dialog', 'mone' ),
 			},
-			className: 'mone-dialog-content mone-edit-show-dialog',
+			className: 'mone-dialog-content',
 			style: {
 				position: { type: 'fixed', top: '0px' },
 				spacing: {
@@ -41,6 +41,14 @@ export function createDialogBlock( id ) {
 						},
 					},
 					layout: { type: 'default' },
+					lock: {
+						move: true,
+						remove: true,
+					},
+					metadata: {
+						patternName: 'mone/dialog-content',
+						name: __( 'Dialog Content', 'mone' ),
+					},
 				},
 				[
 					createBlock( 'core/paragraph', {

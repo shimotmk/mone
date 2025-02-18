@@ -122,7 +122,11 @@ const InlineEdit = ( props ) => {
 				name="moneMenu"
 				className="format-library-text-color-button"
 				isActive={ isActive }
-				title={ __( 'Dialog', 'mone' ) }
+				title={
+					isActive
+						? __( 'Select Dialog', 'mone' )
+						: __( 'Set Dialog', 'mone' )
+				}
 				icon={ Dialog }
 				onClick={ () => {
 					if ( ! isActive ) {

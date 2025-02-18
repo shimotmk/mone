@@ -89,24 +89,31 @@ export const BlockEditDialogBlock = createHigherOrderComponent(
 		return (
 			<>
 				<BlockEdit { ...props } />
-				<BlockControls group="block">
-					<ToolbarButton
-						name="moneMenu"
-						icon={ Dialog }
-						title={ __( 'Dialog', 'mone' ) }
-						isActive={ isActive }
-						onClick={ () => {
-							if ( ! isActive ) {
-								onClick();
-							} else {
-								selectBlock(
-									dialogBlock.length > 0 &&
-										dialogBlock[ 0 ]?.clientId
-								);
-							}
-						} }
-					/>
-				</BlockControls>
+				{ ! existsClassName( 'mone-dialog-content', className ) &&
+					! existsClassName( 'dialog_input_area', className ) && (
+						<BlockControls group="block">
+							<ToolbarButton
+								name="moneMenu"
+								icon={ Dialog }
+								title={
+									isActive
+										? __( 'Select Dialog', 'mone' )
+										: __( 'Set Dialog', 'mone' )
+								}
+								isActive={ isActive }
+								onClick={ () => {
+									if ( ! isActive ) {
+										onClick();
+									} else {
+										selectBlock(
+											dialogBlock.length > 0 &&
+												dialogBlock[ 0 ]?.clientId
+										);
+									}
+								} }
+							/>
+						</BlockControls>
+					) }
 			</>
 		);
 	}
