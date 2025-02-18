@@ -41,7 +41,7 @@ export default function save( props ) {
 		className: clsx( {
 			'has-icon-color': iconColor,
 			'has-icon-gradient-color': gradientValue,
-			'wp-block-mone-icon-wrapper': ! iconColor && ! gradientValue,
+			'wp-block-mone-icon-wrapper': ! url && ! iconColor && ! gradientValue,
 		} ),
 		style: {
 			width,
@@ -109,6 +109,7 @@ export default function save( props ) {
 					href={ url }
 					target={ linkTarget }
 					rel={ rel }
+					className="wp-block-mone-icon-wrapper"
 				>
 					{ renderingIcon }
 				</a>
