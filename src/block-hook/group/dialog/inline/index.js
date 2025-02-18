@@ -12,6 +12,7 @@ import {
 	store as richTextStore,
 	registerFormatType,
 	applyFormat,
+	slice,
 } from '@wordpress/rich-text';
 import { useEffect } from '@wordpress/element';
 import { useDispatch, useRegistry, select } from '@wordpress/data';
@@ -64,6 +65,8 @@ export function getDialogId( activeAttributes, targetAttribute = 'url' ) {
 const InlineEdit = ( props ) => {
 	const { value, onChange, activeAttributes, isActive } = props;
 
+	const selectedText = slice( value ).text;
+
 	const registry = useRegistry();
 	const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 		registry.select( blockEditorStore );
@@ -108,7 +111,7 @@ const InlineEdit = ( props ) => {
 			while ( rootClientId ) {
 				rootClientId = getBlockRootClientId( rootClientId );
 			}
-			const _dialogBlock = createDialogBlock( id, value?.text );
+			const _dialogBlock = createDialogBlock( id, selectedText );
 			insertBlock( _dialogBlock, undefined, rootClientId );
 
 			const paragraphClientIds = getParagraphClientId( [ _dialogBlock ] );
