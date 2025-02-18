@@ -8,9 +8,13 @@ import {
 	RichTextToolbarButton,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { registerFormatType, applyFormat } from '@wordpress/rich-text';
+import {
+	store as richTextStore,
+	registerFormatType,
+	applyFormat,
+} from '@wordpress/rich-text';
 import { useEffect } from '@wordpress/element';
-import { useDispatch, useRegistry } from '@wordpress/data';
+import { useDispatch, useRegistry, select } from '@wordpress/data';
 
 import { existsClassName } from '../../../../utils-func/class-name';
 import { createDialogBlock } from './constants';
@@ -18,13 +22,13 @@ import { Dialog } from '../../../../icons';
 
 const name = 'mone/dialog-link';
 
-const isDialogAnchor = ( block, dialogId ) =>
+export const isDialogAnchor = ( block, dialogId ) =>
 	!! block.attributes.anchor && block.attributes.anchor === dialogId;
 
-const isEditorOpenClassName = ( block ) =>
+export const isEditorOpenClassName = ( block ) =>
 	existsClassName( 'mone-edit-show-dialog', block.attributes.className );
 
-const computeDialogBlock = ( blocks = [], dialogId ) => {
+export const computeDialogBlock = ( blocks = [], dialogId ) => {
 	return blocks.flatMap( ( block = {} ) => {
 		if (
 			block.name === 'core/group' &&
@@ -38,7 +42,7 @@ const computeDialogBlock = ( blocks = [], dialogId ) => {
 	} );
 };
 
-const getParagraphClientId = ( blocks = [] ) => {
+export const getParagraphClientId = ( blocks = [] ) => {
 	return blocks.flatMap( ( block = {} ) => {
 		if ( block.name === 'core/paragraph' ) {
 			return block.clientId;
@@ -47,24 +51,28 @@ const getParagraphClientId = ( blocks = [] ) => {
 	} );
 };
 
-const InlineEdit = ( props ) => {
-	const { value, onChange, activeAttributes, isActive } = props;
-
+export function getDialogId( activeAttributes ) {
 	let dialogId = '';
 	if ( activeAttributes?.url ) {
-		if ( activeAttributes.url.startsWith( '#' ) ) {
-			dialogId = activeAttributes.url.slice( 1 );
-		} else {
-			dialogId = activeAttributes.url;
-		}
+		dialogId = activeAttributes.url.startsWith( '#' )
+			? activeAttributes.url.slice( 1 )
+			: activeAttributes.url;
 	}
+	return dialogId;
+}
+
+const InlineEdit = ( props ) => {
+	const { value, onChange, activeAttributes, isActive } = props;
 
 	const registry = useRegistry();
 	const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 		registry.select( blockEditorStore );
 	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
 
-	const dialogBlock = computeDialogBlock( getBlocks(), dialogId );
+	const dialogBlock = computeDialogBlock(
+		getBlocks(),
+		getDialogId( activeAttributes )
+	);
 
 	useEffect( () => {
 		const dialogClientId =
@@ -141,4 +149,7 @@ export const inlineSettings = {
 	},
 	edit: InlineEdit,
 };
-registerFormatType( name, inlineSettings );
+
+if ( ! select( richTextStore ).getFormatType( name ) ) {
+	registerFormatType( name, inlineSettings );
+}

@@ -204,9 +204,6 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			className,
 			style,
 		} = attributes;
-		if ( ! existsClassName( targetClasses, className ) ) {
-			return <BlockListBlock { ...props } />;
-		}
 
 		const [ fluidTypographySettings, layout ] = useSettings(
 			'typography.fluid',
@@ -251,7 +248,9 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			...wrapperProps,
 			style: {
 				...( wrapperProps && { ...wrapperProps.style } ),
-				...extraStyle,
+				...( existsClassName( targetClasses, className ) && {
+					...extraStyle,
+				} ),
 			},
 		};
 

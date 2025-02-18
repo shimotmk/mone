@@ -26,7 +26,7 @@ function render_block_dialog_link( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$href  = $p->get_attribute( 'href' );
 
-		if ( 'mone-dialog-link' === $class && strpos( $href, '#dialog-' ) === 0 ) {
+		if ( 'mone-dialog-link' === $class && $href !== null && strpos( $href, '#dialog-' ) === 0 ) {
 			$p->seek( 'aTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
@@ -63,7 +63,7 @@ function render_block_dialog_inner_link( $block_content ) {
 			$p->set_bookmark( 'aTag' );
 			$href = $p->get_attribute( 'href' );
 
-			if ( strpos( $href, '#dialog-' ) === 0 ) {
+			if ( $href !== null && strpos( $href, '#dialog-' ) === 0 ) {
 				$p->seek( 'aTag' );
 				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 				$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
