@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
-export function createDialogBlock( id ) {
+export function createDialogBlock( id, name ) {
 	return createBlock(
 		'core/group',
 		{
@@ -9,7 +9,7 @@ export function createDialogBlock( id ) {
 			tagName: 'dialog',
 			metadata: {
 				patternName: 'mone/dialog-group',
-				name: __( 'Dialog', 'mone' ),
+				name: name + ' ' + __( 'Dialog', 'mone' ),
 			},
 			className: 'mone-dialog-content',
 			style: {

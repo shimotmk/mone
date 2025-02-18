@@ -7,7 +7,10 @@ import { v4 as createId } from 'uuid';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { store as blockEditorStore } from '@wordpress/block-editor';
+import {
+	store as blockEditorStore,
+	useBlockDisplayInformation,
+} from '@wordpress/block-editor';
 import { addFilter } from '@wordpress/hooks';
 import { useDispatch, useRegistry } from '@wordpress/data';
 import { Icon } from '@wordpress/icons';
@@ -39,9 +42,10 @@ function getBlockAttribute( name ) {
 }
 
 export const useMoneEditControls = ( controlLists, props ) => {
-	const { name, attributes, setAttributes } = props;
+	const { name, attributes, setAttributes, clientId } = props;
 	const registry = useRegistry();
 	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
+	const blockInformation = useBlockDisplayInformation( clientId );
 
 	if ( ! isAllowedBlock( name ) ) {
 		return [ ...controlLists ];
@@ -82,7 +86,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 		while ( rootClientId ) {
 			rootClientId = getBlockRootClientId( rootClientId );
 		}
-		const _dialogBlock = createDialogBlock( id );
+		const _dialogBlock = createDialogBlock( id, blockInformation?.title );
 		insertBlock( _dialogBlock, undefined, rootClientId );
 
 		const paragraphClientIds = getParagraphClientId( [ _dialogBlock ] );

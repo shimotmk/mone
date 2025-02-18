@@ -108,7 +108,7 @@ const InlineEdit = ( props ) => {
 			while ( rootClientId ) {
 				rootClientId = getBlockRootClientId( rootClientId );
 			}
-			const _dialogBlock = createDialogBlock( id );
+			const _dialogBlock = createDialogBlock( id, value?.text );
 			insertBlock( _dialogBlock, undefined, rootClientId );
 
 			const paragraphClientIds = getParagraphClientId( [ _dialogBlock ] );

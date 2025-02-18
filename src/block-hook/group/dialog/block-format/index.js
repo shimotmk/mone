@@ -11,6 +11,7 @@ import {
 	RichTextToolbarButton,
 	store as blockEditorStore,
 	BlockFormatControls,
+	useBlockDisplayInformation,
 } from '@wordpress/block-editor';
 import { ToolbarGroup } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
@@ -29,7 +30,7 @@ import { existsClassName } from '../../../../utils-func/class-name';
 
 export const BlockEditAppreciateButton = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
-		const { name, attributes, setAttributes } = props;
+		const { name, attributes, setAttributes, clientId } = props;
 		if ( name !== 'core/button' ) {
 			return <BlockEdit { ...props } />;
 		}
@@ -44,6 +45,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 		const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 			registry.select( blockEditorStore );
 		const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
+		const blockInformation = useBlockDisplayInformation( clientId );
 
 		const dialogBlock = computeDialogBlock(
 			getBlocks(),
@@ -61,7 +63,10 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 			while ( rootClientId ) {
 				rootClientId = getBlockRootClientId( rootClientId );
 			}
-			const _dialogBlock = createDialogBlock( id );
+			const _dialogBlock = createDialogBlock(
+				id,
+				blockInformation?.title
+			);
 			insertBlock( _dialogBlock, undefined, rootClientId );
 
 			const paragraphClientIds = getParagraphClientId( [ _dialogBlock ] );
