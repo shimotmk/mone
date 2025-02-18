@@ -26,7 +26,9 @@ import {
 } from '../../../utils-func/class-name';
 import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
 import { arrowAutoFit } from '../../../icons';
-import './format';
+import './inline/index.js';
+import './block-format/index.js';
+import './block-controls/index.js';
 
 const BLOCK_ALIGNMENTS_CONTROLS = {
 	none: {

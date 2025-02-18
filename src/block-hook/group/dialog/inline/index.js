@@ -51,12 +51,12 @@ export const getParagraphClientId = ( blocks = [] ) => {
 	} );
 };
 
-export function getDialogId( activeAttributes ) {
+export function getDialogId( activeAttributes, targetAttribute = 'url' ) {
 	let dialogId = '';
-	if ( activeAttributes?.url ) {
-		dialogId = activeAttributes.url.startsWith( '#' )
-			? activeAttributes.url.slice( 1 )
-			: activeAttributes.url;
+	if ( activeAttributes[ targetAttribute ] ) {
+		dialogId = activeAttributes[ targetAttribute ].startsWith( '#' )
+			? activeAttributes[ targetAttribute ].slice( 1 )
+			: activeAttributes[ targetAttribute ];
 	}
 	return dialogId;
 }

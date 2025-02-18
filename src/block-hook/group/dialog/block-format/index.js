@@ -17,15 +17,15 @@ import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useDispatch, useRegistry } from '@wordpress/data';
 
-import { createDialogBlock } from '../../group/dialog/format/constants';
+import { createDialogBlock } from '../inline/constants';
 import {
 	getParagraphClientId,
 	computeDialogBlock,
 	getDialogId,
-} from '../../group/dialog/format/index';
-import { Dialog } from '../../../icons';
-import { addClass } from '../../../utils-func/class-name/classAttribute';
-import { existsClassName } from '../../../utils-func/class-name';
+} from '../inline/index';
+import { Dialog } from '../../../../icons';
+import { addClass } from '../../../../utils-func/class-name/classAttribute';
+import { existsClassName } from '../../../../utils-func/class-name';
 
 export const BlockEditAppreciateButton = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -47,7 +47,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 
 		const dialogBlock = computeDialogBlock(
 			getBlocks(),
-			getDialogId( attributes )
+			getDialogId( attributes, url )
 		);
 
 		function onClick() {
