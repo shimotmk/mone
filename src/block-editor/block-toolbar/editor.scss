@@ -1,0 +1,10 @@
+.mone-block-toolbar-dropdown-menu {
+	&.is-active {
+		.components-dropdown-menu__toggle {
+			color: var(--wp-components-color-foreground-inverted, #fff);
+			&::before {
+				background: #1e1e1e;
+			}
+		}
+	}
+}

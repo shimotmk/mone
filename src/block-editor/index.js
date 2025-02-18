@@ -1,3 +1,4 @@
+import './block-toolbar';
 import './caption';
 import './custom-css';
 import './hidden';
