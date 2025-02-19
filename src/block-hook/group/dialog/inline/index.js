@@ -30,17 +30,20 @@ export const isEditorOpenClassName = ( block ) =>
 	existsClassName( 'mone-edit-show-dialog', block.attributes.className );
 
 export const computeDialogBlock = ( blocks = [], dialogId ) => {
-	return blocks.flatMap( ( block = {} ) => {
+	let result = [];
+	blocks.forEach( ( block = {} ) => {
 		if (
 			block.name === 'core/group' &&
 			isDialogAnchor( block, dialogId )
 		) {
-			return {
-				...block,
-			};
+			result.push( block );
+		} else if ( block.innerBlocks && block.innerBlocks.length > 0 ) {
+			result = result.concat(
+				computeDialogBlock( block.innerBlocks, dialogId )
+			);
 		}
-		return computeDialogBlock( block.innerBlocks );
 	} );
+	return result;
 };
 
 export const getParagraphClientId = ( blocks = [] ) => {
