@@ -13,6 +13,10 @@ export function registerBlockTypeGroup( settings, name ) {
 
 	settings.supports = {
 		...settings.supports,
+		spacing: {
+			...settings.supports.spacing,
+			margin: true,
+		},
 		shadow: true,
 	};
 

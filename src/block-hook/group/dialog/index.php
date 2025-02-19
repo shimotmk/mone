@@ -6,6 +6,7 @@
  */
 
 namespace Mone_Theme\Group\Dialog;
+use function Mone_Theme\UtilsFunc\mone_process_spacing;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -106,9 +107,35 @@ function render_block_dialog_group( $block_content, $block ) {
 		return $block_content;
 	}
 
+	$margin_left  = isset( $block['attrs']['style']['spacing']['margin']['left'] ) ? $block['attrs']['style']['spacing']['margin']['left'] : '';
+	$margin_right = isset( $block['attrs']['style']['spacing']['margin']['right'] ) ? $block['attrs']['style']['spacing']['margin']['right'] : '';
+
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag() ) {
 		$id = $p->get_attribute( 'id' );
+
+		$existing_style = $p->get_attribute( 'style' );
+		$updated_style  = '';
+		if ( ! empty( $existing_style ) ) {
+			$updated_style = $existing_style;
+			if ( ! str_ends_with( $existing_style, ';' ) ) {
+				$updated_style .= ';';
+			}
+		}
+
+		$left  = mone_process_spacing( $margin_left );
+		$right = mone_process_spacing( $margin_right );
+
+		if ( $left && $right ) {
+			$updated_style .= 'width: calc( 100% - ' . $left . ' - ' . $right . '); max-width: 100%;';
+		} elseif ( $right ) {
+			$updated_style .= 'width: calc( 100% - ' . $right . '); max-width: 100%;';
+		} elseif ( $left ) {
+			$updated_style .= 'width: calc( 100% - ' . $left . '); max-width: 100%;';
+		}
+
+		$p->set_attribute( 'style', $updated_style );
+
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-content' );
 		$p->set_attribute( 'data-wp-on--click', 'actions.closeDialogArea' );
 		$p->set_attribute( 'data-wp-on--keydown', 'actions.handleKeydown' );
