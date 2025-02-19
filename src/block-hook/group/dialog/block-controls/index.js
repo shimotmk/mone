@@ -122,14 +122,13 @@ export const useMoneEditControls = ( controlLists, props ) => {
 			icon: <Icon icon={ Dialog } />,
 			title: __( 'Remove Dialog', 'mone' ),
 			onClick() {
-				removeBlock(
-					dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId,
-					false
-				);
 				setAttributes( {
 					[ targetAttribute ]: undefined,
 				} );
 				deleteClass( 'mone-dialog-link', className, setAttributes );
+				if ( dialogBlock.length > 0 ) {
+					removeBlock( dialogBlock[ 0 ]?.clientId );
+				}
 			},
 			role: 'menuitemradio',
 		} );

@@ -13,6 +13,7 @@ import {
 	registerFormatType,
 	applyFormat,
 	slice,
+	removeFormat,
 } from '@wordpress/rich-text';
 import { useEffect } from '@wordpress/element';
 import { useDispatch, useRegistry, select } from '@wordpress/data';
@@ -73,7 +74,8 @@ const InlineEdit = ( props ) => {
 	const registry = useRegistry();
 	const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 		registry.select( blockEditorStore );
-	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
+	const { selectBlock, insertBlock, removeBlock } =
+		useDispatch( blockEditorStore );
 
 	const dialogBlock = computeDialogBlock(
 		getBlocks(),
@@ -122,6 +124,12 @@ const InlineEdit = ( props ) => {
 		} );
 	}
 
+	function onClickRemove() {
+		let newValue = value;
+		newValue = removeFormat( newValue, name );
+		onChange( { ...newValue } );
+	}
+
 	return (
 		<>
 			<RichTextToolbarButton
@@ -145,6 +153,20 @@ const InlineEdit = ( props ) => {
 				} }
 				role="menuitemcheckbox"
 			/>
+			{ isActive && (
+				<RichTextToolbarButton
+					name="moneMenu"
+					title={ __( 'Remove Dialog', 'mone' ) }
+					icon={ Dialog }
+					onClick={ () => {
+						onClickRemove();
+						if ( dialogBlock.length > 0 ) {
+							removeBlock( dialogBlock[ 0 ]?.clientId );
+						}
+					} }
+					role="menuitemcheckbox"
+				/>
+			) }
 		</>
 	);
 };

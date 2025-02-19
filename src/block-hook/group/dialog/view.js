@@ -39,6 +39,7 @@ store(
 
 function closeDialog( dialogRef ) {
 	dialogRef.classList.add( 'closing' );
+
 	setTimeout( () => {
 		document.body.classList.remove( 'dialog-open' );
 		dialogRef.close();
