@@ -82,10 +82,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIcon,
 			className,
 		} = attributes;
-		if ( ! existsClassName( targetClasses, className ) ) {
-			return <BlockEdit { ...props } />;
-		}
-
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
 		const { gradientValue, setGradient } = useGradient( {
 			gradientAttribute: 'moneIconGradient',
@@ -106,35 +102,37 @@ export const blockEditParagraph = createHigherOrderComponent(
 						}
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
-						<ToolsPanelItem
-							className="mone-block-editor-tools-panel-icon-settings__item"
-							label={ __( 'Icon', 'mone' ) }
-							isShownByDefault
-							hasValue={ () =>
-								!! moneAlertIconName || !! moneAlertIcon
-							}
-							onDeselect={ () =>
-								setAttributes( {
-									moneAlertIconName: undefined,
-									moneAlertIcon: undefined,
-								} )
-							}
-						>
-							<IconSearchModal
-								value={ moneAlertIconName }
-								iconSVG={
-									decodeSvgBase64( moneAlertIcon ) || ''
+						{ existsClassName( targetClasses, className ) && (
+							<ToolsPanelItem
+								className="mone-block-editor-tools-panel-icon-settings__item"
+								label={ __( 'Icon', 'mone' ) }
+								isShownByDefault
+								hasValue={ () =>
+									!! moneAlertIconName || !! moneAlertIcon
 								}
-								onChange={ ( value ) => {
+								onDeselect={ () =>
 									setAttributes( {
-										moneAlertIconName: value.iconName,
-										moneAlertIcon: value.iconSVG
-											? createSvgUrl( value.iconSVG )
-											: undefined,
-									} );
-								} }
-							/>
-						</ToolsPanelItem>
+										moneAlertIconName: undefined,
+										moneAlertIcon: undefined,
+									} )
+								}
+							>
+								<IconSearchModal
+									value={ moneAlertIconName }
+									iconSVG={
+										decodeSvgBase64( moneAlertIcon ) || ''
+									}
+									onChange={ ( value ) => {
+										setAttributes( {
+											moneAlertIconName: value.iconName,
+											moneAlertIcon: value.iconSVG
+												? createSvgUrl( value.iconSVG )
+												: undefined,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+						) }
 					</ToolsPanel>
 				</InspectorControls>
 				<InspectorControls group="color">

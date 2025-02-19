@@ -22,7 +22,10 @@ import {
 	getDialogId,
 } from '../inline/index';
 import { Dialog } from '../../../../icons';
-import { addClass } from '../../../../utils-func/class-name/classAttribute';
+import {
+	addClass,
+	deleteClass,
+} from '../../../../utils-func/class-name/classAttribute';
 import { existsClassName } from '../../../../utils-func/class-name';
 
 const allowedBlocks = [
@@ -44,7 +47,8 @@ function getBlockAttribute( name ) {
 export const useMoneEditControls = ( controlLists, props ) => {
 	const { name, attributes, setAttributes, clientId } = props;
 	const registry = useRegistry();
-	const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
+	const { selectBlock, insertBlock, removeBlock } =
+		useDispatch( blockEditorStore );
 	const blockInformation = useBlockDisplayInformation( clientId );
 
 	if ( ! isAllowedBlock( name ) ) {
@@ -93,25 +97,45 @@ export const useMoneEditControls = ( controlLists, props ) => {
 		selectBlock( paragraphClientIds[ 0 ] );
 	}
 
-	const newControl = {
-		icon: <Icon icon={ Dialog } />,
-		title: isActive
-			? __( 'Select Dialog', 'mone' )
-			: __( 'Set Dialog', 'mone' ),
-		isActive,
-		onClick() {
-			if ( ! isActive ) {
-				onClick();
-			} else {
-				selectBlock(
-					dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId
-				);
-			}
+	const newControl = [
+		{
+			icon: <Icon icon={ Dialog } />,
+			title: isActive
+				? __( 'Select Dialog', 'mone' )
+				: __( 'Set Dialog', 'mone' ),
+			isActive,
+			onClick() {
+				if ( ! isActive ) {
+					onClick();
+				} else {
+					selectBlock(
+						dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId
+					);
+				}
+			},
+			role: 'menuitemradio',
 		},
-		role: 'menuitemradio',
-	};
+	];
 
-	return [ ...controlLists, newControl ];
+	if ( isActive ) {
+		newControl.push( {
+			icon: <Icon icon={ Dialog } />,
+			title: __( 'Remove Dialog', 'mone' ),
+			onClick() {
+				removeBlock(
+					dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId,
+					false
+				);
+				setAttributes( {
+					[ targetAttribute ]: undefined,
+				} );
+				deleteClass( 'mone-dialog-link', className, setAttributes );
+			},
+			role: 'menuitemradio',
+		} );
+	}
+
+	return [ ...controlLists, ...newControl ];
 };
 
 addFilter(
