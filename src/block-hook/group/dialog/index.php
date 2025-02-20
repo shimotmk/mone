@@ -88,31 +88,24 @@ function render_block_dialog_inner_link( $block_content ) {
 }
 add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inner_link', 10, 2 );
 
-/**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
- *
- * @param array $parsed_block parsed_block.
- * @return array
- */
-function remove_lightbox( $parsed_block ) {
-	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
-		return $parsed_block;
+function block_core_gallery_data_id( $parsed_block, $source_block, $parent_block ) {
+	if ( 'core/image' === $parsed_block['blockName'] && $parent_block && 'core/group' === $parent_block->parsed_block['blockName'] ) {
+		if ( ! isset( $parsed_block['attrs'] ) ) {
+			$parsed_block['attrs'] = array();
+		}
+		$parsed_block['attrs'] = array_merge(
+			$parsed_block['attrs'],
+			array(
+				'lightbox' => array(
+					'enabled' => false,
+				),
+			)
+		);
 	}
-
-	if ( 'core/group' !== $parsed_block['blockName'] ) {
-		return $parsed_block;
-	}
-
-	$class_name = isset( $parsed_block['attrs']['className'] ) ? $parsed_block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'dialog_input_area' ) ) {
-		return $parsed_block;
-	}
-
-	$parsed_block['innerBlocks'] = update_core_image_dialog_blocks( $parsed_block['innerBlocks'] );
 
 	return $parsed_block;
 }
-add_filter( 'render_block_data', __NAMESPACE__ . '\remove_lightbox' );
+add_filter( 'render_block_data', __NAMESPACE__ . '\block_core_gallery_data_id', 10, 3 );
 
 /**
  * ダイアログブロックの中の画像ブロックのlightboxを無効にする
@@ -120,20 +113,26 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\remove_lightbox' );
  * @param array $blocks blocks.
  * @return array
  */
-function update_core_image_dialog_blocks( $blocks ) {
-	foreach ( $blocks as &$block ) {
-		if ( 'core/image' === $block['blockName'] ) {
-			$block['attrs']['lightbox'] = array(
-				'enabled' => false,
+function update_core_image_dialog_blocks( $parsed_block ) {
+	foreach ( $parsed_block as $key => $inner_block ) {
+		if ( 'core/image' === $inner_block['blockName'] ) {
+			if ( ! isset( $parsed_block[ $key ]['attrs'] ) ) {
+				$parsed_block[ $key ]['attrs'] = array();
+			}
+			$parsed_block[ $key ]['attrs'] = array_merge(
+				$parsed_block[ $key ]['attrs'],
+				array(
+					'lightbox' => array(
+						'enabled' => false,
+					),
+				)
 			);
-		}
-
-		if ( ! empty( $block['innerBlocks'] ) ) {
-			$block['innerBlocks'] = update_core_image_dialog_blocks( $block['innerBlocks'] );
+		} elseif ( ! empty( $inner_block['innerBlocks'] ) ) {
+			$parsed_block[ $key ]['innerBlocks'] = update_core_image_dialog_blocks( $inner_block['innerBlocks'] );
 		}
 	}
 
-	return $blocks;
+	return $parsed_block;
 }
 
 /**
