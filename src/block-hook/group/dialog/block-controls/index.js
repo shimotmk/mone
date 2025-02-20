@@ -28,11 +28,7 @@ import {
 } from '../../../../utils-func/class-name/classAttribute';
 import { existsClassName } from '../../../../utils-func/class-name';
 
-const allowedBlocks = [
-	{ 'core/image': 'href' },
-	{ 'core/group': 'href' },
-	{ 'mone/icon': 'url' },
-];
+const allowedBlocks = [ { 'core/image': 'href' }, { 'mone/icon': 'url' } ];
 function isAllowedBlock( name ) {
 	return allowedBlocks.some( ( block ) => block.hasOwnProperty( name ) );
 }
@@ -58,13 +54,6 @@ export const useMoneEditControls = ( controlLists, props ) => {
 	const targetAttribute = getBlockAttribute( name );
 	const { className } = attributes;
 	const targetUrl = attributes[ targetAttribute ];
-
-	if (
-		existsClassName( 'mone-dialog-content', className ) ||
-		existsClassName( 'dialog_input_area', className )
-	) {
-		return [ ...controlLists ];
-	}
 
 	const isActive =
 		!! targetUrl &&
