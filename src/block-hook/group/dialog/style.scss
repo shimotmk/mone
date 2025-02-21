@@ -29,6 +29,7 @@ dialog.mone-dialog-content.wp-block-group {
 	margin-block-start: auto;
 	margin-block-end: auto;
 	width: var(--wp--style--global--content-size);
+	max-width: calc(100% - 2em - 6px);
 	outline: none;
 	display: none;
 
@@ -49,6 +50,7 @@ dialog.mone-dialog-content.wp-block-group {
 
 	&.mone-alignfit {
 		width: fit-content;
+		max-width: calc(100% - 2em - 6px);
 	}
 
 	&.alignfull {
