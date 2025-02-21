@@ -28,17 +28,35 @@ import { Dialog } from '../../../../icons';
 import { addClass } from '../../../../utils-func/class-name/classAttribute';
 import { existsClassName } from '../../../../utils-func/class-name';
 
+export function registerBlockTypeButton( settings, name ) {
+	if ( name === 'core/button' ) {
+		settings.attributes = {
+			...settings.attributes,
+			moneDialogLink: {
+				type: 'string',
+			},
+		};
+	}
+	return settings;
+}
+
+addFilter(
+	'blocks.registerBlockType',
+	'mone/blocks/register-block-type/button',
+	registerBlockTypeButton
+);
+
 export const BlockEditAppreciateButton = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { name, attributes, setAttributes, clientId } = props;
 		if ( name !== 'core/button' ) {
 			return <BlockEdit { ...props } />;
 		}
-		const { url, className } = attributes;
+		const { moneDialogLink, className } = attributes;
 
 		const isActive =
-			!! url &&
-			url.startsWith( '#dialog-' ) &&
+			!! moneDialogLink &&
+			moneDialogLink.startsWith( '#dialog-' ) &&
 			existsClassName( 'mone-dialog-link', className );
 
 		const registry = useRegistry();
@@ -49,13 +67,14 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 
 		const dialogBlock = computeDialogBlock(
 			getBlocks(),
-			getDialogId( attributes, 'url' )
+			getDialogId( attributes, 'moneDialogLink' )
 		);
 
 		function onClick() {
 			const id = 'dialog-' + createId();
 			setAttributes( {
-				url: `#${ id }`,
+				tagName: 'button',
+				moneDialogLink: `#${ id }`,
 			} );
 			addClass( 'mone-dialog-link', className, setAttributes );
 			const selectedClientId = getSelectedBlockClientId();

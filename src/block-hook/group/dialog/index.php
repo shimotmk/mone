@@ -25,7 +25,7 @@ function render_block_dialog_link( $block_content ) {
 	while ( $p->next_tag( 'button' ) ) {
 		$p->set_bookmark( 'buttonTag' );
 		$class = $p->get_attribute( 'class' );
-		$id  = $p->get_attribute( 'data-dialog' );
+		$id    = $p->get_attribute( 'data-dialog' );
 
 		if ( 'mone-dialog-link' === $class && $id !== null && strpos( $id, '#dialog-' ) === 0 ) {
 			$p->seek( 'buttonTag' );
@@ -49,6 +49,50 @@ function render_block_dialog_link( $block_content ) {
 	return $block_content;
 }
 add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_link', 10, 2 );
+
+/**
+ * Render dialog image.
+ *
+ * @param string $block_content block_content.
+ * @param array  $block block.
+ * @return string
+ */
+function render_block_dialog_image( $block_content, $block ) {
+	if ( ! ( $block['blockName'] === 'core/image' || $block['blockName'] === 'mone/icon' ) ) {
+		return $block_content;
+	}
+
+	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+	if ( ! str_contains( $class_name, 'mone-dialog-link' ) ) {
+		return $block_content;
+	}
+
+	$dialog_link = isset( $block['attrs']['moneDialogLink'] ) ? $block['attrs']['moneDialogLink'] : '';
+	if ( ! $dialog_link ) {
+		return $block_content;
+	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-link' ) ) ) {
+		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
+		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+
+		$p->set_attribute(
+			'data-wp-context',
+			wp_json_encode(
+				array(
+					'dialogHref' => $dialog_link,
+				),
+				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
+			)
+		);
+
+	}
+	$block_content = $p->get_updated_html();
+
+	return $block_content;
+}
+add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_image', 10, 2 );
 
 /**
  * Render dialog inner link.
@@ -88,7 +132,54 @@ function render_block_dialog_inner_link( $block_content ) {
 }
 add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inner_link', 10, 2 );
 
-function block_core_gallery_data_id( $parsed_block, $source_block, $parent_block ) {
+
+/**
+ * Render button.
+ *
+ * @param string $block_content block_content.
+ *
+ * @return string
+ */
+function render_block_dialog_button( $block_content, $block ) {
+	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+	if ( ! str_contains( $class_name, 'mone-dialog-link' ) ) {
+		return $block_content;
+	}
+
+	$dialog_link = isset( $block['attrs']['moneDialogLink'] ) ? $block['attrs']['moneDialogLink'] : '';
+	if ( ! $dialog_link ) {
+		return $block_content;
+	}
+
+	$p = new \WP_HTML_Tag_Processor( $block_content );
+	if ( $p->next_tag( 'button' ) ) {
+		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
+		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+
+		$p->set_attribute(
+			'data-wp-context',
+			wp_json_encode(
+				array(
+					'dialogHref' => $dialog_link,
+				),
+				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
+			)
+		);
+
+	}
+	$block_content = $p->get_updated_html();
+
+	return $block_content;
+}
+add_filter( 'render_block_core/button', __NAMESPACE__ . '\render_block_dialog_button', 10, 2 );
+
+/**
+ * ダイアログブロックの中の画像ブロックのlightboxを無効にする
+ *
+ * @param array $blocks blocks.
+ * @return array
+ */
+function block_image_lightbox( $parsed_block, $source_block, $parent_block ) {
 	if ( 'core/image' === $parsed_block['blockName'] && $parent_block && 'core/group' === $parent_block->parsed_block['blockName'] ) {
 		if ( ! isset( $parsed_block['attrs'] ) ) {
 			$parsed_block['attrs'] = array();
@@ -105,7 +196,7 @@ function block_core_gallery_data_id( $parsed_block, $source_block, $parent_block
 
 	return $parsed_block;
 }
-add_filter( 'render_block_data', __NAMESPACE__ . '\block_core_gallery_data_id', 10, 3 );
+add_filter( 'render_block_data', __NAMESPACE__ . '\block_image_lightbox', 10, 3 );
 
 /**
  * ダイアログブロックの中の画像ブロックのlightboxを無効にする

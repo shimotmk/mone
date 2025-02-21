@@ -28,7 +28,28 @@ import {
 } from '../../../../utils-func/class-name/classAttribute';
 import { existsClassName } from '../../../../utils-func/class-name';
 
-const allowedBlocks = [ { 'core/image': 'href' }, { 'mone/icon': 'url' } ];
+export function registerBlockTypeDialog( settings, name ) {
+	if ( name === 'core/image' || name === 'mone/icon' ) {
+		settings.attributes = {
+			...settings.attributes,
+			moneDialogLink: {
+				type: 'string',
+			},
+		};
+	}
+	return settings;
+}
+
+addFilter(
+	'blocks.registerBlockType',
+	'mone/blocks/register-block-type/dialog',
+	registerBlockTypeDialog
+);
+
+const allowedBlocks = [
+	{ 'core/image': 'moneDialogLink' },
+	{ 'mone/icon': 'moneDialogLink' },
+];
 function isAllowedBlock( name ) {
 	return allowedBlocks.some( ( block ) => block.hasOwnProperty( name ) );
 }

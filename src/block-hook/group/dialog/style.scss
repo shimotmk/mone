@@ -10,6 +10,13 @@ button.mone-dialog-link {
 	color: var(--wp--preset--color--mone-link);
 	font-weight: 600;
 	background: none;
+}
+
+.mone-dialog-link {
+	cursor: pointer;
+}
+
+.mone-dialog-link button {
 	cursor: pointer;
 }
 
@@ -36,7 +43,8 @@ dialog.mone-dialog-content.wp-block-group {
 	}
 
 	&.alignwide {
-		width: var(--wp--style--global--wide-size);
+		width: calc(100% - 2em - 6px);
+		max-width: var(--wp--style--global--wide-size);
 	}
 
 	&.mone-alignfit {
