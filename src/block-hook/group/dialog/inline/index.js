@@ -87,7 +87,11 @@ const InlineEdit = ( props ) => {
 			dialogBlock.length > 0 && isEditorOpenClassName( dialogBlock[ 0 ] )
 				? dialogBlock[ 0 ].clientId
 				: null;
-		if ( isActive && dialogClientId && !! activeAttributes?.url ) {
+		if (
+			isActive &&
+			dialogClientId &&
+			!! activeAttributes[ 'data-dialog' ]
+		) {
 			selectBlock( dialogClientId );
 		} else {
 			selectBlock( getSelectedBlockClientId() );
@@ -95,7 +99,7 @@ const InlineEdit = ( props ) => {
 	}, [
 		dialogBlock,
 		isActive,
-		activeAttributes?.url,
+		activeAttributes,
 		selectBlock,
 		getSelectedBlockClientId,
 	] );
@@ -107,7 +111,7 @@ const InlineEdit = ( props ) => {
 				applyFormat( value, {
 					type: name,
 					attributes: {
-						url: `#${ id }`,
+						'data-dialog': `#${ id }`,
 					},
 				} )
 			);
@@ -173,10 +177,10 @@ const InlineEdit = ( props ) => {
 
 export const inlineSettings = {
 	title: __( 'Dialog', 'mone' ),
-	tagName: 'a',
+	tagName: 'button',
 	className: 'mone-dialog-link',
 	attributes: {
-		url: 'href',
+		'data-dialog': 'data-dialog',
 		class: 'class',
 	},
 	edit: InlineEdit,

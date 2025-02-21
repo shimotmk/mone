@@ -2,6 +2,17 @@ body.dialog-open {
 	overflow: hidden;
 }
 
+button.mone-dialog-link {
+	padding: 0;
+	border: none;
+	outline: none;
+	font: inherit;
+	color: var(--wp--preset--color--mone-link);
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+}
+
 dialog.mone-dialog-content::backdrop {
 	background-color: #00000059;
 	cursor: zoom-out;

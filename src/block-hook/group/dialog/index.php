@@ -22,13 +22,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 function render_block_dialog_link( $block_content ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	while ( $p->next_tag( 'a' ) ) {
-		$p->set_bookmark( 'aTag' );
+	while ( $p->next_tag( 'button' ) ) {
+		$p->set_bookmark( 'buttonTag' );
 		$class = $p->get_attribute( 'class' );
-		$href  = $p->get_attribute( 'href' );
+		$id  = $p->get_attribute( 'data-dialog' );
 
-		if ( 'mone-dialog-link' === $class && $href !== null && strpos( $href, '#dialog-' ) === 0 ) {
-			$p->seek( 'aTag' );
+		if ( 'mone-dialog-link' === $class && $id !== null && strpos( $id, '#dialog-' ) === 0 ) {
+			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
 
@@ -36,7 +36,7 @@ function render_block_dialog_link( $block_content ) {
 				'data-wp-context',
 				wp_json_encode(
 					array(
-						'dialogHref' => $href,
+						'dialogHref' => $id,
 					),
 					JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 				)
