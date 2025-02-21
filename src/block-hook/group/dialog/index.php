@@ -27,7 +27,7 @@ function render_block_dialog_link( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$id    = $p->get_attribute( 'data-dialog' );
 
-		if ( 'mone-dialog-link' === $class && $id !== null && strpos( $id, '#dialog-' ) === 0 ) {
+		if ( 'mone-dialog-link' === $class && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
@@ -58,7 +58,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_link', 10, 2 )
  * @return string
  */
 function render_block_dialog_image( $block_content, $block ) {
-	if ( ! ( $block['blockName'] === 'core/image' || $block['blockName'] === 'mone/icon' ) ) {
+	if ( ! ( 'core/image' === $block['blockName'] || 'mone/icon' === $block['blockName'] ) ) {
 		return $block_content;
 	}
 
@@ -108,7 +108,7 @@ function render_block_dialog_inner_link( $block_content ) {
 			$p->set_bookmark( 'aTag' );
 			$href = $p->get_attribute( 'href' );
 
-			if ( $href !== null && strpos( $href, '#dialog-' ) === 0 ) {
+			if ( null !== $href && 0 === strpos( $href, '#dialog-' ) ) {
 				$p->seek( 'aTag' );
 				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
 				$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
@@ -132,12 +132,11 @@ function render_block_dialog_inner_link( $block_content ) {
 }
 add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inner_link', 10, 2 );
 
-
 /**
  * Render button.
  *
  * @param string $block_content block_content.
- *
+ * @param array  $block block.
  * @return string
  */
 function render_block_dialog_button( $block_content, $block ) {
@@ -172,59 +171,6 @@ function render_block_dialog_button( $block_content, $block ) {
 	return $block_content;
 }
 add_filter( 'render_block_core/button', __NAMESPACE__ . '\render_block_dialog_button', 10, 2 );
-
-/**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
- *
- * @param array $blocks blocks.
- * @return array
- */
-function block_image_lightbox( $parsed_block, $source_block, $parent_block ) {
-	if ( 'core/image' === $parsed_block['blockName'] && $parent_block && 'core/group' === $parent_block->parsed_block['blockName'] ) {
-		if ( ! isset( $parsed_block['attrs'] ) ) {
-			$parsed_block['attrs'] = array();
-		}
-		$parsed_block['attrs'] = array_merge(
-			$parsed_block['attrs'],
-			array(
-				'lightbox' => array(
-					'enabled' => false,
-				),
-			)
-		);
-	}
-
-	return $parsed_block;
-}
-add_filter( 'render_block_data', __NAMESPACE__ . '\block_image_lightbox', 10, 3 );
-
-/**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
- *
- * @param array $blocks blocks.
- * @return array
- */
-function update_core_image_dialog_blocks( $parsed_block ) {
-	foreach ( $parsed_block as $key => $inner_block ) {
-		if ( 'core/image' === $inner_block['blockName'] ) {
-			if ( ! isset( $parsed_block[ $key ]['attrs'] ) ) {
-				$parsed_block[ $key ]['attrs'] = array();
-			}
-			$parsed_block[ $key ]['attrs'] = array_merge(
-				$parsed_block[ $key ]['attrs'],
-				array(
-					'lightbox' => array(
-						'enabled' => false,
-					),
-				)
-			);
-		} elseif ( ! empty( $inner_block['innerBlocks'] ) ) {
-			$parsed_block[ $key ]['innerBlocks'] = update_core_image_dialog_blocks( $inner_block['innerBlocks'] );
-		}
-	}
-
-	return $parsed_block;
-}
 
 /**
  * Render dialog.
@@ -293,3 +239,58 @@ function render_block_dialog_group( $block_content, $block ) {
 	return $block_content;
 }
 add_filter( 'render_block_core/group', __NAMESPACE__ . '\render_block_dialog_group', 10, 2 );
+
+/**
+ * ダイアログブロックの中の画像ブロックのlightboxを無効にする
+ *
+ * @param array $parsed_block parsed_block.
+ * @param array $source_block source_block.
+ * @param array $parent_block parent_block.
+ * @return array
+ */
+function block_image_lightbox( $parsed_block, $source_block, $parent_block ) {
+	if ( 'core/image' === $parsed_block['blockName'] && $parent_block && 'core/group' === $parent_block->parsed_block['blockName'] ) {
+		if ( ! isset( $parsed_block['attrs'] ) ) {
+			$parsed_block['attrs'] = array();
+		}
+		$parsed_block['attrs'] = array_merge(
+			$parsed_block['attrs'],
+			array(
+				'lightbox' => array(
+					'enabled' => false,
+				),
+			)
+		);
+	}
+
+	return $parsed_block;
+}
+// add_filter( 'render_block_data', __NAMESPACE__ . '\block_image_lightbox', 10, 3 );
+
+/**
+ * ダイアログブロックの中の画像ブロックのlightboxを無効にする
+ *
+ * @param array $parsed_block parsed_block.
+ * @return array
+ */
+function update_core_image_dialog_blocks( $parsed_block ) {
+	foreach ( $parsed_block as $key => $inner_block ) {
+		if ( 'core/image' === $inner_block['blockName'] ) {
+			if ( ! isset( $parsed_block[ $key ]['attrs'] ) ) {
+				$parsed_block[ $key ]['attrs'] = array();
+			}
+			$parsed_block[ $key ]['attrs'] = array_merge(
+				$parsed_block[ $key ]['attrs'],
+				array(
+					'lightbox' => array(
+						'enabled' => false,
+					),
+				)
+			);
+		} elseif ( ! empty( $inner_block['innerBlocks'] ) ) {
+			$parsed_block[ $key ]['innerBlocks'] = update_core_image_dialog_blocks( $inner_block['innerBlocks'] );
+		}
+	}
+
+	return $parsed_block;
+}
