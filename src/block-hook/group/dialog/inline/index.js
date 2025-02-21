@@ -160,7 +160,7 @@ const InlineEdit = ( props ) => {
 			{ isActive && (
 				<RichTextToolbarButton
 					name="moneMenu"
-					title={ __( 'Remove Dialog', 'mone' ) }
+					title={ __( 'Delete Dialog', 'mone' ) }
 					icon={ Dialog }
 					onClick={ () => {
 						onClickRemove();

@@ -109,7 +109,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 	if ( isActive ) {
 		newControl.push( {
 			icon: <Icon icon={ Dialog } />,
-			title: __( 'Remove Dialog', 'mone' ),
+			title: __( 'Delete Dialog', 'mone' ),
 			onClick() {
 				setAttributes( {
 					[ targetAttribute ]: undefined,
