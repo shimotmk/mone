@@ -25,7 +25,10 @@ import {
 	getDialogId,
 } from '../inline/index';
 import { Dialog } from '../../../../icons';
-import { addClass } from '../../../../utils-func/class-name/classAttribute';
+import {
+	addClass,
+	deleteClass,
+} from '../../../../utils-func/class-name/classAttribute';
 import { existsClassName } from '../../../../utils-func/class-name';
 
 export function registerBlockTypeButton( settings, name ) {
@@ -62,7 +65,8 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 		const registry = useRegistry();
 		const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 			registry.select( blockEditorStore );
-		const { selectBlock, insertBlock } = useDispatch( blockEditorStore );
+		const { selectBlock, insertBlock, removeBlock } =
+			useDispatch( blockEditorStore );
 		const blockInformation = useBlockDisplayInformation( clientId );
 
 		const dialogBlock = computeDialogBlock(
@@ -99,7 +103,6 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 					<ToolbarGroup>
 						<RichTextToolbarButton
 							name="moneMenu"
-							className="format-library-text-color-button"
 							isActive={ isActive }
 							title={
 								isActive
@@ -119,6 +122,30 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 							} }
 							role="menuitemcheckbox"
 						/>
+						{ isActive && (
+							<RichTextToolbarButton
+								name="moneMenu"
+								title={ __( 'Delete Dialog', 'mone' ) }
+								icon={ Dialog }
+								onClick={ () => {
+									setAttributes( {
+										tagName: 'a',
+										moneDialogLink: undefined,
+									} );
+									deleteClass(
+										'mone-dialog-link',
+										className,
+										setAttributes
+									);
+									if ( dialogBlock.length > 0 ) {
+										removeBlock(
+											dialogBlock[ 0 ]?.clientId
+										);
+									}
+								} }
+								role="menuitemcheckbox"
+							/>
+						) }
 					</ToolbarGroup>
 				</BlockFormatControls>
 			</>

@@ -138,7 +138,6 @@ const InlineEdit = ( props ) => {
 		<>
 			<RichTextToolbarButton
 				name="moneMenu"
-				className="format-library-text-color-button"
 				isActive={ isActive }
 				title={
 					isActive
