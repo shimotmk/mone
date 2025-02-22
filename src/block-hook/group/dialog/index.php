@@ -21,7 +21,7 @@ require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/disable-li
  *
  * @return string
  */
-function render_block_dialog_link( $block_content ) {
+function render_block_dialog_trigger( $block_content ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	while ( $p->next_tag( 'button' ) ) {
@@ -50,7 +50,7 @@ function render_block_dialog_link( $block_content ) {
 
 	return $block_content;
 }
-add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_link', 10, 2 );
+add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_trigger', 10, 2 );
 
 /**
  * Render dialog image.
