@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/disable-lightbox.php';
+
 /**
  * Render dialog link.
  *
@@ -239,58 +241,3 @@ function render_block_dialog_group( $block_content, $block ) {
 	return $block_content;
 }
 add_filter( 'render_block_core/group', __NAMESPACE__ . '\render_block_dialog_group', 10, 2 );
-
-/**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
- *
- * @param array $parsed_block parsed_block.
- * @param array $source_block source_block.
- * @param array $parent_block parent_block.
- * @return array
- */
-function block_image_lightbox( $parsed_block, $source_block, $parent_block ) {
-	if ( 'core/image' === $parsed_block['blockName'] && $parent_block && 'core/group' === $parent_block->parsed_block['blockName'] ) {
-		if ( ! isset( $parsed_block['attrs'] ) ) {
-			$parsed_block['attrs'] = array();
-		}
-		$parsed_block['attrs'] = array_merge(
-			$parsed_block['attrs'],
-			array(
-				'lightbox' => array(
-					'enabled' => false,
-				),
-			)
-		);
-	}
-
-	return $parsed_block;
-}
-// add_filter( 'render_block_data', __NAMESPACE__ . '\block_image_lightbox', 10, 3 );
-
-/**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
- *
- * @param array $parsed_block parsed_block.
- * @return array
- */
-function update_core_image_dialog_blocks( $parsed_block ) {
-	foreach ( $parsed_block as $key => $inner_block ) {
-		if ( 'core/image' === $inner_block['blockName'] ) {
-			if ( ! isset( $parsed_block[ $key ]['attrs'] ) ) {
-				$parsed_block[ $key ]['attrs'] = array();
-			}
-			$parsed_block[ $key ]['attrs'] = array_merge(
-				$parsed_block[ $key ]['attrs'],
-				array(
-					'lightbox' => array(
-						'enabled' => false,
-					),
-				)
-			);
-		} elseif ( ! empty( $inner_block['innerBlocks'] ) ) {
-			$parsed_block[ $key ]['innerBlocks'] = update_core_image_dialog_blocks( $inner_block['innerBlocks'] );
-		}
-	}
-
-	return $parsed_block;
-}

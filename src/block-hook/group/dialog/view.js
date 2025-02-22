@@ -13,15 +13,6 @@ store(
 					`dialog${ context.dialogHref }`
 				);
 
-				// URLのhrefのIDを削除
-				const url = new URL( window.location );
-				url.hash = '';
-				window.history.replaceState(
-					null,
-					document.title,
-					url.toString()
-				);
-
 				if ( dialogRef ) {
 					if ( dialogRef.open ) {
 						dialogRef.close();
