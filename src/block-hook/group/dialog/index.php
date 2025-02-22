@@ -22,7 +22,7 @@ require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/image.php'
  *
  * @return string
  */
-function render_block_dialog_trigger( $block_content ) {
+function render_block_dialog_inline_trigger( $block_content ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	while ( $p->next_tag( 'button' ) ) {
@@ -30,7 +30,7 @@ function render_block_dialog_trigger( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$id    = $p->get_attribute( 'data-dialog' );
 
-		if ( 'mone-dialog-trigger' === $class && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
+		if ( str_contains( $class, 'mone-dialog-inline' ) && str_contains( $class, 'mone-dialog-trigger' ) && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
@@ -51,7 +51,7 @@ function render_block_dialog_trigger( $block_content ) {
 
 	return $block_content;
 }
-add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_trigger', 10, 2 );
+add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inline_trigger', 10, 2 );
 
 /**
  * Render dialog image.

@@ -86,6 +86,7 @@ const InlineEdit = ( props ) => {
 					attributes: {
 						'data-dialog': `#${ id }`,
 						type: 'button',
+						class: 'mone-dialog-inline',
 					},
 				} )
 			);
