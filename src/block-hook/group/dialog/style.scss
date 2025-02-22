@@ -10,6 +10,7 @@ button.mone-dialog-trigger {
 	color: var(--wp--preset--color--mone-link);
 	font-weight: 600;
 	background: none;
+	cursor: pointer;
 
 	&:focus-visible {
 		outline: 2px solid color-mix(in srgb, currentColor 70%, transparent);
@@ -17,7 +18,7 @@ button.mone-dialog-trigger {
 	}
 }
 
-.mone-dialog-trigger {
+.mone-dialog-trigger img {
 	cursor: pointer;
 }
 
@@ -28,6 +29,54 @@ button.mone-dialog-trigger {
 dialog.mone-dialog-content::backdrop {
 	background-color: #00000059;
 	cursor: zoom-out;
+}
+
+.mone-dialog-container {
+	position: relative;
+
+	button.mone-dialog-trigger {
+		opacity: 0;
+		border: none;
+		background-color: rgb(90 90 90 / 25%);
+		backdrop-filter: blur(16px) saturate(180%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		z-index: 100;
+		top: 16px;
+		right: 16px;
+		text-align: center;
+		padding: 0;
+		border-radius: 4px;
+		@media not (prefers-reduced-motion) {
+			transition: opacity 0.2s ease;
+		}
+
+		&:focus-visible {
+			outline: 3px auto rgb(90 90 90 / 25%);
+			outline: 3px auto -webkit-focus-ring-color;
+			outline-offset: 3px;
+		}
+
+		&:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+
+		&:focus {
+			opacity: 1;
+		}
+
+		&:hover,
+		&:focus,
+		&:not(:hover):not(:active):not(.has-background) {
+			background-color: rgb(90 90 90 / 25%);
+			border: none;
+		}
+	}
 }
 
 dialog.mone-dialog-content.wp-block-group {

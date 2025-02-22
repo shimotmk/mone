@@ -31,9 +31,8 @@ function render_block_dialog_image( $block_content, $block ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
+		$p->add_class( 'mone-dialog-container' );
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
-		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
-
 		$p->set_attribute(
 			'data-wp-context',
 			wp_json_encode(
@@ -44,8 +43,32 @@ function render_block_dialog_image( $block_content, $block ) {
 			)
 		);
 
+		if ( $p->next_tag( 'img' ) ) {
+			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
+		}
+
 	}
 	$block_content = $p->get_updated_html();
+
+	$aria_label        = __( 'Enlarge' );
+	$img = null;
+	preg_match( '/<img[^>]+>/', $block_content, $img );
+	$button =
+		$img[0]
+		. '<button
+			class="mone-dialog-trigger"
+			type="button"
+			aria-haspopup="dialog"
+			aria-label="' . esc_attr( $aria_label ) . '"
+			data-wp-interactive="mone/dialog-trigger"
+			data-wp-on--click="actions.clickDialogTrigger"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
+			</svg>
+		</button>';
+
+	$block_content = preg_replace( '/<img[^>]+>/', $button, $block_content );
 
 	return $block_content;
 }
