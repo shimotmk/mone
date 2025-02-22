@@ -2,7 +2,7 @@ body.dialog-open {
 	overflow: hidden;
 }
 
-button.mone-dialog-link {
+button.mone-dialog-trigger {
 	padding: 0;
 	border: none;
 	outline: none;
@@ -12,11 +12,11 @@ button.mone-dialog-link {
 	background: none;
 }
 
-.mone-dialog-link {
+.mone-dialog-trigger {
 	cursor: pointer;
 }
 
-.mone-dialog-link button {
+.mone-dialog-trigger button {
 	cursor: pointer;
 }
 

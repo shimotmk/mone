@@ -177,7 +177,7 @@ const InlineEdit = ( props ) => {
 export const inlineSettings = {
 	title: __( 'Dialog', 'mone' ),
 	tagName: 'button',
-	className: 'mone-dialog-link',
+	className: 'mone-dialog-trigger',
 	attributes: {
 		'data-dialog': 'data-dialog',
 		class: 'class',

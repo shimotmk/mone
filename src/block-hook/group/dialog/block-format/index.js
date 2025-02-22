@@ -60,7 +60,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 		const isActive =
 			!! moneDialogLink &&
 			moneDialogLink.startsWith( '#dialog-' ) &&
-			existsClassName( 'mone-dialog-link', className );
+			existsClassName( 'mone-dialog-trigger', className );
 
 		const registry = useRegistry();
 		const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
@@ -80,7 +80,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 				tagName: 'button',
 				moneDialogLink: `#${ id }`,
 			} );
-			addClass( 'mone-dialog-link', className, setAttributes );
+			addClass( 'mone-dialog-trigger', className, setAttributes );
 			const selectedClientId = getSelectedBlockClientId();
 			let rootClientId = getBlockRootClientId( selectedClientId );
 			while ( rootClientId ) {
@@ -133,7 +133,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 										moneDialogLink: undefined,
 									} );
 									deleteClass(
-										'mone-dialog-link',
+										'mone-dialog-trigger',
 										className,
 										setAttributes
 									);

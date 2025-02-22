@@ -29,7 +29,7 @@ function render_block_dialog_trigger( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$id    = $p->get_attribute( 'data-dialog' );
 
-		if ( 'mone-dialog-link' === $class && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
+		if ( 'mone-dialog-trigger' === $class && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
@@ -65,7 +65,7 @@ function render_block_dialog_image( $block_content, $block ) {
 	}
 
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-link' ) ) {
+	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
 		return $block_content;
 	}
 
@@ -75,7 +75,7 @@ function render_block_dialog_image( $block_content, $block ) {
 	}
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-link' ) ) ) {
+	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
@@ -105,7 +105,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_image', 10, 2 
  */
 function render_block_dialog_inner_link( $block_content ) {
 	$p = new \WP_HTML_Tag_Processor( $block_content );
-	while ( $p->next_tag( array( 'class_name' => 'mone-dialog-link' ) ) ) {
+	while ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
 		while ( $p->next_tag( 'a' ) ) {
 			$p->set_bookmark( 'aTag' );
 			$href = $p->get_attribute( 'href' );
@@ -143,7 +143,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inner_link', 1
  */
 function render_block_dialog_button( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-link' ) ) {
+	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
 		return $block_content;
 	}
 

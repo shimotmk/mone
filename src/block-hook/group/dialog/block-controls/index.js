@@ -79,7 +79,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 	const isActive =
 		!! targetUrl &&
 		targetUrl.startsWith( '#dialog-' ) &&
-		existsClassName( 'mone-dialog-link', className );
+		existsClassName( 'mone-dialog-trigger', className );
 
 	const { getBlocks, getSelectedBlockClientId, getBlockRootClientId } =
 		registry.select( blockEditorStore );
@@ -94,7 +94,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 		setAttributes( {
 			[ targetAttribute ]: `#${ id }`,
 		} );
-		addClass( 'mone-dialog-link', className, setAttributes );
+		addClass( 'mone-dialog-trigger', className, setAttributes );
 		const selectedClientId = getSelectedBlockClientId();
 		let rootClientId = getBlockRootClientId( selectedClientId );
 		while ( rootClientId ) {
@@ -135,7 +135,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 				setAttributes( {
 					[ targetAttribute ]: undefined,
 				} );
-				deleteClass( 'mone-dialog-link', className, setAttributes );
+				deleteClass( 'mone-dialog-trigger', className, setAttributes );
 				if ( dialogBlock.length > 0 ) {
 					removeBlock( dialogBlock[ 0 ]?.clientId );
 				}
