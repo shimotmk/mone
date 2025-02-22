@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/disable-lightbox.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/image.php';
 
 /**
  * Render dialog link.
@@ -59,11 +60,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_trigger', 10, 
  * @param array  $block block.
  * @return string
  */
-function render_block_dialog_image( $block_content, $block ) {
-	if ( ! ( 'core/image' === $block['blockName'] || 'mone/icon' === $block['blockName'] ) ) {
-		return $block_content;
-	}
-
+function render_block_dialog_mone_icon( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
 	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
 		return $block_content;
@@ -94,45 +91,7 @@ function render_block_dialog_image( $block_content, $block ) {
 
 	return $block_content;
 }
-add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_image', 10, 2 );
-
-/**
- * Render dialog inner link.
- *
- * @param string $block_content block_content.
- *
- * @return string
- */
-function render_block_dialog_inner_link( $block_content ) {
-	$p = new \WP_HTML_Tag_Processor( $block_content );
-	while ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
-		while ( $p->next_tag( 'a' ) ) {
-			$p->set_bookmark( 'aTag' );
-			$href = $p->get_attribute( 'href' );
-
-			if ( null !== $href && 0 === strpos( $href, '#dialog-' ) ) {
-				$p->seek( 'aTag' );
-				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
-				$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
-
-				$p->set_attribute(
-					'data-wp-context',
-					wp_json_encode(
-						array(
-							'dialogId' => $href,
-						),
-						JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
-					)
-				);
-
-			}
-		}
-	}
-	$block_content = $p->get_updated_html();
-
-	return $block_content;
-}
-add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inner_link', 10, 2 );
+add_filter( 'render_block_mone/icon', __NAMESPACE__ . '\render_block_dialog_mone_icon', 10, 2 );
 
 /**
  * Render button.
