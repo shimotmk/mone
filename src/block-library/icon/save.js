@@ -33,8 +33,11 @@ export default function save( props ) {
 		iconGradient,
 		iconCustomGradient,
 		tagName,
+		type,
 	} = attributes;
 	const TagName = tagName || 'div';
+	const isButtonTag = 'button' === TagName;
+	const buttonType = type || 'button';
 	const spacingProps = getSpacingClassesAndStyles( attributes );
 
 	const gradientValue = iconGradient || iconCustomGradient;
@@ -64,6 +67,7 @@ export default function save( props ) {
 							: `var(--wp--preset--color--${ iconColor })` ) ),
 			...( !!! url ? spacingProps.style : {} ),
 		},
+		...( isButtonTag ? { type: buttonType } : {} ),
 	} );
 
 	const linkAttributes = {

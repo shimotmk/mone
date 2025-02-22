@@ -117,7 +117,8 @@ const { state } = store(
 				}
 
 				state.metadata[ dialogId ].dialogButtonTop = dialogButtonTop;
-				state.metadata[ dialogId ].dialogButtonRight = dialogButtonRight;
+				state.metadata[ dialogId ].dialogButtonRight =
+					dialogButtonRight;
 			},
 			initTriggerButton() {
 				const { dialogId } = getContext();

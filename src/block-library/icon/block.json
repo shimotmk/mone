@@ -48,6 +48,9 @@
 		"tagName": {
 			"type": "string",
 			"enum": [ "div", "button" ]
+		},
+		"type": {
+			"type": "string"
 		}
 	},
 	"supports": {
