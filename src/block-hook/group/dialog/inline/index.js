@@ -15,10 +15,8 @@ import {
 	slice,
 	removeFormat,
 } from '@wordpress/rich-text';
-import { useEffect } from '@wordpress/element';
 import { useDispatch, useRegistry, select } from '@wordpress/data';
 
-import { existsClassName } from '../../../../utils-func/class-name';
 import { createDialogBlock } from './constants';
 import { Dialog } from '../../../../icons';
 
@@ -26,9 +24,6 @@ const name = 'mone/dialog-trigger';
 
 export const isDialogAnchor = ( block, dialogId ) =>
 	!! block.attributes.anchor && block.attributes.anchor === dialogId;
-
-export const isEditorOpenClassName = ( block ) =>
-	existsClassName( 'mone-edit-show-dialog', block.attributes.className );
 
 export const computeDialogBlock = ( blocks = [], dialogId ) => {
 	let result = [];
@@ -81,28 +76,6 @@ const InlineEdit = ( props ) => {
 		getBlocks(),
 		getDialogId( activeAttributes )
 	);
-
-	useEffect( () => {
-		const dialogClientId =
-			dialogBlock.length > 0 && isEditorOpenClassName( dialogBlock[ 0 ] )
-				? dialogBlock[ 0 ].clientId
-				: null;
-		if (
-			isActive &&
-			dialogClientId &&
-			!! activeAttributes[ 'data-dialog' ]
-		) {
-			selectBlock( dialogClientId );
-		} else {
-			selectBlock( getSelectedBlockClientId() );
-		}
-	}, [
-		dialogBlock,
-		isActive,
-		activeAttributes,
-		selectBlock,
-		getSelectedBlockClientId,
-	] );
 
 	function onClick() {
 		registry.batch( () => {

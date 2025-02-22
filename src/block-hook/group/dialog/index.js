@@ -6,25 +6,16 @@ import clsx from 'clsx';
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
 import { BlockControls, InspectorControls } from '@wordpress/block-editor';
-import {
-	ToolbarDropdownMenu,
-	__experimentalToolsPanel as ToolsPanel,
-	__experimentalToolsPanelItem as ToolsPanelItem,
-	ToggleControl,
-} from '@wordpress/components';
+import { ToolbarDropdownMenu } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { alignNone, stretchFullWidth, stretchWide } from '@wordpress/icons';
 
 import './editor.scss';
-import {
-	toggleClass,
-	deleteClass,
-} from '../../../utils-func/class-name/classAttribute.js';
+import { toggleClass } from '../../../utils-func/class-name/classAttribute.js';
 import {
 	deleteClassName,
 	existsClassName,
 } from '../../../utils-func/class-name';
-import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
 import { arrowAutoFit } from '../../../icons';
 import './inline/index.js';
 import './block-format/index.js';
@@ -53,7 +44,6 @@ const BLOCK_ALIGNMENTS_CONTROLS = {
 };
 
 const dialogClassName = 'mone-dialog-content';
-const ShowDialogEditClassName = 'mone-edit-show-dialog';
 
 export const blockEditGroup = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -74,64 +64,6 @@ export const blockEditGroup = createHigherOrderComponent(
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls group="settings">
-					<ToolsPanel
-						label={ __( 'Dialog settings', 'mone' ) }
-						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
-						resetAll={ () => {
-							deleteClass(
-								ShowDialogEditClassName,
-								className,
-								setAttributes
-							);
-						} }
-					>
-						<ToolsPanelItem
-							label={ __(
-								'Show dialog on click in editor',
-								'mone'
-							) }
-							isShownByDefault={ true }
-							hasValue={ () =>
-								existsClassName(
-									ShowDialogEditClassName,
-									className
-								)
-							}
-							onDeselect={ () => {
-								deleteClass(
-									ShowDialogEditClassName,
-									className,
-									setAttributes
-								);
-							} }
-							resetAllFilter={ () => {
-								deleteClass(
-									ShowDialogEditClassName,
-									className,
-									setAttributes
-								);
-							} }
-						>
-							<ToggleControl
-								label={ __(
-									'Show dialog on click in editor',
-									'mone'
-								) }
-								checked={ existsClassName(
-									ShowDialogEditClassName,
-									className
-								) }
-								onChange={ () =>
-									toggleClass(
-										ShowDialogEditClassName,
-										className,
-										setAttributes
-									)
-								}
-								__nextHasNoMarginBottom
-							/>
-						</ToolsPanelItem>
-					</ToolsPanel>
 					<style>
 						{ `
 							.block-editor-block-variation-transforms {
