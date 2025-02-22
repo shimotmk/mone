@@ -50,6 +50,7 @@ const allowedBlocks = [
 	{ 'core/image': 'moneDialogId' },
 	{ 'mone/icon': 'moneDialogId' },
 ];
+
 function isAllowedBlock( name ) {
 	return allowedBlocks.some( ( block ) => block.hasOwnProperty( name ) );
 }
@@ -94,6 +95,11 @@ export const useMoneEditControls = ( controlLists, props ) => {
 		setAttributes( {
 			[ targetAttribute ]: `#${ id }`,
 		} );
+		if ( name === 'mone/icon' ) {
+			setAttributes( {
+				tagName: 'button',
+			} );
+		}
 		addClass( 'mone-dialog-trigger', className, setAttributes );
 		const selectedClientId = getSelectedBlockClientId();
 		let rootClientId = getBlockRootClientId( selectedClientId );

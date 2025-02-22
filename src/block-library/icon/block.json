@@ -44,6 +44,10 @@
 		},
 		"hoverBackgroundColor": {
 			"type": "string"
+		},
+		"tagName": {
+			"type": "string",
+			"enum": [ "div", "button" ]
 		}
 	},
 	"supports": {

@@ -32,7 +32,9 @@ export default function save( props ) {
 		hoverBackgroundColor,
 		iconGradient,
 		iconCustomGradient,
+		tagName,
 	} = attributes;
+	const TagName = tagName || 'div';
 	const spacingProps = getSpacingClassesAndStyles( attributes );
 
 	const gradientValue = iconGradient || iconCustomGradient;
@@ -103,7 +105,7 @@ export default function save( props ) {
 		);
 
 	return (
-		<div { ...blockProps }>
+		<TagName { ...blockProps }>
 			{ !! url ? (
 				<a
 					{ ...linkAttributes }
@@ -117,6 +119,6 @@ export default function save( props ) {
 			) : (
 				<>{ renderingIcon }</>
 			) }
-		</div>
+		</TagName>
 	);
 }

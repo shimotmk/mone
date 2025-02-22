@@ -28,6 +28,7 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 	ToolbarButton,
 	Popover,
+	SelectControl,
 } from '@wordpress/components';
 import { link } from '@wordpress/icons';
 import { select } from '@wordpress/data';
@@ -72,7 +73,9 @@ export default function Edit( props ) {
 		hoverBackgroundColor,
 		iconGradient,
 		iconCustomGradient,
+		tagName,
 	} = attributes;
+	const TagName = tagName || 'div';
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
 	const spacingProps = useSpacingProps( attributes );
@@ -320,57 +323,76 @@ export default function Edit( props ) {
 					{ ...colorGradientSettings }
 				/>
 			</InspectorControls>
-			<BlockControls group="block">
-				<ToolbarButton
-					ref={ setPopoverAnchor }
-					name="link"
-					icon={ link }
-					title={ __( 'Link', 'mone' ) }
-					onClick={ () => setIsEditingURL( true ) }
-					isActive={ !! url || isEditingURL }
+			<InspectorControls group="advanced">
+				<SelectControl
+					__nextHasNoMarginBottom
+					__next40pxDefaultSize
+					label={ __( 'HTML element' ) }
+					options={ [
+						{ label: __( 'Default (<div>)' ), value: 'div' },
+						{ label: '<button>', value: 'button' },
+					] }
+					value={ tagName || 'div' }
+					onChange={ ( value ) => {
+						setAttributes( { tagName: value } );
+					} }
 				/>
-				{ isEditingURL && (
-					<Popover
-						anchor={ popoverAnchor }
-						onClose={ () => setIsEditingURL( false ) }
-						placement="bottom"
-						focusOnMount={ true }
-						offset={ 12 }
-						variant="alternate"
-					>
-						<LinkControl
-							value={ {
-								url,
-								opensInNewTab: linkTarget === '_blank',
-								nofollow: !! rel ? true : false,
-							} }
-							onChange={ ( {
-								url: newURL = '',
-								opensInNewTab,
-								nofollow: newNofollow,
-							} ) => {
-								setAttributes( {
-									url: newURL,
-									linkTarget: opensInNewTab
-										? '_blank'
-										: undefined,
-									rel: newNofollow ? 'nofollow' : undefined,
-								} );
-							} }
-							onRemove={ () => {
-								setAttributes( {
-									url: undefined,
-									linkTarget: undefined,
-									rel: undefined,
-								} );
-								setIsEditingURL( false );
-							} }
-							settings={ LINK_SETTINGS }
-						/>
-					</Popover>
-				) }
-			</BlockControls>
-			<div { ...innerBlocksProps }>
+			</InspectorControls>
+			{ tagName !== 'button' && (
+				<BlockControls group="block">
+					<ToolbarButton
+						ref={ setPopoverAnchor }
+						name="link"
+						icon={ link }
+						title={ __( 'Link', 'mone' ) }
+						onClick={ () => setIsEditingURL( true ) }
+						isActive={ !! url || isEditingURL }
+					/>
+					{ isEditingURL && (
+						<Popover
+							anchor={ popoverAnchor }
+							onClose={ () => setIsEditingURL( false ) }
+							placement="bottom"
+							focusOnMount={ true }
+							offset={ 12 }
+							variant="alternate"
+						>
+							<LinkControl
+								value={ {
+									url,
+									opensInNewTab: linkTarget === '_blank',
+									nofollow: !! rel ? true : false,
+								} }
+								onChange={ ( {
+									url: newURL = '',
+									opensInNewTab,
+									nofollow: newNofollow,
+								} ) => {
+									setAttributes( {
+										url: newURL,
+										linkTarget: opensInNewTab
+											? '_blank'
+											: undefined,
+										rel: newNofollow
+											? 'nofollow'
+											: undefined,
+									} );
+								} }
+								onRemove={ () => {
+									setAttributes( {
+										url: undefined,
+										linkTarget: undefined,
+										rel: undefined,
+									} );
+									setIsEditingURL( false );
+								} }
+								settings={ LINK_SETTINGS }
+							/>
+						</Popover>
+					) }
+				</BlockControls>
+			) }
+			<TagName { ...innerBlocksProps }>
 				{ !! url ? (
 					<a
 						{ ...linkAttributes }
@@ -383,7 +405,7 @@ export default function Edit( props ) {
 				) : (
 					<>{ renderingIcon }</>
 				) }
-			</div>
+			</TagName>
 		</>
 	);
 }
