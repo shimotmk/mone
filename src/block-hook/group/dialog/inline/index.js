@@ -85,6 +85,7 @@ const InlineEdit = ( props ) => {
 					type: name,
 					attributes: {
 						'data-dialog': `#${ id }`,
+						type: 'button',
 					},
 				} )
 			);
@@ -154,6 +155,7 @@ export const inlineSettings = {
 	attributes: {
 		'data-dialog': 'data-dialog',
 		class: 'class',
+		type: 'type',
 	},
 	edit: InlineEdit,
 };

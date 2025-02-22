@@ -10,6 +10,11 @@ button.mone-dialog-trigger {
 	color: var(--wp--preset--color--mone-link);
 	font-weight: 600;
 	background: none;
+
+	&:focus-visible {
+		outline: 2px solid color-mix(in srgb, currentColor 70%, transparent);
+		border-radius: 0.25rem;
+	}
 }
 
 .mone-dialog-trigger {
