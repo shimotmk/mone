@@ -32,7 +32,7 @@ export function registerBlockTypeDialog( settings, name ) {
 	if ( name === 'core/image' || name === 'mone/icon' ) {
 		settings.attributes = {
 			...settings.attributes,
-			moneDialogLink: {
+			moneDialogId: {
 				type: 'string',
 			},
 		};
@@ -47,8 +47,8 @@ addFilter(
 );
 
 const allowedBlocks = [
-	{ 'core/image': 'moneDialogLink' },
-	{ 'mone/icon': 'moneDialogLink' },
+	{ 'core/image': 'moneDialogId' },
+	{ 'mone/icon': 'moneDialogId' },
 ];
 function isAllowedBlock( name ) {
 	return allowedBlocks.some( ( block ) => block.hasOwnProperty( name ) );

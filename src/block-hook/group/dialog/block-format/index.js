@@ -35,7 +35,7 @@ export function registerBlockTypeButton( settings, name ) {
 	if ( name === 'core/button' ) {
 		settings.attributes = {
 			...settings.attributes,
-			moneDialogLink: {
+			moneDialogId: {
 				type: 'string',
 			},
 		};
@@ -55,11 +55,11 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 		if ( name !== 'core/button' ) {
 			return <BlockEdit { ...props } />;
 		}
-		const { moneDialogLink, className } = attributes;
+		const { moneDialogId, className } = attributes;
 
 		const isActive =
-			!! moneDialogLink &&
-			moneDialogLink.startsWith( '#dialog-' ) &&
+			!! moneDialogId &&
+			moneDialogId.startsWith( '#dialog-' ) &&
 			existsClassName( 'mone-dialog-trigger', className );
 
 		const registry = useRegistry();
@@ -71,14 +71,14 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 
 		const dialogBlock = computeDialogBlock(
 			getBlocks(),
-			getDialogId( attributes, 'moneDialogLink' )
+			getDialogId( attributes, 'moneDialogId' )
 		);
 
 		function onClick() {
 			const id = 'dialog-' + createId();
 			setAttributes( {
 				tagName: 'button',
-				moneDialogLink: `#${ id }`,
+				moneDialogId: `#${ id }`,
 			} );
 			addClass( 'mone-dialog-trigger', className, setAttributes );
 			const selectedClientId = getSelectedBlockClientId();
@@ -130,7 +130,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 								onClick={ () => {
 									setAttributes( {
 										tagName: 'a',
-										moneDialogLink: undefined,
+										moneDialogId: undefined,
 									} );
 									deleteClass(
 										'mone-dialog-trigger',

@@ -69,8 +69,8 @@ function render_block_dialog_image( $block_content, $block ) {
 		return $block_content;
 	}
 
-	$dialog_link = isset( $block['attrs']['moneDialogLink'] ) ? $block['attrs']['moneDialogLink'] : '';
-	if ( ! $dialog_link ) {
+	$dialog_id = isset( $block['attrs']['moneDialogId'] ) ? $block['attrs']['moneDialogId'] : '';
+	if ( ! $dialog_id ) {
 		return $block_content;
 	}
 
@@ -83,7 +83,7 @@ function render_block_dialog_image( $block_content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogId' => $dialog_link,
+					'dialogId' => $dialog_id,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
@@ -147,8 +147,8 @@ function render_block_dialog_button( $block_content, $block ) {
 		return $block_content;
 	}
 
-	$dialog_link = isset( $block['attrs']['moneDialogLink'] ) ? $block['attrs']['moneDialogLink'] : '';
-	if ( ! $dialog_link ) {
+	$dialog_id = isset( $block['attrs']['moneDialogId'] ) ? $block['attrs']['moneDialogId'] : '';
+	if ( ! $dialog_id ) {
 		return $block_content;
 	}
 
@@ -161,7 +161,7 @@ function render_block_dialog_button( $block_content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogId' => $dialog_link,
+					'dialogId' => $dialog_id,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
