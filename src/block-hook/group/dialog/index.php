@@ -38,7 +38,7 @@ function render_block_dialog_link( $block_content ) {
 				'data-wp-context',
 				wp_json_encode(
 					array(
-						'dialogHref' => $id,
+						'dialogId' => $id,
 					),
 					JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 				)
@@ -83,7 +83,7 @@ function render_block_dialog_image( $block_content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogHref' => $dialog_link,
+					'dialogId' => $dialog_link,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
@@ -119,7 +119,7 @@ function render_block_dialog_inner_link( $block_content ) {
 					'data-wp-context',
 					wp_json_encode(
 						array(
-							'dialogHref' => $href,
+							'dialogId' => $href,
 						),
 						JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 					)
@@ -161,7 +161,7 @@ function render_block_dialog_button( $block_content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogHref' => $dialog_link,
+					'dialogId' => $dialog_link,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
@@ -229,7 +229,7 @@ function render_block_dialog_group( $block_content, $block ) {
 			'data-wp-context',
 			wp_json_encode(
 				array(
-					'dialogHref' => '#' . $id,
+					'dialogId' => '#' . $id,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)

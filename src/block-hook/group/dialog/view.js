@@ -10,7 +10,7 @@ store(
 			clickDialogLink() {
 				const context = getContext();
 				const dialogRef = document.querySelector(
-					`dialog${ context.dialogHref }`
+					`dialog${ context.dialogId }`
 				);
 
 				if ( dialogRef ) {
@@ -46,7 +46,7 @@ store(
 			closeDialogArea( event ) {
 				const context = getContext();
 				const dialogRef = document.querySelector(
-					`dialog${ context.dialogHref }`
+					`dialog${ context.dialogId }`
 				);
 
 				if ( event.target.closest( '.dialog_input_area' ) === null ) {
@@ -56,7 +56,7 @@ store(
 			handleKeydown( event ) {
 				const context = getContext();
 				const dialogRef = document.querySelector(
-					`dialog${ context.dialogHref }`
+					`dialog${ context.dialogId }`
 				);
 
 				if ( event.key === 'Escape' ) {
