@@ -38,19 +38,35 @@ function render_block_dialog_image( $block_content, $block ) {
 			wp_json_encode(
 				array(
 					'dialogId' => $dialog_id,
+					'dialogId' => $dialog_id,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
 		);
 
+		wp_interactivity_state(
+			'mone/dialog-trigger',
+			array(
+				'metadata' => array(
+					$dialog_id => array(
+						'scaleAttr'        => $block['attrs']['scale'] ?? false,
+					),
+				),
+			)
+		);
+
 		if ( $p->next_tag( 'img' ) ) {
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
+
+			$p->set_attribute( 'data-wp-init', 'callbacks.setButtonStyles' );
+			$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setButtonStyles' );
+			$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setButtonStyles' );
 		}
 
 	}
 	$block_content = $p->get_updated_html();
 
-	$aria_label        = __( 'Enlarge' );
+	$dialog_aria_label = __( 'Open dialog', 'mone' );
 	$img = null;
 	preg_match( '/<img[^>]+>/', $block_content, $img );
 	$button =
@@ -59,13 +75,14 @@ function render_block_dialog_image( $block_content, $block ) {
 			class="mone-dialog-trigger"
 			type="button"
 			aria-haspopup="dialog"
-			aria-label="' . esc_attr( $aria_label ) . '"
+			aria-label="' . esc_attr( $dialog_aria_label ) . '"
 			data-wp-interactive="mone/dialog-trigger"
+			data-wp-init="callbacks.initTriggerButton"
 			data-wp-on--click="actions.clickDialogTrigger"
+			data-wp-style--right="state.dialogButtonRight"
+			data-wp-style--top="state.dialogButtonTop"
 		>
-			<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-				<path fill="#fff" d="M2 0a2 2 0 0 0-2 2v2h1.5V2a.5.5 0 0 1 .5-.5h2V0H2Zm2 10.5H2a.5.5 0 0 1-.5-.5V8H0v2a2 2 0 0 0 2 2h2v-1.5ZM8 12v-1.5h2a.5.5 0 0 0 .5-.5V8H12v2a2 2 0 0 1-2 2H8Zm2-12a2 2 0 0 1 2 2v2h-1.5V2a.5.5 0 0 0-.5-.5H8V0h2Z" />
-			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256"><path fill="#ffffff" d="M208,90H48a14,14,0,0,0-14,14v96a14,14,0,0,0,14,14H208a14,14,0,0,0,14-14V104A14,14,0,0,0,208,90Zm2,110a2,2,0,0,1-2,2H48a2,2,0,0,1-2-2V104a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM50,64a6,6,0,0,1,6-6H200a6,6,0,0,1,0,12H56A6,6,0,0,1,50,64ZM66,32a6,6,0,0,1,6-6H184a6,6,0,0,1,0,12H72A6,6,0,0,1,66,32Z"></path></svg>
 		</button>';
 
 	$block_content = preg_replace( '/<img[^>]+>/', $button, $block_content );

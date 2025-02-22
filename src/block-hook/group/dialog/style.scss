@@ -33,6 +33,13 @@ dialog.mone-dialog-content::backdrop {
 
 .mone-dialog-container {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	img:hover + button {
+		opacity: 1;
+	}
 
 	button.mone-dialog-trigger {
 		opacity: 0;
