@@ -4,10 +4,10 @@
 import { store, getContext } from '@wordpress/interactivity';
 
 store(
-	'mone/dialog-link',
+	'mone/dialog-trigger',
 	{
 		actions: {
-			clickDialogLink() {
+			clickDialogTrigger() {
 				const context = getContext();
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogId }`

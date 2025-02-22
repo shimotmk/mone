@@ -22,7 +22,7 @@ import { existsClassName } from '../../../../utils-func/class-name';
 import { createDialogBlock } from './constants';
 import { Dialog } from '../../../../icons';
 
-const name = 'mone/dialog-link';
+const name = 'mone/dialog-trigger';
 
 export const isDialogAnchor = ( block, dialogId ) =>
 	!! block.attributes.anchor && block.attributes.anchor === dialogId;

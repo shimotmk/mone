@@ -31,8 +31,8 @@ function render_block_dialog_link( $block_content ) {
 
 		if ( 'mone-dialog-link' === $class && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );
-			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
-			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
+			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
 			$p->set_attribute(
 				'data-wp-context',
@@ -76,8 +76,8 @@ function render_block_dialog_image( $block_content, $block ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-link' ) ) ) {
-		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
-		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
+		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
 		$p->set_attribute(
 			'data-wp-context',
@@ -112,8 +112,8 @@ function render_block_dialog_inner_link( $block_content ) {
 
 			if ( null !== $href && 0 === strpos( $href, '#dialog-' ) ) {
 				$p->seek( 'aTag' );
-				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
-				$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
+				$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
 				$p->set_attribute(
 					'data-wp-context',
@@ -154,8 +154,8 @@ function render_block_dialog_button( $block_content, $block ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( 'button' ) ) {
-		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-link' );
-		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogLink' );
+		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
+		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
 		$p->set_attribute(
 			'data-wp-context',
