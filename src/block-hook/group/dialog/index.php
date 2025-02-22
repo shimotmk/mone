@@ -34,6 +34,8 @@ function render_block_dialog_inline_trigger( $block_content ) {
 			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
+			$p->set_attribute( 'aria-haspopup', 'dialog' );
+			$p->set_attribute( 'aria-label', __( 'Open dialog', 'mone' ) );
 
 			$p->set_attribute(
 				'data-wp-context',
@@ -75,6 +77,8 @@ function render_block_dialog_mone_icon( $block_content, $block ) {
 	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
+		$p->set_attribute( 'aria-haspopup', 'dialog' );
+		$p->set_attribute( 'aria-label', __( 'Open dialog', 'mone' ) );
 
 		$p->set_attribute(
 			'data-wp-context',
@@ -115,6 +119,8 @@ function render_block_dialog_button( $block_content, $block ) {
 	if ( $p->next_tag( 'button' ) ) {
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
+		$p->set_attribute( 'aria-haspopup', 'dialog' );
+		$p->set_attribute( 'aria-label', __( 'Open dialog', 'mone' ) );
 
 		$p->set_attribute(
 			'data-wp-context',

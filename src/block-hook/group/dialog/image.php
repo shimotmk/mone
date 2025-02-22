@@ -38,7 +38,6 @@ function render_block_dialog_image( $block_content, $block ) {
 			wp_json_encode(
 				array(
 					'dialogId' => $dialog_id,
-					'dialogId' => $dialog_id,
 				),
 				JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP
 			)
@@ -49,7 +48,7 @@ function render_block_dialog_image( $block_content, $block ) {
 			array(
 				'metadata' => array(
 					$dialog_id => array(
-						'scaleAttr'        => $block['attrs']['scale'] ?? false,
+						'scaleAttr' => $block['attrs']['scale'] ?? false,
 					),
 				),
 			)
@@ -62,12 +61,11 @@ function render_block_dialog_image( $block_content, $block ) {
 			$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setButtonStyles' );
 			$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setButtonStyles' );
 		}
-
 	}
 	$block_content = $p->get_updated_html();
 
 	$dialog_aria_label = __( 'Open dialog', 'mone' );
-	$img = null;
+	$img               = null;
 	preg_match( '/<img[^>]+>/', $block_content, $img );
 	$button =
 		$img[0]
