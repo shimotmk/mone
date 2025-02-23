@@ -44,7 +44,6 @@ export default function StyleInlineIconUI( {
 	onClose,
 	contentRef,
 	activeObjectAttributes,
-	openPopOver,
 } ) {
 	const popoverAnchor = useAnchor( {
 		editableContentElement: contentRef.current,
