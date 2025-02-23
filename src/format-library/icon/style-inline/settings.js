@@ -94,34 +94,6 @@ export function Settings( { activeIcons, onIconChange } ) {
 									</MenuItem>
 									<MenuItem
 										aria-disabled={
-											! activeIcons[
-												'--mone-edit-show-on-click'
-											]
-										}
-										variant="tertiary"
-										onClick={ () => {
-											onIconChange( {
-												'--mone-edit-show-on-click':
-													undefined,
-											} );
-										} }
-									>
-										<span className="components-menu-item__item">
-											{ __(
-												'Show dialog on click in editor',
-												'mone'
-											) }
-										</span>
-										{ activeIcons[
-											'--mone-edit-show-on-click'
-										] && (
-											<span style={ restButtonStyle }>
-												{ __( 'Reset', 'mone' ) }
-											</span>
-										) }
-									</MenuItem>
-									<MenuItem
-										aria-disabled={
 											! activeIcons.className
 										}
 										variant="tertiary"
@@ -146,17 +118,12 @@ export function Settings( { activeIcons, onIconChange } ) {
 									<MenuItem
 										aria-disabled={
 											! activeIcons[ 'vertical-align' ] &&
-											! activeIcons[
-												'--mone-edit-show-on-click'
-											] &&
 											! activeIcons.className
 										}
 										variant="tertiary"
 										onClick={ () => {
 											onIconChange( {
 												'vertical-align': undefined,
-												'--mone-edit-show-on-click':
-													undefined,
 												className: undefined,
 											} );
 										} }

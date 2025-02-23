@@ -82,13 +82,6 @@ export default function StyleInlineIconUI( {
 		);
 	};
 
-	if (
-		! openPopOver &&
-		activeIcons[ '--mone-edit-show-on-click' ] !== 'show'
-	) {
-		return null;
-	}
-
 	return (
 		<Popover
 			onClose={ onClose }
