@@ -118,6 +118,12 @@ dialog.mone-dialog-content.wp-block-group {
 		width: 100%;
 	}
 
+	.dialog_input_area {
+		.is-position-sticky {
+			--wp-admin--admin-bar--position-offset: 0;
+		}
+	}
+
 	.dialog-close-button button {
 		&:focus-visible {
 			outline: 2px solid -webkit-focus-ring-color ;

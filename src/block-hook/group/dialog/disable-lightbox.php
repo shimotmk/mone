@@ -34,7 +34,9 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\disable_lightbox_in_dialog_gr
  */
 function update_image_blocks( $blocks ) {
 	foreach ( $blocks as &$block ) {
-		$block['attrs']['moneIsParentDialog'] = true;
+		if ( 'core/image' === $block['blockName'] ) {
+			$block['attrs']['moneIsParentDialog'] = true;
+		}
 
 		if ( ! empty( $block['innerBlocks'] ) ) {
 			$block['innerBlocks'] = update_image_blocks( $block['innerBlocks'] );

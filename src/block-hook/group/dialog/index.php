@@ -28,7 +28,7 @@ function render_block_dialog_inline_trigger( $block_content ) {
 	while ( $p->next_tag( 'button' ) ) {
 		$p->set_bookmark( 'buttonTag' );
 		$class = $p->get_attribute( 'class' );
-		$id    = $p->get_attribute( 'data-dialog' );
+		$id    = $p->get_attribute( 'data-dialog-id' );
 
 		if ( str_contains( $class, 'mone-dialog-inline' ) && str_contains( $class, 'mone-dialog-trigger' ) && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );

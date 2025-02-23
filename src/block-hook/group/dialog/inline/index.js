@@ -51,7 +51,10 @@ export const getParagraphClientId = ( blocks = [] ) => {
 	} );
 };
 
-export function getDialogId( activeAttributes, targetAttribute = 'url' ) {
+export function getDialogId(
+	activeAttributes,
+	targetAttribute = 'data-dialog-id'
+) {
 	let dialogId = '';
 	if ( activeAttributes[ targetAttribute ] ) {
 		dialogId = activeAttributes[ targetAttribute ].startsWith( '#' )
@@ -84,7 +87,7 @@ const InlineEdit = ( props ) => {
 				applyFormat( value, {
 					type: name,
 					attributes: {
-						'data-dialog': `#${ id }`,
+						'data-dialog-id': `#${ id }`,
 						type: 'button',
 						class: 'mone-dialog-inline',
 					},
@@ -154,7 +157,7 @@ export const inlineSettings = {
 	tagName: 'button',
 	className: 'mone-dialog-trigger',
 	attributes: {
-		'data-dialog': 'data-dialog',
+		'data-dialog-id': 'data-dialog-id',
 		class: 'class',
 		type: 'type',
 	},
