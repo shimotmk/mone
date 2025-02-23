@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../../icons';
+import { balloon as icon } from '../../../icons';
 /* global moneGroupData */
 
 const example = {
@@ -104,7 +104,7 @@ export const balloon = {
 			name: __( 'Balloon', 'mone' ),
 		},
 	},
-	icon: blockCategoryIcon,
+	icon,
 	scope: [ 'inserter' ],
 	isActive: ( blockAttributes ) =>
 		blockAttributes?.metadata?.patternName === 'mone/balloon-group',

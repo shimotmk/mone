@@ -8,7 +8,7 @@ import { getPath } from '@wordpress/url';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../../icons';
+import { moneQuery as icon } from '../../../icons';
 import './pick-up-articles';
 
 const isSiteEditor = getPath( window.location.href )?.includes(
@@ -103,7 +103,7 @@ registerBlockVariation( 'core/query', {
 	title: __( 'Most Read Articles', 'mone' ),
 	description: __( 'Shows the most read articles', 'mone' ),
 	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
+	icon,
 	isActive: ( { namespace, query } ) => {
 		return (
 			namespace === 'mone-popular-query-loop' &&
@@ -160,7 +160,7 @@ registerBlockVariation( 'core/query', {
 		'mone'
 	),
 	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
+	icon,
 	isActive: ( { namespace } ) => {
 		return namespace === 'mone-related-query-loop';
 	},

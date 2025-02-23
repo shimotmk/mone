@@ -7,13 +7,13 @@ import { registerBlockVariation } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../icons';
+import { detail } from '../../icons';
 
 registerBlockVariation( 'core/details', {
 	name: 'mone/details-icon',
 	title: __( 'Accordion', 'mone' ),
 	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
+	icon: detail,
 	attributes: {
 		className: 'is-style-mone-details-icon mone-detail-icon-triangle',
 		style: {

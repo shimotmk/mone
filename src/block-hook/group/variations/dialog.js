@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { Dialog } from '../../../icons';
+import { dialogIcon as icon } from '../../../icons';
 
 export const dialog = {
 	name: 'mone/dialog-group',
@@ -19,7 +19,7 @@ export const dialog = {
 			name: __( 'Dialog', 'mone' ),
 		},
 	},
-	icon: Dialog,
+	icon,
 	scope: [],
 	isActive: ( blockAttributes ) =>
 		blockAttributes?.metadata?.patternName === 'mone/dialog-group',

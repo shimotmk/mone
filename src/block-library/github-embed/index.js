@@ -7,7 +7,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * block type
  */
 import metadata from './block.json';
-import { blockCategoryIcon as icon } from '../../icons';
+import { GithubEmbed as icon } from '../../icons';
 import edit from './edit';
 import example from './example';
 import './style.scss';

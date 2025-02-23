@@ -7,7 +7,7 @@ import { getPath } from '@wordpress/url';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../icons';
+import { toc as icon } from '../../icons';
 
 const isSiteEditor = getPath( window.location.href )?.includes(
 	'site-editor.php'
@@ -19,7 +19,7 @@ const variations = [
 		title: __( 'Table of contents', 'mone' ),
 		attributes: {},
 		innerBlocks: [],
-		icon: blockCategoryIcon,
+		icon,
 		scope: [ 'inserter' ],
 		isDefault: true,
 	},
@@ -30,7 +30,7 @@ const variations = [
 			className: 'mone-is-scroll-animation is-style-mone-default-toc',
 		},
 		innerBlocks: [],
-		icon: blockCategoryIcon,
+		icon,
 		scope: [ isSiteEditor && 'inserter' ],
 	},
 ];

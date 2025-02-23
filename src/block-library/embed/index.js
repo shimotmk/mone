@@ -7,7 +7,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * block type
  */
 import json from './block.json';
-import { embedContentIcon } from './icons';
+import { BlogCard } from '../../icons';
 import edit from './edit';
 import save from './save';
 import example from './example';
@@ -19,7 +19,7 @@ import './style.scss';
 const { name, ...settings } = json;
 
 registerBlockType( name, {
-	icon: embedContentIcon,
+	icon: BlogCard,
 	...settings,
 	example,
 	variations,

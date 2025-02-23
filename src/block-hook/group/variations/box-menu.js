@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../../icons';
+import { boxMenu as Icon } from '../../../icons';
 
 const example = {
 	attributes: {
@@ -278,7 +278,7 @@ export const boxMenu = {
 	title: __( 'Box Menu', 'mone' ),
 	description: __( 'Box Menu', 'mone' ),
 	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
+	icon: Icon,
 	scope: [ 'inserter' ],
 	isActive: ( blockAttributes ) =>
 		blockAttributes?.metadata?.patternName === 'mone/box-menu-group',
