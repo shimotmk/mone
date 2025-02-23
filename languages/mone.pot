@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-23T13:43:10+00:00\n"
+"POT-Creation-Date: 2025-02-23T21:35:37+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -860,7 +860,11 @@ msgid "Dialog Content"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
-msgid "Dialog close"
+msgid "Dialog close area"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog close button"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
@@ -1018,10 +1022,6 @@ msgstr ""
 
 #: build/block-library/embed/index.js:1
 msgid "Top image"
-msgstr ""
-
-#: build/block-library/embed/index.js:1
-msgid "Embed"
 msgstr ""
 
 #: build/block-library/embed/index.js:1
@@ -1443,7 +1443,7 @@ msgstr ""
 
 #: build/block-library/embed/block.json
 msgctxt "block title"
-msgid "Embed"
+msgid "Blog card"
 msgstr ""
 
 #: build/block-library/embed/block.json

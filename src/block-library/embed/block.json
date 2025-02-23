@@ -2,7 +2,7 @@
 	"apiVersion": 3,
 	"name": "mone/embed",
 	"category": "mone-block-cat",
-	"title": "Embed",
+	"title": "Blog card",
 	"description": "Add a block that fetches and displays content from a URL.",
 	"attributes": {
 		"url": {

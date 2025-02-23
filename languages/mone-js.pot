@@ -288,12 +288,6 @@ msgctxt "block title"
 msgid "Embed"
 msgstr ""
 
-#: build/block-library/embed/block.json
-#: src/block-library/embed/block.json
-msgctxt "block description"
-msgid "Add a block that fetches and displays content from a URL."
-msgstr ""
-
 #: theme.json
 msgctxt "Custom template name"
 msgid "空白"

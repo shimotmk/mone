@@ -55,7 +55,7 @@ export function createDialogBlock( id, name ) {
 						'core/group',
 						{
 							metadata: {
-								name: __( 'Dialog close', 'mone' ),
+								name: __( 'Dialog close area', 'mone' ),
 							},
 							style: {
 								position: {
@@ -81,6 +81,12 @@ export function createDialogBlock( id, name ) {
 								},
 								[
 									createBlock( 'mone/icon', {
+										metadata: {
+											name: __(
+												'Dialog close button',
+												'mone'
+											),
+										},
 										width: '1.25rem',
 										height: '1.25rem',
 										tagName: 'button',

@@ -22,7 +22,7 @@ const { name, ...settings } = json;
 registerBlockType( name, {
 	icon: BlogCard,
 	...settings,
-	title: __( 'Embed', 'mone' ),
+	title: __( 'Blog card', 'mone' ),
 	description: __(
 		'Add a block that fetches and displays content from a URL.',
 		'mone'

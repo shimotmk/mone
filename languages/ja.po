@@ -751,8 +751,12 @@ msgid "Dialog Content"
 msgstr "ダイアログ コンテンツ"
 
 #: build/block-hook/group/index.js:1
-msgid "Dialog close"
-msgstr "ダイアログを閉じる"
+msgid "Dialog close area"
+msgstr "ダイアログ クローズ エリア"
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog close button"
+msgstr "ダイアログ クローズ ボタン"
 
 #: build/block-hook/group/index.js:1
 msgid "Dialog contents is here!"
@@ -1737,19 +1741,7 @@ msgctxt "block description"
 msgid "Displays the title obtained from the URL."
 msgstr "URL から取得したタイトルが表示されます。"
 
-#: build/block-library/embed/block.json
-msgctxt "block title"
-
 #: build/block-library/embed/index.js:1
-msgid "Embed"
-msgstr "ブログカード"
-
-#: build/block-library/embed/index.js:1
-msgid "Add a block that fetches and displays content from a URL."
-msgstr "URLからコンテンツを取得して表示するブロックを追加します。"
-
-#: build/block-library/embed/block.json
-msgctxt "block description"
 msgid "Add a block that fetches and displays content from a URL."
 msgstr "URLからコンテンツを取得して表示するブロックを追加します。"
 
