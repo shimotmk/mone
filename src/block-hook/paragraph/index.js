@@ -136,49 +136,51 @@ export const blockEditParagraph = createHigherOrderComponent(
 					</ToolsPanel>
 				</InspectorControls>
 				<InspectorControls group="color">
-					<ColorGradientSettingsDropdown
-						__experimentalIsRenderedInSidebar
-						settings={ [
-							{
-								colorValue:
-									colorSlugToColorCode( moneAlertIconColor ),
-								label: __( 'Icon Color', 'mone' ),
-								onColorChange: ( newValue ) => {
-									const colorSet =
-										select( blockEditorStore ).getSettings()
-											.colors;
-									const ColorValue =
-										getColorObjectByColorValue(
-											colorSet,
-											newValue
-										);
+					{ existsClassName( targetClasses, className ) && (
+						<ColorGradientSettingsDropdown
+							__experimentalIsRenderedInSidebar
+							settings={ [
+								{
+									colorValue:
+										colorSlugToColorCode( moneAlertIconColor ),
+									label: __( 'Icon Color', 'mone' ),
+									onColorChange: ( newValue ) => {
+										const colorSet =
+											select( blockEditorStore ).getSettings()
+												.colors;
+										const ColorValue =
+											getColorObjectByColorValue(
+												colorSet,
+												newValue
+											);
 
-									if ( ColorValue !== undefined ) {
+										if ( ColorValue !== undefined ) {
+											setAttributes( {
+												moneAlertIconColor: ColorValue.slug,
+											} );
+										} else {
+											setAttributes( {
+												moneAlertIconColor: newValue,
+											} );
+										}
+									},
+									resetAllFilter: () => {
 										setAttributes( {
-											moneAlertIconColor: ColorValue.slug,
+											moneAlertIconColor: undefined,
+											moneIconGradient: undefined,
+											moneIconCustomGradient: undefined,
 										} );
-									} else {
-										setAttributes( {
-											moneAlertIconColor: newValue,
-										} );
-									}
+									},
+									gradientValue,
+									onGradientChange: setGradient,
+									enableAlpha: true,
+									clearable: true,
 								},
-								resetAllFilter: () => {
-									setAttributes( {
-										moneAlertIconColor: undefined,
-										moneIconGradient: undefined,
-										moneIconCustomGradient: undefined,
-									} );
-								},
-								gradientValue,
-								onGradientChange: setGradient,
-								enableAlpha: true,
-								clearable: true,
-							},
-						] }
-						panelId={ clientId }
-						{ ...colorGradientSettings }
-					/>
+							] }
+							panelId={ clientId }
+							{ ...colorGradientSettings }
+						/>
+					) }
 				</InspectorControls>
 			</>
 		);
