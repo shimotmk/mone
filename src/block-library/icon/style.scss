@@ -1,3 +1,16 @@
+button.wp-block-mone-icon {
+	padding: 0;
+	border: none;
+	outline: none;
+	font: inherit;
+	font-weight: 600;
+	background: none;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+}
+
 .wp-block-mone-icon {
 	box-sizing: border-box;
 	line-height: 0;

@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return array
  */
 function disable_lightbox_in_dialog_group( $parsed_block ) {
-	if ( 'core/image' === $parsed_block['blockName'] && isset( $parsed_block['attrs']['isParentDialog'] ) && $parsed_block['attrs']['isParentDialog'] ) {
+	if ( 'core/image' === $parsed_block['blockName'] && isset( $parsed_block['attrs']['moneIsParentDialog'] ) && $parsed_block['attrs']['moneIsParentDialog'] ) {
 		$parsed_block['attrs']['lightbox'] = array( 'enabled' => false );
 	}
 
@@ -27,16 +27,14 @@ function disable_lightbox_in_dialog_group( $parsed_block ) {
 add_filter( 'render_block_data', __NAMESPACE__ . '\disable_lightbox_in_dialog_group' );
 
 /**
- * ダイアログの子ブロックに画像がある時にフラグを付ける
+ * ダイアログの子ブロックにフラグを付ける
  *
  * @param array $blocks blocks.
  * @return array
  */
 function update_image_blocks( $blocks ) {
 	foreach ( $blocks as &$block ) {
-		if ( 'core/image' === $block['blockName'] ) {
-			$block['attrs']['isParentDialog'] = true;
-		}
+		$block['attrs']['moneIsParentDialog'] = true;
 
 		if ( ! empty( $block['innerBlocks'] ) ) {
 			$block['innerBlocks'] = update_image_blocks( $block['innerBlocks'] );
@@ -47,7 +45,7 @@ function update_image_blocks( $blocks ) {
 }
 
 /**
- * ダイアログ内にある画像ブロックはattrsを使ってフラグ追加
+ * ダイアログ内にあるブロックはattrsを使ってフラグ追加
  *
  * @param array $parsed_block parsed_block.
  * @return array

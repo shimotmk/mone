@@ -161,9 +161,22 @@ store(
 					`dialog${ context.dialogId }`
 				);
 
+				if ( event.key === 'Tab' ) {
+					event.preventDefault();
+					const { ref } = getElement();
+					ref.querySelector( 'button' ).focus();
+				}
+
 				if ( event.key === 'Escape' ) {
 					closeDialog( dialogRef );
 				}
+			},
+			closeDialogById() {
+				const context = getContext();
+				const dialogRef = document.querySelector(
+					`dialog${ context.dialogId }`
+				);
+				closeDialog( dialogRef );
 			},
 		},
 	},
