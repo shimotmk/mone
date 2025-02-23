@@ -76,10 +76,6 @@ function render_format_block_style( $block_content ) {
 						opacity: 0;
 					}
 
-					.mone-inline-icon-svg-wrapper {
-						position: relative;
-					}
-
 					.mone-inline-icon-svg-wrapper::after {
 						background: var(--the-icon-color, var(--the-icon-gradient-color, var(--the-gradient-color-for-text, currentcolor)));
 						content: "";
