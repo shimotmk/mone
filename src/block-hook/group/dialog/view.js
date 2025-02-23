@@ -151,7 +151,7 @@ store(
 					`dialog${ context.dialogId }`
 				);
 
-				if ( event.target.closest( '.dialog_input_area' ) === null ) {
+				if ( event.target.closest( '.mone-dialog-container-content' ) === null ) {
 					closeDialog( dialogRef );
 				}
 			},

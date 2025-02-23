@@ -29,7 +29,7 @@ export function createDialogBlock( id, name ) {
 			createBlock(
 				'core/group',
 				{
-					className: 'dialog_input_area',
+					className: 'mone-dialog-container-content',
 					style: {
 						spacing: {
 							padding: {
