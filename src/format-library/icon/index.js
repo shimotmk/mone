@@ -42,6 +42,7 @@ const InlineIcon = ( props ) => {
 				onClick={ () => {
 					if ( ! isObjectActive ) {
 						setIsAdding( true );
+						setOpenPopOver( true );
 					} else {
 						setOpenPopOver( true );
 					}
@@ -58,7 +59,7 @@ const InlineIcon = ( props ) => {
 					setIsAdding={ setIsAdding }
 				/>
 			) }
-			{ isObjectActive && (
+			{ openPopOver && (
 				<StyleInlineIconUI
 					name={ name }
 					onClose={ disableIsAdding }
