@@ -142,12 +142,15 @@ export const blockEditParagraph = createHigherOrderComponent(
 							settings={ [
 								{
 									colorValue:
-										colorSlugToColorCode( moneAlertIconColor ),
+										colorSlugToColorCode(
+											moneAlertIconColor
+										),
 									label: __( 'Icon Color', 'mone' ),
 									onColorChange: ( newValue ) => {
 										const colorSet =
-											select( blockEditorStore ).getSettings()
-												.colors;
+											select(
+												blockEditorStore
+											).getSettings().colors;
 										const ColorValue =
 											getColorObjectByColorValue(
 												colorSet,
@@ -156,7 +159,8 @@ export const blockEditParagraph = createHigherOrderComponent(
 
 										if ( ColorValue !== undefined ) {
 											setAttributes( {
-												moneAlertIconColor: ColorValue.slug,
+												moneAlertIconColor:
+													ColorValue.slug,
 											} );
 										} else {
 											setAttributes( {

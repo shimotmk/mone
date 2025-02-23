@@ -14,7 +14,6 @@ import {
 	__experimentalHeading as Heading,
 	TextControl,
 	PanelBody,
-	ToggleControl,
 } from '@wordpress/components';
 import { moreVertical } from '@wordpress/icons';
 
@@ -47,7 +46,6 @@ export function Settings( { activeIcons, onIconChange } ) {
 						onClick={ () => {
 							onIconChange( {
 								'vertical-align': undefined,
-								'--mone-edit-show-on-click': undefined,
 								className: undefined,
 							} );
 						} }
@@ -55,7 +53,6 @@ export function Settings( { activeIcons, onIconChange } ) {
 						size="small"
 						disabled={
 							! activeIcons[ 'vertical-align' ] &&
-							! activeIcons[ '--mone-edit-show-on-click' ] &&
 							! activeIcons.className
 						}
 						accessibleWhenDisabled
@@ -200,22 +197,6 @@ export function Settings( { activeIcons, onIconChange } ) {
 						value="text-bottom"
 					/>
 				</ToggleGroupControl>
-				<ToggleControl
-					__nextHasNoMarginBottom
-					checked={
-						activeIcons[ '--mone-edit-show-on-click' ] === 'show'
-							? true
-							: false
-					}
-					label={ __( 'Show dialog on click in editor', 'mone' ) }
-					onChange={ ( value ) => {
-						onIconChange( {
-							'--mone-edit-show-on-click': value
-								? 'show'
-								: 'hide',
-						} );
-					} }
-				/>
 			</VStack>
 			<PanelBody
 				className="mone-format-advanced"

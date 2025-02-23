@@ -151,7 +151,10 @@ store(
 					`dialog${ context.dialogId }`
 				);
 
-				if ( event.target.closest( '.mone-dialog-container-content' ) === null ) {
+				if (
+					event.target.closest( '.mone-dialog-container-content' ) ===
+					null
+				) {
 					closeDialog( dialogRef );
 				}
 			},
