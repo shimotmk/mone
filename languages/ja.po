@@ -1739,13 +1739,19 @@ msgstr "URL から取得したタイトルが表示されます。"
 
 #: build/block-library/embed/block.json
 msgctxt "block title"
+
+#: build/block-library/embed/index.js:1
 msgid "Embed"
-msgstr "埋め込み"
+msgstr "ブログカード"
+
+#: build/block-library/embed/index.js:1
+msgid "Add a block that fetches and displays content from a URL."
+msgstr "URLからコンテンツを取得して表示するブロックを追加します。"
 
 #: build/block-library/embed/block.json
 msgctxt "block description"
 msgid "Add a block that fetches and displays content from a URL."
-msgstr "URL からコンテンツを取得して表示するブロックを追加します。"
+msgstr "URLからコンテンツを取得して表示するブロックを追加します。"
 
 #: build/block-library/github-embed/block.json
 msgctxt "block title"

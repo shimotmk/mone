@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
 
 /**
  * block type
@@ -21,6 +22,11 @@ const { name, ...settings } = json;
 registerBlockType( name, {
 	icon: BlogCard,
 	...settings,
+	title: __( 'Embed', 'mone' ),
+	description: __(
+		'Add a block that fetches and displays content from a URL.',
+		'mone'
+	),
 	example,
 	variations,
 	transforms,
