@@ -1,9 +1,10 @@
 import { addFilter } from '@wordpress/hooks';
 
 import './style.scss';
-import { appreciateGroup, balloon, boxMenu } from './variations';
+import { appreciateGroup, balloon, boxMenu, dialog } from './variations';
 import './wrap-on-mobile';
 import './link';
+import './dialog';
 
 export function registerBlockTypeGroup( settings, name ) {
 	if ( name !== 'core/group' ) {
@@ -12,6 +13,10 @@ export function registerBlockTypeGroup( settings, name ) {
 
 	settings.supports = {
 		...settings.supports,
+		spacing: {
+			...settings.supports.spacing,
+			margin: true,
+		},
 		shadow: true,
 	};
 
@@ -22,7 +27,7 @@ export function registerBlockTypeGroup( settings, name ) {
 		},
 	};
 
-	const variationsToAdd = [ appreciateGroup, balloon, boxMenu ];
+	const variationsToAdd = [ appreciateGroup, balloon, boxMenu, dialog ];
 	variationsToAdd.forEach( ( variation ) => {
 		const hasVariation = settings.variations.some(
 			( existingVariation ) => existingVariation.name === variation.name

@@ -26,20 +26,25 @@ const InlineIcon = ( props ) => {
 		activeObjectAttributes,
 	} = props;
 	const [ isAdding, setIsAdding ] = useState( false );
-	const disableIsAdding = useCallback(
-		() => setIsAdding( false ),
-		[ setIsAdding ]
-	);
+	const [ openPopOver, setOpenPopOver ] = useState( false );
+	const disableIsAdding = useCallback( () => {
+		setIsAdding( false );
+		setOpenPopOver( false );
+	}, [ setIsAdding, setOpenPopOver ] );
 
 	return (
 		<>
 			<RichTextToolbarButton
-				isActive={ isActive }
+				isActive={ isActive || isObjectActive }
 				name="moneMenu"
 				title={ __( 'Icon', 'mone' ) }
 				icon={ fontSizeIcon }
 				onClick={ () => {
-					setIsAdding( true );
+					if ( ! isObjectActive ) {
+						setIsAdding( true );
+					} else {
+						setOpenPopOver( true );
+					}
 				} }
 			/>
 			{ isAdding && (
@@ -62,6 +67,7 @@ const InlineIcon = ( props ) => {
 					onChange={ onChange }
 					contentRef={ contentRef }
 					setIsAdding={ setIsAdding }
+					openPopOver={ openPopOver }
 				/>
 			) }
 		</>

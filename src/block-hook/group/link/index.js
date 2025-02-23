@@ -235,12 +235,13 @@ function addClasses( BlockListBlock ) {
 			className: clsx( wrapperProps?.className, classes ),
 			style: {
 				...wrapperProps?.style,
-				'--mone--hover-background-color': isHexColor(
-					moneHoverBackgroundColor
-				)
-					? moneHoverBackgroundColor
-					: `var(--wp--preset--color--${ moneHoverBackgroundColor })` ||
-					  undefined,
+				...( moneHoverBackgroundColor && {
+					'--mone--hover-background-color': isHexColor(
+						moneHoverBackgroundColor
+					)
+						? moneHoverBackgroundColor
+						: `var(--wp--preset--color--${ moneHoverBackgroundColor })`,
+				} ),
 			},
 		};
 

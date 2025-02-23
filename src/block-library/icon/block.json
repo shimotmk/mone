@@ -44,9 +44,17 @@
 		},
 		"hoverBackgroundColor": {
 			"type": "string"
+		},
+		"tagName": {
+			"type": "string",
+			"enum": [ "div", "button" ]
+		},
+		"type": {
+			"type": "string"
 		}
 	},
 	"supports": {
+		"ariaLabel": true,
 		"color": {
 			"text": false,
 			"background": true,

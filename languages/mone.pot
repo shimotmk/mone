@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-11T03:10:13+00:00\n"
+"POT-Creation-Date: 2025-02-23T07:48:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -64,6 +64,21 @@ msgstr ""
 
 #: build/block-hook/code/index.php:73
 msgid "Copied"
+msgstr ""
+
+#: build/block-hook/group/dialog/dialog-content.php:69
+msgid "Dialog content"
+msgstr ""
+
+#: build/block-hook/group/dialog/dialog-content.php:95
+msgid "Close dialog"
+msgstr ""
+
+#: build/block-hook/group/dialog/image.php:67
+#: build/block-hook/group/dialog/index.php:38
+#: build/block-hook/group/dialog/index.php:81
+#: build/block-hook/group/dialog/index.php:123
+msgid "Open dialog"
 msgstr ""
 
 #: build/block-hook/heading/index.php:22
@@ -538,6 +553,11 @@ msgid "Check authentication"
 msgstr ""
 
 #: build/block-editor/index.js:1
+#: build/format-library/index.js:1
+msgid "Mone Menu"
+msgstr ""
+
+#: build/block-editor/index.js:1
 #: build/block-editor/index.js:2
 msgid "Left"
 msgstr ""
@@ -651,6 +671,7 @@ msgid "When there is one line of text, it is centered, and when there is two or 
 msgstr ""
 
 #: build/block-hook/button/index.js:1
+#: build/block-hook/group/index.js:1
 msgid "None"
 msgstr ""
 
@@ -812,6 +833,11 @@ msgid "Box Menu"
 msgstr ""
 
 #: build/block-hook/group/index.js:1
+#: build/format-library/index.js:1
+msgid "Dialog"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
 msgid "Vertical layout on mobile"
 msgstr ""
 
@@ -827,6 +853,46 @@ msgstr ""
 #: build/block-hook/group/index.js:1
 #: build/block-library/icon/index.js:1
 msgid "Link"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog Content"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog close"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog contents is here!"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Select Dialog"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Set Dialog"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Delete Dialog"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Fit contents"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Wide width"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Full width"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Select width"
 msgstr ""
 
 #: build/block-hook/post-date/index.js:1
@@ -1171,10 +1237,6 @@ msgstr ""
 
 #: build/format-library/index.js:1
 msgid "Remove Format"
-msgstr ""
-
-#: build/format-library/index.js:1
-msgid "Mone Menu"
 msgstr ""
 
 #: build/format-library/index.js:1

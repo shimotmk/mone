@@ -32,7 +32,12 @@ export default function save( props ) {
 		hoverBackgroundColor,
 		iconGradient,
 		iconCustomGradient,
+		tagName,
+		type,
 	} = attributes;
+	const TagName = tagName || 'div';
+	const isButtonTag = 'button' === TagName;
+	const buttonType = type || 'button';
 	const spacingProps = getSpacingClassesAndStyles( attributes );
 
 	const gradientValue = iconGradient || iconCustomGradient;
@@ -41,7 +46,8 @@ export default function save( props ) {
 		className: clsx( {
 			'has-icon-color': iconColor,
 			'has-icon-gradient-color': gradientValue,
-			'wp-block-mone-icon-wrapper': ! url && ! iconColor && ! gradientValue,
+			'wp-block-mone-icon-wrapper':
+				! url && ! iconColor && ! gradientValue,
 		} ),
 		style: {
 			width,
@@ -61,6 +67,7 @@ export default function save( props ) {
 							: `var(--wp--preset--color--${ iconColor })` ) ),
 			...( !!! url ? spacingProps.style : {} ),
 		},
+		...( isButtonTag ? { type: buttonType } : {} ),
 	} );
 
 	const linkAttributes = {
@@ -102,7 +109,7 @@ export default function save( props ) {
 		);
 
 	return (
-		<div { ...blockProps }>
+		<TagName { ...blockProps }>
 			{ !! url ? (
 				<a
 					{ ...linkAttributes }
@@ -116,6 +123,6 @@ export default function save( props ) {
 			) : (
 				<>{ renderingIcon }</>
 			) }
-		</div>
+		</TagName>
 	);
 }

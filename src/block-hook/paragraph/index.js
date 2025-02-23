@@ -82,10 +82,6 @@ export const blockEditParagraph = createHigherOrderComponent(
 			moneAlertIcon,
 			className,
 		} = attributes;
-		if ( ! existsClassName( targetClasses, className ) ) {
-			return <BlockEdit { ...props } />;
-		}
-
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
 		const { gradientValue, setGradient } = useGradient( {
 			gradientAttribute: 'moneIconGradient',
@@ -106,81 +102,89 @@ export const blockEditParagraph = createHigherOrderComponent(
 						}
 						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
 					>
-						<ToolsPanelItem
-							className="mone-block-editor-tools-panel-icon-settings__item"
-							label={ __( 'Icon', 'mone' ) }
-							isShownByDefault
-							hasValue={ () =>
-								!! moneAlertIconName || !! moneAlertIcon
-							}
-							onDeselect={ () =>
-								setAttributes( {
-									moneAlertIconName: undefined,
-									moneAlertIcon: undefined,
-								} )
-							}
-						>
-							<IconSearchModal
-								value={ moneAlertIconName }
-								iconSVG={
-									decodeSvgBase64( moneAlertIcon ) || ''
+						{ existsClassName( targetClasses, className ) && (
+							<ToolsPanelItem
+								className="mone-block-editor-tools-panel-icon-settings__item"
+								label={ __( 'Icon', 'mone' ) }
+								isShownByDefault
+								hasValue={ () =>
+									!! moneAlertIconName || !! moneAlertIcon
 								}
-								onChange={ ( value ) => {
+								onDeselect={ () =>
 									setAttributes( {
-										moneAlertIconName: value.iconName,
-										moneAlertIcon: value.iconSVG
-											? createSvgUrl( value.iconSVG )
-											: undefined,
-									} );
-								} }
-							/>
-						</ToolsPanelItem>
+										moneAlertIconName: undefined,
+										moneAlertIcon: undefined,
+									} )
+								}
+							>
+								<IconSearchModal
+									value={ moneAlertIconName }
+									iconSVG={
+										decodeSvgBase64( moneAlertIcon ) || ''
+									}
+									onChange={ ( value ) => {
+										setAttributes( {
+											moneAlertIconName: value.iconName,
+											moneAlertIcon: value.iconSVG
+												? createSvgUrl( value.iconSVG )
+												: undefined,
+										} );
+									} }
+								/>
+							</ToolsPanelItem>
+						) }
 					</ToolsPanel>
 				</InspectorControls>
 				<InspectorControls group="color">
-					<ColorGradientSettingsDropdown
-						__experimentalIsRenderedInSidebar
-						settings={ [
-							{
-								colorValue:
-									colorSlugToColorCode( moneAlertIconColor ),
-								label: __( 'Icon Color', 'mone' ),
-								onColorChange: ( newValue ) => {
-									const colorSet =
-										select( blockEditorStore ).getSettings()
-											.colors;
-									const ColorValue =
-										getColorObjectByColorValue(
-											colorSet,
-											newValue
-										);
+					{ existsClassName( targetClasses, className ) && (
+						<ColorGradientSettingsDropdown
+							__experimentalIsRenderedInSidebar
+							settings={ [
+								{
+									colorValue:
+										colorSlugToColorCode(
+											moneAlertIconColor
+										),
+									label: __( 'Icon Color', 'mone' ),
+									onColorChange: ( newValue ) => {
+										const colorSet =
+											select(
+												blockEditorStore
+											).getSettings().colors;
+										const ColorValue =
+											getColorObjectByColorValue(
+												colorSet,
+												newValue
+											);
 
-									if ( ColorValue !== undefined ) {
+										if ( ColorValue !== undefined ) {
+											setAttributes( {
+												moneAlertIconColor:
+													ColorValue.slug,
+											} );
+										} else {
+											setAttributes( {
+												moneAlertIconColor: newValue,
+											} );
+										}
+									},
+									resetAllFilter: () => {
 										setAttributes( {
-											moneAlertIconColor: ColorValue.slug,
+											moneAlertIconColor: undefined,
+											moneIconGradient: undefined,
+											moneIconCustomGradient: undefined,
 										} );
-									} else {
-										setAttributes( {
-											moneAlertIconColor: newValue,
-										} );
-									}
+									},
+									gradientValue,
+									onGradientChange: setGradient,
+									enableAlpha: true,
+									clearable: true,
 								},
-								resetAllFilter: () => {
-									setAttributes( {
-										moneAlertIconColor: undefined,
-										moneIconGradient: undefined,
-										moneIconCustomGradient: undefined,
-									} );
-								},
-								gradientValue,
-								onGradientChange: setGradient,
-								enableAlpha: true,
-								clearable: true,
-							},
-						] }
-						panelId={ clientId }
-						{ ...colorGradientSettings }
-					/>
+							] }
+							panelId={ clientId }
+							{ ...colorGradientSettings }
+						/>
+					) }
 				</InspectorControls>
 			</>
 		);
@@ -204,9 +208,6 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			className,
 			style,
 		} = attributes;
-		if ( ! existsClassName( targetClasses, className ) ) {
-			return <BlockListBlock { ...props } />;
-		}
 
 		const [ fluidTypographySettings, layout ] = useSettings(
 			'typography.fluid',
@@ -251,7 +252,9 @@ const blockListBlockParagraph = createHigherOrderComponent(
 			...wrapperProps,
 			style: {
 				...( wrapperProps && { ...wrapperProps.style } ),
-				...extraStyle,
+				...( existsClassName( targetClasses, className ) && {
+					...extraStyle,
+				} ),
 			},
 		};
 

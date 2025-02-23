@@ -40,3 +40,4 @@ require_once __DIR__ . '/build/plugins/index.php';
 require_once __DIR__ . '/build/preferences/index.php';
 require_once __DIR__ . '/build/preferences/user/index.php';
 require_once __DIR__ . '/build/utils-func/is-hex-color/index.php';
+require_once __DIR__ . '/build/utils-func/process_spacing/index.php';
