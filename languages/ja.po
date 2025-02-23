@@ -52,6 +52,21 @@ msgstr "コードをコピーしました!"
 msgid "Copied"
 msgstr "コピーしました"
 
+#: build/block-hook/group/dialog/dialog-content.php:69
+msgid "Dialog content"
+msgstr "ダイアログ コンテンツ"
+
+#: build/block-hook/group/dialog/dialog-content.php:95
+msgid "Close dialog"
+msgstr "ダイアログを閉じる"
+
+#: build/block-hook/group/dialog/image.php:67
+#: build/block-hook/group/dialog/index.php:38
+#: build/block-hook/group/dialog/index.php:81
+#: build/block-hook/group/dialog/index.php:123
+msgid "Open dialog"
+msgstr "ダイアログを開く"
+
 #: build/block-hook/heading/index.php:22
 msgid "Plane"
 msgstr "プレーン"
@@ -731,6 +746,46 @@ msgstr "ホバー背景"
 msgid "Link"
 msgstr "リンク"
 
+#: build/block-hook/group/index.js:1
+msgid "Dialog Content"
+msgstr "ダイアログ コンテンツ"
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog close"
+msgstr "ダイアログを閉じる"
+
+#: build/block-hook/group/index.js:1
+msgid "Dialog contents is here!"
+msgstr "ダイアログ コンテンツはこちら!"
+
+#: build/block-hook/group/index.js:1
+msgid "Select Dialog"
+msgstr "ダイアログを選択"
+
+#: build/block-hook/group/index.js:1
+msgid "Set Dialog"
+msgstr "ダイアログを追加"
+
+#: build/block-hook/group/index.js:1
+msgid "Delete Dialog"
+msgstr "ダイアログを削除"
+
+#: build/block-hook/group/index.js:1
+msgid "Fit contents"
+msgstr "コンテンツ フィット"
+
+#: build/block-hook/group/index.js:1
+msgid "Wide width"
+msgstr "幅広"
+
+#: build/block-hook/group/index.js:1
+msgid "Full width"
+msgstr "全幅"
+
+#: build/block-hook/group/index.js:1
+msgid "Select width"
+msgstr "幅を選択"
+
 #: build/block-hook/group/index.js:1 build/block-hook/group/index.js:56
 msgid "Applause Button"
 msgstr "拍手ボタン"
@@ -761,6 +816,11 @@ msgstr "こんにちは、ここに文章を書きましょう！"
 #: build/block-hook/group/index.js:958 build/block-hook/group/index.js:959
 msgid "Box Menu"
 msgstr "ボックスメニュー"
+
+#: build/block-hook/group/index.js:1
+#: build/format-library/index.js:1
+msgid "Dialog"
+msgstr "ダイアログ"
 
 #: build/block-hook/group/index.js:496 build/block-hook/group/index.js:491
 msgid "Vertical layout on mobile"
@@ -1381,8 +1441,8 @@ msgstr "書式リセット"
 msgid "Remove Format"
 msgstr "書式をクリア"
 
+#: build/block-editor/index.js:1
 #: build/format-library/index.js:1
-#: build/format-library/index.js:1795
 msgid "Mone Menu"
 msgstr "Moneメニュー"
 
