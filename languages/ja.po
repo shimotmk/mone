@@ -826,6 +826,10 @@ msgstr "ボックスメニュー"
 msgid "Dialog"
 msgstr "ダイアログ"
 
+#: build/block-hook/group/index.js:1
+msgid "Gather blocks in a layout dialog container."
+msgstr "ダイアログ コンテナにブロックを集めます。"
+
 #: build/block-hook/group/index.js:496 build/block-hook/group/index.js:491
 msgid "Vertical layout on mobile"
 msgstr "モバイルでは縦に並べる"

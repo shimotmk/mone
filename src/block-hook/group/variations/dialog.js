@@ -11,7 +11,7 @@ import { dialogIcon as icon } from '../../../icons';
 export const dialog = {
 	name: 'mone/dialog-group',
 	title: __( 'Dialog', 'mone' ),
-	description: __( 'Dialog', 'mone' ),
+	description: __( 'Gather blocks in a layout dialog container.', 'mone' ),
 	category: 'mone-block-cat',
 	attributes: {
 		metadata: {

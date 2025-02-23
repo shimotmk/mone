@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-23T21:35:37+00:00\n"
+"POT-Creation-Date: 2025-02-23T23:32:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -835,6 +835,10 @@ msgstr ""
 #: build/block-hook/group/index.js:1
 #: build/format-library/index.js:1
 msgid "Dialog"
+msgstr ""
+
+#: build/block-hook/group/index.js:1
+msgid "Gather blocks in a layout dialog container."
 msgstr ""
 
 #: build/block-hook/group/index.js:1
