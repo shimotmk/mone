@@ -7,14 +7,14 @@ import { registerBlockVariation } from '@wordpress/blocks';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../../icons';
+import { moneQuery } from '../../../icons';
 
 registerBlockVariation( 'core/query', {
 	name: 'mone/mone-post-in-query',
 	title: __( 'Pick Up Articles', 'mone' ),
 	description: __( 'Display the selected article.', 'mone' ),
 	category: 'mone-block-cat',
-	icon: blockCategoryIcon,
+	icon: moneQuery,
 	isActive: ( { namespace } ) => {
 		return namespace === 'mone-post-in-query';
 	},

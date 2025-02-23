@@ -7,7 +7,7 @@ import { getPath } from '@wordpress/url';
 /**
  * Internal dependencies
  */
-import { blockCategoryIcon } from '../../../icons';
+import { appreciate as icon } from '../../../icons';
 /* global moneGroupData */
 
 const isSiteEditor = getPath( window.location.href )?.includes(
@@ -116,7 +116,7 @@ export const appreciateGroup = {
 		textColor: 'content-contrast-2',
 		moneIsApplause: true,
 	},
-	icon: blockCategoryIcon,
+	icon,
 	scope: [ isSiteEditor && 'inserter' ],
 	isActive: ( blockAttributes ) => blockAttributes?.moneIsApplause,
 	innerBlocks: [

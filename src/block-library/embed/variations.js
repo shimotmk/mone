@@ -6,13 +6,13 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { embedContentIcon } from './icons';
+import { BlogCard } from '../../icons';
 
 const variations = [
 	{
 		name: 'default-card',
 		title: __( 'Blog card', 'mone' ),
-		icon: embedContentIcon,
+		icon: BlogCard,
 		attributes: {
 			isLink: true,
 			linkTarget: '_blank',
@@ -121,7 +121,7 @@ const variations = [
 	{
 		name: 'top-image-card',
 		title: __( 'Top image', 'mone' ),
-		icon: embedContentIcon,
+		icon: BlogCard,
 		attributes: {
 			isLink: true,
 			linkTarget: '_blank',
