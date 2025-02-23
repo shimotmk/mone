@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * ダイアログブロックの中の画像ブロックのlightboxを無効にする
+ * Disable lightbox in dialog block.
  *
- * @param array $parsed_block parsed_block.
+ * @param array $block_content block_content.
  * @param array $block block.
  * @return array
  */

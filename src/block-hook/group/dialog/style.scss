@@ -13,7 +13,7 @@ button.mone-dialog-trigger {
 	cursor: pointer;
 
 	&:focus-visible {
-		outline: 2px solid color-mix(in srgb, currentColor 70%, transparent);
+		outline: 2px solid color-mix(in srgb, currentcolor 70%, transparent);
 		border-radius: 0.25rem;
 	}
 }
@@ -32,7 +32,6 @@ dialog.mone-dialog-content::backdrop {
 }
 
 .mone-dialog-container {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -58,6 +57,7 @@ dialog.mone-dialog-content::backdrop {
 		text-align: center;
 		padding: 0;
 		border-radius: 4px;
+
 		@media not (prefers-reduced-motion) {
 			transition: opacity 0.2s ease;
 		}
@@ -119,14 +119,16 @@ dialog.mone-dialog-content.wp-block-group {
 	}
 
 	.dialog_input_area {
+
 		.is-position-sticky {
 			--wp-admin--admin-bar--position-offset: 0;
 		}
 	}
 
 	.dialog-close-button button {
+
 		&:focus-visible {
-			outline: 2px solid -webkit-focus-ring-color ;
+			outline: 2px solid -webkit-focus-ring-color;
 			border-radius: 0.25rem;
 		}
 	}
