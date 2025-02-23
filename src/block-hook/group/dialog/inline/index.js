@@ -114,39 +114,44 @@ const InlineEdit = ( props ) => {
 
 	return (
 		<>
-			<RichTextToolbarButton
-				name="moneMenu"
-				isActive={ isActive }
-				title={
-					isActive
-						? __( 'Select Dialog', 'mone' )
-						: __( 'Set Dialog', 'mone' )
-				}
-				icon={ Dialog }
-				onClick={ () => {
-					if ( ! isActive ) {
-						onClick();
-					} else {
-						selectBlock(
-							dialogBlock.length > 0 && dialogBlock[ 0 ]?.clientId
-						);
-					}
-				} }
-				role="menuitemcheckbox"
-			/>
-			{ isActive && (
-				<RichTextToolbarButton
-					name="moneMenu"
-					title={ __( 'Delete Dialog', 'mone' ) }
-					icon={ Dialog }
-					onClick={ () => {
-						onClickRemove();
-						if ( dialogBlock.length > 0 ) {
-							removeBlock( dialogBlock[ 0 ]?.clientId );
+			{ selectedText && (
+				<>
+					<RichTextToolbarButton
+						name="moneMenu"
+						isActive={ isActive }
+						title={
+							isActive
+								? __( 'Select Dialog', 'mone' )
+								: __( 'Set Dialog', 'mone' )
 						}
-					} }
-					role="menuitemcheckbox"
-				/>
+						icon={ Dialog }
+						onClick={ () => {
+							if ( ! isActive ) {
+								onClick();
+							} else {
+								selectBlock(
+									dialogBlock.length > 0 &&
+										dialogBlock[ 0 ]?.clientId
+								);
+							}
+						} }
+						role="menuitemcheckbox"
+					/>
+					{ isActive && (
+						<RichTextToolbarButton
+							name="moneMenu"
+							title={ __( 'Delete Dialog', 'mone' ) }
+							icon={ Dialog }
+							onClick={ () => {
+								onClickRemove();
+								if ( dialogBlock.length > 0 ) {
+									removeBlock( dialogBlock[ 0 ]?.clientId );
+								}
+							} }
+							role="menuitemcheckbox"
+						/>
+					) }
+				</>
 			) }
 		</>
 	);
