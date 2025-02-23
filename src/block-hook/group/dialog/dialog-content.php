@@ -92,6 +92,7 @@ function render_block_dialog_group( $block_content, $block ) {
 			) ) {
 				$p->set_attribute( 'data-wp-interactive', 'mone/dialog-content' );
 				$p->set_attribute( 'data-wp-on--click', 'actions.closeDialogById' );
+				$p->set_attribute( 'aria-label', __( 'Close dialog', 'mone' ) );
 				$p->set_attribute(
 					'data-wp-context',
 					wp_json_encode(
