@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_image_in_dialog( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-content' ) ) {
+	if ( ! str_contains( $class_name, 'mone-dialog-container' ) ) {
 		return $block_content;
 	}
 

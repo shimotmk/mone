@@ -43,7 +43,7 @@ const BLOCK_ALIGNMENTS_CONTROLS = {
 	},
 };
 
-const dialogClassName = 'mone-dialog-content';
+const dialogClassName = 'mone-dialog-container';
 
 export const blockEditGroup = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {

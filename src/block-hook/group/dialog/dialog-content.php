@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_block_dialog_group( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-content' ) ) {
+	if ( ! str_contains( $class_name, 'mone-dialog-container' ) ) {
 		return $block_content;
 	}
 

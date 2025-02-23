@@ -26,7 +26,7 @@ button.mone-dialog-trigger {
 	cursor: pointer;
 }
 
-dialog.mone-dialog-content::backdrop {
+dialog.mone-dialog-container::backdrop {
 	background-color: #00000059;
 	cursor: zoom-out;
 }
@@ -86,7 +86,7 @@ dialog.mone-dialog-content::backdrop {
 	}
 }
 
-dialog.mone-dialog-content.wp-block-group {
+dialog.mone-dialog-container.wp-block-group {
 	margin-block-start: auto;
 	margin-block-end: auto;
 	width: var(--wp--style--global--content-size);
@@ -134,7 +134,7 @@ dialog.mone-dialog-content.wp-block-group {
 	}
 }
 
-:where(dialog.mone-dialog-content) {
+:where(dialog.mone-dialog-container) {
 
 	border: none;
 	box-shadow: 0 5px 15px #00000014, 0 15px 27px #00000012, 0 30px 36px #0000000a, 0 50px 43px #00000005;
@@ -169,23 +169,23 @@ dialog.mone-dialog-content.wp-block-group {
 
 dialog:not(.block-editor-block-list__block) {
 
-	&.mone-dialog-content {
+	&.mone-dialog-container {
 		transform: scale(0.5);
 		animation: fadeOutScale 0.45s ease forwards;
 	}
 
-	&[open].mone-dialog-content,
-	&.closing.mone-dialog-content {
+	&[open].mone-dialog-container,
+	&.closing.mone-dialog-container {
 		animation-duration: 0.45s;
 		animation-timing-function: ease;
 		animation-fill-mode: forwards;
 	}
 
-	&[open].mone-dialog-content {
+	&[open].mone-dialog-container {
 		animation-name: fadeInScale;
 	}
 
-	&.closing.mone-dialog-content {
+	&.closing.mone-dialog-container {
 		animation-name: fadeOutScale;
 	}
 }

@@ -11,7 +11,7 @@ export function createDialogBlock( id, name ) {
 				patternName: 'mone/dialog-group',
 				name: name + ' ' + __( 'Dialog', 'mone' ),
 			},
-			className: 'mone-dialog-content',
+			className: 'mone-dialog-container',
 			style: {
 				position: { type: 'fixed', top: '0px' },
 				spacing: {
