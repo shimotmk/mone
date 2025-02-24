@@ -23,9 +23,10 @@
 			z-index: 4;
 		}
 
-		&:hover[style*="--mone--hover-background-color"] {
-			background: var(--mone--hover-background-color) !important;
-			transition: background-color 0.35s;
-		}
+	}
+
+	&:hover[style*="--mone--hover-background-color"] {
+		background: var(--mone--hover-background-color) !important;
+		transition: background-color 0.35s;
 	}
 }

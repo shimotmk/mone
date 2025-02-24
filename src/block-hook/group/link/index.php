@@ -22,10 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string Modified block content.
  */
 function groups_render_block( $block_content, $block ) {
-	if ( ! isset( $block['attrs']['href'] ) ) {
-		return $block_content;
-	}
-
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
 
 	$href                   = $block['attrs']['href'] ?? '';
@@ -51,11 +47,13 @@ function groups_render_block( $block_content, $block ) {
 			$p->set_attribute( 'style', $updated_style );
 		}
 
-		$p->add_class( 'mone-is-linked' );
+		if ( $href && ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
+			$p->add_class( 'mone-is-linked' );
+		}
 	}
 	$block_content = $p->get_updated_html();
 
-	if ( ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
+	if ( $href && ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		$link_markup = sprintf(
 			'<a class="wp-block-group__link" href="%1$s" target="%2$s" rel="%3$s" tabindex="-1" insert>&nbsp;</a>',
 			esc_url( $href ),
