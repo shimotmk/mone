@@ -6,6 +6,7 @@
  */
 
 namespace Mone_Theme\Group\Dialog\Disable_Lightbox;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_image_in_dialog( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-container' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-container', $class_name ) ) {
 		return $block_content;
 	}
 

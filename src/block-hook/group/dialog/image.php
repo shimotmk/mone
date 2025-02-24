@@ -6,6 +6,7 @@
  */
 
 namespace Mone_Theme\Group\Dialog\Image;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_block_dialog_image( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		return $block_content;
 	}
 
@@ -106,7 +107,7 @@ function dialog_image_disable_dialog( $parsed_block ) {
 	}
 
 	$class_name = isset( $parsed_block['attrs']['className'] ) ? $parsed_block['attrs']['className'] : '';
-	if ( str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+	if ( exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		$parsed_block['attrs'] = array_merge(
 			$parsed_block['attrs'],
 			array(

@@ -7,6 +7,7 @@
 
 namespace Mone_Theme\Group\Dialog\Content;
 use function Mone_Theme\UtilsFunc\mone_process_spacing;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_block_dialog_group( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-container' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-container', $class_name ) ) {
 		return $block_content;
 	}
 

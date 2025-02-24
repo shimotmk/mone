@@ -6,6 +6,7 @@
  */
 
 namespace Mone_Theme\Group\Dialog;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -31,7 +32,7 @@ function render_block_dialog_inline_trigger( $block_content ) {
 		$class = $p->get_attribute( 'class' );
 		$id    = $p->get_attribute( 'data-dialog-id' );
 
-		if ( str_contains( $class, 'mone-dialog-inline' ) && str_contains( $class, 'mone-dialog-trigger' ) && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
+		if ( exists_class_name( 'mone-dialog-inline', $class ) && exists_class_name( 'mone-dialog-trigger', $class ) && null !== $id && 0 === strpos( $id, '#dialog-' ) ) {
 			$p->seek( 'buttonTag' );
 			$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
@@ -65,7 +66,7 @@ add_filter( 'render_block', __NAMESPACE__ . '\render_block_dialog_inline_trigger
  */
 function render_block_dialog_mone_icon( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		return $block_content;
 	}
 
@@ -107,7 +108,7 @@ add_filter( 'render_block_mone/icon', __NAMESPACE__ . '\render_block_dialog_mone
  */
 function render_block_dialog_button( $block_content, $block ) {
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		return $block_content;
 	}
 
