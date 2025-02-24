@@ -26,9 +26,6 @@ function groups_render_block( $block_content, $block ) {
 	}
 
 	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
-	if ( str_contains( $class_name, 'mone-dialog-trigger' ) ) {
-		return $block_content;
-	}
 
 	$href                   = $block['attrs']['href'] ?? '';
 	$link_target            = $block['attrs']['linkTarget'] ?? '_self';
@@ -57,19 +54,21 @@ function groups_render_block( $block_content, $block ) {
 	}
 	$block_content = $p->get_updated_html();
 
-	$link_markup = sprintf(
-		'<a class="wp-block-group__link" href="%1$s" target="%2$s" rel="%3$s" tabindex="-1" insert>&nbsp;</a>',
-		esc_url( $href ),
-		esc_attr( $link_target ),
-		esc_attr( $link_rel )
-	);
+	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+		$link_markup = sprintf(
+			'<a class="wp-block-group__link" href="%1$s" target="%2$s" rel="%3$s" tabindex="-1" insert>&nbsp;</a>',
+			esc_url( $href ),
+			esc_attr( $link_target ),
+			esc_attr( $link_rel )
+		);
 
-	$block_content = preg_replace(
-		'/^\s*<(\w+)([^>]*)>/m',
-		'<$1$2>' . $link_markup,
-		$block_content,
-		1
-	);
+		$block_content = preg_replace(
+			'/^\s*<(\w+)([^>]*)>/m',
+			'<$1$2>' . $link_markup,
+			$block_content,
+			1
+		);
+	}
 
 	return $block_content;
 }

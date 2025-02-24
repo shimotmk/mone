@@ -31,12 +31,27 @@ dialog.mone-dialog-container::backdrop {
 	cursor: zoom-out;
 }
 
-.mone-dialog-container {
+figure.mone-dialog-trigger-container {
 	display: flex;
 	flex-direction: column;
+}
+
+.mone-dialog-inner-image .lightbox-trigger {
+	display: none;
+}
+
+.wp-block-group.mone-dialog-trigger-container {
+	cursor: pointer;
+}
+
+.mone-dialog-trigger-container {
 	position: relative;
 
 	img:hover + button {
+		opacity: 1;
+	}
+
+	&:hover button.mone-dialog-trigger {
 		opacity: 1;
 	}
 

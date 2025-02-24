@@ -3,7 +3,7 @@
  */
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
-const { state } = store(
+const { state, callbacks } = store(
 	'mone/dialog-trigger',
 	{
 		state: {
@@ -15,6 +15,14 @@ const { state } = store(
 				const { dialogId } = getContext();
 				return state.metadata[ dialogId ].dialogButtonTop;
 			},
+			get dialogGroupButtonRight() {
+				const { dialogId } = getContext();
+				return state.metadata[ dialogId ].dialogGroupButtonRight;
+			},
+			get dialogGroupButtonTop() {
+				const { dialogId } = getContext();
+				return state.metadata[ dialogId ].dialogGroupButtonTop;
+			},
 		},
 		actions: {
 			clickDialogTrigger() {
@@ -24,13 +32,8 @@ const { state } = store(
 				);
 
 				if ( dialogRef ) {
-					if ( dialogRef.open ) {
-						dialogRef.close();
-						document.body.classList.remove( 'dialog-open' );
-					} else {
-						dialogRef.showModal();
-						document.body.classList.add( 'dialog-open' );
-					}
+					dialogRef.showModal();
+					document.body.classList.add( 'dialog-open' );
 				}
 			},
 		},
@@ -125,26 +128,62 @@ const { state } = store(
 				const { ref } = getElement();
 				state.metadata[ dialogId ].buttonRef = ref;
 			},
+			setGroupButtonStyles() {
+				const { dialogId } = getContext();
+				const { ref } = getElement();
+
+				state.metadata[ dialogId ].dialogRef = ref;
+				state.metadata[ dialogId ].currentSrc = ref.currentSrc;
+
+				const {
+					naturalWidth,
+					naturalHeight,
+					offsetWidth,
+					offsetHeight,
+				} = ref;
+
+				if ( naturalWidth === 0 || naturalHeight === 0 ) {
+					return;
+				}
+
+				const figure = ref.parentElement;
+				const { clientWidth: figureWidth, clientHeight: figureHeight } =
+					figure;
+
+				const buttonOffsetTop = figureHeight - offsetHeight;
+				const buttonOffsetRight = figureWidth - offsetWidth;
+
+				const dialogGroupButtonTop = buttonOffsetTop + 16;
+				const dialogGroupButtonRight = buttonOffsetRight + 16;
+
+				state.metadata[ dialogId ].dialogGroupButtonTop =
+					dialogGroupButtonTop;
+				state.metadata[ dialogId ].dialogGroupButtonRight =
+					dialogGroupButtonRight;
+			},
+			initGroupTriggerButton() {
+				const { dialogId } = getContext();
+				const { ref } = getElement();
+				state.metadata[ dialogId ].buttonRef = ref;
+			},
 		},
 	},
 	{ lock: true }
 );
 
-function closeDialog( dialogRef ) {
-	dialogRef.classList.add( 'closing' );
-
-	setTimeout( () => {
-		document.body.classList.remove( 'dialog-open' );
-		dialogRef.close();
-		dialogRef.classList.remove( 'closing' );
-		dialogRef.removeAttribute( 'open' );
-	}, 450 );
-}
-
-store(
+const { actions } = store(
 	'mone/dialog-content',
 	{
 		actions: {
+			closeDialog( dialogRef ) {
+				dialogRef.classList.add( 'closing' );
+				setTimeout( () => {
+					document.body.classList.remove( 'dialog-open' );
+					dialogRef.close();
+					dialogRef.classList.remove( 'closing' );
+					dialogRef.removeAttribute( 'open' );
+				}, 450 );
+			},
 			closeDialogArea( event ) {
 				const context = getContext();
 				const dialogRef = document.querySelector(
@@ -155,7 +194,7 @@ store(
 					event.target.closest( '.mone-dialog-container-content' ) ===
 					null
 				) {
-					closeDialog( dialogRef );
+					actions.closeDialog( dialogRef );
 				}
 			},
 			handleKeydown( event ) {
@@ -171,7 +210,9 @@ store(
 				}
 
 				if ( event.key === 'Escape' ) {
-					closeDialog( dialogRef );
+					actions.closeDialog( dialogRef );
+					const { ref } = getElement();
+					ref.querySelector( 'button' ).focus();
 				}
 			},
 			closeDialogById() {
@@ -179,7 +220,7 @@ store(
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogId }`
 				);
-				closeDialog( dialogRef );
+				actions.closeDialog( dialogRef );
 			},
 		},
 	},
