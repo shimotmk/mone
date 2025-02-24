@@ -29,7 +29,11 @@ import {
 import { existsClassName } from '../../../../utils-func/class-name';
 
 export function registerBlockTypeDialog( settings, name ) {
-	if ( name === 'core/image' || name === 'mone/icon' ) {
+	if (
+		name === 'core/image' ||
+		name === 'core/group' ||
+		name === 'mone/icon'
+	) {
 		settings.attributes = {
 			...settings.attributes,
 			moneDialogId: {
@@ -48,6 +52,7 @@ addFilter(
 
 const allowedBlocks = [
 	{ 'core/image': 'moneDialogId' },
+	{ 'core/group': 'moneDialogId' },
 	{ 'mone/icon': 'moneDialogId' },
 ];
 
@@ -143,7 +148,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 				} );
 				deleteClass( 'mone-dialog-trigger', className, setAttributes );
 				if ( dialogBlock.length > 0 ) {
-					removeBlock( dialogBlock[ 0 ]?.clientId );
+					removeBlock( dialogBlock[ 0 ]?.clientId, false );
 				}
 			},
 			role: 'menuitemradio',

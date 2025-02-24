@@ -36,14 +36,13 @@ function render_image_in_dialog( $block_content, $block ) {
 			'class_name' => 'wp-block-image',
 		)
 	) ) {
-		$p->remove_attribute( 'data-wp-interactive' );
+		if ( ! $p->has_class( 'mone-dialog-trigger' ) ) {
+			$p->remove_attribute( 'data-wp-interactive' );
+		}
 		$p->remove_class( 'wp-lightbox-container' );
+		$p->add_class( 'mone-dialog-inner-image' );
 	}
 	$block_content = $p->get_updated_html();
-
-	$pattern       = '/(<img[^>]*>)(<button[^>]*>.*?<\/button>)/is';
-	$replacement   = '$1';
-	$block_content = preg_replace( $pattern, $replacement, $block_content );
 
 	return $block_content;
 }

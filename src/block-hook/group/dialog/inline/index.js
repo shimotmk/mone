@@ -145,7 +145,10 @@ const InlineEdit = ( props ) => {
 							onClick={ () => {
 								onClickRemove();
 								if ( dialogBlock.length > 0 ) {
-									removeBlock( dialogBlock[ 0 ]?.clientId );
+									removeBlock(
+										dialogBlock[ 0 ]?.clientId,
+										false
+									);
 								}
 							} }
 							role="menuitemcheckbox"

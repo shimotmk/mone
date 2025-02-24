@@ -24,6 +24,7 @@ import { select } from '@wordpress/data';
 
 import { colorSlugToColorCode } from '../../../utils-func/color-slug-to-color-code';
 import { isHexColor } from '../../../utils-func/is-hex-color';
+import { existsClassName } from '../../../utils-func/class-name';
 import './style.scss';
 
 /**
@@ -75,8 +76,13 @@ function addInspectorControls( BlockEdit ) {
 		const [ isEditingURL, setIsEditingURL ] = useState( false );
 		const [ popoverAnchor, setPopoverAnchor ] = useState( null );
 		const { attributes, setAttributes, clientId } = props;
-		const { href, nofollow, linkTarget, moneHoverBackgroundColor } =
-			attributes;
+		const {
+			href,
+			nofollow,
+			linkTarget,
+			moneHoverBackgroundColor,
+			className,
+		} = attributes;
 
 		const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
@@ -104,7 +110,11 @@ function addInspectorControls( BlockEdit ) {
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls group="color">
-					{ href && (
+					{ ( href ||
+						existsClassName(
+							className,
+							'mone-dialog-trigger'
+						) ) && (
 						<ColorGradientSettingsDropdown
 							__experimentalIsRenderedInSidebar
 							settings={ [
@@ -151,62 +161,64 @@ function addInspectorControls( BlockEdit ) {
 						/>
 					) }
 				</InspectorControls>
-				<BlockControls group="block">
-					<ToolbarButton
-						ref={ setPopoverAnchor }
-						name="link"
-						icon={ link }
-						title={ __( 'Link', 'mone' ) }
-						onClick={ () => setIsEditingURL( true ) }
-						isActive={ !! href || isEditingURL }
-					/>
-					{ isEditingURL && (
-						<Popover
-							anchor={ popoverAnchor }
-							onClose={ () => setIsEditingURL( false ) }
-							placement="bottom"
-							focusOnMount={ true }
-							offset={ 12 }
-							variant="alternate"
-						>
-							<LinkControl
-								value={ {
-									url: href,
-									opensInNewTab: linkTarget === '_blank',
-									nofollow,
-								} }
-								onChange={ ( {
-									url: newURL = '',
-									opensInNewTab,
-									nofollow: newNofollow,
-								} ) => {
-									setAttributes( {
-										href: newURL,
-										linkTarget: opensInNewTab
-											? '_blank'
-											: undefined,
+				{ ! existsClassName( className, 'mone-dialog-trigger' ) && (
+					<BlockControls group="block">
+						<ToolbarButton
+							ref={ setPopoverAnchor }
+							name="link"
+							icon={ link }
+							title={ __( 'Link', 'mone' ) }
+							onClick={ () => setIsEditingURL( true ) }
+							isActive={ !! href || isEditingURL }
+						/>
+						{ isEditingURL && (
+							<Popover
+								anchor={ popoverAnchor }
+								onClose={ () => setIsEditingURL( false ) }
+								placement="bottom"
+								focusOnMount={ true }
+								offset={ 12 }
+								variant="alternate"
+							>
+								<LinkControl
+									value={ {
+										url: href,
+										opensInNewTab: linkTarget === '_blank',
+										nofollow,
+									} }
+									onChange={ ( {
+										url: newURL = '',
+										opensInNewTab,
 										nofollow: newNofollow,
-										moneHoverBackgroundColor:
-											moneHoverBackgroundColor
-												? moneHoverBackgroundColor
-												: 'main-bg',
-									} );
-								} }
-								onRemove={ () => {
-									setAttributes( {
-										href: undefined,
-										linkTarget: undefined,
-										nofollow: undefined,
-										// ホバー背景もリセット
-										moneHoverBackgroundColor: undefined,
-									} );
-									setIsEditingURL( false );
-								} }
-								settings={ LINK_SETTINGS }
-							/>
-						</Popover>
-					) }
-				</BlockControls>
+									} ) => {
+										setAttributes( {
+											href: newURL,
+											linkTarget: opensInNewTab
+												? '_blank'
+												: undefined,
+											nofollow: newNofollow,
+											moneHoverBackgroundColor:
+												moneHoverBackgroundColor
+													? moneHoverBackgroundColor
+													: 'main-bg',
+										} );
+									} }
+									onRemove={ () => {
+										setAttributes( {
+											href: undefined,
+											linkTarget: undefined,
+											nofollow: undefined,
+											// ホバー背景もリセット
+											moneHoverBackgroundColor: undefined,
+										} );
+										setIsEditingURL( false );
+									} }
+									settings={ LINK_SETTINGS }
+								/>
+							</Popover>
+						) }
+					</BlockControls>
+				) }
 			</>
 		);
 	};
