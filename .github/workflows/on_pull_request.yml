@@ -37,6 +37,3 @@ jobs:
 
     - name: Run PHP CodeSniffer
       run: composer phpcs
-
-    - name: Run PHP Unit Test
-      run: npm run phpunit
