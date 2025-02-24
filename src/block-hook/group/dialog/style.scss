@@ -51,8 +51,10 @@ figure.mone-dialog-trigger-container {
 		opacity: 1;
 	}
 
-	&:hover button.mone-dialog-trigger {
-		opacity: 1;
+	&:hover {
+		button.mone-dialog-trigger {
+			opacity: 1;
+		}
 	}
 
 	button.mone-dialog-trigger {
