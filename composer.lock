@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc2585abc47d621e00dfb606f969c3a9",
+    "content-hash": "191f0ebbd7596c2baa8ac13aa9f67d97",
     "packages": [
         {
             "name": "yahnis-elsts/plugin-update-checker",
@@ -2450,54 +2450,6 @@
                 }
             ],
             "time": "2024-03-25T16:39:00+00:00"
-        },
-        {
-            "name": "wp-phpunit/wp-phpunit",
-            "version": "5.9.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wp-phpunit/wp-phpunit.git",
-                "reference": "f9b5b3a44d3677c7d4803074d81ad3cd12b0eeea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wp-phpunit/wp-phpunit/zipball/f9b5b3a44d3677c7d4803074d81ad3cd12b0eeea",
-                "reference": "f9b5b3a44d3677c7d4803074d81ad3cd12b0eeea",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "__loaded.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Evan Mattson",
-                    "email": "me@aaemnnost.tv"
-                },
-                {
-                    "name": "WordPress Community",
-                    "homepage": "https://wordpress.org/about/"
-                }
-            ],
-            "description": "WordPress core PHPUnit library",
-            "homepage": "https://github.com/wp-phpunit",
-            "keywords": [
-                "phpunit",
-                "test",
-                "wordpress"
-            ],
-            "support": {
-                "docs": "https://github.com/wp-phpunit/docs",
-                "issues": "https://github.com/wp-phpunit/issues",
-                "source": "https://github.com/wp-phpunit/wp-phpunit"
-            },
-            "time": "2022-08-30T21:14:52+00:00"
         },
         {
             "name": "yoast/phpunit-polyfills",
