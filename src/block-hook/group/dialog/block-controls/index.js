@@ -148,7 +148,7 @@ export const useMoneEditControls = ( controlLists, props ) => {
 				} );
 				deleteClass( 'mone-dialog-trigger', className, setAttributes );
 				if ( dialogBlock.length > 0 ) {
-					removeBlock( dialogBlock[ 0 ]?.clientId );
+					removeBlock( dialogBlock[ 0 ]?.clientId, false );
 				}
 			},
 			role: 'menuitemradio',

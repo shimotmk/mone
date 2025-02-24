@@ -139,7 +139,8 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 									);
 									if ( dialogBlock.length > 0 ) {
 										removeBlock(
-											dialogBlock[ 0 ]?.clientId
+											dialogBlock[ 0 ]?.clientId,
+											false
 										);
 									}
 								} }
