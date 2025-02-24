@@ -83,9 +83,6 @@ jobs:
                     - '8.3'
                 wordpress: [''] # Latest WordPress version.
                 include:
-                    # Test with the previous WP version.
-                    - php: '7.2'
-                      wordpress: 'previous major version'
                     - php: '7.4'
                       wordpress: 'previous major version'
                     - php: '8.3'
