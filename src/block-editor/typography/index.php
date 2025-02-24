@@ -7,6 +7,7 @@
 
 namespace Mone_Theme\Typography_Extension;
 use function Mone_Theme\Custom_Css\escape_inline_style;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function render_typography_style( $block_content, $block ) {
 	$class_name = $block['attrs']['className'] ?? '';
-	if ( ! $class_name || ! str_contains( $class_name, 'mone-one-line-center' ) ) {
+	if ( ! $class_name || ! exists_class_name( 'mone-one-line-center', $class_name ) ) {
 		return $block_content;
 	}
 
-	if ( str_contains( $class_name, 'mone-one-line-center' ) ) {
+	if ( exists_class_name( 'mone-one-line-center', $class_name ) ) {
 		static $is_rendered = false;
 		if ( ! $is_rendered ) {
 			$custom_css = '

@@ -7,6 +7,7 @@
 
 namespace Mone_Theme\Details;
 use function Mone_Theme\UtilsFunc\mone_is_hex_color;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -47,7 +48,7 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\details_register_block
  */
 function render_block_details( $block_content, $block ) {
 	$class_name = $block['attrs']['className'] ?? '';
-	if ( ! $class_name || ! str_contains( $class_name, 'is-style-mone-details-icon' ) ) {
+	if ( ! $class_name || ! exists_class_name( 'is-style-mone-details-icon', $class_name ) ) {
 		return $block_content;
 	}
 

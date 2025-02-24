@@ -6,7 +6,7 @@
  */
 
 namespace Mone_Theme\Post_Template;
-
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -49,7 +49,7 @@ add_filter( 'register_block_type_args', __NAMESPACE__ . '\post_template_register
  */
 function post_template_render_block( $block_content, $block ) {
 	$class_name = $block['attrs']['className'] ?? '';
-	if ( ! $class_name || ! str_contains( $class_name, 'mone-scroll' ) ) {
+	if ( ! $class_name || ! exists_class_name( 'mone-scroll', $class_name ) ) {
 		return $block_content;
 	}
 

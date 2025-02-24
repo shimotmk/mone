@@ -7,6 +7,7 @@
 
 namespace Mone_Theme\Group\Link;
 use function Mone_Theme\UtilsFunc\mone_is_hex_color;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -54,7 +55,7 @@ function groups_render_block( $block_content, $block ) {
 	}
 	$block_content = $p->get_updated_html();
 
-	if ( ! str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+	if ( ! exists_class_name( 'mone-dialog-trigger', $class_name ) ) {
 		$link_markup = sprintf(
 			'<a class="wp-block-group__link" href="%1$s" target="%2$s" rel="%3$s" tabindex="-1" insert>&nbsp;</a>',
 			esc_url( $href ),
