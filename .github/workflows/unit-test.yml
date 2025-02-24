@@ -6,9 +6,7 @@ on:
     pull_request:
     push:
         branches:
-            - trunk
-            - 'release/**'
-            - 'wp/**'
+            - main
     # Allow manually triggering the workflow.
     workflow_dispatch:
 
@@ -81,7 +79,7 @@ jobs:
                     - '8.1'
                     - '8.2'
                     - '8.3'
-                wordpress: [''] # Latest WordPress version.
+                wordpress: ['6.7'] # Latest WordPress version.
                 include:
                     - php: '7.4'
                       wordpress: 'previous major version'
@@ -90,7 +88,7 @@ jobs:
 
         env:
             WP_ENV_PHP_VERSION: ${{ matrix.php }}
-            WP_ENV_CORE: ${{ matrix.wordpress == '' && 'WordPress/WordPress' || format( 'https://wordpress.org/wordpress-{0}.zip', needs.compute-previous-wordpress-version.outputs.previous-wordpress-version ) }}
+            WP_ENV_CORE: WordPress/WordPress#${{ matrix.wordpress }}
 
         steps:
             - name: Checkout repository
