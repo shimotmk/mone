@@ -161,8 +161,7 @@ jobs:
 
             - name: Running single site unit tests
               run: |
-                  set -o pipefail
-                  npm run phpunit | tee phpunit.log
+                  npm run phpunit
 
             # Verifies that PHPUnit actually runs in the first place. We want visibility
             # into issues which can cause it to fail silently, so we check the output
