@@ -1,6 +1,7 @@
 ._.DS_Store
 .DS_Store
 /.wp-env.override.json
+.phpunit.result.cache
 /build
 /node_modules
 vendor/

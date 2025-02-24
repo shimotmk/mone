@@ -7,6 +7,7 @@
 
 namespace Mone_Theme\Caption_Extension;
 use function Mone_Theme\Custom_Css\escape_inline_style;
+use function Mone_Theme\UtilsFunc\exists_class_name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,10 +26,10 @@ function render_caption_style( $block_content, $block ) {
 		return $block_content;
 	}
 
-	if ( ! str_contains( $class_name, 'mone-caption-left' ) &&
-		! str_contains( $class_name, 'mone-caption-center' ) &&
-		! str_contains( $class_name, 'mone-caption-one-line-center' ) &&
-		! str_contains( $class_name, 'mone-caption-right' ) ) {
+	if ( ! exists_class_name( 'mone-caption-left', $class_name ) &&
+		! exists_class_name( 'mone-caption-center', $class_name ) &&
+		! exists_class_name( 'mone-caption-one-line-center', $class_name ) &&
+		! exists_class_name( 'mone-caption-right', $class_name ) ) {
 		return $block_content;
 	}
 
