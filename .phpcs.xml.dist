@@ -3,7 +3,7 @@
 	<description>Sniffs for WordPress plugins, with minor modifications for Block Code Snippets</description>
 
 	<rule ref="PHPCompatibilityWP"/>
-	<config name="testVersion" value="6.6-"/>
+	<config name="testVersion" value="7.4-"/>
 
 	<rule ref="WordPress-Core"/>
 	<rule ref="WordPress-Docs"/>
