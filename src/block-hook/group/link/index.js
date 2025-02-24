@@ -110,7 +110,11 @@ function addInspectorControls( BlockEdit ) {
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls group="color">
-					{ href && (
+					{ ( href ||
+						existsClassName(
+							className,
+							'mone-dialog-trigger'
+						) ) && (
 						<ColorGradientSettingsDropdown
 							__experimentalIsRenderedInSidebar
 							settings={ [
