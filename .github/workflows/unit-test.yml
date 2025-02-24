@@ -67,7 +67,7 @@ jobs:
                       ./build/
 
     test-php:
-        name: PHP ${{ matrix.php }}${{ matrix.multisite && ' multisite' || '' }}${{ matrix.wordpress != '' && format( ' (WP {0}) ', matrix.wordpress ) || '' }} on ubuntu-latest
+        name: PHP ${{ matrix.php }}${{ matrix.wordpress != '' && format( ' (WP {0}) ', matrix.wordpress ) || '' }} on ubuntu-latest
         needs: [compute-previous-wordpress-version, build-assets]
         runs-on: ubuntu-latest
         timeout-minutes: 20
@@ -83,7 +83,6 @@ jobs:
                     - '8.1'
                     - '8.2'
                     - '8.3'
-                multisite: [false, true]
                 wordpress: [''] # Latest WordPress version.
                 include:
                     # Test with the previous WP version.
@@ -166,7 +165,6 @@ jobs:
                   npm run wp-env run tests-cli wp core version
 
             - name: Running single site unit tests
-              if: ${{ ! matrix.multisite }}
               run: |
                   set -o pipefail
                   npm run phpunit | tee phpunit.log
