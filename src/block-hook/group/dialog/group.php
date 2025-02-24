@@ -67,7 +67,7 @@ function render_block_dialog_group( $block_content, $block ) {
 	$button =
 		$group[0]
 		. '<button
-			class="mone-dialog-trigger"
+			class="mone-dialog-trigger mone-dialog-trigger-button wp-block-group__link"
 			type="button"
 			aria-haspopup="dialog"
 			aria-label="' . esc_attr( $dialog_aria_label ) . '"

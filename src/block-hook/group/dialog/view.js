@@ -25,7 +25,11 @@ const { state } = store(
 			},
 		},
 		actions: {
-			clickDialogTrigger() {
+			clickDialogTrigger( event ) {
+				if ( event.target.tagName === 'A' ) {
+					return;
+				}
+
 				const context = getContext();
 				const dialogRef = document.querySelector(
 					`dialog${ context.dialogId }`

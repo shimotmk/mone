@@ -47,7 +47,7 @@ figure.mone-dialog-trigger-container {
 .mone-dialog-trigger-container {
 	position: relative;
 
-	button.mone-dialog-trigger {
+	button.mone-dialog-trigger-button {
 		opacity: 0;
 		border: none;
 		background-color: rgb(90 90 90 / 25%);
@@ -58,7 +58,7 @@ figure.mone-dialog-trigger-container {
 		width: 20px;
 		height: 20px;
 		position: absolute;
-		z-index: 100;
+		z-index: 3;
 		top: 16px;
 		right: 16px;
 		text-align: center;
@@ -98,7 +98,7 @@ figure.mone-dialog-trigger-container {
 
 	&:hover {
 
-		button.mone-dialog-trigger {
+		button.mone-dialog-trigger-button {
 			opacity: 1;
 		}
 	}

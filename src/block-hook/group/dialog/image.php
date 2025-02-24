@@ -71,7 +71,7 @@ function render_block_dialog_image( $block_content, $block ) {
 	$button =
 		$img[0]
 		. '<button
-			class="mone-dialog-trigger"
+			class="mone-dialog-trigger mone-dialog-trigger-button"
 			type="button"
 			aria-haspopup="dialog"
 			aria-label="' . esc_attr( $dialog_aria_label ) . '"
