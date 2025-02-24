@@ -35,7 +35,7 @@ const { state } = store(
 			},
 		},
 		callbacks: {
-			setButtonStyles() {
+			setImageButtonStyles() {
 				const { dialogId } = getContext();
 				const { ref } = getElement();
 
@@ -120,7 +120,7 @@ const { state } = store(
 				state.metadata[ dialogId ].dialogButtonRight =
 					dialogButtonRight;
 			},
-			initTriggerButton() {
+			initImageTriggerButton() {
 				const { dialogId } = getContext();
 				const { ref } = getElement();
 				state.metadata[ dialogId ].buttonRef = ref;

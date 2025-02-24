@@ -31,7 +31,7 @@ function render_block_dialog_image( $block_content, $block ) {
 
 	$p = new \WP_HTML_Tag_Processor( $block_content );
 	if ( $p->next_tag( array( 'class_name' => 'mone-dialog-trigger' ) ) ) {
-		$p->add_class( 'mone-dialog-container' );
+		$p->add_class( 'mone-dialog-trigger-container' );
 		$p->set_attribute( 'data-wp-interactive', 'mone/dialog-trigger' );
 		$p->set_attribute(
 			'data-wp-context',
@@ -57,9 +57,9 @@ function render_block_dialog_image( $block_content, $block ) {
 		if ( $p->next_tag( 'img' ) ) {
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
-			$p->set_attribute( 'data-wp-init', 'callbacks.setButtonStyles' );
-			$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setButtonStyles' );
-			$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setButtonStyles' );
+			$p->set_attribute( 'data-wp-init', 'callbacks.setImageButtonStyles' );
+			$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setImageButtonStyles' );
+			$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setImageButtonStyles' );
 		}
 	}
 	$block_content = $p->get_updated_html();
@@ -75,7 +75,7 @@ function render_block_dialog_image( $block_content, $block ) {
 			aria-haspopup="dialog"
 			aria-label="' . esc_attr( $dialog_aria_label ) . '"
 			data-wp-interactive="mone/dialog-trigger"
-			data-wp-init="callbacks.initTriggerButton"
+			data-wp-init="callbacks.initImageTriggerButton"
 			data-wp-on--click="actions.clickDialogTrigger"
 			data-wp-style--right="state.dialogButtonRight"
 			data-wp-style--top="state.dialogButtonTop"

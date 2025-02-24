@@ -25,6 +25,11 @@ function groups_render_block( $block_content, $block ) {
 		return $block_content;
 	}
 
+	$class_name = isset( $block['attrs']['className'] ) ? $block['attrs']['className'] : '';
+	if ( str_contains( $class_name, 'mone-dialog-trigger' ) ) {
+		return $block_content;
+	}
+
 	$href                   = $block['attrs']['href'] ?? '';
 	$link_target            = $block['attrs']['linkTarget'] ?? '_self';
 	$hover_background_color = $block['attrs']['moneHoverBackgroundColor'] ?? '';
