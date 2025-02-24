@@ -9,12 +9,13 @@
 		"lint:css": "wp-scripts lint-style --fix",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "composer format && composer phpcs",
-		"phpunit": "composer install && wp-env run --env-cwd='wp-content/themes/mone' tests-wordpress vendor/bin/phpunit -c phpunit.xml.dist",
+		"phpunit": "composer install && npx wp-env run --env-cwd='wp-content/themes/mone' tests-wordpress vendor/bin/phpunit -c phpunit.xml.dist",
 		"make-pot": "wp i18n make-pot . languages/mone.pot --exclude=src,dist,vendor,node_modules",
 		"translate": "rimraf build && npm run build && npm run make-pot && cd languages && wp i18n make-json ja.po --no-purge && wp i18n make-php . && cd ../",
 		"packages-update": "wp-scripts packages-update",
 		"dist": "rimraf dist && npm run build && composer install --no-dev && mkdir -p dist/mone && cp -r assets build includes languages parts patterns styles templates vendor *.txt *.png *.php *.css theme.json dist/mone",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"wp-env": "wp-env"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.10.0",
