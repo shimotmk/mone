@@ -149,6 +149,9 @@ jobs:
             - name: Log running Docker containers
               run: docker ps -a
 
+            - name: Npm run build
+              run: npm run build
+
             - name: Docker container debug information
               run: |
                   npm run wp-env run tests-mysql mysql -- --version
