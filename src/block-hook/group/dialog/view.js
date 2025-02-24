@@ -3,7 +3,7 @@
  */
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
-const { state, callbacks } = store(
+const { state } = store(
 	'mone/dialog-trigger',
 	{
 		state: {
