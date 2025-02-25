@@ -191,7 +191,6 @@ function addInspectorControls( BlockEdit ) {
 										</ToolsPanelItem>
 										<ToolsPanelItem
 											label={ __( 'Right', 'mone' ) }
-											isShownByDefault
 											hasValue={ () =>
 												!! style?.position?.right
 											}
@@ -222,7 +221,6 @@ function addInspectorControls( BlockEdit ) {
 										</ToolsPanelItem>
 										<ToolsPanelItem
 											label={ __( 'Bottom', 'mone' ) }
-											isShownByDefault
 											hasValue={ () =>
 												!! style?.position?.bottom
 											}
@@ -253,7 +251,6 @@ function addInspectorControls( BlockEdit ) {
 										</ToolsPanelItem>
 										<ToolsPanelItem
 											label={ __( 'Left', 'mone' ) }
-											isShownByDefault
 											hasValue={ () =>
 												!! style?.position?.left
 											}
