@@ -96,12 +96,23 @@ figure.mone-dialog-trigger-container {
 		opacity: 1;
 	}
 
-	&:hover {
-
-		button.mone-dialog-trigger-button {
-			opacity: 1;
+	:not(.mone-hide-dialog-button) {
+		&:hover {
+	
+			button.mone-dialog-trigger-button {
+				opacity: 1;
+			}
 		}
 	}
+
+	&.mone-hide-dialog-button {
+		button.mone-dialog-trigger-button {
+			&:hover {
+				opacity: 0;
+			}
+		}
+	}
+
 }
 
 dialog.mone-dialog-container.wp-block-group {

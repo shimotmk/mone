@@ -63,7 +63,7 @@ export const blockEditGroup = createHigherOrderComponent(
 		return (
 			<>
 				<BlockEdit { ...props } />
-				<InspectorControls group="settings">
+				<InspectorControls group="color">
 					<style>
 						{ `
 							.block-editor-block-variation-transforms {
@@ -93,8 +93,6 @@ export const blockEditGroup = createHigherOrderComponent(
 							}
 						` }
 					</style>
-				</InspectorControls>
-				<InspectorControls group="color">
 					<style>
 						{ `
 							.block-editor-block-variation-transforms {

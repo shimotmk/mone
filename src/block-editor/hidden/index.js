@@ -8,6 +8,7 @@ import { hasBlockSupport } from '@wordpress/blocks';
 import { deleteRegExClass } from '../../utils-func/class-name/classAttribute.js';
 import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
+import { Dialog } from './dialog';
 import { PostType } from './post-type';
 import { MediaQuery } from './media-query';
 import { Toc } from './table-of-contents';
@@ -45,6 +46,7 @@ export const BlockEditHidden = createHigherOrderComponent(
 							);
 						} }
 					>
+						<Dialog { ...props } />
 						<MediaQuery { ...props } />
 						<Toc { ...props } />
 						<PostType { ...props } />
