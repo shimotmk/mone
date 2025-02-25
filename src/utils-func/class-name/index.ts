@@ -19,7 +19,13 @@ export const stringToArrayClassName = ( classList: ClassList ): string[] => {
  * @return Space-separated string
  */
 export const arrayToStringClassName = ( classList: ClassList ): string => {
-	return Array.isArray( classList ) ? classList.join( ' ' ) : '';
+	if ( Array.isArray( classList ) ) {
+		const filteredClassList = classList.filter(
+			( className ) => className !== ''
+		);
+		return filteredClassList.join( ' ' );
+	}
+	return '';
 };
 
 /**
