@@ -251,8 +251,9 @@
 <h2 class="wp-block-heading">グループ</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"className":"mone-dialog-trigger","layout":{"type":"constrained"},"moneHoverBackgroundColor":"content-contrast-2","moneDialogId":"#dialog-cfdd93fe-0f66-4c0d-bfce-462dca29c5f4"} -->
-<div class="wp-block-group mone-dialog-trigger"><!-- wp:paragraph -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:group {"className":"mone-dialog-trigger","style":{"spacing":{"padding":{"right":"var:preset|spacing|10","left":"var:preset|spacing|10","top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained"},"moneHoverBackgroundColor":"mone-border","moneDialogId":"#dialog-cfdd93fe-0f66-4c0d-bfce-462dca29c5f4"} -->
+<div class="wp-block-group mone-dialog-trigger" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:paragraph -->
 <p>グループの中の<button data-dialog-id="#dialog-2d0a3527-8f1d-4893-a7e9-6d396c853eef" class="mone-dialog-trigger mone-dialog-inline" type="button">グループダイアログの中のダイアログ</button>も一応動く</p>
 <!-- /wp:paragraph -->
 
@@ -262,6 +263,10 @@
 
 <!-- wp:paragraph -->
 <p><a href="https://mone-wp.com/" data-type="link" data-id="https://mone-wp.com/" target="_blank" rel="noreferrer noopener">リンクつき</a>の文字はリンクが動くようにする</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>ボタン表示</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
@@ -295,6 +300,39 @@
 <p class="is-style-mone-alert-blue">グループダイアログ内のダイアログ</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></dialog>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:group {"className":"mone-dialog-trigger mone-hide-dialog-button","style":{"spacing":{"padding":{"right":"var:preset|spacing|10","left":"var:preset|spacing|10","top":"var:preset|spacing|10","bottom":"var:preset|spacing|10"}}},"layout":{"type":"constrained"},"moneHoverBackgroundColor":"quote-bg","moneDialogId":"#dialog-94de2b83-c5ea-49ab-be09-52b2a3e943f7"} -->
+<div class="wp-block-group mone-dialog-trigger mone-hide-dialog-button" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:paragraph -->
+<p>グループの中のダイアログ</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>ダイアログボタン非表示</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"dialog","metadata":{"patternName":"mone/dialog-group","name":"グループ ダイアログ"},"className":"mone-dialog-container","style":{"position":{"type":"fixed","top":"0px"},"spacing":{"padding":{"right":"0","left":"0","top":"0","bottom":"0"}}},"layout":{"type":"default"}} -->
+<dialog id="dialog-94de2b83-c5ea-49ab-be09-52b2a3e943f7" class="wp-block-group mone-dialog-container" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:group {"lock":{"move":true,"remove":true},"metadata":{"patternName":"mone/dialog-content","name":"ダイアログ コンテンツ"},"className":"mone-dialog-container-content","style":{"spacing":{"padding":{"top":"var:preset|spacing|10","bottom":"var:preset|spacing|10","left":"var:preset|spacing|10","right":"var:preset|spacing|10"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group mone-dialog-container-content" style="padding-top:var(--wp--preset--spacing--10);padding-right:var(--wp--preset--spacing--10);padding-bottom:var(--wp--preset--spacing--10);padding-left:var(--wp--preset--spacing--10)"><!-- wp:group {"metadata":{"name":"ダイアログ クローズ エリア"},"style":{"position":{"type":"sticky","top":"1.25rem","right":"0px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:mone/icons {"align":"full","className":"dialog-close-button","layout":{"type":"flex","justifyContent":"right"}} -->
+<div class="wp-block-mone-icons alignfull dialog-close-button"><!-- wp:mone/icon {"width":"1.25rem","height":"1.25rem","tagName":"button","metadata":{"name":"ダイアログ クローズ ボタン"}} -->
+<button class="wp-block-mone-icon wp-block-mone-icon-wrapper" style="width:1.25rem;height:1.25rem" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></button>
+<!-- /wp:mone/icon --></div>
+<!-- /wp:mone/icons --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"placeholder":"ダイアログ コンテンツはこちら!","gradient":"blush-light-purple"} -->
+<p class="has-blush-light-purple-gradient-background has-background">グループ内ダイアログ</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></dialog>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
