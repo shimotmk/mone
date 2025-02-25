@@ -96,12 +96,26 @@ figure.mone-dialog-trigger-container {
 		opacity: 1;
 	}
 
-	&:hover {
+	:not(.mone-hide-dialog-button) {
 
-		button.mone-dialog-trigger-button {
-			opacity: 1;
+		&:hover {
+
+			button.mone-dialog-trigger-button {
+				opacity: 1;
+			}
 		}
 	}
+
+	&.mone-hide-dialog-button {
+
+		button.mone-dialog-trigger-button {
+
+			&:hover {
+				opacity: 0;
+			}
+		}
+	}
+
 }
 
 dialog.mone-dialog-container.wp-block-group {
@@ -139,6 +153,7 @@ dialog.mone-dialog-container.wp-block-group {
 	.mone-dialog-container-content {
 
 		.is-position-sticky {
+			/* stylelint-disable-next-line length-zero-no-unit */
 			--wp-admin--admin-bar--position-offset: 0px;
 		}
 	}

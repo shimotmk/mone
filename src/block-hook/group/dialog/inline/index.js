@@ -169,6 +169,7 @@ export const inlineSettings = {
 		class: 'class',
 		type: 'type',
 	},
+	interactive: true,
 	edit: InlineEdit,
 };
 

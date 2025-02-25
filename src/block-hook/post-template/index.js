@@ -213,7 +213,6 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 											value="start"
 										/>
 										<ToggleGroupControlOption
-											ddd
 											label={
 												<Icon icon={ justifyCenter } />
 											}

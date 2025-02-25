@@ -539,6 +539,18 @@ msgstr "selectorを使用して、ブロック固有のクラスに書き換え�
 msgid "Additional CSS"
 msgstr "追加CSS"
 
+#: build/block-editor/index.js:1
+msgid "Dialog button"
+msgstr "ダイアログ ボタン"
+
+#: build/block-editor/index.js:1
+msgid "Show"
+msgstr "表示"
+
+#: build/block-editor/index.js:1
+msgid "Hide"
+msgstr "非表示"
+
 #: build/block-editor/index.js:1 build/block-editor/index.js:288
 msgid "Hide settings"
 msgstr "非表示設定"
