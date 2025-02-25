@@ -591,6 +591,10 @@ msgctxt "block title"
 msgid "Table of contents"
 msgstr "目次"
 
+#: build/block-library/table-of-contents/index.js:1
+msgid "Sidebar Table of Contents"
+msgstr "サイドバー 目次"
+
 #: build/block-library/table-of-contents/block.json
 msgctxt "block description"
 msgid "A table of contents is automatically created by retrieving headings from the content.A preview is displayed in the editor."
