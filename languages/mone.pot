@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-23T23:39:29+00:00\n"
+"POT-Creation-Date: 2025-02-25T09:53:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -66,18 +66,19 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
-#: build/block-hook/group/dialog/dialog-content.php:69
+#: build/block-hook/group/dialog/dialog-content.php:70
 msgid "Dialog content"
 msgstr ""
 
-#: build/block-hook/group/dialog/dialog-content.php:95
+#: build/block-hook/group/dialog/dialog-content.php:96
 msgid "Close dialog"
 msgstr ""
 
-#: build/block-hook/group/dialog/image.php:67
-#: build/block-hook/group/dialog/index.php:38
-#: build/block-hook/group/dialog/index.php:81
-#: build/block-hook/group/dialog/index.php:123
+#: build/block-hook/group/dialog/group.php:65
+#: build/block-hook/group/dialog/image.php:69
+#: build/block-hook/group/dialog/index.php:40
+#: build/block-hook/group/dialog/index.php:83
+#: build/block-hook/group/dialog/index.php:125
 msgid "Open dialog"
 msgstr ""
 
@@ -586,6 +587,18 @@ msgstr ""
 
 #: build/block-editor/index.js:1
 msgid "Additional CSS"
+msgstr ""
+
+#: build/block-editor/index.js:1
+msgid "Dialog button"
+msgstr ""
+
+#: build/block-editor/index.js:1
+msgid "Show"
+msgstr ""
+
+#: build/block-editor/index.js:1
+msgid "Hide"
 msgstr ""
 
 #: build/block-editor/index.js:1
