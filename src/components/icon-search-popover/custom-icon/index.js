@@ -15,12 +15,10 @@ export const CustomIcon = ( { iconName, iconSVG, onChange } ) => {
 
 	useEffect( () => {
 		let svgContent;
-		if ( iconName && isCustomIcon( iconName ) ) {
-			svgContent = iconSVG;
-		} else if ( iconName ) {
+		if ( ! isCustomIcon( iconName ) ) {
 			svgContent = renderToString( <ReactIcon iconName={ iconName } /> );
 		} else {
-			svgContent = renderToString( <ReactIcon iconName="FaWordpress" /> );
+			svgContent = iconSVG;
 		}
 		setPreSvgIcon( svgContent );
 	}, [ iconName, iconSVG ] );
