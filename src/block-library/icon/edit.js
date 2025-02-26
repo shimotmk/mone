@@ -75,6 +75,7 @@ export default function Edit( props ) {
 		iconCustomGradient,
 		tagName,
 	} = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const TagName = tagName || 'div';
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ popoverAnchor, setPopoverAnchor ] = useState( null );
@@ -201,7 +202,7 @@ export default function Edit( props ) {
 							iconSVG: undefined,
 						} )
 					}
-					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
+					dropdownMenuProps={ dropdownMenuProps }
 				>
 					<ToolsPanelItem
 						label={ __( 'Size', 'mone' ) }

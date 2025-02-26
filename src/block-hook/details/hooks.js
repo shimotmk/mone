@@ -114,6 +114,7 @@ export const blockEditDetails = createHigherOrderComponent(
 			moneIconColor,
 			className,
 		} = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		if ( ! existsClassName( 'is-style-mone-details-icon', className ) ) {
 			return <BlockEdit { ...props } />;
@@ -156,7 +157,7 @@ export const blockEditDetails = createHigherOrderComponent(
 								setAttributes
 							);
 						} }
-						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
 						<ToolsPanelItem
 							label={ __( 'Icon', 'mone' ) }

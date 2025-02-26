@@ -75,6 +75,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 		}
 		const { layout, moneScrollSnap, moneScrollSnapAlign, className } =
 			attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 		const columnCount = layout?.columnCount || null;
 		const scrollClassName = 'mone-scroll';
 
@@ -106,7 +107,7 @@ export const blockEditPostTemplate = createHigherOrderComponent(
 								setAttributes
 							);
 						} }
-						dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
 						<ToolsPanelItem
 							label={ __( 'Horizontal scrolling', 'mone' ) }

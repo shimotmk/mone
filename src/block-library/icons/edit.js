@@ -51,6 +51,7 @@ const DEFAULT_BLOCK = {
 export default function Edit( props ) {
 	const { attributes, clientId } = props;
 	const { layout } = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 	const { commonAttributes, childrenClientIds } = useSelect( () => {
 		const { getBlockAttributes, getBlocks } = select( blockEditorStore );
@@ -140,7 +141,7 @@ export default function Edit( props ) {
 						onChangeChildrenAttribute( 'width', undefined );
 						onChangeChildrenAttribute( 'height', undefined );
 					} }
-					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
+					dropdownMenuProps={ dropdownMenuProps }
 				>
 					<ToolsPanelItem
 						label={ __( 'Size', 'mone' ) }

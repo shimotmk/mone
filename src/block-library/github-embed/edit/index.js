@@ -39,6 +39,7 @@ import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-pa
 export default function Edit( props ) {
 	const { attributes, setAttributes, onFocus } = props;
 	const { url: attributesUrl, height } = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ url, setURL ] = useState( attributesUrl );
 	const [ isLoadingClearCache, setIsLoadingClearCache ] = useState( false );
@@ -113,7 +114,7 @@ export default function Edit( props ) {
 							height: undefined,
 						} );
 					} }
-					dropdownMenuProps={ useToolsPanelDropdownMenuProps() }
+					dropdownMenuProps={ dropdownMenuProps }
 				>
 					{ githubAccessToken === '' && (
 						<Button
