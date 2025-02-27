@@ -6,6 +6,8 @@
 	"description": "Accentuate your website with icon groups with configurable colors and links.",
 	"textdomain": "mone",
 	"supports": {
+		"html": false,
+		"anchor": true,
 		"align": [ "wide", "full" ],
 		"color": {
 			"gradients": true,

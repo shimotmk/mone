@@ -55,6 +55,7 @@
 	},
 	"supports": {
 		"ariaLabel": true,
+		"anchor": true,
 		"color": {
 			"text": false,
 			"background": true,
