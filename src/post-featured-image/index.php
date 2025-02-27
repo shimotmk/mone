@@ -44,6 +44,28 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_post_feature
 /**
  * 設定項目の登録
  */
+function satori_register_block_type() {
+	$block_names = array(
+		'group',
+		'post-author-icon',
+		'post-author-name',
+		'post-title',
+		'site-logo',
+		'site-title',
+		'wrapper',
+	);
+
+	foreach ( $block_names as $block_name ) {
+		register_block_type(
+			MONE_TEMPLATE_DIR_PATH . '/build/post-featured-image/blocks/' . $block_name
+		);
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\satori_register_block_type' );
+
+/**
+ * 設定項目の登録
+ */
 function init_plugins() {
 	register_setting(
 		'mone-post-featured-image-option-settings',

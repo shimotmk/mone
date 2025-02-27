@@ -1,0 +1,30 @@
+{
+	"apiVersion": 3,
+	"name": "mone/satori-site-logo",
+	"category": "mone-block-cat",
+	"title": "Site Logo",
+	"textdomain": "mone",
+	"ancestor": [ "mone/satori-wrapper" ],
+	"attributes": {},
+	"supports": {
+		"moneSatori": {
+			"__experimentalBorder": {
+				"color": true,
+				"radius": true,
+				"width": true,
+				"__experimentalDefaultControls": {
+					"color": true,
+					"radius": true,
+					"width": true
+				}
+			}
+		},
+		"inserter": false,
+		"customClassName": false,
+		"className": false,
+		"multiple": false,
+		"renaming": false,
+		"html": false
+	},
+	"editorScript": "file:./index.js"
+}
