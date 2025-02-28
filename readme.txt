@@ -10,6 +10,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.6.0 = 2025-03-01
+
 - Added Dialog setting button, inline format, image, group, icon.
 - Added Icon custom svg icon
 - Added caption control (audio,embed,gallery,image,quote,table,video)
