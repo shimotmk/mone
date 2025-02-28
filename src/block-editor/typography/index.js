@@ -76,13 +76,17 @@ export const BlockEditTypography = createHigherOrderComponent(
 										'mone-one-line-center',
 										className
 									) }
-									onChange={ () =>
+									onChange={ () => {
 										toggleClass(
 											'mone-one-line-center',
 											className,
 											setAttributes
-										)
-									}
+										);
+										setAttributes( {
+											align: undefined,
+											textAlign: undefined,
+										} );
+									} }
 									__nextHasNoMarginBottom
 								/>
 							}
