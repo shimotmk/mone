@@ -3,19 +3,25 @@
  */
 import { __, _x } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, RangeControl } from '@wordpress/components';
+import {
+	RangeControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import { decodeEntities } from '@wordpress/html-entities';
 
 /**
  * Internal dependencies
  */
 import useRemoteUrlData from '../embed/api/use-rich-url-data';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const ELLIPSIS = '…';
 
 export default function EmbedExcerptEdit( props ) {
 	const { attributes, setAttributes, context } = props;
 	const { excerptLength } = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const { richData } = useRemoteUrlData( context[ 'mone/embed-url' ] );
 	const excerpt = richData?.data.excerpt ?? '';
 
@@ -54,18 +60,37 @@ export default function EmbedExcerptEdit( props ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }>
-					<RangeControl
+				<ToolsPanel
+					label={ __( 'Settings' ) }
+					resetAll={ () => {
+						setAttributes( {
+							excerptLength: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
 						label={ __( 'Max number of words' ) }
-						value={ excerptLength }
-						onChange={ ( value ) => {
-							setAttributes( { excerptLength: value } );
-						} }
-						min="1"
-						max={ excerpt.length }
-						allowReset={ true }
-					/>
-				</PanelBody>
+						isShownByDefault
+						hasValue={ () => !! excerptLength }
+						onDeselect={ () =>
+							setAttributes( {
+								excerptLength: undefined,
+							} )
+						}
+					>
+						<RangeControl
+							label={ __( 'Max number of words' ) }
+							value={ excerptLength }
+							onChange={ ( value ) => {
+								setAttributes( { excerptLength: value } );
+							} }
+							min="1"
+							max={ excerpt.length }
+							allowReset={ false }
+						/>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			<div { ...blockProps }>
 				<p className="wp-block-mone-embed-excerpt__excerpt">
