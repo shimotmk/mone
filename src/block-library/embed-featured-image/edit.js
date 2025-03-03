@@ -4,7 +4,6 @@
 import { __ } from '@wordpress/i18n';
 import {
 	ToggleControl,
-	PanelBody,
 	TextControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
@@ -67,7 +66,7 @@ export default function EmbedFeaturedImageEdit( props ) {
 					resetAll={ () => {
 						setAttributes( {
 							isLink: undefined,
-							linkTarget: undefined,
+							linkTarget: '_self',
 							rel: undefined,
 						} );
 					} }
@@ -97,10 +96,12 @@ export default function EmbedFeaturedImageEdit( props ) {
 							<ToolsPanelItem
 								label={ __( 'Open in new tab' ) }
 								isShownByDefault
-								hasValue={ () => isLink && !! linkTarget }
+								hasValue={ () =>
+									isLink && linkTarget !== '_self'
+								}
 								onDeselect={ () =>
 									setAttributes( {
-										linkTarget: undefined,
+										linkTarget: '_self',
 									} )
 								}
 							>
