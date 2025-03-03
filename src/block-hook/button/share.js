@@ -3,10 +3,16 @@ import {
 	InspectorControls,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { PanelBody, BaseControl, SelectControl } from '@wordpress/components';
+import {
+	SelectControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
+
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export function registerBlockTypeButton( settings, name ) {
 	if ( name !== 'core/button' ) {
@@ -30,6 +36,7 @@ export const BlockEditButton = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 		const { moneShareProviderNameSlug } = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		const { isParentCoreGroup, patternName } = useSelect(
 			( select ) => {
@@ -55,7 +62,11 @@ export const BlockEditButton = createHigherOrderComponent(
 			[ clientId ]
 		);
 
-		if ( ! isParentCoreGroup || 'mone/sns-share' !== patternName ) {
+		if (
+			! isParentCoreGroup ||
+			( 'mone/sns-share' !== patternName &&
+				'mone/sns-share-simple' !== patternName )
+		) {
 			return <BlockEdit { ...props } />;
 		}
 
@@ -73,11 +84,27 @@ export const BlockEditButton = createHigherOrderComponent(
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Share Settings', 'mone' ) }
-						initialOpen={ true }
+					<ToolsPanel
+						label={ __( 'Share Settings', 'mone' ) }
+						resetAll={ () => {
+							setAttributes( {
+								moneShareProviderNameSlug: undefined,
+								tagName: undefined,
+							} );
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<BaseControl __nextHasNoMarginBottom>
+						<ToolsPanelItem
+							label={ __( 'Share Button Provider', 'mone' ) }
+							isShownByDefault
+							hasValue={ () => !! moneShareProviderNameSlug }
+							onDeselect={ () =>
+								setAttributes( {
+									moneShareProviderNameSlug: undefined,
+									tagName: undefined,
+								} )
+							}
+						>
 							<SelectControl
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
@@ -93,8 +120,8 @@ export const BlockEditButton = createHigherOrderComponent(
 									} );
 								} }
 							/>
-						</BaseControl>
-					</PanelBody>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);
