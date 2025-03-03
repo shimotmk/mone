@@ -1,8 +1,20 @@
+/**
+ * WordPress dependencies
+ */
 import { __ } from '@wordpress/i18n';
 import { addFilter } from '@wordpress/hooks';
-import { PanelBody, TextControl } from '@wordpress/components';
+import {
+	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
+
+/**
+ * Internal dependencies
+ */
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export function registerBlockTypePostDate( settings, name ) {
 	if ( name !== 'core/post-date' ) {
@@ -29,34 +41,63 @@ export const blockEditPostDate = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 		const { monePrefix, moneSuffix } = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		return (
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Mone prefix suffix', 'mone' ) }
-						initialOpen={ true }
+					<ToolsPanel
+						label={ __( 'Mone prefix suffix', 'mone' ) }
+						resetAll={ () => {
+							setAttributes( {
+								monePrefix: undefined,
+								moneSuffix: undefined,
+							} );
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<TextControl
+						<ToolsPanelItem
 							label={ __( 'Prefix' ) }
-							value={ monePrefix || '' }
-							onChange={ ( value ) =>
-								setAttributes( { monePrefix: value } )
+							isShownByDefault
+							hasValue={ () => !! monePrefix }
+							onDeselect={ () =>
+								setAttributes( {
+									monePrefix: undefined,
+								} )
 							}
-							placeholder={ __( 'Prefix' ) }
-							__nextHasNoMarginBottom
-						/>
-						<TextControl
+						>
+							<TextControl
+								label={ __( 'Prefix' ) }
+								value={ monePrefix || '' }
+								onChange={ ( value ) =>
+									setAttributes( { monePrefix: value } )
+								}
+								placeholder={ __( 'Prefix' ) }
+								__nextHasNoMarginBottom
+							/>
+						</ToolsPanelItem>
+						<ToolsPanelItem
 							label={ __( 'Suffix' ) }
-							value={ moneSuffix || '' }
-							onChange={ ( value ) =>
-								setAttributes( { moneSuffix: value } )
+							isShownByDefault
+							hasValue={ () => !! moneSuffix }
+							onDeselect={ () =>
+								setAttributes( {
+									moneSuffix: undefined,
+								} )
 							}
-							placeholder={ __( 'Suffix' ) }
-							__nextHasNoMarginBottom
-						/>
-					</PanelBody>
+						>
+							<TextControl
+								label={ __( 'Suffix' ) }
+								value={ moneSuffix || '' }
+								onChange={ ( value ) =>
+									setAttributes( { moneSuffix: value } )
+								}
+								placeholder={ __( 'Suffix' ) }
+								__nextHasNoMarginBottom
+							/>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);

@@ -12,6 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 - Added Separator height, width, border radius variation.
 - Update Code Refactor setting panel to use ToolsPanel.
+- Update Post Date Refactor setting panel to use ToolsPanel.
 
 = 1.6.0 = 2025-03-01
 
