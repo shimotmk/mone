@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mone 1.5.0\n"
+"Project-Id-Version: Mone 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/mone\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-25T21:14:18+00:00\n"
+"POT-Creation-Date: 2025-03-03T10:56:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: mone\n"
@@ -733,6 +733,7 @@ msgid "Code Language"
 msgstr ""
 
 #: build/block-hook/code/index.js:1
+#: build/block-hook/separator/index.js:1
 #: build/block-library/github-embed/index.js:1
 msgid "Height"
 msgstr ""
@@ -987,6 +988,21 @@ msgstr ""
 msgid "Displays random articles from the same category as the post."
 msgstr ""
 
+#: build/block-hook/separator/index.js:1
+msgid "Sharp"
+msgstr ""
+
+#: build/block-hook/separator/index.js:1
+msgid "Width"
+msgstr ""
+
+#: build/block-hook/separator/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/block-library/icons/index.js:1
+#: build/format-library/index.js:1
+msgid "Size"
+msgstr ""
+
 #: build/block-hook/table/index.js:1
 msgid "You cannot select multiple cells from different sections."
 msgstr ""
@@ -1076,12 +1092,6 @@ msgstr ""
 
 #: build/block-library/github-embed/index.js:1
 msgid "GitHub Code Embed"
-msgstr ""
-
-#: build/block-library/icon/index.js:1
-#: build/block-library/icons/index.js:1
-#: build/format-library/index.js:1
-msgid "Size"
 msgstr ""
 
 #: build/block-library/icon/index.js:1
