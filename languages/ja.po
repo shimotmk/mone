@@ -960,6 +960,14 @@ msgstr "関連記事"
 msgid "Displays random articles from the same category as the post."
 msgstr "投稿と同じカテゴリの記事をランダムに表示します。"
 
+#: build/block-hook/separator/index.js:1
+msgid "Sharp"
+msgstr "シャープ"
+
+#: build/block-hook/separator/index.js:1
+msgid "Width"
+msgstr "幅"
+
 #: build/block-hook/query/index.js:325 build/block-hook/query/index.js:287
 msgid "Pick Up Articles"
 msgstr "ピックアップ記事"
@@ -1051,8 +1059,10 @@ msgstr "サイトに表示したいGithubコードのパーマリンクを貼り
 msgid "example :"
 msgstr "例:"
 
-#: build/block-library/icon/index.js:258 build/block-library/icon/index.js:266
-#: build/block-library/icon/index.js:228 build/block-library/icon/index.js:239
+#: build/block-hook/separator/index.js:1
+#: build/block-library/icon/index.js:1
+#: build/block-library/icons/index.js:1
+#: build/format-library/index.js:1
 msgid "Size"
 msgstr "サイズ"
 

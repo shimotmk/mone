@@ -10,6 +10,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+- Added Separator height, width, border radius variation.
+
 = 1.6.0 = 2025-03-01
 
 - Added Dialog setting button, inline format, image, group, icon.
