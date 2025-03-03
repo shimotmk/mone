@@ -1109,6 +1109,14 @@ msgid "Click to open"
 msgstr "クリックで開く"
 
 #: build/block-library/mega-menu/index.js:1
+msgid "Click"
+msgstr "クリック"
+
+#: build/block-library/mega-menu/index.js:1
+msgid "Hover"
+msgstr "ホバー"
+
+#: build/block-library/mega-menu/index.js:1
 #: build/block-library/mega-menu/index.js:179
 msgid "Mega menu link text"
 msgstr "メガメニューリンクのテキスト"

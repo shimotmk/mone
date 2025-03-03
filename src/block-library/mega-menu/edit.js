@@ -11,18 +11,24 @@ import {
 } from '@wordpress/block-editor';
 import {
 	ComboboxControl,
-	PanelBody,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	Button,
 	ToggleControl,
 	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { useEntityRecords } from '@wordpress/core-data';
 import { addQueryArgs, safeDecodeURI } from '@wordpress/url';
+
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export default function MegaMenuEdit( props ) {
 	const { attributes, setAttributes } = props;
 	const { label, menuSlug, megaMenuType, url, title, rel, linkTarget } =
 		attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 	const blockProps = useBlockProps( {
 		className: clsx( 'mone-mega-menu' ),
@@ -74,96 +80,197 @@ export default function MegaMenuEdit( props ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) } initialOpen={ true }>
-					<ComboboxControl
+				<ToolsPanel
+					label={ __( 'Settings', 'mone' ) }
+					resetAll={ () => {
+						setAttributes( {
+							menuSlug: undefined,
+							megaMenuType: undefined,
+							url: undefined,
+							linkTarget: '_self',
+							rel: undefined,
+							title: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
 						label={ __( 'Menu Template', 'mone' ) }
-						value={ menuSlug }
-						options={ menuOptions }
-						onChange={ ( slugValue ) =>
-							setAttributes( { menuSlug: slugValue } )
-						}
-					/>
-					{ menuSlug && (
-						<Button
-							variant="secondary"
-							href={ editPartsUrl(
-								getMenuOptionDetails( menuSlug, menuOptions )
-									?.id
-							) }
-						>
-							{
-								getMenuOptionDetails( menuSlug, menuOptions )
-									?.label
-							}
-							{ __( 'Edit', 'mone' ) }
-						</Button>
-					) }
-					<Button
-						variant="secondary"
-						href={ createPartsUrl }
-						style={ { marginBottom: '8px' } }
-					>
-						{ __( 'Create a template part', 'mone' ) }
-					</Button>
-					<ToggleControl
-						__nextHasNoMarginBottom
-						label={ __( 'Click to open', 'mone' ) }
-						onChange={ ( value ) =>
+						isShownByDefault
+						hasValue={ () => !! menuSlug }
+						onDeselect={ () =>
 							setAttributes( {
-								megaMenuType: value ? undefined : 'hover',
+								menuSlug: undefined,
 							} )
 						}
-						checked={ megaMenuType === undefined }
-					/>
+					>
+						<ComboboxControl
+							label={ __( 'Menu Template', 'mone' ) }
+							value={ menuSlug || [] }
+							options={ menuOptions }
+							onChange={ ( slugValue ) =>
+								setAttributes( { menuSlug: slugValue } )
+							}
+						/>
+						{ menuSlug && (
+							<Button
+								variant="secondary"
+								href={ editPartsUrl(
+									getMenuOptionDetails(
+										menuSlug,
+										menuOptions
+									)?.id
+								) }
+								style={ {
+									marginTop: '8px',
+									display: 'flex',
+									justifyContent: 'center',
+								} }
+							>
+								{ getMenuOptionDetails( menuSlug, menuOptions )
+									?.label + __( 'Edit', 'mone' ) }
+							</Button>
+						) }
+						<Button
+							variant="secondary"
+							href={ createPartsUrl }
+							style={ {
+								marginTop: '8px',
+								display: 'flex',
+								justifyContent: 'center',
+							} }
+						>
+							{ __( 'Create a template part', 'mone' ) }
+						</Button>
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Click to open', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! megaMenuType }
+						onDeselect={ () =>
+							setAttributes( {
+								megaMenuType: undefined,
+							} )
+						}
+					>
+						<ToggleGroupControl
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							isBlock
+							label={ __( 'Click to open', 'mone' ) }
+							value={
+								megaMenuType === 'hover' ? 'hover' : 'click'
+							}
+							onChange={ ( value ) =>
+								setAttributes( {
+									megaMenuType:
+										value === 'click' ? undefined : 'hover',
+								} )
+							}
+						>
+							<ToggleGroupControlOption
+								value="click"
+								label={ __( 'Click', 'mone' ) }
+							/>
+							<ToggleGroupControlOption
+								value="hover"
+								label={ __( 'Hover', 'mone' ) }
+							/>
+						</ToggleGroupControl>
+					</ToolsPanelItem>
 					{ megaMenuType === 'hover' && (
 						<>
-							<TextControl
-								__nextHasNoMarginBottom
-								__next40pxDefaultSize
-								value={ url ? safeDecodeURI( url ) : '' }
-								onChange={ ( urlValue ) => {
-									setAttributes( { url: urlValue } );
-								} }
+							<ToolsPanelItem
 								label={ __( 'Link' ) }
-								autoComplete="off"
-							/>
+								isShownByDefault
+								hasValue={ () => !! url }
+								onDeselect={ () =>
+									setAttributes( {
+										url: undefined,
+									} )
+								}
+							>
+								<TextControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={ url ? safeDecodeURI( url ) : '' }
+									onChange={ ( urlValue ) => {
+										setAttributes( { url: urlValue } );
+									} }
+									label={ __( 'Link' ) }
+									autoComplete="off"
+								/>
+							</ToolsPanelItem>
 							{ url && (
 								<>
-									<ToggleControl
-										__nextHasNoMarginBottom
+									<ToolsPanelItem
 										label={ __( 'Open in new tab' ) }
-										onChange={ ( value ) =>
+										isShownByDefault
+										hasValue={ () => !! linkTarget }
+										onDeselect={ () =>
 											setAttributes( {
-												linkTarget: value
-													? '_blank'
-													: '_self',
+												linkTarget: '_self',
 											} )
 										}
-										checked={ linkTarget === '_blank' }
-									/>
-									<TextControl
-										__nextHasNoMarginBottom
+									>
+										<ToggleControl
+											__nextHasNoMarginBottom
+											label={ __( 'Open in new tab' ) }
+											onChange={ ( value ) =>
+												setAttributes( {
+													linkTarget: value
+														? '_blank'
+														: '_self',
+												} )
+											}
+											checked={ linkTarget === '_blank' }
+										/>
+									</ToolsPanelItem>
+									<ToolsPanelItem
 										label={ __( 'Link rel' ) }
-										value={ rel }
-										onChange={ ( newRel ) =>
-											setAttributes( { rel: newRel } )
+										isShownByDefault
+										hasValue={ () => !! rel }
+										onDeselect={ () =>
+											setAttributes( {
+												rel: undefined,
+											} )
 										}
-									/>
+									>
+										<TextControl
+											__nextHasNoMarginBottom
+											label={ __( 'Link rel' ) }
+											value={ rel }
+											onChange={ ( newRel ) =>
+												setAttributes( { rel: newRel } )
+											}
+										/>
+									</ToolsPanelItem>
 								</>
 							) }
-							<TextControl
-								__nextHasNoMarginBottom
-								__next40pxDefaultSize
-								value={ title || '' }
-								onChange={ ( titleValue ) => {
-									setAttributes( { title: titleValue } );
-								} }
+							<ToolsPanelItem
 								label={ __( 'Title attribute' ) }
-								autoComplete="off"
-							/>
+								isShownByDefault
+								hasValue={ () => !! title }
+								onDeselect={ () =>
+									setAttributes( {
+										title: undefined,
+									} )
+								}
+							>
+								<TextControl
+									__nextHasNoMarginBottom
+									__next40pxDefaultSize
+									value={ title || '' }
+									onChange={ ( titleValue ) => {
+										setAttributes( { title: titleValue } );
+									} }
+									label={ __( 'Title attribute' ) }
+									autoComplete="off"
+								/>
+							</ToolsPanelItem>
 						</>
 					) }
-				</PanelBody>
+				</ToolsPanel>
 			</InspectorControls>
 
 			<div { ...blockProps }>
