@@ -15,6 +15,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Update Post Date Refactor setting panel to use ToolsPanel.
 - Update Share Button Refactor setting panel to use ToolsPanel.
 - Update Appreciate Button Refactor setting panel to use ToolsPanel.
+- Update Blog card Refactor setting panel to use ToolsPanel.
 
 = 1.6.0 = 2025-03-01
 

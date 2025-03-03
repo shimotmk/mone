@@ -3,14 +3,14 @@
  */
 import { __ } from '@wordpress/i18n';
 import {
-	PanelBody,
-	BaseControl,
 	Button,
 	ToolbarGroup,
 	ToolbarButton,
 	Spinner,
 	ToggleControl,
 	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import {
 	InspectorControls,
@@ -30,6 +30,7 @@ import { useSelect, useDispatch } from '@wordpress/data';
 import EmbedPlaceholder from './embed-placeholder';
 import useRemoteUrlData from '../api/use-rich-url-data';
 import fetchUrlData from '../api/fetch-url-data';
+import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
 
 export default function EmbedWrapperEdit( props ) {
 	const { attributes, setAttributes, clientId } = props;
@@ -40,6 +41,7 @@ export default function EmbedWrapperEdit( props ) {
 		linkTarget,
 		templateLock,
 	} = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
 	const [ url, setURL ] = useState( attributesUrl );
 	const [ isLoadingClearCache, setIsLoadingClearCache ] = useState( false );
@@ -124,8 +126,27 @@ export default function EmbedWrapperEdit( props ) {
 				) }
 			</BlockControls>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }>
-					<BaseControl __nextHasNoMarginBottom>
+				<ToolsPanel
+					label={ __( 'Settings' ) }
+					resetAll={ () => {
+						setAttributes( {
+							isLink: undefined,
+							linkTarget: undefined,
+							rel: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
+						label={ __( 'Link to page', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! isLink }
+						onDeselect={ () =>
+							setAttributes( {
+								isLink: undefined,
+							} )
+						}
+					>
 						<ToggleControl
 							__nextHasNoMarginBottom
 							label={ __( 'Link to page', 'mone' ) }
@@ -134,30 +155,57 @@ export default function EmbedWrapperEdit( props ) {
 							}
 							checked={ isLink }
 						/>
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Open in new tab' ) }
+						isShownByDefault
+						hasValue={ () => isLink && !! linkTarget }
+						onDeselect={ () =>
+							setAttributes( {
+								linkTarget: undefined,
+							} )
+						}
+					>
 						{ isLink && (
-							<>
-								<ToggleControl
-									__nextHasNoMarginBottom
-									label={ __( 'Open in new tab' ) }
-									onChange={ ( value ) =>
-										setAttributes( {
-											linkTarget: value
-												? '_blank'
-												: '_self',
-										} )
-									}
-									checked={ linkTarget === '_blank' }
-								/>
-								<TextControl
-									__nextHasNoMarginBottom
-									label={ __( 'Link rel' ) }
-									value={ rel }
-									onChange={ ( newRel ) =>
-										setAttributes( { rel: newRel } )
-									}
-								/>
-							</>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label={ __( 'Open in new tab' ) }
+								onChange={ ( value ) =>
+									setAttributes( {
+										linkTarget: value ? '_blank' : '_self',
+									} )
+								}
+								checked={ linkTarget === '_blank' }
+							/>
 						) }
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Link rel' ) }
+						isShownByDefault
+						hasValue={ () => isLink && !! rel }
+						onDeselect={ () =>
+							setAttributes( {
+								rel: undefined,
+							} )
+						}
+					>
+						{ isLink && (
+							<TextControl
+								__nextHasNoMarginBottom
+								label={ __( 'Link rel' ) }
+								value={ rel || '' }
+								onChange={ ( newRel ) =>
+									setAttributes( { rel: newRel } )
+								}
+							/>
+						) }
+					</ToolsPanelItem>
+					<ToolsPanelItem
+						label={ __( 'Clear cache', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! richData?.data.post_id }
+						onDeselect={ onClickClearCache }
+					>
 						{ richData?.data.post_id === undefined && (
 							<>
 								<Button
@@ -178,8 +226,8 @@ export default function EmbedWrapperEdit( props ) {
 								</p>
 							</>
 						) }
-					</BaseControl>
-				</PanelBody>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			{ ( () => {
 				if ( isFetching || isLoadingClearCache ) {
