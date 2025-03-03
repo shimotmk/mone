@@ -1,7 +1,10 @@
 /**
  * WordPress dependencies
  */
-import { BaseControl, TextControl } from '@wordpress/components';
+import {
+	TextControl,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 export const PostIncludeControls = ( { attributes, setAttributes } ) => {
@@ -9,7 +12,19 @@ export const PostIncludeControls = ( { attributes, setAttributes } ) => {
 
 	return (
 		<>
-			<BaseControl __nextHasNoMarginBottom>
+			<ToolsPanelItem
+				label={ __( 'Post Ids', 'mone' ) }
+				isShownByDefault
+				hasValue={ () => !! includePostIds?.length }
+				onDeselect={ () =>
+					setAttributes( {
+						query: {
+							...attributes.query,
+							include_posts: [],
+						},
+					} )
+				}
+			>
 				<TextControl
 					label={ __( 'Post Ids', 'mone' ) }
 					value={ includePostIds.join( ',' ) || '' }
@@ -28,7 +43,7 @@ export const PostIncludeControls = ( { attributes, setAttributes } ) => {
 					help={ __( '*Please enter with commas.', 'mone' ) }
 					__nextHasNoMarginBottom
 				/>
-			</BaseControl>
+			</ToolsPanelItem>
 		</>
 	);
 };

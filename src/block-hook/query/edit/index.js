@@ -1,10 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, BaseControl } from '@wordpress/components';
+import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 
 import { PostIncludeControls } from './post-in';
+import { useToolsPanelDropdownMenuProps } from '../../../utils-func/use-tools-panel-dropdown';
 
 export const BlockEditQuery = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
@@ -13,6 +14,7 @@ export const BlockEditQuery = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 		const { namespace } = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 		if (
 			namespace === null ||
 			namespace === undefined ||
@@ -27,17 +29,23 @@ export const BlockEditQuery = createHigherOrderComponent(
 				<InspectorControls>
 					{ namespace === 'mone-post-in-query' && (
 						<>
-							<PanelBody
-								title={ __( 'Include Posts', 'mone' ) }
-								initialOpen={ true }
+							<ToolsPanel
+								label={ __( 'Include Posts', 'mone' ) }
+								resetAll={ () => {
+									setAttributes( {
+										query: {
+											...attributes.query,
+											include_posts: [],
+										},
+									} );
+								} }
+								dropdownMenuProps={ dropdownMenuProps }
 							>
-								<BaseControl __nextHasNoMarginBottom>
-									<PostIncludeControls
-										attributes={ attributes }
-										setAttributes={ setAttributes }
-									/>
-								</BaseControl>
-							</PanelBody>
+								<PostIncludeControls
+									attributes={ attributes }
+									setAttributes={ setAttributes }
+								/>
+							</ToolsPanel>
 						</>
 					) }
 				</InspectorControls>
