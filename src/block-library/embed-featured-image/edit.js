@@ -2,7 +2,13 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { ToggleControl, PanelBody, TextControl } from '@wordpress/components';
+import {
+	ToggleControl,
+	PanelBody,
+	TextControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import {
 	InspectorControls,
 	useBlockProps,
@@ -17,11 +23,13 @@ import useRemoteUrlData from '../embed/api/use-rich-url-data';
 import DimensionControls from './dimension-controls';
 import OverlayControls from './overlay-controls';
 import Overlay from './overlay';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export default function EmbedFeaturedImageEdit( props ) {
 	const { attributes, setAttributes, context, clientId } = props;
 	const { isLink, aspectRatio, height, width, scale, rel, linkTarget } =
 		attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const { richData } = useRemoteUrlData( context[ 'mone/embed-url' ] );
 	const featuredImage = richData?.data.featured_image;
 
@@ -54,36 +62,83 @@ export default function EmbedFeaturedImageEdit( props ) {
 				setAttributes={ setAttributes }
 			/>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }>
-					<ToggleControl
-						__nextHasNoMarginBottom
+				<ToolsPanel
+					label={ __( 'Settings' ) }
+					resetAll={ () => {
+						setAttributes( {
+							isLink: undefined,
+							linkTarget: undefined,
+							rel: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
 						label={ __( 'Link to URL', 'mone' ) }
-						onChange={ () => setAttributes( { isLink: ! isLink } ) }
-						checked={ isLink }
-					/>
+						isShownByDefault
+						hasValue={ () => !! isLink }
+						onDeselect={ () =>
+							setAttributes( {
+								isLink: undefined,
+							} )
+						}
+					>
+						<ToggleControl
+							__nextHasNoMarginBottom
+							label={ __( 'Link to URL', 'mone' ) }
+							onChange={ () =>
+								setAttributes( { isLink: ! isLink } )
+							}
+							checked={ isLink || '' }
+						/>
+					</ToolsPanelItem>
 					{ isLink && (
 						<>
-							<ToggleControl
-								__nextHasNoMarginBottom
+							<ToolsPanelItem
 								label={ __( 'Open in new tab' ) }
-								onChange={ ( value ) =>
+								isShownByDefault
+								hasValue={ () => isLink && !! linkTarget }
+								onDeselect={ () =>
 									setAttributes( {
-										linkTarget: value ? '_blank' : '_self',
+										linkTarget: undefined,
 									} )
 								}
-								checked={ linkTarget === '_blank' }
-							/>
-							<TextControl
-								__nextHasNoMarginBottom
+							>
+								<ToggleControl
+									__nextHasNoMarginBottom
+									label={ __( 'Open in new tab' ) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											linkTarget: value
+												? '_blank'
+												: '_self',
+										} )
+									}
+									checked={ linkTarget === '_blank' }
+								/>
+							</ToolsPanelItem>
+							<ToolsPanelItem
 								label={ __( 'Link rel' ) }
-								value={ rel }
-								onChange={ ( newRel ) =>
-									setAttributes( { rel: newRel } )
+								isShownByDefault
+								hasValue={ () => isLink && !! rel }
+								onDeselect={ () =>
+									setAttributes( {
+										rel: undefined,
+									} )
 								}
-							/>
+							>
+								<TextControl
+									__nextHasNoMarginBottom
+									label={ __( 'Link rel' ) }
+									value={ rel || '' }
+									onChange={ ( newRel ) =>
+										setAttributes( { rel: newRel } )
+									}
+								/>
+							</ToolsPanelItem>
 						</>
 					) }
-				</PanelBody>
+				</ToolsPanel>
 			</InspectorControls>
 			<figure { ...blockProps }>
 				{ featuredImage && (

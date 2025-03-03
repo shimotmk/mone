@@ -156,50 +156,52 @@ export default function EmbedWrapperEdit( props ) {
 							checked={ isLink }
 						/>
 					</ToolsPanelItem>
-					<ToolsPanelItem
-						label={ __( 'Open in new tab' ) }
-						isShownByDefault
-						hasValue={ () => isLink && !! linkTarget }
-						onDeselect={ () =>
-							setAttributes( {
-								linkTarget: undefined,
-							} )
-						}
-					>
-						{ isLink && (
-							<ToggleControl
-								__nextHasNoMarginBottom
+					{ isLink && (
+						<>
+							<ToolsPanelItem
 								label={ __( 'Open in new tab' ) }
-								onChange={ ( value ) =>
+								isShownByDefault
+								hasValue={ () => isLink && !! linkTarget }
+								onDeselect={ () =>
 									setAttributes( {
-										linkTarget: value ? '_blank' : '_self',
+										linkTarget: undefined,
 									} )
 								}
-								checked={ linkTarget === '_blank' }
-							/>
-						) }
-					</ToolsPanelItem>
-					<ToolsPanelItem
-						label={ __( 'Link rel' ) }
-						isShownByDefault
-						hasValue={ () => isLink && !! rel }
-						onDeselect={ () =>
-							setAttributes( {
-								rel: undefined,
-							} )
-						}
-					>
-						{ isLink && (
-							<TextControl
-								__nextHasNoMarginBottom
+							>
+								<ToggleControl
+									__nextHasNoMarginBottom
+									label={ __( 'Open in new tab' ) }
+									onChange={ ( value ) =>
+										setAttributes( {
+											linkTarget: value
+												? '_blank'
+												: '_self',
+										} )
+									}
+									checked={ linkTarget === '_blank' }
+								/>
+							</ToolsPanelItem>
+							<ToolsPanelItem
 								label={ __( 'Link rel' ) }
-								value={ rel || '' }
-								onChange={ ( newRel ) =>
-									setAttributes( { rel: newRel } )
+								isShownByDefault
+								hasValue={ () => isLink && !! rel }
+								onDeselect={ () =>
+									setAttributes( {
+										rel: undefined,
+									} )
 								}
-							/>
-						) }
-					</ToolsPanelItem>
+							>
+								<TextControl
+									__nextHasNoMarginBottom
+									label={ __( 'Link rel' ) }
+									value={ rel || '' }
+									onChange={ ( newRel ) =>
+										setAttributes( { rel: newRel } )
+									}
+								/>
+							</ToolsPanelItem>
+						</>
+					) }
 					<ToolsPanelItem
 						label={ __( 'Clear cache', 'mone' ) }
 						isShownByDefault
