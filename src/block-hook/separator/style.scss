@@ -1,0 +1,28 @@
+.mone-separator {
+	border-top: 0;
+	overflow-wrap: break-word;
+	background: currentcolor;
+
+	&.is-style-dots {
+
+		&[style*="--the-before-font-size"] {
+
+			&::before {
+				font-size: var(--the-before-font-size);
+			}
+		}
+
+		&[style*="--the-before-gradient-color"] {
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+
+
+			&::before {
+				background: var(--the-before-gradient-color);
+				background-clip: text;
+				-webkit-background-clip: text;
+			}
+		}
+	}
+}

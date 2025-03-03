@@ -38,6 +38,7 @@ function mone_register_block_hook() {
 		'query-pagination-next',
 		'query-pagination-previous',
 		'quote',
+		'separator',
 		'site-logo',
 		'table',
 		'template-part',
