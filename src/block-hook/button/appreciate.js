@@ -6,8 +6,8 @@ import {
 	Button,
 	Spinner,
 	__experimentalHStack as HStack,
-	PanelBody,
-	BaseControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { useState, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -22,6 +22,8 @@ import {
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { store as blocksStore } from '@wordpress/blocks';
+
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const ALLOWED_MEDIA_TYPES = [ 'image' ];
 const DEFAULT_IMAGE_LABEL = __( 'Add image', 'mone' );
@@ -55,6 +57,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 			moneAppreciateAnimationImageId,
 			moneAppreciateAnimationImageUrl,
 		} = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		const { parentCoreGroupIds } = useSelect(
 			( select ) => {
@@ -149,11 +152,19 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Click animation image', 'mone' ) }
-						initialOpen={ true }
+					<ToolsPanel
+						label={ __( 'Click animation image', 'mone' ) }
+						resetAll={ onRemoveImage }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<BaseControl __nextHasNoMarginBottom>
+						<ToolsPanelItem
+							label={ __( 'Click animation image', 'mone' ) }
+							isShownByDefault
+							hasValue={ () =>
+								!! moneAppreciateAnimationImageUrl
+							}
+							onDeselect={ onRemoveImage }
+						>
 							<MediaUploadCheck>
 								<MediaUpload
 									title={ __( 'Image' ) }
@@ -216,8 +227,8 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 									value={ moneAppreciateAnimationImageId }
 								/>
 							</MediaUploadCheck>
-						</BaseControl>
-					</PanelBody>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);
