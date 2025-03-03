@@ -4,20 +4,21 @@
 import clsx from 'clsx';
 
 import { __ } from '@wordpress/i18n';
-import { InspectorControls, useSettings } from '@wordpress/block-editor';
+import { InspectorControls, HeightControl } from '@wordpress/block-editor';
 import {
-	PanelBody,
-	BaseControl,
 	SelectControl,
-	__experimentalUseCustomUnits as useCustomUnits,
-	__experimentalUnitControl as UnitControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
-import { View } from '@wordpress/primitives';
 
+/**
+ * Internal dependencies
+ */
 import './style.scss';
 import './variations';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 export function registerBlockTypeCode( settings, name ) {
 	if ( name !== 'core/code' ) {
@@ -55,6 +56,7 @@ export const blockEditCode = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 		const { moneLanguageName, moneHeight } = attributes;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 		const languageOption = [
 			{ label: 'PHP', value: 'php' },
@@ -66,31 +68,36 @@ export const blockEditCode = createHigherOrderComponent(
 			{ label: 'SQL', value: 'sql' },
 		];
 
-		const [ spacingUnits ] = useSettings( 'spacing.units' );
-		const availableUnits = spacingUnits
-			? spacingUnits.filter( ( unit ) => unit !== '%' )
-			: [ 'px', 'em', 'rem', 'vw', 'vh' ];
-
-		const units = useCustomUnits( {
-			availableUnits,
-			defaultValues: { px: 100, em: 10, rem: 10, vw: 10, vh: 25 },
-		} );
-
 		return (
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Code Settings', 'mone' ) }
-						initialOpen={ true }
+					<ToolsPanel
+						label={ __( 'Code Settings', 'mone' ) }
+						resetAll={ () => {
+							setAttributes( {
+								moneLanguageName: undefined,
+								moneHeight: undefined,
+							} );
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<BaseControl __nextHasNoMarginBottom>
+						<ToolsPanelItem
+							label={ __( 'Code Language', 'mone' ) }
+							isShownByDefault
+							hasValue={ () => !! moneLanguageName }
+							onDeselect={ () =>
+								setAttributes( {
+									moneLanguageName: undefined,
+								} )
+							}
+						>
 							<SelectControl
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
 								label={ __( 'Code Language', 'mone' ) }
 								options={ languageOption }
-								value={ moneLanguageName || '' }
+								value={ moneLanguageName || 'markup' }
 								onChange={ ( value ) => {
 									setAttributes( {
 										moneLanguageName: value
@@ -99,21 +106,28 @@ export const blockEditCode = createHigherOrderComponent(
 									} );
 								} }
 							/>
-						</BaseControl>
-						<View className="tools-panel-item-spacing">
-							<UnitControl
+						</ToolsPanelItem>
+						<ToolsPanelItem
+							label={ __( 'Height', 'mone' ) }
+							isShownByDefault
+							hasValue={ () => !! moneHeight }
+							onDeselect={ () =>
+								setAttributes( {
+									moneHeight: undefined,
+								} )
+							}
+						>
+							<HeightControl
+								label={ __( 'Height', 'mone' ) }
+								value={ moneHeight || '' }
 								onChange={ ( value ) => {
 									setAttributes( {
-										moneHeight: value ? value : undefined,
+										moneHeight: value,
 									} );
 								} }
-								value={ moneHeight }
-								units={ units }
-								label={ __( 'Height', 'mone' ) }
-								size="__unstable-large"
 							/>
-						</View>
-					</PanelBody>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);
