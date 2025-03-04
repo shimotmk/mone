@@ -3,14 +3,21 @@ import {
 	InspectorControls,
 	store as blockEditorStore,
 } from '@wordpress/block-editor';
-import { PanelBody, BaseControl, SelectControl } from '@wordpress/components';
+import {
+	SelectControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { dispatch, useSelect } from '@wordpress/data';
 
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
+
 export const BlockEditStyleSwitcherItem = createHigherOrderComponent(
 	( BlockEdit ) => ( props ) => {
 		const { name, clientId } = props;
+		const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 		if ( name !== 'core/buttons' && name !== 'core/button' ) {
 			return <BlockEdit { ...props } />;
 		}
@@ -64,11 +71,33 @@ export const BlockEditStyleSwitcherItem = createHigherOrderComponent(
 			<>
 				<BlockEdit { ...props } />
 				<InspectorControls>
-					<PanelBody
-						title={ __( 'Settings', 'mone' ) }
-						initialOpen={ true }
+					<ToolsPanel
+						label={ __( 'Settings', 'mone' ) }
+						resetAll={ () => {
+							dispatch( blockEditorStore ).updateBlockAttributes(
+								parentSwitcherItemClientId,
+								{
+									styleVariations: '',
+								}
+							);
+						} }
+						dropdownMenuProps={ dropdownMenuProps }
 					>
-						<BaseControl __nextHasNoMarginBottom>
+						<ToolsPanelItem
+							label={ __( 'Style variation settings', 'mone' ) }
+							isShownByDefault
+							hasValue={ () => !! styleVariations }
+							onDeselect={ () => {
+								dispatch(
+									blockEditorStore
+								).updateBlockAttributes(
+									parentSwitcherItemClientId,
+									{
+										styleVariations: '',
+									}
+								);
+							} }
+						>
 							<SelectControl
 								__nextHasNoMarginBottom
 								__next40pxDefaultSize
@@ -89,8 +118,8 @@ export const BlockEditStyleSwitcherItem = createHigherOrderComponent(
 									);
 								} }
 							/>
-						</BaseControl>
-					</PanelBody>
+						</ToolsPanelItem>
+					</ToolsPanel>
 				</InspectorControls>
 			</>
 		);

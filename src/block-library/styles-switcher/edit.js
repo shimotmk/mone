@@ -12,9 +12,14 @@ import {
 	InspectorControls,
 } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
-import { PanelBody, ToggleControl } from '@wordpress/components';
+import {
+	ToggleControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
 
 import { template as TEMPLATE } from './template.js';
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const ALLOWED_BLOCKS = [ 'mone/styles-switcher-item' ];
 
@@ -40,6 +45,7 @@ const SvgIcon = ( { className } ) => (
 export default function Edit( props ) {
 	const { attributes, setAttributes, clientId } = props;
 	const { openDropdownOnClick, isToggle } = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 
 	const { hasSelection, hasTwoChildBlocks } = useSelect(
 		( select ) => {
@@ -74,30 +80,61 @@ export default function Edit( props ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Display' ) }>
+				<ToolsPanel
+					label={ __( 'Display', 'mone' ) }
+					resetAll={ () => {
+						setAttributes( {
+							isToggle: undefined,
+							openDropdownOnClick: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
 					{ hasTwoChildBlocks && (
+						<ToolsPanelItem
+							label={ __( 'isToggle', 'mone' ) }
+							isShownByDefault
+							hasValue={ () => !! isToggle }
+							onDeselect={ () =>
+								setAttributes( {
+									isToggle: undefined,
+								} )
+							}
+						>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								checked={ isToggle }
+								onChange={ ( value ) => {
+									setAttributes( {
+										isToggle: value,
+									} );
+								} }
+								label={ __( 'isToggle', 'mone' ) }
+							/>
+						</ToolsPanelItem>
+					) }
+					<ToolsPanelItem
+						label={ __( 'Open on click' ) }
+						isShownByDefault
+						hasValue={ () => !! openDropdownOnClick }
+						onDeselect={ () =>
+							setAttributes( {
+								openDropdownOnClick: undefined,
+							} )
+						}
+					>
 						<ToggleControl
 							__nextHasNoMarginBottom
-							checked={ isToggle }
+							checked={ openDropdownOnClick }
 							onChange={ ( value ) => {
 								setAttributes( {
-									isToggle: value,
+									openDropdownOnClick: value,
 								} );
 							} }
-							label={ __( 'isToggle', 'mone' ) }
+							label={ __( 'Open on click' ) }
 						/>
-					) }
-					<ToggleControl
-						__nextHasNoMarginBottom
-						checked={ openDropdownOnClick }
-						onChange={ ( value ) => {
-							setAttributes( {
-								openDropdownOnClick: value,
-							} );
-						} }
-						label={ __( 'Open on click' ) }
-					/>
-				</PanelBody>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			<div { ...innerBlocksProps }>
 				<div className="mone-styles-switcher-title">

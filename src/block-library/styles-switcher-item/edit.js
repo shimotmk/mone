@@ -7,7 +7,13 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
-import { PanelBody, BaseControl, SelectControl } from '@wordpress/components';
+import {
+	SelectControl,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+} from '@wordpress/components';
+
+import { useToolsPanelDropdownMenuProps } from '../../utils-func/use-tools-panel-dropdown';
 
 const TEMPLATE = [
 	[
@@ -29,6 +35,7 @@ const TEMPLATE = [
 export default function Edit( props ) {
 	const { attributes, setAttributes } = props;
 	const { styleVariations } = attributes;
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const blockProps = useBlockProps();
 
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
@@ -48,8 +55,26 @@ export default function Edit( props ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings' ) }>
-					<BaseControl __nextHasNoMarginBottom>
+				<ToolsPanel
+					label={ __( 'Settings', 'mone' ) }
+					resetAll={ () => {
+						setAttributes( {
+							isToggle: undefined,
+							openDropdownOnClick: undefined,
+						} );
+					} }
+					dropdownMenuProps={ dropdownMenuProps }
+				>
+					<ToolsPanelItem
+						label={ __( 'VariationOption', 'mone' ) }
+						isShownByDefault
+						hasValue={ () => !! styleVariations }
+						onDeselect={ () =>
+							setAttributes( {
+								styleVariations: undefined,
+							} )
+						}
+					>
 						<SelectControl
 							__nextHasNoMarginBottom
 							__next40pxDefaultSize
@@ -62,8 +87,8 @@ export default function Edit( props ) {
 								} );
 							} }
 						/>
-					</BaseControl>
-				</PanelBody>
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 			<li { ...blockProps }>
 				<div { ...innerBlocksProps } />
