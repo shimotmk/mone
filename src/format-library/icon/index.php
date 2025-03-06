@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string $block_content
  */
 function render_format_block_style( $block_content ) {
-	if ( strpos( $block_content, 'mone-inline-icon' ) !== false ) {
+	if ( null !== $block_content && strpos( $block_content, 'mone-inline-icon' ) !== false ) {
 		static $is_rendered = false;
 		if ( ! $is_rendered ) {
 			$custom_css = '';
