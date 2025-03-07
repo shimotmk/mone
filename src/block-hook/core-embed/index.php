@@ -64,7 +64,7 @@ function render_block_embed( $block_content, $block ) {
 
 			$asset_file = include MONE_TEMPLATE_DIR_PATH . '/build/block-hook/core-embed/index.asset.php';
 			wp_enqueue_script(
-				'mone-prism-script',
+				'mone-embed-script',
 				MONE_TEMPLATE_DIR_URL . '/build/block-hook/core-embed/view-script.js',
 				$asset_file['dependencies'],
 				$asset_file['version'],
