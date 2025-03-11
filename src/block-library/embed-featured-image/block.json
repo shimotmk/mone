@@ -54,9 +54,11 @@
 	"supports": {
 		"align": [ "left", "right", "center", "wide", "full" ],
 		"color": {
-			"__experimentalDuotone": "img",
 			"text": false,
 			"background": false
+		},
+		"filter": {
+			"duotone": true
 		},
 		"__experimentalBorder": {
 			"color": true,

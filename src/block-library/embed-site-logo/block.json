@@ -25,9 +25,11 @@
 	"supports": {
 		"align": [ "left", "right", "center" ],
 		"color": {
-			"__experimentalDuotone": "img",
 			"text": false,
 			"background": false
+		},
+		"filter": {
+			"duotone": true
 		},
 		"__experimentalBorder": {
 			"color": true,
@@ -45,6 +47,11 @@
 		"reusable": false,
 		"spacing": {
 			"margin": true
+		}
+	},
+	"selectors": {
+		"filter": {
+			"duotone": ".wp-block-mone-embed-site-logo img"
 		}
 	},
 	"editorScript": "file:./index.js",
