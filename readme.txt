@@ -19,6 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 - Update Query Refactor setting panel to use ToolsPanel.
 - Update Mega menu Refactor setting panel to use ToolsPanel.
 - Update duotone filter setting for WordPress 6.8.
+- Fix main tag background color.
 
 = 1.6.0 = 2025-03-01
 
