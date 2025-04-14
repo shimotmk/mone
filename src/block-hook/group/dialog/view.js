@@ -187,6 +187,11 @@ const { actions } = store(
 					dialogRef.classList.remove( 'closing' );
 					dialogRef.removeAttribute( 'open' );
 				}, 450 );
+
+				// YouTubeプレイヤーの再生を停止
+				players.forEach((player) => {
+					player.stopVideo();
+				});
 			},
 			closeDialogArea( event ) {
 				const context = getContext();
@@ -230,3 +235,40 @@ const { actions } = store(
 	},
 	{ lock: true }
 );
+
+window.onload = function() {
+    const onPlayerStateChange = ({ target }) => {
+        players.forEach((player, index) => {
+            // targetと同じ場合はreturn
+            if (target === player) return;
+
+            // プレイヤーのステータスを取得
+            let state = player.getPlayerState();
+
+            // プレイ中のものは再生を止める
+            if (state === YT.PlayerState.PLAYING) {
+                player.stopVideo();
+            }
+        });
+    };
+
+    const onReady = (e) => {
+        // console.log(e,'ready')
+    };
+
+    var iframes = Array.from(document.querySelectorAll('iframe.mone-lazy-load'));
+
+    iframes.forEach((iframe) => {
+        if (iframe.getAttribute('data-src')) {
+            iframe.setAttribute('src', iframe.getAttribute('data-src'));
+        }
+    });
+
+    var players = iframes.map((iframe) => {
+        return new YT.Player(iframe, {
+            events: {
+                'onStateChange': onPlayerStateChange,
+            },
+        });
+    });
+};

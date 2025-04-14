@@ -16,6 +16,7 @@ require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/disable-li
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/image.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/dialog-content.php';
 require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/group.php';
+require_once MONE_TEMPLATE_DIR_PATH . '/build/block-hook/group/dialog/youtube.php';
 
 /**
  * Render dialog link.
