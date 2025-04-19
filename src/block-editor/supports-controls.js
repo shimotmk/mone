@@ -17,38 +17,41 @@ function supportsDefaultControls( settings ) {
 		return settings;
 	}
 
-	// Add the default controls.
-	settings.supports = {
-		...settings.supports,
-
-		background: {
-			...settings.supports?.background,
+	if ( settings.supports?.background ) {
+		settings.supports.background = {
+			...settings.supports.background,
 			__experimentalDefaultControls: {
 				...settings.supports?.backgroundImage
 					?.__experimentalDefaultControls,
 				backgroundImage: true,
 			},
-		},
+		};
+	}
 
-		dimensions: {
-			...settings.supports?.dimensions,
+	if ( settings.supports?.dimensions ) {
+		settings.supports.dimensions = {
+			...settings.supports.dimensions,
 			__experimentalDefaultControls: {
 				...settings.supports?.dimensions?.__experimentalDefaultControls,
 				minHeight: true,
 			},
-		},
+		};
+	}
 
-		spacing: {
-			...settings.supports?.spacing,
+	if ( settings.supports?.spacing ) {
+		settings.supports.spacing = {
+			...settings.supports.spacing,
 			__experimentalDefaultControls: {
 				...settings.supports?.spacing?.__experimentalDefaultControls,
 				margin: true,
 				padding: true,
 				blockGap: true,
 			},
-		},
+		};
+	}
 
-		__experimentalBorder: {
+	if ( settings.supports?.__experimentalBorder ) {
+		settings.supports.__experimentalBorder = {
 			...settings.supports?.__experimentalBorder,
 			__experimentalDefaultControls: {
 				...settings.supports?.__experimentalBorder
@@ -59,8 +62,8 @@ function supportsDefaultControls( settings ) {
 				width: true,
 				shadow: true,
 			},
-		},
-	};
+		};
+	}
 
 	return settings;
 }
