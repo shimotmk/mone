@@ -71,10 +71,10 @@ function safecss_filter_attr_allow_css( $allow_css, $css_test_string ) {
 add_filter( 'safecss_filter_attr_allow_css', __NAMESPACE__ . '\safecss_filter_attr_allow_css', 10, 2 );
 
 /**
- * Mark CSS safe if it contains a "--the-icon-svg: url(data:image/svg+xml" rule.
+ * Allow SVG in wp_kses_post.
  *
- * @param array $allowed_html Allowed HTML.
- * @return array (Maybe) modified allowed HTML.
+ * @param array $allowed_tags Allowed HTML tags and attributes.
+ * @return array Modified allowed HTML tags and attributes.
  */
 function allow_svg_in_wp_kses_post( $allowed_tags ) {
 	$allowed_tags['svg'] = array(
@@ -111,6 +111,10 @@ function allow_svg_in_wp_kses_post( $allowed_tags ) {
 		'stroke'       => true,
 		'stroke-width' => true,
 		'transform'    => true,
+	);
+
+	$allowed_tags['polyline'] = array(
+		'points' => true,
 	);
 
 	return $allowed_tags;

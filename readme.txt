@@ -10,9 +10,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.7.2 = 2025-04-19
+
+- Fix wp_kses_allowed_html code
+
 = 1.7.1 = 2025-04-19
 
-- wp_kses_allowed_html svg html
+- Update wp_kses_allowed_html svg html
 
 = 1.7.0 = 2025-04-19
 
