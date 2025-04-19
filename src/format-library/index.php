@@ -69,3 +69,50 @@ function safecss_filter_attr_allow_css( $allow_css, $css_test_string ) {
 	return $allow_css;
 }
 add_filter( 'safecss_filter_attr_allow_css', __NAMESPACE__ . '\safecss_filter_attr_allow_css', 10, 2 );
+
+/**
+ * Mark CSS safe if it contains a "--the-icon-svg: url(data:image/svg+xml" rule.
+ *
+ * @param array $allowed_html Allowed HTML.
+ * @return array (Maybe) modified allowed HTML.
+ */
+function allow_svg_in_wp_kses_post( $allowed_tags ) {
+	$allowed_tags['svg'] = array(
+		'xmlns'        => true,
+		'viewBox'      => true,
+		'viewbox'      => true,
+		'width'        => true,
+		'height'       => true,
+		'fill'         => true,
+		'stroke'       => true,
+		'stroke-width' => true,
+	);
+
+	$allowed_tags['filter'] = array(
+		'id' => true,
+	);
+
+	$allowed_tags['feTurbulence'] = array(
+		'type'          => true,
+		'baseFrequency' => true,
+		'numOctaves'    => true,
+		'stitchTiles'   => true,
+	);
+
+	$allowed_tags['rect'] = array(
+		'width'  => true,
+		'height' => true,
+		'filter' => true,
+	);
+
+	$allowed_tags['path'] = array(
+		'd'            => true,
+		'fill'         => true,
+		'stroke'       => true,
+		'stroke-width' => true,
+		'transform'    => true,
+	);
+
+	return $allowed_tags;
+}
+add_filter( 'wp_kses_allowed_html', __NAMESPACE__ . '\allow_svg_in_wp_kses_post', 10, 1 );

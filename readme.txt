@@ -10,6 +10,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.7.1 = 2025-04-19
+
+- wp_kses_allowed_html svg html
+
 = 1.7.0 = 2025-04-19
 
 - Tested up version WordPress 6.8
