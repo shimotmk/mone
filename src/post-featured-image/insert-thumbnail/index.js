@@ -2,7 +2,7 @@ import parse from 'html-react-parser';
 
 import { __ } from '@wordpress/i18n';
 import { Button, Popover, Spinner } from '@wordpress/components';
-import { useDispatch } from '@wordpress/data';
+import { useSelect, useDispatch } from '@wordpress/data';
 import { useState, useEffect, useCallback, Fragment } from '@wordpress/element';
 import { debounce, useViewportMatch } from '@wordpress/compose';
 import { uploadMedia } from '@wordpress/media-utils';
@@ -10,6 +10,7 @@ import { store as noticesStore } from '@wordpress/notices';
 import { isBlobURL } from '@wordpress/blob';
 
 import { generateImageList, svgToPngURL, convertImageToBlob } from '../satori';
+import { STORE_NAME } from '../store/constants';
 import { usePostData } from '../hooks/use-post-data';
 import { useThemeData } from '../hooks/use-theme-data';
 import { useSiteData } from '../hooks/use-site-data';
@@ -32,6 +33,12 @@ export const InsertThumbnail = ( props ) => {
 	const { createErrorNotice, createSuccessNotice } =
 		useDispatch( noticesStore );
 	const _siteLogoUrl = siteLogoMediaItemData?.source_url ?? false;
+	const { optionObj } = useSelect( ( select ) => {
+		const { getOptions } = select( STORE_NAME );
+		return {
+			optionObj: getOptions(),
+		};
+	}, [] );
 
 	const logErrorOnce = useCallback( () => {
 		let hasErrorOccurred = false;
@@ -58,6 +65,7 @@ export const InsertThumbnail = ( props ) => {
 					authorName: myName,
 					currentTheme: currentTheme.template_uri,
 					colorSet,
+					optionObj,
 				} );
 				if ( Array.isArray( svgLists ) ) {
 					setThumbnailSvgList( svgLists );
@@ -84,6 +92,7 @@ export const InsertThumbnail = ( props ) => {
 		myName,
 		isRequestingSiteLogoData,
 		isRequestingMyData,
+		optionObj,
 		colorSet,
 		debouncedSetHoveredStyle,
 		currentTheme.template_uri,
