@@ -108,12 +108,22 @@ export const IconExternalLink = ( { icon } ) => {
 };
 
 export const createSvgUrl = ( svgString ) => {
-	// NOTE: escape関数やunescape関数は非推奨なので注意。
-	const encodedSvgString = encodeURIComponent( svgString );
-	const svgBase64 = window.btoa( decodeURIComponent( encodedSvgString ) );
+	// Create a data URL for an SVG string. Use TextEncoder to correctly
+	// handle Unicode characters and produce a stable base64 encoding.
+	if ( typeof svgString !== 'string' ) {
+		return '';
+	}
 
-	const imageSrc = `data:image/svg+xml;base64,${ svgBase64 }`;
-	return imageSrc;
+	// Encode string to UTF-8 bytes, convert to binary string, then base64.
+	const utf8encoder = new TextEncoder();
+	const bytes = utf8encoder.encode( svgString );
+	let binary = '';
+	for ( let i = 0; i < bytes.length; i++ ) {
+		binary += String.fromCharCode( bytes[ i ] );
+	}
+	const svgBase64 = window.btoa( binary );
+
+	return `data:image/svg+xml;base64,${ svgBase64 }`;
 };
 
 export const decodeSvgBase64 = ( encodedSvgUrl ) => {
@@ -121,7 +131,18 @@ export const decodeSvgBase64 = ( encodedSvgUrl ) => {
 		return '';
 	}
 	const base64Data = encodedSvgUrl.split( ',' )[ 1 ];
-	const decodedString = window.atob( base64Data );
-	const svgString = decodeURIComponent( decodedString );
-	return svgString;
+	// Decode base64 to binary string, then interpret bytes as UTF-8.
+	try {
+		const binary = window.atob( base64Data );
+		const bytes = new Uint8Array( binary.length );
+		for ( let i = 0; i < binary.length; i++ ) {
+			bytes[ i ] = binary.charCodeAt( i );
+		}
+		const utf8decoder = new TextDecoder();
+		return utf8decoder.decode( bytes );
+	} catch ( e ) {
+		// If decoding fails, return empty string to avoid throwing a runtime error.
+		// Caller can handle an empty result as needed.
+		return '';
+	}
 };
