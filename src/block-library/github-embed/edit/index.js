@@ -21,7 +21,7 @@ import {
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
-import { edit } from '@wordpress/icons';
+import { link } from '@wordpress/icons';
 import { View } from '@wordpress/primitives';
 import { decodeEntities } from '@wordpress/html-entities';
 import { dispatch, useSelect } from '@wordpress/data';
@@ -100,7 +100,8 @@ export default function Edit( props ) {
 						<ToolbarButton
 							className="components-toolbar__control"
 							label={ __( 'Edit URL' ) }
-							icon={ edit }
+							name="link"
+							icon={ link }
 							onClick={ () => setIsEditingURL( true ) }
 						/>
 					</ToolbarGroup>

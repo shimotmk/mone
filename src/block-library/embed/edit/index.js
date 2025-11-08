@@ -19,7 +19,7 @@ import {
 	BlockControls,
 	useInnerBlocksProps,
 } from '@wordpress/block-editor';
-import { edit } from '@wordpress/icons';
+import { pencil } from '@wordpress/icons';
 import { useState } from '@wordpress/element';
 import { View } from '@wordpress/primitives';
 import { useSelect, useDispatch } from '@wordpress/data';
@@ -104,7 +104,7 @@ export default function EmbedWrapperEdit( props ) {
 						<ToolbarButton
 							className="components-toolbar__control"
 							label={ __( 'Edit URL' ) }
-							icon={ edit }
+							icon={ pencil }
 							onClick={ () => setIsEditingURL( true ) }
 						/>
 					</ToolbarGroup>
