@@ -36,8 +36,8 @@ function mone_render_block_styles_switcher( $block_content, $block ) {
 			$p->set_attribute( 'tabindex', '-1' );
 
 			if ( ! $open_dropdown_on_click ) {
-				$p->set_attribute( 'data-wp-on-async--mouseenter', 'actions.openMenuOnHover' );
-				$p->set_attribute( 'data-wp-on-async--mouseleave', 'actions.closeMenuOnHover' );
+				$p->set_attribute( 'data-wp-on--mouseenter', 'actions.openMenuOnHover' );
+				$p->set_attribute( 'data-wp-on--mouseleave', 'actions.closeMenuOnHover' );
 			} else {
 				$p->set_attribute( 'data-wp-on--click', 'actions.toggleMenuOnClick' );
 			}

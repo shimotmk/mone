@@ -143,18 +143,38 @@ function render_block_details( $block_content, $block ) {
 		}
 
 		if ( ! empty( $border_radius_top_left ) ) {
+			if ( is_string( $border_radius_top_left ) && str_contains( $border_radius_top_left, 'var:preset|border-radius|' ) ) {
+				$index_to_splice = strrpos( $border_radius_top_left, '|' ) + 1;
+				$slug            = _wp_to_kebab_case( substr( $border_radius_top_left, $index_to_splice ) );
+				$border_radius_top_left = "var(--wp--preset--border-radius--$slug)";
+			}
 			$updated_style .= '--the-border-radius-top-left-custom: ' . $border_radius_top_left . ';';
 		}
 
 		if ( ! empty( $border_radius_top_right ) ) {
+			if ( is_string( $border_radius_top_right ) && str_contains( $border_radius_top_right, 'var:preset|border-radius|' ) ) {
+				$index_to_splice = strrpos( $border_radius_top_right, '|' ) + 1;
+				$slug            = _wp_to_kebab_case( substr( $border_radius_top_right, $index_to_splice ) );
+				$border_radius_top_right = "var(--wp--preset--border-radius--$slug)";
+			}
 			$updated_style .= '--the-border-radius-top-right-custom: ' . $border_radius_top_right . ';';
 		}
 
 		if ( ! empty( $border_radius_bottom_left ) ) {
+			if ( is_string( $border_radius_bottom_left ) && str_contains( $border_radius_bottom_left, 'var:preset|border-radius|' ) ) {
+				$index_to_splice = strrpos( $border_radius_bottom_left, '|' ) + 1;
+				$slug            = _wp_to_kebab_case( substr( $border_radius_bottom_left, $index_to_splice ) );
+				$border_radius_bottom_left = "var(--wp--preset--border-radius--$slug)";
+			}
 			$updated_style .= '--the-border-radius-bottom-left-custom: ' . $border_radius_bottom_left . ';';
 		}
 
 		if ( ! empty( $border_radius_bottom_right ) ) {
+			if ( is_string( $border_radius_bottom_right ) && str_contains( $border_radius_bottom_right, 'var:preset|border-radius|' ) ) {
+				$index_to_splice = strrpos( $border_radius_bottom_right, '|' ) + 1;
+				$slug            = _wp_to_kebab_case( substr( $border_radius_bottom_right, $index_to_splice ) );
+				$border_radius_bottom_right = "var(--wp--preset--border-radius--$slug)";
+			}
 			$updated_style .= '--the-border-radius-bottom-right-custom: ' . $border_radius_bottom_right . ';';
 		}
 

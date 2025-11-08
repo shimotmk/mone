@@ -57,8 +57,8 @@ function render_block_dialog_group( $block_content, $block ) {
 
 		$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 		$p->set_attribute( 'data-wp-init', 'callbacks.setGroupButtonStyles' );
-		$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setGroupButtonStyles' );
-		$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setGroupButtonStyles' );
+		$p->set_attribute( 'data-wp-on--load', 'callbacks.setGroupButtonStyles' );
+		$p->set_attribute( 'data-wp-on-window--resize', 'callbacks.setGroupButtonStyles' );
 	}
 	$block_content = $p->get_updated_html();
 
@@ -74,7 +74,7 @@ function render_block_dialog_group( $block_content, $block ) {
 			aria-label="' . esc_attr( $dialog_aria_label ) . '"
 			data-wp-interactive="mone/dialog-trigger"
 			data-wp-init="callbacks.initGroupTriggerButton"
-			data-wp-on-async--click="actions.clickDialogTrigger"
+			data-wp-on--click="actions.clickDialogTrigger"
 			data-wp-style--right="state.dialogButtonRight"
 			data-wp-style--top="state.dialogButtonTop"
 			

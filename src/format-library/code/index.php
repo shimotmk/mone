@@ -28,7 +28,7 @@ function render_format_block_style( $block_content ) {
 					font-size: 90%;
 					color: #c7254e;
 					background-color: #f9f2f4;
-					border-radius: 4px;
+					border-radius: var(--wp--preset--border-radius--10);
 				}
 			';
 			wp_register_style( 'mone-format-code-style', false );

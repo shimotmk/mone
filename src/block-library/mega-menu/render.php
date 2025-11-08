@@ -49,8 +49,8 @@ if ( ! empty( $url ) && 'click' !== $mega_menu_type ) {
 	data-wp-interactive="mone/mega-menu"
 	data-wp-context='{ "isMenuOpen": false, "offsetLeft": "", "clientWidth": "", "submenuOpenedBy": { "click": false, "hover": false, "focus": false } }'
 	data-wp-init="callbacks.setMegaMenuStyles"
-	data-wp-on-async--load="callbacks.setMegaMenuStyles"
-	data-wp-on-async-window--resize="callbacks.setMegaMenuStyles"
+	data-wp-on--load="callbacks.setMegaMenuStyles"
+	data-wp-on-window--resize="callbacks.setMegaMenuStyles"
 	data-wp-watch="callbacks.setMegaMenuStyles"
 	data-wp-style----mone--window-offset-Left="context.offsetLeft"
 	data-wp-style----mone--window-client-Width="context.clientWidth"
@@ -60,8 +60,8 @@ if ( ! empty( $url ) && 'click' !== $mega_menu_type ) {
 		if ( 'click' === $mega_menu_type ) {
 			echo 'data-wp-on--click="actions.toggleMenu"';
 		} else {
-			echo 'data-wp-on-async--mouseenter="actions.openMenuOnHover"';
-			echo 'data-wp-on-async--mouseleave="actions.closeMenuOnHover"';
+			echo 'data-wp-on--mouseenter="actions.openMenuOnHover"';
+			echo 'data-wp-on--mouseleave="actions.closeMenuOnHover"';
 		}
 		?>
 		data-wp-bind--aria-expanded="context.isMenuOpen"
@@ -74,8 +74,8 @@ if ( ! empty( $url ) && 'click' !== $mega_menu_type ) {
 		data-wp-class--is-menu-open="context.isMenuOpen"
 		<?php
 		if ( 'click' !== $mega_menu_type ) {
-			echo 'data-wp-on-async--mouseenter="actions.openMenuOnHover"';
-			echo 'data-wp-on-async--mouseleave="actions.closeMenuOnHover"';
+			echo 'data-wp-on--mouseenter="actions.openMenuOnHover"';
+			echo 'data-wp-on--mouseleave="actions.closeMenuOnHover"';
 		}
 		?>
 	>

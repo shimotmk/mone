@@ -70,15 +70,24 @@ export const BlockEditButton = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 
-		const ProviderOption = [
+		let ProviderOption = [
 			{ label: __( 'None', 'mone' ), value: '' },
 			{ label: __( 'Facebook', 'mone' ), value: 'facebook' },
 			{ label: __( 'X', 'mone' ), value: 'x' },
 			{ label: __( 'Hatena', 'mone' ), value: 'hatena' },
-			{ label: __( 'Pocket', 'mone' ), value: 'getpocket' },
 			{ label: __( 'LINE', 'mone' ), value: 'line' },
 			{ label: __( 'Copy', 'mone' ), value: 'copy' },
 		];
+
+		if ( moneShareProviderNameSlug === 'getpocket' ) {
+			ProviderOption = [
+				...ProviderOption,
+				{
+					label: __( 'Pocket (deprecated)', 'mone' ),
+					value: 'getpocket',
+				},
+			];
+		}
 
 		return (
 			<>

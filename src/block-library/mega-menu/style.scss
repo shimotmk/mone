@@ -33,39 +33,6 @@
 			left: var(--mone--window-offset-left);
 			width: var(--mone--window-client-width);
 		}
-
-		.menu-container__close-button {
-			align-items: center;
-			-webkit-backdrop-filter: blur(16px) saturate(180%);
-			backdrop-filter: blur(16px) saturate(180%);
-			background-color: #ffffffba;
-			border: none;
-			border-radius: 999px;
-			cursor: pointer;
-			display: flex;
-			justify-content: center;
-			opacity: 0;
-			padding: 4px;
-			position: absolute;
-			right: 12px;
-			text-align: center;
-			top: 12px;
-			transition: opacity 0.2s ease;
-			z-index: 100;
-
-			// Show the close button when focused (for keyboard navigation)
-			&:focus {
-				opacity: 1;
-			}
-		}
-
-		// Show the close button when the mega menu is hovered.
-		&:hover {
-
-			.menu-container__close-button {
-				opacity: 1;
-			}
-		}
 	}
 
 	// Show the mega menu when aria-expanded is true.
