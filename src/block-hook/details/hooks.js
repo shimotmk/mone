@@ -641,7 +641,7 @@ const blockListBlockDetails = createHigherOrderComponent(
 			},
 		} );
 
-		let borderProps = useBorderProps( attributes );
+		const borderProps = useBorderProps( attributes );
 		let borderBottomColor = '';
 		if ( style?.border?.top?.color ) {
 			let value = style.border.top.color;
