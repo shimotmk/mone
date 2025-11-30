@@ -3,7 +3,13 @@ import parse from 'html-react-parser';
 import { __ } from '@wordpress/i18n';
 import { Button, Popover, Spinner } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
-import { useState, useEffect, useCallback, Fragment } from '@wordpress/element';
+import {
+	useState,
+	useEffect,
+	useCallback,
+	useRef,
+	Fragment,
+} from '@wordpress/element';
 import { debounce, useViewportMatch } from '@wordpress/compose';
 import { uploadMedia } from '@wordpress/media-utils';
 import { store as noticesStore } from '@wordpress/notices';
@@ -20,7 +26,13 @@ export const InsertThumbnail = ( props ) => {
 	const [ thumbnailSvgList, setThumbnailSvgList ] = useState( null );
 	const [ hoveredStyle, setHoveredStyle ] = useState( null );
 	const isMobileViewport = useViewportMatch( 'medium', '<' );
-	const debouncedSetHoveredStyle = debounce( setHoveredStyle, 250 );
+	// Keep a stable debounced function reference across renders so
+	// that callbacks which depend on it don't need to include a
+	// changing function identity in their dependency arrays.
+	const debouncedSetHoveredStyleRef = useRef();
+	if ( ! debouncedSetHoveredStyleRef.current ) {
+		debouncedSetHoveredStyleRef.current = debounce( setHoveredStyle, 250 );
+	}
 	const [ isInserting, setIsInserting ] = useState( false );
 
 	const { postTitle } = usePostData( postTypeSlug, currentPostId );
@@ -74,7 +86,9 @@ export const InsertThumbnail = ( props ) => {
 		fetchImage();
 
 		return () => {
-			debouncedSetHoveredStyle.cancel();
+			if ( debouncedSetHoveredStyleRef.current?.cancel ) {
+				debouncedSetHoveredStyleRef.current.cancel();
+			}
 		};
 	}, [
 		postTitle,
@@ -85,7 +99,6 @@ export const InsertThumbnail = ( props ) => {
 		isRequestingSiteLogoData,
 		isRequestingMyData,
 		colorSet,
-		debouncedSetHoveredStyle,
 		currentTheme.template_uri,
 		logErrorOnce,
 	] );
@@ -130,10 +143,10 @@ export const InsertThumbnail = ( props ) => {
 	const styleItemHandler = useCallback(
 		( item ) => {
 			if ( hoveredStyle === item ) {
-				debouncedSetHoveredStyle.cancel();
+				debouncedSetHoveredStyleRef.current?.cancel();
 				return;
 			}
-			debouncedSetHoveredStyle( item );
+			debouncedSetHoveredStyleRef.current( item );
 		},
 		[ hoveredStyle ]
 	);
