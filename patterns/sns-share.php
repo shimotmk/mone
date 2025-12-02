@@ -38,12 +38,6 @@
 <!-- /wp:buttons -->
 
 <!-- wp:buttons {"layout":{"type":"flex","flexWrap":"wrap"}} -->
-<div class="wp-block-buttons"><!-- wp:button {"tagName":"button","textColor":"white","width":100,"style":{"border":{"radius":"3px"},"color":{"background":"#d8424a"},"typography":{"fontStyle":"normal","fontWeight":"600"}},"moneShareProviderNameSlug":"getpocket"} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:600"><button type="button" class="wp-block-button__link has-white-color has-text-color has-background wp-element-button" style="border-radius:3px;background-color:#d8424a"><span aria-hidden="true" style="--the-icon-svg: url(data:image/svg+xml;base64,PHN2ZyBzdHJva2U9ImN1cnJlbnRDb2xvciIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3R5bGU9ImZpbGw6bm9uZSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNCAzaDE2YTIgMiAwIDAgMSAyIDJ2NmExMCAxMCAwIDAgMS0xMCAxMEExMCAxMCAwIDAgMSAyIDExVjVhMiAyIDAgMCAxIDItMnoiPjwvcGF0aD48cG9seWxpbmUgcG9pbnRzPSI4IDEwIDEyIDE0IDE2IDEwIj48L3BvbHlsaW5lPjwvc3ZnPg==);" class="mone-inline-icon"> </span> Read Later</button></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons -->
-
-<!-- wp:buttons {"layout":{"type":"flex","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"tagName":"button","textColor":"white","width":100,"style":{"border":{"radius":"3px"},"typography":{"fontStyle":"normal","fontWeight":"600"},"color":{"background":"#7a7a7a"}},"moneShareProviderNameSlug":"copy"} -->
 <div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:600"><button type="button" class="wp-block-button__link has-white-color has-text-color has-background wp-element-button" style="border-radius:3px;background-color:#7a7a7a"><span aria-hidden="true" style="--the-icon-svg: url(data:image/svg+xml;base64,PHN2ZyBzdHJva2U9ImN1cnJlbnRDb2xvciIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3R5bGU9ImZpbGw6bm9uZSIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB4PSI5IiB5PSI5IiB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHJ4PSIyIiByeT0iMiI+PC9yZWN0PjxwYXRoIGQ9Ik01IDE1SDRhMiAyIDAgMCAxLTItMlY0YTIgMiAwIDAgMSAyLTJoOWEyIDIgMCAwIDEgMiAydjEiPjwvcGF0aD48L3N2Zz4=);" class="mone-inline-icon"> </span> Copy</button></div>
 <!-- /wp:button --></div>
