@@ -11,6 +11,7 @@ import {
 } from '@wordpress/components';
 import {
 	InspectorControls,
+	__experimentalUseBorderProps as useBorderProps,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	store as blockEditorStore,
@@ -640,6 +641,7 @@ const blockListBlockDetails = createHigherOrderComponent(
 			},
 		} );
 
+		const borderProps = useBorderProps( attributes );
 		let borderBottomColor = '';
 		if ( style?.border?.top?.color ) {
 			let value = style.border.top.color;
@@ -681,18 +683,22 @@ const blockListBlockDetails = createHigherOrderComponent(
 						( isHexColor( moneIconColor )
 							? moneIconColor
 							: `var(--wp--preset--color--${ moneIconColor })` ) ),
-			'--the-border-radius-top-left-custom': !! style?.border?.radius
-				? style?.border?.radius
-				: style?.border?.radius?.topLeft || '',
-			'--the-border-radius-top-right-custom': !! style?.border?.radius
-				? style?.border?.radius
-				: style?.border?.radius?.topRight || '',
-			'--the-border-radius-bottom-left-custom': !! style?.border?.radius
-				? style?.border?.radius
-				: style?.border?.radius?.topLeft || '',
-			'--the-border-radius-bottom-right-custom': !! style?.border?.radius
-				? style?.border?.radius
-				: style?.border?.radius?.topRight || '',
+			'--the-border-radius-top-left-custom': !! borderProps.style
+				?.borderRadius
+				? borderProps.style?.borderRadius
+				: borderProps.style?.borderTopLeftRadius || '',
+			'--the-border-radius-top-right-custom': !! borderProps.style
+				?.borderRadius
+				? borderProps.style?.borderRadius
+				: borderProps.style?.borderTopRightRadius || '',
+			'--the-border-radius-bottom-left-custom': !! borderProps.style
+				?.borderRadius
+				? borderProps.style?.borderRadius
+				: borderProps.style?.borderBottomLeftRadius || '',
+			'--the-border-radius-bottom-right-custom': !! borderProps.style
+				?.borderRadius
+				? borderProps.style?.borderRadius
+				: borderProps.style?.borderBottomRightRadius || '',
 			'--the-border-bottom-color-custom': borderBottomColor,
 			'--the-border-bottom-style-custom': style?.border?.top?.style
 				? style.border.top.style

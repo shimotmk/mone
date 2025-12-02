@@ -59,9 +59,9 @@ function render_block_dialog_image( $block_content, $block ) {
 			$p->set_attribute( 'data-wp-on--click', 'actions.clickDialogTrigger' );
 
 			$p->set_attribute( 'data-wp-init', 'callbacks.setImageButtonStyles' );
-			$p->set_attribute( 'data-wp-on-async--load', 'callbacks.setImageButtonStyles' );
-			$p->set_attribute( 'data-wp-on-async-window--resize', 'callbacks.setImageButtonStyles' );
-			$p->set_attribute( 'data-wp-on-async--mouseenter', 'callbacks.setImageButtonStyles' );
+			$p->set_attribute( 'data-wp-on--load', 'callbacks.setImageButtonStyles' );
+			$p->set_attribute( 'data-wp-on-window--resize', 'callbacks.setImageButtonStyles' );
+			$p->set_attribute( 'data-wp-on--mouseenter', 'callbacks.setImageButtonStyles' );
 		}
 	}
 	$block_content = $p->get_updated_html();

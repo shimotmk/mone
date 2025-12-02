@@ -40,6 +40,7 @@ export default function EmbedWrapperEdit( props ) {
 		rel,
 		linkTarget,
 		templateLock,
+		allowedBlocks,
 	} = attributes;
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
 	const [ isEditingURL, setIsEditingURL ] = useState( false );
@@ -78,6 +79,7 @@ export default function EmbedWrapperEdit( props ) {
 			'mone/embed-title',
 		],
 		templateLock,
+		allowedBlocks,
 	} );
 
 	// url以外のattributesをundefinedにする

@@ -4,7 +4,7 @@
 	overflow: hidden;
 	border-color: #d1d9e0;
 	border-style: solid;
-	border-radius: 0.375rem;
+	border-radius: var(--wp--preset--border-radius--10);
 	border-width: max(1px, 0.0625rem);
 
 	&:not(.cannot-embed) {

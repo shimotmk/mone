@@ -8,7 +8,7 @@ body.editor-styles-wrapper {
 	font-size: 90%;
 	color: #c7254e;
 	background-color: #f9f2f4;
-	border-radius: 4px;
+	border-radius: var(--wp--preset--border-radius--10);
 }
 
 

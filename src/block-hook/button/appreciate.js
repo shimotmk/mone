@@ -102,7 +102,7 @@ export const BlockEditAppreciateButton = createHigherOrderComponent(
 		);
 
 		const isAppreciateButtonGroup = parentCoreGroupVariations.some(
-			( variation ) => variation.name === 'mone/appreciate-button-group'
+			( variation ) => variation?.name === 'mone/appreciate-button-group'
 		);
 
 		if ( ! isAppreciateButtonGroup ) {

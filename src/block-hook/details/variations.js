@@ -19,7 +19,7 @@ registerBlockVariation( 'core/details', {
 		style: {
 			border: {
 				width: '1px',
-				radius: '4px',
+				radius: 'var:preset|border-radius|10',
 			},
 		},
 		borderColor: 'mone-border',

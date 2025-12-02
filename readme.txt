@@ -1,7 +1,7 @@
 === Mone ===
 Contributors: Tomoki Shimomura
-Requires at least: 6.7
-Tested up to: 6.8
+Requires at least: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -9,6 +9,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 == Description ==
 
 == Changelog ==
+
+= 1.8.0 = 2025-12-02
+
+- Tested to WordPress 6.9
+- Update SNS share buttons simple pattern
+- Deprecated the pocket button
+- Supports BorderRadius Preset
+- Embed add allowedBlocks support
 
 = 1.7.2 = 2025-04-19
 

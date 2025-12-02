@@ -132,7 +132,7 @@ function mone_register_block_hook() {
 							$view_script_module_url,
 							$view_asset_file['dependencies'],
 							$view_asset_file['version'],
-							false
+							array()
 						);
 					}
 				}
