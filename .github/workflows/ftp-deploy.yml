@@ -66,3 +66,12 @@ jobs:
                   password: ${{ secrets.FTP_PASSWORD }}
                   server-dir: ${{ secrets.MONE_UPDATE_PRODUCT_DIR }}
                   local-dir: updates/
+
+            - name: Deploy mone.zip upload playground folder to FTP
+              uses: SamKirkland/FTP-Deploy-Action@4.0.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.MONE_UPDATE_PLAYGROUND_DIR }}
+                  local-dir: updates/
