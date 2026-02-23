@@ -17,8 +17,11 @@ import { DefaultImage } from './default-image';
 import { ShowNoImage } from './no-image';
 import { GithubToken } from './github-token';
 import { InfoPopoverLabel } from '../../components/info-popover-label';
+import { useToolsPanelDropdownMenuProps } from '../hooks';
 
 export const Global = () => {
+	const dropdownMenuProps = useToolsPanelDropdownMenuProps();
+
 	const { canUserEdit, optionObj } = useSelect( ( select ) => {
 		const { canUser } = select( coreStore );
 		const canEdit = canUser( 'update', 'settings' );
@@ -51,6 +54,7 @@ export const Global = () => {
 						/>
 					</>
 				}
+				dropdownMenuProps={ dropdownMenuProps }
 			>
 				<ToolsPanelItem
 					hasValue={ () =>
