@@ -81,6 +81,17 @@ function register_post_meta_on_post() {
 			)
 		);
 
+		register_post_meta(
+			$post_type,
+			'mone_thumbnail_youtube_url',
+			array(
+				'single'            => true,
+				'type'              => 'string',
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_textarea_field',
+			)
+		);
+
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_post_meta_on_post' );
