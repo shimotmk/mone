@@ -11,7 +11,9 @@ store( 'mone/post-featured-image-youtube-video', {
 		initPlayer: () => {
 			const context = getContext();
 			window.addEventListener( 'message', ( event ) => {
-				if ( event.origin !== 'https://www.youtube.com' ) return;
+				if ( event.origin !== 'https://www.youtube.com' ) {
+					return;
+				}
 				try {
 					const data = JSON.parse( event.data );
 					// YouTube側が受け入れ可能になった合図
@@ -30,7 +32,9 @@ store( 'mone/post-featured-image-youtube-video', {
 			const { ref } = getElement();
 			const iframe = ref.querySelector( 'iframe' );
 
-			if ( context.leaveTimeout ) clearTimeout( context.leaveTimeout );
+			if ( context.leaveTimeout ) {
+				clearTimeout( context.leaveTimeout );
+			}
 
 			context.enterTimeout = setTimeout( () => {
 				context.isPlaying = true;
@@ -69,7 +73,9 @@ store( 'mone/post-featured-image-youtube-video', {
 			const { ref } = getElement();
 			const iframe = ref.querySelector( 'iframe' );
 
-			if ( context.enterTimeout ) clearTimeout( context.enterTimeout );
+			if ( context.enterTimeout ) {
+				clearTimeout( context.enterTimeout );
+			}
 
 			context.leaveTimeout = setTimeout( () => {
 				context.isPlaying = false;

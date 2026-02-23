@@ -10,7 +10,6 @@ import {
 	ToggleControl,
 	BaseControl,
 	__experimentalVStack as VStack,
-	__experimentalText as Text,
 	TextControl,
 } from '@wordpress/components';
 
