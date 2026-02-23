@@ -16,6 +16,7 @@ import { STORE_NAME } from '../store/constants';
 import { DefaultImage } from './default-image';
 import { ShowNoImage } from './no-image';
 import { GithubToken } from './github-token';
+import { ShowFeatureImageHoverZoomEffect } from './hover-effect';
 import { InfoPopoverLabel } from '../../components/info-popover-label';
 import { useToolsPanelDropdownMenuProps } from '../hooks';
 
@@ -98,6 +99,24 @@ export const Global = () => {
 					} }
 				>
 					<ShowNoImage />
+				</ToolsPanelItem>
+				<ToolsPanelItem
+					hasValue={ () =>
+						optionObj.is_feature_image_hover_zoom_effect === 'adapt'
+							? true
+							: false
+					}
+					label={ __( 'Eye-catching hover effects', 'mone' ) }
+					isShownByDefault={ true }
+					onDeselect={ () => {
+						const newOptionObj = {
+							...optionObj,
+							is_feature_image_hover_zoom_effect: 'not_adapt',
+						};
+						setOptions( newOptionObj );
+					} }
+				>
+					<ShowFeatureImageHoverZoomEffect />
 				</ToolsPanelItem>
 				<ToolsPanelItem
 					hasValue={ () =>

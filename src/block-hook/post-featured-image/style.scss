@@ -1,0 +1,29 @@
+.wp-block-post-featured-image.mone-post-feature-image-in-query.mone-hover-effect-zoom:not(.mone-post-featured-image-youtube) {
+	overflow: hidden;
+
+	img {
+		transition: transform 0.4s ease;
+		will-change: transform;
+	}
+
+	&:hover img {
+		transform: scale(1.1);
+	}
+}
+
+.mone-post-featured-image-youtube {
+
+	.mone-thumbnail-youtube-iframe {
+		box-sizing: border-box;
+	}
+
+	.mone-thumbnail-youtube-iframe[data-is-playing="true"] {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.mone-thumbnail-youtube-iframe[data-is-playing="false"] {
+		pointer-events: none;
+		opacity: 0;
+	}
+}

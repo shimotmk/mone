@@ -103,6 +103,9 @@ const MONE_OPTION_PROPERTIES = array(
 			),
 		),
 	),
+	'is_feature_image_hover_zoom_effect' => array(
+		'type' => 'string',
+	),
 );
 
 /**

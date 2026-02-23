@@ -10,6 +10,7 @@ import {
 	ToggleControl,
 	BaseControl,
 	__experimentalVStack as VStack,
+	TextControl,
 } from '@wordpress/components';
 
 const MonePluginDocumentSettingPanel = () => {
@@ -95,6 +96,23 @@ const MonePluginDocumentSettingPanel = () => {
 							} );
 						} }
 						__nextHasNoMarginBottom
+					/>
+					<TextControl
+						name="mone_thumbnail_youtube_url"
+						label={
+							<span style={ { textTransform: 'none' } }>
+								{ __( 'Eye-catching YouTube video', 'mone' ) }
+							</span>
+						}
+						__next40pxDefaultSize
+						onChange={ ( value ) => {
+							setMeta( {
+								...meta,
+								mone_thumbnail_youtube_url: value,
+							} );
+						} }
+						placeholder="https://www.youtube.com/watch?v=abcdefg"
+						value={ meta?.mone_thumbnail_youtube_url || '' }
 					/>
 				</VStack>
 			</BaseControl>
