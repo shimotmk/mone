@@ -1339,6 +1339,10 @@ msgstr "SNSシェアボタンを表示する"
 msgid "Display Date on the page"
 msgstr "日付を表示する"
 
+#: build/edit-post/index.js:1
+msgid "Eye-catching YouTube video"
+msgstr "アイキャッチ用 YouTube動画"
+
 #: build/format-library/font-size/index.js:62
 #: build/format-library/index.js:1
 #: build/format-library/font-size/index.js:49
@@ -1554,6 +1558,14 @@ msgstr "GitHubアカウント設定からGitHubトークンを取得できます
 #: build/plugins/index.js:465
 msgid "https://mone-wp.com/get-github-token/"
 msgstr "https://mone-wp.com/get-github-token/"
+
+#: build/plugins/index.js:1
+msgid "Eye-catching hover effects"
+msgstr "アイキャッチ ホバーエフェクト"
+
+#: build/plugins/index.js:1
+msgid "Apply a hover effect to the featured image in the query block."
+msgstr "クエリーブロック内のアイキャッチ画像に、ホバーエフェクトを適用します。"
 
 #: build/plugins/index.js:689
 #: build/plugins/index.js:543

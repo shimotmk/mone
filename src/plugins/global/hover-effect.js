@@ -46,11 +46,11 @@ export const ShowFeatureImageHoverZoomEffect = () => {
 						<>
 							<InfoPopoverLabel
 								label={ __(
-									'アイキャッチ ホバーエフェクト',
+									'Eye-catching hover effects',
 									'mone'
 								) }
 								message={ __(
-									'クエリーブロック内のアイキャッチ画像に、ホバーエフェクトを適用します。',
+									'Apply a hover effect to the featured image in the query block.',
 									'mone'
 								) }
 								position="bottom right"

@@ -106,7 +106,7 @@ export const Global = () => {
 							? true
 							: false
 					}
-					label={ __( 'アイキャッチ ホバーエフェクト', 'mone' ) }
+					label={ __( 'Eye-catching hover effects', 'mone' ) }
 					isShownByDefault={ true }
 					onDeselect={ () => {
 						const newOptionObj = {

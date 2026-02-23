@@ -101,7 +101,7 @@ const MonePluginDocumentSettingPanel = () => {
 						name="mone_thumbnail_youtube_url"
 						label={
 							<span style={ { textTransform: 'none' } }>
-								{ __( 'アイキャッチ用 YouTube動画', 'mone' ) }
+								{ __( 'Eye-catching YouTube video', 'mone' ) }
 							</span>
 						}
 						__next40pxDefaultSize
