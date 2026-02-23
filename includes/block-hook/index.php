@@ -39,6 +39,7 @@ function mone_register_block_hook() {
 		'query-pagination-previous',
 		'quote',
 		'separator',
+		'social-link',
 		'site-logo',
 		'table',
 		'template-part',
