@@ -326,7 +326,7 @@ function render_block_youtube_thumbnail( $block_content, $parsed_block, $instanc
 				<img
 					src="<?php echo esc_url( $thumbnail_url ); ?>"
 					class="<?php echo esc_attr( $img_class ); ?>"
-					style="<?php echo esc_attr( $img_style ); ?> position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; transition: opacity 0.3s;"
+					style="<?php echo esc_attr( $img_style ); ?> position:absolute; top:0; left:0; width:100%; height:100%; transition: opacity 0.3s;"
 					data-wp-bind--hidden="state.isPlaying"
 				/>
 			<?php endif; ?>
