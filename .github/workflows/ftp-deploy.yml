@@ -74,4 +74,4 @@ jobs:
                   username: ${{ secrets.FTP_USERNAME }}
                   password: ${{ secrets.FTP_PASSWORD }}
                   server-dir: ${{ secrets.MONE_UPDATE_PLAYGROUND_DIR }}
-                  local-dir: updates/
+                  local-dir: dist/
