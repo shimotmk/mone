@@ -214,7 +214,7 @@ add_filter( 'render_block_core/post-featured-image', __NAMESPACE__ . '\render_bl
  * @param string $url url.
  * @return string|false
  */
-function get_youtube_video_id( $url ) {
+function mone_get_youtube_video_id( $url ) {
 	if ( empty( $url ) ) {
 		return false;
 	}
@@ -239,7 +239,7 @@ function get_youtube_video_id( $url ) {
  * @param string $key key.
  * @return string|null
  */
-function get_youtube_parameter( $url, $key ) {
+function mone_get_youtube_parameter( $url, $key ) {
 	$query_str = parse_url( $url, PHP_URL_QUERY );
 	parse_str( $query_str, $params );
 	return isset( $params[ $key ] ) ? $params[ $key ] : null;
@@ -268,12 +268,12 @@ function render_block_post_featured_image( $block_content, $parsed_block, $insta
 	if ( empty( $youtube_url ) ) {
 		return $block_content;
 	}
-	$video_id = get_youtube_video_id( $youtube_url );
+	$video_id = mone_get_youtube_video_id( $youtube_url );
 	if ( ! $video_id ) {
 		return $block_content;
 	}
 	$thumbnail_url            = 'https://img.youtube.com/vi/' . esc_attr( $video_id ) . '/maxresdefault.jpg';
-	$start                    = get_youtube_parameter( $youtube_url, 't' );
+	$start                    = mone_get_youtube_parameter( $youtube_url, 't' );
 	$is_query                 = isset( $parsed_block['attrs']['isParentQuery'] ) ? true : false;
 	$result                   = set_featured_image_attributes( $parsed_block );
 	$post_featured_image_attr = $result['attr'];
