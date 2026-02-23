@@ -251,7 +251,7 @@ function mone_get_youtube_parameter( $url, $key ) {
  * @param array  $parsed_block parsed_block.
  * @param object $instance instance.
  */
-function render_block_post_featured_image( $block_content, $parsed_block, $instance ) {
+function render_block_youtube_thumbnail( $block_content, $parsed_block, $instance ) {
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) {
 		return $block_content;
 	}
@@ -347,4 +347,4 @@ function render_block_post_featured_image( $block_content, $parsed_block, $insta
 	<?php
 	return ob_get_clean();
 }
-add_filter( 'render_block_core/post-featured-image', __NAMESPACE__ . '\render_block_post_featured_image', 10, 3 );
+add_filter( 'render_block_core/post-featured-image', __NAMESPACE__ . '\render_block_youtube_thumbnail', 10, 3 );
