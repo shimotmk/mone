@@ -10,6 +10,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= 1.9.0 = 2026-02-23
+
+- Added eye-catching hover effect settings.
+- Added Note and LINE to the social link block.
+- Added YouTube video settings for eye-catching content.
+- Fixed dropdownMenuProps in Mone settings.
+
 = 1.8.0 = 2025-12-02
 
 - Tested to WordPress 6.9
