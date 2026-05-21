@@ -16,10 +16,18 @@ export const MediaQuery = ( props ) => {
 		setAttributes,
 	} = props;
 
+	// Deprecated media query settings
+	if (
+		! existsClassName( 'mone-pc-none', className ) &&
+		! existsClassName( 'mone-sp-none', className )
+	) {
+		return null;
+	}
+
 	return (
 		<>
 			<ToolsPanelItem
-				label={ __( 'Media Query', 'mone' ) }
+				label={ __( 'Deprecated Media Query', 'mone' ) }
 				isShownByDefault={ false }
 				hasValue={ () => existsClassName( 'mone-pc-none', className ) }
 				onDeselect={ () => {
@@ -38,7 +46,7 @@ export const MediaQuery = ( props ) => {
 				} }
 			>
 				<ToggleControl
-					label={ __( 'Hide on PC', 'mone' ) }
+					label={ __( 'Deprecated Hide on PC', 'mone' ) }
 					checked={ existsClassName( 'mone-pc-none', className ) }
 					onChange={ () =>
 						toggleClass( 'mone-pc-none', className, setAttributes )
@@ -47,7 +55,7 @@ export const MediaQuery = ( props ) => {
 				/>
 			</ToolsPanelItem>
 			<ToolsPanelItem
-				label={ __( 'Media Query', 'mone' ) }
+				label={ __( 'Deprecated Media Query', 'mone' ) }
 				isShownByDefault={ false }
 				hasValue={ () => existsClassName( 'mone-sp-none', className ) }
 				onDeselect={ () => {
@@ -66,7 +74,7 @@ export const MediaQuery = ( props ) => {
 				} }
 			>
 				<ToggleControl
-					label={ __( 'Hide on mobile', 'mone' ) }
+					label={ __( 'Deprecated Hide on mobile', 'mone' ) }
 					checked={ existsClassName( 'mone-sp-none', className ) }
 					onChange={ () =>
 						toggleClass( 'mone-sp-none', className, setAttributes )
