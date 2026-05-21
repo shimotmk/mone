@@ -52,6 +52,10 @@ export const BlockEditCustomCss = createHigherOrderComponent(
 			return <BlockEdit { ...props } />;
 		}
 
+		if ( ! moneCustomCss ) {
+			return <BlockEdit { ...props } />;
+		}
+
 		return (
 			<>
 				<BlockEdit { ...props } />
@@ -59,12 +63,12 @@ export const BlockEditCustomCss = createHigherOrderComponent(
 					<BaseControl
 						__nextHasNoMarginBottom
 						help={ __(
-							'Using the selector, it can be rewritten to a block-specific class.',
+							'This feature is deprecated. Please migrate to core additional CSS.',
 							'mone'
 						) }
 					>
 						<TextareaControl
-							label={ __( 'Additional CSS', 'mone' ) }
+							label={ __( 'Deprecated Additional CSS', 'mone' ) }
 							__nextHasNoMarginBottom
 							value={ moneCustomCss }
 							onChange={ ( newValue ) =>

@@ -532,12 +532,12 @@ msgid "Caption Position"
 msgstr "キャプション位置"
 
 #: build/block-editor/index.js:1 build/block-editor/index.js:137
-msgid "Using the selector, it can be rewritten to a block-specific class."
-msgstr "selectorを使用して、ブロック固有のクラスに書き換えることができます。"
+msgid "This feature is deprecated. Please migrate to core additional CSS."
+msgstr "この機能は非推奨です。コアの追加CSSに移行してください。"
 
 #: build/block-editor/index.js:1 build/block-editor/index.js:143
-msgid "Additional CSS"
-msgstr "追加CSS"
+msgid "Deprecated Additional CSS"
+msgstr "非推奨 追加CSS"
 
 #: build/block-editor/index.js:1
 msgid "Dialog button"
@@ -559,16 +559,16 @@ msgstr "非表示設定"
 #: build/block-editor/index.js:607
 #: build/block-editor/index.js:419
 #: build/block-editor/index.js:447
-msgid "Media Query"
-msgstr "メディアクエリー"
+msgid "Deprecated Media Query"
+msgstr "非推奨 メディアクエリー"
 
 #: build/block-editor/index.js:1 build/block-editor/index.js:292
-msgid "Hide on PC"
-msgstr "PC 非表示"
+msgid "Deprecated Hide on PC"
+msgstr "非推奨 PC 非表示"
 
 #: build/block-editor/index.js:1 build/block-editor/index.js:303
-msgid "Hide on mobile"
-msgstr "モバイル 非表示"
+msgid "Deprecated Hide on mobile"
+msgstr "非推奨 モバイル 非表示"
 
 #: build/block-editor/index.js:667
 #: build/block-editor/index.js:509
