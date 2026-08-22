@@ -1,14 +1,22 @@
 === Mone ===
 Contributors: Tomoki Shimomura
-Requires at least: 6.9
-Tested up to: 7.0
-Requires PHP: 7.4
+Requires at least: 7.0
+Tested up to: 7.1
+Requires PHP: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
 == Changelog ==
+
+= 2.1.0 = 2026-08-22
+
+- Tested to WordPress 7.1
+- Fixed PHP warning wp_enqueue_script_module
+- Drop support for PHP7.4
+- Fixed getMedia deprecated
+- Update @wordpress packages
 
 = 2.0.0 = 2026-05-21
 

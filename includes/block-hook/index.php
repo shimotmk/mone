@@ -132,8 +132,7 @@ function mone_register_block_hook() {
 							'mone-' . $block . '-view-script-module',
 							$view_script_module_url,
 							$view_asset_file['dependencies'],
-							$view_asset_file['version'],
-							array()
+							$view_asset_file['version']
 						);
 					}
 				}

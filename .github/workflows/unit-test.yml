@@ -74,12 +74,13 @@ jobs:
             fail-fast: true
             matrix:
                 php:
-                    - '7.4'
                     - '8.0'
                     - '8.1'
                     - '8.2'
                     - '8.3'
-                wordpress: ['', '6.9'] # Latest WordPress version.
+                    - '8.4'
+                    - '8.5'
+                wordpress: ['', '7.0'] # Latest WordPress version.
 
         env:
             WP_ENV_PHP_VERSION: ${{ matrix.php }}
