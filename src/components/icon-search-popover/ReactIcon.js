@@ -140,7 +140,7 @@ export const decodeSvgBase64 = ( encodedSvgUrl ) => {
 		}
 		const utf8decoder = new TextDecoder();
 		return utf8decoder.decode( bytes );
-	} catch ( e ) {
+	} catch {
 		// If decoding fails, return empty string to avoid throwing a runtime error.
 		// Caller can handle an empty result as needed.
 		return '';

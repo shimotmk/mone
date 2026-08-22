@@ -28,7 +28,7 @@ export const useSiteData = () => {
 			] );
 		return {
 			siteTitle: _siteRecord?.title,
-			siteLogoUrl: siteLogoUrl,
+			siteLogoUrl,
 			isRequestingSiteLogoData: _isRequestingSiteLogoData,
 		};
 	}, [] );

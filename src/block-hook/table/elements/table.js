@@ -124,7 +124,6 @@ export const Table = ( { vTable, selectedCells, setSelectedCells } ) => {
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 		<table ref={ tableRef }>
 			{ filteredSections.map( ( sectionName, sectionIndex ) => (
 				<TSection name={ sectionName } key={ sectionIndex }>

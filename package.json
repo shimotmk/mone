@@ -6,7 +6,7 @@
 		"build": "wp-scripts build --webpack-copy-php --experimental-modules",
 		"start": "wp-scripts start --webpack-copy-php --experimental-modules",
 		"format": "wp-scripts format ./src",
-		"lint:css": "wp-scripts lint-style --fix",
+		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "composer format && composer phpcs",
 		"phpunit": "composer install && composer update &&  wp-env run --env-cwd='wp-content/themes/mone' tests-wordpress vendor/bin/phpunit -c phpunit.xml.dist",

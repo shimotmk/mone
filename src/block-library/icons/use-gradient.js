@@ -60,7 +60,7 @@ export function getGradientSlugByValue( gradients, value ) {
 	return gradient && gradient.slug;
 }
 
-export function __experimentalUseGradient( {
+export function useGradient( {
 	gradientAttribute = 'gradient',
 	customGradientAttribute = 'customGradient',
 	clientIds,
@@ -135,3 +135,5 @@ export function __experimentalUseGradient( {
 	}
 	return { gradientClass, gradientValue, setGradient };
 }
+
+export const __experimentalUseGradient = useGradient;

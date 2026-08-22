@@ -62,7 +62,7 @@ export const InsertThumbnail = ( props ) => {
 				const svgLists = await generateImageList( {
 					postTitle,
 					siteTitle,
-					siteLogoUrl: siteLogoUrl,
+					siteLogoUrl,
 					authorIconUrl: myIconUrl,
 					authorName: myName,
 					currentTheme: currentTheme.template_uri,
@@ -71,12 +71,11 @@ export const InsertThumbnail = ( props ) => {
 				if ( Array.isArray( svgLists ) ) {
 					setThumbnailSvgList( svgLists );
 				} else {
-					// eslint-disable-next-line no-console
 					logErrorOnce(
 						'Error: The generated image is not a string'
 					);
 				}
-			} catch ( error ) {
+			} catch {
 				logErrorOnce( 'Error fetching image:' );
 			}
 		};

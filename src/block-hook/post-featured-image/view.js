@@ -23,7 +23,7 @@ store( 'mone/post-featured-image-youtube-video', {
 					) {
 						context.isReady = true;
 					}
-				} catch ( e ) {}
+				} catch {}
 			} );
 		},
 
