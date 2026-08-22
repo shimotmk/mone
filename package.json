@@ -18,6 +18,8 @@
 		"wp-env": "wp-env"
 	},
 	"devDependencies": {
+		"@emnapi/core": "1.11.3",
+		"@emnapi/runtime": "1.11.3",
 		"@wordpress/env": "^11.13.0",
 		"@wordpress/scripts": "^34.1.0",
 		"husky": "^8.0.1"
