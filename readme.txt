@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
-= 2.1.1 = 2026-08-22
+= 2.1.2 = 2026-08-22
 
 - Tested to WordPress 7.1
 - Fixed PHP warning wp_enqueue_script_module
