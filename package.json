@@ -18,19 +18,19 @@
 		"wp-env": "wp-env"
 	},
 	"devDependencies": {
-		"@wordpress/env": "^10.34.0",
-		"@wordpress/scripts": "^30.27.0",
+		"@wordpress/env": "^11.13.0",
+		"@wordpress/scripts": "^34.1.0",
 		"husky": "^8.0.1"
 	},
 	"dependencies": {
 		"@emotion/styled": "^11.13.0",
-		"@wordpress/babel-plugin-makepot": "^6.34.0",
-		"@wordpress/dataviews": "^10.2.0",
-		"@wordpress/i18n": "^6.7.0",
-		"@wordpress/icons": "^11.1.0",
-		"@wordpress/interactivity": "^6.34.0",
-		"@wordpress/interactivity-router": "^2.34.0",
-		"@wordpress/interface": "^9.19.0",
+		"@wordpress/babel-plugin-makepot": "^6.53.0",
+		"@wordpress/dataviews": "^18.0.0",
+		"@wordpress/i18n": "^6.26.0",
+		"@wordpress/icons": "^15.4.0",
+		"@wordpress/interactivity": "^6.53.0",
+		"@wordpress/interactivity-router": "^2.53.0",
+		"@wordpress/interface": "^9.38.0",
 		"axios": "^1.7.7",
 		"babel-loader": "^9.2.1",
 		"clsx": "^2.1.1",

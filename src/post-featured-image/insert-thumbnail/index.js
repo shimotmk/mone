@@ -37,14 +37,11 @@ export const InsertThumbnail = ( props ) => {
 
 	const { postTitle } = usePostData( postTypeSlug, currentPostId );
 	const { colorSet, currentTheme } = useThemeData();
-	const { siteLogoMediaItemData, siteTitle, isRequestingSiteLogoData } =
-		useSiteData();
+	const { siteLogoUrl, siteTitle, isRequestingSiteLogoData } = useSiteData();
 	const { myName, myIconUrl, isRequestingMyData } = useUserData();
 
 	const { createErrorNotice, createSuccessNotice } =
 		useDispatch( noticesStore );
-	const _siteLogoUrl = siteLogoMediaItemData?.source_url ?? false;
-
 	const logErrorOnce = useCallback( () => {
 		let hasErrorOccurred = false;
 		return ( message ) => {
@@ -65,7 +62,7 @@ export const InsertThumbnail = ( props ) => {
 				const svgLists = await generateImageList( {
 					postTitle,
 					siteTitle,
-					siteLogoUrl: _siteLogoUrl,
+					siteLogoUrl: siteLogoUrl,
 					authorIconUrl: myIconUrl,
 					authorName: myName,
 					currentTheme: currentTheme.template_uri,
@@ -93,7 +90,7 @@ export const InsertThumbnail = ( props ) => {
 	}, [
 		postTitle,
 		siteTitle,
-		_siteLogoUrl,
+		siteLogoUrl,
 		myIconUrl,
 		myName,
 		isRequestingSiteLogoData,
